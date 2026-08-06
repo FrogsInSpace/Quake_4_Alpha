@@ -1,0 +1,434 @@
+
+
+sound main_menu
+{
+	minDistance	39
+	maxDistance	393
+	volumeDb	0
+	looping
+	no_shakes
+	noRandomStart
+
+	sound/music/main_menu
+}
+
+//Introduction - Narrative - Cinematic
+
+sound m1_intro
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	0
+	global
+
+	sound/music/m1_intro.ogg
+}
+
+sound m1_action
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	0
+	global
+
+	sound/music/m1_action.ogg
+}
+
+//Heading For Objective - Narrative - In Game	
+
+sound m1_objective
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	0
+	global
+
+	sound/music/m1_objective
+}
+
+// Mission 02
+
+//Breaching - Narrative - Cinematic	
+
+sound m2_strian_1
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	0
+	global
+
+	sound/music/m2_strian_1
+}
+
+//Core Explodes - Narrative - Cinematic	
+
+sound m2_core_explode
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	0
+	global
+
+	sound/music/m2_core_explode
+}
+
+//Access Node - Narrative - Cinematic	
+
+sound m2_access_node
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	0
+	global
+
+	sound/music/m2_access_node
+}
+
+//Boss Battle - Narrative - Cinematic	
+
+sound m2_tank_intro
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	0
+	global
+
+	sound/music/m2_tank_intro
+}
+
+//Mission 03
+//Briefing - Narrative - Cinematic	
+
+sound m03_intro_cinematic
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	-6
+	global
+
+	sound/music/m03_intro_cinematic
+}
+
+sound m03_bed
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	-6
+	global
+
+	sound/music/m03_bed
+}
+
+sound m03_slow1
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	-9
+	global
+
+	sound/music/m03_slow1
+}
+
+sound m03_medium1
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	-9
+	global
+
+	sound/music/m03_medium1a
+}
+
+sound m03_fast1
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	-9
+	global
+
+	sound/music/m03_fast1
+}
+
+
+sound m03_event
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	-6
+	global
+
+	sound/music/m03_event
+}
+
+sound m03_exit_cinematic
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	-6
+	global
+
+	sound/music/m03_exit_cinematic
+}
+
+//Mission 04
+//Trench Approach - Narrative - In Game	
+
+sound m4_trench_intro
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	0
+	global
+
+	sound/music/m4_trench_intro
+}
+
+//Prison Breach - Narrative - Cinematic
+
+sound m4_prison_breach
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	0
+	global
+
+	sound/music/m4_prison_breach
+}
+
+//Entering Prision - Narrative - Cinematic	
+sound m4_enter_prison
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	0
+	global
+
+	sound/music/m4_enter_prison
+}
+
+//M5 Prison
+//Find Strauss - Narrative - Cinematic
+sound m5_find_strauss
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	0
+	global
+
+	sound/music/m5_find_strauss
+}
+
+//M6 Prison
+//Subfloor 3 - Narrative - Cinematic
+sound m6_subfloor_cin
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	0
+	global
+
+	sound/music/m6_subfloor_cin
+}
+
+//Strauss Is Taken - Narrative - Cinematic
+sound m6_strauss_is_taken
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	0
+	global
+
+	sound/music/m6_strauss_is_taken
+}
+
+//Pain Lord Intro - Narrative - Cinematic	
+sound m6_pain_lord
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	0
+	global
+
+	sound/music/m6_pain_lord
+}
+
+
+//Engine Room - Narrative - Cinematic	
+sound m7_tense
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	0
+	global
+
+	sound/music/m7_tense
+}
+
+//Hangar - Narative - In Game		
+sound m7_hangar
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	0
+	global
+
+	sound/music/m7_hangar
+}
+
+//M8 Chase
+//Tak And Darnell Die - Narrative - In Game			
+sound m8_chase
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	0
+	global
+
+	sound/music/m8_chase
+}
+
+//Cryo Entry - Narrative - In Game			
+sound m8_cryo_entry
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	0
+	global
+
+	sound/music/m8_cryo_entry
+}
+
+//M9 Cryo
+//Cryo Intro			
+sound m9_cryo_intro
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	0
+	global
+
+	sound/music/m9_cryo_intro
+}
+
+//Cryo Exit			
+sound m9_cryo_exit
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	0
+	global
+
+	sound/music/m9_cryo_exit
+}
+
+//M10 Valkaryne
+//Reanimation Begins - Narrative - Cinematic			
+sound m9_cryo_cue
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	0
+	global
+
+	sound/music/m9_cryo_cue
+}
+
+//Valkaryne Emerges - Narrative - Cinematic				
+sound m10_valkaryne
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	0
+	global
+
+	sound/music/m10_valkaryne
+}
+
+//Escape - Narrative - Cinematic					
+sound m10_valkaryne_escape
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	0
+	global
+
+	sound/music/m10_valkaryne_escape
+}
+
+//Celebration - Narrative - Cinematic					
+sound m10_celebration
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	0
+	global
+
+	sound/music/m10_celebration
+}
+
+//New Beginnings - Narrative - Cinematic						
+sound m10_end_rebirth
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	0
+	global
+
+	sound/music/m10_end_rebirth
+}
+
+//m10_valkaryne_emerges.ogg (Valkaryne cinematic)					
+sound m10_valkaryne_emerges
+{
+	minDistance	400
+	maxDistance	2500
+	volumeDb	0
+	global
+
+	sound/music/m10_valkaryne_emerges
+}
+
+
+
+// lolz copying here because for some reason IT DOESN'T WANT TO WORK WITHOUT
+
+sound mcc_underscore_subtle
+{
+	minDistance	40
+	maxDistance	400
+	volumeDb	0
+	global
+	looping
+	no_shakes
+	soundClass	3
+
+	sound/ambience/musical/mcc_underscore_subtle
+}
+
+sound mcc_underscore_action
+{
+	minDistance	40
+	maxDistance	400
+	volumeDb	0
+	global
+	looping
+	no_shakes
+	noRandomStart
+	soundClass	3
+
+	sound/ambience/musical/mcc_underscore_action
+}
+
+sound mcc_underscore_theme
+{
+	minDistance	40
+	maxDistance	400
+	volumeDb	0
+	global
+	no_shakes
+	noRandomStart
+	soundClass	3
+
+	sound/ambience/musical/mcc_underscore_theme
+}
+

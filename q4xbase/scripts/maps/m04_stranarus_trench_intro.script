@@ -1,0 +1,1067 @@
+//---------------------------------------------------------------------------------------
+// stranarus_trench_intro.script
+//
+// (c) Ritual 2005
+//	-The Castle was here
+//---------------------------------------------------------------------------------------
+namespace m04_stranarus_trench_intro	{
+
+//---------------------------------------------------------------------------------
+//Breif document of all the new radio chatter to be used in both levels
+//---------------------------------------------------------------------------------
+	
+//=================================================================================
+//---------------------------------------------------------------------------------
+// Mission breifing and drop off 
+//---------------------------------------------------------------------------------
+//=================================================================================
+
+void main_drop_ship_move()
+{
+	//begin drop off fly in now
+	//radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_1_8" );
+	sys.trigger( $main_drop_ship_takes_big_damage_1 );
+	aiScriptedAnim ( $wall_breacher_guy_1, "pain_concussive2", 16, 1 );
+	aiScriptedAnim ( $wall_breacher_guy_2, "kane_reaction3", 16, 1 );
+	aiScriptedAnim ( $marine_ambient_dropship_2, "pain_concussive2", 16, 1 );
+	aiScriptedAnim ( $marine_ambient_dropship_3, "pain_concussive3", 16, 1 );
+	aiScriptedAnim ( $marine_ambient_dropship_4, "kane_reaction1", 16, 1 );
+	aiScriptedAnim ( $marine_ambient_dropship_5, "pain_concussive2", 16, 1 );
+	$drop_ship_doors_open.remove();
+	sys.trigger( $spawn_drop_ship_turrets );
+	$marine_ambient_dropship_1.kill();
+	sys.wait(2);
+	
+	aiScriptedAnim ( $wall_breacher_guy_1, "cowering_start", 4, 1 );
+	aiScriptedAnim ( $wall_breacher_guy_2, "cowering_start", 4, 1 );
+	aiScriptedAnim ( $marine_ambient_dropship_2, "cowering_start", 4, 1 );
+	aiScriptedAnim ( $marine_ambient_dropship_2, "cowering_start", 4, 1 );
+	aiScriptedAnim ( $marine_ambient_dropship_3, "cowering_start", 4, 1 );
+	aiScriptedAnim ( $marine_ambient_dropship_4, "cowering_start", 4, 1 );
+	aiScriptedAnimWait ( $marine_ambient_dropship_5, "cowering_start", 4, 1 );
+	
+	aiScriptedAnimLoop ( $wall_breacher_guy_1, "cowering_idle", 16 );
+	aiScriptedAnimLoop ( $wall_breacher_guy_2, "cowering_idle", 16 );
+	aiScriptedAnimLoop ( $marine_ambient_dropship_2, "cowering_idle", 16 );
+	aiScriptedAnimLoop ( $marine_ambient_dropship_2, "cowering_idle", 16 );
+	aiScriptedAnimLoop ( $marine_ambient_dropship_3, "cowering_idle", 16 );
+	aiScriptedAnimLoop ( $marine_ambient_dropship_4, "cowering_idle", 16 );
+	aiScriptedAnimLoop ( $marine_ambient_dropship_5, "cowering_idle", 16 );
+	
+	$marine_ambient_dropship_1.remove();
+	$drop_ship_front_ramp_anc.rotateOnce ('0 0 -65');
+	$drop_ship_anc_1.moveTo ( $drop_ship_landing_node_1 );
+	$sky_cam_anc_1.moveTo ( $sky_cam_dest_1 );
+	aiSpeakWait( $marine_ambient_dropship_2, "lipsync_4_1_12" );
+	//radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_1_9" );
+	//radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_1_10" );
+	//radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_1_11" );
+	//radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_1_12" );
+	sys.waitFor( $drop_ship_anc_1 );
+	
+	sys.trigger( $crash_landing_effects );
+	sys.trigger( $thread_team_moves_up );
+	sys.trigger( $music_intro );
+	sys.fadeOut('0 0 0', .1 );
+	sys.wait(10);
+	//player should black out at this point during the crash
+	
+	sys.trigger( $inside_drop_ship_erase );
+	$player_skate_board.unbind();
+	$player_skate_board.moveTo ( $player_skate_board_landing_1 );
+	sys.wait(4);
+	//player wakes up breifly to see the crashed drop ship from the outside 
+	//and a medic working on him. 
+	//Player wakes up to a soldier yelling at him asking what should we do now
+	//sys.trigger( $player_wakes_up_1 );
+	sys.fadeIn('0 0 0', 2.3 );
+	sys.trigger( $final_crashed_drop_ship_state );
+	aiScriptedAnimLoop ( $buddy_marine_1, "kneel_loop_1b", 1 );
+	aiScriptedAnim( $marine_medic_1, "medic_shot", 32, 1 );
+	//aiScriptedAnimLoop ( $marine_medic_1, "kneel_loop_1b", 1 );
+	aiSpeakWait( $marine_medic_1, "lipsync_4_2_1" );
+	sys.wait(1);
+	
+	$player_skate_board.accelTime (.8);
+	$player_skate_board.decelTime (.8);
+	$player_skate_board.time (1.25);
+	sys.wait(1);
+	
+	aiSpeakWait( $buddy_marine_1, "lipsync_4_2_2" );
+	
+	aiScriptedAnimWait( $buddy_marine_1, "point_left", 32, 1);
+	//radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_2_1" );
+	//radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_2_2" );
+	$player_skate_board.moveTo ( $player_skate_board_landing_2 );
+	sys.waitFor( $player_skate_board );
+	sys.trigger( $buddy_path_yippy );
+	sys.trigger( $enable_weapons );
+	sys.trigger( $OBJ_one );
+	
+	$player1.unbind();
+	$marine_ambient_dropship_2.becomeAggressive();
+	$marine_ambient_dropship_3.becomeAggressive();
+	$marine_ambient_dropship_4.becomeAggressive();
+	$marine_ambient_dropship_5.becomeAggressive();
+	$wall_breacher_guy_1.becomeAggressive();
+	$wall_breacher_guy_2.becomeAggressive();
+	sys.wait(5);
+	
+	//bring back the chaos
+	sys.trigger( $music_on_the_beach );
+	sys.trigger( $second_wave_ambient_booms );
+	sys.wait(20);
+	
+	radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_2_2_3" );
+	sys.wait(1);
+	radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_2_2_4" );
+	sys.wait(8);
+	radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_2_2_5" );
+	sys.wait(2);
+	radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_2_2_6" );
+	sys.wait(4);
+	radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_2_2_1" );
+	sys.wait(2);
+	radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_2_2_2" );
+}
+
+void crashing_drop_ship_move()
+{
+	$crashing_drop_ship_1.moveTo ( $crashing_drop_ship_node_1 );
+	sys.wait(6);
+	sys.trigger( $crashing_drop_ship_huge_damage_1 );
+	
+	sys.wait(10);
+	sys.trigger( $drop_ship_crash_boom_1 );
+}
+
+void Begin_level_script()
+{
+	sys.trigger( $activate_team_drop_ship );
+	sys.trigger( $disable_weapons );
+	//sys.music( m4_trench_intro );
+	$player1.bind( $player_skate_board );
+	
+	aiScriptedAnimLoop ( $wall_breacher_guy_1, "idle_weapon_2", 1 );
+	aiScriptedAnimLoop ( $wall_breacher_guy_2, "idle_weapon_2", 1 );
+	aiScriptedAnimLoop ( $marine_ambient_dropship_1, "idle_weapon_3", 1 );
+	aiScriptedAnimLoop ( $marine_ambient_dropship_2, "idle_sitting_1", 1 );
+	aiScriptedAnimLoop ( $marine_ambient_dropship_3, "idle_weapon_3", 1 );
+	aiScriptedAnimLoop ( $marine_ambient_dropship_4, "idle_weapon_1", 1 );
+	aiScriptedAnimLoop ( $marine_ambient_dropship_5, "idle_weapon_3", 1 );
+	
+	sys.wait(2);
+	//radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_1_1" );
+	//radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_1_2" );
+	//radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_1_3" );
+	aiSpeakWait( $marine_ambient_dropship_2, "lipsync_4_1_1" );
+	radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_1_7" );
+	aiSpeakWait( $marine_ambient_dropship_2, "lipsync_4_1_8" );
+	sys.trigger( $drop_ship_takes_smaller_damage );
+	aiScriptedAnimLoop ( $wall_breacher_guy_1, "idle_scan_1", 16 );
+	aiScriptedAnimLoop ( $wall_breacher_guy_2, "idle_scan_2", 16 );
+	aiScriptedAnimLoop ( $marine_ambient_dropship_2, "idle_scan_3", 16 );
+	aiScriptedAnimLoop ( $marine_ambient_dropship_3, "idle_scan_2", 16 );
+	aiScriptedAnimLoop ( $marine_ambient_dropship_4, "idle_scan_1", 16 );
+	aiScriptedAnimLoop ( $marine_ambient_dropship_5, "idle_scan_2", 16 );
+	aiSpeakWait( $marine_ambient_dropship_2, "lipsync_4_1_9" );
+	radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_1_10" );
+	aiSpeakWait( $marine_ambient_dropship_2, "lipsync_4_1_11" );
+	
+	//Delay for mission breifing
+	//sys.wait(10);
+	sys.trigger( $music_intro );
+	thread main_drop_ship_move();
+	thread crashing_drop_ship_move();
+}
+
+void begin_first_trig_at_dropoff()
+{
+	// Center Bunker is kind of over the top and needs to be removed 
+	// when player is closer
+	sys.wait(6);
+	sys.trigger( $remove_center_bunker_turrets );
+}
+
+
+//=================================================================================
+//---------------------------------------------------------------------------------
+// On the ground and moving forward
+//---------------------------------------------------------------------------------
+//=================================================================================
+//=================================================================================
+void wbg_1_run01()
+	{
+		sys.wait(1);
+		aiScriptedMoveWait ( $wall_breacher_guy_1, $wall_breacher_guy_1_node_1, 8, 1);
+		
+		//aiScriptedAnim ( $wall_breacher_guy_1, "idle_scan_2", 4, 0 );
+	}
+	
+void wbg_1_run02()
+	{
+		sys.wait(1);
+		aiScriptedMoveWait ( $wall_breacher_guy_1, $wall_breacher_guy_1_node_2, 8, 1);
+		
+		//aiScriptedAnim ( $wall_breacher_guy_1, "idle_scan_2", 4, 0 );
+	}
+	
+void bomb_planting01()
+	{
+		sys.wait(1);
+		aiScriptedMoveWait ( $wall_breacher_guy_1, $bomb_node01, 8, 1);
+		
+		aiScriptedFace( $wall_breacher_guy_1, $bomb_charge01, 1);
+		sys.wait(1);
+		
+		//radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_3_1" );
+		
+		aiSpeakWait( $wall_breacher_guy_1, "lipsync_4_3_1" );
+		aiScriptedAnim ( $wall_breacher_guy_1, "plant_tnt_low", 4, 0 );
+		sys.wait(1);
+		
+		sys.trigger( $OBJ_one_complete );
+		sys.trigger( $place_bomb );
+		sys.wait(4);
+		
+		//radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_3_2" );
+		aiSpeakWait( $wall_breacher_guy_1, "lipsync_4_3_2" );
+		aiScriptedMoveWait ( $wall_breacher_guy_1, $bomb_node03, 8, 1);
+		//radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_3_3" );
+		aiSpeakWait( $wall_breacher_guy_1, "lipsync_4_3_3" );
+		aiScriptedAnim ( $wall_breacher_guy_1, "wrist_gui_2", 4, 0 );
+		sys.wait(2);
+		
+		sys.trigger( $wall_breach_boom_1 );
+		$marine_ambient_dropship_2.becomeAggressive();
+		$marine_ambient_dropship_3.becomeAggressive();
+		$marine_ambient_dropship_4.becomeAggressive();
+		$marine_ambient_dropship_5.becomeAggressive();
+		$wall_breacher_guy_1.becomeAggressive();
+		$wall_breacher_guy_2.becomeAggressive();
+		sys.wait(2);
+
+		$wall_breacher_guy_1.faceEntity( $player1 );
+		sys.wait(1.5);
+		aiSpeakWait( $wall_breacher_guy_1, "lipsync_4_4_1" );
+		sys.trigger( $thread_team_move_up03 );
+		sys.trigger( $OBJ_two );
+		
+		$marine_ambient_dropship_2.setLeader( $player1 );
+		$marine_ambient_dropship_3.setLeader( $player1 );
+		$marine_ambient_dropship_4.setLeader( $player1 );
+		$marine_ambient_dropship_5.setLeader( $player1 );
+		$wall_breacher_guy_1.setLeader( $player1 );
+		$wall_breacher_guy_2.setLeader( $player1 );
+	}
+	
+void wbg_1_run03()
+	{
+		sys.wait(1);
+		aiScriptedMoveWait ( $wall_breacher_guy_1, $wall_breacher_guy_1_node_3, 8, 1);
+		
+		//aiScriptedAnim ( $wall_breacher_guy_1, "idle_scan_2", 4, 0 );
+	}
+	
+void wbg_1_run04()
+	{	
+		sys.trigger( $OBJ_two_complete );
+		aiScriptedMoveWait ( $wall_breacher_guy_1, $wall_breacher_guy_1_node_4, 8, 1);
+		
+		aiScriptedFace( $wall_breacher_guy_1, $m_screen_8, 1);
+		sys.wait(2.5);
+		
+		//radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_4_1" );
+		
+		aiScriptedAnim ( $wall_breacher_guy_1, "plant_tnt_low", 16, 0 );
+		aiSpeakWait( $wall_breacher_guy_1, "lipsync_4_4_2" );
+		aiSpeakWait( $wall_breacher_guy_1, "lipsync_4_4_3" );
+		aiScriptedAnimLoop ( $wall_breacher_guy_1, "weld_loop", 1 );
+		aiSpeakWait( $wall_breacher_guy_1, "lipsync_4_4_4" );
+		sys.wait(4);
+		aiSpeakWait( $wall_breacher_guy_2, "lipsync_4_4_6" );
+		//radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_4_2" );
+		//radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_4_3" );
+		//radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_4_4" );
+		//radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_4_6" );
+		sys.wait(3);
+		sys.trigger( $cool_relay01 );
+		sys.trigger( $OBJ_three );
+		$marine_ambient_dropship_2.becomeAggressive();
+		$marine_ambient_dropship_3.becomeAggressive();
+		$marine_ambient_dropship_4.becomeAggressive();
+		$marine_ambient_dropship_5.becomeAggressive();
+		$wall_breacher_guy_1.becomeAggressive();
+		$wall_breacher_guy_2.becomeAggressive();
+		
+		sys.wait(4);
+		radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_5_1" );
+		radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_5_2" );
+		radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_5_3" );
+	}
+	
+void wbg_1_run05()
+	{
+		sys.wait(1);
+		aiScriptedMoveWait ( $wall_breacher_guy_1, $wall_breacher_guy_1_node_5, 8, 1);
+		
+		//aiScriptedAnim ( $wall_breacher_guy_1, "idle_scan_2", 4, 0 );
+	}
+
+void wbg_1_run06()
+	{
+		sys.wait(1);
+		aiScriptedMoveWait ( $wall_breacher_guy_1, $wall_breacher_guy_1_node_6, 8, 1);
+		
+		sys.trigger( $important_guys_made_it_in );
+		//aiScriptedAnim ( $wall_breacher_guy_1, "idle_scan_2", 4, 0 );
+	}
+	
+void wbg_1_run07()
+	{
+		sys.wait(1);
+		aiScriptedMoveWait ( $wall_breacher_guy_1, $wall_breacher_guy_1_node_7, 8, 1);
+		
+		sys.trigger( $important_guys_made_it_in );
+		//aiScriptedAnim ( $wall_breacher_guy_1, "idle_scan_2", 4, 0 );
+	}
+	
+//==================================================================================
+void wbg_2_run01()
+	{
+		sys.wait(2);
+		aiScriptedMoveWait ( $wall_breacher_guy_2, $wall_breacher_guy_2_node_1, 8, 1);
+		
+		//aiScriptedAnim ( $large_bunker_assault_team_guy_8, "idle_scan_3", 4, 0 );
+	}
+	
+void wbg_2_run02()
+	{
+		sys.wait(2);
+		aiScriptedMoveWait ( $wall_breacher_guy_2, $wall_breacher_guy_2_node_2, 8, 1);
+		
+		//aiScriptedAnim ( $large_bunker_assault_team_guy_8, "idle_scan_3", 4, 0 );
+	}
+	
+void bomb_planting02()
+	{
+		aiScriptedFace( $wall_breacher_guy_2, $wall_breacher_guy_1_node_2, 1);
+		sys.wait(1);
+		
+		aiScriptedMove ( $wall_breacher_guy_2, $bomb_node02, 8, 1);
+	}
+	
+void wbg_2_run03()
+	{
+		sys.wait(2);
+		aiScriptedMoveWait ( $wall_breacher_guy_2, $wall_breacher_guy_2_node_3, 8, 1);
+		
+		//aiScriptedAnim ( $large_bunker_assault_team_guy_8, "idle_scan_3", 4, 0 );
+	}
+	
+void wbg_2_run04()
+	{
+		sys.wait(2);
+		aiScriptedMoveWait ( $wall_breacher_guy_2, $wall_breacher_guy_2_node_4, 8, 1);
+		
+		//aiScriptedAnim ( $large_bunker_assault_team_guy_8, "idle_scan_3", 4, 0 );
+	}
+	
+void wbg_2_run05()
+	{
+		sys.wait(2);
+		aiScriptedMoveWait ( $wall_breacher_guy_2, $wall_breacher_guy_2_node_5, 8, 1);
+		
+		//aiScriptedAnim ( $large_bunker_assault_team_guy_8, "idle_scan_3", 4, 0 );
+	}
+	
+void wbg_2_run06()
+	{
+		sys.wait(2);
+		aiScriptedMoveWait ( $wall_breacher_guy_2, $wall_breacher_guy_2_node_6, 8, 1);
+		
+		//sys.trigger( $important_guys_made_it_in );
+		//aiScriptedAnim ( $large_bunker_assault_team_guy_8, "idle_scan_3", 4, 0 );
+	}
+	
+void wbg_2_run07()
+	{
+		sys.wait(2);
+		aiScriptedMoveWait ( $wall_breacher_guy_2, $wall_breacher_guy_2_node_7, 8, 1);
+		
+		//sys.trigger( $important_guys_made_it_in );
+		//aiScriptedAnim ( $large_bunker_assault_team_guy_8, "idle_scan_3", 4, 0 );
+	}
+	
+//==================================================================================
+void drop_marine_2_run01()
+	{
+		sys.wait(1);
+		aiScriptedMoveWait ( $marine_ambient_dropship_2, $marine_ambient_dropship_2_node_1, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_2, "idle_scan_3", 4, 0 );
+	}
+	
+void drop_marine_2_run02()
+	{
+		sys.wait(1);
+		aiScriptedMoveWait ( $marine_ambient_dropship_2, $marine_ambient_dropship_2_node_2, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_2, "idle_scan_3", 4, 0 );
+	}
+	
+void drop_marine_2_run03()
+	{
+		sys.wait(1);
+		aiScriptedMoveWait ( $marine_ambient_dropship_2, $marine_ambient_dropship_2_node_3, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_2, "idle_scan_3", 4, 0 );
+	}
+	
+void drop_marine_2_run04()
+	{
+		sys.wait(1);
+		aiScriptedMoveWait ( $marine_ambient_dropship_2, $marine_ambient_dropship_2_node_4, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_2, "idle_scan_3", 4, 0 );
+	}
+	
+void drop_marine_2_run05()
+	{
+		sys.wait(1);
+		aiScriptedMoveWait ( $marine_ambient_dropship_2, $marine_ambient_dropship_2_node_5, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_2, "idle_scan_3", 4, 0 );
+	}
+	
+void drop_marine_2_run06()
+	{
+		sys.wait(1);
+		aiScriptedMoveWait ( $marine_ambient_dropship_2, $marine_ambient_dropship_2_node_6, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_2, "idle_scan_3", 4, 0 );
+	}
+	
+void drop_marine_2_run07()
+	{
+		sys.wait(1);
+		aiScriptedMoveWait ( $marine_ambient_dropship_2, $marine_ambient_dropship_2_node_7, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_2, "idle_scan_3", 4, 0 );
+	}
+	
+//==================================================================================
+void drop_marine_3_run01()
+	{
+		sys.wait(2);
+		aiScriptedMoveWait ( $marine_ambient_dropship_3, $marine_ambient_dropship_3_node_1, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_3_guy_8, "idle_scan_3", 4, 0 );
+	}
+	
+void drop_marine_3_run02()
+	{
+		sys.wait(2);
+		aiScriptedMoveWait ( $marine_ambient_dropship_3, $marine_ambient_dropship_3_node_2, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_3_guy_8, "idle_scan_3", 4, 0 );
+	}
+	
+void drop_marine_3_run03()
+	{
+		sys.wait(2);
+		aiScriptedMoveWait ( $marine_ambient_dropship_3, $marine_ambient_dropship_3_node_3, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_3_guy_8, "idle_scan_3", 4, 0 );
+	}
+	
+void drop_marine_3_run04()
+	{
+		sys.wait(2);
+		aiScriptedMoveWait ( $marine_ambient_dropship_3, $marine_ambient_dropship_3_node_4, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_3_guy_8, "idle_scan_3", 4, 0 );
+	}
+	
+void drop_marine_3_run05()
+	{
+		sys.wait(2);
+		aiScriptedMoveWait ( $marine_ambient_dropship_3, $marine_ambient_dropship_3_node_5, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_3_guy_8, "idle_scan_3", 4, 0 );
+	}
+	
+void drop_marine_3_run06()
+	{
+		sys.wait(2);
+		aiScriptedMoveWait ( $marine_ambient_dropship_3, $marine_ambient_dropship_3_node_6, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_3_guy_8, "idle_scan_3", 4, 0 );
+	}
+	
+void drop_marine_3_run07()
+	{
+		sys.wait(2);
+		aiScriptedMoveWait ( $marine_ambient_dropship_3, $marine_ambient_dropship_3_node_7, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_3_guy_8, "idle_scan_3", 4, 0 );
+	}
+	
+//==================================================================================
+void drop_marine_4_run01()
+	{
+		sys.wait(3);
+		aiScriptedMoveWait ( $marine_ambient_dropship_4, $marine_ambient_dropship_4_node_1, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_4_guy_8, "idle_scan_3", 4, 0 );
+	}
+	
+void drop_marine_4_run02()
+	{
+		sys.wait(3);
+		aiScriptedMoveWait ( $marine_ambient_dropship_4, $marine_ambient_dropship_4_node_2, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_4_guy_8, "idle_scan_3", 4, 0 );
+	}
+	
+void drop_marine_4_run03()
+	{
+		sys.wait(3);
+		aiScriptedMoveWait ( $marine_ambient_dropship_4, $marine_ambient_dropship_4_node_3, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_4_guy_8, "idle_scan_3", 4, 0 );
+	}
+	
+void drop_marine_4_run04()
+	{
+		sys.wait(3);
+		aiScriptedMoveWait ( $marine_ambient_dropship_4, $marine_ambient_dropship_4_node_4, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_4_guy_8, "idle_scan_3", 4, 0 );
+	}
+	
+void drop_marine_4_run05()
+	{
+		sys.wait(3);
+		aiScriptedMoveWait ( $marine_ambient_dropship_4, $marine_ambient_dropship_4_node_5, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_4_guy_8, "idle_scan_3", 4, 0 );
+	}
+	
+void drop_marine_4_run06()
+	{
+		sys.wait(3);
+		aiScriptedMoveWait ( $marine_ambient_dropship_4, $marine_ambient_dropship_4_node_6, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_4_guy_8, "idle_scan_3", 4, 0 );
+	}
+	
+void drop_marine_4_run07()
+	{
+		sys.wait(3);
+		aiScriptedMoveWait ( $marine_ambient_dropship_4, $marine_ambient_dropship_4_node_7, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_4_guy_8, "idle_scan_3", 4, 0 );
+	}
+
+//==================================================================================
+void drop_marine_5_run01()
+	{
+		sys.wait(4);
+		aiScriptedMoveWait ( $marine_ambient_dropship_5, $marine_ambient_dropship_5_node_1, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_5, "idle_scan_3", 4, 0 );
+	}
+	
+void drop_marine_5_run02()
+	{
+		sys.wait(4);
+		aiScriptedMoveWait ( $marine_ambient_dropship_5, $marine_ambient_dropship_5_node_2, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_5, "idle_scan_3", 4, 0 );
+	}
+	
+void drop_marine_5_run03()
+	{
+		sys.wait(4);
+		aiScriptedMoveWait ( $marine_ambient_dropship_5, $marine_ambient_dropship_5_node_3, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_5, "idle_scan_3", 4, 0 );
+	}
+	
+void drop_marine_5_run04()
+	{
+		sys.wait(4);
+		aiScriptedMoveWait ( $marine_ambient_dropship_5, $marine_ambient_dropship_5_node_4, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_5, "idle_scan_3", 4, 0 );
+	}
+	
+void drop_marine_5_run05()
+	{
+		sys.wait(4);
+		aiScriptedMoveWait ( $marine_ambient_dropship_5, $marine_ambient_dropship_5_node_5, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_5, "idle_scan_3", 4, 0 );
+	}
+	
+void drop_marine_5_run06()
+	{
+		sys.wait(4);
+		aiScriptedMoveWait ( $marine_ambient_dropship_5, $marine_ambient_dropship_5_node_6, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_5, "idle_scan_3", 4, 0 );
+	}
+	
+void drop_marine_5_run07()
+	{
+		sys.wait(4);
+		aiScriptedMoveWait ( $marine_ambient_dropship_5, $marine_ambient_dropship_5_node_7, 8, 1);
+		
+		//aiScriptedAnim ( $marine_ambient_dropship_5, "idle_scan_3", 4, 0 );
+	}
+
+//==================================================================================
+void team_moves_up01()
+	{
+		thread wbg_1_run01();
+		thread wbg_2_run01();
+		thread drop_marine_2_run01();
+		thread drop_marine_3_run01();
+		thread drop_marine_4_run01();
+		thread drop_marine_5_run01();
+	}
+//==================================================================================	
+void team_moves_up02()
+	{
+		thread wbg_1_run02();
+		thread wbg_2_run02();
+		thread drop_marine_2_run02();
+		thread drop_marine_3_run02();
+		thread drop_marine_4_run02();
+		thread drop_marine_5_run02();
+		
+		$marine_ambient_dropship_2.becomePassive( 1 );
+		$marine_ambient_dropship_3.becomePassive( 1 );
+		$marine_ambient_dropship_4.becomePassive( 1 );
+		$marine_ambient_dropship_5.becomePassive( 1 );
+		$wall_breacher_guy_1.becomePassive( 1 );
+		$wall_breacher_guy_2.becomePassive( 1 );
+	}
+//==================================================================================	
+void plant_charge01()
+	{
+		thread bomb_planting01();
+		thread bomb_planting02();
+	}
+
+//==================================================================================	
+void team_moves_up03()
+	{
+		thread wbg_1_run03();
+		thread wbg_2_run03();
+		thread drop_marine_2_run03();
+		thread drop_marine_3_run03();
+		thread drop_marine_4_run03();
+		thread drop_marine_5_run03();
+		
+		sys.trigger( $music_on_the_beach );
+		sys.trigger( $music_intro);
+		//radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_2_7" );
+		
+		sys.wait(5);
+		radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_2_11" );
+		sys.wait(15);
+		radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_2_12" );
+		sys.wait(15);
+		radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_2_13" );
+	}
+	
+//==================================================================================	
+void team_moves_up04()
+	{
+		$marine_ambient_dropship_2.becomePassive( 1 );
+		$marine_ambient_dropship_3.becomePassive( 1 );
+		$marine_ambient_dropship_4.becomePassive( 1 );
+		$marine_ambient_dropship_5.becomePassive( 1 );
+		$wall_breacher_guy_1.becomePassive( 1 );
+		$wall_breacher_guy_2.becomePassive( 1 );
+		
+		$marine_ambient_dropship_2.setLeader( $null_entity );
+		$marine_ambient_dropship_3.setLeader( $null_entity );
+		$marine_ambient_dropship_4.setLeader( $null_entity );
+		$marine_ambient_dropship_5.setLeader( $null_entity );
+		$wall_breacher_guy_1.setLeader( $null_entity );
+		$wall_breacher_guy_2.setLeader( $null_entity );
+		
+		thread wbg_1_run04();
+		thread wbg_2_run04();
+		thread drop_marine_2_run04();
+		thread drop_marine_3_run04();
+		thread drop_marine_4_run04();
+		thread drop_marine_5_run04();
+		
+		sys.wait(4);
+		radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_2_2_7" );
+		radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_2_2_8" );
+	}
+
+//==================================================================================	
+void team_moves_up05()
+	{
+		thread wbg_1_run05();
+		thread wbg_2_run05();
+		thread drop_marine_2_run05();
+		thread drop_marine_3_run05();
+		thread drop_marine_4_run05();
+		thread drop_marine_5_run05();
+	}
+	
+//==================================================================================	
+void team_moves_up06()
+	{
+		thread wbg_1_run06();
+		thread wbg_2_run06();
+		thread drop_marine_2_run06();
+		thread drop_marine_3_run06();
+		thread drop_marine_4_run06();
+		thread drop_marine_5_run06();
+	}
+
+//==================================================================================	
+void team_moves_up07()
+	{
+		thread wbg_1_run07();
+		thread wbg_2_run07();
+		thread drop_marine_2_run07();
+		thread drop_marine_3_run07();
+		thread drop_marine_4_run07();
+		thread drop_marine_5_run07();
+	}
+
+//=================================================================================
+//---------------------------------------------------------------------------------
+// huge door at inner courtyard
+//---------------------------------------------------------------------------------
+//=================================================================================
+
+void thread_huge_door_strog_death_counter()
+	{
+		sys.trigger( $huge_door_strog_death_counter );
+	}	
+	
+//=================================================================================
+//---------------------------------------------------------------------------------
+// Inside under halls
+//---------------------------------------------------------------------------------
+//=================================================================================
+void crushing_avalanch01()
+	{	
+		sys.wait( 2 );
+		radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_5_4" );
+		radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_5_5" );
+		sys.wait( 8 );
+		
+		radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_2_2_9" );
+	}
+
+void All_strog_dead()
+	{
+		$marine_ambient_dropship_2.becomePassive( 1 );
+		$marine_ambient_dropship_3.becomePassive( 1 );
+		$marine_ambient_dropship_4.becomePassive( 1 );
+		$marine_ambient_dropship_5.becomePassive( 1 );
+		$wall_breacher_guy_1.becomePassive( 1 );
+		$wall_breacher_guy_2.becomePassive( 1 );
+		$avalanch_team_guy_1.becomePassive( 1 );
+		$avalanch_team_guy_2.becomePassive( 1 );
+		$avalanch_team_guy_3.becomePassive( 1 );
+		$avalanch_team_guy_4.becomePassive( 1 );
+		$red_shirt_guy_1.becomePassive( 1 );
+		$red_shirt_guy_2.becomePassive( 1 );
+		
+		sys.wait(2);
+		radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_2_2_10" );
+		
+		thread team_moves_up07();
+		aiScriptedMove ( $avalanch_team_guy_1, $rhino_guy_1_node_1, 8, 1);
+		aiScriptedMove ( $avalanch_team_guy_2, $rhino_guy_1_node_2, 8, 1);
+		aiScriptedMove ( $avalanch_team_guy_3, $rhino_guy_1_node_3, 8, 1);
+		aiScriptedMove ( $avalanch_team_guy_4, $rhino_guy_1_node_4, 8, 1);
+		aiScriptedMoveWait ( $red_shirt_guy_1, $rhino_guy_1_node_5, 64, 1);
+		aiScriptedMoveWait ( $red_shirt_guy_2, $rhino_guy_1_node_6, 64, 1);
+		sys.trigger( $final_sequence_begin );
+	}
+	
+void thread_strog_death_counter()
+	{
+		sys.trigger( $strog_death_counter );
+	}
+
+void final_sequence_ready()
+	{
+		sys.trigger( $OBJ_three_complete );
+		//aiScriptedMove ( $red_shirt_guy_1, $player1, 128, 1);
+		//aiScriptedMoveWait ( $red_shirt_guy_2, $player1, 64, 1);
+		$red_shirt_guy_1.faceEntity( $player1 );
+		$red_shirt_guy_2.faceEntity( $player1 );
+		
+		aiSpeakWait( $red_shirt_guy_2, "lipsync_4_5_6" );
+		aiSpeakWait( $red_shirt_guy_1, "lipsync_4_5_7" );
+		//radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_5_6" );
+		//radioChatterPlayWait ( $trench_sound_chatter_1, "vo_4_5_7" );
+		
+		sys.trigger( $OBJ_four );
+		sys.trigger( $objectivebeacon_4 );
+		sys.wait( 4 );
+		
+		aiScriptedMove ( $red_shirt_guy_1, $red_shirt_guy_1_node_1, 64, 1);
+		aiScriptedMove ( $red_shirt_guy_2, $red_shirt_guy_2_node_1, 64, 1);
+	}
+	
+//---------------------------------------------------------------------------------------
+//--	MAIN SEQUENCES 
+//---------------------------------------------------------------------------------------
+void huge_spot_lights_scan_beach()
+{
+	while( 1 ) 
+	{
+		$huge_spot_light_base_tripod_anc_1.rotateOnce ('0 45 0');
+		$huge_spot_light_base_tripod_anc_2.rotateOnce ('0 -45 0');
+		$huge_spot_light_base_tripod_anc_3.rotateOnce ('0 75 0');
+		$huge_spot_light_base_ance_1.rotateOnce ('0 0 25');
+		$huge_spot_light_base_ance_2.rotateOnce ('0 0 25');
+		$huge_spot_light_base_ance_3.rotateOnce ('0 0 39');
+		sys.wait( 5 );
+			
+		$huge_spot_light_base_tripod_anc_1.rotateOnce ('0 -45 0');
+		$huge_spot_light_base_tripod_anc_2.rotateOnce ('0 45 0');
+		$huge_spot_light_base_tripod_anc_3.rotateOnce ('0 -25 0');
+		$huge_spot_light_base_ance_1.rotateOnce ('0 0 -25');
+		$huge_spot_light_base_ance_2.rotateOnce ('0 0 -25');
+		$huge_spot_light_base_ance_3.rotateOnce ('0 0 -13');
+		sys.wait( 5 );
+		
+		$huge_spot_light_base_tripod_anc_1.rotateOnce ('0 -45 0');
+		$huge_spot_light_base_tripod_anc_2.rotateOnce ('0 45 0');
+		$huge_spot_light_base_tripod_anc_3.rotateOnce ('0 -25 0');
+		$huge_spot_light_base_ance_1.rotateOnce ('0 0 25');
+		$huge_spot_light_base_ance_2.rotateOnce ('0 0 25');
+		$huge_spot_light_base_ance_3.rotateOnce ('0 0 -13');
+		sys.wait( 5 );
+		
+		$huge_spot_light_base_tripod_anc_1.rotateOnce ('0 45 0');
+		$huge_spot_light_base_tripod_anc_2.rotateOnce ('0 -45 0');
+		$huge_spot_light_base_tripod_anc_3.rotateOnce ('0 -25 0');
+		$huge_spot_light_base_ance_1.rotateOnce ('0 0 -25');
+		$huge_spot_light_base_ance_2.rotateOnce ('0 0 -25');
+		$huge_spot_light_base_ance_3.rotateOnce ('0 0 -13');
+		sys.wait( 5 );
+		}
+}
+	
+
+void init_level()
+{
+	$huge_spot_light_base_tripod_anc_1.accelTime (10);
+	$huge_spot_light_base_tripod_anc_1.decelTime (10);
+	$huge_spot_light_base_tripod_anc_1.time (10);
+	
+	$huge_spot_light_base_tripod_anc_2.accelTime (10);
+	$huge_spot_light_base_tripod_anc_2.decelTime (10);
+	$huge_spot_light_base_tripod_anc_2.time (10);
+	
+	$huge_spot_light_base_ance_1.accelTime (5);
+	$huge_spot_light_base_ance_1.decelTime (5);
+	$huge_spot_light_base_ance_1.time (5);
+	
+	$huge_spot_light_base_ance_2.accelTime (5);
+	$huge_spot_light_base_ance_2.decelTime (5);
+	$huge_spot_light_base_ance_2.time (5);
+
+	$sky_cam_anc_1.accelTime (4);
+	$sky_cam_anc_1.decelTime (4);
+	$sky_cam_anc_1.time (12);
+	$drop_ship_anc_1.accelTime (4);
+	$drop_ship_anc_1_anc.decelTime (4);
+	$drop_ship_anc_1.time (8);
+
+	$crashing_drop_ship_1.accelTime (4);
+	$crashing_drop_ship_1.decelTime (.5);
+	$crashing_drop_ship_1.time (14);
+	
+	$player_skate_board.accelTime (.1);
+	$player_skate_board.decelTime (.1);
+	$player_skate_board.time (.1);
+	
+	thread Begin_level_script();
+	thread huge_spot_lights_scan_beach();
+	
+}
+
+//moves one flyer sprite across the sky over the trenches
+void maintainStroggFlyerSprite(entity entMover, entity fxNormal, entity fxDamage, entity entHangar, entity entTgrEnd, vector vDirection)
+{	
+	sys.wait( sys.random(10) );
+	
+	//will the planes be swervey?
+	float fSwerve = 0;
+	float fWaitTime = 0;
+	float fAmplitude = 0;
+
+	while(1)	{
+
+		//place the mover on the "hangar" line, equal in the X but displaced in the Y by +/- ___ units
+
+		// +/- Y displacement
+		float fDisplacementMax = 2000;
+		float fDelta = 0;
+
+		//start location for the flyer
+		vector vStart = entHangar.getWorldOrigin();
+		vector vSpeed = '0 0 0';
+		vector vAngs;
+
+		//flyer speed
+		float fSpeed = 900 + (sys.random(600));
+
+		//will the plane be swervey?
+		if ( 1 ) {//sys.random(10) < 4)	{
+			fSwerve = sys.random(200) + 100;
+			fAmplitude = sys.random(90) + 30;
+		}
+		else	{
+			fSwerve = 0;
+			fAmplitude = 0;
+		}
+
+		//stop the flyer-- move him into position after we figure out where he goes.
+		entMover.setLinearVelocity( '0 0 0');
+
+		//mathery mcmath
+		fDelta = (0 - fDisplacementMax + sys.random( fDisplacementMax * 2));
+		vStart_y += fDelta;
+
+		//faster planes sit lower in the sky
+		//vStart_z += (fSpeed / 10);
+
+		//move to position
+		entMover.setWorldOrigin( vStart );
+		//sys.print("starting at: ");
+		//printVector(vStart);
+		sys.waitFrame();
+		
+		//set the direction as speed
+		vSpeed = vDirection * fSpeed;	
+		vSpeed_z = 0;
+
+		// set initial angle in case this is a non-swerving dude..
+		vAngs = sys.VecToAngles(vSpeed);
+		entMover.setAngles(vAngs);
+	
+		//first loop flies up,
+		//fWaitTime = sys.getTime() + 4 + sys.random(3);
+		fWaitTime = sys.getTime() +  sys.random(2.5);
+	
+		//turn on the regular plane, turn off the alternate
+		fxNormal.start();
+		fxDamage.stop();	
+		
+		//sys.println("Start flight!");
+		while( sys.getTime() < fWaitTime)	{
+			//fly!
+			entMover.setLinearVelocity( vSpeed);
+
+			//swerve if need be
+			if( fSwerve != 0)	{
+				vSpeed_y = sys.sin( sys.getTime() * fAmplitude ) *  fSwerve;
+
+				// update facing so effects can draw properly
+				vAngs = sys.VecToAngles(vSpeed);
+				entMover.setAngles(vAngs);
+				//sys.println(" swerve = " + vSpeed_y);
+			}
+
+			//if somehow the ship has escaped the skybox, break
+			if( entMover.touches( entTgrEnd))	{
+				//sys.println("early end!");
+				break;
+			}
+			//decend on the way out
+			sys.waitFrame();
+		}
+
+		//second loop, descend.
+		//vSpeed_z *= -1;
+		vSpeed_z = 0;
+
+		if(sys.random(20) < 2)
+		{
+			//sys.println("Damaged!");
+
+			//slow down and fly off course, descend faster
+			vSpeed_x *= 0.25;
+			if (vSpeed_y < 10 && vSpeed_y > -10)	{
+				vSpeed_y += ( -800 + sys.random(1600));
+			} else	{
+				vSpeed_y *= 4;
+			}
+			vSpeed_z *= 1.25;
+
+			//no more swerving
+			fSwerve = 0;
+
+			//switch to damaged effect, and explode
+			fxNormal.stop();
+			fxDamage.start();
+			$fx_flyer_damage.setWorldOrigin( entMover.getWorldOrigin() );
+			sys.trigger( $fx_flyer_damage);
+		}
+		
+		fWaitTime = sys.getTime() +  5;
+
+		//after the possible damage time, remove once the ship has left the skybox
+		while( (sys.getTime() < fWaitTime) && ( !entMover.touches( entTgrEnd))  )	{
+			//fly!
+			entMover.setLinearVelocity( vSpeed);
+
+			//swerve if need be
+			if( fSwerve != 0)	{
+				vSpeed_y = sys.sin( sys.getTime() * fAmplitude ) *  fSwerve;
+				// update facing so effects can draw properly
+				vAngs = sys.VecToAngles(vSpeed);
+				entMover.setAngles(vAngs);
+				//sys.println(" swerve = " + vSpeed_y);
+			}
+
+			//decend on the way out
+			sys.waitFrame();
+		}
+		
+		//sys.println("End!");
+		//run it back!	
+	}
+
+	
+
+}
+
+void main()	
+{
+	thread init_level();
+
+	//strogg vs marine airpower go!
+	entity entFlyer;
+	float t;
+	
+	//originally, there were six planes per side. Now we're using 2, and that might change too. But the
+	//+6 for the 3rd parameter is because originally the damaged versions of the sprites started at 7.
+
+	for (t = 1; t <= 4; t++)	{
+		thread maintainStroggFlyerSprite( sys.getEntity("mvr_fx_strogg_flyer_" + t), sys.getEntity("fx_air_strogg_fighter_" + t), sys.getEntity("fx_air_strogg_fighter_" + (t + 6) ), $tgt_strogg_flyer_hangar, $tgr_strogg_flyer_end, '-1 0 .1' );
+		thread maintainStroggFlyerSprite( sys.getEntity("mvr_fx_marine_flyer_" + t), sys.getEntity("fx_air_marine_fighter_" + t), sys.getEntity("fx_air_marine_fighter_" + (t + 6) ), $tgt_marine_flyer_hangar, $tgr_marine_flyer_end, '1 0 .1' );
+	}
+
+}
+
+}	//end namespace

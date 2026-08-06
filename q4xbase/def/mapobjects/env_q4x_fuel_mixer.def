@@ -1,0 +1,96 @@
+
+/***********************************************************************
+FUEL MIXER
+
+***********************************************************************/
+
+export fuel_mixer
+{		
+	options -prefix AT_  -align ALL -sourcedir models/mapobjects/strogg/machines/fuel_mixer/animation -destdir  models/mapobjects/strogg/machines/fuel_mixer/
+         
+	anim	blowup.ma		-range 8 450 -dest blowup
+	anim	blowup.ma		-range 450 451 -dest blowup_end
+	
+}
+
+entityDef env_q4x_fuel_mixer
+{
+	"model"							"model_env_q4x_fuel_mixer"
+	"spawnclass"					"idAnimated"
+	"editor_usage"					"animated_q4x_fuel_mixer"
+	"editor_mins"					"-32 -32 0"
+	"editor_maxs"					"32 32 16"
+
+	"animate_z"						"1"
+	"floats"						"1"
+	"anim"							"idle"
+	"start_anim"					"idle"
+	
+	"snd_sequence"					"generic_fuel_mixer"
+	"fx_electrical" 				"effects/monsters/retch/electric_charge.fx"
+	"fx_electrical_long" 				"effects/levels/strianfac/q4x_fuel_mixer/electrical_long.fx"
+	"fx_explode"					"effects/monsters/tank/rocket_impact.fx"
+	"fx_burn"					"effects/weapons/valkaryne/burn.fx"
+	"fx_explode_big"				"effects/explosions/air/formation_explode.fx"
+	
+	
+}
+
+model model_env_q4x_fuel_mixer
+
+{
+	mesh					models/mapobjects/strogg/machines/fuel_mixer/mesh.md5mesh
+	anim idle	 			models/mapobjects/strogg/machines/fuel_mixer/idle.md5anim
+	{
+		frame	1				sound	snd_sequence
+	}
+	
+	anim	blowup				models/mapobjects/strogg/machines/fuel_mixer/blowup.md5anim
+	{
+	
+	//electric
+	/*
+	frame 69, 137, 169, 193, 204, 209	fx		fx_electrical	pivot2
+	frame 66, 134, 166, 191, 201, 206	fx		fx_electrical	pivot
+	frame 66, 134, 166, 191, 201, 206 	fx		fx_electrical	mixer
+	frame 63, 131, 163, 188, 198, 203	fx		fx_electrical	body
+	frame 60, 128, 160, 185, 195, 200 	fx		fx_electrical	base_pivot
+	frame 69, 137, 169, 193, 204, 209	fx		fx_electrical	spinner
+	*/
+	frame  209				fx		fx_electrical_long	pivot2
+	frame  206				fx		fx_electrical_long	pivot
+	frame  206 				fx		fx_electrical_long	mixer
+	frame  203				fx		fx_electrical_long	body
+	frame  200 				fx		fx_electrical_long	base_pivot
+	frame  209				fx		fx_electrical_long	spinner
+	
+	//ASPLODE!!
+	
+	frame 266, 306, 326, 341		fx		fx_explode	pivot2
+	frame 266, 306, 326, 341		fx		fx_explode	pivot
+	frame 269, 309, 329, 344		fx		fx_explode	mixer
+	frame 260, 300, 320, 335		fx		fx_explode	body
+	frame 263, 303, 323, 338		fx		fx_explode	base_pivot
+	frame 269, 309, 329, 344		fx		fx_explode	spinner
+	
+	frame 360				fx		fx_explode_big	pivot2
+	frame 360				fx		fx_explode_big	pivot
+	frame 363				fx		fx_explode_big	mixer
+	frame 351				fx		fx_explode_big	body
+	frame 351				fx		fx_explode_big	base_pivot
+	frame 363				fx		fx_explode_big	spinner
+		
+	//Burn baby burn
+	/*
+	frame 344				fx		fx_burn		pivot2
+	frame 344				fx		fx_burn		pivot
+	frame 347				fx		fx_burn		mixer
+	frame 338				fx		fx_burn		body
+	frame 341				fx		fx_burn		base_pivot
+	frame 347				fx		fx_burn		spinner
+	*/	
+	}	
+
+	anim	blowup_end				models/mapobjects/strogg/machines/fuel_mixer/blowup_end.md5anim
+
+}

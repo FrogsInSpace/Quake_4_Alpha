@@ -1,0 +1,148 @@
+windowDef Desktop
+{
+	comment	"gui_parm_broken = 1 adds broken glass cracks to the gui, gui_parm_stroyent = 1 adds stroyent junk on the screen"
+	visible	1
+	rect	0,0,640,480
+	backcolor	0,0,0,1
+	definevec4	"white"	1,1,1,1
+	definevec4	"white_0"	1,1,1,0
+	definevec4	"burst"	0.749,0.843,0.866,1
+	windowDef data
+	{
+		rect	14,0,623,480
+		visible	1
+		background	"gfx/guis/common/strogg/data"
+		matcolor	1,1,1,0.0392
+		shear	0, .064
+		matscalex	-1
+	}
+	windowDef Tech1
+	{
+		rect	0,0,640,718
+		visible	1
+		background	"gfx/guis/maps/cryo/cryo05_tech1"
+		matcolor	0,0.623,0.733,1
+	}
+	windowDef Tech2
+	{
+		rect	0,0,640,480
+		visible	1
+		background	"gfx/guis/maps/cryo/cryo05_tech2"
+		matcolor	0.501,1,1,1
+	}
+	windowDef bg
+	{
+		rect	0,0,640,480
+		visible	1
+		background	"gfx/guis/maps/cryo/cryo05_bg"
+		matcolor	0.960,0.576,0.0549,0.878*guitable_8_10[time*0.00065]
+	}
+	windowDef scrolltext
+	{
+		rect	538,31,62,128
+		visible	1
+		background	"gfx/guis/common/strogg/scrolltext3"
+		matcolor	0.533,1,1,0.8
+		shear	0,.06
+	}
+	windowDef scrolltext3
+	{
+		rect	56,176,285,223
+		visible	1
+		background	"gfx/guis/common/strogg/scrolltext2fast"
+		matcolor	0,0.501,1,0.8
+		shear	0,.06
+	}
+	windowDef topstuff
+	{
+		visible	1
+		rect	0,0,640,480
+		windowDef sline
+		{
+			visible	1
+			rect	1,-204,640,906
+			background	"gfx/guis/common/monitor_line6"
+			matcolor	0.972,0.741,0.321,0.2
+		}
+		windowDef monitor_mid
+		{
+			visible	1
+			rect	0,-141,640,693
+			background	"gfx/guis/common/monitor_mid"
+			matcolor	0.8,0.913,0.917,0.8*guitable_8_10[time*0.0005]
+		}
+		windowDef topreflect
+		{
+			visible	1
+			rect	-20,23,667,422
+			background	"gfx/guis/common/gradient"
+			matcolor	0.674,0.8,0.635,0.2*guitable_8_10[time*0.002]
+		}
+		windowDef broken_glass_b
+		{
+			visible	"gui::gui_parm_broken"
+			rect	2,5,640,480
+			background	"gfx/guis/common/broken_glass4"
+			matcolor	0,0,0,1
+			matscalex	-1
+		}
+		windowDef broken_glass
+		{
+			visible	"gui::gui_parm_broken"
+			rect	0,0,640,480
+			background	"gfx/guis/common/broken_glass4"
+			matcolor	0.819,0.905,0.921,1
+			matscalex	-1
+		}
+		windowDef monitor_darkedge
+		{
+			visible	1
+			rect	0,0,640,480
+			background	"gfx/guis/common/monitor_darkedge2"
+			matcolor	0,0,0,1
+		}
+	}
+	windowDef numbers
+	{
+		rect	216,426,292,49
+		visible	1
+		forecolor	0.886,0.905,0.596,0.8
+		text	"102938466"
+		textscale	1
+		textalign	2
+		font	"fonts/strogg"
+	}
+	windowDef anim_text
+	{
+		rect	3,445,37,32
+		visible	1
+
+		onTime 0 {
+			set "numbers::text" "1029344384" ;
+		}
+
+		onTime 1500 {
+			set "numbers::text" "9238725479" ;
+		}
+
+		onTime 3000 {
+			set "numbers::text" "23r5120472" ;
+		}
+
+		onTime 4500 {
+			set "numbers::text" "08635767823" ;
+		}
+
+		onTime 6000 {
+			resettime "0" ;
+		}
+
+	}
+	windowDef d_notch
+	{
+		rect	497,178,105,105
+		visible	0
+		background	"gfx/guis/maps/cryo/cryo04_tech2"
+		matcolor	0.494,1,0,1
+	}
+}

@@ -1,0 +1,279 @@
+windowDef Desktop
+{
+	rect	0,0,640,480
+	visible	1
+	nocursor	1
+	menugui	0
+	backcolor	0,0,0,0
+
+	onInit {
+		//		namedEvent "firstRocketLoaded";
+		//		namedEvent "secondRocketLoaded";
+		//		namedEvent "thirdRocketLoaded";
+		//		namedEvent "fourthRocketLoaded";
+		//		namedEvent "fifthRocketLoaded";
+		//		namedEvent "rocketEmpty";
+		//		namedEvent "lockStatusNoTarget";
+		//		namedEvent "lockStatusAcquiringTarget";
+		//		namedEvent "lockStatusLockedTarget";
+	}
+
+	onNamedEvent firstRocketLoaded {
+		resettime "firstRocketLoaded" "0";
+	}
+
+	onNamedEvent secondRocketLoaded {
+		resettime "secondRocketLoaded" "0";
+	}
+
+	onNamedEvent thirdRocketLoaded {
+		resettime "thirdRocketLoaded" "0";
+	}
+
+	onNamedEvent fourthRocketLoaded {
+		resettime "fourthRocketLoaded" "0";
+	}
+
+	onNamedEvent fifthRocketLoaded {
+		resettime "fifthRocketLoaded" "0";
+	}
+
+	onNamedEvent rocketEmpty {
+		resettime "rocketEmpty" "0";
+	}
+
+	onNamedEvent lockStatusNoTarget {
+		resettime "lock_status_notarget" "0";
+	}
+
+	onNamedEvent lockStatusAcquiringTarget {
+		resettime "lock_status_acquiringtarget" "0";
+	}
+
+	onNamedEvent lockStatusLockedTarget {
+		resettime "lock_status_lockedtarget" "0";
+	}
+
+	windowDef Artbase
+	{
+		rect	0,0,640,480
+		visible	1
+		background	"gfx/guis/vehicle/airassault/spacecannon2_base"
+		matcolor	1,1,1,1
+	}
+	windowDef firstRocketLoaded
+	{
+		visible	1
+
+		onTime 0 {
+			set "first_rocket_loaded::visible" "1";
+			set "second_rocket_loaded::visible" "0";
+			set "third_rocket_loaded::visible" "0";
+			set "fourth_rocket_loaded::visible" "0";
+			set "fifth_rocket_loaded::visible" "0";
+		}
+
+	}
+	windowDef secondRocketLoaded
+	{
+		visible	1
+		rect	0,0,0,0
+
+		onTime 0 {
+			set "first_rocket_loaded::visible" "1";
+			set "second_rocket_loaded::visible" "1";
+			set "third_rocket_loaded::visible" "0";
+			set "fourth_rocket_loaded::visible" "0";
+			set "fifth_rocket_loaded::visible" "0";
+		}
+
+	}
+	windowDef thirdRocketLoaded
+	{
+		visible	1
+		rect	0,0,0,0
+
+		onTime 0 {
+			set "first_rocket_loaded::visible" "1";
+			set "second_rocket_loaded::visible" "1";
+			set "third_rocket_loaded::visible" "1";
+			set "fourth_rocket_loaded::visible" "0";
+			set "fifth_rocket_loaded::visible" "0";
+		}
+
+	}
+	windowDef fourthRocketLoaded
+	{
+		visible	1
+		rect	0,0,0,0
+
+		onTime 0 {
+			set "first_rocket_loaded::visible" "1";
+			set "second_rocket_loaded::visible" "1";
+			set "third_rocket_loaded::visible" "1";
+			set "fourth_rocket_loaded::visible" "1";
+			set "fifth_rocket_loaded::visible" "0";
+		}
+
+	}
+	windowDef fifthRocketLoaded
+	{
+		visible	1
+		rect	0,0,0,0
+
+		onTime 0 {
+			set "first_rocket_loaded::visible" "1";
+			set "second_rocket_loaded::visible" "1";
+			set "third_rocket_loaded::visible" "1";
+			set "fourth_rocket_loaded::visible" "1";
+			set "fifth_rocket_loaded::visible" "1";
+		}
+
+	}
+	windowDef rocketEmpty
+	{
+		visible	1
+		rect	0,0,0,0
+
+		onTime 0 {
+			set "first_rocket_loaded::visible" "0";
+			set "second_rocket_loaded::visible" "0";
+			set "third_rocket_loaded::visible" "0";
+			set "fourth_rocket_loaded::visible" "0";
+			set "fifth_rocket_loaded::visible" "0";
+		}
+
+	}
+	windowDef lock_status_notarget
+	{
+		visible	1
+
+		onTime 0 {
+			set "LockStatusNT::visible" "1";
+			set "LockStatusAT::visible" "0";
+			set "LockStatusLT::visible" "0";
+			set "LockStatusLTtext::visible" "0";
+			set "LockStatusLTarrows::visible" "0";
+		}
+
+	}
+	windowDef lock_status_acquiringtarget
+	{
+		visible	1
+
+		onTime 0 {
+			set "LockStatusNT::visible" "0";
+			set "LockStatusAT::visible" "1";
+			set "LockStatusLT::visible" "0";
+			set "LockStatusLTtext::visible" "0";
+			set "LockStatusLTarrows::visible" "0";
+		}
+
+	}
+	windowDef lock_status_lockedtarget
+	{
+		visible	1
+
+		onTime 0 {
+			set "LockStatusNT::visible" "0";
+			set "LockStatusAT::visible" "0";
+			set "LockStatusLT::visible" "1";
+			set "LockStatusLTtext::visible" "1";
+			set "LockStatusLTarrows::visible" "1";
+		}
+
+	}
+	windowDef LockStatusNT
+	{
+		rect	-4,63,640,240
+		visible	1
+		background	"gfx/guis/vehicle/airassault/spacecannon2_NT"
+		matcolor	0.678,0.678,0.678,1
+	}
+	windowDef LockStatusAT
+	{
+		rect	-4,63,640,240
+		visible	1
+		background	"gfx/guis/vehicle/airassault/spacecannon2_AT"
+		matcolor	0.968,0.760,0.0666,1
+	}
+	windowDef LockStatusLT
+	{
+		rect	-4,63,640,240
+		visible	0
+		background	"gfx/guis/vehicle/airassault/spacecannon2_LT"
+		matcolor	1,0,0,1
+	}
+	windowDef LockStatusLTtext
+	{
+		rect	159,142,310,72
+		visible	1
+		forecolor	1,1,0.713,1
+		text	"LOCKED"
+		textscale	1
+		textalign	1
+		font	"fonts/marine"
+	}
+	windowDef LockStatusLTarrows
+	{
+		rect	-4,63,640,240
+		visible	0
+		background	"gfx/guis/vehicle/airassault/spacecannon2_LT_arrows"
+		matcolor	1,0,0,1
+	}
+	windowDef first_rocket_loaded
+	{
+		rect	87,255,194,142
+		visible	1
+		forecolor	1,1,0,1
+		text	""
+		textscale	0.5
+		font	"fonts/marine"
+		background	"gfx/guis/vehicle/airassault/spacecannon2_rocket"
+		matcolor	1,1,1,1
+	}
+	windowDef second_rocket_loaded
+	{
+		rect	155,255,194,142
+		visible	1
+		forecolor	1,1,0,1
+		text	""
+		textscale	0.5
+		font	"fonts/marine"
+		background	"gfx/guis/vehicle/airassault/spacecannon2_rocket"
+		matcolor	1,1,1,1
+	}
+	windowDef third_rocket_loaded
+	{
+		rect	224,255,194,142
+		visible	1
+		forecolor	1,1,0,1
+		text	""
+		textscale	0.5
+		font	"fonts/marine"
+		background	"gfx/guis/vehicle/airassault/spacecannon2_rocket"
+		matcolor	1,1,1,1
+	}
+	windowDef fourth_rocket_loaded
+	{
+		rect	293,255,194,142
+		visible	1
+		forecolor	1,1,0,1
+		text	""
+		textscale	0.5
+		font	"fonts/marine"
+		background	"gfx/guis/vehicle/airassault/spacecannon2_rocket"
+		matcolor	1,1,1,1
+	}
+	windowDef fifth_rocket_loaded
+	{
+		rect	361,255,194,142
+		visible	1
+		forecolor	1,1,0,1
+		text	""
+		textscale	0.5
+		font	"fonts/marine"
+		background	"gfx/guis/vehicle/airassault/spacecannon2_rocket"
+		matcolor	1,1,1,1
+	}
+}

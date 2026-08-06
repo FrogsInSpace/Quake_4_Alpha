@@ -1,0 +1,114 @@
+textures/medlabs/vol_lblue_256
+
+// light blue flare intended to be used over a large area to give the impression of volumetric light
+{
+	noshadows
+	translucent
+	nonsolid
+	deform	flare 		256
+	qer_EditorImage	textures/common_misc/QER_flare.tga
+	{
+		blend add
+		map _quadratic
+		red 		.9
+		green		.9
+		blue		1
+		alpha	.1
+		vertexcolor
+	}
+}
+
+/////////////// Shaders added by Steve H    //////////////////////////////////////////////////////////////////////////
+textures/q4x_m10/support_2sided
+{
+	twosided
+
+	qer_editorimage textures/q4x_m10/support_2sided_d.tga 
+		
+	specularmap 	textures/q4x_m10/support_2sided_s.tga
+	bumpmap 	textures/q4x_m10/support_2sided_local.tga
+	{       
+		blend			diffuseMap 
+		map			textures/q4x_m10/support_2sided_d.tga
+		alphaTest .5
+	}
+}
+
+guide textures/q4x_m10/c_trim2 generic_shader("q4x_m10/c_trim2")
+guide textures/q4x_m10/c_trim04 generic_shader("q4x_m10/c_trim04")
+guide textures/q4x_m10/sh2_floorrun1 generic_shader("q4x_m10/sh2_floorrun1")
+guide textures/q4x_m10/sh2_floorrun2 generic_shader("q4x_m10/sh2_floorrun2")
+guide textures/q4x_m10/outdoor_wall1_13 generic_shader("q4x_m10/outdoor_wall1_13")
+guide textures/q4x_m10/outdoor_wall1_2 generic_shader("q4x_m10/outdoor_wall1_2")
+guide textures/q4x_m10/outdoor_wall1_8 generic_shader("q4x_m10/outdoor_wall1_8")
+guide textures/q4x_m10/tunceiltop generic_shader("q4x_m10/tunceiltop")
+guide textures/q4x_m10/outdoor_wall1_9 generic_shader("q4x_m10/outdoor_wall1_9")
+guide textures/q4x_m10/walltrim1_1 generic_shader("q4x_m10/walltrim1_1")
+
+guide textures/q4x_m10/wall_lair01 generic_full_noheight("q4x_m10/wall_lair01")
+guide textures/q4x_m10/wall_lair02 generic_full_noheight("q4x_m10/wall_lair02")
+guide textures/q4x_m10/wall_lair03 generic_full_noheight("q4x_m10/wall_lair03")
+guide textures/q4x_m10/wall_lair04 generic_full_noheight("q4x_m10/wall_lair04")
+guide textures/q4x_m10/wall_lair05 generic_full_noheight("q4x_m10/wall_lair05")
+guide textures/q4x_m10/floor_lair01 generic_full_noheight("q4x_m10/floor_lair01")
+guide textures/q4x_m10/floor_lair02 generic_full_noheight("q4x_m10/floor_lair02")
+guide textures/q4x_m10/ceiling_lair01 generic_full_noheight("q4x_m10/ceiling_lair01")
+guide textures/q4x_m10/ceiling_lair02 generic_full_noheight("q4x_m10/ceiling_lair02")
+
+textures/q4x_m10/wall_lair01_lit
+{
+	qer_EditorImage		textures/q4x_m10/wall_lair01_add.tga
+	bumpMap			textures/q4x_m10/wall_lair01_local.tga
+	diffuseMap		textures/q4x_m10/wall_lair01_d.tga
+	specularMap		textures/q4x_m10/wall_lair01_s.tga
+	{
+		blend add
+		map textures/q4x_m10/wall_lair01_add.tga
+	}
+}
+
+textures/q4x_m10/wall_lair03_lit
+{
+	qer_EditorImage		textures/q4x_m10/wall_lair03_add.tga
+	bumpMap			textures/q4x_m10/wall_lair03_local.tga
+	diffuseMap		textures/q4x_m10/wall_lair03_d.tga
+	specularMap		textures/q4x_m10/wall_lair03_s.tga
+	{
+		blend add
+		map textures/q4x_m10/wall_lair03_add.tga
+	}
+}
+
+textures/q4x_m10/wall_lair04_lit
+{
+	qer_EditorImage		textures/q4x_m10/wall_lair04_add.tga
+	bumpMap			textures/q4x_m10/wall_lair04_local.tga
+	diffuseMap		textures/q4x_m10/wall_lair04_d.tga
+	specularMap		textures/q4x_m10/wall_lair04_s.tga
+	{
+		blend add
+		map textures/q4x_m10/wall_lair04_add.tga
+	}
+}
+
+textures/q4x_m10/damaged_pipes01_add
+{
+	qer_EditorImage		textures/q4x_m10/damaged_pipes01_d.tga
+	bumpMap			textures/q4x_m10/damaged_pipes01_local.tga
+	diffuseMap		textures/q4x_m10/damaged_pipes01_d.tga
+	specularMap		textures/q4x_m10/damaged_pipes01_s.tga
+	{
+		blend add
+		map textures/q4x_m10/damaged_pipes01_add.tga
+		rgb 	firetable2 [time * .3]
+	}
+}
+
+textures/q4x_m10/damaged_pipes01
+{
+	qer_EditorImage		textures/q4x_m10/damaged_pipes01_d.tga
+	bumpMap			textures/q4x_m10/damaged_pipes01_local.tga
+	diffuseMap		textures/q4x_m10/damaged_pipes01_d.tga
+	specularMap		textures/q4x_m10/damaged_pipes01_s.tga
+}
+

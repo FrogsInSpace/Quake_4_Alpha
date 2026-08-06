@@ -1,0 +1,408 @@
+textures/q4x_speeder/speed_pipe01
+{
+	qer_editorimage textures/q4x_speeder/speed_pipe01_d.tga
+
+	diffusemap 		textures/q4x_speeder/speed_pipe01_d.tga
+    bumpmap			textures/q4x_speeder/speed_pipe01_local.tga
+	specularmap 	textures/q4x_speeder/speed_pipe01_s.tga
+	
+}
+
+textures/q4x_speeder/speed_pipe02
+{
+	qer_editorimage textures/q4x_speeder/speed_pipe02_d.tga
+
+	diffusemap 		textures/q4x_speeder/speed_pipe02_d.tga
+    	bumpmap			textures/q4x_speeder/speed_pipe02_local.tga
+	specularmap 		textures/q4x_speeder/speed_pipe02_s.tga
+}
+	
+textures/q4x_speeder/speed_light01
+{
+	qer_EditorImage		textures/q4x_speeder/speed_light01_d.tga
+	bumpMap			textures/q4x_speeder/speed_light01_local.tga
+	diffuseMap		textures/q4x_speeder/speed_light01_d.tga
+	specularMap		textures/q4x_speeder/speed_light01_s.tga
+	{
+		blend add
+		map textures/q4x_speeder/speed_light01_add.tga
+	}
+}
+textures/q4x_speeder/light_trim01_1
+{
+	qer_EditorImage		textures/q4x_speeder/light_trim01_1_d.tga
+	bumpMap			textures/q4x_speeder/light_trim01_1_local.tga
+	diffuseMap		textures/q4x_speeder/light_trim01_1_d.tga
+	specularMap		textures/q4x_speeder/light_trim01_1_s.tga
+	{
+		blend add
+		map textures/q4x_speeder/light_trim01_1_add.tga
+	}
+}
+
+guide textures/q4x_speeder/conc_pipe01_1 generic_shader("q4x_speeder/conc_pipe01_1")
+guide textures/q4x_speeder/metal_pipe01_1 generic_shader("q4x_speeder/metal_pipe01_1")
+
+textures/q4x_speeder/metal_pipe02_0
+{
+	qer_EditorImage		textures/q4x_speeder/metal_pipe02_0_d.tga
+	bumpMap			addnormals ( textures/q4x_speeder/metal_pipe02_1_local.tga, heightmap( textures/q4x_speeder/metal_pipe02_1_h.tga, 1 ) )
+	diffuseMap		textures/q4x_speeder/metal_pipe02_0_d.tga
+	specularMap		textures/q4x_speeder/metal_pipe02_0_s.tga
+}
+
+guide textures/q4x_speeder/metal_pipe02_1 generic_shader("q4x_speeder/metal_pipe02_1")
+
+textures/q4x_speeder/metal_pipe02_2
+{
+	qer_EditorImage		textures/q4x_speeder/metal_pipe02_2_d.tga
+	bumpMap			addnormals ( textures/q4x_speeder/metal_pipe02_1_local.tga, heightmap( textures/q4x_speeder/metal_pipe02_1_h.tga, 1 ) )
+	diffuseMap		textures/q4x_speeder/metal_pipe02_2_d.tga
+	specularMap		textures/q4x_speeder/metal_pipe02_1_s.tga
+}
+
+guide textures/q4x_speeder/grate_coarse01_1 generic_alpha("q4x_speeder/grate_coarse01_1")
+guide textures/q4x_speeder/grate_coarse02_1 generic_alpha("q4x_speeder/grate_coarse02_1")
+guide textures/q4x_speeder/grate_big01_1 generic_alpha("q4x_speeder/grate_big01_1")
+guide textures/q4x_speeder/grate_big02_1 generic_alpha("q4x_speeder/grate_big02_1")
+guide textures/q4x_speeder/grate_big03_1 generic_alpha("q4x_speeder/grate_big03_1")
+guide textures/q4x_speeder/grate_medium01_1 generic_alpha("q4x_speeder/grate_medium01_1")
+guide textures/q4x_speeder/grate_small01_1 generic_alpha("q4x_speeder/grate_small01_1")
+guide textures/q4x_speeder/grate_small02_1 generic_alpha("q4x_speeder/grate_small02_1")
+guide textures/q4x_speeder/grate_small03_1 generic_alpha("q4x_speeder/grate_small03_1")
+guide textures/q4x_speeder/grate_small04_1 generic_alpha("q4x_speeder/grate_small04_1")
+guide textures/q4x_speeder/grate_small05_1 generic_alpha("q4x_speeder/grate_small05_1")
+
+textures/q4x_speeder/grate_big02_2
+{
+	qer_EditorImage		textures/q4x_speeder/grate_big02_2_d.tga
+	bumpMap			addnormals ( textures/q4x_speeder/grate_big02_1_local.tga, heightmap( textures/q4x_speeder/grate_big02_1_h.tga, 1 ) )
+	specularMap		textures/q4x_speeder/grate_big02_2_s.tga
+	{       
+		blend				diffuseMap 
+		map					textures/q4x_speeder/grate_big02_2_d.tga
+		alphaTest .5
+	}
+}
+
+guide textures/q4x_speeder/conc_wall512_01_1 generic_shader("q4x_speeder/conc_wall512_01_1")
+guide textures/q4x_speeder/conc_wall512_01_2 generic_shader("q4x_speeder/conc_wall512_01_2")
+guide textures/q4x_speeder/metal_wall02_1 generic_shader("q4x_speeder/metal_wall02_1")
+guide textures/q4x_speeder/floor_metal01_1 generic_shader("q4x_speeder/floor_metal01_1")
+guide textures/q4x_speeder/floor_vehiclepath01 generic_full_noheight("q4x_speeder/floor_vehiclepath01")
+
+
+/// Added by Wyeth /////
+
+textures/q4x_speeder/tubeframe01
+{
+	qer_editorimage 		textures/q4x_speeder/speed_tube01_d.tga
+	twoSided
+	noshadows
+	translucent
+
+	bumpmap 				textures/q4x_speeder/speed_tube01_local.tga
+	
+	{       
+		blend				diffuseMap 
+		map					textures/q4x_speeder/speed_tube01_d.tga
+		alphaTest .5
+	}
+	
+	specularmap				textures/q4x_speeder/speed_tube01_s.tga
+}
+
+
+
+
+
+textures/q4x_speeder/tubefluid_red
+{
+	noShadows
+	twoSided
+	
+	materialType glass
+	
+	qer_editorimage 			textures/q4x_speeder/Fluid01.tga
+
+	{
+		blend diffuseMap	
+		map 					textures/q4x_speeder/Fluid01.tga
+		scale 1, 0.1
+		scroll time * 0.0, time * 0.9
+	}
+
+	{
+		blend GL_ONE, GL_ONE
+		map 					textures/q4x_speeder/Fluid02.tga
+		scale 0.6, 0.175
+		scroll time * 0., time * 2
+	}
+
+	{
+		blend GL_DST_COLOR, GL_ONE
+		map 					textures/q4x_speeder/Fluid01.tga
+		scale 1.75, 1.2
+		scroll time * 0, time * 2.2
+	}
+
+}
+
+
+textures/q4x_speeder/tubefluid_green
+{
+	noShadows
+	twoSided
+	
+	materialType glass
+	
+	qer_editorimage 			textures/q4x_speeder/Fluid01.tga
+
+	{
+		blend diffuseMap	
+		map 					textures/q4x_speeder/Fluid01.tga
+		scale 1, 0.1
+		scroll time * 0.0, time * 0.9
+		red 0.1
+		green 1
+		blue 1
+	}
+
+	{
+		blend GL_ONE, GL_ONE
+		map 					textures/q4x_speeder/Fluid02.tga
+		scale 0.6, 0.175
+		scroll time * 0., time * 2
+		red 0.1
+		green 1
+		blue 1
+	}
+
+	{
+		blend GL_DST_COLOR, GL_ONE
+		map 					textures/q4x_speeder/Fluid01.tga
+		scale 1.75, 1.2
+		scroll time * 0, time * 2.2
+		red 0.1
+		green 1
+		blue 1
+	}
+
+}
+
+
+textures/q4x_speeder/tubefluid_sludge
+{
+	noShadows
+	twoSided
+	
+	materialType glass
+	
+	qer_editorimage 			textures/q4x_speeder/Fluid01.tga
+
+	{
+		blend diffuseMap	
+		map 					textures/q4x_speeder/Fluid01.tga
+		scale 1, 0.1
+		scroll time * 0.0, time * 0.9
+		red 0.3
+		green 0.6
+		blue 1
+	}
+
+	{
+		blend GL_ONE, GL_ONE
+		map 					textures/q4x_speeder/Fluid02.tga
+		scale 0.6, 0.175
+		scroll time * 0., time * 2
+		red 0.3
+		green 0.6
+		blue 1
+	}
+
+	{
+		blend GL_DST_COLOR, GL_ONE
+		map 					textures/q4x_speeder/Fluid01.tga
+		scale 1.75, 1.2
+		scroll time * 0, time * 2.2
+		red 0.3
+		green 0.6
+		blue 1
+	}
+
+	{
+		blend specularMap	
+		map 					textures/q4x_speeder/Fluid02.tga
+		scale 1, 0.1
+		scroll time * 0.0, time * 0.9
+		red 0.3
+		green 0.3
+		blue 0.3
+	}
+
+}
+
+
+textures/q4x_speeder/energytube01_scroll
+{
+	qer_editorimage 		textures/q4x_speeder/speed_tube02_qer.tga
+
+	bumpmap 				textures/q4x_speeder/speed_tube02_local.tga
+	diffuseMap				textures/q4x_speeder/speed_tube02_d.tga
+	specularmap				textures/q4x_speeder/speed_tube02_s.tga
+	
+	{
+		blend 				add	
+		map 				textures/q4x_speeder/speed_tube02_e.tga
+		scale 				1, 1
+		scroll 				time * 0.0, time * 1
+		rgb 				0.6
+	}
+
+	{
+		blend 				add	
+		map 				textures/q4x_speeder/speed_tube02_e.tga
+		scale 				1, 0.85
+		scroll 				time * 0.0, time * 1.5
+		rgb 				0.6
+	}
+}
+
+
+textures/q4x_speeder/tube_mesh01
+{
+	qer_editorimage 		textures/q4x_speeder/speed_tube03_d.tga
+
+	bumpmap 				textures/q4x_speeder/speed_tube03_local.tga
+	
+	{
+		blend 				diffuseMap	
+		map 				textures/q4x_speeder/speed_tube03_d.tga
+	}
+	
+	specularMap				textures/q4x_speeder/speed_tube03_s.tga	
+
+	{
+		blend 				add	
+		map 				textures/q4x_speeder/speed_tube03_e.tga
+		rgb 				1
+	}
+
+}
+
+textures/q4x_speeder/tube_mesh02
+{
+	qer_editorimage 		textures/q4x_speeder/speed_tube03a_d.tga
+
+	bumpmap 				textures/q4x_speeder/speed_tube03_local.tga
+	
+	{
+		blend 				diffuseMap	
+		map 				textures/q4x_speeder/speed_tube03a_d.tga
+	}
+	
+	specularMap				textures/q4x_speeder/speed_tube03_s.tga	
+
+	{
+		blend 				add	
+		map 				textures/q4x_speeder/speed_tube03_e.tga
+		rgb 				1
+	}
+
+}
+
+textures/canyon/can_breakabledoor_cryo
+{
+	qer_EditorImage		textures/canyon/can_breakabledoorbrown02_d.tga
+	bumpMap			addnormals ( textures/canyon/can_breakabledoor02_local.tga, heightmap( textures/canyon/can_breakabledoorbrown02_h.tga, 1 ) )
+	diffuseMap		textures/canyon/can_breakabledoorbrown02_d.tga
+	specularMap		textures/canyon/can_breakabledoorbrown02_s.tga
+}
+
+
+
+
+//the following were removed from q4base by Raven. They are here because they are being used, please do not remove TR
+
+//moved canyon textures to q4x_canyon mtr file
+
+guide textures/common_walls/c_support02 generic_materialimageshader("common_walls/c_support02")
+
+textures/Stream/chad_pipe_1_stream
+{
+	qer_editorimage	textures/medlabs/chad_pipe_1_d.tga
+	translucent
+	noshadows
+
+	{		//Original diffuse 
+	blend		diffusemap
+	map 		textures/medlabs/chad_pipe_1_d.tga
+	}
+
+	{		//Original specular map
+	blend		specularmap
+	map		textures/medlabs/chad_pipe_1_s.tga
+	}
+
+	{		//Original normalmap with height
+	blend		bumpmap
+	map		addnormals(textures/medlabs/chad_pipe_1_local.tga, heightmap(textures/medlabs/chad_pipe_1_h.tga,1))
+	}
+}
+
+
+/////////////////////////////////////////////////////////
+//////// NEW ROCK TERRAINS - WYETH //////////////////////
+/////////////////////////////////////////////////////////
+
+textures/q4x_speeder/terrain01_to_terrain02
+{
+        materialType rock     
+	{
+		blend		bumpmap
+		map			textures/q4x_speeder/terrain01_local.tga
+		scale 2, 2
+	}
+	{
+		blend 		diffusemap
+		map			textures/q4x_speeder/terrain01_d.tga
+		//scale 2, 2
+		vertexColor
+	}
+	{
+		blend		bumpmap
+		map			textures/q4x_speeder/terrain02_local.tga
+	}
+	{
+		blend		diffusemap
+		map			textures/q4x_speeder/terrain02_d.tga
+		inverseVertexColor
+	}
+}
+
+textures/q4x_speeder/terrain01_to_terrain03
+{
+        materialType rock     
+	{
+		blend		bumpmap
+		map			textures/q4x_speeder/terrain01_local.tga
+		scale 2, 2
+	}
+	{
+		blend 		diffusemap
+		map			textures/q4x_speeder/terrain01_d.tga
+		scale 2, 2
+		vertexColor
+	}
+	{
+		blend		bumpmap
+		map			textures/q4x_speeder/terrain03_local.tga
+		//map		heightmap (textures/rock/skysand1_bmp.tga, 4)
+		scale 2, 2
+	}
+	{
+		blend		diffusemap
+		map			textures/q4x_speeder/terrain03_d.tga
+		inverseVertexColor
+	}
+}

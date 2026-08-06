@@ -1,0 +1,1381 @@
+namespace map_m03
+{
+// Q4X addition
+//---------------------------------------------------------------------------------------
+// M03_MCCfirst.script for use with M03_MCCfirst.map
+//
+// (C) Ritual Entertainment 2005
+// Reid Kimball
+//---------------------------------------------------------------------------------------
+
+/* DEFS
+TALK_NEVER	0	// Never talk to the player
+TALK_DEAD	1	// Cant talk due to being dead
+TALK_OK		2	// Can talk
+TALK_FOLLOW	3	// Talking will cause them to follow (or stop following)
+TALK_BUSY	4	// Cant talk right now, is busy
+
+//
+// animation channels
+//
+#define ANIMCHANNEL_ALL			0
+#define ANIMCHANNEL_TORSO		1
+#define	ANIMCHANNEL_LEGS		2
+#define	ANIMCHANNEL_HEAD		3
+#define	ANIMCHANNEL_EYELIDS		4
+*/
+
+
+// PROTOTYPES DEFINED
+void tarrant_welcome();
+void complete_obj03();
+void speederHarnessMove();
+void speederHarnessMoveUp();
+void spawn_speederhall_chars();
+void spawn_cc_guards();
+void setup_jacobson();
+void player_gets_weapon();
+void hangarPA();
+void spawnimateBikeWorkers();
+void tankDown();
+void spawn_scitech_chars();
+void speederHangarLiftUp();
+void spawnWorker01();
+void animateWhedon();
+void spawnimateCole();
+void spawnimateHarward();
+void setupMesshallGuys();
+void messhall_exit_blocked();
+void tankUp();
+void mechanic_convo01();
+void marines_converse01();
+void workers_converse01();
+void tarrant_idling();
+void setupSciTechMons();
+void scitechMonsUp();
+void scitechMonsDown();
+void animateSalka();
+void animateBroadbent();
+void animateFlower();
+void whedonTalks();
+void scitech_reminder();
+void animateTak();
+void animateDarnell();
+void playerInterruptsWhedon();
+void setup_drop_hangar();
+void intro_landing();
+void ship_lands();
+void give_obj02();
+void worker01_talks();
+void hallwayPA();
+void trigDropDoors();
+void npc_walker01();
+void npc_walker02();
+void npc_walker03();
+
+
+
+// VARIABLES
+float varWorker01_TalkTurn = 1;
+float varVisitedSciTech = 0;
+float varElevOnFloor = 5;
+float varDoorsElevLocked = 1;
+
+
+
+// USEFUL COMMANDS
+/*
+
+$ent_to_bind.bindToJoint($ent_to_bind_to, "l_wrist", 1); // the 1 is rotateWithMaster boolean	
+
+*/
+
+// THREADS
+
+void intro_landing()
+{
+	//
+	//sys.music( "m3_mcc_briefing" );	
+	sys.trigger( $dropship_door_west );
+	sys.trigger( $dropship_door_east );
+	sys.trigger( $dropship_door_north );
+	sys.trigger( $dropship_door_south );
+	sys.trigger( $dropship_landed );
+	$dropship_landed.playAnim( ANIMCHANNEL_ALL, "intro_idle");	
+	
+}
+
+void ship_lands()
+{
+	playAnimWait( $dropship_flyer, ANIMCHANNEL_ALL, "outro_dropship");
+}
+
+void hall_runners()
+{
+	sys.trigger( $hall_runner01 );
+	sys.trigger( $hall_runner02 );
+	sys.trigger( $hall_runner03 );
+	
+	sys.trigger($hallwayPA05);	
+	
+	aiScriptedMove( $hall_runner01, $hall_runner01_spot01, 8, 0 );
+	aiScriptedMove( $hall_runner02, $hall_runner02_spot01, 8, 0 );
+	aiScriptedMove( $hall_runner03, $hall_runner03_spot01, 8, 0 );
+	
+	sys.wait( 6 );
+	$hall_runner01.remove();
+	$hall_runner02.remove();
+	$hall_runner03.remove();
+}	
+
+void setup_cc()
+{
+	// unhide chars
+	sys.trigger( $davenport );
+	sys.trigger( $marek );
+	sys.trigger( $markswell );
+	sys.trigger( $OFFICER_1 );
+	sys.trigger( $OFFICER_3 );
+	
+	aiScriptedAnimLoop( $OFFICER_1, "sitting_working_consoles_3", 10 );
+	aiScriptedAnimLoop( $OFFICER_3, "sarge_briefing_5", 10 );
+	aiScriptedAnimLoop( $markswell, "weaponless_idle4_loop", 10 );
+}
+
+void cc()
+{	
+	sys.trigger( $complete_obj01_cc );
+	sys.fadeOut( '0 0 0', 1 );	
+	sys.wait( 1 );	
+	sys.trigger( $dekard );	
+	$func_door_269.lock( 0 );
+	sys.fadeIn( '1 1 1', 1 );
+	sys.trigger( $cam_cc01 );
+	sys.wait( 1 );
+	// sys.trigger( $func_door_269 );
+	// aiScriptedMove( $dekard, $dekard_spot01, 8, 0 );
+	
+	// That's the situation.  Rhino squad was overrun.  We've lost contact with Strauss.
+	aiSpeakWait( $davenport, "lipsync_3_5_1" );
+			
+	sys.trigger( $cam_cc02 );
+	
+	// Without him, we'll never be able to decrypt the data recovered by Ares Squad.
+	aiSpeakWait( $marek, "lipsync_3_5_2" );
+	
+	sys.trigger( $cam_cc01 );
+	
+	// Colonel, without Strauss, we'll never win this war.  Our ranks are stretched thin, but we can't afford to lose that man.  We're sending in the best of the best.
+	aiSpeakWait( $davenport, "lipsync_3_5_3" );
+	
+	$davenport.faceEntity( $dekard );
+	
+	// Sergeant Chase.  That is why you're here.
+	aiSpeakWait( $davenport, "lipsync_3_5_4" );
+	
+	// $davenport.faceEntity( $gui_display );
+	// aiScriptedAnim( $davenport, "point_front", 0, 0 );
+	
+	// Gentlemen, this is the Stranarus Trench.  It's one of the most heavily fortified stretches of landscape on Stroggos.  The Trench leads up to a Strogg Storage Facility.  We believe Strauss is being kept there.
+	aiSpeakWait( $davenport, "lipsync_3_5_5" );
+	
+	// The Atlas Mechanized Division is landing here.  They're providing the heavy fire.  Hades Squad is going to touch down here, they're the back up.  Ares Squad.  You've got point.
+	aiSpeakWait( $davenport, "lipsync_3_5_6" );
+	
+	sys.trigger( $cam_cc03 );
+	
+	// We can be underway by the top of the hour.
+	aiSpeakWait( $markswell, "lipsync_3_5_7" );
+	
+	sys.trigger( $cam_cc01 );
+	
+	// Get it done, Marine.
+	aiSpeakWait( $davenport, "lipsync_3_5_8" );
+	
+	sys.trigger( $cam_cc03 );
+	
+	// Yes sir.
+	aiSpeakWait( $markswell, "lipsync_3_5_9" );
+		
+	sys.firstPerson();
+	$dekard.remove();
+	$player1.setOrigin( $dekard_spot01.getOrigin() );	
+	sys.trigger( $trig_give_obj02 );	
+}
+
+void give_obj02()
+{	
+	// Sergeant Dekard Chase, I need you to stop by Sci-Tech.  I've got something to show you.
+	sys.trigger( $whedon_speak_obj02 );
+	
+	sys.wait( 3 );
+	sys.trigger( $give_obj02_scitech );
+	
+	$scitech_door.lock( 0 );
+}
+
+void setupSciTechMons()
+{
+	//setup monitors for sci_tech
+	$horz_mon01.bind( $monitor_base01 );
+	$horz_mon02.bind( $orig_mon02 );
+	$orig_mon02.bind( $monitor_base01 );
+	$vert_mon01.bind( $monitor_base01 );
+	$vert_mon02.bind( $monitor_base01 );
+}
+
+void scitechMonsUp()
+{
+	//
+	
+	$monitor_base01.time( 7 );
+	$monitor_base01.accelTime( .5 );
+	$monitor_base01.decelTime( .5 );
+	
+	$horz_mon01.rotateDownTo( 2, 0 );
+	$orig_mon02.rotateUpTo( 0, 0 );
+	$monitor_base01.moveTo( $mon_base_UP );
+}
+
+void scitechMonsDown()
+{	
+	varVisitedSciTech = 1;
+	$tarrant_reminder01.remove();
+	$tarrant_reminder02.remove();
+	$tarrant_reminder03.remove();	
+	sys.killthread( "scitech_reminder" );
+	
+	$monitor_base01.time( 5 );
+	$monitor_base01.accelTime( .5 );
+	$monitor_base01.decelTime( .5 );
+	
+	$monitor_base01.moveTo( $mon_base_DN );
+	sys.waitFor( $monitor_base01 );
+	$horz_mon01.rotateUpTo( 2, 30 );
+	$orig_mon02.rotateDownTo( 0, 330 );	
+}
+
+void complete_obj03()
+{
+	sys.trigger( $complete_obj03_drophangar );	
+	sys.fadeOut( '0 0 0', 3 );
+	sys.wait( 3 );
+	sys.trigger( $trig_m04 );		
+}
+
+void deck05_elev_call()
+{
+	
+	if ( varElevOnFloor == 4 )
+	{
+		$speeder_elev01.moveTo( $spot02_speeder_elev01 );
+		sys.waitFor( $speeder_elev01 );
+		varElevOnFloor = 5;
+		sys.trigger( $door_deck05_elev );
+	}
+	else
+	{
+		$speeder_elev01.moveTo( $spot02_speeder_elev01 );
+		sys.trigger( $door_deck05_elev );
+	}
+	
+}
+
+void deck04_elev_call()
+{
+	if ( varElevOnFloor == 5 )
+	{
+		$speeder_elev01.moveTo( $spot01_speeder_elev01 );
+		sys.waitFor( $speeder_elev01 );
+		varElevOnFloor = 4;
+		sys.trigger( $door_deck04_elev );
+	}	
+	else
+	{
+		$speeder_elev01.moveTo( $spot01_speeder_elev01 );
+		sys.trigger( $door_deck04_elev );
+	}
+}
+
+void elev_xfer()
+{
+	$speeder_elev01.accelTime( 0.5 );
+	$speeder_elev01.decelTime( 0.5 );
+	$speeder_elev01.time( 4 );
+	
+	if ( varElevOnFloor == 5 )
+	{
+		$speeder_elev01.moveTo( $spot01_speeder_elev01 );
+		varElevOnFloor = 4;
+		sys.trigger( $door_deck04_elev );
+	}
+	else
+	{
+		$speeder_elev01.moveTo( $spot02_speeder_elev01 );
+		varElevOnFloor = 5;
+		sys.trigger( $door_deck05_elev );
+	}
+}
+
+void unlock_elev_doors()
+{
+	//sys.println( "UN-locking elev doors" );
+	
+	if ( varDoorsElevLocked == 1 )
+	{
+		$door_deck04_elev.lock( 0 );
+		$door_deck05_elev.lock( 0 );
+	}
+	
+	varDoorsElevLocked = 0;
+}
+
+void lock_elev_doors()
+{
+	//sys.println( "locking elev doors" );
+	
+	if ( varDoorsElevLocked == 0 )
+	{
+		$door_deck04_elev.lock( 1 );
+		$door_deck05_elev.lock( 1 );
+	}
+	
+	varDoorsElevLocked = 1;
+}
+
+void setup_drop_hangar()
+{
+	//sys.println( "dropship hangar" );
+	playAnimWait($dropship_landed, ANIMCHANNEL_ALL, "intro_idle_closed");	
+}
+
+void scitech_reminder()
+{
+	while( varVisitedSciTech == 0 )
+	{
+		sys.wait( 90 + sys.random( 30 ) );
+		sys.trigger( $tarrant_reminder01 );
+	
+		sys.wait( 90 + sys.random( 30 ) );
+		sys.trigger( $tarrant_reminder02 );
+	
+		sys.wait( 90 + sys.random( 30 ) );
+		sys.trigger( $tarrant_reminder03 );		
+	}
+}
+
+void spawnimateHarward()
+{
+	sys.trigger( $harward );	
+	$harwardBoard.show();
+	aiScriptedAnimWait( $harward, "af_pose", 0, 0 );
+	$harwardBoard.bindToJoint($harward, "l_wrist", 1);
+	aiScriptedAnimLoop( $harward, "looking_down_gui_1", 10 );
+	$harward.faceEntity( $vehicle_speeder_9 );	
+	
+	$harward.setTalkState(TALK_NEVER);
+}
+
+void spawnimateCole()
+{
+	sys.trigger( $cole );
+	$coleMug.show();
+	aiScriptedAnimWait( $cole, "af_pose", 0, 0 );
+	$coleMug.bindToJoint($cole, "l_wrist", 1);
+	aiScriptedAnimLoop( $cole, "idle_drinking_1", 10 );
+	$cole.faceEntity( $vehicle_speeder_9 );
+	$cole.lookAt( $vehicle_speeder_9 );
+		
+	$cole.setTalkState(TALK_NEVER);
+}
+
+void mechanic_convo02()
+{
+	$harward.lookAt( $cole );
+	$cole.lookAt( $harward );
+	// What's your diagnostic read?
+	aiSpeak( $cole, "lipsync_3_9_1" );
+	
+	aiScriptedAnimWait( $harward, "looking_down_gui_1", 10, 0 );
+	aiScriptedAnimLoop( $harward, "looking_down_gui_3", 10 );
+	
+	// That's what I've been trying to tell you, I'm not getting a reading.
+	aiSpeakWait( $harward, "lipsync_3_9_2" );
+	
+	// Is it on?
+	aiSpeakWait( $cole, "lipsync_3_9_3" );
+	
+	// Is what on?
+	aiSpeakWait( $harward, "lipsync_3_9_4" );
+	
+	// The diagnostic sensor.
+	aiSpeakWait( $cole, "lipsync_3_9_5" );
+	
+	// Of course it's on.  Why else… hang on.
+	aiSpeakWait( $harward, "lipsync_3_9_6" );
+	
+	sys.wait( 0.5 );
+	$pdaScreenCover.remove();
+	
+	// Okay, now it's on,
+	aiSpeakWait( $harward, "lipsync_3_9_7" );
+	
+	// How long you been looking at a dead sensor?
+	aiSpeakWait( $cole, "lipsync_3_9_8" );
+	
+	// Shut up and do your job.
+	aiSpeakWait( $harward, "lipsync_3_9_9" );
+	
+	// That's pretty hard when I gotta do yours too.
+	aiSpeakWait( $cole, "lipsync_3_9_10" );
+		
+	$harward.setTalkState(TALK_BUSY);
+	$cole.setTalkState(TALK_BUSY);
+}
+
+void setup_jacobson()
+{
+	$jacobson.becomeNonSolid();
+	$jacobson.setMoveSpeed( AIMOVESPEED_WALK );
+	$jacobson.setAnimRate( 1.2 );
+	aiScriptedAnimLoop ( $jacobson, "onbackworking_Nick_work", 10 );	
+}
+
+void briefing_setup()
+{
+	$func_door_240.lock( 1 );
+	
+	$func_static_54058.show();
+	$func_static_54059.show();
+	$func_static_54060.show();
+	$func_static_54061.show();
+	$func_static_54062.show();
+	$func_static_54063.show();
+	$func_static_54185.show();	
+			
+	sys.trigger( $davenport );
+	sys.trigger( $briefing_officer01 );
+	sys.trigger( $briefing_officer02 );
+
+	aiScriptedAnimLoop( $briefing_officer01, "mcc1_cin_idle6", 10 );
+	aiScriptedAnimLoop( $briefing_officer02, "mcc1_cin_idle4", 10 );	
+}
+
+void briefingCinematic()
+{
+	sys.music( "m3_mcc_briefing" );
+	sys.fadeOut( '0 0 0', 1 );
+	sys.wait( 1 );
+	
+	sys.trigger( $deckard_walkin );
+	$deckard_walkin.setMoveSpeed( AIMOVESPEED_WALK );
+	$deckard_walkin.setAnimRate( 1.2 );
+	sys.trigger( $func_door_240 );
+	aiScriptedMove( $deckard_walkin, $deckard_briefing_spot01, 8, 0 );	
+	sys.setCamera($cin_shot01);
+	sys.fadeIn( '1 1 1', 1 );
+	sys.waitFor( $deckard_walkin );	
+	aiScriptedMoveWait( $deckard_walkin, $deckard_briefing_spot02, 8, 0 );
+	aiScriptedMoveWait( $deckard_walkin, $deckard_briefing_spot03, 8, 0 );		
+	sys.trigger( $deckard );
+	aiScriptedAnim( $deckard, "sarge_briefing_5", 10, 0 );
+	$deckard_walkin.remove();
+	$func_door_247.lock( 1 );			
+	
+	sys.setCamera($cin_shot02);	
+	// DIALOG : I believe that's the last of us.
+	aiSpeakWait( $davenport, "lipsync_3_6_1" );
+	
+	// DIALOG : Gentlemen.  We're facing an operation of critical importance.
+	aiSpeakWait( $davenport, "lipsync_3_6_2" );
+	sys.wait( 0.5 );
+	
+	sys.setCamera($cin_shot03);
+	sys.wait( 0.5 );
+	//shut off side lights
+	$briefing_wall_light01.Off();
+	$briefing_wall_light02.Off();
+	sys.wait( 0.5 );
+	
+	// DIALOG : First a moment of congratulations of Seargeant Dekard Chase.  
+	// His actions, and those of his squad were directly responsible for both 
+	// the downfall of the Strogg's orbital batteries, but also the recovery of 
+	// the information that has brought us all here.
+	aiSpeakWait( $davenport, "lipsync_3_6_3" );	
+	
+	sys.setCamera($cin_shot04);	
+	// DIALOG : This is the data stream downloaded and brought to us by Sergeant Chase.  
+	// We haven't been able to crack the full encryption scheme yet.  Though, the partial 
+	// success we've had so far has been. unsettling.  
+	aiSpeakWait( $davenport, "lipsync_3_6_4" );
+	
+	sys.setCamera($cin_shot05);	
+	// DIALOG : Unsettling how?
+	aiSpeakWait( $briefing_officer01, "lipsync_3_6_5" );
+	
+	// DIALOG : There's numerous references to something we've named 'Valkaryne'.
+	aiSpeakWait( $davenport, "lipsync_3_6_6" );
+	
+	sys.setCamera($cin_shot06);
+	// DIALOG : And what is that?  A weapon? An op-code?  You called us all in here 
+	// for half-deciphered alien diatribe?  Send it to Strauss, that's why he's here.
+	aiSpeakWait( $briefing_officer02, "lipsync_3_6_7" );
+	
+	sys.setCamera($cin_shot07);
+	// DIALOG : Strauss, gentlemen, is why I called you here.  The 'half-deciphered diatribe'
+	// Sergeant Chase recovered was important enough to be protected by the most sophisticated
+	// encryption we've ever seen the Strogg utilize.  I'd suspect whatever 'Valkaryne' is, it's
+	// far more important to our enemies than an op-code.
+	aiSpeakWait( $davenport, "lipsync_3_6_8" );
+	
+	sys.setCamera($cin_shot08);
+	// DIALOG : As for Strauss, he's the only one of us that will be able to provide an answer.  
+	// Unfortunately, we've just received a report from Rhino Squad.  They've lost contact with him.
+	aiSpeakWait( $davenport, "lipsync_3_6_9" );
+	
+	sys.setCamera($cin_shot09);
+	// DIALOG : Is he dead?  Don't tell me he's dead.  We need him. 
+	aiSpeakWait( $briefing_officer01, "lipsync_3_6_10" );
+	
+	// DIALOG : As he continually reminds us.
+	aiSpeakWait( $briefing_officer02, "lipsync_3_6_11" );
+	
+	// DIALOG : He's not dead.  Not yet anyway.  We're still receiving data from his med-chip.
+	aiSpeakWait( $davenport, "lipsync_3_6_12" );
+	
+	sys.setCamera($cin_shot10);
+	// DIALOG : According to Strauss's med-chip, the Strogg are holding him in their Prison facility,
+	// most likely prepping him for conversion.
+	aiSpeakWait( $davenport, "lipsync_3_6_13" );
+	
+	sys.setCamera($cin_shot11);
+	// DIALOG : Thankfully, the actions of Sergeant Chase in the Trianthinide facility bought us some
+	// time.  The Strogg are busy rerouting power and have slowed their conversion processing.
+	// Unfortunately, they're efficient bastards and should be back online within the hour, after
+	// that the conversion operations will be back in full swing.
+	aiSpeakWait( $davenport, "lipsync_3_6_14" );
+	
+	sys.setCamera($cin_shot12);
+	// DIALOG : What do you propose, General?
+	aiSpeakWait( $briefing_officer01, "lipsync_3_6_15" );
+	
+	// DIALOG : Full scale assault.  We send in our reserve teams with Viper at the front.
+	// We breach the prison and pull Strauss out.
+	aiSpeakWait( $davenport, "lipsync_3_6_16" );
+	
+	sys.setCamera($cin_shot13);
+	// DIALOG : Sir, I'm not sure that's wise.  This battle's got a lot of time left, we need the reserve squads.
+	// I don't have to tell you they're chewing us up out there.
+	aiSpeakWait( $briefing_officer02, "lipsync_3_6_17" );
+	
+	sys.setCamera($cin_shot14);
+	// DIALOG : Noted.  But without Strauss, I'm not sure the war will last long enough to make the reserve squads
+	// viable for anything but Strogg parts.
+	aiSpeakWait( $davenport, "lipsync_3_6_18" );
+		
+	// DIALOG : How many squads are you talking about?
+	aiSpeakWait( $briefing_officer01, "lipsync_3_6_19" );
+	
+	// DIALOG : All of them.
+	aiSpeakWait( $davenport, "lipsync_3_6_20" );
+	
+	// DIALOG : All of them?
+	aiSpeakWait( $briefing_officer01, "lipsync_3_6_21" );
+	
+	sys.setCamera($cin_shot15);
+	// DIALOG : Yes.  Look, the Strogg aren't as stupid as we like to pretend.  They know the card they're holding.
+	// They picked their position well.  The prison is one of the most fortified placements on the entire planet.
+	aiSpeakWait( $davenport, "lipsync_3_6_22" );
+	
+	sys.setCamera($cin_shot16);
+	// DIALOG : Um, General.
+	aiSpeakWait( $briefing_officer02, "lipsync_3_6_23" );
+	
+	// DIALOG : Not now, Major.  This is no bullshit.  The prison facility is a fortress
+	// beyond anything I've ever seen the Strogg implement.
+	// If we short the assault it's going to fail.  It's a longshot as it is.
+	aiSpeakWait( $davenport, "lipsync_3_6_24" );
+	
+	// DIALOG : But we'll be nearly undefended.
+	aiSpeakWait( $briefing_officer02, "lipsync_3_6_25" );
+	
+	// DIALOG : Major, if Strauss dies, is it going to matter?
+	aiSpeakWait( $davenport, "lipsync_3_6_26" );
+	//murmur
+	
+	sys.setCamera($cin_shot17);
+	// DIALOG : I guess that settles it.
+	aiSpeakWait( $briefing_officer01, "lipsync_3_6_27" );
+	
+	// DIALOG : Yes, it does.
+	aiSpeakWait( $davenport, "lipsync_3_6_28" );
+	
+	sys.setCamera($cin_shot18);
+	sys.wait( 0.5 );
+	
+	// DIALOG : Sergeant, assemble your squad and rendezvous at the drop ship Plymouth.
+	// You're about to climb down the mouth of hell.  We start at the top of hour.
+	aiSpeakWait( $davenport, "lipsync_3_6_29" );	
+	sys.wait( 0.5 );
+		
+	//turn on side lights 
+	$briefing_wall_light01.On();
+	$briefing_wall_light02.On();	
+			
+	//done
+	sys.fadeOut( '0 0 0', 1);
+	sys.firstPerson();
+	sys.wait( 1 );
+	$deckard.remove();	
+	$player1.setOrigin( $target_deckard01.getOrigin() );
+	sys.fadeIn( '1 1 1', 1);	
+	$func_door_240.lock( 0 );	
+	// thread complete_obj04();
+}
+
+void animateTak()
+{
+	aiScriptedAnimWait( $tak, "weapon_check_1", 10, 0 );
+	sys.wait( 3 + sys.random( 3 ) );
+	aiScriptedAnimWait( $tak, "weapon_check_2", 10, 0 );
+	sys.wait( 3 + sys.random( 3 ) );
+}
+
+void animateDarnell()
+{
+	aiScriptedAnimWait( $darnell, "weapon_check_3", 10, 0 );
+	sys.wait( 3 + sys.random( 3 ) );
+	aiScriptedAnimWait( $darnell, "weapon_check_1", 10, 0 );
+	sys.wait( 3 + sys.random( 3 ) );
+}
+
+void tarrant_welcome()
+{	
+	$tarrant.lookAt( $player1 );
+	
+	// Welcome aboard Dekard.
+	aiSpeakWait( $tarrant, "lipsync_3_1_1" );
+	
+	// You've been ordered to the Command Center.
+	aiSpeakWait( $tarrant, "lipsync_3_1_2" );
+	
+	sys.trigger( $give_obj01_cc );
+	$tarrant.setMoveSpeed( AIMOVESPEED_WALK );
+	$tarrant.setAnimRate( 1.2 );
+	$tarrant.lookAt( $null_entity );
+			
+	$tarrant.setTalkState(TALK_BUSY);
+	aiScriptedMoveWait( $tarrant, $tarrant_spot01, 8, 1 );
+	sys.trigger( $dropship_door_west );
+	sys.trigger( $dropship_door_east );
+	sys.trigger( $dropship_door_north );
+	sys.trigger( $dropship_door_south );
+	aiScriptedAnimLoop( $tarrant, "thinking", 10 );
+	thread tarrant_idling();	
+	
+	// loop the hangar PA	
+	thread hangarPA();
+}
+
+void tarrant_idling()
+{	
+	while( 1 )
+	{		
+		sys.wait( 5 + sys.random( 5 ) );
+		aiScriptedMoveWait( $tarrant, $tarrant_spot02, 8, 1 );
+		aiScriptedAnimLoop( $tarrant, "thinking", 10 );
+		sys.wait( 5 + sys.random( 5 ) );
+		aiScriptedMoveWait( $tarrant, $tarrant_spot01, 8, 1 );
+		aiScriptedAnimWait( $tarrant, "weaponless_idle3_start", 10, 0 );
+		aiScriptedAnimLoop( $tarrant, "weaponless_idle3_loop", 10 );
+		sys.wait( 2 + sys.random( 4 ) );
+		aiScriptedAnimWait( $tarrant, "weaponless_idle3_end", 10, 0 );
+	}
+}
+
+void speeder_elev01()
+{
+	thread setup_jacobson();
+	thread spawnimateBikeWorkers();
+	thread spawnimateCole();
+	thread spawnimateHarward();
+	
+	sys.trigger( $npc_elev01 );
+	sys.trigger( $door_deck04_elev );
+	aiScriptedMoveWait( $npc_elev01, $spot01_npc_elev01, 8, 0 );
+	$door_deck04_elev.lock( 1 );
+	$door_deck04_elev.close();
+	aiScriptedAnimWait( $npc_elev01, "weaponless_point_down", 10, 1 );
+	$speeder_elev01.time( 6 );
+	$speeder_elev01.accelTime( 1 );
+	$speeder_elev01.decelTime( 1 );	
+	$speeder_elev01.moveTo( $spot03_speeder_elev01 );
+	sys.waitFor( $speeder_elev01 );
+	$npc_elev01.remove();
+	$door_deck04_elev.lock( 0 );
+}
+
+void player_gets_weapon()
+{	
+	$player1.enableWeapon();
+	
+	sys.wait( 1 );
+}
+
+void spawn_scitech_chars()
+{
+	sys.trigger( $whedon );
+	thread animateWhedon();
+		
+	sys.trigger( $heckler );
+	aiScriptedAnimLoop( $heckler, "sitting_working_consoles_2", 10 );
+	$heckler.setTalkState(TALK_OK);
+	
+	$heckler.setTalkState(TALK_BUSY);
+	
+	sys.trigger( $poisson );
+	aiScriptedAnimLoop( $poisson, "sitting_working_consoles_3", 10 );
+	$poisson.setTalkState(TALK_OK);
+	
+	$poisson.setTalkState(TALK_BUSY);
+	
+	sys.trigger( $dakin );
+	aiScriptedAnimLoop( $dakin, "sitting_working_consoles_1", 10 );
+	$dakin.setTalkState(TALK_OK);
+	
+	$dakin.setTalkState(TALK_BUSY);
+}
+
+void animateWhedon()
+{	
+	$whedon.setTalkState(TALK_BUSY);
+	
+	while ( 1 )
+	{
+		aiScriptedAnimWait( $whedon, "weaponless_idle4_start", 10, 0 );
+		aiScriptedAnimLoop( $whedon, "weaponless_idle4_loop", 10 );
+		sys.wait( 3 + sys.random( 10 ) );
+		aiScriptedAnim( $whedon, "weaponless_idle4_end", 10, 0 );
+		
+		sys.wait( 3 + sys.random( 10 ) );
+		
+		aiScriptedAnimWait( $whedon, "weaponless_idle5_start", 10, 0 );
+		aiScriptedAnimLoop( $whedon, "weaponless_idle5_loop", 10 );
+		sys.wait( 3 + sys.random( 10 ) );
+		aiScriptedAnim( $whedon, "weaponless_idle5_end", 10, 0 );
+		
+		sys.wait( 3 + sys.random( 10 ) );
+	}	
+}
+
+void playerInterruptsWhedon()
+{
+	sys.killthread( "animateWhedon" );
+	sys.trigger( $complete_obj02_scitech );
+	sys.trigger( $trig_dropDoors );
+	$tak01.remove();
+	$darnell01.remove();
+	$mitchell.remove();
+	$navajas.remove();
+	whedonTalks();
+}
+
+void whedonTalks()
+{
+	$whedon.setTalkState(TALK_NEVER);
+	
+	// Sergeant Dekard Chase, It's an honor to meet you. That data you recovered.  It's amazing, we've never seen anything like it.  I just hope we can recover Strauss before it's too late.  Oh, I know you're going back into the field.  I've got something for you.
+	aiSpeak( $whedon, "lipsync_3_12_1" );
+	$whedon.faceEntity( $player1 );
+	$whedon.lookAt( $player1 );
+	aiScriptedAnim( $whedon, "weaponless_idle2_start", 10, 0 );
+	aiScriptedAnimLoop( $whedon, "weaponless_idle2_loop", 10 );
+	sys.wait( 14 );
+	$whedon.faceEntity( $whedon_focus01 );
+	$whedon.lookAt( $whedon_focus01 );
+	aiScriptedAnim( $whedon, "weaponless_idle2_end", 10, 0 );
+	
+	// Here you go, Dekard.  New prototype, built to fire refined Trianthinide core bolts. I call it the Trianthinide Core Cannon. After seeing the element in action, I thought you'd appreciate its power.
+	aiSpeakWait( $whedon, "lipsync_3_12_2" );
+	$whedon.faceEntity( $terminal_focus01 );
+	$whedon.lookAt( $terminal_focus01 );
+	$player1.enableWeapon();
+	sys.trigger( $give_spikegun );
+	$player1.selectWeapon( "weapon_spikegun" );
+	aiScriptedAnim( $whedon, "weaponless_point_front_fast", 10, 0 );
+	
+	// The Trianthinide bolts are rare, but you should be able to resupply in the field.
+	aiSpeakWait( $whedon, "lipsync_3_12_3" );
+	
+	// Dekard, The Atlas Mechanized Division is already enroute.  The rest of Ares is waiting at the dropship hangar.  We're ready to move out, Marine.
+	sys.trigger( $speakMarkswell );
+	sys.wait( 8 );
+	
+	// Good luck out there, Dekard.
+	aiSpeak( $whedon, "lipsync_3_12_5" );
+	
+	$whedon.faceEntity( $whedon_focus01 );
+	$whedon.lookAt( $whedon_focus01 );
+	aiScriptedAnimWait( $whedon, "weaponless_idle6_start", 10, 0 );
+	aiScriptedAnimLoop( $whedon, "weaponless_idle6_loop", 10 );
+	sys.wait( 1 );
+	aiScriptedAnim( $whedon, "weaponless_idle6_end", 10, 0 );
+	
+	//varDownloadOK = 1;
+	//$terminal.setGuiParm( "noninteractive", "0" );
+	
+	sys.trigger( $give_obj03_drophangar );
+	sys.trigger( $tak02 );
+	sys.trigger( $darnell02 );
+	$tak02.setTalkState(TALK_BUSY);
+	$darnell02.setTalkState(TALK_BUSY);
+	$tarrant.remove();
+	sys.trigger( $trig_comp_obj03 );
+	
+	$whedon.setTalkState(TALK_BUSY);
+	
+	thread animateWhedon();	
+}
+
+void speederHarnessMove()
+{		
+	$speeder_chain.time( 4 );
+	$speeder_chain.accelTime( 1 );
+	$speeder_chain.decelTime( 1 );
+	$speeder_chain.moveTo( $speeder_hung_spot02 );
+	sys.waitFor( $speeder_chain );
+	
+	$speeder_pulley.unbind();
+	$speeder_chain.moveTo( $speeder_hung_spot03 );
+	sys.waitFor( $speeder_chain );
+}
+
+void spawnimateBikeWorkers()
+{
+	sys.trigger( $robinson );
+	sys.trigger( $worker02 );
+	
+	aiScriptedMoveWait( $robinson, $robinson_spot01, 8, 0 );
+	aiScriptedFaceWait( $robinson, $workers_focus, 0 );
+	$robinson.lookAt( $workers_focus );
+	aiScriptedAnimLoop( $robinson, "working_on_knee", 10 );
+	
+	aiScriptedMoveWait( $worker02, $worker02_spot01, 8, 0 );
+	aiScriptedFaceWait( $worker02, $workers_focus, 0 );
+	$worker02.lookAt( $workers_focus );
+	aiScriptedAnimLoop( $worker02, "working_on_knee", 10 );
+}
+
+void mechanic_convo01()
+{
+	$worker02.setTalkState(TALK_NEVER);
+	$robinson.setTalkState(TALK_NEVER);
+	
+	// I need to drop the quad reflex inhibitor.
+	aiSpeakWait( $worker02, "lipsync_3_8_1" );
+	
+	// What do you need?
+	aiSpeakWait( $robinson, "lipsync_3_8_2" );
+	
+	// Looks like a size four mounting brace.
+	aiSpeakWait( $worker02, "lipsync_3_8_3" );
+	
+	// Hybridized Steel Polymer or Titianium?
+	aiSpeakWait( $robinson, "lipsync_3_8_4" );
+	
+	// How much of the HSP is left?
+	aiSpeakWait( $worker02, "lipsync_3_8_5" );
+	
+	// Um… Looks like about 12 units.
+	aiSpeakWait( $robinson, "lipsync_3_8_6" );
+	
+	// Hmm… Let's go ahead, Command want's these in premiere condition.  No use short changing'em on parts.
+	aiSpeakWait( $worker02, "lipsync_3_8_7" );
+		
+	$worker02.setTalkState(TALK_BUSY);
+	$robinson.setTalkState(TALK_BUSY);
+}
+
+void speederHarnessMoveUp()
+{
+	//sys.println("moving speeder UP");
+	$speeder_chain.time( 2 );
+	$speeder_chain.accelTime( 0.5 );
+	$speeder_chain.decelTime( 0.5 );
+	$speeder_chain.moveTo( $speeder_hung_spot02 );
+	sys.waitFor( $speeder_chain );	
+}
+
+void spawn_speederhall_chars()
+{
+	// unhide the chars in the speeder hallway
+	//sys.trigger( $bowen );
+	//sys.trigger( $salka );
+	
+	// love at first sight
+	//$bowen.lookAt( $salka );
+	//$salka.lookAt( $bowen );
+	
+	// setup the looping animation for them
+	//aiScriptedAnimLoop( $bowen, "idle_sitting_1", 10 );
+	//thread animateSalka();
+}
+
+void animateSalka()
+{
+	//aiScriptedAnimWait( $salka, "weaponless_idle2_start", 10, 0 );
+	//aiScriptedAnimLoop( $salka, "weaponless_idle2_loop", 10 );
+	//sys.wait( 2 + sys.random( 5 ) );
+	//aiScriptedAnimWait( $salka, "weaponless_idle2_end", 10, 0 );
+}
+
+void salka_bowen_convo()
+{
+	//$bowen.setTalkState(TALK_NEVER);
+	//$salka.setTalkState(TALK_NEVER);
+	
+	//aiSpeakWait( $bowen, "lipsync_3_1_9_1" ); //marine1 badger squad
+	//aiSpeakWait( $salka, "lipsync_3_1_9_2" );
+	//aiSpeakWait( $bowen, "lipsync_3_1_9_3" );
+	//aiSpeakWait( $salka, "lipsync_3_1_9_4" );
+	//aiSpeakWait( $bowen, "lipsync_3_1_9_5" );
+	//aiSpeakWait( $salka, "lipsync_3_1_9_6" );
+		
+	//$salka.setTalkState(TALK_BUSY);
+	//$bowen.setTalkState(TALK_BUSY);
+}
+
+void spawn_cc_guards()
+{	
+	// unhide the chars in front of cc
+	sys.trigger( $flower );	
+	$flower.setTalkState(TALK_OK);	
+	$flower.setTalkState(TALK_BUSY);
+		
+	sys.trigger( $broadbent );
+	$broadbent.setTalkState(TALK_OK);	
+	$broadbent.setTalkState(TALK_BUSY);
+	
+	// spawn the guys in front of the speeder/sci-tech door
+	//sys.trigger( $marine01 );
+	//sys.trigger( $marine02 );
+	
+	//aiScriptedAnimLoop( $marine01, "sitting_working_consoles_1", 10 );
+	//aiScriptedAnimLoop( $marine02, "idle", 10 );	
+}
+
+void animateFlower()
+{
+	aiScriptedAnimWait( $flower, "at_attention_start", 10, 0 );
+	aiScriptedAnimLoop( $flower, "at_attention_idle", 10 );
+	sys.wait( 2 + sys.random( 5 ) );
+	aiScriptedAnimWait( $flower, "at_attention_end", 10, 0 );
+}
+
+void animateBroadbent()
+{
+	aiScriptedAnimWait( $broadbent, "at_attention_start", 10, 0 );
+	aiScriptedAnimLoop( $broadbent, "at_attention_idle", 10 );
+	sys.wait( 2 + sys.random( 5 ) );
+	aiScriptedAnimWait( $broadbent, "at_attention_end", 10, 0 );
+}
+
+void marines_converse01()
+{
+	/*
+	$marine01.setTalkState(TALK_NEVER);
+	$marine02.setTalkState(TALK_NEVER);
+
+	aiSpeakWait( $marine01, "lipsync_3_1_11_1" );
+	aiSpeakWait( $marine02, "lipsync_3_1_11_2" );
+	aiSpeakWait( $marine01, "lipsync_3_1_11_3" );
+	aiSpeakWait( $marine02, "lipsync_3_1_11_4" );
+	aiSpeakWait( $marine01, "lipsync_3_1_11_5" );
+	aiSpeakWait( $marine02, "lipsync_3_1_11_6" );
+	aiSpeakWait( $marine01, "lipsync_3_1_11_7" );
+
+	$marine01.setTalkState(TALK_BUSY);
+	$marine02.setTalkState(TALK_BUSY);
+	*/
+}
+
+void setupMesshallGuys()
+{
+	sys.trigger( $lucas );
+	sys.trigger( $lucasBoard );
+	aiScriptedAnimLoop( $lucas, "working_wall_panel", 10 );
+	$busted_door_halo.hide();
+	
+	sys.trigger( $mitchell );
+	sys.trigger( $tak01 );
+	sys.trigger( $darnell01 );
+	sys.trigger( $navajas );
+	
+	aiScriptedAnimLoop( $mitchell, "idle_sitting_1", 10 );
+	aiScriptedAnimLoop( $darnell01, "idle_sitting_1", 10 );
+	aiScriptedAnimLoop( $tak01, "idle_sitting_1", 10 );
+	aiScriptedAnimLoop( $navajas, "idle_sitting_1", 10 );	
+}
+
+void messhall_exit_blocked()
+{
+	$lucas.setTalkState( TALK_NEVER );
+
+	$lucas.setTalkState(TALK_OK);
+	// sys.trigger( $messhall_doorsparks );
+	$lucas.lookAt( $player1 );
+	
+	// Door's been jammed since we landed.  I think a fuse blew.  You'll have to go around 'till we get it fixed up.
+	aiSpeak( $lucas, "lipsync_3_11_5" );
+	
+	aiScriptedAnimWait( $lucas, "weaponless_point_up", 10, 1 );
+	$lucas.setTalkState(TALK_BUSY);
+	$lucas.lookAt( $null_entity );	
+	aiScriptedAnim( $lucas, "working_wall_panel_3", 10, 0 );
+
+	$lucas.setTalkState( TALK_BUSY );
+}
+
+void noWeapon()
+{
+	$player1.disableWeapon();
+}
+
+void killHallwayPA()
+{
+	sys.killthread( "hangarPA");
+	sys.killthread( "hallwayPA");
+}
+void killHallwayPA2()
+{
+	sys.killthread( "hallwayPA2");
+}
+
+void spawnWorker01()
+{	
+	sys.trigger( $worker01 );
+	sys.trigger( $worker01board );
+	
+	$worker01.lookAt( $worker01_focus01 );
+	
+	while( 1 )
+	{		
+		aiScriptedAnimLoop( $worker01, "working_wall_panel_2", 10 );
+		sys.wait( 5 + sys.random(2) );
+		
+		aiScriptedAnimLoop( $worker01, "working_wall_panel_3", 10 );
+		sys.wait( 5 + sys.random(2) );
+	}
+}
+
+void workers_converse01()
+{
+	$worker01.setTalkState( TALK_NEVER );
+	
+	// Command wants an ETA.
+	aiSpeakWait( $worker01, "lipsync_3_7_1" );
+	
+	// I'm working on it.  There's three busted coils down here.
+	sys.trigger( $marine6_talk01 );
+	sys.wait( 3 );
+	
+	// They don't want a damage assessment, they wanna know when it'll be fixed.
+	aiSpeakWait( $worker01, "lipsync_3_7_3" );
+	
+	// Hell if I know. Two, three hours maybe?
+	sys.trigger( $marine6_talk02 );
+	sys.wait( 3 );
+	
+	// They're not gonna like that answer.  Can't you just cross wire them? 
+	aiSpeakWait( $worker01, "lipsync_3_7_5" );
+	
+	// Look, if you wanna do this, I'll be happy to trade places with you.
+	sys.trigger( $marine6_talk03 );
+	sys.wait( 3 );
+	$worker01.setTalkState( TALK_BUSY );
+}
+
+void worker01_talks()
+{	
+	if ( varWorker01_TalkTurn == 1 )
+	{
+		// We got some coolant coils all FUBAR'd. Engines are already starting to overheat.  	
+		aiSpeakWait( $worker01, "lipsync_3_7_7" );
+		
+		varWorker01_TalkTurn = 2; // ='s 2		
+	}
+	
+	else if ( varWorker01_TalkTurn == 2 )
+	{
+		// I don't know what Command is all up in arms about; these aren't even the primary coils.
+		aiSpeakWait( $worker01, "lipsync_3_7_8" );
+		
+		varWorker01_TalkTurn = 3; // ='s 3
+	}
+	
+	else if ( varWorker01_TalkTurn == 3 )
+	{
+		// There's a war going on, and I'm stuck here babysitting.
+		aiSpeakWait( $worker01, "lipsync_3_7_9" );
+		
+		sys.wait( 0.5 );
+		
+		// I heard that.
+		sys.trigger( $marine6_talk04 );
+		varWorker01_TalkTurn = 4; // ='s 4
+	}	
+}
+
+void lockWalkers()
+{
+// set true to false to unlock
+	
+	$GRANT.lock( true );
+	$walker01.lock( true );
+	$walker_2.lock( true );
+}
+
+void tankDown()
+{
+	// setup speed
+	$tank_chain.time(10);
+	$tank_chain.accelTime(3);
+	$tank_chain.decelTime(5);
+	$tank_chain.moveTo( $tank01_spot02 );
+	
+	$tank_wench_pivot.time(2);
+	$tank_wench_pivot.accelTime(1);
+	$tank_wench_pivot.decelTime(1);
+	
+	// make it swing
+	$tank_wench_pivot.rotateOnce( '-15 0 0' );	
+	sys.waitFor($tank_wench_pivot);
+	$tank_wench_pivot.rotateOnce( '15 0 0' );	
+	sys.waitFor($tank_wench_pivot);
+	$tank_wench_pivot.rotateOnce( '-10 0 0' );	
+	sys.waitFor($tank_wench_pivot);
+	$tank_wench_pivot.rotateOnce( '10 0 0' );
+	sys.waitFor( $tank_chain );
+	
+	// move it down
+	$tank_chain.time(8);
+	$tank_chain.accelTime(2);
+	$tank_chain.decelTime(4);
+	$tank_pulley01.unbind(); // so it doesn't move down from ceiling
+	$tank_chain.move( DOWN,192 );
+	
+	// make it swing again
+	$tank_wench_pivot.rotateOnce( '-15 0 0' );	
+	sys.waitFor($tank_wench_pivot);
+	$tank_wench_pivot.rotateOnce( '15 0 0' );	
+	sys.waitFor($tank_wench_pivot);
+	$tank_wench_pivot.rotateOnce( '-10 0 0' );	
+	sys.waitFor($tank_wench_pivot);
+	$tank_wench_pivot.rotateOnce( '10 0 0' );
+	sys.waitFor( $tank_chain );	
+}
+
+void speederHangarLiftUp()
+{
+	//sys.println("speeder hangar up");
+	$speeder_hangar_floor.time(15);
+	$speeder_hangar_floor.decelTime(.5);
+
+	sys.trigger($speeder_hangar_floor_door);
+	$speeder_hangar_floor_door.hide();
+	$speeder_hangar_floor.move( UP, 394 );
+	sys.waitFor($speeder_hangar_floor);
+	$speeder_hangar_floor_door.show();
+
+	// door used just to close off a vis portal
+	sys.trigger($speeder_hangar_floor_door);
+}
+
+void tankUp()
+{
+	$tank_chain.time(10);
+	$tank_chain.accelTime(3);
+	$tank_chain.decelTime(5);	
+	$tank_chain.move( UP,192 ); 
+
+	$tank_wench_pivot.time(2);
+	$tank_wench_pivot.accelTime(1);
+	$tank_wench_pivot.decelTime(1);
+
+	$tank_wench_pivot.rotateOnce( '-15 0 0' );	
+	sys.waitFor($tank_wench_pivot);
+	$tank_wench_pivot.rotateOnce( '15 0 0' );	
+	sys.waitFor($tank_wench_pivot);
+	$tank_wench_pivot.rotateOnce( '-10 0 0' );	
+	sys.waitFor($tank_wench_pivot);
+	$tank_wench_pivot.rotateOnce( '10 0 0' );	
+}
+
+void lockDoors()
+{
+	$leaving_hangar.lock(0);
+	$locker_entrance.lock(0);
+	$morgue_entrance.lock(0);
+	$med_door_west.lock(0);
+	$med_door_east.lock(0);	
+	$func_door_182.lock(0);
+	$outer_briefing_door.lock(0);
+	$func_door_250.lock(0);		
+	
+	//giving weapon mod setup
+	$func_door_113.lock(0);
+	$func_door_217.lock(0);
+}
+
+void hangarPA()
+{
+	while( 1 )
+	{
+		sys.trigger($hangarPA01);
+		sys.wait( 30 + sys.random(5) );
+		
+		sys.trigger($hangarPA02);
+		sys.wait( 30 + sys.random(5) );
+		
+		sys.trigger($hangarPA03);
+		sys.wait( 30 + sys.random(5) );		
+	}
+}
+
+void hallwayPA()
+{
+	while( 1 )
+	{
+		sys.trigger($hallwayPA01);
+		sys.wait( 60 + sys.random(30) );
+		
+		sys.trigger($hallwayPA02);
+		sys.wait( 60 + sys.random(30) );
+		
+		sys.trigger($hallwayPA03);
+		sys.wait( 60 + sys.random(30) );
+		
+		sys.trigger($hallwayPA04);
+		sys.wait( 60 + sys.random(30) );		
+		
+		sys.trigger($hallwayPA06);
+		sys.wait( 60 + sys.random(30) );
+		
+		sys.trigger($hallwayPA07);
+		sys.wait( 60 + sys.random(30) );
+		
+		sys.trigger($hallwayPA08);
+		sys.wait( 60 + sys.random(30) );
+		
+		sys.trigger($hallwayPA09);
+		sys.wait( 60 + sys.random(30) );
+		
+		sys.trigger($hallwayPA010);
+		sys.wait( 60 + sys.random(30) );
+		
+		sys.trigger($hallwayPA011);
+		sys.wait( 60 + sys.random(30) );
+		
+		sys.trigger($hallwayPA012);
+		sys.wait( 60 + sys.random(30) );
+	}
+}
+
+void briefingStartGui()
+{
+//	sys.trigger($briefingLightOff);
+//	sys.trigger($mcc_tableOnLight);
+	$env_tactical_station_1.guiEvent("startbriefing");
+}
+
+void lockerSetup2()
+{
+	$lockers_4.move( UP,96 );
+	$lockers_2.move( UP,96 );
+	$lockers_6.move( UP,96 );		
+}
+
+void trigDropDoors()
+{
+	sys.trigger( $dropship_door_west );
+	sys.trigger( $dropship_door_east );
+	sys.trigger( $dropship_door_north );
+	sys.trigger( $dropship_door_south );
+}
+
+void npc_walker01()
+{
+	$npc_walker01.setMoveSpeed( AIMOVESPEED_WALK );
+	$npc_walker01.setAnimRate( 1.2 );	
+	sys.trigger( $npc_walker01 );
+	
+	while( 1 )
+	{
+		aiScriptedMoveWait( $npc_walker01, $npc_walker01_spot01, 8, 1 );
+		sys.wait( 4 + sys.random( 4 ) );
+		aiScriptedMoveWait( $npc_walker01, $npc_walker01_spot02, 8, 1 );
+		sys.wait( 4 + sys.random( 4 ) );
+	}
+}
+
+void npc_walker02()
+{
+	//$door_lavatory.hide();
+	$npc_walker02.setMoveSpeed( AIMOVESPEED_RUN );
+	$npc_walker02.setAnimRate( 1.0 );
+	sys.trigger( $npc_walker02 );
+	sys.trigger( $door_lavatory );
+	aiScriptedMoveWait( $npc_walker02, $npc_walker02_spot01, 8, 1 );
+	$door_lavatory.close();
+	$door_lavatory.lock( 1 );
+	$npc_walker02.remove();
+}
+
+void npc_walker03()
+{	
+	sys.trigger( $func_door_268 );
+	sys.wait( 1 );
+	sys.trigger( $npc_walker03 );
+	$npc_walker03.setMoveSpeed( AIMOVESPEED_WALK );
+	$npc_walker03.setAnimRate( 1.2 );	
+	aiScriptedMove( $npc_walker03, $npc_walker03_spot01, 8, 1 );
+	sys.wait( 2 );
+	$func_door_268.close();
+	$func_door_268.lock( 1 );
+	$npc_walker03.remove();
+}
+
+void main()
+{		
+	$door_deck04_elev.lock( 1 );
+	$door_deck05_elev.lock( 1 );
+	$scitech_door.lock( 1 );
+	
+	sys.fadeIn( '0 0 0', 3 );
+
+	sys.trigger( $tarrant );
+	$tarrant.setTalkState(TALK_NEVER);
+	
+	$vehicle_speeder_9.lock( 1 );
+	$vehicle_speeder_10.lock( 1 );	
+	
+	//makes the sci-tech terminal non-usable until later
+	$terminal.setGuiParm( "noninteractive", "1" );
+
+	// lift up the speeder hangar door
+	thread speederHangarLiftUp();
+	
+	// remove the players weapon 
+	$player1.selectWeapon( "weapon_blaster" );
+	thread noWeapon();
+
+	// setup scitech monitors
+	thread setupSciTechMons();
+	
+	thread intro_landing();
+	
+	$func_door_269.lock( 1 );
+	
+	thread npc_walker01();
+}
+} // end namespace

@@ -1,0 +1,49 @@
+/*
+===============================================================================
+
+	Berserker
+
+===============================================================================
+*/
+
+export berserker
+{		
+	options -prefix BEZ_ -keep end_spike -align ALL -scale .3937 -parent midBack lowerBack -parent upperBack midBack -keep eye_target lowerBack Lfteye_Focus Rteye_Focus -parent eye_target head -parent Lfteye_Focus Lft_EyeBall -parent Rteye_Focus Rt_EyeBall -sourcedir models/monsters/berserker/nick -destdir models/monsters/berserker
+	
+
+	anim    onfire.ma			-dest onfire
+}
+
+/*
+===============================================================================
+
+	Berserker Model
+
+===============================================================================
+*/
+
+model model_monster_q4x_berserker
+{	// MONSTER_MODEL
+	inherit model_monster_berserker
+//Q4X  On Fire
+
+	anim pain_fire						models/monsters/berserker/onfire.md5anim
+	{
+		frame	1						sound_voice			berserker_onfire
+	}
+}
+
+
+/*
+===============================================================================
+
+	Q4X Berserker Entity Definition
+
+===============================================================================
+*/
+
+entityDef monster_q4x_berserker
+{
+	"inherit"								"monster_berserker"
+	"model"									"model_monster_q4x_berserker"
+}

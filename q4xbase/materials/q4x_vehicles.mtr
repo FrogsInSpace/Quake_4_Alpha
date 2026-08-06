@@ -1,0 +1,142 @@
+models/vehicles/speeder/speeder
+{
+	//unsmoothedtangents
+
+	
+	diffusemap 		models/vehicles/speeder/speeder_d.tga
+    	bumpmap			models/vehicles/speeder/speeder_local.tga
+	specularmap 		models/vehicles/speeder/speeder_s.tga
+	{
+		blend add
+		map models/vehicles/speeder/speeder_add.tga
+
+	}
+	
+}
+
+models/vehicles/speeder/speeder_glass
+{
+	qer_EditorImage		models/vehicles/speeder/speeder_glass_d.tga
+	twosided
+	noshadows
+	translucent
+	materialType glass
+	
+	{
+		blend diffuseMap
+		map models/vehicles/speeder/speeder_glass_d.tga
+	}
+
+	{
+		blend blend
+		map models/vehicles/speeder/speeder_glass_d.tga
+	}
+
+}
+
+models/vehicles/speeder/speeder02
+{
+	//unsmoothedtangents
+
+	
+	diffusemap 		models/vehicles/speeder/speeder02_d.tga
+    	bumpmap			models/vehicles/speeder/speeder02_local.tga
+	specularmap 		models/vehicles/speeder/speeder02_s.tga
+	
+}
+
+
+
+
+//MCC q4x ---------------------------------------------------------------------------------------------------------
+
+models/vehicles/MCC_ship/MCC_ship_top_q4x
+{
+	noselfShadow
+	unsmoothedtangents
+	collision
+	renderBump  -size 1024 1024 -aa 2 -trace 0.05 -MergeHigh models/vehicles/MCC_ship/MCC_ship_top_local.tga work/models/vehicles/MCC_ship/MCC_ship_hi.lwo
+	materialImage	models/monsters/air_defense_cannon/cannon_hit
+	bumpmap		addnormals (models/vehicles/MCC_ship/MCC_ship_top_local.tga, heightmap (models/vehicles/MCC_ship/MCC_ship_top_h.tga, 2))
+	diffusemap		models/vehicles/MCC_ship/MCC_ship_top_d.tga
+	specularmap		models/vehicles/MCC_ship/MCC_ship_top_s.tga
+
+	{
+		blend add
+		map downsize( models/vehicles/MCC_ship/MCC_ship_top_g.tga, 1 )
+	}
+	{
+		blend add
+		map models/vehicles/MCC_ship/MCC_ship_top_g.tga
+		rgb grunttable [ time * 1.3 ]
+	}	
+}
+
+
+
+
+
+models/vehicles/MCC_ship/MCC_ship_bottom_q4x
+{
+	noselfShadow
+	unsmoothedtangents
+	collision
+	materialImage	models/monsters/air_defense_cannon/cannon_hit
+	renderBump  -size 1024 1024 -aa 2 -trace 0.05 -MergeHigh models/vehicles/MCC_ship/MCC_ship_bottom_local.tga work/models/vehicles/MCC_ship/MCC_ship_hi.lwo
+
+	bumpmap		addnormals (models/vehicles/MCC_ship/MCC_ship_bottom_local.tga, heightmap (models/vehicles/MCC_ship/MCC_ship_bottom_h.tga, 2))
+	diffusemap		models/vehicles/MCC_ship/MCC_ship_bottom_d.tga
+	specularmap		models/vehicles/MCC_ship/MCC_ship_bottom_s.tga
+
+	{
+		blend add
+		map downsize( models/vehicles/MCC_ship/MCC_ship_bottom_g.tga, 1 )
+	}
+}
+
+
+models/vehicles/MCC_ship/MCC_ship_bottom_decal1_q4x
+{
+	qer_editorimage models/vehicles/MCC_ship/MCC_ship_bottom_decal1.tga
+	DECAL_MACRO
+	noShadows
+	noimpact
+	translucent
+	
+	{	
+		blend GL_DST_COLOR, GL_SRC_COLOR_q4x
+		map models/vehicles/MCC_ship/MCC_ship_bottom_decal1.tga
+	}
+}
+
+//MCC shiplegs---------------------------------------------------------------------------------------------------------
+
+
+models/vehicles/MCC_ship/MCC_shiplegs_q4x
+{
+	noselfShadow
+	unsmoothedtangents
+	collision
+	renderBump  -size 512 512 -aa 2 -trace 0.05 -MergeHigh models/vehicles/MCC_ship/MCC_shiplegs_local.tga work/models/vehicles/MCC_ship/MCC_shiplegs_hi.lwo
+	materialImage	models/monsters/air_defense_cannon/cannon_hit
+
+
+	bumpmap		addnormals (models/vehicles/MCC_ship/MCC_shiplegs_local.tga, heightmap (models/vehicles/MCC_ship/MCC_shiplegs_h.tga, 2))
+	diffusemap		models/vehicles/MCC_ship/MCC_shiplegs_d.tga
+	specularmap		models/vehicles/MCC_ship/MCC_shiplegs_s.tga
+}
+
+
+//MCC shiptopturret---------------------------------------------------------------------------------------------------------
+
+
+models/vehicles/MCC_ship/MCC_shiptopturret_q4x
+{
+	noselfShadow
+	unsmoothedtangents
+
+	materialImage	models/monsters/air_defense_cannon/cannon_hit
+	collision
+	renderBump  -size 512 512 -aa 2 -trace 0.05 -MergeHigh models/vehicles/MCC_ship/MCC_shiptopturret_local.tga work/models/vehicles/MCC_ship/MCC_shiptopturret_hi.lwo
+
+}

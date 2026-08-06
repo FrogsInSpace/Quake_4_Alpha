@@ -1,0 +1,541 @@
+
+
+
+void VO_tak_wedefrt( entity ent )
+{
+ //Tak: We’re definitely in the right place.  I’m picking up all kinds of EM and data traffic.  Navajas, you think you can blast through this ice wall?  
+ aiSpeakWait( ent, "lipsync_vo_tak_wedefrt" );
+}
+
+
+void VO_nava_dontlot( entity ent )
+{
+ //Navajas: I don’t have a lot of charges, Tak. We blow ’em all here and we may not have enough to take out the guardian.  
+ aiSpeakWait( ent, "lipsync_vo_nava_dontlot" );
+}
+
+
+void VO_tak_heysrg( entity ent )
+{
+ //Tak: Hmm.  Hey, Sarge.  Look at this.  I don’t think this is pure ice… It’s got to be a suspended polymer of some kind.  I bet that Strogg Napalm launcher would punch a hole right through it.  
+ aiSpeakWait( ent, "lipsync_vo_tak_heysrg" );
+}
+
+
+void VO_tak_hmmsrgna( entity ent )
+{
+ //Tak: Hmm.  Hey, Sarge.  Your Strogg Napalm launcher should punch a hole right through it.  
+ aiSpeakWait( ent, "lipsync_vo_tak_hmmsrgna" );
+}
+
+
+void VO_tak_weneveloc( entity ent )
+{
+ //Tak +use: We never located any information about what the Valkaryne actually looks like, we need to stay on our toes.  
+ aiSpeakWait( ent, "lipsync_vo_tak_weneveloc" );
+}
+
+
+void VO_tak_onceval( entity ent )
+{
+ //Tak +use: Once we take care of the Valkaryne, we'll need to destroy the cryogenically frozen Makrons next.  
+ aiSpeakWait( ent, "lipsync_vo_tak_onceval" );
+}
+
+
+void VO_tak_lockload( entity ent )
+{
+ //Tak +use: Locked and loaded, Sarge.  
+ aiSpeakWait( ent, "lipsync_vo_tak_lockload" );
+}
+
+
+void VO_nava_follw( entity ent )
+{
+ //Navajas +use: I’m following you, Sergeant  
+ aiSpeakWait( ent, "lipsync_vo_nava_follw" );
+}
+
+
+void VO_nava_roughops( entity ent )
+{
+ //Navajas +use: It's been a rough couple of operations, but you've done very well  
+ aiSpeakWait( ent, "lipsync_vo_nava_roughops" );
+}
+
+
+void VO_nava_nexkill( entity ent )
+{
+ //Navajas +use: We better get moving, the Nexus assault force could kill the Makron at any time  
+ aiSpeakWait( ent, "lipsync_vo_nava_nexkill" );
+}
+
+
+void VO_nava_takhitlite( entity ent )
+{
+ //Navajas: Tak, hit the lights.  
+ aiSpeakWait( ent, "lipsync_vo_nava_takhitlite" );
+}
+
+
+void VO_tak_onesecthr( entity ent )
+{
+ //Tak: One second (beat) there...  
+ aiSpeakWait( ent, "lipsync_vo_tak_onesecthr" );
+}
+
+
+void VO_tak_wowlkplc( entity ent )
+{
+ //Tak: Wow...look at this place  
+ aiSpeakWait( ent, "lipsync_vo_tak_wowlkplc" );
+}
+
+
+void VO_tak_lookslike( entity ent )
+{
+ //Tak: Looks like we’re the first ones here, at least at this entrance.  If Darnell and the rest of Anchor squad made it through the locks, they’d be on the far side of the facility by now.  
+ aiSpeakWait( ent, "lipsync_vo_tak_lookslike" );
+}
+
+
+void VO_tak_maynotknw( entity ent )
+{
+ //Tak: I may not know as much about the Strogg as Strauss, but from the looks of these supports, we’re at the bottom of the facility… Or damn close to it.  The main entrance has to be close.  
+ aiSpeakWait( ent, "lipsync_vo_tak_maynotknw" );
+}
+
+
+void VO_tak_darncomemrk( entity ent )
+{
+ //Tak: Darnell, come in...Markswell, this is Falcon squad, can anybody read me?  
+ aiSpeakWait( ent, "lipsync_vo_tak_darncomemrk" );
+}
+
+
+void VO_tak_lookslikecomm( entity ent )
+{
+ //Tak: Looks like communications are going to be a bit dodgy down here.  
+ aiSpeakWait( ent, "lipsync_vo_tak_lookslikecomm" );
+}
+
+
+void VO_tak_lookathis( entity ent )
+{
+ //Tak: Look at this!  The Strogg may be crude, but their energy efficiency is staggering.  There’s enough liquid cryocene pumping through here to freeze a city.  
+ aiSpeakWait( ent, "lipsync_vo_tak_lookathis" );
+}
+
+
+void VO_nava_whyisplc( entity ent )
+{
+ //Navajas: Then why is this place so poorly defended?    
+ aiSpeakWait( ent, "lipsync_vo_nava_whyisplc" );
+}
+
+
+void VO_tak_goodquest( entity ent )
+{
+ //Tak: Good question..  
+ aiSpeakWait( ent, "lipsync_vo_tak_goodquest" );
+}
+
+
+void VO_tak_iwonder( entity ent )
+{
+ //Tak: I wonder how they maintain the temperature differential without compensating for the atmospheric pressure?    
+ aiSpeakWait( ent, "lipsync_vo_tak_iwonder" );
+}
+
+
+void VO_nava_dntthink( entity ent )
+{
+ //Navajas: I don’t think they are.  Two well placed charges would nuke that entire coil.   
+ aiSpeakWait( ent, "lipsync_vo_nava_dntthink" );
+}
+
+
+void VO_tak_yourealize( entity ent )
+{
+ //Tak: You realize we’re the first human eyes to ever see the inside of this facility?  
+ aiSpeakWait( ent, "lipsync_vo_tak_yourealize" );
+}
+
+
+void VO_nava_smarttak( entity ent )
+{
+ //Navajas: You're a smart man, there, Tak, but your priorities are bit out of whack.  
+ aiSpeakWait( ent, "lipsync_vo_nava_smarttak" );
+}
+
+
+void VO_tak_usecoredis( entity ent )
+{
+ //Tak: Dekard, use your core cannon to dislodge those stalactites!  
+ aiSpeakWait( ent, "lipsync_vo_tak_usecoredis" );
+}
+
+
+void VO_nava_usecoredis( entity ent )
+{
+ //Navajas: Dekard, use your core cannon to dislodge those stalactites!  
+ aiSpeakWait( ent, "lipsync_vo_nava_usecoredis" );
+}
+
+
+void VO_darn_private( entity ent )
+{
+ //Darnell: This a private party or is anyone invited?  
+ aiSpeakWait( ent, "lipsync_vo_darn_private" );
+}
+
+
+void VO_tak_darnell( entity ent )
+{
+ //Tak: Darnell!  
+ aiSpeakWait( ent, "lipsync_vo_tak_darnell" );
+}
+
+
+void VO_darn_aliveprime( entity ent )
+{
+ //Darnell: Alive and Prime-Time, Tak.  It was tough ride, though, we lost a few men en route.  We’ve already split formation, and my fireteam’s already headed your way  
+ aiSpeakWait( ent, "lipsync_vo_darn_aliveprime" );
+}
+
+
+void VO_nava_youhrsmthing( entity ent )
+{
+ //Navajas: You hear something?  
+ aiSpeakWait( ent, "lipsync_vo_nava_youhrsmthing" );
+}
+
+
+void VO_tak_evdwn( entity ent )
+{
+ //Tak: Everybody down!  
+ aiSpeakWait( ent, "lipsync_vo_tak_evdwn" );
+}
+
+
+void VO_nava_forgettht( entity ent )
+{
+ //Navajas: Forget that one, Sarge.  We’ll be here all day if you try and burn through it.  We’ll take care of this one my way.  
+ aiSpeakWait( ent, "lipsync_vo_nava_forgettht" );
+}
+
+
+void VO_nava_herewegset2( entity ent )
+{
+ //Navajas: Here we go.  Setting the first charge.  
+ aiSpeakWait( ent, "lipsync_vo_nava_herewegset2" );
+}
+
+
+void VO_nava_seconchrg2( entity ent )
+{
+ //Navajas: Second charge in place.  One more.  
+ aiSpeakWait( ent, "lipsync_vo_nava_seconchrg2" );
+}
+
+
+void VO_nava_thatsit2( entity ent )
+{
+ //Navajas: That’s it.  Everybody back.  Clear.  Clear.  
+ aiSpeakWait( ent, "lipsync_vo_nava_thatsit2" );
+}
+
+
+void VO_nava_demvawaychrg2( entity ent )
+{
+ //Navajas: Dekard, move away from the charges!  
+ aiSpeakWait( ent, "lipsync_vo_nava_demvawaychrg2" );
+}
+
+
+void VO_nava_thosechrglive2( entity ent )
+{
+ //Navajas: Those charges are live, get back!  
+ aiSpeakWait( ent, "lipsync_vo_nava_thosechrglive2" );
+}
+
+
+void VO_nava_detonat2( entity ent )
+{
+ //Navajas: Detonating!  
+ aiSpeakWait( ent, "lipsync_vo_nava_detonat2" );
+}
+
+
+void VO_nava_whathellgo( entity ent )
+{
+ //Navajas: What the hell is going on?  
+ aiSpeakWait( ent, "lipsync_vo_nava_whathellgo" );
+}
+
+
+void VO_tak_itcryocfrz( entity ent )
+{
+ //Tak: It’s cryocene.  They’re gonna freeze us alive.  
+ aiSpeakWait( ent, "lipsync_vo_tak_itcryocfrz" );
+}
+
+
+void VO_tak_ddcc( entity ent )
+{
+ //Tak: Darnell!  Darnell!  Come in, Come in!  
+ aiSpeakWait( ent, "lipsync_vo_tak_ddcc" );
+}
+
+
+void VO_darn_whatmattb( entity ent )
+{
+ //Darnell: What’s the matter, boys?  Things get a little drafty and you come crying to Uncle Darnell.  So, you gonna thank me now, or later.  
+ aiSpeakWait( ent, "lipsync_vo_darn_whatmattb" );
+}
+
+
+void VO_nava_shoveit( entity ent )
+{
+ //Navajas: Shove it, Darnell  
+ aiSpeakWait( ent, "lipsync_vo_nava_shoveit" );
+}
+
+
+void VO_darn_solaterthn( entity ent )
+{
+ //Darnell: So… later then.  
+ aiSpeakWait( ent, "lipsync_vo_darn_solaterthn" );
+}
+
+
+void VO_darn_therecryoc( entity ent )
+{
+ //Darnell: There (beat) the cryocene should be clearing.    
+ aiSpeakWait( ent, "lipsync_vo_darn_therecryoc" );
+}
+
+
+void VO_nava_thanksdarn( entity ent )
+{
+ //Navajas: Thanks Darnell  
+ aiSpeakWait( ent, "lipsync_vo_nava_thanksdarn" );
+}
+
+
+void VO_darn_noprobfiretm( entity ent )
+{
+ //Darnell: No problem, my fireteam is moving ahead, we should meet up shortly  
+ aiSpeakWait( ent, "lipsync_vo_darn_noprobfiretm" );
+}
+
+
+void VO_darn_holyshitcold( entity ent )
+{
+ //Darnell: Holy shit is it cold in here.  Dekard, I guess it’s your turn to save my ass.  Damn, karma’s a bitch.  Now, don’t go thinking that – What the hell is that?  
+ aiSpeakWait( ent, "lipsync_vo_darn_holyshitcold" );
+}
+
+
+void VO_marine1_die( entity ent )
+{
+ //Marine 1: Arrrghh!  
+ aiSpeakWait( ent, "lipsync_vo_marine1_die" );
+}
+
+
+void VO_tak_itmakguard( entity ent )
+{
+ //Tak: It's the Makron Guardian, The Valkaryne!  Darnell, fall back!  Fall back!  
+ aiSpeakWait( ent, "lipsync_vo_tak_itmakguard" );
+}
+
+
+void VO_tak_darngethell( entity ent )
+{
+ //Tak: Darnell, get the hell outta there!  
+ aiSpeakWait( ent, "lipsync_vo_tak_darngethell" );
+}
+
+
+void VO_darn_die( entity ent )
+{
+ //Darnell: Arrrghh!  
+ aiSpeakWait( ent, "lipsync_vo_darn_die" );
+}
+
+
+void VO_tak_sheflood( entity ent )
+{
+ //Tak: She's flooded the room with cryocene!  
+ aiSpeakWait( ent, "lipsync_vo_tak_sheflood" );
+}
+
+
+void VO_nava_weneedloccryo( entity ent )
+{
+ //Navajas: We need to locate the cryocene purge systems!  
+ aiSpeakWait( ent, "lipsync_vo_nava_weneedloccryo" );
+}
+
+
+void VO_tak_wecantlast( entity ent )
+{
+ //Tak: Dekard, we can't last much longer!  
+ aiSpeakWait( ent, "lipsync_vo_tak_wecantlast" );
+}
+
+
+void VO_tak_cantfeelhand( entity ent )
+{
+ //Tak: I can't feel my hands!  
+ aiSpeakWait( ent, "lipsync_vo_tak_cantfeelhand" );
+}
+
+
+void VO_tak_wowcls( entity ent )
+{
+ //Tak: Wow, that was close.  
+ aiSpeakWait( ent, "lipsync_vo_tak_wowcls" );
+}
+
+
+void VO_nava_sorryserg( entity ent )
+{
+ //Navajas: I’m…  sorry, Sarge.  Darnell.  He was a good solider.  I’m not sure how we’ll finish this operation without him.  
+ aiSpeakWait( ent, "lipsync_vo_nava_sorryserg" );
+}
+
+
+void VO_tak_darnman( entity ent )
+{
+ //Tak: Good solider?  Darnell was a good man.  Falcon Squad won’t be the same with out him.  
+ aiSpeakWait( ent, "lipsync_vo_tak_darnman" );
+}
+
+
+void VO_marks_falconsqkn( entity ent )
+{
+ //Markswell: Falcon Squad, Kain just killed the Makron!  Dekard, get moving, you’ve got to take out the Makron Guardian before she manages to raise a new Makron.  Hurry, Sergeant.  We’re not going to get another chance at this.  
+ aiSpeakWait( ent, "lipsync_vo_marks_falconsqkn" );
+}
+
+
+void VO_marks_stroggos( entity ent )
+{
+ //Markswell: Looks like the Strogg are on to us, Falcon Squad.  We’re seeing unprecedented data transfers across multiple facilities all across Stroggos.  They’re preemptively backing up data from the Nexus.    
+ aiSpeakWait( ent, "lipsync_vo_marks_stroggos" );
+}
+
+
+void VO_tak_sargehrvalk( entity ent )
+{
+ //Tak: Sarge, it’s here.  The Valkaryne!  
+ aiSpeakWait( ent, "lipsync_vo_tak_sargehrvalk" );
+}
+
+
+void VO_tak_readingsorts( entity ent )
+{
+ //Tak: I’m reading all sorts of data traffic.  Sarge… The Makron is coming online!  
+ aiSpeakWait( ent, "lipsync_vo_tak_readingsorts" );
+}
+
+
+void VO_valk_reborn( entity ent )
+{
+ //Valkaryne: …Reborn….  
+ aiSpeakWait( ent, "lipsync_vo_valk_reborn" );
+}
+
+
+void VO_valk_stroggetern( entity ent )
+{
+ //Valkaryne: …The Strogg are eternal…  
+ aiSpeakWait( ent, "lipsync_vo_valk_stroggetern" );
+}
+
+
+void VO_valk_makrons( entity ent )
+{
+ //Valkaryne: …The Makrons…  
+ aiSpeakWait( ent, "lipsync_vo_valk_makrons" );
+}
+
+
+void VO_valk_immort( entity ent )
+{
+ //Valkaryne: …Are Immortal…  
+ aiSpeakWait( ent, "lipsync_vo_valk_immort" );
+}
+
+
+void VO_valk_racedies( entity ent )
+{
+ //Valkaryne: …Your race dies here…  
+ aiSpeakWait( ent, "lipsync_vo_valk_racedies" );
+}
+
+
+void VO_valk_youcntstop( entity ent )
+{
+ //Valkaryne: ... You cannot stop us ...  
+ aiSpeakWait( ent, "lipsync_vo_valk_youcntstop" );
+}
+
+
+void VO_valk_iseeyou( entity ent )
+{
+ //Valkaryne: ... I see you...  
+ aiSpeakWait( ent, "lipsync_vo_valk_iseeyou" );
+}
+
+
+void VO_valk_timedie( entity ent )
+{
+ //Valkaryne: ...Time to Die...  
+ aiSpeakWait( ent, "lipsync_vo_valk_timedie" );
+}
+
+
+void VO_tak_everover( entity ent )
+{
+ //Tak: Everybody, over here!  Look!  
+ aiSpeakWait( ent, "lipsync_vo_tak_everover" );
+}
+
+
+void VO_tak_die( entity ent )
+{
+ //Tak: Arrrghh!  
+ aiSpeakWait( ent, "lipsync_vo_tak_die" );
+}
+
+
+void VO_nava_takthatbitch( entity ent )
+{
+ //Navajas: Tak!  That Strogg Bitch!  She’s gonna pay.  Dekard, let’s go.  I’m taking her out if I have to shove my charges up her – (explosion cuts him off)  
+ aiSpeakWait( ent, "lipsync_vo_nava_takthatbitch" );
+}
+
+
+void VO_nava_letsgonow( entity ent )
+{
+ //Navajas: Let’s go, Dekard!   NOW!  
+ aiSpeakWait( ent, "lipsync_vo_nava_letsgonow" );
+}
+
+
+void VO_nava_wegotfini( entity ent )
+{
+ //Navajas: We’ve got to finish this!  
+ aiSpeakWait( ent, "lipsync_vo_nava_wegotfini" );
+}
+
+
+void VO_nava_notwaitsrg( entity ent )
+{
+ //Navajas: I’m not waiting, Sarge.  I’m taking that bitch out, with our without you.  
+ aiSpeakWait( ent, "lipsync_vo_nava_notwaitsrg" );
+}
+

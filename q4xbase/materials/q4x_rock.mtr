@@ -1,0 +1,46 @@
+textures/rock/hillside1_skysand1
+{
+ 	materialType sand       
+	{
+		blend		bumpmap
+		map		addnormals (textures/rock/hillside1_local.tga, heightmap (textures/rock/hillside1_b.tga, 8))
+	}
+	{
+		blend		diffusemap
+		map		textures/rock/hillside1_d.tga
+		vertexColor
+	}
+	{
+		blend 		specularmap
+		map		textures/rock/hillside1_s.tga
+		vertexColor
+	}
+
+	{
+		blend 		bumpmap
+		map		heightmap (textures/rock/skysand1_bmp.tga, 4)
+	}
+	{
+		blend 		diffusemap
+		map		textures/rock/skysand1_d.tga
+		inverseVertexColor
+	}
+	{
+		blend		specularmap
+		map		textures/rock/skysand1_s.tga
+		inverseVertexColor
+	}
+
+
+}
+
+
+
+textures/rock/rock05g
+{
+	qer_editorimage textures/rock/rock05g_d
+      materialType rock  
+      		
+	diffusemap	textures/rock/rock05_d.tga
+	specularmap	textures/rock/rock05_s.tga
+}

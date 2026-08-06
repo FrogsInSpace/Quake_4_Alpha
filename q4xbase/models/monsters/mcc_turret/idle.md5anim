@@ -1,0 +1,40 @@
+MD5Version 10
+commandline "anim models/monsters/mcc_turret/animations/idle.ma -dest models/monsters/mcc_turret/idle.md5anim -game Quake4 -game /q4xbase -prefix TURRET_ -align ALL -scale .3937 -keep base_bone body_bone barrel_R muzzle_flash_R sensor_bone barrel_L muzzle_flash_L"
+
+numFrames 2
+numJoints 8
+frameRate 24
+numAnimatedComponents 0
+
+hierarchy {
+	"origin"	-1 0 0	//
+	"base_bone"	0 0 0	// origin
+	"body_bone"	1 0 0	// base_bone
+	"barrel_L"	2 0 0	// body_bone
+	"muzzle_flash_L"	3 0 0	// barrel_L
+	"barrel_R"	2 0 0	// body_bone
+	"muzzle_flash_R"	5 0 0	// barrel_R
+	"sensor_bone"	2 0 0	// body_bone
+}
+
+bounds {
+	( -323.7635498047 -325.7597351074 -6.1918869019 ) ( 569.0306396484 322.2496948242 232.6180725098 )
+	( -323.7635498047 -325.7597351074 -6.1918869019 ) ( 569.0306396484 322.2496948242 232.6180725098 )
+}
+
+baseframe {
+	( 0 0 0 ) ( -0.5 -0.5 -0.5 )
+	( 0 68.0774993896 0 ) ( 0 0 0 )
+	( 0 72.07762146 230.0806884766 ) ( -0.0307466164 0 0 )
+	( 52.980091095 3.3715829849 98.5466537476 ) ( 0.5159383416 0.5152701735 0.4835790396 )
+	( 235.9995422363 0.0000009174 0.0000054132 ) ( 0 0 0 )
+	( -52.9800491333 3.3714895248 98.546875 ) ( -0.7062929273 -0.0224381518 -0.7072090507 )
+	( 235.99949646 0.0000035175 0.0000001943 ) ( 0 0 0 )
+	( -0 -14.82072258 15.7148103714 ) ( 0 0 0 )
+}
+
+frame 0 {
+}
+
+frame 1 {
+}

@@ -1,0 +1,52 @@
+MD5Version 10
+commandline "anim models/vehicles/strogg_flyer/animations//idle_a.ma -dest models/vehicles/q4x_strogg_flyer//idle_a.md5anim -game Quake4 -game q4xbase/ -prefix FLY_ -rotate -90 -scale .5906 -keep tail_thrusters -keep left_gun -keep right_gun -keep l_fx -keep r_fx"
+
+numFrames 2
+numJoints 14
+frameRate 24
+numAnimatedComponents 0
+
+hierarchy {
+	"origin"	-1 0 0	//
+	"ship_secondary"	0 0 0	// origin
+	"l_fx"	1 0 0	// ship_secondary
+	"left_anntena"	1 0 0	// ship_secondary
+	"left_gun"	1 0 0	// ship_secondary
+	"left_tail_fin"	1 0 0	// ship_secondary
+	"left_tail_rutter"	1 0 0	// ship_secondary
+	"r_fx"	1 0 0	// ship_secondary
+	"right_anntena"	1 0 0	// ship_secondary
+	"right_gun"	1 0 0	// ship_secondary
+	"right_tail_fin"	1 0 0	// ship_secondary
+	"right_tail_rutter"	1 0 0	// ship_secondary
+	"tail_thrusters"	1 0 0	// ship_secondary
+	"top_tail_rutter"	1 0 0	// ship_secondary
+}
+
+bounds {
+	( -242.1672363281 -162.8193054199 1.3251972198 ) ( 146.9781188965 162.8193054199 106.5486526489 )
+	( -242.1672363281 -162.8193054199 1.3251972198 ) ( 146.9781188965 162.8193054199 106.5486526489 )
+}
+
+baseframe {
+	( 0 0 0 ) ( -0.5 0.5 0.5 )
+	( 0 45.4087486267 -0.0000038147 ) ( 0 1 0 )
+	( 35.6687011719 -22.8893604279 -17.1778926849 ) ( 0 0 0.7071067691 )
+	( 9.8385648727 45.7213249207 -10.2279243469 ) ( 0.7035048008 0.0712811351 -0.7035048008 )
+	( 39.6418380737 0 57.5177497864 ) ( -0.7071067691 0 -0.7071067691 )
+	( 22.7043743134 -3.9123191833 -162.4624481201 ) ( 0.696662426 0.1210846156 -0.696662426 )
+	( 17.4066886902 -16.9621429443 -155.6866149902 ) ( -0.6875546575 0.1651319563 0.6875546575 )
+	( -35.4980354309 -22.8893604279 -17.1778888702 ) ( 0 0 0.7071067691 )
+	( -9.8385629654 45.7213249207 -10.2279243469 ) ( 0.7035048008 0.0712811351 -0.7035048008 )
+	( -39.5812911987 0 57.5177497864 ) ( -0.7071067691 0 -0.7071067691 )
+	( -22.7043743134 -3.9123191833 -162.4624481201 ) ( 0.6896579862 0.0857454091 -0.7018886805 )
+	( -17.4066886902 -16.9621429443 -155.6866149902 ) ( -0.6965928674 0.1214839891 0.6965928674 )
+	( 0 1.5374603271 -164.9851074219 ) ( 0.7071067691 -0 -0.7071067691 )
+	( 0 17.6404457092 -159.9210968018 ) ( 0.6889475584 0.1592207104 -0.6889475584 )
+}
+
+frame 0 {
+}
+
+frame 1 {
+}

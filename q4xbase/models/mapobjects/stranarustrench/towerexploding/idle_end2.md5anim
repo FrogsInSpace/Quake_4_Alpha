@@ -1,0 +1,84 @@
+MD5Version 10
+commandline "anim cinematics/stranarus_trench/exploding_tower/animations/idle2_end.ma -dest models/mapobjects/stranarustrench/towerexploding/idle_end2.md5anim -game Quake4 -game /q4xbase -scale 2 -keep origin effects1 effects2 explodingtower3 effects3 effects4 effects5 effects6 explodingtower8 effects7 explodingtower10 effects8 effects9 effects10 effects11 effects12 effects13 explodingtower17 effects14 effects15 explodingtower20 effects16 effects17 effects18 effects19 explodingtower25 effects20 effects21 effects22 explodingtower29"
+
+numFrames 2
+numJoints 30
+frameRate 24
+numAnimatedComponents 0
+
+hierarchy {
+	"origin"	-1 0 0	//
+	"explodingtower10"	0 0 0	// origin
+	"effects7"	1 0 0	// explodingtower10
+	"explodingtower17"	0 0 0	// origin
+	"effects10"	3 0 0	// explodingtower17
+	"effects11"	3 0 0	// explodingtower17
+	"effects12"	3 0 0	// explodingtower17
+	"effects13"	3 0 0	// explodingtower17
+	"effects8"	3 0 0	// explodingtower17
+	"effects9"	3 0 0	// explodingtower17
+	"explodingtower20"	0 0 0	// origin
+	"effects14"	10 0 0	// explodingtower20
+	"effects15"	10 0 0	// explodingtower20
+	"explodingtower25"	0 0 0	// origin
+	"effects16"	13 0 0	// explodingtower25
+	"effects17"	13 0 0	// explodingtower25
+	"effects18"	13 0 0	// explodingtower25
+	"effects19"	13 0 0	// explodingtower25
+	"explodingtower29"	0 0 0	// origin
+	"effects20"	18 0 0	// explodingtower29
+	"effects21"	18 0 0	// explodingtower29
+	"effects22"	18 0 0	// explodingtower29
+	"explodingtower3"	0 0 0	// origin
+	"effects1"	22 0 0	// explodingtower3
+	"effects2"	22 0 0	// explodingtower3
+	"explodingtower8"	0 0 0	// origin
+	"effects3"	25 0 0	// explodingtower8
+	"effects4"	25 0 0	// explodingtower8
+	"effects5"	25 0 0	// explodingtower8
+	"effects6"	25 0 0	// explodingtower8
+}
+
+bounds {
+	( 666.024230957 478.5411376953 -503.9924926758 ) ( 1131.7880859375 901.4652099609 -311.8734130859 )
+	( 666.024230957 478.5411376953 -503.9924926758 ) ( 1131.7880859375 901.4652099609 -311.8734130859 )
+}
+
+baseframe {
+	( 0 0 0 ) ( -0.7071067691 0 0 )
+	( 196.5899200439 -494.7880859375 -35.1487350464 ) ( 0.2912378013 -0.6130506992 0.7289590836 )
+	( -6.4748725891 -80.488571167 15.8749494553 ) ( 0 0 0 )
+	( 1242.8114013672 -238.6910552979 -92.4139480591 ) ( 0.6301905513 0.4800948203 0.3220775723 )
+	( 39.3950996399 -117.9542236328 -163.6675262451 ) ( 0 0 0 )
+	( 44.8758201599 -766.1679077148 183.1380310059 ) ( 0 0 0 )
+	( 153.135345459 -234.5030059814 101.6974334717 ) ( 0 0 0 )
+	( -180.897644043 -165.3128662109 9.5296754837 ) ( 0 0 0 )
+	( -180.897644043 -171.1167297363 33.5815963745 ) ( 0 0 0 )
+	( 17.8637676239 -231.1285552979 -15.0020141602 ) ( 0 0 0 )
+	( 878.7575683594 -446.9482116699 445.3391723633 ) ( 0.0550409853 0.3673069179 0.7046504021 )
+	( -51.1181411743 -0.0000187291 9.7955904007 ) ( 0 0 0 )
+	( -51.1181640625 548.2548217773 9.795586586 ) ( 0 0 0 )
+	( 154.8829345703 -372.5465087891 700.0397338867 ) ( -0.085303627 0.6639760733 0.7019420862 )
+	( -58.5545425415 356.1376342773 -82.8890457153 ) ( 0 0 0 )
+	( -13.9789857864 475.4975891113 102.3208084106 ) ( 0 0 0 )
+	( 61.5942611694 140.5076751709 -9.1167182922 ) ( 0 0 0 )
+	( -58.3358650208 15.5691585541 -133.6944885254 ) ( 0 0 0 )
+	( 739.1118164063 -363.8871154785 -247.7815856934 ) ( 0.1929454654 0.4001980126 0.8755201697 )
+	( -1.3756184578 281.4989013672 70.7790298462 ) ( 0 0 0 )
+	( -190.2323608398 330.296875 -6.4807987213 ) ( 0 0 0 )
+	( 153.4364318848 316.7835388184 155.9247283936 ) ( 0 0 0 )
+	( 963.0145263672 -357.1434020996 -672.4528198242 ) ( 0.0620293058 0.6662050486 -0.7044448256 )
+	( -166.5297088623 13.8547315598 78.786857605 ) ( 0 0 0 )
+	( 169.5441589355 -134.5437774658 238.8520202637 ) ( 0 0 0 )
+	( 338.8343811035 -367.4888916016 393.1409606934 ) ( 0.3432476819 -0.5855182409 0.7339513898 )
+	( 116.0730819702 99.8668060303 -58.5986976624 ) ( 0 0 0 )
+	( -55.1746559143 214.8474731445 -137.2850799561 ) ( 0 0 0 )
+	( -34.4729995728 -226.3599395752 -36.7855491638 ) ( 0 0 0 )
+	( -129.4468383789 -313.7880249023 -72.490524292 ) ( 0 0 0 )
+}
+
+frame 0 {
+}
+
+frame 1 {
+}

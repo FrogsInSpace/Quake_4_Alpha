@@ -1,0 +1,66 @@
+/***********************************************************************
+Exploding Trench dropship interior
+
+***********************************************************************/
+
+
+model model_env_q4x_trench_dropship
+
+{
+	mesh				models/mapobjects/q4x/trench_dropship/mesh.md5mesh
+	anim idle			models/mapobjects/q4x/trench_dropship/idle.md5anim
+	
+	anim explode		models/mapobjects/q4x/trench_dropship/explode.md5anim
+	{
+	}
+	anim endidle		models/mapobjects/q4x/trench_dropship/endidle.md5anim
+	
+	
+	
+}
+
+entityDef env_q4x_trench_dropship
+{
+	"editor_color"			"0 .5 .25"
+	"editor_mins"			"-32 -32 0"
+	"editor_maxs"			"32 32 16"
+
+	"spawnclass"			"idAnimated"
+
+	"model"					"model_env_q4x_trench_dropship"
+	"anim"					"idle"
+	
+}
+
+/***********************************************************************
+Exploding Trench dropship exterior
+***********************************************************************/
+
+
+model model_env_q4x_trench_dropship_ext
+
+{
+	mesh				models/mapobjects/q4x/trench_dropship/ext_mesh.md5mesh
+	anim idle			models/mapobjects/q4x/trench_dropship/ext_idle.md5anim
+	
+	anim explode		models/mapobjects/q4x/trench_dropship/ext_explode.md5anim
+	{
+	}
+	anim endidle		models/mapobjects/q4x/trench_dropship/ext_endidle.md5anim
+	
+	
+	
+}
+
+entityDef env_q4x_trench_dropship_ext
+{
+	"editor_color"			"0 .5 .25"
+	"editor_mins"			"-32 -32 0"
+	"editor_maxs"			"32 32 16"
+
+	"spawnclass"			"idAnimated"
+
+	"model"					"model_env_q4x_trench_dropship_ext"
+	"anim"					"idle"
+	
+}

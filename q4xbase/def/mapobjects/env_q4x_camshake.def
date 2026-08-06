@@ -1,0 +1,44 @@
+/***********************************************************************
+Camera Shake anim
+***********************************************************************/
+
+export camera_shake
+{
+	options -scale .3937 -prefix SHAKE_ -keep origin -align ALL -sourcedir cinematics/stranarus_trench/intro/animations   -destdir models/cinematics/stranarus_trench
+	 
+	mesh ambient.ma						-dest mesh
+	anim ambient.ma						-dest idle
+	anim medium.ma						-dest medium
+	anim large.ma						-dest large
+
+	
+}
+
+
+entityDef env_q4x_camera_shake
+{
+	"editor_usage"					"animated_dropship_interior"
+	"editor_color"					"0 .5 .25"
+	"editor_mins"					"-32 -32 0"
+	"editor_maxs"					"32 32 16"
+
+	"spawnclass"					"idAnimated"
+
+	"model"						"model_q4x_camera_shake"
+	"anim"						"idle"
+	
+	"sound_bone"				"door"
+	
+
+	
+	
+}
+
+model model_q4x_camera_shake
+{
+	mesh							models/cinematics/stranarus_trench/mesh.md5mesh
+	anim idle						models/cinematics/stranarus_trench/idle.md5anim
+	anim medium						models/cinematics/stranarus_trench/medium.md5anim
+	anim large						models/cinematics/stranarus_trench/large.md5anim
+
+}

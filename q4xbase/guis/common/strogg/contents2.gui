@@ -1,0 +1,159 @@
+windowDef Desktop
+{
+	comment	"gui_parm_contents value sets the contents you want inside the box. uses a text field that wraps for multiple lines of text."
+	visible	1
+	rect	0,0,640,480
+	backcolor	0,0,0,1
+	windowDef contents1
+	{
+		rect	0,0,640,480
+		visible	1
+		background	"gfx/guis/common/strogg/contents1"
+		matcolor	0.984,0.356,0.176,1*guitable_8_10[time*.0002]
+	}
+	windowDef decal
+	{
+		visible	1
+		rect	408,-33,221,206
+		background	"gfx/guis/common/strogg/decal"
+		matcolor	0,0,0,.9*guitable_8_10[time*.0002]
+	}
+	windowDef arrow
+	{
+		visible	1
+		rect	72,7,96,61
+		background	"gfx/guis/common/arrow2"
+		matcolor	0,0,0,.7*guitable_8_10[time*.0002]
+	}
+	windowDef contents2
+	{
+		visible	1
+		rect	0,0,640,480
+		background	"gfx/guis/common/strogg/contents2"
+		matcolor	1,1,1,.6*guitable_8_10[time*.0002]
+	}
+	windowDef num
+	{
+		rect	226,7,165,25
+		visible	1
+		forecolor	0,0,0,0.8
+		text	"850235-324"
+		textscale	0.4
+		font	"fonts/r_strogg"
+	}
+	windowDef title
+	{
+		rect	76,136,151,25
+		visible	1
+		forecolor	0.949,0.890,0.556,1
+		text	"contents"
+		textscale	0.45
+		font	"fonts/r_strogg"
+	}
+	windowDef t_contents
+	{
+		rect	55,176,489,244
+		visible	1
+		forecolor	1,1,1,1
+		text	"gui::gui_parm_contents"
+		textscale	0.7
+		font	"fonts/r_strogg"
+	}
+	windowDef line1
+	{
+		visible	1
+		rect	41,210,527,11
+		background	"gfx/guis/common/line1"
+		matcolor	1,1,1,.3*guitable_8_10[time*.0002]
+	}
+	windowDef line2
+	{
+		visible	1
+		rect	41,249,527,11
+		background	"gfx/guis/common/line1"
+		matcolor	1,1,1,.3*guitable_8_10[time*.0002]
+	}
+	windowDef line3
+	{
+		visible	1
+		rect	41,286,527,11
+		background	"gfx/guis/common/line1"
+		matcolor	1,1,1,.3*guitable_8_10[time*.0002]
+	}
+	windowDef line4
+	{
+		visible	1
+		rect	41,322,527,11
+		background	"gfx/guis/common/line1"
+		matcolor	1,1,1,.3*guitable_8_10[time*.0002]
+	}
+	windowDef line5
+	{
+		visible	1
+		rect	41,359,527,11
+		background	"gfx/guis/common/line1"
+		matcolor	1,1,1,.3*guitable_8_10[time*.0002]
+	}
+	windowDef barcode
+	{
+		visible	1
+		rect	590,191,58,239
+		background	"gfx/guis/common/barcode_v"
+		matcolor	0,0,0,0.8*guitable_8_10[time*.0002]
+	}
+	windowDef topstuff
+	{
+		visible	1
+		rect	0,0,640,480
+		windowDef sline1
+		{
+			visible	1
+			rect	0,-444,640,924
+			background	"gfx/guis/common/monitor_line4"
+			matcolor	0.745,0.592,0.231,0.2
+		}
+		windowDef topreflect
+		{
+			visible	1
+			rect	0,0,640,480
+			backcolor	0.972,0.949,0.121,0.16*guitable_random1[time*2.2]
+		}
+		windowDef dirt
+		{
+			rect	-48,-123,742,638
+			visible	1
+			background	"gfx/guis/common/screen_dirt7"
+			matcolor	0,0,0,1
+		}
+		windowDef broken_glass_b
+		{
+			visible	"gui::gui_parm_broken"
+			rect	-31,-21,678,598
+			background	"gfx/guis/common/broken_glass1"
+			matcolor	0,0,0,1
+			matscaley	-1
+		}
+		windowDef broken_glass
+		{
+			visible	"gui::gui_parm_broken"
+			rect	-28,-23,678,598
+			background	"gfx/guis/common/broken_glass1"
+			matcolor	0.803,0.921,0.850,1
+			matscaley	-1
+		}
+		windowDef dirt_stroyent
+		{
+			rect	-92,-53,831,641
+			visible	"gui::gui_parm_stroyent"
+			background	"gfx/guis/common/screen_dirt5"
+			matcolor	0.674,0.701,0.341,1
+		}
+		windowDef blackedge
+		{
+			rect	0,0,640,480
+			visible	1
+			background	"gfx/guis/common/monitor_darkedge2"
+			matcolor	0,0,0,1
+		}
+	}
+}

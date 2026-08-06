@@ -1,0 +1,111 @@
+//------------------------------------------------------------------------------
+// gravgun.def
+//
+// Copyright 2002-2004 Raven Software
+//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+//							Vehicle Defintion
+//------------------------------------------------------------------------------
+
+entityDef vehicle_turret_gravgun
+{
+	"editor_color"				"1 .5 0"
+	"editor_mins"				"-8 -8 -8"
+	"editor_maxs"				"8 8 8"
+	"editor_rotatable"			"1"
+	"editor_usage"				"gravgun Mounted Turret."
+
+	"spawnclass"				"rvVehicleStatic"
+
+	"gui_hud"					"guis/hud.gui"//"guis/vehicles/turret_hud.gui"
+
+	"model"						"vehicle_gravgun"
+	"mins"						"-16 -16 0"
+	"maxs"						"16 16 32"
+
+	"def_position_driver"		"vehicle_gravgun_driver"
+	
+	"health"					"0"
+	"mass"						"100"	
+	
+	"notPushable"				"1"
+}
+
+//------------------------------------------------------------------------------
+//								Positions
+//------------------------------------------------------------------------------
+
+entityDef vehicle_gravgun_driver
+{
+	"def_part_yaw"				"vehicle_gravgun_turret_yaw"
+	"def_part_pitch"			"vehicle_gravgun_turret_pitch"
+	
+	"def_part_weapon"			"vehicle_gravgun_weapon"
+	
+	"angles_offset"				"0 -90 0"
+	
+	"eyeJoint"					"eye"
+//	"eyeoffset"					"-25 0 2"
+	
+	"driverJoint"				"grunt_anchor"
+	"driverVisible"				"1"
+}
+
+//------------------------------------------------------------------------------
+//									Parts
+//------------------------------------------------------------------------------
+
+entityDef vehicle_gravgun_weapon
+{
+	"spawnclass"				"rvVehicleGravGun"
+	"joint"						"muzzle"
+	"fx_muzzleflash"			"effects/weapons/lightninggun/crawl.fx"
+	"fx_cangrab"				"effects/weapons/lightninggun/muzzleflash_world.fx"
+	
+	"snd_fire"					"weapon_gravityturret_fire"
+	"snd_aquire"				"weapon_gravityturret_acquire_loop"
+	"snd_arriveimpact"			"weapon_gravityturret_impactgrabbed"
+	"snd_grabbed"				"weapon_gravityturret_grabbed_loop"
+	"snd_grab"					"weapon_gravityturret_impactgrabbed"
+}
+
+entityDef vehicle_gravgun_turret_yaw
+{
+	"spawnclass"				"rvVehicleTurret"
+
+	"joint"						"origin"
+	
+	"yaw"						"0"
+	
+	"snd_move"					"vehicle_turret_move"
+	"moveMinVolume"				"-4"
+	"moveMaxVolume"				"8"
+	
+	"turnrate"					"180"
+}
+
+entityDef vehicle_gravgun_turret_pitch
+{
+	"spawnclass"				"rvVehicleTurret"
+
+	"joint"						"joint2"
+
+	"pitch"						"1"
+	"minpitch"					"-60"
+	"maxpitch"					"60"
+	"pitchinvert"				"1"
+
+	"snd_move"					"vehicle_turret_move"
+	"moveMinVolume"				"-4"
+	"moveMaxVolume"				"6"
+}
+
+model vehicle_gravgun
+{
+	mesh						"models/vehicles/gravgun/gravgun.md5mesh"
+
+	channel legs				( *origin )
+
+	anim idle					"models/vehicles/gravgun/idle.md5anim"
+}

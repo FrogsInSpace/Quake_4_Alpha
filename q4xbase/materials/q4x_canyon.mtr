@@ -1,0 +1,30 @@
+guide textures/canyon/Can_Topwall_03 generic_materialimageshader("canyon/Can_Topwall_03")
+guide textures/canyon/Can_Midwall_04brown generic_Localvariant("canyon/Can_Midwall_04" , "canyon/Can_Midwall_04brown")
+guide textures/canyon/Can_Techtrench_01brown generic_Localvariant("canyon/Can_Techtrench_01" , "canyon/Can_Techtrench_01brown")
+guide textures/canyon/Can_ramp_track_1brown generic_Localvariant("canyon/Can_ramp_track_1" , "canyon/Can_ramp_track_1brown")
+guide textures/canyon/Can_Bumper_01 generic_full_noheight("canyon/Can_Bumper_01")
+guide textures/canyon/Can_BreakableDoorbrown generic_Localvariant("canyon/Can_BreakableDoor" , "canyon/Can_BreakableDoorbrown")
+
+textures/canyon/Can_Rockwall_01
+{	//Rock wall for the sides of the canyons
+
+	qer_editorimage	textures/canyon/Can_Rockwall_01_d.tga
+
+	materialType	rock
+	
+	{
+	blend		bumpmap
+	map		addnormals (textures/canyon/Can_Rockwall_01_local.tga, heightmap (textures/canyon/Can_Rockwall_01_h.tga, 16) )
+
+	}
+
+	{
+	blend		diffusemap
+	map		textures/canyon/Can_Rockwall_01_d.tga
+	}
+
+	{
+	blend		specularmap
+	map		textures/canyon/Can_Rockwall_01_s.tga
+	}
+}

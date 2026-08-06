@@ -1,0 +1,365 @@
+
+
+
+void VO_marine1_theyallus( entity ent )
+{
+ //Marine 1: They’re all over us  
+ aiSpeakWait( ent, "lipsync_vo_marine1_theyallus" );
+}
+
+
+void VO_marine2_harvinbound( entity ent )
+{
+ //Marine 2: I got harvesters inbound, starboard side  
+ aiSpeakWait( ent, "lipsync_vo_marine2_harvinbound" );
+}
+
+
+void VO_marine3_shilddown( entity ent )
+{
+ //Marine 3: Shields are down  
+ aiSpeakWait( ent, "lipsync_vo_marine3_shilddown" );
+}
+
+
+void VO_marine4_hann( entity ent )
+{
+ //Marine 4: The Hannibal can't take this kind of punishment  
+ aiSpeakWait( ent, "lipsync_vo_marine4_hann" );
+}
+
+
+void VO_marine5_takingap( entity ent )
+{
+ //Marine 5: They're taking us apart  
+ aiSpeakWait( ent, "lipsync_vo_marine5_takingap" );
+}
+
+
+void VO_marine6_stroggev( entity ent )
+{
+ //Marine 6: We got Strogg everywhere  
+ aiSpeakWait( ent, "lipsync_vo_marine6_stroggev" );
+}
+
+
+void VO_marine1_thekeepcm( entity ent )
+{
+ //Marine 1: They just keep coming  
+ aiSpeakWait( ent, "lipsync_vo_marine1_thekeepcm" );
+}
+
+
+void VO_marine2_harvport( entity ent )
+{
+ //Marine 2: Another Harvester, Port side  
+ aiSpeakWait( ent, "lipsync_vo_marine2_harvport" );
+}
+
+
+void VO_marine3_keepoff( entity ent )
+{
+ //Marine 3: Keep 'em off us.  
+ aiSpeakWait( ent, "lipsync_vo_marine3_keepoff" );
+}
+
+
+void VO_marine4_defbatt( entity ent )
+{
+ //Marine 4: Defense Batteries are off line, they're gonna swarm us!  
+ aiSpeakWait( ent, "lipsync_vo_marine4_defbatt" );
+}
+
+
+void VO_marine5_dropprep( entity ent )
+{
+ //Marine 5: Dropships preparing for lift off  
+ aiSpeakWait( ent, "lipsync_vo_marine5_dropprep" );
+}
+
+
+void VO_marine6_waveunder( entity ent )
+{
+ //Marine 6: First wave is away.  Second wave preparing for launch  
+ aiSpeakWait( ent, "lipsync_vo_marine6_waveunder" );
+}
+
+
+void VO_marine1_crit( entity ent )
+{
+ //Marine 1: We’re going critical  
+ aiSpeakWait( ent, "lipsync_vo_marine1_crit" );
+}
+
+
+void VO_marine2_hullint( entity ent )
+{
+ //Marine 2: Hull integrity failing.  All hands, abandon ship  
+ aiSpeakWait( ent, "lipsync_vo_marine2_hullint" );
+}
+
+
+void VO_marine3_aband( entity ent )
+{
+ //Marine 3: Abandon Ship  
+ aiSpeakWait( ent, "lipsync_vo_marine3_aband" );
+}
+
+
+void VO_tak_srggetmv( entity ent )
+{
+ //Tak: Sarge, we gotta get moving!  The Hannibal’s about to blow  
+ aiSpeakWait( ent, "lipsync_vo_tak_srggetmv" );
+}
+
+
+void VO_darn_reactcrit( entity ent )
+{
+ //Darnell: If those reactors go critical; it’s gonna blow a crater in this place a half mile wide.  
+ aiSpeakWait( ent, "lipsync_vo_darn_reactcrit" );
+}
+
+
+void VO_tak_holyshit( entity ent )
+{
+ //Tak: Holy shit!  The hannibal is gone!  
+ aiSpeakWait( ent, "lipsync_vo_tak_holyshit" );
+}
+
+
+void VO_darn_ihopeshipt( entity ent )
+{
+ //Darnell: I hope everybody got out before the ship went up.  
+ aiSpeakWait( ent, "lipsync_vo_darn_ihopeshipt" );
+}
+
+
+void VO_tak_lockclose( entity ent )
+{
+ //Tak: Dekard, the locks are closing, you've got to haul ass!  
+ aiSpeakWait( ent, "lipsync_vo_tak_lockclose" );
+}
+
+
+void VO_tak_getmvdek( entity ent )
+{
+ //Tak: Get moving Dekard!  
+ aiSpeakWait( ent, "lipsync_vo_tak_getmvdek" );
+}
+
+
+void VO_darn_haulassdeklk( entity ent )
+{
+ //Darnell: Haul ass Dekard, the locks are closing!  
+ aiSpeakWait( ent, "lipsync_vo_darn_haulassdeklk" );
+}
+
+
+void VO_darn_gettocryo( entity ent )
+{
+ //Darnell: Get to the Cryogenics facility as fast as possible Dekard!  
+ aiSpeakWait( ent, "lipsync_vo_darn_gettocryo" );
+}
+
+
+void VO_darn_sargeem( entity ent )
+{
+ //Darnell: Sarge, I've got residual EM interference wrecking havoc with my guidance systems.  Me and the rest of Anchor squad are taking the secondary approach vector.  
+ aiSpeakWait( ent, "lipsync_vo_darn_sargeem" );
+}
+
+
+void VO_darn_shitlock( entity ent )
+{
+ //Darnell: Shit, the lock is closed!  Dekard didn't make it!  
+ aiSpeakWait( ent, "lipsync_vo_darn_shitlock" );
+}
+
+
+void VO_tak_youthnklt( entity ent )
+{
+ //Tak: You think the LT was onboard?  
+ aiSpeakWait( ent, "lipsync_vo_tak_youthnklt" );
+}
+
+
+void VO_marks_nosuch( entity ent )
+{
+ //Markswell: No such luck, Tak.  The dropships cleared the Hannibal right before it went critical.  We’re already enroute to Nexus waypoint, but you boys better move, the Strogg are already shutting down the locks.  Good luck,  Falcon Squad.  
+ aiSpeakWait( ent, "lipsync_vo_marks_nosuch" );
+}
+
+
+void VO_tak_dekwatchout( entity ent )
+{
+ //Tak: Dekard, watch out ahead, there's a pit you'll need to boost over or go around!  
+ aiSpeakWait( ent, "lipsync_vo_tak_dekwatchout" );
+}
+
+
+void VO_darn_harvest( entity ent )
+{
+ //Darnell: Harvester!  
+ aiSpeakWait( ent, "lipsync_vo_darn_harvest" );
+}
+
+
+void VO_nava_dekshldcom( entity ent )
+{
+ //Navajas: Dekard, I should be coming out right in front of you, follow me!  
+ aiSpeakWait( ent, "lipsync_vo_nava_dekshldcom" );
+}
+
+
+void VO_darn_wealmost( entity ent )
+{
+ //Darnell: We're almost to the Cryogenics facility, ETA three minutes.  
+ aiSpeakWait( ent, "lipsync_vo_darn_wealmost" );
+}
+
+
+void VO_marks_watchfalcon( entity ent )
+{
+ //Markswell: Watch out Falcon, you've got heavy Strogg flyers inbound your position!  
+ aiSpeakWait( ent, "lipsync_vo_marks_watchfalcon" );
+}
+
+
+void VO_darn_lookout2( entity ent )
+{
+ //Darnell: Look out!  
+ aiSpeakWait( ent, "lipsync_vo_darn_lookout2" );
+}
+
+
+void VO_nava_lookout2( entity ent )
+{
+ //Navajas: Look out!  
+ aiSpeakWait( ent, "lipsync_vo_nava_lookout2" );
+}
+
+
+void VO_tak_useboost( entity ent )
+{
+ //Tak: Use your boost!  
+ aiSpeakWait( ent, "lipsync_vo_tak_useboost" );
+}
+
+
+void VO_nava_boosting( entity ent )
+{
+ //Navajas: Boosting!  
+ aiSpeakWait( ent, "lipsync_vo_nava_boosting" );
+}
+
+
+void VO_nava_useboost( entity ent )
+{
+ //Navajas: Use your boost!  
+ aiSpeakWait( ent, "lipsync_vo_nava_useboost" );
+}
+
+
+void VO_tak_boosting( entity ent )
+{
+ //Tak: Boosting!  
+ aiSpeakWait( ent, "lipsync_vo_tak_boosting" );
+}
+
+
+void VO_marine1_turbonline( entity ent )
+{
+ //Marine 1: Turbine’s on line  
+ aiSpeakWait( ent, "lipsync_vo_marine1_turbonline" );
+}
+
+
+void VO_marine2_lockdead( entity ent )
+{
+ //Marine 2: Lock dead ahead  
+ aiSpeakWait( ent, "lipsync_vo_marine2_lockdead" );
+}
+
+
+void VO_marine3_theyallover( entity ent )
+{
+ //Marine 3: They’re all over me here  
+ aiSpeakWait( ent, "lipsync_vo_marine3_theyallover" );
+}
+
+
+void VO_marine4_acton( entity ent )
+{
+ //Marine 4: Acton’s down  
+ aiSpeakWait( ent, "lipsync_vo_marine4_acton" );
+}
+
+
+void VO_marine5_shitleft( entity ent )
+{
+ //Marine 5: Shit, hard left  
+ aiSpeakWait( ent, "lipsync_vo_marine5_shitleft" );
+}
+
+
+void VO_marine6_whathell( entity ent )
+{
+ //Marine 6: What the hell was that  
+ aiSpeakWait( ent, "lipsync_vo_marine6_whathell" );
+}
+
+
+void VO_marine1_runnout( entity ent )
+{
+ //Marine 1: We’re running out of time  
+ aiSpeakWait( ent, "lipsync_vo_marine1_runnout" );
+}
+
+
+void VO_marine2_lockshut( entity ent )
+{
+ //Marine 2: Lock’s shutting down  
+ aiSpeakWait( ent, "lipsync_vo_marine2_lockshut" );
+}
+
+
+void VO_marine3_watchrt( entity ent )
+{
+ //Marine 3: Watch the right  
+ aiSpeakWait( ent, "lipsync_vo_marine3_watchrt" );
+}
+
+
+void VO_marine4_pickpace( entity ent )
+{
+ //Marine 4: Pick up the pace, Marines  
+ aiSpeakWait( ent, "lipsync_vo_marine4_pickpace" );
+}
+
+
+void VO_marine5_contbrid( entity ent )
+{
+ //Marine 5: I got contact over that ridge  
+ aiSpeakWait( ent, "lipsync_vo_marine5_contbrid" );
+}
+
+
+void VO_marine6( entity ent )
+{
+ //Marine 6: Shit, I lost actuator control, I’ve got no control!  I can’t (Static)  
+ aiSpeakWait( ent, "lipsync_vo_marine6" );
+}
+
+
+void VO_marine1_turbfail( entity ent )
+{
+ //Marine 1: Turbine’s failing, I’m gonna have to fall back.  
+ aiSpeakWait( ent, "lipsync_vo_marine1_turbfail" );
+}
+
+
+void VO_marine2_ridgeclr( entity ent )
+{
+ //Marine 2: Ridge is clear  
+ aiSpeakWait( ent, "lipsync_vo_marine2_ridgeclr" );
+}

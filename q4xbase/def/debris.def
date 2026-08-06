@@ -1,0 +1,116 @@
+entityDef debris_small_fire
+{
+	"model" 					"models/gibs/rup_arm_pork.lwo"
+	"density"					"0.02"
+	"friction"					"0.2"
+	"bouncyness"				"0.1"
+	"trailAttenuateSpeed"		"200"
+
+//	"fx_trail"					"effects/moveables/barrel/debris_fly.fx"
+	"snd_bounce"				"effects_gib_bounce"
+}
+
+/// --------  Ice Debris  -----------------------
+
+entityDef debris_icegib_01 
+{
+	"inherit"							"moveable_base"
+	"model"								"models/debris/ice/ice01.ASE"
+	//"fx_trail"						"effects/fire/spot_32_trail_ns.fx"
+	"notPushable"						"1"
+	"density"							"0.6"
+	"friction"							"0.3"
+	"bouncyness"						"0.6"
+}
+
+entityDef debris_icegib_02 
+{
+	"inherit"					"moveable_base"
+	"model"						"models/debris/ice/ice02.ASE"
+	"notPushable"						"1"
+	"density"							"0.6"
+	"friction"							"0.5"
+	"bouncyness"						"0.4"
+}
+
+entityDef debris_icegib_03 
+{
+	"inherit"					"moveable_base"
+	"model"						"models/debris/ice/ice03.ASE"
+	"notPushable"						"1"
+	"density"							"0.6"
+	"friction"							"0.5"
+	"bouncyness"						"0.4"
+}
+
+entityDef debris_icegib_04 
+{
+	"inherit"					"moveable_base"
+	"model"						"models/debris/ice/ice04.ASE"
+	"notPushable"						"1"
+	"density"							"0.6"
+	"friction"							"0.5"
+	"bouncyness"						"0.4"
+}
+
+entityDef debris_icegib_05 
+{
+	"inherit"					"moveable_base"
+	"model"						"models/debris/ice/ice05.ASE"
+	"notPushable"						"1"
+	"density"							"0.6"
+	"friction"							"0.5"
+	"bouncyness"						"0.4"
+}
+
+//////  moveable versions of Q4 Base objects //////////////
+
+
+entityDef q4x_debris_intro_01
+{
+	"inherit"					"moveable_base"
+	"model" 					"models/monsters/convoy_ground_creature/debris/joint1.lwo"
+	"density"					"0.1"
+	"friction"					"0.5"
+	"bouncyness"				"0.35"
+}
+
+entityDef q4x_debris_intro_02
+{
+	"inherit"					"moveable_base"
+	"model" 					"models/mapobjects/marine/equipment/misc/fireext.lwo"
+	"density"					"0.1"
+	"friction"					"0.2"
+	"bouncyness"				"0.35"
+	"snd_bounce"				"generic_rock_impact_small"
+}
+
+entityDef q4x_debris_intro_03
+{
+	"inherit"					"moveable_base"
+	"model" 					"models/mapobjects/marine/equipment/crates/ammobox.lwo"
+	"density"					"0.1"
+	"friction"					"0.2"
+	"bouncyness"				"0.35"
+	"snd_bounce"				"generic_rock_impact_small"
+}
+
+entityDef q4x_debris_intro_04
+{
+	"inherit"					"moveable_base"
+	"model" 					"models/mapobjects/marine/equipment/helmet_moveable.lwo"
+	"density"					"0.1"
+	"friction"					"0.2"
+	"bouncyness"				"0.35"
+	"snd_bounce"				"generic_rock_impact_small"
+}
+
+entityDef q4x_debris_intro_05
+{
+	"inherit"					"moveable_base"
+	"model" 					"models/mapobjects/marine/equipment/misc/reuse/binder4.lwo"
+	"density"					"0.1"
+	"friction"					"0.2"
+	"bouncyness"				"0.35"
+	"snd_bounce"				"generic_rock_impact_small"
+}

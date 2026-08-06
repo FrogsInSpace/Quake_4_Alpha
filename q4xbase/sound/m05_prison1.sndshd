@@ -1,0 +1,109 @@
+q4x_computer_alarm1
+{
+	minDistance	40
+	maxDistance	412
+	looping
+	volumeDb		-6
+
+	sound/ambience/m05/computer_alarm1.ogg
+}
+
+q4x_computer_alarm2
+{
+	minDistance	40
+	maxDistance	412
+	looping
+	volumeDb		-6
+
+	sound/ambience/m05/computer_alarm2.ogg
+}
+
+q4x_computer_alarm3
+{
+	minDistance	40
+	maxDistance	412
+	looping
+	volumeDb		-6
+
+	sound/ambience/m05/computer_alarm3.ogg
+}
+
+q4x_computer_alarm4
+{
+	minDistance	40
+	maxDistance	412
+	looping
+	volumeDb		-6
+
+	sound/ambience/m05/computer_alarm4.ogg
+}
+
+prison_machine_amb1
+{
+	minDistance	128
+	maxDistance	512
+	volumeDb		-6
+	looping
+	
+	sound/ambience/m05/machine_amb1.ogg
+}
+
+prison_machine_amb2
+{
+	minDistance	128
+	maxDistance	512
+	volumeDb		-6
+	looping
+	
+	sound/ambience/m05/machine_amb2.ogg
+}
+
+prison_machine_amb3
+{
+	minDistance	128
+	maxDistance	512
+	volumeDb		-6
+	looping
+	
+	sound/ambience/m05/machine_amb3.ogg
+}
+
+prison_screamloop1
+{
+	minDistance	228
+	maxDistance	712
+	volumeDb		-6
+	looping
+	
+	sound/ambience/m05/screamloop1.ogg
+}
+
+prison_screamloop2
+{
+	minDistance	228
+	maxDistance	712
+	volumeDb		-6
+	looping
+	
+	sound/ambience/m05/screamloop2.ogg
+}
+
+prison_machine_work1
+{
+	minDistance	128
+	maxDistance	512
+	volumeDb		-6
+	looping
+	
+	sound/ambience/m05/machine_work1.ogg
+}
+
+prison_machine_work2
+{
+	minDistance	128
+	maxDistance	512
+	volumeDb		-6
+	looping
+	
+	sound/ambience/m05/machine_work2.ogg
+}

@@ -1,0 +1,485 @@
+
+models/weapons/core_cannon/w_core_cannon
+{
+
+	unsmoothedtangents
+
+	diffusemap 			models/weapons/core_cannon/w_core_cannon_d.tga
+    	bumpmap				models/weapons/core_cannon/w_core_cannon_local.tga
+	specularmap 			models/weapons/core_cannon/w_core_cannon_s.tga
+	{ 
+		blend add
+		map models/weapons/core_cannon/w_core_cannon_glowpass.tga
+		//scroll time * 1 
+    }
+
+}
+
+
+textures/marktest/flame_juice
+{
+qer_editorimage models/weapons/goob_gun/flame_juice.tga
+	
+//translucent
+//twosided
+		
+	{	
+		blend blend
+		map 					models/weapons/goob_gun/flame_juice.tga
+		scale 5, 5
+		scroll time * 0.05, time * 0.05
+		green (.5 * sintable [.01 * time ]) +1
+		blue  (.5 * cosine [.01 * time ]) +1
+		
+	}
+
+	{
+		blend add
+		map 					models/weapons/goob_gun/flame_juice.tga
+		scale 5, 5
+		scroll  time * .005, time * .005
+	    rotate  time * 0.0005
+	    green (.35 * sintable [.03 * time ]) +1 
+		blue  (.35 * sintable [.03 * time ]) +1 
+	}
+	{
+		blend add
+		map 					models/weapons/goob_gun/flame_juice02.tga
+		scale 5, 5
+		scroll  sintable[time * .002], sintable[time * .002]
+		rotate  time * -0.0005
+		green (1 * cosine [.05 * time ]) +1 
+		blue  (1 * cosine [.005 * time ]) +1 
+		red   (1 * cosine [.05 * time ]) +1 
+	}	
+	
+}
+
+
+models/weapons/goob_gun/flamegun_main
+
+{
+	diffusemap 		models/weapons/goob_gun/flamegun_main_d.tga
+	bumpmap			models/weapons/goob_gun/flamegun_main_local.tga
+	specularmap 	models/weapons/goob_gun/flamegun_main_s.tga
+	{
+	blend  add
+	map 			models/weapons/goob_gun/flamegun_main_add.tga
+	red				(.25 * sintable [.5 * time ]) +1
+	}
+}
+
+models/weapons/goob_gun/flamegun_cannister
+
+{
+	diffusemap 		models/weapons/goob_gun/flamegun_cannister_d.tga
+	bumpmap			models/weapons/goob_gun/flamegun_cannister_local.tga
+	specularmap 	models/weapons/goob_gun/flamegun_cannister_s.tga
+	
+}
+
+models/weapons/goob_gun/flamegun_tube
+
+{
+	diffusemap 		models/weapons/goob_gun/flamegun_tube_d.tga
+	bumpmap			models/weapons/goob_gun/flamegun_tube_local.tga
+	specularmap 	models/weapons/goob_gun/flamegun_tube_s.tga
+	
+}
+
+
+models/weapons/goob_gun/flamegun_glass
+
+{
+translucent
+twosided
+	diffusemap 		models/weapons/goob_gun/flamegun_glass_d.tga
+	//bumpmap			models/weapons/goob_gun/flamegun_glass_local.tga
+	specularmap 	models/weapons/goob_gun/flamegun_glass_s.tga
+	{
+		blend		gl_src_color, gl_one
+		texgen		reflect
+		cubeMap 	gfx/env/marhelmet
+	}
+}
+
+
+models/weapons/goob_gun/flame_juice
+{
+
+//translucent
+//twosided
+
+	{	
+		blend blend
+		map 					models/weapons/goob_gun/flame_juice.tga
+		scale 0.8, 1.0
+		scroll time * -0.05, time * -0.05
+		green (.5 * sintable [.01 * time ]) +1
+		blue  (.5 * cosine [.01 * time ]) +1
+	}
+	{
+		blend add
+		map 					models/weapons/goob_gun/flame_juice.tga
+		scale 0.5, 0.5
+		scroll  time * -.005, time * -.005
+	    rotate  time * 0.0005
+	    green (.35 * sintable [.03 * time ]) +1 
+		blue  (.35 * sintable [.03 * time ]) +1 
+	}
+	{
+		blend add
+		map 					models/weapons/goob_gun/flame_juice02.tga
+		scale 1.0, 1.0
+		scroll  sintable[time * .002], sintable[time * .002]
+		rotate  time * -0.0005
+		green (1 * cosine [.05 * time ]) +1 
+		blue  (1 * cosine [.005 * time ]) +1 
+		red   (1 * cosine [.05 * time ]) +1 
+	}	
+
+}
+
+models/weapons/goob_gun/flame_glob
+
+
+{
+//deform turbulent sinTable 0.05 (time * .3 ) 1
+
+//deform expand (1* sintable [5 * time ]) +1
+//deform move 10*sintable[time*0.5]
+deform expand (1* random [.01 * time ]) +1
+//translucent
+//twosided
+
+	{	
+		blend blend
+		map 					models/weapons/goob_gun/flame_juice.tga
+		scale 0.8, 1.0
+		scroll time * -0.5, time * -0.5
+		
+	}
+	
+	
+	{
+		blend add
+		map 					models/weapons/goob_gun/flame_juice02.tga
+		scale 0.5, 0.5
+		scroll  time * .5, time * .5
+	    rotate  time * 0.0005
+	  
+	}
+	{
+		blend add
+		map 					models/weapons/goob_gun/flame_juice02.tga
+		scale 1.0, 1.0
+		scroll  time * -.2, time * -.2
+		rotate  time * -0.075
+
+	}
+	
+	
+
+}
+
+
+models/weapons/goob_gun/flame_glob2
+
+
+{
+//deform turbulent sinTable 0.05 (time * .3 ) 1
+
+//deform expand (1* sintable [5 * time ]) +1
+deform move 5*sintable[time*0.5]
+//deform expand (1* random [5 * time ]) +1
+//translucent
+//twosided
+
+	{	
+		blend blend
+		map 					models/weapons/goob_gun/flame_juice.tga
+		scale 0.8, 1.0
+		scroll time * -0.5, time * -0.5
+	
+	}
+	
+	
+	{
+		blend add
+		map 					models/weapons/goob_gun/flame_juice02.tga
+		scale 0.5, 0.5
+		scroll  time * .5, time * .5
+	    rotate  time * 0.0005
+	    green (.35 * sintable [.03 * time ]) +1 
+		blue  (.35 * sintable [.03 * time ]) +1 
+	}
+	{
+		blend add
+		map 					models/weapons/goob_gun/flame_juice02.tga
+		scale 1.0, 1.0
+		scroll  time * -.2, time * -.2
+		rotate  time * -0.075
+		
+	}
+	
+	
+
+}
+
+
+models/weapons/goob_gun/flame_glob3
+
+
+{
+//deform turbulent sinTable 0.05 (time * .3 ) 1
+
+//deform expand (1* sintable [5 * time ]) +1
+deform move 1*random[time*0.009]
+//deform expand (1* random [5 * time ]) +1
+//translucent
+//twosided
+
+	{	
+		blend blend
+		map 					models/weapons/goob_gun/flame_juice.tga
+		scale 0.8, 1.0
+		scroll time * -0.5, time * -0.5
+	
+	}
+	
+	
+	{
+		blend add
+		map 					models/weapons/goob_gun/flame_juice02.tga
+		scale 0.5, 0.5
+		scroll  time * .5, time * .5
+	    rotate  time * 0.0005
+	  
+	}
+	{
+		blend add
+		map 					models/weapons/goob_gun/flame_juice02.tga
+		scale 1.0, 1.0
+		scroll  time * -.2, time * -.2
+		rotate  time * -0.075
+	
+	}
+	
+	
+
+}
+
+models/weapons/core_cannon/ammo_core
+{
+
+	//unsmoothedtangents
+
+	diffusemap 			models/weapons/core_cannon/ammo_core_d.tga
+    bumpmap				models/weapons/core_cannon/ammo_core_local.tga
+	specularmap 			models/weapons/core_cannon/ammo_core_s.tga
+	{ 
+		blend add
+		map models/weapons/core_cannon/ammo_core_add.tga
+		//scroll time * 1 
+    }
+
+}
+
+
+
+
+models/weapons/core_cannon/core_cannon
+{
+	//unsmoothedtangents
+
+
+	diffusemap 		models/weapons/core_cannon/core_cannon_d.tga
+	bumpmap			models/weapons/core_cannon/core_cannon_local.tga
+	specularmap 	models/weapons/core_cannon/core_cannon_s.tga
+	{
+	blend add
+	map 			models/weapons/core_cannon/core_cannon_glow.tga
+	rgb  (.35 * sintable [.5 * time ]) +1
+
+	}
+	
+}
+
+
+
+
+
+gfx/effects/q4x/models/core_cannon_add1
+
+{
+	
+	noShadows
+	nonSolid
+	translucent
+	twoSided
+	{
+		blend add
+		map 	gfx/effects/q4x/models/core_cannon_add01.tga
+		//vertexColor
+		rgb (0.15 * sintable [.5 * time ]) +1
+		rotate time * .2
+	}
+	{
+		blend add
+		map 	gfx/effects/q4x/models/core_cannon_add02.tga
+		//vertexColor
+		rotate time * -.2
+	}
+		
+
+}
+
+
+models/weapons/freezegun/freezegun_main
+
+{
+
+//unsmoothedtangents
+
+
+	diffusemap 		models/weapons/freezegun/freezegun_main_d.tga
+	bumpmap			models/weapons/freezegun/freezegun_main_local.tga
+	specularmap 	models/weapons/freezegun/freezegun_main_s.tga
+	{
+		blend add
+		map 		models/weapons/freezegun/freezegun_main_add.tga
+		
+	}
+	
+}
+
+
+models/weapons/freezegun/freezegun_canister
+
+{
+	diffusemap 		models/weapons/freezegun/freezegun_canister_d.tga
+	bumpmap			models/weapons/freezegun/freezegun_canister_local.tga
+	specularmap 	models/weapons/freezegun/freezegun_canister_s.tga
+	{
+		blend add
+		map 		models/weapons/freezegun/freezegun_canister_add.tga
+		
+	}
+	
+}
+
+models/weapons/freezegun/freezegun_tube
+
+{
+
+//translucent
+
+
+		diffusemap 		models/weapons/freezegun/freezegun_tubes_d.tga
+		bumpmap 		models/weapons/freezegun/freezegun_tubes_local.tga
+		specularmap 		models/weapons/freezegun/freezegun_tubes_s.tga
+		
+		{
+		blend add
+		map 		models/weapons/freezegun/freezegun_tubes_add.tga
+		scroll time * -0.05, time * -0.05
+		}
+		{
+		blend add
+		map 		models/weapons/freezegun/freezegun_tubes_add2.tga
+		scale  .03, 1
+		scroll time * -2, time * 0
+		
+		}
+		{
+		blend add
+		map 		models/weapons/freezegun/freezegun_tubes_add2.tga
+		scale  .1, 1
+		scroll time * -4, time * 0
+		
+		}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//*******************************************
+
+//  World Models added by MarkM
+
+//*******************************************
+
+models/weapons/goob_gun/w_flamegun
+
+{
+	diffusemap 		models/weapons/goob_gun/w_flamegun_d.tga
+	bumpmap			models/weapons/goob_gun/w_flamegun_local.tga
+	specularmap 	models/weapons/goob_gun/w_flamegun_s.tga
+	{
+	blend  add
+	map 			models/weapons/goob_gun/w_flamegun_add.tga
+	red				(.25 * sintable [.5 * time ]) +1
+	green			(.1 * sintable [.5 * time ]) +1
+	blue			(.1 * sintable [.5 * time ]) +1
+	}
+	
+	{
+		maskColor
+		map makealpha(models/weapons/goob_gun/w_flamegun_glowmask.tga)
+		
+	}	
+	{
+		blend	GL_DST_ALPHA, GL_ONE
+	 	maskAlpha
+		map models/weapons/goob_gun/w_flamegun_glow.tga
+		scroll time * .25, time * .25
+		
+	}
+	{
+		blend		GL_DST_ALPHA, gl_one
+		maskAlpha
+		texgen		reflect
+		cubeMap 	gfx/env/marhelmet
+		scale       .25, .25
+	}	
+	
+
+}
+
+models/weapons/core_cannon/corecannon_world
+
+{
+
+		diffusemap 		models/weapons/core_cannon/corecannon_world_d.tga
+		bumpmap 		models/weapons/core_cannon/corecannon_world_local.tga
+		specularmap 	models/weapons/core_cannon/corecannon_world_s.tga
+		{
+		blend add
+		map 			models/weapons/core_cannon/corecannon_world_add.tga
+		}
+}
+
+models/weapons/freezegun/freezegun_world
+
+
+
+{
+
+//unsmoothedtangents
+
+		diffusemap 		models/weapons/freezegun/freezegun_world_d.tga
+		bumpmap 		models/weapons/freezegun/freezegun_world_local.tga
+		specularmap 	models/weapons/freezegun/freezegun_world_s.tga
+		{
+		blend add
+		map 			models/weapons/freezegun/freezegun_world_add.tga
+		}
+}

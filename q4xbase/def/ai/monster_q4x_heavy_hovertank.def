@@ -1,0 +1,119 @@
+/*
+===============================================================================
+
+	Heavy Hover Tank
+
+===============================================================================
+*/
+
+export hh_tank 
+{
+	options -prefix HHT_ -scale .3937 -align ALL -parent rt_eyeBall head -parent lft_eyeBall head -keep muzzle_flash machine_gun_barrel fx
+	anim	models/monsters/Heavy_hover_tank/animations/hht_pain_fire.ma				-dest models/monsters/heavyhovertank/pain_fire
+
+}
+
+export big_hh_tank 
+{
+	options -prefix HHT_ -scale .3937 -align ALL -parent rt_eyeBall head -parent lft_eyeBall head -keep muzzle_flash machine_gun_barrel fx
+	anim	models/monsters/Heavy_hover_tank/animations/big_hht_pain_fire.ma			-dest models/monsters/bigheavyhovertank/pain_fire
+}
+
+entityDef projectile_q4x_htank_rocket
+{
+	"inherit"							"projectile_base"
+
+	"spawnclass"						"idGuidedProjectile"
+
+	"mins"								"-8 -8 -8"
+	"maxs"								"8 8 8"
+	"cone"								"2"
+	"noshadows"							"0"
+	"clipmask_largeshot"				"1"
+	"no_contents"						"0"
+
+	"model"								"models/monsters/heavyhovertank/rocket.lwo"
+
+	"health"							"15"
+	"fuse"								"10"
+
+	"angular_velocity"					"0 0 5"
+
+	"def_damage"						"damage_q4x_htank_direct"
+	"def_splash_damage"					"damage_q4x_htank_splash"
+	"speed"								"280"
+
+	"fx_fly"							"effects/monsters/heavy_tank/fly.fx"
+	"fx_impact"							"effects/monsters/heavy_tank/impact.fx"
+	"fx_detonate"						"effects/monsters/heavy_tank/impact.fx"
+	"fx_fuse"							"effects/monsters/heavy_tank/impact.fx"
+//	"fx_death"							"effects/monsters/heavy_tank/impact.fx"
+
+	"snd_fly"							"weapon_energy_projectile_loop"
+}
+
+entityDef damage_q4x_htank_direct
+{
+	"damage"							"50"
+	"push"								"50"
+	"knockback"							"50"
+	"mtr_splat"							""
+	"gib"								"1"
+}
+
+entityDef damage_q4x_htank_splash
+{
+	"damage"							"25"
+	"radius"							"300"
+	"knockback"							"50"
+	"push"								"50"
+	"gib"								"0"
+}
+
+
+
+/*
+===============================================================================
+
+	Heavy Hover Tank Entity Definition
+
+===============================================================================
+*/
+
+entityDef monster_q4x_hh_tank
+{
+	"inherit"							"monster_hh_tank"
+	//"def_attack_rocket"				"projectile_q4x_htank_rocket"
+	"def_attack_rocket"					"projectile_rocket"
+}
+
+entityDef monster_q4x_big_hh_tank
+{
+	"inherit"							"monster_q4x_hh_tank"
+	"health"							"1200"
+
+	"model"								"model_monster_q4x_big_heavy_hovertank"
+	"size"								"94 94 96"
+	"use_aas"							"aas96"
+
+	"painThreshold"						"50"
+
+	"fly_bob_strength"					"128"
+
+	"def_attack_rocket"					"projectile_big_htank_rocket"
+	"def_attack_blaster"				"projectile_big_htank_blaster"
+	
+	"def_attack_melee"					"melee_big_htank"
+	"def_attack_melee_right"			"melee_big_htank_right"
+}
+
+entityDef monster_q4x_big_hh_tank_convoy
+{
+	"inherit"							"monster_q4x_big_hh_tank"
+
+	"strafeSpeed"						"100"
+
+	"joint_hover"						""
+	"fx_dust"							""
+	"fx_hover"							""
+}

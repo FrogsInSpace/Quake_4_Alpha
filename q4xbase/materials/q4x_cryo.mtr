@@ -1,0 +1,797 @@
+//added by John, 7-27-05, for m10 "steamer" machines
+textures/q4x_cryo/m10_steamer
+{
+	qer_editorimage 			textures/q4x_cryo/m10_steamer_d.tga
+
+	diffusemap	textures/q4x_cryo/m10_steamer_d.tga
+	bumpmap	textures/q4x_cryo/m10_steamer_local.tga
+	specularmap	textures/q4x_cryo/m10_steamer_s.tga
+
+	{
+		blend add
+		map textures/q4x_cryo/m10_steamer_add.tga
+	}
+}
+
+//added by John, 7-27-05, for m10 "steamer" machines
+textures/q4x_cryo/cryo_steamerfluid
+{
+	noShadows
+	translucent
+	nonSolid
+	twoSided
+	
+	qer_editorimage 			textures/q4x_cryo/fluid_bw_01.tga
+	{
+		blend diffuseMap	
+		map 					textures/q4x_cryo/fluid_bw_01.tga
+		scale 1.3, 0.35
+		scroll time * 0.05, time * 0.05
+	}
+	{
+		blend add
+		map 					textures/q4x_cryo/fluid_bw_03.tga
+		scale 1.9, 1.2
+		scroll time * 0, time * 0.06
+	}
+}
+
+//added by John, 7-27-05, for m10 "steamer" machines
+textures/q4x_cryo/cryo_steamer_top_fluid
+{
+	noShadows
+	translucent
+	nonSolid
+	twoSided
+	
+	qer_editorimage 			textures/q4x_cryo/fluid_bw_01.tga
+	{
+		blend diffuseMap	
+		map 					textures/q4x_cryo/fluid_bw_01.tga
+		scale 0.3, 0.3
+		scroll time * 0.05, time * 0.05
+	}
+}
+
+// Added by nick, modified by John, remodified by nick, re-remodified by John
+textures/q4x_cryo/cryo_cave_ice
+{
+           noSelfShadow
+           materialType glass
+	{
+		blend 		bumpmap
+		map			models/mapobjects/q4x/cryo_cave01/cryo_cave01_local.tga
+	}
+	{
+		blend 		diffusemap
+		map			models/mapobjects/q4x/cryo_cave01/cryo_cave01_d.tga
+	}
+	{
+		blend		gl_dst_color, gl_one
+		texgen		reflect
+		cubeMap gfx/env/marhelmet
+	}
+
+}
+
+
+//John 7/1/05
+textures/q4x_cryo/cryo_cave_super_ice
+{
+           noSelfShadow
+           materialType glass
+
+	{
+		blend 		bumpmap
+		map			models/mapobjects/q4x/cryo_cave01/cryo_cave02_local.tga
+		//scale 1.25, 1.25
+	}
+	{
+		blend 		diffusemap
+		map			models/mapobjects/q4x/cryo_cave01/cryo_cave02_d.tga
+		inverseVertexColor
+	}
+	{
+		blend		specularmap
+		map			models/mapobjects/q4x/cryo_cave01/cryo_cave02_s.tga
+		inverseVertexColor
+	}
+	{
+		blend 		bumpmap
+		map			models/mapobjects/q4x/cryo_cave01/cryo_cave01_local.tga
+		scale 2.0, 2.0
+	}
+	{
+		blend 		diffusemap
+		map			models/mapobjects/q4x/cryo_cave01/cryo_cave01_d.tga
+		scale 2, 2
+		VertexColor
+	}
+	{
+		blend		specularmap
+		map			models/mapobjects/q4x/cryo_cave01/cryo_cave01_s.tga
+		scale 2, 2
+		VertexColor
+	}
+	{
+		blend		gl_dst_color, gl_one
+		texgen		reflect
+		cubeMap gfx/env/cryo_cave
+		VertexColor
+	}
+	{
+		blend		gl_src_alpha, gl_one_minus_src_alpha
+		map			models/mapobjects/q4x/cryo_cave01/cryo_cave01_frost_d.tga
+		scale 2, 2
+	}
+
+
+}
+
+/////////////////////////////////////////////////////
+/////////////// ADDED BY WYETH //////////////////////
+/////////////////////////////////////////////////////
+
+textures/q4x_cryo/frostedglass01
+{
+	twosided
+	translucent
+	materialType glass
+
+	qer_editorimage	textures/glass/frosted01.tga
+	
+	{
+		blend diffuseMap
+		map textures/glass/frosted01.tga
+		scale 1, 1
+	}	
+	
+	{
+		Program			heatHaze.vfp
+		vertexParm		0	time * 0 , time * 0.003					// texture scrolling
+		vertexParm		1	4									// magnitude of the distortion
+		fragmentProgram	heatHaze.vfp
+		fragmentMap		0	_currentRender
+		fragmentMap		1	textures/glass/frosted01_local.tga	// the normal map for distortion
+	}
+	
+	{
+		blend specularmap
+		map textures/glass/frosted01_s.tga
+		scale 0.8, 0.8
+	}
+
+	{
+		blend blend
+		map textures/glass/frosted01_d.tga
+		scale 0.6, 0.6
+	}
+
+}
+
+
+textures/q4x_cryo/cryo_tube01
+{
+	qer_editorimage 		textures/q4x_cryo/cryo_tube01_d.tga
+	twoSided
+	noshadows
+	translucent
+
+	bumpmap 				textures/q4x_cryo/cryo_tube01_local.tga
+	
+	{       
+		blend				diffuseMap 
+		map					textures/q4x_cryo/cryo_tube01_d.tga
+		alphaTest .5
+	}
+	
+	specularmap				textures/q4x_cryo/cryo_tube01_s.tga
+}
+
+
+///////  this shader below was added by Steve H   ////////
+textures/q4x_cryo/cryo_tube02
+{
+	qer_editorimage 		textures/q4x_cryo/cryo_tube02_d.tga
+	twoSided
+	noshadows
+	translucent
+
+	bumpmap 			textures/q4x_cryo/cryo_tube02_local.tga
+
+	{
+		blend add
+		map textures/q4x_cryo/cryo_tube02_add.tga
+	}
+	
+	{       
+		blend			diffuseMap 
+		map			textures/q4x_cryo/cryo_tube02_d.tga
+		alphaTest .5
+	}
+	
+	specularmap			textures/q4x_cryo/cryo_tube02_s.tga
+}
+
+
+textures/q4x_cryo/cryo_fluid01
+{
+	noShadows
+	translucent
+	nonSolid
+	twoSided
+	
+	materialType glass
+	
+	qer_editorimage 			textures/q4x_cryo/Fluid01.tga
+
+	{
+		Program			heatHaze.vfp
+		vertexParm		0	time * 0 , time * 0.2			// texture scrolling
+		vertexParm		1	7								// magnitude of the distortion
+		fragmentProgram	heatHaze.vfp
+		fragmentMap		0	_currentRender
+		fragmentMap		1	textures/q4x_cryo/fluid01_local.tga	// the normal map for distortion
+	}
+	
+	{
+		blend diffuseMap	
+		map 					textures/q4x_cryo/Fluid01.tga
+		scale 1.3, 0.35
+		scroll time * 0.05, time * 1.5
+	}
+
+	{
+		blend GL_DST_COLOR, GL_ONE
+		map 					textures/q4x_cryo/Fluid02.tga
+		scale 0.8, 0.1
+		scroll time * 0.025, time * 0.65
+	}
+
+	{
+		blend add
+		map 					textures/q4x_cryo/Fluid03.tga
+		scale 1.9, 1.2
+		scroll time * 0, time * 0.51
+	}
+	
+	{
+		blend blend
+		map 					textures/q4x_cryo/Fluid04.tga
+	}
+
+
+}
+
+textures/q4x_cryo/cryo_fluid02
+{
+	noShadows
+	translucent
+	nonSolid
+	twoSided	
+	
+	qer_editorimage 			textures/q4x_cryo/Fluid01.tga
+
+	{
+		Program			heatHaze.vfp
+		vertexParm		0	time * 0 , time * 0			// texture scrolling
+		vertexParm		1	3							// magnitude of the distortion
+		fragmentProgram	heatHaze.vfp
+		fragmentMap		0	_currentRender
+		fragmentMap		1	textures/q4x_cryo/fluid01_local.tga	// the normal map for distortion
+	}
+
+	{
+		blend diffuseMap	
+		map 					textures/q4x_cryo/Fluid01.tga
+		scale 1.3, 0.35
+		scroll time * 0.05, time * 1.5
+	}
+
+	{
+		blend GL_DST_COLOR, GL_ONE
+		map 					textures/q4x_cryo/Fluid02.tga
+		scale 0.8, 0.1
+		scroll time * 0.025, time * 0.65
+	}
+
+	{
+		blend add
+		map 					textures/q4x_cryo/Fluid03.tga
+		scale 1.9, 1.2
+		scroll time * 0, time * 0.45
+	}
+	
+	{
+		blend blend
+		map 					textures/q4x_cryo/Fluid05.tga
+	}
+
+}
+
+textures/q4x_cryo/cryo_fluid_nopixelshader
+{
+	noShadows
+	translucent
+	nonSolid
+	twoSided
+	
+	materialType glass
+	
+	qer_editorimage 			textures/q4x_cryo/Fluid01.tga
+
+
+	{
+		blend diffuseMap	
+		map 					textures/q4x_cryo/Fluid01.tga
+		scale 1.3, 0.35
+		scroll time * 0.05, time * 1.5
+	}
+
+	{
+		blend GL_DST_COLOR, GL_ONE
+		map 					textures/q4x_cryo/Fluid02.tga
+		scale 0.8, 0.1
+		scroll time * 0.025, time * 0.65
+	}
+
+	{
+		blend add
+		map 					textures/q4x_cryo/Fluid03.tga
+		scale 1.9, 1.2
+		scroll time * 0, time * 0.51
+	}
+	
+	{
+		blend blend
+		map 					textures/q4x_cryo/Fluid04.tga
+	}
+
+
+}
+
+
+textures/q4x_cryo/cryo_wall01
+{
+	qer_EditorImage				textures/q4x_cryo/cryo_wall01_d.tga
+	bumpMap						textures/q4x_cryo/cryo_wall01_local.tga
+	diffuseMap					textures/q4x_cryo/cryo_wall01_d.tga
+	specularMap					textures/q4x_cryo/cryo_wall01_s.tga
+
+	{
+		blend 					add
+		map 					textures/q4x_cryo/cryo_wall01_e.tga
+		rgb wavtable[time * 0.1] + 0.25
+	}
+	
+}
+
+
+textures/q4x_cryo/cryo_floor_glass01
+{
+	qer_editorimage 		textures/q4x_cryo/cryo_floor_glass01_d.tga
+	twoSided
+	noshadows
+	translucent
+
+	bumpmap 				textures/q4x_cryo/cryo_floor_glass01_local.tga
+	
+	{       
+		blend				diffuseMap 
+		map					textures/q4x_cryo/cryo_floor_glass01_d.tga
+		alphaTest .5
+	}
+	
+	specularmap				textures/q4x_cryo/cryo_floor_glass01_s.tga
+}
+
+
+
+textures/q4x_cryo/cryo_floor_glass02
+{
+	twosided
+	translucent
+	materialType glass
+
+	qer_editorimage	textures/glass/frosted01.tga
+	
+
+	{
+		blend diffuseMap
+		map textures/q4x_cryo/cryo_floor_glass02_d.tga
+		red			parm0
+		green		parm1
+		blue		parm2
+		alpha		parm3
+	}	
+
+	{
+		blend blend
+		map textures/q4x_cryo/cryo_floor_glass02_d.tga
+		red			parm0
+		green		parm1
+		blue		parm2
+		alpha		parm3
+	}
+
+}
+
+textures/q4x_cryo/cryo_window_glass01
+{
+	twosided
+	translucent
+	materialType glass
+
+	qer_editorimage	textures/glass/frosted01.tga
+	
+	{
+		Program			heatHaze.vfp
+		vertexParm		0	time * 0 , time * 0.003					// texture scrolling
+		vertexParm		1	2									// magnitude of the distortion
+		fragmentProgram	heatHaze.vfp
+		fragmentMap		0	_currentRender
+		fragmentMap		1	textures/glass/frosted01_local.tga	// the normal map for distortion
+	}
+
+	{
+		blend 		blend
+		map 		textures/q4x_cryo/cryo_window_glass01_d.tga
+		red			parm0
+		green		parm1
+		blue		parm2
+		alpha		parm3
+	}
+
+}
+
+textures/q4x_cryo/chamber02_frame
+{
+	qer_EditorImage		textures/q4x_cryo/chamber01_1_d.tga
+	bumpMap			textures/q4x_cryo/chamber01_1_local.tga
+	{       
+		blend				diffuseMap 
+		map					textures/q4x_cryo/chamber01_1_d.tga
+		alphaTest .5
+	}
+	specularMap		textures/q4x_cryo/chamber01_1_s.tga
+	{
+		blend add
+		map textures/q4x_cryo/chamber01_1_add.tga
+	}
+}
+
+
+textures/q4x_cryo/chamber02_glass
+{
+	qer_EditorImage		textures/q4x_cryo/chamber01_1_d.tga
+	twosided
+	translucent
+	materialType glass
+	
+	{
+		blend diffuseMap
+		map textures/q4x_cryo/chamber02_d.tga
+	}
+
+	{
+		Program			heatHaze.vfp
+		vertexParm		0	time * 0 , time * 0						// texture scrolling
+		vertexParm		1	5										// magnitude of the distortion
+		fragmentProgram	heatHaze.vfp
+		fragmentMap		0	_currentRender
+		fragmentMap		1	textures/q4x_cryo/chamber02_local.tga	// the normal map for distortion
+	}
+	{
+		blend blend
+		map textures/q4x_cryo/chamber02_d.tga
+	}
+
+}
+
+textures/q4x_cryo/cryo_trimlight01
+{
+	qer_EditorImage				textures/q4x_cryo/cryo_trimlight01_d.tga
+	
+	bumpMap						textures/q4x_cryo/cryo_trimlight01_local.tga
+	diffuseMap					textures/q4x_cryo/cryo_trimlight01_d.tga
+	specularMap					textures/q4x_cryo/cryo_trimlight01_s.tga
+
+	{
+		blend 					add
+		map 					textures/q4x_cryo/cryo_trimlight01_e.tga
+	}
+	
+}
+
+
+textures/q4x_cryo/cryo_facade01
+{
+
+	qer_editorimage	textures/q4x_cryo/cryo_facade01.tga
+	
+	{
+		blend diffuseMap
+		map textures/q4x_cryo/cryo_facade01.tga
+	}	
+
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//*********************************************   Shaders Added By Steve H   **********************************************
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+guide textures/q4x_cryo/cryo_labwall01_1 generic_full_noheight("q4x_cryo/cryo_labwall01_1")
+guide textures/q4x_cryo/cryo_labwall01_2 generic_full_noheight("q4x_cryo/cryo_labwall01_2")
+guide textures/q4x_cryo/cryo_labwall01_3 generic_full_noheight("q4x_cryo/cryo_labwall01_3")
+guide textures/q4x_cryo/cryo_labwall01_4 generic_full_noheight("q4x_cryo/cryo_labwall01_4")
+guide textures/q4x_cryo/cryo_labwall01_5 generic_full_noheight("q4x_cryo/cryo_labwall01_5")
+guide textures/q4x_cryo/cryo_labtrim02_1 generic_full_noheight("q4x_cryo/cryo_labtrim02_1")
+guide textures/q4x_cryo/cryo_labceiling01_1 generic_full_noheight("q4x_cryo/cryo_labceiling01_1")
+guide textures/q4x_cryo/cryo_labceiling01_2 generic_full_noheight("q4x_cryo/cryo_labceiling01_2")
+guide textures/q4x_cryo/cryo_labfloor01_1 generic_full_noheight("q4x_cryo/cryo_labfloor01_1")
+guide textures/q4x_cryo/chamber_trim01_1 generic_full_noheight("q4x_cryo/chamber_trim01_1")
+guide textures/q4x_cryo/chamber_trim01_2 generic_full_noheight("q4x_cryo/chamber_trim01_2")
+//guide textures/q4x_cryo/chamber_floor01_1 generic_full_noheight("q4x_cryo/chamber_floor01_1")
+guide textures/q4x_cryo/stairstep01_1 generic_full_noheight("q4x_cryo/stairstep01_1")
+guide textures/q4x_cryo/wall_sah_gen01_1 generic_full_noheight("q4x_cryo/wall_sah_gen01_1")
+guide textures/q4x_cryo/wall_gen01_1 generic_full_noheight("q4x_cryo/wall_gen01_1")
+guide textures/q4x_cryo/wall_gen02_1 generic_full_noheight("q4x_cryo/wall_gen02_1")
+guide textures/q4x_cryo/ceiling01_1 generic_full_noheight("q4x_cryo/ceiling01_1")
+guide textures/q4x_cryo/ceiling01_2 generic_full_noheight("q4x_cryo/ceiling01_2")
+guide textures/q4x_cryo/cryo_floor01_1 generic_full_noheight("q4x_cryo/cryo_floor01_1")
+guide textures/q4x_cryo/cryo_floor01_2 generic_full_noheight("q4x_cryo/cryo_floor01_2")
+guide textures/q4x_cryo/cryo_hall01_1 generic_full_noheight("q4x_cryo/cryo_hall01_1")
+guide textures/q4x_cryo/cryo_floor01_3 generic_full_noheight("q4x_cryo/cryo_floor01_3")
+//guide textures/q4x_cryo/cryo_ceiling01_3 generic_variant_noheight_add("q4x_cryo/cryo_ceiling01_1")
+guide textures/q4x_cryo/chamber_wall01_1 generic_full_noheight("q4x_cryo/chamber_wall01_1")
+guide textures/q4x_cryo/chamber_wall01_2 generic_full_noheight("q4x_cryo/chamber_wall01_2")
+guide textures/q4x_cryo/chamber_wall01_0 generic_full_noheight("q4x_cryo/chamber_wall01_0")
+guide textures/q4x_cryo/chamber_wall02_2 generic_full_noheight("q4x_cryo/chamber_wall02_2")
+guide textures/q4x_cryo/New_floor01_1 generic_full_noheight("q4x_cryo/New_floor01_1")
+guide textures/q4x_cryo/cryo_floor01_4 generic_full_noheight("q4x_cryo/cryo_floor01_4")
+guide textures/q4x_cryo/cryo_chainmail01_4 generic_full_noheight("q4x_cryo/cryo_chainmail01_1")
+guide textures/q4x_cryo/cryo_wall02_1 generic_shader("q4x_cryo/cryo_wall02_1")
+guide textures/q4x_cryo/wall_ebony01_1 generic_full_noheight("q4x_cryo/wall_ebony01_1")
+guide textures/q4x_cryo/wall_ebony02_1 generic_full_noheight("q4x_cryo/wall_ebony02_1")
+guide textures/q4x_cryo/wall_ebony03_1 generic_full_noheight("q4x_cryo/wall_ebony03_1")
+guide textures/q4x_cryo/wall_blkchrm01_1 generic_full_noheight("q4x_cryo/wall_blkchrm01_1")
+guide textures/q4x_cryo/wall_blkchrm01_2 generic_full_noheight("q4x_cryo/wall_blkchrm01_2")
+guide textures/q4x_cryo/cryo_light01 generic_full_noheight("q4x_cryo/cryo_light01")
+guide textures/q4x_cryo/icy_rock01 generic_shader("q4x_cryo/icy_rock01")
+guide textures/q4x_cryo/cryo_panel11_1 generic_full_noheight("q4x_cryo/cryo_panel11_1")
+guide textures/q4x_cryo/cryo_panel12_1 generic_full_noheight("q4x_cryo/cryo_panel12_1")
+guide textures/q4x_cryo/cryo_panel13_1 generic_full_noheight("q4x_cryo/cryo_panel13_1")
+guide textures/q4x_cryo/tunwall7 generic_shader("q4x_cryo/tunwall7")
+guide textures/q4x_cryo/stroy_walltrim_12 generic_shader("q4x_cryo/stroy_walltrim_12")
+guide textures/q4x_cryo/tunwall8 generic_shader("q4x_cryo/tunwall8")
+guide textures/q4x_cryo/tr_trim_piece generic_shader("q4x_cryo/tr_trim_piece")
+guide textures/q4x_cryo/stroy_tun3 generic_shader("q4x_cryo/stroy_tun3")
+guide textures/q4x_cryo/stroy_wall_27 generic_shader("q4x_cryo/stroy_wall_27")
+guide textures/q4x_cryo/can_ledge_upper_01brown generic_shader("q4x_cryo/can_ledge_upper_01brown")
+
+textures/q4x_cryo/stroy_steel
+{
+	qer_EditorImage		textures/q4x_cryo/stroy_steel_d.tga
+	diffuseMap		textures/q4x_cryo/stroy_steel_d.tga
+	specularMap		textures/q4x_cryo/stroy_steel_s.tga
+}
+
+textures/q4x_cryo/cryo_labwall05_1
+{
+	qer_EditorImage		textures/q4x_cryo/cryo_labwall05_1_d.tga
+	bumpMap			textures/q4x_cryo/cryo_labwall05_1_local.tga
+	{       
+		blend			diffuseMap 
+		map			textures/q4x_cryo/cryo_labwall05_1_d.tga
+		alphaTest .5
+	}
+	specularMap		textures/q4x_cryo/cryo_labwall05_1_s.tga
+}
+
+textures/q4x_cryo/cryo_labwall05_2
+{
+	qer_EditorImage		textures/q4x_cryo/cryo_labwall05_2_d.tga
+	bumpMap			textures/q4x_cryo/cryo_labwall05_2_local.tga
+	{       
+		blend			diffuseMap 
+		map			textures/q4x_cryo/cryo_labwall05_2_d.tga
+		alphaTest .5
+	}
+	specularMap		textures/q4x_cryo/cryo_labwall05_2_s.tga
+}
+
+textures/q4x_cryo/cryo_labwall05_3
+{
+	qer_EditorImage		textures/q4x_cryo/cryo_labwall05_3_d.tga
+	bumpMap			textures/q4x_cryo/cryo_labwall05_3_local.tga
+	{       
+		blend			diffuseMap 
+		map			textures/q4x_cryo/cryo_labwall05_3_d.tga
+		alphaTest .5
+	}
+	specularMap		textures/q4x_cryo/cryo_labwall05_3_s.tga
+}
+
+textures/q4x_cryo/cryo_panel11_1_on
+{
+	qer_EditorImage		textures/q4x_cryo/cryo_panel11_1_d.tga
+	bumpMap			textures/q4x_cryo/cryo_panel11_1_local.tga
+	diffuseMap		textures/q4x_cryo/cryo_panel11_1_d.tga
+	specularMap		textures/q4x_cryo/cryo_panel11_1_s.tga
+	{
+		blend add
+		map textures/q4x_cryo/cryo_panel11_1_add.tga
+	}
+}
+
+textures/q4x_cryo/cryo_panel12_1_on
+{
+	qer_EditorImage		textures/q4x_cryo/cryo_panel12_1_d.tga
+	bumpMap			textures/q4x_cryo/cryo_panel12_1_local.tga
+	diffuseMap		textures/q4x_cryo/cryo_panel12_1_d.tga
+	specularMap		textures/q4x_cryo/cryo_panel12_1_s.tga
+	{
+		blend add
+		map textures/q4x_cryo/cryo_panel12_1_add.tga
+	}
+}
+
+textures/q4x_cryo/cryo_light01_on
+{
+	qer_EditorImage		textures/q4x_cryo/cryo_light01_d.tga
+	bumpMap			textures/q4x_cryo/cryo_light01_local.tga
+	diffuseMap		textures/q4x_cryo/cryo_light01_d.tga
+	specularMap		textures/q4x_cryo/cryo_light01_s.tga
+	{
+		blend add
+		map textures/q4x_cryo/cryo_light01_add.tga
+	}
+}
+
+textures/q4x_cryo/wall_blkchrm01_1add
+{
+	qer_EditorImage		textures/q4x_cryo/wall_blkchrm01_1_d.tga
+	bumpMap			textures/q4x_cryo/wall_blkchrm01_1_local.tga
+	diffuseMap		textures/q4x_cryo/wall_blkchrm01_1_d.tga
+	specularMap		textures/q4x_cryo/wall_blkchrm01_1_s.tga
+	{
+		blend add
+		map textures/q4x_cryo/wall_blkchrm01_1_add.tga
+	}
+}
+
+textures/q4x_cryo/wall_blkchrm01_2add
+{
+	qer_EditorImage		textures/q4x_cryo/wall_blkchrm01_2_d.tga
+	bumpMap			textures/q4x_cryo/wall_blkchrm01_2_local.tga
+	diffuseMap		textures/q4x_cryo/wall_blkchrm01_2_d.tga
+	specularMap		textures/q4x_cryo/wall_blkchrm01_2_s.tga
+	{
+		blend add
+		map textures/q4x_cryo/wall_blkchrm01_1_add.tga
+	}
+}
+
+textures/q4x_cryo/chamber_floor01_1  // converted to shader from guide by wyeth
+{
+	qer_EditorImage		textures/q4x_cryo/chamber_floor01_1_d.tga
+	bumpMap				textures/q4x_cryo/chamber_floor01_1_local.tga
+	diffuseMap			textures/q4x_cryo/chamber_floor01_1_d.tga
+	specularMap			textures/q4x_cryo/chamber_floor01_1_s.tga
+	//{
+	//	blend blend
+	//	map textures/q4x_cryo/chamber_floor01_1_blend.tga
+	//}
+}
+
+textures/q4x_cryo/wall_ebony01_2
+{
+	qer_EditorImage		textures/q4x_cryo/wall_ebony01_1_d.tga
+	bumpMap			textures/q4x_cryo/wall_ebony01_1_local.tga
+	diffuseMap		textures/q4x_cryo/wall_ebony01_1_d.tga
+	specularMap		textures/q4x_cryo/wall_ebony01_1_s.tga
+	{
+		blend add
+		map textures/q4x_cryo/wall_ebony01_1_add.tga
+	}
+}
+
+textures/q4x_cryo/wall_ebony02_2
+{
+	qer_EditorImage		textures/q4x_cryo/wall_ebony02_1_d.tga
+	bumpMap			textures/q4x_cryo/wall_ebony02_1_local.tga
+	diffuseMap		textures/q4x_cryo/wall_ebony02_1_d.tga
+	specularMap		textures/q4x_cryo/wall_ebony02_1_s.tga
+	{
+		blend add
+		map textures/q4x_cryo/wall_ebony02_1_add.tga
+	}
+}
+
+textures/q4x_cryo/cryo_flrtrim_light
+{
+	qer_EditorImage		textures/q4x_cryo/cryo_flrtrim_light_d.tga
+	bumpMap			textures/q4x_cryo/cryo_flrtrim_light_local.tga
+	diffuseMap		textures/q4x_cryo/cryo_flrtrim_light_d.tga
+	specularMap		textures/q4x_cryo/cryo_flrtrim_light_s.tga
+	{
+		blend add
+		map textures/q4x_cryo/cryo_flrtrim_light_e.tga
+	}
+}
+
+textures/q4x_cryo/ceiling01_3
+{
+	qer_EditorImage		textures/q4x_cryo/ceiling01_1_add.tga
+	bumpMap			textures/q4x_cryo/ceiling01_1_local.tga
+	diffuseMap		textures/q4x_cryo/ceiling01_1_d.tga
+	specularMap		textures/q4x_cryo/ceiling01_1_s.tga
+	{
+		blend add
+		map textures/q4x_cryo/ceiling01_1_add.tga
+	}
+}
+
+textures/q4x_cryo/stairriser01_1
+{
+	qer_EditorImage		textures/q4x_cryo/stairriser01_1_d.tga
+	bumpMap				textures/q4x_cryo/stairriser01_1_local.tga
+	diffuseMap			textures/q4x_cryo/stairriser01_1_d.tga
+	specularMap			textures/q4x_cryo/stairriser01_1_s.tga
+	{
+		blend add
+		map textures/q4x_cryo/stairriser01_1_add.tga
+	}
+}
+
+textures/q4x_cryo/stairriser01_1b
+{
+	qer_EditorImage		textures/q4x_cryo/stairriser01_1b_d.tga
+	bumpMap				textures/q4x_cryo/stairriser01_1b_local.tga
+	diffuseMap			textures/q4x_cryo/stairriser01_1b_d.tga
+	specularMap			textures/q4x_cryo/stairriser01_1b_s.tga
+	{
+		blend add
+		map textures/q4x_cryo/stairriser01_1b_add.tga
+	}
+}
+
+textures/q4x_cryo/stairriser01_2  // added orange variant -Wyeth
+{
+	qer_EditorImage		textures/q4x_cryo/stairriser01_1_d.tga
+	bumpMap				textures/q4x_cryo/stairriser01_1_local.tga
+	diffuseMap			textures/q4x_cryo/stairriser01_1_d.tga
+	specularMap			textures/q4x_cryo/stairriser01_1_s.tga
+	{
+		blend add
+		map textures/q4x_cryo/stairriser01_2_add.tga
+	}
+}
+
+textures/q4x_cryo/chamber01_1
+{
+	qer_EditorImage		textures/q4x_cryo/chamber01_1_d.tga
+	bumpMap			textures/q4x_cryo/chamber01_1_local.tga
+	diffuseMap		textures/q4x_cryo/chamber01_1_d.tga
+	specularMap		textures/q4x_cryo/chamber01_1_s.tga
+	{
+		blend add
+		map textures/q4x_cryo/chamber01_1_add.tga
+	}
+}
+//-----------------valk_queen_base
+models/mapobjects/q4x/valk_queen_base/queen_base
+	{
+	noselfShadow
+//	unsmoothedtangents
+	
+	diffusemap	models/mapobjects/q4x/valk_queen_base/queen_base_d.tga
+	specularmap	models/mapobjects/q4x/valk_queen_base/queen_base_s.tga
+	bumpmap		models/mapobjects/q4x/valk_queen_base/queen_base_local.tga
+	}
+
+//*********************************************

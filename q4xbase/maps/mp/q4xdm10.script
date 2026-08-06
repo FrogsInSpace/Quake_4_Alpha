@@ -1,0 +1,115 @@
+#include "scripts/doom_defs.script"
+
+	boolean CRUSHER_ACTIVATED;
+
+void checkButtonOneHealth()
+{
+	float h;
+	float j;
+	float m;
+
+	$button_1.setHealth( 9999 );
+	j = $button_1.getHealth();
+
+	while( 1 ) {
+		h = $button_1.getHealth();
+		if( h != j && !CRUSHER_ACTIVATED ) {
+
+			$button_blocker_1.show();
+
+			$buttonlight_1.Off();
+			$buttonlight_2.Off();
+
+			m = ( j - h );
+			h = ( h + m );
+			$button_1.setHealth( h );
+
+			CRUSHER_ACTIVATED = TRUE;
+			sys.trigger( $crush_trigger );
+			sys.trigger( $crusher );
+
+			$button_1.time( 0.1 );
+			$button_1.move( 90, 2 );
+			sys.waitFor( $button_1 );
+
+			sys.wait( 1 );
+			sys.trigger( $crush_trigger );
+			sys.wait( 1 );
+
+			$button_1.time( 0.1 );
+			$button_1.move( 270, 2 );
+			sys.waitFor( $button_1 );
+
+			CRUSHER_ACTIVATED = FALSE;
+
+			$buttonlight_1.On();
+			$buttonlight_2.On();
+
+			$button_blocker_1.hide();
+		}
+
+		sys.wait( 0.2 );
+	}
+}
+
+void checkButtonTwoHealth()
+{
+	float b;
+	float z;
+	float n;
+
+	$button_2.setHealth( 9999 );
+	z = $button_2.getHealth();
+
+	while( 1 ) {
+		b = $button_2.getHealth();
+		if( b != z && !CRUSHER_ACTIVATED ) {
+
+			$button_blocker_2.show();
+
+			$buttonlight_1.Off();
+			$buttonlight_2.Off();
+
+			n = ( z - b );
+			b = ( b + n );
+			$button_2.setHealth( b );
+
+			CRUSHER_ACTIVATED = TRUE;
+			sys.trigger( $crush_trigger );
+			sys.trigger( $crusher );
+
+			$button_2.time( 0.1 );
+			$button_2.move( 90, 2 );
+			sys.waitFor( $button_2 );
+
+			sys.wait( 1 );
+			sys.trigger( $crush_trigger );
+			sys.wait( 1 );
+
+			$button_2.time( 0.1 );
+			$button_2.move( 270, 2 );
+			sys.waitFor( $button_2 );
+
+			sys.trigger( $crush_trigger );
+
+			CRUSHER_ACTIVATED = FALSE;
+
+			$buttonlight_1.On();
+			$buttonlight_2.On();
+
+			$button_blocker_2.hide();
+		}
+
+		sys.wait( 0.2 );
+	}
+}
+
+
+void main()
+{
+	CRUSHER_ACTIVATED = FALSE;
+	thread checkButtonOneHealth();
+	thread checkButtonTwoHealth();
+	sys.trigger( $func_spawner_1 );	// yellow armor
+	sys.trigger( $func_spawner_2 ); // quad damage
+}

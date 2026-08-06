@@ -1,0 +1,335 @@
+windowDef Desktop
+{
+	rect	0,0,640,480
+
+	onNamedEvent text1_on {
+		resettime "anim_introtext1" "0" ;
+	}
+
+	onNamedEvent text2_on {
+		resettime "anim_introtext2" "0" ;
+	}
+
+	onNamedEvent text3_on {
+		resettime "anim_introtext3" "0" ;
+	}
+
+	onNamedEvent text4_on {
+		resettime "anim_introtext4" "0" ;
+	}
+
+	onNamedEvent text5_on {
+		resettime "anim_introtext5" "0" ;
+	}
+
+	onNamedEvent text6_on {
+		resettime "anim_introtext6" "0" ;
+	}
+
+	onNamedEvent id1 {
+		resettime "anim_idsoftware1" "0" ;
+	}
+
+	onNamedEvent id2 {
+		resettime "anim_idsoftware2" "0" ;
+	}
+
+	onNamedEvent id3 {
+		resettime "anim_idsoftware3" "0" ;
+	}
+
+	onNamedEvent rit1 {
+		resettime "anim_ritual1" "0" ;
+	}
+
+	onNamedEvent rit2 {
+		resettime "anim_ritual2" "0" ;
+	}
+
+	windowDef introtext1
+	{
+		rect	50,340,255,39
+		visible	0
+		forecolor	0,0,0,0
+		text	"Planet Stroggos"
+		textscale	0.5
+		textstyle	2
+		font	"fonts/marine"
+	}
+	windowDef anim_introtext1
+	{
+		rect	50,340,255,39
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "introtext1::visible" "1";
+			transition "introtext1::forecolor" "1,1,1,1" "0,0.5,1,1" "1500" ;
+		}
+
+		onTime 8500 {
+			transition "introtext1::forecolor" "0,0.5,1,1" "0,0,0,0" "500" ;
+		}
+
+	}
+	windowDef introtext2
+	{
+		rect	50,370,474,39
+		visible	0
+		forecolor	0,0,0,0
+		text	"Marine Mobile Command Center"
+		textscale	0.5
+		textstyle	2
+		font	"fonts/marine"
+	}
+	windowDef anim_introtext2
+	{
+		rect	50,340,255,39
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "introtext2::visible" "1";
+			transition "introtext2::forecolor" "1,1,1,1" "0,0.5,1,1" "1500" ;
+		}
+
+		onTime 6500 {
+			transition "introtext2::forecolor" "0,0.5,1,1" "0,0,0,0" "500" ;
+		}
+
+	}
+	windowDef introtext3
+	{
+		rect	50,388,474,39
+		visible	0
+		forecolor	0,0,0,0
+		text	"USS Hannibal"
+		textscale	0.5
+		textstyle	2
+		font	"fonts/marine"
+	}
+	windowDef anim_introtext3
+	{
+		rect	50,340,255,39
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "introtext3::visible" "1";
+			transition "introtext3::forecolor" "1,1,1,1" "0,0.5,1,1" "1500" ;
+		}
+
+		onTime 6500 {
+			transition "introtext3::forecolor" "0,0.5,1,1" "0,0,0,0" "500" ;
+		}
+
+	}
+	windowDef introtext4
+	{
+		rect	51,340,474,39
+		visible	0
+		forecolor	0,0,0,0
+		text	"Zero Hour"
+		textscale	0.5
+		textstyle	2
+		font	"fonts/marine"
+	}
+	windowDef anim_introtext4
+	{
+		rect	50,340,255,39
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "introtext4::visible" "1";
+			transition "introtext4::forecolor" "1,1,1,1" "0,0.5,1,1" "1500" ;
+		}
+
+		onTime 6000 {
+			transition "introtext4::forecolor" "0,0.5,1,1" "0,0,0,0" "500" ;
+		}
+
+	}
+	windowDef introtext5
+	{
+		rect	50,370,319,39
+		visible	0
+		forecolor	0,0.501,1,1
+		text	"Operation Advantage"
+		textscale	0.5
+		textstyle	2
+		font	"fonts/marine"
+	}
+	windowDef anim_introtext5
+	{
+		rect	50,340,255,39
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "introtext5::visible" "1";
+			transition "introtext5::forecolor" "1,1,1,1" "0,0.5,1,1" "1500" ;
+		}
+
+		onTime 6000 {
+			transition "introtext5::forecolor" "0,0.5,1,1" "0,0,0,0" "500" ;
+		}
+
+	}
+	windowDef introtext6
+	{
+		rect	50,389,474,39
+		visible	0
+		forecolor	0,0.501,1,1
+		text	"(Tetranode Offensive)"
+		textscale	0.5
+		textstyle	2
+		font	"fonts/marine"
+	}
+	windowDef anim_introtext6
+	{
+		rect	50,340,255,39
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "introtext6::visible" "1";
+			transition "introtext6::forecolor" "1,1,1,1" "0,0.5,1,1" "1500" ;
+		}
+
+		onTime 6000 {
+			transition "introtext6::forecolor" "0,0.5,1,1" "0,0,0,0" "500" ;
+		}
+
+	}
+	windowDef anim_idsoftware1
+	{
+		rect	50,340,65,39
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "idsoftware1::visible" "1";
+			transition "idsoftware1::forecolor" "1,1,1,1" "0,0.5,1,1" "1500" ;
+		}
+
+		onTime 5000 {
+			transition "idsoftware1::forecolor" "0,0.5,1,1" "0,0,0,0" "500" ;
+		}
+
+	}
+	windowDef idsoftware2
+	{
+		rect	59,347,353,55
+		visible	0
+		forecolor	0,0,0,0
+		text	"id Software"
+		textscale	1
+		textstyle	2
+		font	"fonts/marine"
+	}
+	windowDef anim_idsoftware2
+	{
+		rect	46,344,353,58
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "idsoftware2::visible" "1";
+			transition "idsoftware2::forecolor" "1,1,1,1" "0,0.5,1,1" "1500" ;
+		}
+
+		onTime 5000 {
+			transition "idsoftware2::forecolor" "0,0.5,1,1" "0,0,0,0" "500" ;
+		}
+
+	}
+	windowDef idsoftware3
+	{
+		rect	62,388,73,39
+		visible	0
+		forecolor	0,0,0,0
+		text	"game"
+		textscale	0.5
+		textstyle	2
+		font	"fonts/marine"
+	}
+	windowDef anim_idsoftware3
+	{
+		rect	50,386,73,39
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "idsoftware3::visible" "1";
+			transition "idsoftware3::forecolor" "1,1,1,1" "0,0.5,1,1" "1500" ;
+		}
+
+		onTime 5000 {
+			transition "idsoftware3::forecolor" "0,0.5,1,1" "0,0,0,0" "500" ;
+		}
+
+	}
+	windowDef ritual1
+	{
+		rect	50,340,195,39
+		visible	0
+		forecolor	0,0,0,0
+		text	"developed by"
+		textscale	0.5
+		textstyle	2
+		font	"fonts/marine"
+	}
+	windowDef anim_ritual1
+	{
+		rect	50,340,195,39
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "ritual1::visible" "1";
+			transition "ritual1::forecolor" "1,1,1,1" "0,0.5,1,1" "1500" ;
+		}
+
+		onTime 5000 {
+			transition "ritual1::forecolor" "0,0.5,1,1" "0,0,0,0" "500" ;
+		}
+
+	}
+	windowDef ritual2
+	{
+		rect	46,351,545,57
+		visible	0
+		forecolor	0,0.5,1,1
+		text	"Ritual Entertainment"
+		textscale	0.85
+		textstyle	2
+		font	"fonts/marine"
+	}
+	windowDef anim_ritual2
+	{
+		rect	46,351,545,57
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "ritual2::visible" "1";
+			transition "ritual2::forecolor" "1,1,1,1" "0,0.5,1,1" "1500" ;
+		}
+
+		onTime 5000 {
+			transition "ritual2::forecolor" "0,0.5,1,1" "0,0,0,0" "500" ;
+		}
+
+	}
+	windowDef idsoftware1
+	{
+		rect	62,343,40,39
+		visible	0
+		forecolor	0,0,0,0
+		text	an
+		textscale	0.5
+		textstyle	2
+		font	"fonts/marine"
+	}
+}

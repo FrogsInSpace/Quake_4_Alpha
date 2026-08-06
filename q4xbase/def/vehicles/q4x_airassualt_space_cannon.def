@@ -1,0 +1,352 @@
+//------------------------------------------------------------------------------
+// q4x_air_assault_cannon.def
+//
+// Copyright 2005 Ritual Software
+// Created by Singlis for M01_Airassault
+// Tweaked, massaged, and fondled by JSchuch,WJohnson,MMorgan(additional fondling and groping)
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+//							Vehicle Defintion
+//------------------------------------------------------------------------------
+
+
+
+
+
+
+export space_cannon
+{	
+	options -game q4xbase/ -prefix AT_  -scale .3937 -sourcedir /models/mapobjects/air_assualturret/animations -destdir models/mapobjects/q4x/air_turret_rocketcannon -keep origin muzzleflash05 muzzleflash06 main_gui muzzleflash03 pulse_cannon_l muzzleflash04 pulse_cannon_r cord_adjusttip_l effector7 lgui_lwire_l_10 effector5 lgui_lwire_l_9 lgui_lwire_l_8 lgui_lwire_l_7 lgui_lwire_l_6 lgui_lwire_l_5 lgui_lwire_l_4 lgui_lwire_l_3 lgui_lwire_l_2 lgui_lwire_l_1 lgui_uwire_l_8 effector4 lgui_uwire_l_7 lgui_uwire_l_6 lgui_uwire_l_5 lgui_uwire_l_4 lgui_uwire_l_3 lgui_uwire_l_2 lgui_uwire_l_1 curveShape4 curveShape4Orig curve4 curveShape5 curveShape5Orig curve5 cord_adjust_l gui_arm_l_03 gui_arm_l_02 ikHandle5 ikHandle4 gui_arm_l_01 main_gui7 effector1 main_gui6 main_gui5 main_gui4 main_gui3 main_gui2 main_gui1 cord_adjusttip_r effector6 lgui_uwire_r_8 effector3 lgui_uwire_r_7 lgui_uwire_r_6 lgui_uwire_r_5 lgui_uwire_r_4 lgui_uwire_r_3 lgui_uwire_r_2 lgui_uwire_r_1 lgui_rwire_r_10 effector2 lgui_rwire_r_9 lgui_rwire_r_8 lgui_rwire_r_7 lgui_rwire_r_6 lgui_rwire_r_5 lgui_rwire_r_4 lgui_rwire_r_3 lgui_rwire_r_2 lgui_rwire_r_1 curveShape3 curveShape3Orig curve3 curveShape2 curveShape2Orig curve2 cadjust_r gui_arm_r_03 gui_arm_r_02 ikHandle6 ikHandle2 ikHandle3 gui_arm_r_01 curveShape1 curveShape1Orig curve1 pivot base muzzleflash01 muzzleflash02
+	
+	mesh	idle.ma							-dest air_turret_rocketcannon
+	anim	intro.ma				-range 0 1 	-dest air_turret_rocketcannon
+	anim	intro.ma						-dest intro
+	anim	impact_light.ma						-dest impact_light
+	anim	impact_medium.ma					-dest impact_medium
+	anim	impact_heavy.ma						-dest impact_heavy
+
+
+}
+
+
+
+
+entityDef vehicle_q4x_airassault_space_cannon {
+	"editor_color"					"1 .5 0"
+	"editor_mins"					"-8 -8 -8"
+	"editor_maxs"					"8 8 8"
+	"editor_rotatable"				"1"
+	"editor_usage"					"Air assault gun for dropship."
+	"editor_ignore"					"0"
+
+	"spawnclass"					"rvVehicleStatic"
+	
+	"gui_hud"					"guis/vehicles/airassault/turretplayerhud.gui"
+	"gui2"						"guis/vehicles/airassault/spaceturret_rocket.gui"
+	"gui"						"guis/vehicles/airassault/spaceturret_main.gui"
+	"gui3"						"guis/vehicles/airassault/spaceturret_guns.gui"
+	"health"					"0"
+	"mass"						"100"
+	
+	"focusLength_enter"				"100"
+	
+	"noDamage"					"1"
+
+	"mins"						"-64 -56 -96"
+	"maxs"						"64 56 96"
+	
+	"enableWeapon"					"1"
+	"resetOnExit"					"1"
+	
+	"useGodMode"					"1"
+
+	"model"						"vehicle_q4x_airassault_space_cannon_model"
+	"def_position_driver"				"vehicle_q4x_airassault_space_cannon_driver"
+	"allowFlipEject"				"0"
+}
+
+
+//------------------------------------------------------------------------------
+//								Positions
+//------------------------------------------------------------------------------
+
+entityDef vehicle_q4x_airassault_space_cannon_driver {
+	"def_part_weapon_pulse"				"vehicle_q4x_airassault_pulse_cannon"
+	"def_part_weapon_rocket"			"vehicle_q4x_airassault_space_cannon_weapon"
+	
+	"angles_offset"					"0 0 0"
+	"depthHack"					"0"
+	
+	"exitPosOffset"					"-220 0 32"	//"-156 0 32"
+	"exitAxisOffset"				"0 0 0"
+
+	"deltaEyeAxisScale"				"1 1 0"
+	"deltaDriverAxisScale"				"0 1 0"
+	
+	"eyeoffset"					"-25 0 0"
+	"driveroffset"					"0 0 0"
+
+	"eyeJointAxisMap"				"0 1 2"
+	"driverJointAxisMap"				"0 1 2"
+	
+	"driverVisible"					"1"
+	
+	"def_part_turret_yaw"				"vehicle_q4x_airassault_space_cannon_yaw"
+	"def_part_turret_pitch"				"vehicle_q4x_airassault_space_cannon_pitch"
+
+	"eyejoint"					"pivot"
+	"driverjoint"					"pivot"
+	
+	"eyeJointDirMap"				"1 1 1"
+	"driverJointDirMap"				"1 1 1"	
+}
+
+//------------------------------------------------------------------------------
+//								Model Defintion
+//------------------------------------------------------------------------------
+
+model vehicle_q4x_airassault_space_cannon_model
+{
+	mesh						"models/mapobjects/q4x/air_turret_rocketcannon/air_turret_rocketcannon.md5mesh"
+
+	channel torso	( *base  )
+	channel legs	( *origin -*base )
+
+	anim idle					"models/mapobjects/q4x/air_turret_rocketcannon/air_turret_rocketcannon.md5anim"
+	anim intro					"models/mapobjects/q4x/air_turret_rocketcannon/intro.md5anim"
+	anim impact_light				"models/mapobjects/q4x/air_turret_rocketcannon/impact_light.md5anim"
+	anim impact_medium				"models/mapobjects/q4x/air_turret_rocketcannon/impact_medium.md5anim"
+	anim impact_heavy				"models/mapobjects/q4x/air_turret_rocketcannon/impact_heavy.md5anim"
+}
+
+
+//------------------------------------------------------------------------------
+//									Parts
+//------------------------------------------------------------------------------
+
+entityDef vehicle_q4x_airassault_space_cannon_yaw {
+	"spawnclass"				"rvVehicleTurret"
+
+	"minyaw"				"-90"	//was -50
+	"maxyaw"				"90"	//was 50
+	
+	"snd_move"				"space_cannon_move"
+	"moveMinVolume"			"-4"
+	"moveMaxVolume"			"8"
+	
+	"turnrate"				"240"
+	"joint"					"base"
+	"yaw"					"1"
+}
+
+
+entityDef vehicle_q4x_airassault_space_cannon_pitch {
+	"spawnclass"			"rvVehicleTurret"
+
+	"minpitch"						"-90"	//was -50
+	"maxpitch"						"90"	//was 50
+
+	"pitchinvert"					"0"
+	
+	"snd_move"						"space_cannon_move"
+	"moveMinVolume"					"-4"
+	"moveMaxVolume"					"8"
+	
+	"turnrate"						"240"
+	"joint"							"pivot"
+	"pitch"							"0"
+}
+
+
+entityDef vehicle_q4x_airassault_space_cannon_weapon
+{
+	"spawnclass"					"riVCWMissileTurret"
+	
+	"joint"							"muzzleflash01"
+	"joint2"						"muzzleflash02"
+	"launchfromjoint"				"1"
+	
+	"firedelay"						"0.40"
+	"loaddelay"						"0.5"
+	
+	"def_projectile"				"projectile_q4x_airassault_space_rocket"
+	
+	"fx_muzzleflash"				"effects/vehicles/spacecannon/muzzle.fx"
+	"spread"						"0"
+	
+	"numSoundChannels"				"3"
+		
+	"snd_reload"					"space_cannon_reload"
+	"snd_rightFire"					"space_cannon_fire_right"
+	"snd_leftFire"					"space_cannon_fire_left"
+	"snd_multiFire"					"space_cannon_fire_multi"
+	
+	"recoilTime"					"10"
+	"recoilAngles"					"0 0 0"
+	
+	"lockRange"						"14000"
+	"timeToHardLock"				"250"
+	"reticuleScaleDistance"			"4000"
+	"reticuleInterpolationTime"			 "0.800"
+
+ 	"fx_guide"						"effects/vehicles/spacecannon/targetlock.fx"
+ 	"fx_closestTargetGuide"			"effects/vehicles/spacecannon/closesttarget.fx"
+ 	"fx_acquiringTargetGuide"		"effects/vehicles/spacecannon/acquirelock.fx"
+ 	"fx_outOfRangeGuide"			"effects/vehicles/spacecannon/outofrange.fx"
+
+	"mtr_crosshair"						"gfx/guis/q4x_crosshairs/aa_space_default"
+	"color_crosshair"					"1.0 1.0 1.0 1.0"
+	
+	"mtr_acquiringTargetCrosshair"		"gfx/guis/q4x_crosshairs/aa_space_acquire"
+	"color_acquiringTargetCrosshair"	"1.0 1.0 0.0 1.0"
+	
+	"mtr_targetLockCrosshair"			"gfx/guis/q4x_crosshairs/aa_space_acquire"
+	"color_targetLockCrosshair"			"0.25 1.0 0.25 1.0"
+	
+	"mtr_friendlyCrosshair"				"gfx/guis/q4x_crosshairs/aa_space_friendly"
+	"color_friendlyCrosshair"			"1.0 0.1 0.1 1.0"
+	
+	"mtr_outOfRangeCrosshair"			"gfx/guis/q4x_crosshairs/aa_space_OOR"
+	"color_outOfRangeCrosshair"			"1.0 1.0 1.0 1.0"
+	
+	"snd_acquiringTarget"				"vehicle_tone_seek"
+	"snd_targetLock"					"vehicle_tone_lock"
+	
+	//"attack_script"						"map_m01::spaceCannonRocketFired"
+}
+
+
+entityDef vehicle_q4x_airassault_pulse_cannon
+{
+	"spawnclass"					"riVCWPulseCannon"
+	
+
+	"joint"							"muzzleflash03"
+	"joint2"						"muzzleflash04"
+	"launchfromjoint"				"1"
+
+	"firedelay"						"0.1"
+	"spread"						"1.25"
+	"range"							"50000"
+	
+	"def_hitscan"					"hitscan_q4x_pulse_cannon"
+
+	"fx_muzzleflash"				"effects/vehicles/spacecannon/pulsemuzzle.fx"
+	
+	"lockRange"						"14000"
+
+	"snd_fire"						"space_cannon_fire"
+	"snd_fire_stereo"				"space_cannon_fire_stereo"	
+	
+	"numSoundChannels"				"2"
+	
+	"recoilTime"					"100"
+	"recoilAngles"					"-.25 .25 0"
+	
+	"reticuleScaleDistance"			"4000"
+
+ 	"fx_closestTargetGuide"			"effects/vehicles/spacecannon/closesttarget.fx"
+ 	"fx_outOfRangeGuide"			"effects/vehicles/spacecannon/outofrange.fx"
+ 	"fx_impact"						"effects/weapons/rocketlauncher/impact.fx"
+
+ 	"mtr_crosshair"					"gfx/guis/q4x_crosshairs/aa_space_default"
+	"color_crosshair"				"1.0 1.0 1.0 1.0"
+
+	"mtr_friendlyCrosshair"			"gfx/guis/q4x_crosshairs/aa_space_friendly"
+	"color_friendlyCrosshair"		"1.0 0.1 0.1 1.0"
+	
+	"mtr_outOfRangeCrosshair"		"gfx/guis/q4x_crosshairs/aa_space_OOR"
+	"color_outOfRangeCrosshair"		"1.0 1.0 1.0 1.0"
+	
+	"reticuleInterpolationTime"		 "0.400"
+	"heatPerShot"					"20"
+	"heatTolerance"					"900"
+	"safeHeatLevel"					"860"
+	"heatDissipationPerSecond"		"60"
+	
+	"snd_overheatedSound"			"space_cannon_overheat"
+	"snd_overheatRecoverSound"		"space_cannon_recover"
+	"snd_overheatedFireSound"		"space_cannon_overheatfire"
+	
+	//"attack_script"					"map_m01::spaceCannonBlasterFired"
+}
+//------------------------------------------------------------------------------
+//								Projectiles
+//------------------------------------------------------------------------------
+
+entityDef projectile_q4x_airassault_space_rocket
+{
+	"inherit"					"projectile_rocket"
+	"spawnclass"				"riProjectileSpaceRocket"
+	"fuse"						"10"
+
+	"mins"						"0 0 0"
+	"maxs"						"0 0 0"
+	"cone"						"0.1"
+
+	"fx_fly"					"effects/vehicles/spacecannon/rocket_fly.fx"
+
+	"velocity"					"5000 0 0"
+	"speed"						"8000"
+	"gravity"					"0"
+	
+	"def_damage"				"damage_air_assault_cannon"
+	"def_splash_damage"			"damage_air_assault_cannon_splash"
+
+	"fx_impact"					"effects/vehicles/spacecannon/impact_rocket.fx"
+
+	"push"						"75000"
+
+	"mass"						"1"
+}
+
+entityDef hitscan_q4x_pulse_cannon
+{
+	"inherit"					"hitscan_bullet"
+	"fx_path"					"effects/vehicles/spacecannon/pulsetrail.fx"
+	"def_damage"				"damage_q4x_pulse_cannon"
+	"fx_impact"					"effects/vehicles/spacecannon/impact_atmos.fx"
+}
+
+
+//------------------------------------------------------------------------------
+//								Damage Defs
+//------------------------------------------------------------------------------
+
+entityDef damage_air_assault_cannon
+{
+	"inherit"							"damage_bullet"
+	"damage"							"250"
+	"gib"								"0"
+	"filter_spacecannonrocket"					"1"
+}
+
+entityDef damage_air_assault_cannon_splash
+{
+	"damage"							"200"
+	"radius"							"1000"
+	"knockback"							"80"
+	"push"								"80"
+	"gib"								"1"
+
+	"deathPush"							"100"
+	"deathPushMin"						"3000 2000"
+	"deathPushMax"						"5000 3000"
+}
+
+entityDef damage_q4x_pulse_cannon
+{
+	"inherit"							"damage_bullet"
+	"damage"							"100"
+	"push"								"45000"
+	"gib"								"1"
+
+	"deathPush"							"200"
+	"deathPushMin"						"3000 2000"
+	"deathPushMax"						"5000 3000"
+	
+	"pain"								"concussive"
+	"filter_spacecannonblaster"				"1"
+}

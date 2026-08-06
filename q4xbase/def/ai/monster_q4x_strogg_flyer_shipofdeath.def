@@ -1,0 +1,52 @@
+/*
+===============================================================================
+
+	QFX Strogg Flyer Ship of Death
+
+	This version specifically spawns in and
+	attacks the player to destroy the dropship
+	Only used if the player is standing around
+	doing nothing instead of shooting down baddies.
+
+===============================================================================
+*/
+
+/*
+===============================================================================
+
+	Projectile and damage
+
+===============================================================================
+*/
+
+entityDef damage_strogg_flyer_sod
+{
+	"inherit"									"damage_rocketDirect"
+	"damage"									"5000"
+	"push"										"0"
+	"gib"										"0"
+	"deathPush"									"0"
+	"deathPushMin"									"0 0"
+	"deathPushMax"									"0 0"
+}
+
+entityDef projectile_strogg_flyer_sod
+{
+	"inherit"									"projectile_scripted_rocket"
+	"velocity"									"2000 0 0"
+	"def_damage"									"damage_strogg_flyer_sod"
+}
+
+/*
+===============================================================================
+
+	Strogg Flyer Ship of Death Entity Definition
+
+===============================================================================
+*/
+
+entityDef monster_q4x_strogg_flyer_space_sod
+{
+	"inherit"									"monster_q4x_strogg_flyer_space"
+	"def_attack_blaster"								"projectile_strogg_flyer_sod"
+}

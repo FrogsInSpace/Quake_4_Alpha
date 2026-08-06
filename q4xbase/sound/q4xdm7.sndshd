@@ -1,0 +1,8 @@
+sound ambient_1shot_alarm01_q4xdm7
+{
+	minDistance	39
+	maxDistance	1181
+	volumeDb	0
+
+	sound/ambience/alarms_buzzers/1shot_alarm01_q4xdm7.wav
+}

@@ -1,0 +1,1291 @@
+//Quake DM2
+//
+//TODO:
+//Add valve wheels that adjust the speed of lavatrap platforms on the fly?
+//Add sounds:
+//	buttons 		0.5 sec
+//	hall door		0.5 sec
+//	tele bars		0.5 sec
+//	redarmor door		0.5 sec
+//	crushers		0.5 sec
+//	lavatrap 1&2(plats)	1.0 sec
+//	lavatrap 1&2(gears)	1.0 sec
+//	redarmor platform	3.0 sec
+//	biglavapit(plats)	2.0 sec
+//	biglavapit(gears)	2.0 sec
+//	swingarm		3.0 sec
+//	windowgears
+//		stage 1		10.0 sec
+//		rattle		0.3 sec
+//		stage 2		10.0 sec
+//		stage 3		3.0 sec
+//		stage 4		5.0 sec
+//	clockwork gear1		5.0 sec
+//	clockwork gear2		4.0 sec
+//	clockwork hooks		0.1 sec
+
+
+#include "scripts/doom_defs.script"
+
+	float redarmorplatform = 0;	//red armor platform retracted
+	float bigpitfloor = 0;		//big pit floor closed
+
+
+//*********************************************************************************
+//** Cache in sounds
+//** 
+//*********************************************************************************
+void cache_sounds()
+{
+	sys.cacheSoundShader ("machine_armswing_01");
+	sys.cacheSoundShader ("lavatrap2start");
+	sys.cacheSoundShader ("lavatrap2gear");
+	sys.cacheSoundShader ("lavatrap2stop");
+	sys.cacheSoundShader ("windowgear_small1");
+	sys.cacheSoundShader ("giant_lava_pit");
+	sys.cacheSoundShader ("lavaloop_muted");
+	sys.cacheSoundShader ("lavaloop_01L");
+	sys.cacheSoundShader ("machine_grind_02");
+	sys.cacheSoundShader ("machine_teleport_01");
+}
+
+//*********************************************************************************
+
+//*********************************************************************************
+//** Lava buckets
+//** 
+//*********************************************************************************
+
+void cycle_lavabucket_doors()
+{
+	//open
+	$org_lavabucketdoor_s.time( 1.0 );
+	$org_lavabucketdoor_s.accelTime( 0.2 );
+	$org_lavabucketdoor_s.decelTime( 0.2 );
+	$org_lavabucketdoor_s.rotateOnce( '0 0 90' );
+	$org_lavabucketdoor_n.time( 1.0 );
+	$org_lavabucketdoor_n.accelTime( 0.2 );
+	$org_lavabucketdoor_n.decelTime( 0.2 );
+	$org_lavabucketdoor_n.rotateOnce( '0 0 -90' );
+
+	sys.waitFor( $org_lavabucketdoor_s );
+
+	sys.wait( 3.25 );
+
+	//close
+	$org_lavabucketdoor_s.time( 1.0 );
+	$org_lavabucketdoor_s.accelTime( 0.2 );
+	$org_lavabucketdoor_s.decelTime( 0 );
+	$org_lavabucketdoor_s.rotateOnce( '0 0 -90' );
+	$org_lavabucketdoor_n.time( 1.0 );
+	$org_lavabucketdoor_n.accelTime( 0.2 );
+	$org_lavabucketdoor_n.decelTime( 0 );
+	$org_lavabucketdoor_n.rotateOnce( '0 0 90' );
+
+	sys.waitFor( $org_lavabucketdoor_s );
+}
+
+void cycle_lavabucket_door_vert()
+{
+	//open
+	$mover_lavabucketdoor_v.time( 0.35 );
+	$mover_lavabucketdoor_v.accelTime( 0.2 );
+	$mover_lavabucketdoor_v.move( DOWN, 78 );
+	sys.waitFor( $mover_lavabucketdoor_v );
+
+	sys.wait( 0.75 );
+
+	//close
+	$mover_lavabucketdoor_v.time( 0.35 );
+	$mover_lavabucketdoor_v.accelTime( 0.2 );
+	$mover_lavabucketdoor_v.move( UP, 78 );
+	sys.waitFor( $mover_lavabucketdoor_v );
+}
+
+void loopbucket1()
+{
+	while( 1 ) {
+
+	$org_bucket1.time( 0.1 );
+	$org_bucket1.moveTo( $bucket_pos1 );
+	sys.waitFor( $org_bucket1 );
+
+	$org_bucket1.time( 2 );
+	$org_bucket1.moveTo( $bucket_pos1b );
+	sys.waitFor( $org_bucket1 );
+
+	thread cycle_lavabucket_doors();
+
+	sys.wait( 0.75 );
+
+	$org_bucket1.time( 2 );
+	$org_bucket1.moveTo( $bucket_pos2 );
+	sys.waitFor( $org_bucket1 );
+
+	$org_bucket1.time( 0.2 );
+	$org_bucket1.moveTo( $bucket_pos3 );
+	sys.waitFor( $org_bucket1 );
+
+	$org_bucket1.time( 0.2 );
+	$org_bucket1.moveTo( $bucket_pos4 );
+	sys.waitFor( $org_bucket1 );
+
+	$org_bucket1.time( 0.2 );
+	$org_bucket1.moveTo( $bucket_pos4 );
+	sys.waitFor( $org_bucket1 );
+
+	$org_bucket1.time( 0.2 );
+	$org_bucket1.moveTo( $bucket_pos5 );
+	sys.waitFor( $org_bucket1 );
+
+	$org_bucket1.time( 0.2 );
+	$org_bucket1.moveTo( $bucket_pos6 );
+	sys.waitFor( $org_bucket1 );
+
+	$org_bucket1.time( 1 );
+	$org_bucket1.moveTo( $bucket_pos7 );
+	$org_bucket1.rotateOnce( '-15 0 0' );
+	sys.waitFor( $org_bucket1 );
+
+	$org_bucket1.time( 1.5 );
+	$org_bucket1.moveTo( $bucket_pos8 );
+	$org_bucket1.rotateOnce( '15 0 0' );
+	sys.waitFor( $org_bucket1 );
+
+	thread cycle_lavabucket_door_vert();
+
+	$org_bucket1.time( 2 );
+	$org_bucket1.moveTo( $bucket_pos9 );
+	sys.waitFor( $org_bucket1 );
+
+	$org_bucket1.time( 2 );
+	$org_bucket1.moveTo( $bucket_pos10 );
+	sys.waitFor( $org_bucket1 );
+
+	}
+}
+
+void loopbucket2()
+{
+	while( 1 ) {
+
+	$org_bucket2.time( 0.1 );
+	$org_bucket2.moveTo( $bucket_pos1 );
+	sys.waitFor( $org_bucket2 );
+
+	$org_bucket2.time( 2 );
+	$org_bucket2.moveTo( $bucket_pos1b );
+	sys.waitFor( $org_bucket2 );
+
+	thread cycle_lavabucket_doors();
+
+	sys.wait( 0.75 );
+
+	$org_bucket2.time( 2 );
+	$org_bucket2.moveTo( $bucket_pos2 );
+	sys.waitFor( $org_bucket2 );
+
+	$org_bucket2.time( 0.2 );
+	$org_bucket2.moveTo( $bucket_pos3 );
+	sys.waitFor( $org_bucket2 );
+
+	$org_bucket2.time( 0.2 );
+	$org_bucket2.moveTo( $bucket_pos4 );
+	sys.waitFor( $org_bucket2 );
+
+	$org_bucket2.time( 0.2 );
+	$org_bucket2.moveTo( $bucket_pos4 );
+	sys.waitFor( $org_bucket2 );
+
+	$org_bucket2.time( 0.2 );
+	$org_bucket2.moveTo( $bucket_pos5 );
+	sys.waitFor( $org_bucket2 );
+
+	$org_bucket2.time( 0.2 );
+	$org_bucket2.moveTo( $bucket_pos6 );
+	sys.waitFor( $org_bucket2 );
+
+	$org_bucket2.time( 1 );
+	$org_bucket2.moveTo( $bucket_pos7 );
+	$org_bucket2.rotateOnce( '-15 0 0' );
+	sys.waitFor( $org_bucket2 );
+
+	$org_bucket2.time( 1.5 );
+	$org_bucket2.moveTo( $bucket_pos8 );
+	$org_bucket2.rotateOnce( '15 0 0' );
+	sys.waitFor( $org_bucket2 );
+
+	thread cycle_lavabucket_door_vert();
+
+	$org_bucket2.time( 2 );
+	$org_bucket2.moveTo( $bucket_pos9 );
+	sys.waitFor( $org_bucket2 );
+
+	$org_bucket2.time( 2 );
+	$org_bucket2.moveTo( $bucket_pos10 );
+	sys.waitFor( $org_bucket2 );
+
+	}
+}
+
+void loop_lavabuckets()
+{
+	thread loopbucket1();
+	sys.wait( 6 );
+	thread loopbucket2();
+}
+
+//*********************************************************************************
+//** Clockwork gears
+//** 
+//*********************************************************************************
+
+void loop_clockwork1()
+{
+	while( 1 ) {
+
+	sys.wait( 2.25 );
+
+	$org_hook1.time( 0.1 );
+	$org_hook1.rotateOnce( '0 0 12' );
+	sys.waitFor( $org_hook1 );
+
+	$mover_gear_hook1.time( 5 );
+	$mover_gear_hook1.accelTime( 1 );
+	$mover_gear_hook1.decelTime( 0 );
+	$mover_gear_hook1.rotateOnce( '1440 0 0' );
+	sys.waitFor( $mover_gear_hook1 );
+
+	$org_hook1.time( 0.01 );
+	$org_hook1.rotateOnce( '0 0 -12' );
+	sys.waitFor( $org_hook1 );
+
+	$mover_gear_hook1.time( 0.1 );
+	$mover_gear_hook1.accelTime( 0 );
+	$mover_gear_hook1.decelTime( 0 );
+	$mover_gear_hook1.rotateOnce( '-2 0 0' );
+	sys.waitFor( $mover_gear_hook1 );
+	$mover_gear_hook1.time( 0.1 );
+	$mover_gear_hook1.accelTime( 0 );
+	$mover_gear_hook1.decelTime( 0 );
+	$mover_gear_hook1.rotateOnce( '2 0 0' );
+	sys.waitFor( $mover_gear_hook1 );
+
+	}
+}
+
+void loop_clockwork2()
+{
+	while( 1 ) {
+
+	sys.wait( 2.0 );
+
+	$org_hook2.time( 0.1 );
+	$org_hook2.rotateOnce( '0 0 12' );
+	sys.waitFor( $org_hook2 );
+
+	$mover_gear_hook2.time( 4 );
+	$mover_gear_hook2.accelTime( 1 );
+	$mover_gear_hook2.decelTime( 0 );
+	$mover_gear_hook2.rotateOnce( '1800 0 0' );
+	sys.waitFor( $mover_gear_hook2 );
+
+	$org_hook2.time( 0.01 );
+	$org_hook2.rotateOnce( '0 0 -12' );
+	sys.waitFor( $org_hook2 );
+
+	$mover_gear_hook2.time( 0.1 );
+	$mover_gear_hook2.accelTime( 0 );
+	$mover_gear_hook2.decelTime( 0 );
+	$mover_gear_hook2.rotateOnce( '-3 0 0' );
+	sys.waitFor( $mover_gear_hook2 );
+	$mover_gear_hook2.time( 0.1 );
+	$mover_gear_hook2.accelTime( 0 );
+	$mover_gear_hook2.decelTime( 0 );
+	$mover_gear_hook2.rotateOnce( '3 0 0' );
+	sys.waitFor( $mover_gear_hook2 );
+	$mover_gear_hook2.time( 0.1 );
+	$mover_gear_hook2.accelTime( 0 );
+	$mover_gear_hook2.decelTime( 0 );
+	$mover_gear_hook2.rotateOnce( '-2 0 0' );
+	sys.waitFor( $mover_gear_hook2 );
+	$mover_gear_hook2.time( 0.1 );
+	$mover_gear_hook2.accelTime( 0 );
+	$mover_gear_hook2.decelTime( 0 );
+	$mover_gear_hook2.rotateOnce( '2 0 0' );
+	sys.waitFor( $mover_gear_hook2 );
+
+	}
+}
+
+//*********************************************************************************
+//** Double gears in window by water
+//** 
+//*********************************************************************************
+
+void loop_windowgears()
+{
+	while( 1 ) {
+
+	//speed up slowly, then stop abruptly
+	$mover_windowgear_upper.time( 10 );
+	$mover_windowgear_upper.accelTime( 7 );
+	$mover_windowgear_upper.decelTime( 0 );
+	$mover_windowgear_lower.time( 10 );
+	$mover_windowgear_lower.accelTime( 7 );
+	$mover_windowgear_lower.decelTime( 0 );
+	$mover_windowgear_upper.rotateOnce( '2880 0 0' );
+	$mover_windowgear_lower.rotateOnce( '-2880 0 0' );
+	sys.waitFor( $mover_windowgear_upper );
+
+	//rattle them a bit
+	$mover_windowgear_upper.time( 0.1 );
+	$mover_windowgear_upper.accelTime( 0 );
+	$mover_windowgear_upper.decelTime( 0 );
+	$mover_windowgear_lower.time( 0.1 );
+	$mover_windowgear_lower.accelTime( 0 );
+	$mover_windowgear_lower.decelTime( 0 );
+	$mover_windowgear_upper.rotateOnce( '-2 0 0' );
+	$mover_windowgear_lower.rotateOnce( '2 0 0' );
+	sys.waitFor( $mover_windowgear_upper );
+	$mover_windowgear_upper.time( 0.1 );
+	$mover_windowgear_upper.accelTime( 0 );
+	$mover_windowgear_upper.decelTime( 0 );
+	$mover_windowgear_lower.time( 0.1 );
+	$mover_windowgear_lower.accelTime( 0 );
+	$mover_windowgear_lower.decelTime( 0 );
+	$mover_windowgear_upper.rotateOnce( '3 0 0' );
+	$mover_windowgear_lower.rotateOnce( '-3 0 0' );
+	sys.waitFor( $mover_windowgear_upper );
+	$mover_windowgear_upper.time( 0.1 );
+	$mover_windowgear_upper.accelTime( 0 );
+	$mover_windowgear_upper.decelTime( 0 );
+	$mover_windowgear_lower.time( 0.1 );
+	$mover_windowgear_lower.accelTime( 0 );
+	$mover_windowgear_lower.decelTime( 0 );
+	$mover_windowgear_upper.rotateOnce( '-1 0 0' );
+	$mover_windowgear_lower.rotateOnce( '1 0 0' );
+	sys.waitFor( $mover_windowgear_upper );
+
+	sys.wait( 2 );
+
+	//speed up moderately, run for a bit, then slow back down, going backwards this time
+	$mover_windowgear_upper.time( 10 );
+	$mover_windowgear_upper.accelTime( 2 );
+	$mover_windowgear_upper.decelTime( 2 );
+	$mover_windowgear_lower.time( 10 );
+	$mover_windowgear_lower.accelTime( 2 );
+	$mover_windowgear_lower.decelTime( 2 );
+	$mover_windowgear_upper.rotateOnce( '-2160 0 0' );
+	$mover_windowgear_lower.rotateOnce( '2160 0 0' );
+	sys.waitFor( $mover_windowgear_upper );
+
+	sys.wait( 1.5 );
+
+	//act as though they're resetting or something clever
+	$mover_windowgear_upper.time( 3 );
+	$mover_windowgear_upper.accelTime( 1 );
+	$mover_windowgear_upper.decelTime( 1 );
+	$mover_windowgear_lower.time( 3 );
+	$mover_windowgear_lower.accelTime( 1 );
+	$mover_windowgear_lower.decelTime( 1 );
+	$mover_windowgear_upper.rotateOnce( '720 0 0' );
+	$mover_windowgear_lower.rotateOnce( '-720 0 0' );
+	sys.waitFor( $mover_windowgear_upper );
+
+	sys.wait( 0.1 );
+
+	//one final movement so the first is in the opposite direction
+	$mover_windowgear_upper.time( 5 );
+	$mover_windowgear_upper.accelTime( 0.5 );
+	$mover_windowgear_upper.decelTime( 3 );
+	$mover_windowgear_lower.time( 5 );
+	$mover_windowgear_lower.accelTime( 0.5 );
+	$mover_windowgear_lower.decelTime( 3 );
+	$mover_windowgear_upper.rotateOnce( '-360 0 0' );
+	$mover_windowgear_lower.rotateOnce( '360 0 0' );
+	sys.waitFor( $mover_windowgear_upper );
+
+	sys.wait( 5 );
+	}
+}
+
+//*********************************************************************************
+//** Bars to high platform teleporter
+//** 
+//*********************************************************************************
+
+void open_hightele_bars()
+{
+	//move button in
+	$mover_hightele_button.time( 0.5 );
+	$mover_hightele_button.accelTime( 0.15 );
+	$mover_hightele_button.decelTime( 0.15 );
+	$mover_hightele_button.move( SOUTH, 3 );
+	sys.waitFor( $mover_hightele_button );
+
+
+	//Gears and shafts
+	$mover_gategear_s.time( 2 );
+	$mover_gategear_s.accelTime( 0.25 );
+	$mover_gategear_s.decelTime( 0.25 );
+	$mover_gategear_s3.time( 2 );
+	$mover_gategear_s3.accelTime( 0.25 );
+	$mover_gategear_s3.decelTime( 0.25 );
+	$mover_gategear_s.rotateOnce( '0 0 435' );
+	$mover_gategear_s3.rotateOnce( '0 435 0' );
+
+	$mover_gategear_n.time( 2 );
+	$mover_gategear_n.accelTime( 0.25 );
+	$mover_gategear_n.decelTime( 0.25 );
+	$mover_gategear_n3.time( 2 );
+	$mover_gategear_n3.accelTime( 0.25 );
+	$mover_gategear_n3.decelTime( 0.25 );
+	$mover_gategear_n.rotateOnce( '0 0 -435' );
+	$mover_gategear_n3.rotateOnce( '0 -435 0' );
+
+	//Gate
+	$mover_hightele_bars.time( 2 );
+	$mover_hightele_bars.accelTime( 0.25 );
+	$mover_hightele_bars.decelTime( 0.25 );
+	$mover_hightele_bars.move( UP, 76 );
+	sys.waitFor( $mover_hightele_bars );
+
+	sys.wait( 4.0 );
+
+	//Gears and shafts
+	$mover_gategear_s.time( 2 );
+	$mover_gategear_s.accelTime( 0.25 );
+	$mover_gategear_s.decelTime( 0.25 );
+	$mover_gategear_s3.time( 2 );
+	$mover_gategear_s3.accelTime( 0.25 );
+	$mover_gategear_s3.decelTime( 0.25 );
+	$mover_gategear_s.rotateOnce( '0 0 -435' );
+	$mover_gategear_s3.rotateOnce( '0 -435 0' );
+
+	$mover_gategear_n.time( 2 );
+	$mover_gategear_n.accelTime( 0.25 );
+	$mover_gategear_n.decelTime( 0.25 );
+	$mover_gategear_n3.time( 2 );
+	$mover_gategear_n3.accelTime( 0.25 );
+	$mover_gategear_n3.decelTime( 0.25 );
+	$mover_gategear_n.rotateOnce( '0 0 435' );
+	$mover_gategear_n3.rotateOnce( '0 435 0' );
+
+	//Gate
+	$mover_hightele_bars.time( 2 );
+	$mover_hightele_bars.accelTime( 0.25 );
+	$mover_hightele_bars.decelTime( 0.25 );
+	$mover_hightele_bars.move( DOWN, 76 );
+	sys.waitFor( $mover_hightele_bars );
+
+
+	//move button out
+	$mover_hightele_button.time( 0.5 );
+	$mover_hightele_button.accelTime( 0.15 );
+	$mover_hightele_button.decelTime( 0.15 );
+	$mover_hightele_button.move( NORTH, 3 );
+	sys.waitFor( $mover_hightele_button );
+}
+//*********************************************************************************
+
+//*********************************************************************************
+//** Red armor door
+//** 
+//*********************************************************************************
+
+void open_redarmor_door()
+{
+	//move button in
+	$mover_redarmor_door_button.time( 0.5 );
+	$mover_redarmor_door_button.accelTime( 0.15 );
+	$mover_redarmor_door_button.decelTime( 0.15 );
+	$mover_redarmor_door_button.move( EAST, 3 );
+	sys.waitFor( $mover_redarmor_door_button );
+
+	$mover_redarmor_door.time( 0.5 );
+	$mover_redarmor_door.accelTime( 0.2 );
+	$mover_redarmor_door.decelTime( 0.2 );
+	$mover_redarmor_door.move( UP, 112 );
+	sys.waitFor( $mover_redarmor_door );
+
+	sys.wait( 3.0 );
+
+	$mover_redarmor_door.time( 0.5 );
+	$mover_redarmor_door.accelTime( 0.2 );
+	$mover_redarmor_door.decelTime( 0.2 );
+	$mover_redarmor_door.move( DOWN, 112 );
+	sys.waitFor( $mover_redarmor_door );
+
+	//move button out
+	$mover_redarmor_door_button.time( 0.5 );
+	$mover_redarmor_door_button.accelTime( 0.15 );
+	$mover_redarmor_door_button.decelTime( 0.15 );
+	$mover_redarmor_door_button.move( WEST, 3 );
+	sys.waitFor( $mover_redarmor_door_button );
+}
+
+//*********************************************************************************
+//** Crusher West
+//** 
+//*********************************************************************************
+
+void crusher_w()
+{
+	//move button in
+	$mover_crusher_w_button.time( 0.5 );
+	$mover_crusher_w_button.accelTime( 0.15 );
+	$mover_crusher_w_button.decelTime( 0.15 );
+	$mover_crusher_w_button.move( EAST, 3 );
+	sys.waitFor( $mover_crusher_w_button );
+
+	$mover_crusher_w.time( 0.5 );
+	$mover_crusher_w.move( EAST, 128 );
+
+	//gear
+	$mover_crushergear_w.time( 0.5 );
+	$mover_crushergear_w.rotateOnce( '-45 0 0' );
+
+	$mover_crushergear_w.startSoundShader ("windowgear_small1", SND_CHANNEL_ANY );
+	sys.waitFor( $mover_crusher_w );
+
+	sys.wait( 3.0 );
+
+	$mover_crusher_w.time( 0.5 );
+	$mover_crusher_w.move( WEST, 128 );
+
+	//gear
+	$mover_crushergear_w.time( 0.5 );
+	$mover_crushergear_w.rotateOnce( '45 0 0' );
+
+	$mover_crushergear_w.startSoundShader ("windowgear_small1", SND_CHANNEL_ANY );
+	sys.waitFor( $mover_crusher_w );
+
+	//move button out
+	$mover_crusher_w_button.time( 0.5 );
+	$mover_crusher_w_button.accelTime( 0.15 );
+	$mover_crusher_w_button.decelTime( 0.15 );
+	$mover_crusher_w_button.move( WEST, 3 );
+	sys.waitFor( $mover_crusher_w_button );
+
+}
+//*********************************************************************************
+
+//*********************************************************************************
+//** Crusher East
+//** 
+//*********************************************************************************
+
+void crusher_e()
+{
+	//move button in
+	$mover_crusher_e_button.time( 0.5 );
+	$mover_crusher_e_button.accelTime( 0.15 );
+	$mover_crusher_e_button.decelTime( 0.15 );
+	$mover_crusher_e_button.move( EAST, 3 );
+	sys.waitFor( $mover_crusher_e_button );
+
+	$mover_crusher_e.time( 0.5 );
+	$mover_crusher_e.move( WEST, 128 );
+
+	//gear
+	$mover_crushergear_e.time( 0.5 );
+	$mover_crushergear_e.rotateOnce( '45 0 0' );
+
+	$mover_crushergear_e.startSoundShader ("windowgear_small1", SND_CHANNEL_ANY );
+	sys.waitFor( $mover_crusher_e );
+
+	sys.wait( 3.0 );
+
+	$mover_crusher_e.time( 0.5 );
+	$mover_crusher_e.move( EAST, 128 );
+
+	//gear
+	$mover_crushergear_e.time( 0.5 );
+	$mover_crushergear_e.rotateOnce( '-45 0 0' );
+
+	$mover_crushergear_e.startSoundShader ("windowgear_small1", SND_CHANNEL_ANY );
+	sys.waitFor( $mover_crusher_e );
+
+	//move button out
+	$mover_crusher_e_button.time( 0.5 );
+	$mover_crusher_e_button.accelTime( 0.15 );
+	$mover_crusher_e_button.decelTime( 0.15 );
+	$mover_crusher_e_button.move( WEST, 3 );
+	sys.waitFor( $mover_crusher_e_button );
+
+}
+//*********************************************************************************
+
+//*********************************************************************************
+//** Lava trap #1
+//** This is the two-piece moving floor near the red armor room
+//*********************************************************************************
+
+void retract_lavatrap_1()
+{
+	//turn on light
+	$lavatrap1_light.On();
+
+	//show heat
+	$lavatrap1_heat.show();
+
+	//open trap to reveal lava
+	$mover_lavatrap_1n.time( 1 );
+	$mover_lavatrap_1n.accelTime( 0.1 );
+	$mover_lavatrap_1n.decelTime( 0.1 );
+	$mover_lavatrap_1s.time( 1 );
+	$mover_lavatrap_1s.accelTime( 0.1 );
+	$mover_lavatrap_1s.decelTime( 0.1 );
+
+	$mover_lavatrap_1n.move( NORTH, 136 );
+	$mover_lavatrap_1s.move( SOUTH, 136 );
+
+	$tn_lavatrap1_snd.startSoundShader ("windowgear_small1", SND_CHANNEL_ANY );
+	sys.waitFor( $mover_lavatrap_1s );
+
+	//turn off lavatrap1 overhead lights
+	$lavatrap1_overhead1.fadeOutLight( 0.1 );
+	$lavatrap1_overhead2.fadeOutLight( 0.1 );
+	$lavatrap1_overhead3.fadeOutLight( 0.1 );
+	$lavatrap1_overhead4.fadeOutLight( 0.1 );
+	$lavatrap1_overhead5.fadeOutLight( 0.1 );
+
+
+}
+
+void lavatrap_1_button()
+{
+	//move button in
+	$mover_lavatrap_1_button.time( 0.5 );
+	$mover_lavatrap_1_button.accelTime( 0.15 );
+	$mover_lavatrap_1_button.decelTime( 0.15 );
+	$mover_lavatrap_1_button.move( SOUTH, 3 );
+	sys.waitFor( $mover_lavatrap_1_button );
+
+	//fade in overhead lights
+	$lavatrap1_overhead1.fadeInLight( 0.5 );
+	$lavatrap1_overhead2.fadeInLight( 0.5 );
+	$lavatrap1_overhead3.fadeInLight( 0.5 );
+	$lavatrap1_overhead4.fadeInLight( 0.5 );
+	$lavatrap1_overhead5.fadeInLight( 0.5 );
+
+	//open the light covers
+	$mover_lavatrap_lightcover_n.time( 0.5 );
+	$mover_lavatrap_lightcover_s.time( 0.5 );
+	$mover_lavatrap_lightcover_n.move( NORTH, 63 );
+	$mover_lavatrap_lightcover_s.move( SOUTH, 63 );
+
+	//close trap over lava
+	//Floor pieces
+	$mover_lavatrap_1n.time( 1 );
+	$mover_lavatrap_1n.accelTime( 0.1 );
+	$mover_lavatrap_1n.decelTime( 0.1 );
+	$mover_lavatrap_1s.time( 1 );
+	$mover_lavatrap_1s.accelTime( 0.1 );
+	$mover_lavatrap_1s.decelTime( 0.1 );
+
+	$mover_lavatrap_1n.move( SOUTH, 144 );
+	$mover_lavatrap_1s.move( NORTH, 144 );
+
+	//Gears
+	$mover_gear2_cw.time( 1 );
+	$mover_gear2_ccw.time( 1 );
+	$mover_gear2_cw2.time( 1 );
+	$mover_gear2_ccw2.time( 1 );
+	$mover_gear2_cw.rotateOnce( '135 0 0' );
+	$mover_gear2_ccw.rotateOnce( '-135 0 0' );
+	$mover_gear2_cw2.rotateOnce( '-135 0 0' );
+	$mover_gear2_ccw2.rotateOnce( '135 0 0' );
+
+	$tn_lavatrap1_snd.startSoundShader ("windowgear_small1", SND_CHANNEL_ANY );
+	sys.waitFor( $mover_lavatrap_1s );
+
+	//hide heat
+	$lavatrap1_heat.hide();
+
+	//turn off light
+	$lavatrap1_light.Off();
+	
+	sys.wait( 2 );
+
+	//show heat
+	$lavatrap1_heat.show();
+
+	//turn on light
+	$lavatrap1_light.On();
+
+	//fade out overhead lights
+	$lavatrap1_overhead1.fadeOutLight( 0.5 );
+	$lavatrap1_overhead2.fadeOutLight( 0.5 );
+	$lavatrap1_overhead3.fadeOutLight( 0.5 );
+	$lavatrap1_overhead4.fadeOutLight( 0.5 );
+	$lavatrap1_overhead5.fadeOutLight( 0.5 );
+
+	//close the light covers
+	$mover_lavatrap_lightcover_n.time( 0.5 );
+	$mover_lavatrap_lightcover_s.time( 0.5 );
+	$mover_lavatrap_lightcover_n.move( SOUTH, 63 );
+	$mover_lavatrap_lightcover_s.move( NORTH, 63 );
+
+	//open trap to reveal lava
+	//Floor pieces
+	$mover_lavatrap_1n.time( 1 );
+	$mover_lavatrap_1n.accelTime( 0.1 );
+	$mover_lavatrap_1n.decelTime( 0.1 );
+	$mover_lavatrap_1s.time( 1 );
+	$mover_lavatrap_1s.accelTime( 0.1 );
+	$mover_lavatrap_1s.decelTime( 0.1 );
+
+	$mover_lavatrap_1n.move( NORTH, 144 );
+	$mover_lavatrap_1s.move( SOUTH, 144 );
+
+	//Gears
+	$mover_gear2_cw.time( 1 );
+	$mover_gear2_ccw.time( 1 );
+	$mover_gear2_cw2.time( 1 );
+	$mover_gear2_ccw2.time( 1 );
+	$mover_gear2_cw.rotateOnce( '-135 0 0' );
+	$mover_gear2_ccw.rotateOnce( '135 0 0' );
+	$mover_gear2_cw2.rotateOnce( '135 0 0' );
+	$mover_gear2_ccw2.rotateOnce( '-135 0 0' );
+
+	$tn_lavatrap1_snd.startSoundShader ("windowgear_small1", SND_CHANNEL_ANY );
+	sys.waitFor( $mover_lavatrap_1s );
+
+	//move button out
+	$mover_lavatrap_1_button.time( 0.5 );
+	$mover_lavatrap_1_button.accelTime( 0.15 );
+	$mover_lavatrap_1_button.decelTime( 0.15 );
+	$mover_lavatrap_1_button.move( NORTH, 3 );
+	sys.waitFor( $mover_lavatrap_1_button );
+
+}
+//*********************************************************************************
+
+
+//*********************************************************************************
+//** Lava trap #2
+//** this is the two-piece moving floor between the bigass room and the RL room
+//*********************************************************************************
+
+void loop_lavatrap_2()
+{
+	$tn_lavatrap2snd.startSoundShader ("lavatrap2start", SND_CHANNEL_ANY );
+	while( 1 ) {
+
+	//Floor Pieces
+	$mover_lavatrap_2w.time( 1 );
+	$mover_lavatrap_2w.accelTime( 0.1 );
+	$mover_lavatrap_2w.decelTime( 0.1 );
+	$mover_lavatrap_2e.time( 1 );
+	$mover_lavatrap_2e.accelTime( 0.1 );
+	$mover_lavatrap_2e.decelTime( 0.1 );
+
+	$mover_lavatrap_2w.move( EAST, 64 );
+	$mover_lavatrap_2e.move( WEST, 64 );
+
+	//Gears
+	$mover_gear_cw.time( 1 );
+	$mover_gear_ccw.time( 1 );
+	$mover_gear_cw2.time( 1 );
+	$mover_gear_ccw2.time( 1 );
+	$mover_gear_cw.rotateOnce( '135 0 0' );
+	$mover_gear_ccw.rotateOnce( '-135 0 0' );
+	$mover_gear_cw2.rotateOnce( '-135 0 0' );
+	$mover_gear_ccw2.rotateOnce( '135 0 0' );
+
+
+	$tn_lavatrap2snd.startSoundShader ("lavatrap2gear", SND_CHANNEL_ANY );
+
+	sys.waitFor( $mover_lavatrap_2e );
+
+	sys.wait( 0.5 );
+
+	//Floor Pieces
+	$mover_lavatrap_2w.time( 1 );
+	$mover_lavatrap_2w.accelTime( 0.1 );
+	$mover_lavatrap_2w.decelTime( 0.1 );
+	$mover_lavatrap_2e.time( 1 );
+	$mover_lavatrap_2e.accelTime( 0.1 );
+	$mover_lavatrap_2e.decelTime( 0.1 );
+
+	$mover_lavatrap_2w.move( WEST, 64 );
+	$mover_lavatrap_2e.move( EAST, 64 );
+
+	//Gears
+	$mover_gear_cw.time( 1 );
+	$mover_gear_ccw.time( 1 );
+	$mover_gear_cw2.time( 1 );
+	$mover_gear_ccw2.time( 1 );
+	$mover_gear_cw.rotateOnce( '-135 0 0' );
+	$mover_gear_ccw.rotateOnce( '135 0 0' );
+	$mover_gear_cw2.rotateOnce( '135 0 0' );
+	$mover_gear_ccw2.rotateOnce( '-135 0 0' );
+
+	$tn_lavatrap2snd.startSoundShader ("windowgear_small1", SND_CHANNEL_ANY );
+	sys.waitFor( $mover_lavatrap_2e );
+
+	sys.wait( 1 );
+
+	}
+}
+//*********************************************************************************
+
+
+//*********************************************************************************
+//** Extending platform to the red armor and megahealth
+//** 
+//*********************************************************************************
+
+void extend_redarmor_plat()
+{
+	//move button in
+	$mover_redarmor_button.time( 0.5 );
+	$mover_redarmor_button.accelTime( 0.15 );
+	$mover_redarmor_button.decelTime( 0.15 );
+	$mover_redarmor_button.move( SOUTH, 3 );
+	sys.waitFor( $mover_redarmor_button );
+
+	//extend it
+	$mover_redarmor_plat.time( 3 );
+	$mover_redarmor_plat.accelTime( 0.2 );
+	$mover_redarmor_plat.decelTime( 0.2 );
+	$mover_redarmor_plat.move( NORTH, 200 );
+
+
+	//Gears and shafts
+	$mover_smgear_left.time( 3 );
+	$mover_smgear_left.accelTime( 0.2 );
+	$mover_smgear_left.decelTime( 0.2 );
+	$mover_smgear_left.rotateOnce( '0 1145 0' );
+	$mover_smgearshaft_left.time( 3 );
+	$mover_smgearshaft_left.accelTime( 0.2 );
+	$mover_smgearshaft_left.decelTime( 0.2 );
+	$mover_smgearshaft_left.rotateOnce( '0 1145 0' );
+	$mover_smgearshaft_h_left.time( 3 );
+	$mover_smgearshaft_h_left.accelTime( 0.2 );
+	$mover_smgearshaft_h_left.decelTime( 0.2 );
+	$mover_smgearshaft_h_left.rotateOnce( '1145 0 0' );
+
+	$mover_smgear_right.time( 3 );
+	$mover_smgear_right.accelTime( 0.2 );
+	$mover_smgear_right.decelTime( 0.2 );
+	$mover_smgear_right.rotateOnce( '0 -1145 0' );
+	$mover_smgearshaft_right.time( 3 );
+	$mover_smgearshaft_right.accelTime( 0.2 );
+	$mover_smgearshaft_right.decelTime( 0.2 );
+	$mover_smgearshaft_right.rotateOnce( '0 -1145 0' );
+	$mover_smgearshaft_h_right.time( 3 );
+	$mover_smgearshaft_h_right.accelTime( 0.2 );
+	$mover_smgearshaft_h_right.decelTime( 0.2 );
+	$mover_smgearshaft_h_right.rotateOnce( '-1145 0 0' );
+
+
+	sys.waitFor( $mover_redarmor_plat );	
+	redarmorplatform = 1;
+
+	//move button back out
+	$mover_redarmor_button.time( 0.5 );
+	$mover_redarmor_button.accelTime( 0.15 );
+	$mover_redarmor_button.decelTime( 0.15 );
+	$mover_redarmor_button.move( NORTH, 3 );
+	sys.waitFor( $mover_redarmor_button );
+}
+
+void retract_redarmor_plat()
+{
+	//move button in
+	$mover_redarmor_button.time( 0.5 );
+	$mover_redarmor_button.accelTime( 0.15 );
+	$mover_redarmor_button.decelTime( 0.15 );
+	$mover_redarmor_button.move( SOUTH, 3 );
+	sys.waitFor( $mover_redarmor_button );
+
+	//retract it
+	$mover_redarmor_plat.time( 3 );
+	$mover_redarmor_plat.accelTime( 0.2 );
+	$mover_redarmor_plat.decelTime( 0.2 );
+	$mover_redarmor_plat.move( SOUTH, 200 );
+
+
+	//Gears and shafts
+	$mover_smgear_left.time( 3 );
+	$mover_smgear_left.accelTime( 0.2 );
+	$mover_smgear_left.decelTime( 0.2 );
+	$mover_smgear_left.rotateOnce( '0 -1145 0' );
+	$mover_smgearshaft_left.time( 3 );
+	$mover_smgearshaft_left.accelTime( 0.2 );
+	$mover_smgearshaft_left.decelTime( 0.2 );
+	$mover_smgearshaft_left.rotateOnce( '0 -1145 0' );
+	$mover_smgearshaft_h_left.time( 3 );
+	$mover_smgearshaft_h_left.accelTime( 0.2 );
+	$mover_smgearshaft_h_left.decelTime( 0.2 );
+	$mover_smgearshaft_h_left.rotateOnce( '-1145 0 0' );
+
+	$mover_smgear_right.time( 3 );
+	$mover_smgear_right.accelTime( 0.2 );
+	$mover_smgear_right.decelTime( 0.2 );
+	$mover_smgear_right.rotateOnce( '0 1145 0' );
+	$mover_smgearshaft_right.time( 3 );
+	$mover_smgearshaft_right.accelTime( 0.2 );
+	$mover_smgearshaft_right.decelTime( 0.2 );
+	$mover_smgearshaft_right.rotateOnce( '0 1145 0' );
+	$mover_smgearshaft_h_right.time( 3 );
+	$mover_smgearshaft_h_right.accelTime( 0.2 );
+	$mover_smgearshaft_h_right.decelTime( 0.2 );
+	$mover_smgearshaft_h_right.rotateOnce( '1145 0 0' );
+
+
+	sys.waitFor( $mover_redarmor_plat );	
+	redarmorplatform = 0;
+
+	//move button back out
+	$mover_redarmor_button.time( 0.5 );
+	$mover_redarmor_button.accelTime( 0.15 );
+	$mover_redarmor_button.decelTime( 0.15 );
+	$mover_redarmor_button.move( NORTH, 3 );
+	sys.waitFor( $mover_redarmor_button );
+}
+
+void redarmor_plat_button()
+{
+	if( redarmorplatform == 0 ) {
+		extend_redarmor_plat();
+	}
+
+	else {
+		retract_redarmor_plat();
+	}
+}
+//*********************************************************************************
+
+//*********************************************************************************
+//** Big moving floor over main lava pit
+//** 
+//*********************************************************************************
+
+void bigpit_light_control()
+{
+	//turn on the lava lamp
+	$bigpit_light.fadeInLight( 3 );
+
+	//wait for floor to start closing
+	sys.wait( 14 );
+
+	//turn off the lava lamp
+	$bigpit_light.fadeOutLight( 3 );
+}
+
+void open_bigpit()
+{
+	//mark the floor as being opened / fully open so no one can abuse the buttons
+	bigpitfloor = 1;
+
+	$bigpit_heat.show();
+
+	//move buttons in
+	$mover_bigpit_button2.time( 0.5 );
+	$mover_bigpit_button2.accelTime( 0.15 );
+	$mover_bigpit_button2.decelTime( 0.15 );
+	$mover_bigpit_button2.move( NORTH, 3 );
+	$mover_bigpit_button.time( 0.5 );
+	$mover_bigpit_button.accelTime( 0.15 );
+	$mover_bigpit_button.decelTime( 0.15 );
+	$mover_bigpit_button.move( NORTH, 3 );
+	sys.waitFor( $mover_bigpit_button );
+
+	thread bigpit_light_control();
+
+	//open
+	$mover_biglava_w.time( 6.5 );
+	$mover_biglava_w.accelTime( 0.2 );
+	$mover_biglava_w.decelTime( 0.2 );
+	$mover_biglava_w.move( WEST, 282 );
+
+	$mover_biglava_e.time( 6.5 );
+	$mover_biglava_e.accelTime( 0.2 );
+	$mover_biglava_e.decelTime( 0.2 );
+	$mover_biglava_e.move( EAST, 250 );
+
+	$mover_biglava_w2.time( 6.5 );
+	$mover_biglava_w2.accelTime( 0.2 );
+	$mover_biglava_w2.decelTime( 0.2 );
+	$mover_biglava_w2.move( WEST, 58 );
+
+	$mover_biglava_e2.time( 6.5 );
+	$mover_biglava_e2.accelTime( 0.2 );
+	$mover_biglava_e2.decelTime( 0.2 );
+	$mover_biglava_e2.move( EAST, 58 );
+
+
+	//gears
+	$mover_bigfloor_upper_r.time( 6.5 );
+	$mover_bigfloor_upper_r.accelTime( 0.2 );
+	$mover_bigfloor_upper_r.decelTime( 0.2 );
+	$mover_bigfloor_upper_r.rotateOnce( '320 0 0' );
+	$mover_bigfloor_lower_r.time( 6.5 );
+	$mover_bigfloor_lower_r.accelTime( 0.2 );
+	$mover_bigfloor_lower_r.decelTime( 0.2 );
+	$mover_bigfloor_lower_r.rotateOnce( '-320 0 0' );
+
+	$mover_bigfloor_upper_l.time( 6.5 );
+	$mover_bigfloor_upper_l.accelTime( 0.2 );
+	$mover_bigfloor_upper_l.decelTime( 0.2 );
+	$mover_bigfloor_upper_l.rotateOnce( '-320 0 0' );
+	$mover_bigfloor_lower_l.time( 6.5 );
+	$mover_bigfloor_lower_l.accelTime( 0.2 );
+	$mover_bigfloor_lower_l.decelTime( 0.2 );
+	$mover_bigfloor_lower_l.rotateOnce( '320 0 0' );
+
+	$tn_bigpitsnd.startSoundShader ("giant_lava_pit", SND_CHANNEL_ANY );
+	$tn_bigpitlavasnd.stopSound ( SND_CHANNEL_ANY, false );
+	$tn_bigpitlavasnd.startSoundShader ("lavaloop_01L", SND_CHANNEL_ANY );
+	sys.waitFor( $mover_biglava_e2 );
+	sys.wait( 3 );
+
+	//close
+	$mover_biglava_w.time( 6.5 );
+	$mover_biglava_w.accelTime( 0.2 );
+	$mover_biglava_w.decelTime( 0.2 );
+	$mover_biglava_w.move( EAST, 282 );
+
+	$mover_biglava_e.time( 6.5 );
+	$mover_biglava_e.accelTime( 0.2 );
+	$mover_biglava_e.decelTime( 0.2 );
+	$mover_biglava_e.move( WEST, 250 );
+
+	$mover_biglava_w2.time( 6.5 );
+	$mover_biglava_w2.accelTime( 0.2 );
+	$mover_biglava_w2.decelTime( 0.2 );
+	$mover_biglava_w2.move( EAST, 58 );
+
+	$mover_biglava_e2.time( 6.5 );
+	$mover_biglava_e2.accelTime( 0.2 );
+	$mover_biglava_e2.decelTime( 0.2 );
+	$mover_biglava_e2.move( WEST, 58 );
+
+
+	//gears
+	$mover_bigfloor_upper_r.time( 6.5 );
+	$mover_bigfloor_upper_r.accelTime( 0.2 );
+	$mover_bigfloor_upper_r.decelTime( 0.2 );
+	$mover_bigfloor_upper_r.rotateOnce( '-320 0 0' );
+	$mover_bigfloor_lower_r.time( 6.5 );
+	$mover_bigfloor_lower_r.accelTime( 0.2 );
+	$mover_bigfloor_lower_r.decelTime( 0.2 );
+	$mover_bigfloor_lower_r.rotateOnce( '320 0 0' );
+
+	$mover_bigfloor_upper_l.time( 6.5 );
+	$mover_bigfloor_upper_l.accelTime( 0.2 );
+	$mover_bigfloor_upper_l.decelTime( 0.2 );
+	$mover_bigfloor_upper_l.rotateOnce( '320 0 0' );
+	$mover_bigfloor_lower_l.time( 6.5 );
+	$mover_bigfloor_lower_l.accelTime( 0.2 );
+	$mover_bigfloor_lower_l.decelTime( 0.2 );
+	$mover_bigfloor_lower_l.rotateOnce( '-320 0 0' );
+
+	$tn_bigpitsnd.startSoundShader ("giant_lava_pit", SND_CHANNEL_ANY );
+	$tn_bigpitlavasnd.stopSound ( SND_CHANNEL_ANY, false );
+	$tn_bigpitlavasnd.startSoundShader ("lavaloop_muted", SND_CHANNEL_ANY );
+	sys.waitFor( $mover_biglava_e2 );
+
+	//move buttons back out
+	$mover_bigpit_button2.time( 0.5 );
+	$mover_bigpit_button2.accelTime( 0.15 );
+	$mover_bigpit_button2.decelTime( 0.15 );
+	$mover_bigpit_button2.move( SOUTH, 3 );
+	$mover_bigpit_button.time( 0.5 );
+	$mover_bigpit_button.accelTime( 0.15 );
+	$mover_bigpit_button.decelTime( 0.15 );
+	$mover_bigpit_button.move( SOUTH, 3 );
+	sys.waitFor( $mover_bigpit_button );
+
+	$bigpit_heat.hide();
+	bigpitfloor = 0;
+}
+
+void biglavapit_button()
+{
+	if( bigpitfloor == 0 ) {
+		open_bigpit();
+	}
+}
+//*********************************************************************************
+
+//*********************************************************************************
+//** Moving platform high above big lava pit
+//** 
+//*********************************************************************************
+
+void loop_arm()
+{
+	while( 1 ) {
+
+	sys.wait( 1 );
+
+	//Go east!
+
+	//arm arc movement
+	$mover_swingarm_origin.time( 3 );
+	$mover_swingarm_origin.accelTime( 0.5 );
+	$mover_swingarm_origin.decelTime( 0.5 );
+	$mover_swingarm_origin.rotateOnce( '0 76 0' );
+
+	//platform rotation
+	$mover_high_w.time( 3 );
+	$mover_high_w.accelTime( 0.5 );
+	$mover_high_w.decelTime( 0.5 );
+	$mover_high_w.rotateOnce( '0 -76 0' );
+
+	//gear
+	$mover_swingarm_gear.time( 3 );
+	$mover_swingarm_gear.accelTime( 0.5 );
+	$mover_swingarm_gear.decelTime( 0.5 );
+	$mover_swingarm_gear.rotateOnce( '90 0 0' );
+
+	$mover_swingarm_origin.startSoundShader ("machine_armswing_01", SND_CHANNEL_ANY );
+	sys.waitFor( $mover_swingarm_origin );
+
+	sys.wait( 1 );
+
+	//Go west!
+
+	//arm arc movement
+	$mover_swingarm_origin.time( 3 );
+	$mover_swingarm_origin.accelTime( 0.5 );
+	$mover_swingarm_origin.decelTime( 0.5 );
+	$mover_swingarm_origin.rotateOnce( '0 -76 0' );
+
+	$mover_high_w.time( 3 );
+	$mover_high_w.accelTime( 0.5 );
+	$mover_high_w.decelTime( 0.5 );
+	$mover_high_w.rotateOnce( '0 76 0' );
+
+	//gear
+	$mover_swingarm_gear.time( 3 );
+	$mover_swingarm_gear.accelTime( 0.5 );
+	$mover_swingarm_gear.decelTime( 0.5 );
+	$mover_swingarm_gear.rotateOnce( '-90 0 0' );
+
+	$mover_swingarm_origin.startSoundShader ("machine_armswing_01", SND_CHANNEL_ANY );
+	sys.waitFor( $mover_swingarm_origin );
+
+	}
+}
+
+void setup_swingarm()
+{
+	//bind all the arm parts together
+	$mover_swingarm_telescope_end.bind( $mover_swingarm_telescope_mid );
+	$mover_swingarm_telescope_mid.bind( $mover_swingarm );
+	$mover_swingarm.bind( $mover_swingarm_origin );
+	$mover_swingarm_gear.bind( $mover_swingarm_origin );
+	$org_armplat.bind( $mover_swingarm_origin );
+	$mover_swingarm_gear_shaft.bind( $mover_swingarm_gear );
+
+	//move the entire arm into start position (West)
+	$mover_swingarm_origin.time( 0.1 );
+	$mover_swingarm_origin.rotateOnce( '0 -38 0' );
+	sys.waitFor( $mover_swingarm_origin );
+
+	//bind the platform to the arm
+	$mover_high_w.bind( $org_armplat );
+
+	loop_arm();
+}
+//*********************************************************************************
+
+//*********************************************************************************
+//** Setup initial states
+//** Bind all origins and movers and whatnot
+//*********************************************************************************
+
+void setup_initial_states()
+{
+	//retract the red armor platform
+	thread retract_redarmor_plat();
+
+	//put lavatrap 1 in initial open position
+	thread retract_lavatrap_1();
+
+	//turn off the big lava pit light for performance
+	$bigpit_light.fadeOutLight( 0.1 );
+
+	//hide the bigpit heat VP
+	$bigpit_heat.hide();
+
+	//bind clockwork hooks to origins
+	$mover_hook1.bind( $org_hook1 );
+	$mover_hook2.bind( $org_hook2 );
+
+	//bind all of the gate gear bits
+	$mover_gategear_s2.bind( $mover_gategear_s );
+	$mover_gategearshaft_s.bind( $mover_gategear_s );
+	$mover_gategearshaft_s2.bind( $mover_gategear_s3 );
+	$mover_gategear_n2.bind( $mover_gategear_n );
+	$mover_gategearshaft_n.bind( $mover_gategear_n );
+	$mover_gategearshaft_n2.bind( $mover_gategear_n3 );
+
+	//bind the lava bucket lights to their buckets
+	$bucket1_light.bind( $mover_bucket1 );
+	$bucket2_light.bind( $mover_bucket2 );
+	//bind the lava buckets to their origins
+	$mover_bucket1.bind( $org_bucket1 );
+	$mover_bucket2.bind( $org_bucket2 );
+	//bind the horizontal doors to their origins
+	$mover_lavabucketdoor_s.bind( $org_lavabucketdoor_s );
+	$mover_lavabucketdoor_n.bind( $org_lavabucketdoor_n );
+
+	//turn on the big lava pit ambient lava sound
+	$tn_bigpitlavasnd.startSoundShader ("lavaloop_muted", SND_CHANNEL_ANY );
+
+}
+//*********************************************************************************
+
+//*********************************************************************************
+//** Startup Sounds
+//** These are entities that don't have specific functions, i.e. func_rotating
+//*********************************************************************************
+
+void startup_sounds()
+{
+	//nothing here yet ...
+
+}
+
+//*********************************************************************************
+
+void main()
+{
+	float moverthread;
+
+	sys.wait( 0.1 );
+	thread cache_sounds();
+
+	sys.wait( 0.1 );
+	thread setup_initial_states();
+
+	sys.wait( 0.1 );
+	thread startup_sounds();
+
+	//hold here to make sure everything is done being setup
+	moverthread = thread setup_initial_states();
+	sys.waitForThread ( moverthread );
+
+	sys.wait( 0.1 );
+	thread loop_lavatrap_2();
+
+	sys.wait( 0.1 );
+	thread setup_swingarm();
+
+	sys.wait( 0.1 );
+	thread loop_windowgears();
+
+	sys.wait( 0.1 );
+	thread loop_clockwork1();
+	thread loop_clockwork2();
+
+	sys.wait( 0.1 );
+	thread loop_lavabuckets();
+}

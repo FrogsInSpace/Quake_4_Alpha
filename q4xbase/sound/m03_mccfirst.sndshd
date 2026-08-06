@@ -1,0 +1,114 @@
+armory_amb1
+{
+	minDistance	168
+	maxDistance	312
+	looping
+	volumeDb		-4
+
+	sound/ambience/mcc3/armory_amb1.ogg
+}
+
+briefing_amb1
+{
+	minDistance	168
+	maxDistance	312
+	looping
+	volumeDb		-4
+
+	sound/ambience/mcc3/briefing_amb.ogg
+}
+
+hall_amb1
+{
+	minDistance	168
+	maxDistance	312
+	looping
+	volumeDb		-4
+
+	sound/ambience/mcc3/hall_amb1.ogg
+}
+
+medbay_amb1
+{
+	minDistance	168
+	maxDistance	312
+	looping
+	volumeDb		-4
+
+	sound/ambience/mcc3/medbay_amb1.ogg
+}
+
+messhall_amb1
+{
+	minDistance	168
+	maxDistance	312
+	looping
+	volumeDb		-4
+
+	sound/ambience/mcc3/messhall_amb1.ogg
+}
+
+speederbay_amb1
+{
+	minDistance	168
+	maxDistance	312
+	looping
+	volumeDb		-4
+
+	sound/ambience/mcc3/speederbay_amb1.ogg
+}
+
+walkerbay_amb1
+{
+	minDistance	168
+	maxDistance	312
+	looping
+	volumeDb		-4
+
+	sound/ambience/mcc3/walkerbay_amb.ogg
+}
+
+
+walkerbay_amb2
+{
+	minDistance	168
+	maxDistance	312
+	looping
+	volumeDb		-4
+
+	sound/ambience/mcc3/walkerbay_amb2.ogg
+}
+
+computer_station1
+{
+	minDistance	168
+	maxDistance	312
+	looping
+	volumeDb		-4
+
+	sound/ambience/mcc3/computer_station1.ogg
+}
+
+computer_station2
+{
+	minDistance	168
+	maxDistance	312
+	looping
+	volumeDb		-4
+
+	sound/ambience/mcc3/computer_station2.ogg
+}
+
+computer_station3
+{
+	minDistance	168
+	maxDistance	312
+	looping
+	volumeDb		-4
+
+	sound/ambience/mcc3/computer_station3.ogg
+}
+
+
+
+

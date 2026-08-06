@@ -1,0 +1,6 @@
+video/ritual_logo
+{
+	{
+		videoMap	loop	video/ritual_logo.roq
+	}
+}

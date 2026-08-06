@@ -1,0 +1,1722 @@
+//---------------------------------------------------------------------------------------
+// m06_mcc_invasion.script for use with m06_mcc_invasion.map
+//
+// (C) Ritual Entertainment 2005
+//---------------------------------------------------------------------------------------
+
+#include "scripts/doom_defs.script"
+
+namespace m06b
+{
+	// FOR THE LOVE OF GOD AND ALL THAT IS HOLY SET TO 0 FOR SHIP (or just cut entirely)
+	float CUT_THE_CRAP = 0; 
+	float SKIP_TURRET_SEQUENCE = 0;
+	float SKIP_SAVEGAMES = 0;
+	// NOW BACK TO YOUR REGULARLY SCHEDULED PROGRAMMING
+	
+	// VARIABLES
+	float DONE = 0;
+	float TURRET_DEAD = 0;
+	entity entFlyingTurretEnemy;
+	string strFlyingTurretEnemyName = "";
+	
+	entity spawnedFighter;
+	entity spawnedFighterDriver;
+
+	float spawnTurret1Fighters = 1;
+	boolean teleporterDestroyed;
+	boolean commTeleporterDestroyed;
+	boolean hallTeleporterDestroyed;
+	
+	// invasion threads
+	void setupEmergencyLights();
+	void speederHangarLiftUp();
+	void speederHangarLiftDown();
+	void turret_obj01();
+	
+	void setupLockedDoors();
+	void setupRouteToTurret();
+	void setupRouteToHangar();
+		
+	// turret sequence added functions
+	void turretSequence();
+	void skyboxFighters();
+	void manageFighter(string spline);
+	void fighterGroup1();
+	void lastSpawnedFighter(entity f);
+	void lastSpawnedFighterDriver(entity d);
+
+	void backgroundSounds();
+	void radioBattle();
+	void turretBattleRadioChatter();
+	void attackInfluence(entity inf, entity snd, entity snd_1);
+	
+	
+	//--------------------------------------------------------------------------
+	// FUNCTION DEFINITONS
+	// (here there be code)
+	//--------------------------------------------------------------------------
+
+	//--------------------------------------------------------------------------
+	// Locks all doors that get unlocked at a later time
+	//--------------------------------------------------------------------------
+	void setupLockedDoors()
+	{
+		// speeder hangar
+		$door_speeder.lock( 1 );
+
+		// mess hall
+		$func_door_166.lock( 1 );
+		$func_door_167.lock( 1 );
+		
+		// control room
+		$func_door_130.lock( 1 );
+		$func_door_131.lock( 1 );
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// The guys that are sitting react to the explosion
+	//--------------------------------------------------------------------------
+	void sittingReaction( entity ent, float variant )
+	{
+		string temp;
+		string anim;
+		temp = ent.getKey( "anim" );
+		
+		if ( variant == 1 )
+		{
+			anim = "mcc_console_reaction1";
+		}
+		else
+		{
+			anim = "mcc_console_reaction2";
+		}
+		
+		aiScriptedAnimWait( ent, anim, 4, 0 );
+		aiScriptedAnimLoop( ent, temp, 4 );
+	}
+	
+		
+	//--------------------------------------------------------------------------
+	// Player meets with Whedon and Markswell in Sci-Tech
+	//--------------------------------------------------------------------------
+	void attackMusic()
+	{
+		sys.trigger( $musicAction );
+		$musicAction.fadeSound( SND_CHANNEL_ANY, 0, 5 );
+		$musicSubtle.fadeSound( SND_CHANNEL_ANY, -80, 2 );
+		sys.wait( 2 );
+		$musicSubtle.remove();
+	}
+	
+	void sciTechMeeting()
+	{
+		// objective complete
+		sys.trigger( $item_objectivecomplete_1 );
+		
+		sys.println("m06b::sciTechMeeting()");
+		
+		// SEQUENCE GOES HERE
+		if ( !CUT_THE_CRAP )
+		{
+			$tak.lookAt( $player1 );
+			aiSpeakWait( $tak, "lipsync_tak_dekwepouringover" );
+			$tak.lookAt( $orig_mon_3 );
+			aiSpeakWait( $tak, "lipsync_tak_numrefvalk" );
+			$tak.lookAt( $player1 );
+			aiSpeakWait( $tak, "lipsync_tak_wemins" );
+			radioChatterPlay( $mcc2_briefingPA, "" );
+			thread setupEmergencyLights();
+			$tak.lookAt( $orig_mon_3 );
+			sys.wait( 3 );
+			aiSpeakWait( $tak, "lipsync_tak_whathellgo" );
+			$tak.setTalkState( TALK_OK );
+		}
+		
+		sys.wait( 1 );
+		
+		sys.trigger( $fxShake );
+		sys.trigger( $largeExplosion ); // attacked
+		thread attackMusic(); // here?
+		thread sittingReaction( $poisson, 1 );
+		thread sittingReaction( $dakin, 2 );
+		thread sittingReaction( $heckler, 1 );
+		radioChatterPlayWait( $func_radiochatter_0, "vo_mcc_allperidef" );
+		
+		sys.trigger( $target_objectivebeacon_2 ); // turret area
+		sys.trigger( $item_objective_2 ); // get to PDGs
+		
+		thread setupRouteToTurret(); // DESTROY THE REST OF THE MCC		
+		thread radioBattle();
+		thread backgroundSounds(); // background battle sounds
+		
+		$scitech_door.lock( 0 );
+
+		sys.wait( 1 );
+		radioChatterPlayWait( $func_radiochatter_0, "vo_marks_dekgettodef" );
+
+		if ( !SKIP_SAVEGAMES )
+		{
+			sys.trigger( $func_savegame_1 );
+		}
+	}
+
+	void scitechAncillary()
+	{
+		$FLANAGAN.setTalkState( TALK_WAIT );
+		$KETCHERSIDE.setTalkState( TALK_WAIT );
+		$FLANAGAN.lookAt( $func_static_54976 );
+		$KETCHERSIDE.lookAt( $func_static_54976 );
+		aiSpeakWait( $FLANAGAN, "lipsync_flan_data1" );
+		$KETCHERSIDE.lookAt( $FLANAGAN );
+		aiSpeakWait( $KETCHERSIDE, "lipsync_ketch_data2" );
+		$FLANAGAN.lookAt( $KETCHERSIDE );
+		aiSpeakWait( $FLANAGAN, "lipsync_flan_data3" );
+		$KETCHERSIDE.lookAt( $func_static_54976 );
+		$FLANAGAN.lookAt( $func_static_54976 );
+		aiSpeakWait( $KETCHERSIDE, "lipsync_ketch_data4" );
+		$FLANAGAN.lookAt( $null_entity );
+		$KETCHERSIDE.lookAt( $null_entity );
+		$FLANAGAN.setTalkState( TALK_OK );
+		$KETCHERSIDE.setTalkState( TALK_OK );
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// randomly play explosions
+	//--------------------------------------------------------------------------
+	void backgroundSounds()
+	{
+		while( 1 )
+		{
+			sys.trigger( $func_earthquake_1 );
+			sys.wait( 8 + sys.random(5) );
+		}
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// While the player is inside the intel room, make MASSIVE CHANGES to set up 
+	// their new path to the turrets
+	//		-- new lighting
+	//		-- path gets changed
+	//		-- armory gets emptied
+	//		-- some guys get hidden, some get unhidden
+	//		-- some triggers are enabled
+	//--------------------------------------------------------------------------
+	void setupRouteToTurret()
+	{
+		$func_door_130.lock(1);
+		$func_door_131.lock(1);
+		
+ 		// dudes no talky
+		$heckler.setTalkState( TALK_BUSY );
+		$dakin.setTalkState( TALK_BUSY );
+		$poisson.setTalkState( TALK_BUSY );
+		
+		$FLANAGAN.setTalkState( TALK_BUSY );
+		$KETCHERSIDE.setTalkState( TALK_BUSY );
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// Guys climb up the magical turrets
+	//--------------------------------------------------------------------------
+	void hatchGuy0()
+	{
+		$env_q4x_mcc_hatch_3.playAnim( ANIMCHANNEL_ALL, "hatch_climb" );
+		aiScriptedAnimWait( $tubemarine0, "unarmed_mcc_hatch_climb", 0, 0 );
+		$tubemarine0.remove();
+	}
+	
+	void hatchGuy1()
+	{
+		$RED_SHIRT_6.setTalkState( TALK_OK );
+		$env_q4x_mcc_hatch_1.playAnim( ANIMCHANNEL_ALL, "hatch_climb" );
+		aiScriptedAnimWait( $randomGuard1, "unarmed_mcc_hatch_climb", 0, 0 );
+		$randomGuard1.remove();
+	}
+
+	void hatchGuy2()
+	{
+		aiScriptedAnim( $darnell_turret, "weaponless_point_left", 4, 0 );
+		aiSpeakWait( $darnell_turret, "lipsync_darn_overdef" );
+		aiScriptedMoveWait( $darnell_turret, $hatch3_origin, 4, 0 );
+		//aiScriptedFaceWait( $darnell_turret, $hatchguy2face, 0 );
+		$env_q4x_mcc_hatch_2.playAnim( ANIMCHANNEL_ALL, "hatch_climb" );
+		aiScriptedAnimWait( $darnell_turret, "unarmed_mcc_hatch_climb", 0, 0 );
+		$darnell_turret.remove();
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// guys protecting the control center
+	//--------------------------------------------------------------------------
+	void bcrdude1()
+	{
+		aiScriptedTetherMoveWait( $crblocker1, $crblocker1tether );
+	}
+	
+	void bcrdude2()
+	{
+		$crblocker2.setMoveSpeed( AIMOVESPEED_RUN );
+		aiScriptedTetherMoveWait( $crblocker2, $crblocker2tether );
+		//$crblocker2.forcePosture( AIPOSTURE_CROUCH );
+		aiScriptedAnimWait( $crblocker2, "stand_to_crouch_scripted", 4, 1 );
+		aiScriptedAnimLoop( $crblocker2, "crouch_idle", 4 );
+	}
+	
+	void blockedControlRoomDudes()
+	{
+		//sys.println("m06b::blockedControlRoomDudes()");
+		thread bcrdude1();
+		thread bcrdude2();
+		
+		$crblocker1.setTalkState( TALK_OK );
+		$crblocker2.setTalkState( TALK_OK );
+	}
+
+
+	//--------------------------------------------------------------------------
+	// Player getting to the turret, and the sequence
+	//--------------------------------------------------------------------------
+	void shipDamaged()
+	{
+		sys.trigger( $item_objectivefailed_2 );	
+		
+		$player1.enterVehicle( $turret );  //test
+	}
+	
+	void monitorShipHealth()
+	{
+		float h = 20000;
+
+		$mcc_2.setHealth( 20000 );
+		
+		while( 1 ) 
+		{
+			h = $mcc_2.getHealth();
+			if( h <= 0 ) 
+			{
+				$turret.setGuiParm( "mcchealth", 0 );
+				thread shipDamaged();
+				return;
+			}
+			$turret.setGuiParm( "mcchealth", sys.floor( h/10 ) );
+			sys.waitFrame();
+		}
+	}
+	
+	void turretOnline()
+	{
+		aiScriptedAnim( $turret, "intro", 4, 0 );
+		sys.wait(2);
+		$turret.enableWeapon();
+	}
+	
+	void startTurretSpawners()
+	{
+		sys.wait(3);
+		sys.trigger( $flyingTurretSpawner_1 );
+		sys.wait(5);
+		sys.trigger( $flyingTurretSpawner_3 );
+		sys.wait(4);
+		sys.trigger( $flyingTurretSpawner_2 );
+	}
+	
+	void exitTurretSequence()
+	{
+		sys.trigger( $item_objectivecomplete_2 ); //Completed objective #2
+		sys.fadeOut( '0 0 0', 1);
+		sys.wait( 1 );
+				
+		thread setupRouteToHangar();
+
+		$turret.lock( 0 );
+		$player1.exitVehicle( 0 );
+		sys.waitFrame();
+		sys.trigger( $player_post_turret ); // info_player_teleport
+		//$player1.setViewAngles ( '0 180 0' );
+		//$player1.setOrigin( $target_player_post_turret.getOrigin() );
+				
+		sys.fadeIn( '0 0 0', 1);
+	}
+	
+	void turretSequence()
+	{
+		sys.println("m06b::turretSequence()");
+		
+		if ( !SKIP_SAVEGAMES )
+		{
+			sys.trigger( $func_savegame_1 );
+		}
+
+		sys.trigger( $target_objectivebeacon_2 ); // turret area beacon off
+		//sys.killthread("m06b::radioBattle");
+		$player1.exitVehicle( 1 ); // exiting dummyTurret
+		sys.waitFrame();
+
+		if ( SKIP_TURRET_SEQUENCE ) 
+		{
+			sys.println("TURRET SEQUENCE BEING SKIPPED FOR THE TIME BEING OKAY");
+			//Completed objective #2
+			thread setupRouteToHangar();
+			return;
+		}
+		
+		sys.fadeOut( '0 0 0', 1);
+		sys.wait(1);
+		
+		thread skyboxFighters();
+		thread fighterGroup1();
+		thread monitorShipHealth();
+		
+		$player1.enterVehicle( $turret );
+		$dummyTurret.lock( 1 ); 
+		//$turret.lock( 1 ); // uncomment for release
+		sys.fadeIn( '0 0 0', 1);
+		
+		thread turretOnline();
+		
+		// markswell gives the rundown
+		thread startTurretSpawners();
+		
+		// looping script that waits for player to complete obj01
+		turret_obj01();
+		
+		// stop spawning plz
+		spawnTurret1Fighters = 0;
+		$flyingTurretSpawner_1.remove();
+		$flyingTurretSpawner_2.remove();
+		$flyingTurretSpawner_3.remove();
+		
+		thread exitTurretSequence(); // okay we're done
+	}
+
+	
+	//--------------------------------------------------------------------------
+	// Func_fx fighters in the skybox
+	//--------------------------------------------------------------------------
+	void skyboxFighters()
+	{	
+// 		float t;
+// 		for (t = 1; t <= 2; t++)	
+// 		{
+// 			thread map_airdefense1::maintainStroggFlyerSprite( sys.getEntity("mvr_fx_strogg_flyer_" + t), sys.getEntity("fx_air_strogg_fighter_" + t), sys.getEntity("fx_air_strogg_fighter_" + (t + 6) ), $tgt_strogg_flyer_hangar, $tgr_strogg_flyer_end, '-1 0 .1' );
+// 			thread map_airdefense1::maintainStroggFlyerSprite( sys.getEntity("mvr_fx_marine_flyer_" + t), sys.getEntity("fx_air_marine_fighter_" + t), sys.getEntity("fx_air_marine_fighter_" + (t + 6) ), $tgt_marine_flyer_hangar, $tgr_marine_flyer_end, '1 0 .1' );
+// 		}
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// Setting variables from func_spawned entities so that they can do things
+	//--------------------------------------------------------------------------
+	void lastSpawnedFighter( entity f )
+	{
+		spawnedFighter = f;
+	}
+	
+	void lastSpawnedFighterDriver( entity d )
+	{
+		spawnedFighterDriver = d;
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// triggering the fighter spawners and making them do their thing
+	//--------------------------------------------------------------------------
+	void manageFighter( string spline )
+	{
+		entity currVehicle;
+		entity currDriver;
+		
+		entity currVehicleSpawner = sys.getEntity( "func_spawner_vehicle_" + spline );
+		entity currVehicleDriverSpawner = sys.getEntity( "func_spawner_driver_" + spline );
+		entity currSpline = sys.getEntity( "func_mover_fighter_spline_" + spline );
+		entity currMover = sys.getEntity( "func_mover_fighter_" + spline );
+		entity currMoverPitch = sys.getEntity( "func_mover_pitch_" + spline );
+		entity currSpeaker = sys.getEntity( "strogg_fighter_speaker_" + spline );
+		entity currMoverOrigin = sys.getEntity( "tar_start_mover_" + spline );
+		
+		float t;
+		float whilechecker = 1;
+		
+		do
+		{
+			//sys.println( "Fighter plane on spline " + spline + " spawned" );
+			sys.trigger( currVehicleSpawner );
+			sys.waitFrame();
+			currVehicle = spawnedFighter;	
+			currVehicle.bind( currMoverPitch );
+			sys.waitFrame();
+
+			sys.trigger( currVehicleDriverSpawner );
+			sys.waitFrame();
+			currDriver = spawnedFighterDriver;
+			currDriver.enterVehicle( currVehicle );
+			currDriver.fireWeapon( 0, 5 );
+		
+			currMover.speed( 2000 );
+			currMover.startSpline( currSpline );
+			
+			// INSERT TIMING FOR SETTING OFF THE SPEAKER AND BANKING HERE
+			sys.wait( 2.75 );
+			if ( isValidEntity( currVehicle ) )
+			{
+				sys.trigger( currSpeaker );
+			}
+			// DONE FANCY-SCHMANCY TIMING
+			
+			sys.waitFor( currMover );
+			currMover.stopSpline();
+			currMover.setOrigin( currMoverOrigin.getOrigin() );
+			if ( isValidEntity( currVehicle ) )	{
+				currVehicle.remove();
+			}
+
+			t = randomRoundFloat( 1, 5 ) + 5;
+			sys.wait( t );
+		} 
+		while( spawnTurret1Fighters );
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// vehicle fighters on splines at the first turret position
+	//--------------------------------------------------------------------------
+	void fighterGroup1()
+	{
+		float t;
+		thread manageFighter("2");
+		
+		t = randomRoundFloat( 1, 5 ) + 3;
+		sys.wait(t);
+		thread manageFighter("3");
+		
+		t = randomRoundFloat( 1, 5 ) + 3;
+		sys.wait(t);
+		thread manageFighter("4");
+		
+		t = randomRoundFloat( 1, 5 ) + 3;
+		sys.wait(t);
+		thread manageFighter("5");
+		
+		t = randomRoundFloat( 1, 5 ) + 3;
+		sys.wait(t);
+		thread manageFighter("6");
+	}
+		
+
+	//--------------------------------------------------------------------------
+	// Sends off the flatbed trucks and walkers for the convoy sequence
+	//--------------------------------------------------------------------------
+	void convoyAway()
+	{
+		$truck1.show();
+		$truck2.show();
+		$truck3.show();
+		
+		sys.trigger( $walkerTether1 );
+		sys.trigger( $walkerTether2 );
+		
+		$truck1.setAngles ('0 0 0');
+		setNewTimes( $truck1Mover , 25 , 3 , 0 );
+		$truck1Mover.startSpline( $truck1Spline );
+				
+		$truck2.setAngles ('0 0 0');
+		setNewTimes( $truck2Mover , 26 , 3 , 0 );
+		$truck2Mover.startSpline( $truck2Spline );
+		
+		$truck3.setAngles ('0 0 0');
+		setNewTimes( $truck3Mover , 27 , 3 , 0 );
+		$truck3Mover.startSpline( $truck3Spline );
+		
+		sys.wait( 18 );
+		
+		sys.trigger( $func_bigdoor_11 );
+		sys.wait( 8 );
+		sys.trigger( $func_bigdoor_11 );
+	}
+	
+	void skyboxDroppods()
+	{
+		$skyboxDroppod_1.time( 60 );
+		$skyboxDroppod_2.time( 60 );
+		$skyboxDroppod_3.time( 60 );
+		$skyboxDroppod_4.time( 60 );
+		$skyboxDroppod_5.time( 60 );
+		$skyboxDroppod_6.time( 60 );
+		$skyboxDroppod_7.time( 60 );
+		$skyboxDroppod_8.time( 60 );
+		$skyboxDroppod_9.time( 60 );
+		$skyboxDroppod_10.time( 60 );
+				
+		$skyboxDroppod_1.moveTo( $tar_skyboxDroppod_1 );
+		$skyboxDroppod_2.moveTo( $tar_skyboxDroppod_2 );
+		$skyboxDroppod_3.moveTo( $tar_skyboxDroppod_3 );
+		$skyboxDroppod_4.moveTo( $tar_skyboxDroppod_4 );
+		$skyboxDroppod_5.moveTo( $tar_skyboxDroppod_5 );
+		$skyboxDroppod_6.moveTo( $tar_skyboxDroppod_6 );
+		$skyboxDroppod_7.moveTo( $tar_skyboxDroppod_7 );
+		$skyboxDroppod_8.moveTo( $tar_skyboxDroppod_8 );
+		$skyboxDroppod_9.moveTo( $tar_skyboxDroppod_9 );
+		$skyboxDroppod_10.moveTo( $tar_skyboxDroppod_10 );
+		
+		sys.wait( 10 );
+		thread startTurretSpawners(); // OFF
+		
+		sys.wait( 10 );
+		thread startTurretSpawners(); // ON
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// looping function that keeps the turret at the position, 
+	// when this falls out the turret sequence is over
+	//--------------------------------------------------------------------------
+	void turret_obj01()
+	{	
+		//thread turretBattleRadioChatter();
+		
+		radioChatterPlayWait( $func_radiochatter_whedon, "vo_marine1_thisperdef" ); // inc harvesters
+		sys.wait(2);
+						
+		sys.println( "ROUND 1: wave of flyers" );
+		sys.println( "NOT YET IMPLEMENTED" );
+		sys.wait( 2 );
+		
+		radioChatterPlayWait( $func_radiochatter_whedon, "vo_marine1_harvinb" );
+		
+		sys.println( "ROUND 2: HOLY SHIT HARVESTER OVER HILL + DESTRUCTION OF MCC GUN" );
+		sys.trigger( $monster_q4x_harvester_combat_2 );
+		aiScriptedAnim( $monster_q4x_harvester_combat_2, "mcc_mountain_climb", 4, 0 );
+		
+		sys.wait( 3 );
+		
+		radioChatterPlayWait( $func_radiochatter_whedon, "vo_marine1_nexdroppod" );
+		thread skyboxDroppods();
+		
+		while ( !TURRET_DEAD )
+		{
+			sys.waitFrame();
+		}
+		
+		while ( isLivingEntity($monster_q4x_harvester_combat_5) )
+		{
+			sys.waitFrame();
+		}
+	
+		radioChatterPlayWait( $func_radiochatter_whedon, "vo_marine1_nexasspod" );
+		radioChatterPlayWait( $func_radiochatter_whedon, "vo_marks_attfalcspeed" ); // okay done meet us at the speeder hangar
+				
+			sys.wait( 5 );
+			// "Aerial pods deployed."
+			//sys.trigger( $radioBattle_11 );
+
+		sys.println( "ROUND 4: flyers and bombers attack, ground forces getting ready to move out" );
+		sys.wait(6);
+		radioChatterPlayWait( $func_radiochatter_whedon, "vo_marine1_morestrgg" ); // additional signals
+		sys.wait(3);
+			
+			// "Mechanized, Transport, and Infantry Units mobilized."
+			//sys.trigger( $radioBattle_12 );
+			sys.wait(5);
+			
+		radioChatterPlayWait( $func_radiochatter_whedon, "vo_marine1_grnsred" );				
+			// "Ground forces deployed."
+			//sys.trigger( $radioBattle_13 );
+			sys.wait(5);
+
+		thread convoyAway();	
+			
+		radioChatterPlayWait( $func_radiochatter_whedon, "vo_marine1_holdshharv" ); // contact bearing....
+			
+		sys.trigger( $monster_q4x_harvester_combat_4 ); // OH GOD THE HORROR
+		
+		while ( isLivingEntity( $monster_q4x_harvester_combat_4 ) ) 
+		{
+			//sys.println("waiting for harvester 2 to die");
+			sys.wait( 1 );	
+		}
+		radioChatterPlayWait( $func_radiochatter_whedon, "vo_marine1_nexgaway" );
+		
+		sys.println( "TURRET SEQUENCE OVER" );
+		sys.wait(2);
+	}
+	
+	void harvesterKillsTurret()
+	{
+		TURRET_DEAD = 1;
+		$monster_q4x_mcc_turret_1.kill();
+		$monster_q4x_harvester_combat_2.remove();
+		sys.trigger( $monster_q4x_harvester_combat_5 );	
+	}
+	
+	
+	//--------------------------------------------------------------------------	
+	// guy who gives the player a weapon after the turret sequence
+	//--------------------------------------------------------------------------
+	void spawnSwekel()
+	{
+		//giving weapon mod setup
+		$SWEKEL2.showSurface("models/weapons/mp_guns/w_sg");
+		$SWEKEL2.showSurface("models/weapons/mp_guns/w_sg_mod_ammo");
+	}
+	
+	void giveGun2()
+	{
+		sys.wait(1);
+		$SWEKEL2.hideSurface("models/weapons/mp_guns/w_sg");
+		$SWEKEL2.hideSurface("models/weapons/mp_guns/w_sg_mod_ammo");
+		sys.trigger($goodies);
+		sys.trigger($pickUpWeaponSnd);
+		$player1.enableWeapon();
+	}
+	
+	void swekelStabbedFx()
+	{
+		sys.wait( 1 );
+		aiSpeak( $SWEKEL2, "lipsync_belica_die" );
+		sys.trigger($stabFxShake_1);
+		sys.trigger($stabFxSound_1);
+	}
+	
+	void giveWeaponAnims()
+	{
+		aiScriptedAnimWait( $SWEKEL2, "ad_sgt_holding_wounded", 4, 0 );
+		aiScriptedAnimLoop( $SWEKEL2, "unarmed_idle", 4 );
+	}
+	
+	void giveWeapon()
+	{
+		sys.trigger( $SWEKEL2 );
+		//aiScriptedFaceWait( $SWEKEL2, $player1, 1 );
+		thread giveGun2();
+		thread giveWeaponAnims();
+		aiSpeakWait( $SWEKEL2, "lipsync_belica_sirgun" );
+		$env_q4x_harvester_leg_1.show();
+		$env_q4x_harvester_leg_1.playAnim( ANIMCHANNEL_ALL, "stabby_stabby" );
+		thread swekelStabbedFx();
+		aiScriptedAnimWait( $SWEKEL2, "mcc_stabby_stabby", 4, 0 );
+		
+		$SWEKEL2.kill();
+// 		$SWEKEL2.becomeNonSolid();
+// 		$SWEKEL2.disableBlinking();
+// 		$SWEKEL2.setTalkState( TALK_NEVER );
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// Hallway to the engine room is blocked due to marines constantly shooting at
+	// a monster closet door thing
+	//--------------------------------------------------------------------------
+	void blockHallway()
+	{
+		sys.trigger( $marineBlocker1 );
+		sys.trigger( $ai_tether_radius_1 );
+		$marineBlocker1.forcePosture( AIPOSTURE_CROUCH );
+		
+		sys.trigger( $marineBlocker2 );
+		//$marineBlocker2.forcePosture( AIPOSTURE_CROUCH );
+		//sys.trigger( $ai_tether_radius_2 );
+	}
+	
+	void blockedHallwaySpawner( entity spawnee )
+	{
+		spawnee.setEnemy( $marineBlocker1 );
+		$marineBlocker1.setEnemy( spawnee );
+		$marineBlocker2.setEnemy( spawnee );
+		spawnee.activate ( $ai_tether_hallwayblocker );
+	}
+	
+	void dudesDialog()
+	{
+		aiSpeakWait( $marineBlocker1, "lipsync_russ_dieyoupsh" );
+		sys.wait( 2 );
+		aiSpeakWait( $marineBlocker2, "lipsync_mason_getyrhead" );
+		sys.wait( 1 );
+		aiSpeakWait( $marineBlocker1, "lipsync_russ_weneedbacks" );
+		sys.wait( 3 );
+		aiSpeakWait( $marineBlocker2, "lipsync_mason_takethatshit" );
+		sys.wait( 1 );
+		aiSpeakWait( $marineBlocker1, "lipsync_russ_youlikesome" );
+		sys.wait( 3 );
+		aiSpeakWait( $marineBlocker2, "lipsync_mason_theflank" );
+	}
+	
+	void blockedHallwayDude()
+	{
+		$marineBlocker1.setTalkState( TALK_OK );
+		$marineBlocker2.setTalkState( TALK_OK );
+		
+		thread dudesDialog();
+		sys.println("m06b::blockedHallwayDude()");
+		aiScriptedTetherMoveWait( $marineBlocker2, $ai_tether_radius_2 );
+		aiScriptedFaceWait( $marineblocker2, $downHallway, 1 );
+		$marineBlocker2.forcePosture( AIPOSTURE_CROUCH );
+		$marineBlocker2.becomeAggressive();
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// Round and round she goes... (HALLWAY VERSION)
+	//--------------------------------------------------------------------------
+	void spinHallTeleBall()
+	{
+		while( !hallTeleporterDestroyed ) {
+			//spin the balls
+			$rear_tele_ball_1.time( 1 );
+			$rear_tele_ball_1.rotateOnce( '0 180 0' );
+			sys.waitFor( $rear_tele_ball_1 );
+			sys.waitFrame();
+		}
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// Allows the destruction of the teleporter ball thing and the turning off
+	// of the teleporter (HALLWAY VERSION)
+	//--------------------------------------------------------------------------
+	void monitorHallTeleHealth()
+	{
+		float r;
+		hallTeleporterDestroyed = false;
+		
+		thread spinHallTeleBall();
+		
+		while ( !hallTeleporterDestroyed )
+		{
+			r = $rear_tele_ball_1.getHealth();
+			
+			if ( r <= 1 )
+			{
+				$rear_tele_broken_1.show();
+				$rear_tele_ball_1.remove();
+				sys.trigger( $rear_tele_broken_fx_1 );
+				sys.trigger( $rear_tele_break_fx_1 );
+				sys.trigger( $func_fx_809 ); 
+				sys.wait( 0.2 );
+				sys.trigger( $func_fx_809 );
+				sys.wait( 0.1 );
+				sys.trigger( $func_fx_809 );
+				$light_8546.remove();
+				hallTeleporterDestroyed = true;
+				$func_spawner_enemy_light_4.remove();
+			}
+			
+			sys.wait(0.1);
+		}
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// Round and round she goes... (COMMAND VERSION)
+	//--------------------------------------------------------------------------
+	void spinCommTeleBall()
+	{
+		while( !commTeleporterDestroyed ) {
+			//spin the balls
+			$comm_tele_ball.time( 1 );
+			$comm_tele_ball.rotateOnce( '0 180 0' );
+			sys.waitFor( $comm_tele_ball );
+			sys.waitFrame();
+		}
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// Allows the destruction of the teleporter ball thing and the turning off
+	// of the teleporter (COMMAND VERSION)
+	//--------------------------------------------------------------------------
+	void monitorCommTeleHealth()
+	{
+		float r;
+		commTeleporterDestroyed = false;
+		
+		thread spinCommTeleBall();
+		
+		while ( !commTeleporterDestroyed )
+		{
+			r = $comm_tele_ball.getHealth();
+			
+			if ( r <= 1 )
+			{
+				$comm_tele_broken.show();
+				$comm_tele_ball.remove();
+				sys.trigger( $comm_tele_broken_fx );
+				sys.trigger( $comm_tele_break_fx );
+				sys.trigger( $func_fx_comm_tele ); 
+				sys.wait( 0.2 );
+				sys.trigger( $func_fx_comm_tele );
+				sys.wait( 0.1 );
+				sys.trigger( $func_fx_comm_tele );
+				$controlRoomTeleporterLight.remove();
+				commTeleporterDestroyed = true;
+				$func_spawner_command_dropin.remove();
+			}
+			
+			sys.wait(0.1);
+		}
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// Round and round she goes...
+	//--------------------------------------------------------------------------
+	void spinTeleBall()
+	{
+		while( !teleporterDestroyed ) {
+			//spin the balls
+			$rear_tele_ball.time( 1 );
+			$rear_tele_ball.rotateOnce( '0 180 0' );
+			sys.waitFor( $rear_tele_ball );
+			sys.waitFrame();
+		}
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// Allows the destruction of the teleporter ball thing and the turning off
+	// of the teleporter
+	//--------------------------------------------------------------------------
+	void monitorTeleHealth()
+	{
+		float r;
+		teleporterDestroyed = false;
+		
+		thread spinTeleBall();
+		
+		while ( !teleporterDestroyed )
+		{
+			r = $rear_tele_ball.getHealth();
+			
+			if ( r <= 1 )
+			{
+				$rear_tele_broken.show();
+				$rear_tele_ball.remove();
+				sys.trigger( $rear_tele_broken_fx );
+				sys.trigger( $rear_tele_break_fx );
+				sys.trigger( $func_fx_9 ); 
+				sys.wait( 0.2 );
+				sys.trigger( $func_fx_9 );
+				sys.wait( 0.1 );
+				sys.trigger( $func_fx_9 );
+				$light_8176.remove();
+				teleporterDestroyed = true;
+				$func_spawner_enemy_light_3.remove();
+			}
+			
+			sys.wait(0.1);
+		}
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// Setting up the route for the player after the turret objective to get to the
+	// speeder hangar
+	//--------------------------------------------------------------------------
+	void setupRouteToHangar()
+	{
+		$corey_light_3517.setShader( "lights/square_flicker" );
+		$corey_light_3524.setShader( "lights/square_flicker" );
+		
+		if ( !SKIP_SAVEGAMES )
+		{
+			sys.trigger( $func_savegame_1 );
+		}
+		
+		$func_door_130.lock( 0 );
+		$func_door_131.lock( 0 );
+
+		thread giveWeapon();
+		thread monitorTeleHealth();
+		thread blockHallway();
+
+		$func_door_126.lock( 1 ); // initial door (damaged by dropdown thingie)
+		$func_door_127.lock( 1 );
+
+		$func_door_154.lock( 1 ); // engine room
+		$func_door_153.lock( 1 );
+		
+		$func_door_166.lock( 0 ); // mess hall
+		$func_door_167.lock( 0 );
+		
+		$door_speeder.lock( 0 );
+		$scitech_door.lock( 1 );
+				
+		sys.trigger( $trig_explosion_1 );
+		sys.trigger( $trig_explosion_2 );
+		sys.trigger( $trig_explosion_3 );
+		sys.trigger( $trig_hall_teleporter );
+		
+		sys.trigger( $trig_start_controlroom );
+		sys.trigger( $trig_start_controlroom_1 );
+		
+		$crblocker1.remove();
+		$crblocker2.remove();
+		/*
+		//$crblocker2.forcePosture( AIPOSTURE_STAND );
+		aiScriptedAnimWait( $crblocker2, "crouch_to_stand_scripted", 4, 1 );
+		//sys.trigger( $ai_tether_none_1 );
+		*/
+		
+		sys.wait( 5 );
+		sys.trigger( $target_objectivebeacon_3 ); // speeder hangar
+		sys.trigger( $item_objective_3 );
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// Random stuff for smoke and mirrors in the control room
+	//--------------------------------------------------------------------------
+	void controlRoomKnockBackHelper( entity knockbackee )
+	{
+		vector vKnockback;
+		vector vGrunt = $target_null_7.getWorldOrigin();
+		vector vPlayer = knockbackee.getWorldOrigin();
+		
+		vKnockback = VectorSubtract( vPlayer, vGrunt);
+		vKnockback = sys.vecNormalize( vKnockback);
+	
+		//high numbers? Yes but they work very well.
+		vKnockback *= 150000;
+		vKnockback_z = 4000;
+
+		knockbackee.applyImpulse( knockbackee, knockbackee.getWorldOrigin(), vKnockback);
+	}
+	
+	void controlRoomKnockBack()
+	{
+		sys.trigger( $target_launchprojectile_1 );
+		thread controlRoomKnockBackHelper( $player1 );
+		/*
+		$crblocker2.becomeRagdoll();
+		thread controlRoomKnockBackHelper( $crblocker2 );
+		sys.waitFrame();
+		$crblocker2.becomeNonSolid();
+		$crblocker2.setTalkState( TALK_NEVER );
+		$crblocker2.disableBlinking();
+		$crblocker2.becomePassive( 1 );
+		//$crblocker2.kill();
+		*/
+	}
+	
+		
+	//--------------------------------------------------------------------------
+	// Player steps in control room, Strogg teleporter crashes into it
+	//--------------------------------------------------------------------------
+	void controlRoomCrash()
+	{
+		sys.println("m06b::controlRoomCrash()");
+		sys.wait( 1 );
+		
+		sys.trigger( $controlRoomShakefx );
+		sys.trigger( $controlRoomLargeExplosion );
+		sys.trigger( $func_fx_controlRoomCrash );
+		thread controlRoomKnockBack();
+		sys.trigger( $target_light_fadeout_command );
+		//sys.wait( 1 );
+		
+		// HIDE/SHOW EVERYTHING HERE
+		$controlroom_pipes_before.hide();
+		$controlroom_ceiling_before.hide();
+		$controlroom_randombar.hide();
+		
+		$controlroom_pipes_after.show();
+		$controlroom_ceiling_after.show();
+		
+		$strogg_teleporter_base_controlroom.show();
+		$controlroom_teleporter_base.show();
+		$teleporter_controllroom_arm_north.show();
+		$teleporter_controllroom_arm_south.show();
+		$teleporter_controllroom_arm_east.show();
+		$controlroom_teleporter_arm_west.show();
+		$comm_tele_ball.show();
+		$comm_tele_socket.show();
+		sys.trigger( $func_fx_comm_tele );
+		thread monitorCommTeleHealth();
+
+ 		$corey_light_2604.Off();
+ 		$corey_light_2614.Off();
+ 		$corey_light_2616.Off();
+ 		$corey_light_2647.Off();
+ 		$corey_light_3595.Off();
+ 		$corey_light_3596.Off();
+ 		$corey_light_3601.Off();
+ 		//$corey_light_3594.setShader("lights/square_blast");
+ 		//$corey_light_2600.setShader("lights/round_flicker2"); //what broken?
+
+		sys.trigger( $target_light_fadein_command );
+		$controlRoomTeleporterLight.fadeInLight(1.5);
+		
+		sys.trigger( $controlroom_steam_1 );
+		sys.trigger( $controlroom_steam_2 );
+		sys.trigger( $controlroom_steam_3 );
+		sys.trigger( $controlroom_steam_4 );
+		sys.trigger( $controlroom_steam_5 );
+		sys.trigger( $controlroom_steam_6 );
+		
+		sys.trigger( $controlroom_pipesteam_1 );
+		sys.trigger( $controlroom_pipesteam_2 );
+		
+		sys.trigger( $func_fx_controlroom_sparks_1 );
+		sys.trigger( $func_fx_controlroom_sparks_2 );
+		sys.trigger( $func_fx_controlroom_sparks_3 );
+		
+		sys.trigger( $func_fx_controlroom_fire_1 );
+		
+		sys.wait(3);
+		
+		// TELEPORTER ENABLED
+		sys.trigger( $func_spawner_command_dropin );
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// Player almost gets hit by a leg thing
+	//--------------------------------------------------------------------------
+	void commandCenterStab()
+	{
+		$env_q4x_harvester_leg_2.show();
+		$env_q4x_harvester_leg_2.playAnim( ANIMCHANNEL_ALL, "stabby_stabby" );
+		
+		sys.wait( 1 );
+		sys.trigger( $stabFxShake_2 );
+		sys.trigger( $stabFxSound_2 );
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// Mustaine opens this door for you
+	//--------------------------------------------------------------------------
+	void openPremesshallDoor()
+	{
+		sys.trigger( $trigger_gladiatorPull );
+		$func_door_234.lock( 0 );
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// EDIT: GLADIATOR pulls guy out of fucking turret hold (wtf)
+	//--------------------------------------------------------------------------
+	void berserkerSequence()
+	{
+		aiSpeak( $berserkerGuy, "lipsync_turguy_arrrrg" );
+		aiScriptedAnimWait( $berserkerGuy, "mcc_berzerker_pull", 4, 0 );
+		$berserkerGuy.disableBlinking();
+		$berserkerGuy.setTalkState( TALK_NEVER );
+		$berserkerGuy.becomeNonSolid();
+		$berserkerGuy.disableTarget();
+		aiScriptedAnimLoop( $berserkerGuy, "mcc_berzerker_pull_end_idle", 4  );
+		
+		//aiScriptedFaceWait( $gladiatorPuller, $player1, 1 );
+		$gladiatorPuller.becomeAggressive();
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// PHYSICS LOLOLOLOLOLOLOLOLOLOLOLOL (KILL ME NOW)
+	//--------------------------------------------------------------------------
+	void throwCrate()
+	{
+		sys.println("m06b::throwCrate()");
+	
+		vector vForce = sys.angToForward( $cratePusher.getAngles() );
+ 		vForce_x *= -500;
+ 		vForce_y *= -5000;
+ 		///vForce_z *= -2500;
+ 		vForce_z = 50;
+ 		
+		$thrownCrate.setLinearVelocity( vForce );
+		//$thrownCrate.applyImpulse( $thrownCrate, $thrownCrate.getWorldOrigin(), vKnockback);
+	}
+
+	
+	//--------------------------------------------------------------------------
+	// Past the mess hall
+	//--------------------------------------------------------------------------
+	void darnellNavajas()
+	{
+		aiScriptedAnimLoop( $darnell_outro, "idle", 4 );
+		aiScriptedAnimLoop( $navajas_outro, "crouch_idle", 4 );
+		$navajas_outro.lookAt( $player1 );
+		aiSpeakWait( $navajas_outro, "lipsync_nava_holdfire" );
+		$darnell_outro.lookAt( $player1 );
+		aiSpeak( $darnell_outro, "lipsync_darn_wasted" );
+		aiScriptedAnim( $darnell_outro, "stand_to_relaxed", 4, 0 );
+		sys.wait( 1.5 );
+		aiScriptedAnimWait( $darnell_outro, "point_back", 4, 1 );
+		$func_door_232.open();
+		aiScriptedMove( $darnell_outro, $darnell_goto_1, 32, 0 );
+		aiScriptedAnimWait( $navajas_outro, "crouch_to_stand_scripted", 4, 1 );
+		aiScriptedMove( $navajas_outro, $navajas_goto_1, 32, 0 );
+		sys.wait( 1 );
+		sys.trigger( $speaker_speederann_1 );
+	}
+	
+
+	//--------------------------------------------------------------------------
+	// ...entering the speeder hangar
+	//--------------------------------------------------------------------------
+	void morganWork()
+	{
+		$morgan.setMoveSpeed( AIMOVESPEED_WALK );
+		aiScriptedFaceWait( $morgan, $markswell, 0 );
+		aiScriptedAnimWait( $morgan, "at_attention_start", 4, 0 );
+		aiScriptedAnimWait( $morgan, "at_attention_end", 4, 0 );
+		aiScriptedMoveWait( $morgan, $morgan_goto, 4, 0 );
+		aiScriptedFaceWait( $morgan, $func_static_55181, 0 );
+		aiScriptedAnimLoop( $morgan, "console_w_weapon_loop", 8 );
+	}
+	
+	void dekardMoves()
+	{
+		$dekard.setMoveSpeed( AIMOVESPEED_WALK );
+		aiScriptedMoveWait( $dekard, $tar_dekard_spot_outro, 4, 0 );
+		aiScriptedFace( $dekard, $markswell, 0 );
+	}
+	
+	void enterSpeederHangar()
+	{
+		$vehicle_speederbike_1.lock( 1 );
+		$tak_outro.disableHeal();
+		aiScriptedAnimLoop( $naymushin, "cover_left_idle", 4 );
+		
+		sys.setCamera( $func_cameraview_1 );
+		$player1.setOrigin( $tar_dekard_spot_outro_HACK.getOrigin() );
+		sys.trigger( $dekard );
+		thread dekardMoves();
+						
+		thread morganWork();
+		sys.wait( 1 );
+		$door_speeder.close();
+		
+		$markswell.lookAt( $dekard );
+		$tak_outro.lookAt( $dekard );
+		aiSpeakWait( $markswell, "lipsync_marks_dekgoodnex" );
+		aiSpeakWait( $tak_outro, "lipsync_tak_wefindec" );
+		sys.setCamera( $func_cameraview_tak );
+		aiSpeakWait( $tak_outro, "lipsync_tak_valkact" );
+		aiSpeakWait( $tak_outro, "lipsync_tak_datapoint" );
+		sys.setCamera( $func_cameraview_markswell );
+		aiSpeakWait( $markswell, "lipsync_marks_wetrycomm" );
+		sys.setCamera( $func_cameraview_tak );
+		aiSpeakWait( $tak_outro, "lipsync_tak_unfortstrgg" );
+		sys.setCamera( $func_cameraview_markswell );
+		aiSpeakWait( $markswell, "lipsync_marks_dektimeshort" );
+		sys.setCamera( $func_cameraview_group );
+		aiSpeakWait( $markswell, "lipsync_marks_youonlyfew" );
+		aiSpeakWait( $markswell, "lipsync_marks_moveout5" );
+		
+		$dekard.remove();
+		sys.firstPerson();
+		$door_speeder.lock( 1 );
+		$player1.setOrigin( $tar_dekard_spot_outro.getOrigin() );
+		$player1.setViewAngles( '0 90 0' );
+		
+		$tak_outro.setTalkState( TALK_OK );
+		$navajas_outro.setTalkState( TALK_OK );
+		$darnell_outro.setTalkState( TALK_OK );
+		$markswell.setTalkState( TALK_OK );
+		$naymushin.setTalkState( TALK_OK );
+		$morgan.setTalkState( TALK_OK );
+		
+		sys.trigger( $speaker_speederann_2 );
+		
+		$tak_outro.enableHeal();
+		
+		sys.trigger( $blueLightSpecial );
+		sys.trigger( $exitareaalert );
+		$vehicle_speederbike_1.lock( 0 );
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// Player gets in the speederbike, sets off events that end the level
+	//--------------------------------------------------------------------------	
+	void getInSpeeder()
+	{
+		//Completed objective #5
+		sys.trigger( $item_objectivecomplete_3 );
+		$vehicle_speederbike_1.lock( 1 );
+		
+		thread speederHangarLiftDown(); // going down
+	}
+
+
+	//-----------------------------------------------------------------------
+	// When the player gets on the bikes, lower the hangar doors
+	//-----------------------------------------------------------------------
+	void awayMusic()
+	{
+		sys.trigger( $musicTheme );
+		$musicTheme.fadeSound( SND_CHANNEL_ANY, 0, 5 );
+		$musicAction.fadeSound( SND_CHANNEL_ANY, -80, 2 );
+		sys.wait( 2 );
+		$musicAction.remove();
+	}
+	
+	void speederHangarLiftDown()
+	{
+		thread awayMusic();
+		
+		$speeder_hangar_floor.time( 15 );
+		$speeder_hangar_floor.accelTime( 3 );
+	
+		// door used just to close off a vis portal
+		sys.trigger( $speeder_hangar_floor_door );
+		sys.wait( 3 );
+			
+		// eventually get some dialog telling the player to stand still
+		$speeder_hangar_floor.move( DOWN, 394 );
+		sys.wait( 12 );
+		sys.fadeOut( '0 0 0', 2);
+		sys.wait( 2 );
+		
+		$player1.setHealth( 100 ); // give the player what he needs
+		$player1.refillAmmo();
+		
+		sys.trigger( $target_leveltrigger_1 );
+	}
+	
+	
+	//-----------------------------------------------------------------------
+	// Raise the platform that the speeder bikes are on
+	//-----------------------------------------------------------------------
+	void speederHangarLiftUp()
+	{
+		$speeder_hangar_floor.time( 15 );
+		$speeder_hangar_floor.decelTime( .5 );
+	
+		sys.trigger( $speeder_hangar_floor_door );
+		$speeder_hangar_floor_door.hide();
+		$speeder_hangar_floor.move( UP, 394 );
+		sys.waitFor( $speeder_hangar_floor );
+		$speeder_hangar_floor_door.show();
+	
+		// door used just to close off a vis portal
+		sys.trigger( $speeder_hangar_floor_door );
+	}
+
+
+	//--------------------------------------------------------------------------
+	// Sci-Tech monitor setup
+	//--------------------------------------------------------------------------
+	void scitechMonsDown()
+	{	
+		$monitor_base.time( 5 );
+		$monitor_base.accelTime( .5 );
+		$monitor_base.decelTime( .5 );
+		
+		$monitor_base.moveTo( $mon_base_DN );
+		sys.waitFor( $monitor_base );
+		$horz_mon_1.rotateUpTo( 2, 30 );
+		$orig_mon_3.rotateDownTo( 0, 330 );	
+	}
+	
+
+	//--------------------------------------------------------------------------
+	//==========================================================================
+	// Environmental changes for the invasion
+	//==========================================================================
+	//--------------------------------------------------------------------------
+
+	//--------------------------------------------------------------------------
+	// Global MCC changes
+	//--------------------------------------------------------------------------
+	void setupEmergencyLights()
+	{
+		sys.println("Setting up MCC emergency lighting");
+		
+		/*==========================================
+			MESS HALL HALLWAY
+		===========================================*/
+		sys.trigger($messHallwayAttackedTrig);
+		thread attackInfluence($messHallwayInfluence, $messHallwayAttackSnd, $messHallwayAttackSnd);
+
+		/*==========================================
+			POST MESS HALL HALLWAY ROOM
+		===========================================*/
+		sys.trigger($postMessHallwayAttackedTrig);
+		thread attackInfluence($postMessHallwayInfluence, $postMessHallwayAttackSnd, $postMessHallwayAttackSnd_1);
+				
+		/*==========================================
+			MEDLABS HALLWAY ROOM
+		===========================================*/
+		//sys.trigger($medHallwayAreaAttackedTrig);
+		thread attackInfluence($medHallwayInfluence, $medHallwayAttackSnd, $medHallwayAttackSnd_1);
+						
+		/*==========================================
+			ENGINE HALLWAY ROOM
+		===========================================*/
+		//sys.trigger($engineHallwayAreaAttackedTrig);
+		thread attackInfluence($engineHallwayInfluence, $engineHallwayAttackSnd, $engineHallwayAttackSnd_1);
+
+		/*==========================================
+			DECON HALLWAY
+		===========================================*/
+		sys.trigger($deconHallwayAttackedTrig);		
+		thread attackInfluence($deconHallwayInfluence, $deconHallwayAttackSnd, $deconHallwayAttackSnd_1);		
+		
+		/*==========================================
+			POD CONTROLROOM HALLWAY
+		===========================================*/
+		//sys.trigger($podControlHallwayAttackedTrig);		
+		thread attackInfluence($podControlHallwayInfluence, $podControlHallwayAttackSnd, $podControlHallwayAttackSnd_1);
+		
+		/*==========================================
+			POD CONTROLROOM HALLWAY
+		===========================================*/
+		//sys.trigger($podControlAttackedTrig);		
+		thread attackInfluence($podControlInfluence, $podControlAttackSnd, $podControlAttackSnd_1);
+		
+		// CURRENTLY UNIMPLEMENTED
+		/*==========================================
+			MESS HALL
+		===========================================*/
+		//sys.trigger($messHallAttackedTrig);
+		//thread attackInfluence($messHallInfluence, $messHallAttackSnd, $messHallAttackSnd);
+		
+		/*==========================================
+			SCI-TECH ROOM
+		===========================================*/
+		sys.trigger($scitechAttackedTrig);
+		thread attackInfluence($scitechInfluence, $scitechAttackSnd, $scitechAttackSnd_1);
+		
+		/*==========================================
+			SCI-TECH HALLWAY
+		===========================================*/
+		//TODO: blue light trigger
+		//thread attackInfluence($sciTechHallwayInfluence, $scitechHallAttackSnd, $scitechHallAttackSnd_1);
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	//==========================================================================
+	// Q4 from Raven below - MCC Setup practices and stuff
+	//==========================================================================
+	//--------------------------------------------------------------------------
+	
+	//--------------------------------------------------------------------------
+	// loop for the target_setinfluence and speaker
+	// There are 2 speakers because the sounds overlap. If the speaker would be triggered again before finishing, it's shut off.
+	//--------------------------------------------------------------------------
+	void attackInfluence(entity inf, entity snd, entity snd_1)
+	{
+		while(1)
+		{
+			sys.trigger( snd );
+			sys.wait(1);
+			sys.trigger( inf );
+			sys.wait(1);
+	
+			sys.trigger( snd_1 );
+			sys.wait(1);
+			sys.trigger( inf );
+			sys.wait(1);
+		}
+	}
+	
+		
+	//--------------------------------------------------------------------------
+	// Setting up anims for idle chars
+	//--------------------------------------------------------------------------
+	void spawnScitechDudes()
+	{
+		$poisson.setTalkState( TALK_OK );
+		$heckler.setTalkState( TALK_OK );
+		$dakin.setTalkState( TALK_OK );
+	}
+	
+	void spawnRs1()
+	{
+		aiScriptedAnimLoop( $RED_SHIRT_1, "working_on_knee", 4 );
+		sys.wait( 2 );
+		aiSpeakWait( $RED_SHIRT_1, "lipsync_must_dooropen" );
+		sys.wait( 4 );
+		aiSpeakWait( $RED_SHIRT_1, "lipsync_must_onemore" );
+		sys.wait( 4 );
+		aiSpeakWait( $RED_SHIRT_1, "lipsync_must_gotit" );
+		thread openPremesshallDoor();
+	}
+		
+	
+	//--------------------------------------------------------------------------
+	// copy->paste mcc_2 radio battle
+	//--------------------------------------------------------------------------
+	void radioBattle()
+	{
+		// "Heavy Damage"
+		sys.trigger($radioWarnings_1);
+		sys.wait(5);
+	
+			// "3 o'clock"
+			radioChatterPlayWait ($radioTurret1_1, "");
+			// "I'm on 'em."
+			radioChatterPlayWait ($radioTurret1_2, "");
+	
+			// "keep coming"
+			radioChatterPlayWait ($radioRandoms_1, "");
+	
+		// "86%"
+		sys.trigger($radioWarnings_2);
+		sys.wait(5);
+			
+			// "comin' in too low"
+			radioChatterPlayWait ($radioTurret2_1, "");
+			// "target visually."
+			radioChatterPlayWait ($radioTurret2_2, "");
+	
+		// "72%"
+		sys.trigger($radioWarnings_3);
+		sys.wait(7);
+	
+			// "take that"
+			radioChatterPlayWait ($radioRandoms_2, "");
+			sys.wait(1);
+			
+			// "turret's been hit"
+			radioChatterPlayWait ($radioTurret3_1, "");
+	
+		// "63%"
+		sys.trigger($radioWarnings_4);
+		sys.wait(5);
+	
+			// "harvesters, left flank"
+			radioChatterPlayWait ($radioWalker1_1, "");
+			// "taking engineering"
+			radioChatterPlayWait ($radioRandoms_3, "");
+	
+		// "48%"
+		sys.trigger($radioWarnings_5);
+		sys.wait(6);
+		
+			// "get banks out of there"
+			radioChatterPlayWait ($radioWalker2_1, "");
+	
+			// "air support right now"
+			radioChatterPlayWait ($radioWalker3_1, "");
+			// "can't stop them"
+			radioChatterPlayWait ($radioRandoms_4, "");
+	
+		// "Decks 2 and 3"
+		sys.trigger($radioWarnings_6);
+		sys.wait(7);
+	
+			// "coord 43, 82"
+			radioChatterPlayWait ($radioField1_1, "");
+			// "roger that"
+			radioChatterPlayWait ($radioField1_2, "");
+			sys.wait(1);
+	
+		// "29%"
+		sys.trigger($radioWarnings_7);
+		sys.wait(6);
+	
+			// "air support?"
+			radioChatterPlayWait ($radioField2_1, "");
+			// "eta 3 min."
+			radioChatterPlayWait ($radioField2_2, "");
+			// "last that long"
+			radioChatterPlayWait ($radioField2_3, "");
+	
+		// "13%"
+		sys.trigger($radioWarnings_8);
+		sys.wait(6);
+	
+			// "another transport"
+			radioChatterPlayWait ($radioField3_1, "");
+			// "too damn many"
+			radioChatterPlayWait ($radioRandoms_5, "");
+	}
+
+				
+	//--------------------------------------------------------------------------
+	// random stuff going on during the turret sequence
+	//--------------------------------------------------------------------------
+	void turretBattleRadioChatter()
+	{
+		sys.wait(4);
+
+		// "hull breach"
+		//sys.trigger( $radioBattle_1 );
+		sys.wait(6);
+		
+			// "they're dropping teleporters!"
+			radioChatterPlayWait( $func_radiochatter_0, "vo_7_13_11" );
+			sys.wait(1);
+
+			
+		// "medical attention required" 
+		//sys.trigger( $radioBattle_3 );
+		sys.wait(8);
+		
+			// "got contact, 3 incoming squadrons bearing..."
+			radioChatterPlayWait( $func_radiochatter_0, "vo_7_13_18" );
+			sys.wait(4);
+		
+			// "going for the reactor" 
+			radioChatterPlayWait( $func_radiochatter_0, "vo_7_13_2" );
+			sys.wait(9);
+			
+			// "panther squad requesting support on deck 12"
+			radioChatterPlayWait( $func_radiochatter_0, "vo_7_13_6" );
+
+			// "that's a negative panther, they've locked down..."
+			radioChatterPlayWait( $func_radiochatter_0, "vo_7_13_12" );
+			sys.wait(8);
+		
+			// "nexus's assault's almost prepped"
+			radioChatterPlayWait( $func_radiochatter_0, "vo_7_13_5" );
+
+		
+		// "strogg lifeforms detected"
+		//sys.trigger( $radioBattle_2 );
+		sys.wait(7);
+					
+			// "got contact, watch the engine room"
+			radioChatterPlayWait( $func_radiochatter_0, "vo_7_13_1" );
+			sys.wait(8);
+			
+			// "3 men down on deck 5, requesting medical"
+			radioChatterPlayWait( $func_radiochatter_0, "vo_7_13_9" );
+			sys.wait(3);		
+			
+			// "coming from port, hold them off"
+			radioChatterPlayWait( $func_radiochatter_0, "vo_7_13_3" );
+			sys.wait(5);
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// In the beginning...
+	//--------------------------------------------------------------------------
+	void main()
+	{
+		// remove the players weapon 
+		$player1.disableWeapon();
+		
+		// wait to be enabled
+		$turret.disableWeapon();
+		
+		/////////////////////
+		// Q4X addition /////
+		/////////////////////		
+				
+		// Hangar lift going up into the hangar (speeders)
+		thread speederHangarLiftUp();
+		
+		$vehicle_speederbike_2.disableMovement();
+		$vehicle_speederbike_2.bind( $speeder_hangar_floor );
+		$vehicle_speederbike_2.lock( 1 );
+		
+		$vehicle_speederbike_1.disableMovement();
+		$vehicle_speederbike_1.bind( $speeder_hangar_floor );
+		$vehicle_speederbike_1.disableWeapon();
+
+		thread scitechMonsDown();
+		thread spawnScitechDudes();
+		
+		thread setupLockedDoors();
+				
+		sys.fadeIn( '0 0 0', 2 );
+		
+		sys.trigger( $musicSubtle );
+		$musicSubtle.fadeSound( SND_CHANNEL_ANY, -80, .1 );
+		sys.wait( .1 );
+		$musicSubtle.fadeSound( SND_CHANNEL_ANY, -6, 2 );
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// Stuff I don't think I need
+	//--------------------------------------------------------------------------
+
+	//--------------------------------------------------------------------------
+	// Stuff that gets said before the player gets on the turrets
+	//--------------------------------------------------------------------------
+	/*
+	void preTurretRadioChatter()
+	{
+		// "looks like some of them are already here" is currently playing
+		
+		sys.wait(4);
+
+		
+		// "primary power systems offline"
+		sys.trigger( $radioBattle_7 );
+		sys.wait(7);
+		
+			// "they're fucking all over us"
+			radioChatterPlayWait( $func_radiochatter_0, "vo_7_5_13_29" );
+			sys.wait(3);
+			
+			// "deck 3 is lost"
+			radioChatterPlayWait( $func_radiochatter_0, "vo_7_5_13_18" );		
+			
+			
+			
+		// "primary reactors exposed"
+		sys.trigger( $radioBattle_4 );
+		sys.wait(7);
+		
+			// "three heavy contacts off starboard... they're..."
+			radioChatterPlayWait( $func_radiochatter_0, "vo_7_5_13_14" );
+			sys.wait(1);
+			
+			// "got hostile signatures all over"
+			radioChatterPlayWait( $func_radiochatter_0, "vo_7_5_13_17" );
+			sys.wait(7);
+			
+		// "primary hanger under attack" 
+		sys.trigger( $radioBattle_5 );
+		sys.wait(8);
+			
+			// "deck 9 secure... what the fu..."
+			radioChatterPlayWait( $func_radiochatter_0, "vo_7_5_13_25" );
+			sys.wait(2);
+		
+			// "we've got squibs in the main hangar"
+			radioChatterPlayWait( $func_radiochatter_0, "vo_7_5_13_27" );
+			sys.wait(9);
+
+			
+		// "hull integrity at 68%"
+		sys.trigger( $radioBattle_6 );
+		sys.wait(8);
+			
+			// "they've hit the reactor chamber, we've got leaks"
+			radioChatterPlayWait( $func_radiochatter_0, "vo_7_5_13_23" );
+			sys.wait(3);
+			
+			
+			
+			
+			
+ 		// "primary weapons battery has been destroyed" 
+		sys.trigger( $radioBattle_8 );
+		sys.wait(8);
+		
+			// "ah shit, where do they keep coming from"
+			radioChatterPlayWait( $func_radiochatter_0, "vo_7_5_13_30" );
+			sys.wait(3);
+					
+			// "tarrant! answer me!"
+			radioChatterPlayWait( $func_radiochatter_0, "vo_7_5_13_26" );
+			sys.wait(2);
+			
+		// "life support systems failing"
+		sys.trigger( $radioBattle_9 );
+		sys.wait(7);
+		
+			// "watch it! reactor's critical"
+			radioChatterPlay( $func_radiochatter_0, "vo_7_5_13_24" );
+			sys.wait(1);
+		
+		// "reactor critical" 
+		sys.trigger( $radioBattle_10 );
+		sys.wait(8);
+	}
+	*/
+} // end namespace

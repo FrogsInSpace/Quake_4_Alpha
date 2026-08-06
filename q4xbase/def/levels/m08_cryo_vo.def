@@ -1,0 +1,480 @@
+ 
+entityDef char_npc_darnell_M08_Cryo_vo
+{
+ // CHARACTER: DARNELL
+ // CONTEXT:Friendly
+ // DIALOG : This a private party or is anyone invited?
+ "lipsync_darn_private"        "vo_darn_private"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Information
+ // DIALOG : Alive and Prime-Time, Tak.  It was tough ride, though, we lost a few men en route.  We’ve already split formation, and my fireteam’s already headed your way
+ "lipsync_darn_aliveprime"        "vo_darn_aliveprime"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Cocky
+ // DIALOG : What’s the matter, boys?  Things get a little drafty and you come crying to Uncle Darnell.  So, you gonna thank me now, or later.
+ "lipsync_darn_whatmattb"        "vo_darn_whatmattb"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Sarcastic
+ // DIALOG : So… later then.
+ "lipsync_darn_solaterthn"        "vo_darn_solaterthn"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Calm
+ // DIALOG : There (beat) the cryocene should be clearing.  
+ "lipsync_darn_therecryoc"        "vo_darn_therecryoc"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Military
+ // DIALOG : No problem, my fireteam is moving ahead, we should meet up shortly
+ "lipsync_darn_noprobfiretm"        "vo_darn_noprobfiretm"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Tense
+ // DIALOG : Holy shit is it cold in here.  Dekard, I guess it’s your turn to save my ass.  Damn, karma’s a bitch.  Now, don’t go thinking that – What the hell is that?
+ "lipsync_darn_holyshitcold"        "vo_darn_holyshitcold"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Death Scream
+ // DIALOG : Arrrghh!
+ "lipsync_darn_die"        "vo_darn_die"
+}
+ 
+entityDef char_npc_marine1_M08_Cryo_vo
+{
+
+ // CHARACTER: MARINE 1
+ // CONTEXT:Death Scream
+ // DIALOG : Arrrghh!
+ "lipsync_marine1_die"        "vo_marine1_die"
+}
+ 
+entityDef char_npc_markswell_M08_Cryo_vo
+{
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Warning
+ // DIALOG : Falcon Squad, Kain just killed the Makron!  Dekard, get moving, you’ve got to take out the Makron Guardian before she manages to raise a new Makron.  Hurry, Sergeant.  We’re not going to get another chance at this.
+ "lipsync_marks_falconsqkn"        "vo_marks_falconsqkn"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Warning
+ // DIALOG : Looks like the Strogg are on to us, Falcon Squad.  We’re seeing unprecedented data transfers across multiple facilities all across Stroggos.  They’re preemptively backing up data from the Nexus.  
+ "lipsync_marks_stroggos"        "vo_marks_stroggos"
+}
+ 
+entityDef char_npc_navajas_M08_Cryo_vo
+{
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Informative
+ // DIALOG : I don’t have a lot of charges, Tak. We blow ’em all here and we may not have enough to take out the guardian.
+ "lipsync_nava_dontlot"        "vo_nava_dontlot"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Calm
+ // DIALOG : Tak, hit the lights.
+ "lipsync_nava_takhitlite"        "vo_nava_takhitlite"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Questioning
+ // DIALOG : Then why is this place so poorly defended?  
+ "lipsync_nava_whyisplc"        "vo_nava_whyisplc"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Sarcastic
+ // DIALOG : I don’t think they are.  Two well placed charges would nuke that entire coil. 
+ "lipsync_nava_dntthink"        "vo_nava_dntthink"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Sarcastic
+ // DIALOG : You're a smart man, there, Tak, but your priorities are bit out of whack.
+ "lipsync_nava_smarttak"        "vo_nava_smarttak"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Commanding
+ // DIALOG : Dekard, use your core cannon to dislodge those stalactites!
+ "lipsync_nava_usecoredis"        "vo_nava_usecoredis"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Nervous
+ // DIALOG : You hear something?
+ "lipsync_nava_youhrsmthing"        "vo_nava_youhrsmthing"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Informative
+ // DIALOG : Forget that one, Sarge.  We’ll be here all day if you try and burn through it.  We’ll take care of this one my way.
+ "lipsync_nava_forgettht"        "vo_nava_forgettht"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Calm
+ // DIALOG : Here we go.  Setting the first charge.
+ "lipsync_nava_herewegset2"        "vo_nava_herewegset2"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Calm
+ // DIALOG : Second charge in place.  One more.
+ "lipsync_nava_seconchrg2"        "vo_nava_seconchrg2"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Commanding
+ // DIALOG : That’s it.  Everybody back.  Clear.  Clear.
+ "lipsync_nava_thatsit2"        "vo_nava_thatsit2"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Commanding
+ // DIALOG : Dekard, move away from the charges!
+ "lipsync_nava_demvawaychrg2"        "vo_nava_demvawaychrg2"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Commanding
+ // DIALOG : Those charges are live, get back!
+ "lipsync_nava_thosechrglive2"        "vo_nava_thosechrglive2"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Yelling
+ // DIALOG : Detonating!
+ "lipsync_nava_detonat2"        "vo_nava_detonat2"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Surprised
+ // DIALOG : What the hell is going on?
+ "lipsync_nava_whathellgo"        "vo_nava_whathellgo"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Angry
+ // DIALOG : Shove it, Darnell
+ "lipsync_nava_shoveit"        "vo_nava_shoveit"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Complementary
+ // DIALOG : Thanks Darnell
+ "lipsync_nava_thanksdarn"        "vo_nava_thanksdarn"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Tense
+ // DIALOG : We need to locate the cryocene purge systems!
+ "lipsync_nava_weneedloccryo"        "vo_nava_weneedloccryo"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Somber
+ // DIALOG : I’m…  sorry, Sarge.  Darnell.  He was a good solider.  I’m not sure how we’ll finish this operation without him.
+ "lipsync_nava_sorryserg"        "vo_nava_sorryserg"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Infuriated
+ // DIALOG : Tak!  That Strogg Bitch!  She’s gonna pay.  Dekard, let’s go.  I’m taking her out if I have to shove my charges up her – (explosion cuts him off)
+ "lipsync_nava_takthatbitch"        "vo_nava_takthatbitch"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Infuriated
+ // DIALOG : Let’s go, Dekard!   NOW!
+ "lipsync_nava_letsgonow"        "vo_nava_letsgonow"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Infuriated
+ // DIALOG : We’ve got to finish this!
+ "lipsync_nava_wegotfini"        "vo_nava_wegotfini"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Infuriated
+ // DIALOG : I’m not waiting, Sarge.  I’m taking that bitch out, with our without you.
+ "lipsync_nava_notwaitsrg"        "vo_nava_notwaitsrg"
+
+
+ // CHARACTER: NAVAJAS +USE
+ // CONTEXT:Calm
+ // DIALOG : I’m following you, Sergeant
+ "lipsync_nava_follw"        "vo_nava_follw"
+
+
+ // CHARACTER: NAVAJAS +USE
+ // CONTEXT:Complementary
+ // DIALOG : It's been a rough couple of operations, but you've done very well
+ "lipsync_nava_roughops"        "vo_nava_roughops"
+
+
+ // CHARACTER: NAVAJAS +USE
+ // CONTEXT:Warning
+ // DIALOG : We better get moving, the Nexus assault force could kill the Makron at any time
+ "lipsync_nava_nexkill"        "vo_nava_nexkill"
+
+}
+ 
+entityDef char_npc_tak_M08_Cryo_vo
+{
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : We’re definitely in the right place.  I’m picking up all kinds of EM and data traffic.  Navajas, you think you can blast through this ice wall?
+ "lipsync_tak_wedefrt"        "vo_tak_wedefrt"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Hmm.  Hey, Sarge.  Look at this.  I don’t think this is pure ice… It’s got to be a suspended polymer of some kind.  I bet that Strogg Napalm launcher would punch a hole right through it.
+ "lipsync_tak_heysrg"        "vo_tak_heysrg"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Hmm.  Hey, Sarge.  Your Strogg Napalm launcher should punch a hole right through it.
+ "lipsync_tak_hmmsrgna"        "vo_tak_hmmsrgna"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Calm
+ // DIALOG : One second (beat) there...
+ "lipsync_tak_onesecthr"        "vo_tak_onesecthr"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Amazed
+ // DIALOG : Wow...look at this place
+ "lipsync_tak_wowlkplc"        "vo_tak_wowlkplc"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Looks like we’re the first ones here, at least at this entrance.  If Darnell and the rest of Anchor squad made it through the locks, they’d be on the far side of the facility by now.
+ "lipsync_tak_lookslike"        "vo_tak_lookslike"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : I may not know as much about the Strogg as Strauss, but from the looks of these supports, we’re at the bottom of the facility… Or damn close to it.  The main entrance has to be close.
+ "lipsync_tak_maynotknw"        "vo_tak_maynotknw"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : Darnell, come in...Markswell, this is Falcon squad, can anybody read me?
+ "lipsync_tak_darncomemrk"        "vo_tak_darncomemrk"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Looks like communications are going to be a bit dodgy down here.
+ "lipsync_tak_lookslikecomm"        "vo_tak_lookslikecomm"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Look at this!  The Strogg may be crude, but their energy efficiency is staggering.  There’s enough liquid cryocene pumping through here to freeze a city.
+ "lipsync_tak_lookathis"        "vo_tak_lookathis"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Curious
+ // DIALOG : Good question..
+ "lipsync_tak_goodquest"        "vo_tak_goodquest"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Inquiring
+ // DIALOG : I wonder how they maintain the temperature differential without compensating for the atmospheric pressure?  
+ "lipsync_tak_iwonder"        "vo_tak_iwonder"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Amazed
+ // DIALOG : You realize we’re the first human eyes to ever see the inside of this facility?
+ "lipsync_tak_yourealize"        "vo_tak_yourealize"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Commanding
+ // DIALOG : Dekard, use your core cannon to dislodge those stalactites!
+ "lipsync_tak_usecoredis"        "vo_tak_usecoredis"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Excited
+ // DIALOG : Darnell!
+ "lipsync_tak_darnell"        "vo_tak_darnell"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Yelling
+ // DIALOG : Everybody down!
+ "lipsync_tak_evdwn"        "vo_tak_evdwn"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : It’s cryocene.  They’re gonna freeze us alive.
+ "lipsync_tak_itcryocfrz"        "vo_tak_itcryocfrz"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Panic
+ // DIALOG : Darnell!  Darnell!  Come in, Come in!
+ "lipsync_tak_ddcc"        "vo_tak_ddcc"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Surprise, then Panic
+ // DIALOG : It's the Makron Guardian, The Valkaryne!  Darnell, fall back!  Fall back!
+ "lipsync_tak_itmakguard"        "vo_tak_itmakguard"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Warning, Panic
+ // DIALOG : Darnell, get the hell outta there!
+ "lipsync_tak_darngethell"        "vo_tak_darngethell"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Panic
+ // DIALOG : She's flooded the room with cryocene!
+ "lipsync_tak_sheflood"        "vo_tak_sheflood"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Warning
+ // DIALOG : Dekard, we can't last much longer!
+ "lipsync_tak_wecantlast"        "vo_tak_wecantlast"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Warning
+ // DIALOG : I can't feel my hands!
+ "lipsync_tak_cantfeelhand"        "vo_tak_cantfeelhand"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Relief
+ // DIALOG : Wow, that was close.
+ "lipsync_tak_wowcls"        "vo_tak_wowcls"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Somber
+ // DIALOG : Good solider?  Darnell was a good man.  Falcon Squad won’t be the same with out him.
+ "lipsync_tak_darnman"        "vo_tak_darnman"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Warning
+ // DIALOG : Sarge, it’s here.  The Valkaryne!
+ "lipsync_tak_sargehrvalk"        "vo_tak_sargehrvalk"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : I’m reading all sorts of data traffic.  Sarge… The Makron is coming online!
+ "lipsync_tak_readingsorts"        "vo_tak_readingsorts"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Yelling, Excited
+ // DIALOG : Everybody, over here!  Look!
+ "lipsync_tak_everover"        "vo_tak_everover"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Death Scream
+ // DIALOG : Arrrghh!
+ "lipsync_tak_die"        "vo_tak_die"
+
+
+ // CHARACTER: TAK +USE
+ // CONTEXT:Warning
+ // DIALOG : We never located any information about what the Valkaryne actually looks like, we need to stay on our toes.
+ "lipsync_tak_weneveloc"        "vo_tak_weneveloc"
+
+
+ // CHARACTER: TAK +USE
+ // CONTEXT:Warning
+ // DIALOG : Once we take care of the Valkaryne, we'll need to destroy the cryogenically frozen Makrons next.
+ "lipsync_tak_onceval"        "vo_tak_onceval"
+
+
+ // CHARACTER: TAK +USE
+ // CONTEXT:Calm
+ // DIALOG : Locked and loaded, Sarge.
+ "lipsync_tak_lockload"        "vo_tak_lockload"
+}
+ 
+entityDef char_npc_valkaryne_M08_Cryo_vo
+{
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : …Reborn….
+ "lipsync_valk_reborn"        "vo_valk_reborn"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : …The Strogg are eternal…
+ "lipsync_valk_stroggetern"        "vo_valk_stroggetern"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : …The Makrons…
+ "lipsync_valk_makrons"        "vo_valk_makrons"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : …Are Immortal…
+ "lipsync_valk_immort"        "vo_valk_immort"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : …Your race dies here…
+ "lipsync_valk_racedies"        "vo_valk_racedies"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : ... You cannot stop us ...
+ "lipsync_valk_youcntstop"        "vo_valk_youcntstop"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : ... I see you...
+ "lipsync_valk_iseeyou"        "vo_valk_iseeyou"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : ...Time to Die...
+ "lipsync_valk_timedie"        "vo_valk_timedie"
+
+}

@@ -1,0 +1,162 @@
+
+model model_trian_marine
+{
+	inherit				model_char_q4x_marine
+
+	anim 	lugging_crate_front	models/characters/marine/lugging_crate_front.md5anim
+	anim 	lugging_crate_rear	models/characters/marine/lugging_crate_rear.md5anim
+
+	anim 	idle_wrist_gui_start	models/characters/marine/idle_wrist_gui_start.md5anim
+	anim 	idle_wrist_gui_loop	models/characters/marine/idle_wrist_gui_loop.md5anim
+	anim 	idle_wrist_gui_end	models/characters/marine/idle_wrist_gui_end.md5anim
+}
+
+
+
+model model_trian_marine_tech
+{
+	inherit				model_char_q4x_marine_tech
+
+	anim 	lugging_crate_front	models/characters/marine/lugging_crate_front.md5anim
+	anim 	lugging_crate_rear	models/characters/marine/lugging_crate_rear.md5anim
+
+	anim 	idle_wrist_gui_start	models/characters/marine/idle_wrist_gui_start.md5anim
+	anim 	idle_wrist_gui_loop	models/characters/marine/idle_wrist_gui_loop.md5anim
+	anim 	idle_wrist_gui_end	models/characters/marine/idle_wrist_gui_end.md5anim
+}
+
+
+
+model model_trian_marine_medic
+{
+	inherit				model_char_q4x_marine_medic
+
+	anim 	lugging_crate_front	models/characters/marine/lugging_crate_front.md5anim
+	anim 	lugging_crate_rear	models/characters/marine/lugging_crate_rear.md5anim
+
+	anim 	idle_wrist_gui_start	models/characters/marine/idle_wrist_gui_start.md5anim
+	anim 	idle_wrist_gui_loop	models/characters/marine/idle_wrist_gui_loop.md5anim
+	anim 	idle_wrist_gui_end	models/characters/marine/idle_wrist_gui_end.md5anim
+}
+
+
+
+
+
+
+
+
+
+entityDef char_marine_npc_tak_trianfac
+{
+	"inherit1"		"char_q4x_marine_tech"
+	"inherit2"		"char_npc_tak_M02_trian__vo"
+	"editor_menu"	"char_npc_q4x_trianfac"
+	"model"		"model_trian_marine_tech"
+	"def_persona"	"persona_q4x_tak_pvt"
+	"followRange"	"128 228"
+
+	"lipsync_busy_1"	"vo_tak_strgmine"
+	"lipsync_busy_2"	"vo_tak_triandamn"
+	"lipsync_busy_3"	"vo_tak_whenplcgo"
+}
+
+
+entityDef char_marine_npc_navajas_trianfac
+{
+	"inherit1"		"char_q4x_marine"
+	"inherit2"		"char_npc_navajas_M02_trian__vo"
+	"editor_menu"	"char_npc_q4x_trianfac"
+	"model"		"model_trian_marine"
+	"def_persona"	"persona_q4x_navajas_pvt"
+	"followRange"	"128 228"
+
+	"lipsync_busy_1"	"vo_nava_doyouneed"
+	"lipsync_busy_2"	"vo_nava_whatseems"
+	"lipsync_busy_3"	"vo_nava_isuggpay"
+}
+
+
+entityDef char_marine_npc_darnell_trianfac
+{
+	"inherit1"		"char_q4x_marine"
+	"inherit2"		"char_npc_darnell_M02_trian__vo"
+	"editor_menu"	"char_npc_q4x_trianfac"
+	"model"		"model_trian_marine"
+	"def_persona"	"persona_q4x_darnell_pfc"
+	"followRange"	"128 228"
+
+	"lipsync_busy_1"	"vo_darn_darndekrais"
+	"lipsync_busy_2"	"vo_darn_squibsdont"
+}
+
+
+entityDef char_marine_npc_dekard_trianfac
+{
+	"inherit1"		"char_q4x_marine"
+	"inherit2"		"char_npc_dekard_M02_TrianFac_vo"
+	"editor_menu"	"char_npc_q4x_trianfac"
+	"model"		"model_trian_marine"
+	"def_persona"	"persona_q4x_dekard_sgt"
+	"followRange"	"128 228"
+}
+
+
+entityDef char_marine_npc_mitchell_trianfac
+{
+	"inherit1"		"char_q4x_marine_medic"
+	"inherit2"		"char_npc_mitchell_M02_trian__vo"
+	"editor_menu"	"char_npc_q4x_trianfac"
+	"model"		"model_trian_marine_medic"
+	"def_persona"	"persona_q4x_mitchell_pvt"
+	"followRange"	"128 228"
+}
+
+
+entityDef char_marine_npc_markswell_trianfac
+{
+	"inherit1"		"char_q4x_marine"
+	"inherit2"		"char_npc_markswell_M02_trian__vo"
+	"editor_menu"	"char_npc_q4x_trianfac"
+	"model"		"model_trian_marine"
+	"def_persona"	"persona_q4x_markswell_lt"
+	"followRange"	"128 228"
+
+	"lipsync_busy_1"	"vo_marks_idlikeemp"
+	"lipsync_busy_2"	"vo_marks_iknowfirstdek"
+	"lipsync_busy_3"	"vo_marks_dekstayfoc"
+}
+
+
+
+
+entityDef char_marine_npc_razor1_trianfac
+{
+	"inherit1"		"char_q4x_marine"
+	"inherit2"		"char_npc_razor1_M02_trian__vo"
+	"editor_menu"	"char_npc_q4x_trianfac"
+	"model"		"model_trian_marine"
+	"def_persona"	"persona_q4x_Gray_cpl"
+	"followRange"	"128 228"
+
+	"lipsync_busy_1"	"vo_razor1_weneedget"
+}
+
+
+
+
+
+entityDef char_marine_npc_razor2_trianfac
+{
+	"inherit1"		"char_q4x_marine_medic_unarmed"
+	"inherit2"		"char_npc_razor2_M02_trian__vo"
+	"editor_menu"	"char_npc_q4x_trianfac"
+	"model"		"model_trian_marine_medic"
+	"def_persona"	"persona_q4x_Garrett_pfc"
+	"followRange"	"128 228"
+
+	"lipsync_busy_1"	"vo_razor2_oncedis"
+	"lipsync_busy_2"	"vo_razor2_dmnquib"
+}
+
+

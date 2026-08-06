@@ -1,0 +1,28 @@
+MD5Version 10
+commandline "anim models/mapobjects/prison/grate/animations/pr_darnell_grate.ma -dest models/mapobjects/prison/grate/pr_idle.md5anim -game Quake4 -game /q4xbase -scale .3937 -prefix GRATE_ -keep origin body -range 1 2"
+
+numFrames 2
+numJoints 2
+frameRate 24
+numAnimatedComponents 0
+
+hierarchy {
+	"origin"	-1 0 0	//
+	"body"	0 0 0	// origin
+}
+
+bounds {
+	( -33.2111358643 -121.1269607544 -3.0000348091 ) ( 30.7885704041 -57.1268959045 3.9999608994 )
+	( -33.2111358643 -121.1269607544 -3.0000348091 ) ( 30.7885704041 -57.1268959045 3.9999608994 )
+}
+
+baseframe {
+	( 0 0 0 ) ( -0.7071067691 0 0 )
+	( 0 0 121.1268768311 ) ( 0 0 0 )
+}
+
+frame 0 {
+}
+
+frame 1 {
+}

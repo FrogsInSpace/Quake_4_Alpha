@@ -1,0 +1,35 @@
+textures/flares/flare_8_waste_light_1_1_orange_to_red
+// CHECK
+{
+	noshadows
+	translucent
+	nonsolid
+	deform	flare	8
+	qer_EditorImage	textures/editor/qer_flare.tga
+	{
+		if		(parm4 == 0)
+		blend		add
+		map		_quadratic
+		red		0.64
+		green		0.40
+		blue		0.15
+	}
+	
+	{	if		(parm4 && time - parm4 < 2.5 )
+		blend		add
+		map		_quadratic
+		red		waste_lighttex_1_1_orange_to_red_r[(time-parm4)*2]
+		green		waste_lighttex_1_1_orange_to_red_g[(time-parm4)*2]
+		blue		waste_lighttex_1_1_orange_to_red_b[(time-parm4)*2]
+	}
+	
+	{
+		if		(parm4 && time - parm4 >= 0.5)
+		map		_quadratic
+		red		0.52*waste_bb_pulse[(time-parm4-0.5)*0.5]
+		green		0
+		blue		0
+		zeroClamp
+	}
+// CHECK
+}

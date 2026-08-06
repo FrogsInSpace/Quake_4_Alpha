@@ -1,0 +1,4 @@
+skin skins/models/vehicles/strogg_flyer/q4x_strogg_flyer_bright
+{
+	"models/vehicles/strogg_flyer/strogg_flyer_lo" "models/vehicles/strogg_flyer/q4x_strogg_flyer_lo"
+}

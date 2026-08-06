@@ -1,0 +1,164 @@
+textures/q4x_mp/deadzone_capturezone
+{
+	noSelfShadow
+	noshadows
+	translucent
+	nonsolid
+	twosided
+
+	qer_editorimage textures/q4x_mp/deadzone_neutral_d.tga
+
+	{
+		if(parm7 == 0)
+		blend add
+		map textures/q4x_mp/deadzone_marine_d.tga
+		translate time * 0.25, 0
+	}		
+	{
+		if(parm7 == 1)
+		blend add
+		map textures/q4x_mp/deadzone_strogg_d.tga
+		translate time * 0.25, 0
+	}		
+	{
+		if(parm7 == 2)
+		blend add
+		map textures/q4x_mp/deadzone_neutral_d.tga
+		translate time * 0.25, 0
+	}		
+	{
+		if(parm7 == 3)
+		blend add
+		map textures/q4x_mp/deadzone_contested_d.tga
+		translate time * 0.25, 0
+		rgb sinTable[ time * 2 ]
+	}		
+}
+
+textures/q4x_mp/deadzone_zone_marine
+{
+	noSelfShadow
+	noshadows
+	translucent
+	nonsolid
+	twosided
+
+	qer_editorimage textures/q4x_mp/deadzone_zone_marine_d.tga
+
+	{
+		blend add
+		map textures/q4x_mp/deadzone_zone_marine_d.tga
+		translate time * 0.25, 0
+	}
+}
+
+textures/q4x_mp/deadzone_zone_strogg
+{
+	noSelfShadow
+	noshadows
+	translucent
+	nonsolid
+	twosided
+
+	qer_editorimage textures/q4x_mp/deadzone_zone_strogg_d.tga
+
+	{
+		blend add
+		map textures/q4x_mp/deadzone_zone_strogg_d.tga
+		translate time * 0.25, 0
+	}
+}
+
+textures/q4x_mp/deadzone_zone_hold
+{
+	noSelfShadow
+	noshadows
+	translucent
+	nonsolid
+	twosided
+
+	qer_editorimage textures/q4x_mp/deadzone_zone_hold_d.tga
+
+	{
+		blend add
+		map textures/q4x_mp/deadzone_zone_hold_d.tga
+		translate time * 0.25, 0
+	}
+}
+
+textures/q4x_mp/panel03sh
+{
+	qer_EditorImage		textures/q4x_mp/panel03sh_d.tga
+	bumpmap		addnormals (textures/q4x_mp/panel03sh_local.tga, heightmap (textures/q4x_mp/panel03sh_h.tga, 2))
+	diffuseMap		textures/q4x_mp/panel03sh_d.tga
+	specularMap		textures/q4x_mp/panel03sh_s.tga
+	
+}
+
+textures/q4x_mp/panel03sh_lite
+{
+	qer_EditorImage		textures/q4x_mp/panel03sh_d.tga
+	bumpmap		addnormals (textures/q4x_mp/panel03sh_local.tga, heightmap (textures/q4x_mp/panel03sh_h.tga, 2))
+	diffuseMap		textures/q4x_mp/panel03sh_d.tga
+	specularMap		textures/q4x_mp/panel03sh_s.tga
+	{
+		blend add
+		map textures/q4x_mp/panel03sh_add.tga
+	}
+}
+
+guide textures/q4x_mp/brick_metal01 generic_shader("q4x_mp/brick_metal01")
+guide textures/q4x_mp/panel01sh generic_shader("q4x_mp/panel01sh")
+guide textures/q4x_mp/panel02sh generic_shader("q4x_mp/panel02sh")
+guide textures/q4x_mp/panel04sh generic_shader("q4x_mp/panel04sh")
+guide textures/q4x_mp/panel05sh generic_shader("q4x_mp/panel05sh")
+guide textures/q4x_mp/panel06sh generic_shader("q4x_mp/panel06sh")
+guide textures/q4x_mp/panel07sh generic_shader("q4x_mp/panel07sh")
+guide textures/q4x_mp/panel08sh generic_shader("q4x_mp/panel08sh")
+guide textures/q4x_mp/panel09sh generic_shader("q4x_mp/panel09sh")
+guide textures/q4x_mp/panel10sh generic_shader("q4x_mp/panel10sh")
+guide textures/q4x_mp/panel11sh generic_shader("q4x_mp/panel11sh")
+guide textures/q4x_mp/panel12sh generic_shader("q4x_mp/panel12sh")
+guide textures/q4x_mp/wall_panel02csh generic_shader("q4x_mp/wall_panel02csh")
+guide textures/q4x_mp/mp_k generic_shader("q4x_mp/mp_k")
+
+textures/q4x_mp/trim_h6_char_strogg
+{
+	qer_editorimage textures/q4x_mp/trim_h6_char_d
+
+	bumpMap addnormals ( textures/q4x_mp/trim_h6_char_local.tga, heightmap ( textures/q4x_mp/trim_h6_char_h.tga, 1 ) )
+	diffusemap	textures/q4x_mp/trim_h6_char_d
+	specularmap	textures/q4x_mp/trim_h6_char_s
+	
+	{
+		blend add
+		map textures/q4x_mp/trim_h6_char_strogg
+
+	}
+}
+
+textures/q4x_mp/mp_c_g_strogg
+{
+	qer_editorimage textures/q4x_mp/mp_c_d.tga
+	bumpMap addnormals ( textures/q4x_mp/mp_c_local.tga, heightmap ( textures/q4x_mp/mp_c_h.tga, 1 ) )
+	diffusemap	textures/q4x_mp/mp_c_d.tga
+	specularmap	textures/q4x_mp/mp_c_s.tga
+
+	{
+		blend add
+		map textures/q4x_mp/mp_c_g_strogg.tga
+	}
+}
+
+textures/q4x_mp/mp_f_g_strogg
+{
+	qer_editorimage textures/q4x_mp/mp_f_d.tga
+	bumpMap addnormals ( textures/q4x_mp/mp_f_local.tga, heightmap ( textures/q4x_mp/mp_f_h.tga, 1 ) )
+	diffusemap	textures/q4x_mp/mp_f_d.tga
+	specularmap	textures/q4x_mp/mp_f_s.tga
+
+	{
+		blend add
+		map textures/q4x_mp/mp_f_g_strogg.tga
+	}
+}

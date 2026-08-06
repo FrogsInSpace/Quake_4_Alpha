@@ -1,0 +1,278 @@
+windowDef Desktop
+{
+	visible	1
+	rect	0,0,640,480
+	backcolor	0.0549,0.0784,0.0784,1
+	definevec4	"edge"	0.921,0.184,0.0549,.5
+	definevec4	"edge_g"	0.921,0.184,0.0549,1
+	definevec4	"black"	0,0,0,.15
+	definevec4	"black_0"	0,0,0,0
+	definevec4	"desktop_off"	0.0549,0.0784,0.0784,1
+	definevec4	"desktop_on"	0.113,0.0352,0.0313,1
+	definevec4	"green"	0.247,0.396,0.349,1
+	definevec4	"green_5"	0.247,0.396,0.349,1
+	definevec4	"red"	0.862,0.274,0.129,1
+	definevec4	"text_off"	0.611,0.654,0.470,1
+	definevec4	"text_on"	0.827,0.725,0.313,1
+	float	"gui_parm4"	1
+	float	"gui_parm5"	0
+
+	onEvent {
+		if ("desktop::gui_parm4" != 0) 
+		{ 
+			resettime "anim_on" "0" ;
+			set "desktop::gui_parm4" 0;
+		} 
+		if ("desktop::gui_parm5" != 0) 
+		{ 
+			resettime "anim_off" "0" ;
+			set "desktop::gui_parm5" 0;
+		} 
+	}
+
+	windowDef bg_l
+	{
+		rect	10,10,310,460
+		visible	1
+		background	"gfx/guis/common/strogg/turret_bg"
+		matcolor	0.247,0.396,0.349,1
+		matscalex	-1
+	}
+	windowDef bg_r
+	{
+		rect	320,10,310,460
+		visible	1
+		background	"gfx/guis/common/strogg/turret_bg"
+		matcolor	0.247,0.396,0.349,1
+	}
+	windowDef edge
+	{
+		rect	131,353,377,85
+		visible	1
+		background	"gfx/guis/common/strogg/turret_edge"
+		matcolor	0.247,0.396,0.349,1
+	}
+	windowDef text_on
+	{
+		rect	160,368,316,58
+		visible	0
+		forecolor	0.823,0.721,0.309,1
+		text	"TARGETING"
+		textscale	1.5
+		font	"fonts/strogg"
+		fontsize	strogg
+	}
+	windowDef text_off
+	{
+		rect	179,368,285,58
+		visible	1
+		forecolor	0.6,0.643,0.458,1
+		text	"INACTIVE"
+		textscale	1.5
+		font	"fonts/strogg"
+		fontsize	strogg
+	}
+	windowDef r_edge2
+	{
+		rect	314,53,155,280
+		visible	1
+		background	"gfx/guis/common/strogg/turret_edge2"
+		matcolor	0.247,0.396,0.349,.5
+	}
+	windowDef l_edge2
+	{
+		rect	169,53,155,280
+		visible	1
+		background	"gfx/guis/common/strogg/turret_edge2"
+		matcolor	0.247,0.396,0.349,.5
+		matscalex	-1
+	}
+	windowDef r_edge3
+	{
+		rect	352,30,154,279
+		visible	1
+		background	"gfx/guis/common/strogg/turret_edge3"
+		matcolor	0.247,0.396,0.349,.5
+	}
+	windowDef l_edge3
+	{
+		rect	132,30,154,279
+		visible	1
+		background	"gfx/guis/common/strogg/turret_edge3"
+		matcolor	0.247,0.396,0.349,.5
+		matscalex	-1
+	}
+	windowDef r_edge4
+	{
+		rect	377,-9,175,343
+		visible	1
+		background	"gfx/guis/common/strogg/turret_edge4"
+		matcolor	0.247,0.396,0.349,.5
+	}
+	windowDef l_edge4
+	{
+		rect	85,-9,175,343
+		visible	1
+		background	"gfx/guis/common/strogg/turret_edge4"
+		matcolor	0.247,0.396,0.349,.5
+		matscalex	-1
+	}
+	windowDef xhair
+	{
+		rect	304,177,32,32
+		visible	1
+		background	"gfx/guis/common/turret_xhair"
+		matcolor	0.611,0.654,0.470,1
+	}
+	windowDef blackfade
+	{
+		visible	1
+		rect	0,0,640,480
+		backcolor	0,0,0,.2
+
+		onTime 0 {
+			transition "backcolor" "$desktop::black_0" "$desktop::black" "350" ;
+		}
+
+		onTime 350 {
+			transition "backcolor" "$desktop::black" "$desktop::black_0" "350" ;
+		}
+
+		onTime 700 {
+			resettime "0" ;
+		}
+
+	}
+	windowDef topstuff
+	{
+		visible	1
+		rect	0,0,640,480
+		windowDef topreflect
+		{
+			visible	1
+			rect	-16,-25,667,514
+			background	"gfx/guis/common/monitor_reflect"
+			matcolor	0.854,0.658,0.254,0.25
+		}
+		windowDef mid
+		{
+			visible	1
+			rect	0,0,640,480
+			background	"gfx/guis/common/monitor_mid"
+			matcolor	0.921,0.709,0.262,.5
+		}
+		windowDef blackedge
+		{
+			rect	-11,-11,664,506
+			visible	1
+			background	"gfx/guis/common/monitor_darkedge"
+			matcolor	0,0,0,1
+		}
+		windowDef dirt
+		{
+			rect	0,0,640,480
+			visible	1
+			background	"gfx/guis/common/screen_dirt3"
+			matcolor	0.352,0.333,0.188,1
+		}
+	}
+	windowDef anim_active
+	{
+		rect	0,0,1,1
+		visible	1
+		notime	1
+
+		onTime 0 {
+			transition "r_edge2::matcolor" "$desktop::edge" "$desktop::edge_g" "500" ;
+			transition "l_edge2::matcolor" "$desktop::edge" "$desktop::edge_g" "500" ;
+		}
+
+		onTime 500 {
+			transition "r_edge2::matcolor" "$desktop::edge_g" "$desktop::edge" "500" ;
+			transition "l_edge2::matcolor" "$desktop::edge_g" "$desktop::edge" "500" ;
+			
+			transition "r_edge3::matcolor" "$desktop::edge" "$desktop::edge_g" "500" ;
+			transition "l_edge3::matcolor" "$desktop::edge" "$desktop::edge_g" "500" ;
+		}
+
+		onTime 1000 {
+			transition "r_edge3::matcolor" "$desktop::edge_g" "$desktop::edge" "500" ;
+			transition "l_edge3::matcolor" "$desktop::edge_g" "$desktop::edge" "500" ;
+			
+			transition "r_edge4::matcolor" "$desktop::edge" "$desktop::edge_g" "500" ;
+			transition "l_edge4::matcolor" "$desktop::edge" "$desktop::edge_g" "500" ;
+		}
+
+		onTime 1500 {
+			transition "r_edge4::matcolor" "$desktop::edge_g" "$desktop::edge" "500" ;
+			transition "l_edge4::matcolor" "$desktop::edge_g" "$desktop::edge" "500" ;
+		}
+
+		onTime 2000 {
+			resettime "0" ;
+		}
+
+	}
+	windowDef anim_on
+	{
+		rect	0,0,1,1
+		visible	1
+		notime	1
+
+		onTime 0 {
+			transition "desktop::backcolor" "$desktop::desktop_off" "$desktop::desktop_on" "500" ;
+			transition "bg_l::matcolor" "$desktop::green" "$desktop::red" "500" ;
+			transition "bg_r::matcolor" "$desktop::green" "$desktop::red" "500" ;
+			transition "edge::matcolor" "$desktop::green" "$desktop::red" "500" ;
+			set "text_off::visible" "0" ;
+			set "text_on::visible" "1" ;
+			transition "xhair::forecolor" "$desktop::text_off" "$desktop::text_on" "500" ;
+			transition "r_edge2::matcolor" "$desktop::green_5" "$desktop::edge" "500" ;
+			transition "l_edge2::matcolor" "$desktop::green_5" "$desktop::edge" "500" ;
+			transition "r_edge3::matcolor" "$desktop::green_5" "$desktop::edge" "500" ;
+			transition "l_edge3::matcolor" "$desktop::green_5" "$desktop::edge" "500" ;
+			transition "r_edge4::matcolor" "$desktop::green_5" "$desktop::edge" "500" ;
+			transition "l_edge4::matcolor" "$desktop::green_5" "$desktop::edge" "500" ;
+		}
+
+		onTime 500 {
+			resettime "anim_active" "0" ;
+		}
+
+	}
+	windowDef anim_off
+	{
+		rect	0,0,1,1
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "anim_active::notime" "1" ;
+			
+			transition "desktop::backcolor" "$desktop::desktop_on" "$desktop::desktop_off" "500" ;
+			transition "bg_l::matcolor" "$desktop::red" "$desktop::green" "500" ;
+			transition "bg_r::matcolor" "$desktop::red" "$desktop::green" "500" ;
+			transition "edge::matcolor" "$desktop::red" "$desktop::green" "500" ;
+			set "text_on::visible" "0" ;
+			set "text_off::visible" "1" ;
+			transition "xhair::forecolor" "$desktop::text_on" "$desktop::text_off" "500" ;
+			transition "r_edge2::matcolor" "$desktop::edge" "$desktop::green_5" "500" ;
+			transition "l_edge2::matcolor" "$desktop::edge" "$desktop::green_5" "500" ;
+			transition "r_edge3::matcolor" "$desktop::edge" "$desktop::green_5" "500" ;
+			transition "l_edge3::matcolor" "$desktop::edge" "$desktop::green_5" "500" ;
+			transition "r_edge4::matcolor" "$desktop::edge" "$desktop::green_5" "500" ;
+			transition "l_edge4::matcolor" "$desktop::edge" "$desktop::green_5" "500" ;
+		}
+
+	}
+	windowDef temp_button
+	{
+		rect	0,0,640,480
+		visible	1
+
+		onAction {
+			set "desktop::gui_parm5" "1" ;
+		}
+
+	}
+}

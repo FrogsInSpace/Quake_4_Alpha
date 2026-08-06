@@ -1,0 +1,96 @@
+windowDef Desktop
+{
+	comment "set gui_Parm1 == to your map_namespace::scriptname"
+	visible	1
+	rect	0,0,640,480
+	backcolor	0,0,0,1
+	windowDef decal
+	{
+		rect	4,-61,600,600
+		visible	1
+		background	"gfx/guis/common/strogg/decal"
+		matcolor	1,1,1,.16
+	}
+	windowDef data
+	{
+		rect	0,0,640,480
+		visible	1
+		background	"gfx/guis/common/strogg/data"
+		matcolor	0.498,0.8,0.839,.1
+		shear	0, -.4
+		matscalex	-1
+	}
+	windowDef bg
+	{
+		rect	0,0,640,480
+		visible	1
+		background	"gfx/guis/monitors/strogg/common8_bg"
+		matcolor	0.901,0.545,0.0156,1
+	}
+	windowDef t_top
+	{
+		rect	11,4,274,39
+		visible	1
+		shear	0,-.4
+		forecolor	1,1,1,1
+		text	"TRIGGER GUI"
+		textscale	0.7
+		font	"fonts/marine"
+		textalignx	10
+		textaligny	-5
+	}
+	windowDef topstuff
+	{
+		visible	1
+		rect	0,0,640,480
+		windowDef sline
+		{
+			visible	1
+			rect	2,-203,640,906
+			background	"gfx/guis/common/monitor_line4"
+			matcolor	0.580,0.650,0.705,0.1
+		}
+		windowDef monitor_darkedge
+		{
+			visible	1
+			rect	0,0,640,480
+			background	"gfx/guis/common/monitor_darkedge2"
+			matcolor	0,0,0,1
+		}
+		windowDef topreflect
+		{
+			visible	1
+			rect	-167,-77,1026,575
+			background	"gfx/guis/common/gradient"
+			matcolor	0.674,0.8,0.635,.2
+		}
+	}
+	windowDef btn1
+	{
+		rect	48,78,534,317
+		visible	1
+		shear	0,-.4
+		forecolor	1,1,1,1
+		text	"RAMP"
+		textscale	1
+		font	"fonts/marine"
+		textalignx	90
+		textaligny	125
+		background	"gfx/guis/common/strogg/sq1"
+		matcolor	0.898,0.541,0.0117,1
+
+		onMouseEnter {
+			transition "matcolor" "0.901,0.545,0.0156,1" "1,0.709,0.0352,1" "200" ;
+		}
+
+		onMouseExit {
+			transition "matcolor" "1,0.709,0.0352,1" "0.901,0.545,0.0156,1" "200" ;
+		}
+
+		onAction {
+			set "cmd" "play guisound_beep2 ; runscript" "$gui::gui_Parm1" ;
+			transition "matcolor" "1,1,1,1" "1,0.709,0.0352,1" "300" ;
+		}
+
+	}
+}

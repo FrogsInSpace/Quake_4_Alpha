@@ -1,0 +1,112 @@
+windowDef Desktop
+{
+	rect	0,0,640,480
+
+	windowDef bg
+	{
+		rect	0,0,639,481
+		visible	1
+		background	"gfx/guis/vehicle/speeder/speederbase"
+		matcolor	1,1,1,1
+	}
+	windowDef Arrow
+	{
+		rect	0,0,639,481
+		visible	1
+		background	"gfx/guis/vehicle/speeder/speederarrow"
+		matcolor	1,1,1,1
+	}
+	windowDef Lines
+	{
+		rect	0,-240,640,960
+		visible	1
+		background	"gfx/guis/vehicle/speeder/speederlines"
+		matcolor	1,1,1,1
+	}
+	windowDef bg_blend
+	{
+		rect	0,0,639,481
+		visible	1
+		background	"gfx/guis/vehicle/speeder/speederbase_blend"
+		matcolor	1,1,1,1
+	}
+	windowDef SMC
+	{
+		rect	124,169,111,61
+		visible	1
+		forecolor	0.752,0.752,0.752,1
+		text	"smc"
+		textscale	1.1
+		font	"fonts/marine"
+	}
+	windowDef speedometer
+	{
+		name		"speedometer"
+		rect		145,15,355,183
+		visible		1
+		forecolor	0.874,0.874,0.874,1
+		text		"gui::vehicle_speed"
+		textscale	3.2
+		font		"fonts/marine"
+	}
+	windowDef kph
+	{
+		rect	417,176,85,50
+		visible	1
+		forecolor	0.533,0.6,0.274,1
+		text	"kph"
+		textscale	0.85
+		font	"fonts/marine"
+	}
+	windowDef Config
+	{
+		rect	513,394,86,31
+		visible	1
+		forecolor	1,1,1,1
+		text	"config"
+		textscale	0.37
+		font	"fonts/marine"
+	}
+	windowDef boost
+	{
+		rect	513,416,87,31
+		visible	1
+		forecolor	1,1,1,1
+		text	"boost"
+		textscale	0.37
+		font	"fonts/marine"
+	}
+	windowDef topstuff
+	{
+		rect	0,0,640,480
+		visible	1
+		windowDef monitor_darkedge
+		{
+			rect	0,0,640,480
+			visible	1
+			background	"gfx/guis/common/monitor_darkedge2"
+			matcolor	0,0,0,1
+		}
+		windowDef sline
+		{
+			rect	0,0,640,480
+			visible	1
+			background	"gfx/guis/common/monitor_line3"
+			matcolor	0.701,0.701,0.701,1
+		}
+		windowDef scratches
+		{
+			rect	0,0,640,480
+			visible	1
+			background	"gfx/guis/common/screen_scratches4"
+			matcolor	0.937,0.972,0.705,0.235
+		}
+		windowDef topreflect
+		{
+			rect	0,0,640,480
+			visible	1
+			background	"gfx/guis/common/monitor_glow3"
+			matcolor	0.909,0.984,0.749,0.709
+		}
+	}
+}

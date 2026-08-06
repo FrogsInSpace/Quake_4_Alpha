@@ -1,0 +1,1124 @@
+//--------------------------------------------------------------------------------------------------------------------
+// Custom anims go here
+//--------------------------------------------------------------------------------------------------------------------
+model model_prison_marine
+{
+	inherit					model_char_q4x_marine
+	
+	anim floating_tube		models/monsters/tactical/floating_tube.md5anim
+	
+	// Scripted Stands/Crouches--------------------------------------------------------------------------------------		
+	anim crouch_to_stand_scripted			models/characters/marine/knee_to_idle.md5anim
+	anim stand_to_crouch_scripted			models/characters/marine/drop_to_knee.md5anim
+	
+	// medic treating fallen marine, copied from air defense
+	anim	and_stimpack2a					models/characters/marine/and_stimpack2a.md5anim
+	{
+		ai_no_look
+		frame 	1							disableClip
+		frame 	1							disableGravity
+		frame	8,18,27						footstep
+		frame	270							attachment_show		medic_vaccinegun
+		frame   303							sound				med_gun_heal
+		frame 	470							enableClip
+		frame	470							attachment_hide		medic_vaccinegun
+	}
+	anim	and_stimpack2a_loop				models/characters/marine/and_stimpack2a_loop.md5anim
+	{
+		ai_no_look
+	}
+	// fallen marine
+	anim	and_stimpack2b					models/characters/marine/and_stimpack2b.md5anim
+	{
+		ai_no_look
+	}
+	anim	and_stimpack2b_loop				models/characters/marine/and_stimpack2b_loop.md5anim
+	{
+		ai_no_look
+	}
+	
+	
+	// need to copy these anims from the base marine class eventually
+	/*
+	anim prison_glass		models/characters/marine/prison_glass.md5anim
+	{
+		frame 1 				disableClip
+		frame 2 	sound		glass_break_medlabs_tube
+		frame 9 	sound 		player_jump_land_hard
+	}
+
+	anim prison_glass_idle	models/characters/marine/prison_glass_idle.md5anim
+	{
+		frame 1 				disableClip
+	}
+	*/
+}
+
+//--------------------------------------------------------------------------------------------------------------------
+// Entity Defs
+//--------------------------------------------------------------------------------------------------------------------
+entityDef char_marine_prison
+{
+	"inherit1"		"char_q4x_marine"
+	"inherit2"		"char_marine_prison1_dialog"
+	"model"			"model_prison_marine"
+	"editor_menu"	"char_npc_q4x_prison1"
+	"editor_usage" 	"Custom marine for prison"
+}
+
+entityDef char_marine_prison_shotgun
+{
+	"inherit1"		"char_q4x_marine_shotgun"
+	"inherit2"		"char_marine_prison1_dialog"
+	"model"			"model_prison_marine"
+	"editor_menu"	"char_npc_q4x_prison1"
+	"editor_usage" 	"Custom marine (with shotgun) for prison"
+}
+
+entityDef char_marine_prison_tech
+{
+	"inherit1"		"char_q4x_marine_tech"
+	"inherit2"		"char_marine_prison1_dialog"
+	"model"			"model_prison_marine_tech"
+	"editor_menu"	"char_npc_q4x_prison1"
+	"editor_usage" 	"Custom marine tech for Prison"
+}
+
+entityDef char_marine_prison_medic
+{
+	"inherit1"		"char_q4x_marine_medic"
+	"inherit2"		"char_marine_prison1_dialog"
+	"model"			"model_prison_marine_medic"
+	"editor_menu"	"char_npc_q4x_prison1"
+	"editor_usage" 	"Custom marine medic for Prison"
+}
+
+entityDef char_marine_prison_unarmed
+{
+	"inherit1"		"char_q4x_marine_unarmed"
+	"inherit2"		"char_marine_prison1_dialog"
+	"model"			"model_prison_marine"
+	"editor_menu"	"char_npc_q4x_prison1"
+	"editor_usage" 	"Custom marine for prison"
+	"def_head"		"char_marinehead_helmet"
+}
+
+
+//*************specific npc's*****************
+
+entityDef char_marine_npc_mitchell_prison1
+{
+	"inherit1"	"char_q4x_marine_medic"
+	"inherit2"	"char_marine_prison1_dialog"
+	"editor_menu"	"char_npc_q4x_prison1"
+	"model"		"model_prison_marine_medic"
+	"def_persona"	"persona_q4x_mitchell_pvt"
+
+	"followRange"	"128 228"
+}
+
+entityDef char_marine_npc_tak_prison1
+{
+	"inherit1"	"char_q4x_marine_tech"
+	"inherit2"	"char_marine_prison1_dialog"
+	"inherit3"  "char_npc_tak_M02_trian__vo"
+	"editor_menu"	"char_npc_q4x_prison1"
+	"model"		"model_prison_marine_tech"
+	"def_persona"	"persona_q4x_tak_pvt"
+
+	"followRange"	"128 256"
+	
+	"lipsync_busy_1"					"vo_tak_rdywhnstrs"
+	"lipsync_busy_2"					"vo_tak_thatdtaquite"
+	"lipsync_busy_3"					"vo_tak_oncewegets"
+}
+
+
+entityDef char_marine_npc_navajas_prison1
+{
+	"inherit1"	"char_q4x_marine"
+	"inherit2"	"char_marine_prison1_dialog"
+	"editor_menu"	"char_npc_q4x_prison1"
+	"model"		"model_prison_marine"
+	"def_persona"	"persona_q4x_navajas_pvt"
+
+	"followRange"	"128 256"
+}
+
+
+entityDef char_marine_npc_darnell_prison1
+{
+	"inherit1"	"char_q4x_marine"
+	"inherit2"	"char_marine_prison1_dialog"
+	"editor_menu"	"char_npc_q4x_prison1"
+	"model"		"model_prison_marine"
+	"def_persona"	"persona_q4x_darnell_pfc"
+
+	"followRange"	"128 256"
+	
+	"lipsync_busy_1"					"vo_darn_ishldbrt"
+	"lipsync_busy_2"					"vo_darn_justlikeold"
+	"lipsync_busy_3"					"vo_darn_letsgetmov"
+}
+
+
+entityDef char_marine_npc_dekard_prison1
+{
+	"inherit1"	"char_q4x_marine"
+	"inherit2"	"char_marine_prison1_dialog"
+	"editor_menu"	"char_npc_q4x_prison1"
+	"model"		"model_prison_marine"
+	"def_persona"	"persona_q4x_dekard_sgt"
+}
+
+entityDef char_marine_npc_markswell_prison1
+{
+	"inherit1"	"char_q4x_marine"
+	"inherit2"	"char_marine_prison1_dialog"
+	"editor_menu"	"char_npc_q4x_prison1"
+	"model"		"model_prison_marine"
+	"def_persona"	"persona_q4x_markswell_lt"
+	
+	"lipsync_busy_1"					"vo_marks_getnow"
+	"lipsync_busy_2"					"vo_marks_areyouhard"
+	"lipsync_busy_3"					"vo_tak_oncewegets"
+}
+
+entityDef char_marine_npc_strauss_prison1
+{
+	"inherit1"		"char_q4x_marine_tech_unarmed"
+	"inherit2"		"char_marine_prison1_dialog"
+	"model"			"model_prison_marine_tech"
+	"editor_menu"	"char_npc_q4x_prison1"
+	"def_persona"	"persona_q4x_strauss_pvt"
+}
+
+
+
+entityDef char_marine_prison1
+{
+	"inherit1"		"char_q4x_marine"
+	"inherit2"		"char_marine_prison1_dialog"
+	//"model"			"model_prison_marine"
+	"editor_menu"	"char_npc_q4x_prison1"
+	"editor_usage" 	"Custom marine for prison1"
+}
+
+
+
+
+entityDef char_marine_prison1_dialog
+{
+ // CHARACTER: DARNELL
+ // CONTEXT:Tense
+ // DIALOG : Shit, they triggered the alarm.
+ "lipsync_darn_shittrig"        "vo_darn_shittrig"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Informative
+ // DIALOG : I found the hatch.
+ "lipsync_darn_ifoundh"        "vo_darn_ifoundh"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Yelling
+ // DIALOG : Over here.
+ "lipsync_darn_overhere3"        "vo_darn_overhere3"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Informative
+ // DIALOG : This tunnel is some kind of heat exchanger, your cold cannon should allow you to bypass the high temperature exhaust.
+ "lipsync_darn_thistunn"        "vo_darn_thistunn"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Calm
+ // DIALOG : I’m on it.  Cover me.
+ "lipsync_darn_imonit"        "vo_darn_imonit"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Clam
+ // DIALOG : I see it.
+ "lipsync_darn_iseeit"        "vo_darn_iseeit"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Calm
+ // DIALOG : Getting close.
+ "lipsync_darn_gettclose"        "vo_darn_gettclose"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Calm
+ // DIALOG : Almost there.
+ "lipsync_darn_almostthr"        "vo_darn_almostthr"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Calm
+ // DIALOG : Got it.  Keep ’em off me ‘til I get back.
+ "lipsync_darn_gotitkeep"        "vo_darn_gotitkeep"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Shocked
+ // DIALOG : Look at these conditions.
+ "lipsync_darn_lookcondits"        "vo_darn_lookcondits"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Inquisitive
+ // DIALOG : Are any of these Strauss?
+ "lipsync_darn_anystrauss"        "vo_darn_anystrauss"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Informative
+ // DIALOG : This is Falcon squad, en route to your location.
+ "lipsync_darn_falcsqenroute"        "vo_darn_falcsqenroute"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Informative
+ // DIALOG : Dekard, If you man that mounted turret, I'll cover Tak up close.
+ "lipsync_darn_dekifyouman"        "vo_darn_dekifyouman"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Yelling
+ // DIALOG : Incoming!
+ "lipsync_darn_incom3"        "vo_darn_incom3"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Yelling
+ // DIALOG : Above us!
+ "lipsync_darn_aboveus"        "vo_darn_aboveus"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Military
+ // DIALOG : Fox squad, we've got a live marine at our location in no condition to join us
+ "lipsync_darn_foxsquad"        "vo_darn_foxsquad"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Inquisitive
+ // DIALOG : What’s going on?
+ "lipsync_darn_whatgoon"        "vo_darn_whatgoon"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Calm
+ // DIALOG : We don’t have a lot of time, Tak.  Find him.
+ "lipsync_darn_wednttime"        "vo_darn_wednttime"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Sarcastic
+ // DIALOG : Looks like we've attracted some attention
+ "lipsync_darn_lookslikeweatt"        "vo_darn_lookslikeweatt"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Inquisitive
+ // DIALOG : Where’s Strauss?
+ "lipsync_darn_wherestrss"        "vo_darn_wherestrss"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Inquisitive
+ // DIALOG : What are you talking about?
+ "lipsync_darn_whattalk"        "vo_darn_whattalk"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Commanding
+ // DIALOG : Tak, find Strauss.
+ "lipsync_darn_takfndstrs"        "vo_darn_takfndstrs"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Hurried
+ // DIALOG : What happened?  
+ "lipsync_darn_whathapp"        "vo_darn_whathapp"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Commanding
+ // DIALOG : Secure these doors.
+ "lipsync_darn_secdoors"        "vo_darn_secdoors"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Tense
+ // DIALOG : We’re holed up in a control room that can track Strauss, but it sounds like we’re about to have some serious company.
+ "lipsync_darn_weholed"        "vo_darn_weholed"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Yelling
+ // DIALOG : Open fire!
+ "lipsync_darn_openfire"        "vo_darn_openfire"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Frustrated
+ // DIALOG : Navajas, Markswell, where are you?
+ "lipsync_darn_navamarkwhr"        "vo_darn_navamarkwhr"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Inquisitive
+ // DIALOG : How long do we have?
+ "lipsync_darn_howlongwe"        "vo_darn_howlongwe"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Tense
+ // DIALOG : We've got incoming!  The Strogg are trying get back in here!
+ "lipsync_darn_wegotincom"        "vo_darn_wegotincom"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Informative
+ // DIALOG : Dekard, Tak needs to stay at the control terminal if he’s going to keep tracking Strauss.  Navajas and I will hold our positions with him.  I’ve sent Mitchell and a member of Fox squad to meet up with you.
+ "lipsync_darn_foxmeet"        "vo_darn_foxmeet"
+
+
+ // CHARACTER: DEKARD
+ // CONTEXT:Questioning
+ // DIALOG : Tak, where’s Strauss' tube going?
+ "lipsync_dek_taktube"        "vo_dek_taktube"
+
+
+ // CHARACTER: DEKARD
+ // CONTEXT:Calm
+ // DIALOG : Roger that.
+ "lipsync_dek_rogthat"        "vo_dek_rogthat"
+
+ // CHARACTER: FOX MARINE 1
+ // CONTEXT:Tense
+ // DIALOG : This is Lieutenant Rose from Fox squad to any marines with a tech in the Prison facility, requesting immediate assistance.
+ "lipsync_fox1_thisisrose"        "vo_fox1_thisisrose"
+
+
+ // CHARACTER: FOX MARINE 1
+ // CONTEXT:Tense
+ // DIALOG : Roger Falcon, we are split up and both groups need immediate assistance
+ "lipsync_fox1_rogfalcsplit"        "vo_fox1_rogfalcsplit"
+
+
+ // CHARACTER: FOX MARINE 1
+ // CONTEXT:Calm
+ // DIALOG : Point them in our direction, we have an entire cell block to recover.
+ "lipsync_fox1_pointdir"        "vo_fox1_pointdir"
+
+
+ // CHARACTER: FOX MARINE 1
+ // CONTEXT:Annoyed
+ // DIALOG : Where are you Falcon squad, we need you here ASAP.
+ "lipsync_fox1_whereareyou"        "vo_fox1_whereareyou"
+
+
+ // CHARACTER: FOX MARINE 1
+ // CONTEXT:Annoyed
+ // DIALOG : Falcon squad, double time it!
+ "lipsync_fox1_falcdouble"        "vo_fox1_falcdouble"
+
+
+ // CHARACTER: FOX MARINE 1
+ // CONTEXT:Military
+ // DIALOG : Copy that, we are moving in.
+ "lipsync_fox1_copymovein"        "vo_fox1_copymovein"
+
+
+ // CHARACTER: FOX MARINE 1
+ // CONTEXT:Commanding
+ // DIALOG : Keep these squibs offa' us!
+ "lipsync_fox1_keepsquiboffa"        "vo_fox1_keepsquiboffa"
+
+
+ // CHARACTER: FOX MARINE 1
+ // CONTEXT:Commanding
+ // DIALOG : Damnit, we need cover!
+ "lipsync_fox1_damcover"        "vo_fox1_damcover"
+
+
+ // CHARACTER: FOX MARINE 1
+ // CONTEXT:Commanding
+ // DIALOG : Extraction complete
+ "lipsync_fox1_extractcomp"        "vo_fox1_extractcomp"
+
+
+ // CHARACTER: FOX MARINE 1
+ // CONTEXT:Commanding
+ // DIALOG : Thanks Falcon, we couldn't have done this without you, now get back to your objective
+ "lipsync_fox1_thanksfalc"        "vo_fox1_thanksfalc"
+
+
+ // CHARACTER: FOX MARINE 1
+ // CONTEXT:Calm
+ // DIALOG : roger that falcon, We'll get him out.
+ "lipsync_fox1_roggetout"        "vo_fox1_roggetout"
+
+
+ // CHARACTER: FOX MARINE 2
+ // CONTEXT:Informative
+ // DIALOG : You guys from Falcon squad, great, we need your tech to shut down these processing conveyers so we can get these marines out.
+ "lipsync_fox2_youshutdwn"        "vo_fox2_youshutdwn"
+
+
+ // CHARACTER: FOX MARINE 2
+ // CONTEXT:Calm
+ // DIALOG : Excellent.
+ "lipsync_fox2_excellent"        "vo_fox2_excellent"
+
+
+ // CHARACTER: FOX MARINE 2
+ // CONTEXT:Military
+ // DIALOG : Lieutenant Rose, we are done with Falcon here, what are your orders
+ "lipsync_fox2_ltrosedone"        "vo_fox2_ltrosedone"
+
+
+ // CHARACTER: FOX MARINE 2
+ // CONTEXT:Informative
+ // DIALOG : Ok Falcon, we made it in here via ceiling crawlspaces, but you should be able to meet up with the rest of Fox through that door.
+ "lipsync_fox2_okviacrawl"        "vo_fox2_okviacrawl"
+
+
+ // CHARACTER: FOX MARINE 2 +USE
+ // CONTEXT:Friendly
+ // DIALOG : I'm Meakim and that's Pappas, glad you could join us here is this sweet little resort.
+ "lipsync_fox2_meakimpap"        "vo_fox2_meakimpap"
+
+
+ // CHARACTER: FOX MARINE 2 +USE
+ // CONTEXT:Somber
+ // DIALOG : We lost our tech about 3 hours ago.
+ "lipsync_fox2_welosttech"        "vo_fox2_welosttech"
+
+
+ // CHARACTER: FOX MARINE 2 +USE
+ // CONTEXT:Informative
+ // DIALOG : It's been a rough ride in this place without somebody who can navigate these Strogg interfaces.
+ "lipsync_fox2_roughrider"        "vo_fox2_roughrider"
+
+
+ // CHARACTER: FOX MARINE 3
+ // CONTEXT:Informative
+ // DIALOG : Hey sergeant, we came across this Strogg incendiary weapon, your team is going deeper than we are, you can make better use of it than we can.  Here.
+ "lipsync_fox3_heysarge"        "vo_fox3_heysarge"
+
+
+ // CHARACTER: FOX MARINE 3
+ // CONTEXT:Informative
+ // DIALOG : Thanks again Falcon, once you're through, we're locking ourselves in.
+ "lipsync_fox3_thanksfalc"        "vo_fox3_thanksfalc"
+
+
+ // CHARACTER: FOX MARINE 3 +USE
+ // CONTEXT:Informative
+ // DIALOG : We are one of 3 squads tasked with getting marines out of these Strogg prisons.
+ "lipsync_fox3_we3squad"        "vo_fox3_we3squad"
+
+
+ // CHARACTER: FOX MARINE 3 +USE
+ // CONTEXT:Informative
+ // DIALOG : These prison facilities are right next to the Strogg medlabs.
+ "lipsync_fox3_prismed"        "vo_fox3_prismed"
+
+
+ // CHARACTER: FOX MARINE 3 +USE
+ // CONTEXT:Whispered
+ // DIALOG : Makes me nervous as hell being this close to the medlabs, knowing what they do to people there.
+ "lipsync_fox3_makesnerv"        "vo_fox3_makesnerv"
+
+
+ // CHARACTER: FOX MARINE 4
+ // CONTEXT:Friendly
+ // DIALOG : Hey, I'm with Lieutenant Rose, We need your tech to disable the cell block, while the rest of us provide cover for the extraction team.
+ "lipsync_fox4_heywithlt"        "vo_fox4_heywithlt"
+
+
+ // CHARACTER: FOX MARINE 4
+ // CONTEXT:
+ // DIALOG : Falcon is here, their tech is starting on the cell blocks Lieutenant.
+ "lipsync_fox4_falchere"        "vo_fox4_falchere"
+
+
+ // CHARACTER: FOX MARINE 4
+ // CONTEXT:Combat
+ // DIALOG : Open fire, protect the extraction team!
+ "lipsync_fox4_openfire"        "vo_fox4_openfire"
+
+
+ // CHARACTER: FOX MARINE 4
+ // CONTEXT:Combat
+ // DIALOG : More Strogg, take em down!
+ "lipsync_fox4_morestrogg"        "vo_fox4_morestrogg"
+
+ // CHARACTER: FOX MARINE 5
+ // CONTEXT:Combat
+ // DIALOG : Take cover!
+ "lipsync_fox5_takecover"        "vo_fox5_takecover"
+
+
+ // CHARACTER: INSANE MARINE 1
+ // CONTEXT:Crazy
+ // DIALOG : (Incomprehensible mumbling)
+ "lipsync_insane1_mumble"        "vo_insane1_mumble"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Inquisitive
+ // DIALOG : Dekard, Darnell what's your status, we lost contact for a while
+ "lipsync_marks_dekstatus"        "vo_marks_dekstatus"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Reassuring
+ // DIALOG : Roger that.  Hold tight, we’re almost there.
+ "lipsync_marks_wealmost"        "vo_marks_wealmost"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Mitchell, Navajas, wipe out those squibs and secure those doors!
+ "lipsync_marks_mitchwipe"        "vo_marks_mitchwipe"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Tak, get back on that computer, find Strauss!
+ "lipsync_marks_takgetcompu"        "vo_marks_takgetcompu"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Dekard.  We need to hold this position, you get to Strauss.
+ "lipsync_marks_dekholdpos"        "vo_marks_dekholdpos"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Darnell, Navajas, Mitchell, take up defensive positions
+ "lipsync_marks_takeupdef"        "vo_marks_takeupdef"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Mitchell get on that Turret
+ "lipsync_marks_mitchturr"        "vo_marks_mitchturr"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Dekard, get going!
+ "lipsync_marks_dekgetgoing"        "vo_marks_dekgetgoing"
+
+
+ // CHARACTER: MARKSWELL +USE
+ // CONTEXT:Commanding
+ // DIALOG : Get moving Dekard, now!
+ "lipsync_marks_getnow"        "vo_marks_getnow"
+
+
+ // CHARACTER: MARKSWELL +USE
+ // CONTEXT:Frustrated
+ // DIALOG : Are you hard of hearing marine, get to Strauss!
+ "lipsync_marks_areyouhard"        "vo_marks_areyouhard"
+
+
+ // CHARACTER: MARKSWELL +USE
+ // CONTEXT:Frustrated
+ // DIALOG : Dekard, we can't hold this position forever, go!
+ "lipsync_marks_holdposition"        "vo_marks_holdposition"
+ 
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Informative
+ // DIALOG : Dekard, before you go, we found this Strogg lightning gun, you might need it
+ "lipsync_marks_pris_lgun"        "vo_marks_pris_lgun"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Military
+ // DIALOG : On it.
+ "lipsync_mitch_onit"        "vo_mitch_onit"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Military
+ // DIALOG : Door secure.
+ "lipsync_mitch_doorsec"        "vo_mitch_doorsec"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Rattled
+ // DIALOG : Let's get the hell outta here then, get to Strauss...
+ "lipsync_mitch_letshell"        "vo_mitch_letshell"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Tense
+ // DIALOG : There's something coming up that lift
+ "lipsync_mitch_theresome"        "vo_mitch_theresome"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Reassuring
+ // DIALOG : We are close my friend, hold tight.
+ "lipsync_nava_wearecls"        "vo_nava_wearecls"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Informative
+ // DIALOG : I'm planting charges, keep clear of the far door.
+ "lipsync_nava_planting"        "vo_nava_planting"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Yelling
+ // DIALOG : Detonating!
+ "lipsync_nava_detonating"        "vo_nava_detonating"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Military
+ // DIALOG : Yes sir.
+ "lipsync_nava_yessir2"        "vo_nava_yessir2"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Military
+ // DIALOG : Door secure.
+ "lipsync_nava_doorsec"        "vo_nava_doorsec"
+
+
+ // CHARACTER: STRAUSS
+ // CONTEXT:Muffled
+ // DIALOG : (Muffled dialog)
+ "lipsync_strauss_muff"        "vo_strauss_muff"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Dekard, let me see that Strogg core cannon, I think I can make a quick improvement
+ "lipsync_tak_dekletmstrg"        "vo_tak_dekletmstrg"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : There, that scope should help with long range targets.
+ "lipsync_tak_therethatscp"        "vo_tak_therethatscp"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : We need to get into that security room to proceed.
+ "lipsync_tak_weneedsecproc"        "vo_tak_weneedsecproc"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : According to this, there should be an access hatch around here somewhere.
+ "lipsync_tak_accordacc"        "vo_tak_accordacc"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : That alarm is bound to bring more attention to our position.
+ "lipsync_tak_thatalarmb"        "vo_tak_thatalarmb"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : We've got to get going, if we lose Strauss' medchip signal, we'll never find him.
+ "lipsync_tak_wegottogetg"        "vo_tak_wegottogetg"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Complementary
+ // DIALOG : That's it Dekard, the alarms are off and the security doors unlocked.
+ "lipsync_tak_thatsitdek"        "vo_tak_thatsitdek"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Angry
+ // DIALOG : Damn it, they cut us off.  Only way through is to find the override switch in the substructure below us.
+ "lipsync_tak_damncutoff"        "vo_tak_damncutoff"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Calm
+ // DIALOG : Roger that.
+ "lipsync_tak_rogethat3"        "vo_tak_rogethat3"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Complementary
+ // DIALOG : The Bridge is re-engaging.  Good work Darnell
+ "lipsync_tak_bridgereeng"        "vo_tak_bridgereeng"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : The extraction teams will take care of these guys
+ "lipsync_tak_extractcare"        "vo_tak_extractcare"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Firm
+ // DIALOG : Negative
+ "lipsync_tak_neg4"        "vo_tak_neg4"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Resolute
+ // DIALOG : Fox squad is close, we've got no choice on this one.
+ "lipsync_tak_foxsq"        "vo_tak_foxsq"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Calm
+ // DIALOG : Let me see what I can do.
+ "lipsync_tak_letmeseewh"        "vo_tak_letmeseewh"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Proud
+ // DIALOG : Ok, that's it.  The conveyers are disabled.
+ "lipsync_tak_okthatconv"        "vo_tak_okthatconv"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : We need to get through this door
+ "lipsync_tak_weneedtoget"        "vo_tak_weneedtoget"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Commanding
+ // DIALOG : Cover me, I'll hack this door open
+ "lipsync_tak_coverhack"        "vo_tak_coverhack"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : I’ve isolated the primary circuit bridge.  Won’t take long now.
+ "lipsync_tak_isobridge"        "vo_tak_isobridge"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : First relay is active.  Three more.
+ "lipsync_tak_firstbr"        "vo_tak_firstbr"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : Second relay is active.
+ "lipsync_tak_secondact"        "vo_tak_secondact"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : There’s the third, one more.
+ "lipsync_tak_therethird"        "vo_tak_therethird"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : That’s it.  We’re in.
+ "lipsync_tak_thatwein"        "vo_tak_thatwein"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Calm
+ // DIALOG : I'm on it
+ "lipsync_tak_imonit3"        "vo_tak_imonit3"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Looks like I'm going to have to do this one cell at a time.
+ "lipsync_tak_lookslike"        "vo_tak_lookslike"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Opening cells
+ "lipsync_tak_opencells"        "vo_tak_opencells"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : That's all I can do from here
+ "lipsync_tak_allicando"        "vo_tak_allicando"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Military
+ // DIALOG : Soldier, SOLDIER!
+ "lipsync_tak_soldsold"        "vo_tak_soldsold"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Frustrated
+ // DIALOG : This guy is out to lunch.
+ "lipsync_tak_outtolunch"        "vo_tak_outtolunch"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Panic
+ // DIALOG : Shit!
+ "lipsync_tak_shit3"        "vo_tak_shit3"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Shaken
+ // DIALOG : Straus’s med-chip signal.  It’s gone dead.  I’ve lost track of him.
+ "lipsync_tak_strssmedchip"        "vo_tak_strssmedchip"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Resolute
+ // DIALOG : We have to find the central control room.
+ "lipsync_tak_wehavefindcent"        "vo_tak_wehavefindcent"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Resolute
+ // DIALOG : I can find Strauss from there
+ "lipsync_tak_icanfindstrss"        "vo_tak_icanfindstrss"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Central control room should be just ahead
+ "lipsync_tak_centrctrl"        "vo_tak_centrctrl"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : That’s the mainframe.
+ "lipsync_tak_thatmain"        "vo_tak_thatmain"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : Hang on.  I’m still – Good Lord.  What are they doing to those Marines.
+ "lipsync_tak_hangonlord"        "vo_tak_hangonlord"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Shocked
+ // DIALOG : Adrenaline, ADP, Serotonin… We’re nothing but fluid factories to them.
+ "lipsync_tak_adpsero"        "vo_tak_adpsero"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Ok...I'm getting close...
+ "lipsync_tak_okgetcls"        "vo_tak_okgetcls"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : I think this is it.
+ "lipsync_tak_ithinkthis"        "vo_tak_ithinkthis"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Deadpan
+ // DIALOG : Oh shit.
+ "lipsync_tak_ohshit"        "vo_tak_ohshit"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : I triggered an alarm, we are about to have a LOT of company.
+ "lipsync_tak_itrigalarm"        "vo_tak_itrigalarm"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Responsive
+ // DIALOG : On it.
+ "lipsync_tak_onit"        "vo_tak_onit"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Yelling
+ // DIALOG : They’re here!
+ "lipsync_tak_theyrehere"        "vo_tak_theyrehere"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Yelling
+ // DIALOG : There are too many of em'!
+ "lipsync_tak_theretoomany"        "vo_tak_theretoomany"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Hurried
+ // DIALOG : I got him.  They’re moving him, but he's close!
+ "lipsync_tak_gotmove"        "vo_tak_gotmove"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Grim
+ // DIALOG : Not long.
+ "lipsync_tak_notlong"        "vo_tak_notlong"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : This is the only place that we can track Strauss from, we need to stay here.
+ "lipsync_tak_thistrack"        "vo_tak_thistrack"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : I'll guide you to Strauss Dekard.  
+ "lipsync_tak_guidede"        "vo_tak_guidede"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Keep moving Dekard, you should come across Strauss soon!
+ "lipsync_tak_keepmovdek"        "vo_tak_keepmovdek"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Directly ahead Dekard, Strauss is right in front of you.
+ "lipsync_tak_directhead"        "vo_tak_directhead"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative then Grim
+ // DIALOG : Hang on a moment...  It’s a transport system, looks like it’s taking him down into… Damn.  Bio-processing
+ "lipsync_tak_hangmom"        "vo_tak_hangmom"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : I’ve activated the lift, Dekard.  It’ll take you straight to the bio-processing level.  You better hurry though, doesn’t look like Strauss has much time left.
+ "lipsync_tak_actlift"        "vo_tak_actlift"
+
+
+ // CHARACTER: TAK +USE
+ // CONTEXT:Military
+ // DIALOG : Ready when you are Sarge, lets find Strauss.
+ "lipsync_tak_rdywhnstrs"        "vo_tak_rdywhnstrs"
+
+
+ // CHARACTER: TAK +USE
+ // CONTEXT:Informative
+ // DIALOG : That data we found is quite perplexing, just before we landed I found some odd references to something called the Makron Guardian.
+ "lipsync_tak_thatdtaquite"        "vo_tak_thatdtaquite"
+
+
+ // CHARACTER: TAK +USE
+ // CONTEXT:Informative
+ // DIALOG : Once we get Strauss, he'll be able to unlock the that data.
+ "lipsync_tak_oncewegets"        "vo_tak_oncewegets"
+ 
+  // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Let me get this door open.
+ "lipsync_tak_pris_door1"        "vo_tak_pris_door1"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Opening this door
+ "lipsync_tak_pris_door2"        "vo_tak_pris_door2"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Accessing the door panel
+ "lipsync_tak_pris_door3"        "vo_tak_pris_door3"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : One second for this door
+ "lipsync_tak_pris_door4"        "vo_tak_pris_door4"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Opening the door
+ "lipsync_tak_pris_door5"        "vo_tak_pris_door5"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : I'll open this door
+ "lipsync_tak_pris_door6"        "vo_tak_pris_door6"
+ 
+  // CHARACTER: TAK
+ // CONTEXT:
+ // DIALOG : Let me get this door open.
+ "lipsync_tak_letmegetdr"        "vo_tak_letmegetdr"
+}
+
+
+
+//--------------------------------------------------------------------------------------------------------------------
+// copy-paste required for medics and techs
+//--------------------------------------------------------------------------------------------------------------------
+model model_prison_marine_tech
+{
+	inherit					model_prison_marine
+	
+	mesh					models/characters/marine_tech/marine_tech.md5mesh
+	channel torso	( *waist )
+	channel legs	( *origin *hips -*waist )
+	
+	anim	medic_treating_player_start		models/characters/marine/medic_treating_player_start.md5anim
+	{
+		frame	13							attachment_show	tech_tool
+		rate 1.3
+	}
+	anim	medic_treating_player			models/characters/marine/medic_treating_player.md5anim
+	{
+		frame	1							sound	snd_tech_tool_repair
+		rate .5
+	}
+	anim	medic_treating_player_end		models/characters/marine/medic_treating_player_end.md5anim
+	{
+		frame	17							attachment_hide	tech_tool
+		rate 1.3
+	}
+}
+
+model model_prison_marine_medic
+{
+	inherit					model_prison_marine
+	
+	mesh					models/characters/marine_medic/marine_medic.md5mesh
+	channel torso	( *waist )
+	channel legs	( *origin *hips -*waist )
+	
+	anim	medic_treating_player_start		models/characters/marine/medic_treating_player_start.md5anim
+	{
+		frame	13							attachment_show	medic_vaccinegun
+		rate 1.3
+	}
+	anim	medic_treating_player			models/characters/marine/medic_treating_player.md5anim
+	{
+		frame	1							sound	snd_med_gun_heal
+		rate .5
+	}
+	anim	medic_treating_player_end		models/characters/marine/medic_treating_player_end.md5anim
+	{
+		frame	17							attachment_hide	medic_vaccinegun
+		rate 1.3
+	}
+}

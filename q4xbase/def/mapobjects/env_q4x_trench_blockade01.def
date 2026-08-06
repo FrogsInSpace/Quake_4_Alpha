@@ -1,0 +1,32 @@
+/***********************************************************************
+Exploding trench blockade
+
+***********************************************************************/
+//added by nick
+
+model model_env_q4x_trench_blockade01
+
+{
+	mesh				models/mapobjects/q4x/trench_blockade/trench_blockade01.md5mesh
+	anim idle			models/mapobjects/q4x/trench_blockade/trench_blockade01_idle.md5anim
+	
+	anim explode		models/mapobjects/q4x/trench_blockade/trench_blockade01_explode.md5anim
+	
+	anim endidle		models/mapobjects/q4x/trench_blockade/trench_blockade01_endidle.md5anim
+	
+	
+	
+}
+
+entityDef env_q4x_trench_blockade01
+{
+	"editor_color"			"0 .5 .25"
+	"editor_mins"			"-32 -32 0"
+	"editor_maxs"			"32 32 16"
+
+	"spawnclass"			"idAnimated"
+
+	"model"					"model_env_q4x_trench_blockade01"
+	"anim"					"idle"
+	
+}

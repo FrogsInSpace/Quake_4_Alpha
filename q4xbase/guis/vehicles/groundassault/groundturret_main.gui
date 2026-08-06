@@ -1,0 +1,32 @@
+windowDef Desktop
+{
+	rect	0,0,640,480
+	visible	1
+	nocursor	1
+	menugui	0
+	backcolor	0,0.501,0,0.505
+	
+	onEvent {
+		set "GroundChargePercentage::text" "$gui::weapon_charge_percent" ;
+	}	
+	
+	
+	windowDef GroundChargePercentage
+	{
+		rect	25,145,588,268
+		visible	1
+		forecolor	0,1,0.243,1
+		text	"gui::weapon_charge_percent"
+		textscale	1
+		font	"fonts/marine"
+	}
+	windowDef GroundChargeTitle
+	{
+		rect	59,36,522,100
+		visible	1
+		forecolor	1,0,0,1
+		text	"CHARGE STATUS:"
+		textscale	1
+		font	"fonts/marine"
+	}
+}

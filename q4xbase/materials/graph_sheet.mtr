@@ -1,0 +1,74 @@
+// Base graph sheet material
+// -castle
+
+textures/graph_sheets/graph_sheet8
+{
+	qer_editorimage 	textures/graph_sheets/graph_sheet8.tga
+	diffusemap		textures/graph_sheets/graph_sheet8.tga
+	bumpmap			textures/graph_sheets/graph_sheet8_n.tga
+	specularmap		textures/graph_sheets/graph_sheet8_s.tga
+}
+
+textures/graph_sheets/graph_sheet16
+{
+	qer_editorimage 	textures/graph_sheets/graph_sheet16.tga
+	diffusemap		textures/graph_sheets/graph_sheet16.tga
+	bumpmap			addnormals( textures/graph_sheets/graph_sheet16_n.tga, heightmap( textures/graph_sheets/detail_texture02.tga, 2 ) )
+	specularmap		textures/graph_sheets/graph_sheet16_s.tga
+}
+
+textures/graph_sheets/graph_sheet32
+{
+	qer_editorimage 	textures/graph_sheets/graph_sheet32.tga
+	diffusemap		textures/graph_sheets/graph_sheet32.tga
+	bumpmap			addnormals( textures/graph_sheets/graph_sheet32_n.tga, heightmap( textures/graph_sheets/detail_texture02.tga, 4 ) )
+	specularmap		textures/graph_sheets/graph_sheet32_s.tga
+}
+
+textures/graph_sheets/graph_sheet64
+{
+	qer_editorimage 	textures/graph_sheets/graph_sheet64.tga
+	diffusemap		textures/graph_sheets/graph_sheet64.tga
+	bumpmap			addnormals( textures/graph_sheets/graph_sheet64_n.tga, heightmap( textures/graph_sheets/detail_texture02.tga, 2 ) )
+	specularmap		textures/graph_sheets/graph_sheet64_s.tga
+}
+
+textures/graph_sheets/graph_sheet128
+{
+	qer_editorimage 	textures/graph_sheets/graph_sheet128.tga
+	diffusemap		textures/graph_sheets/graph_sheet128.tga
+	bumpmap			addnormals( textures/graph_sheets/graph_sheet128_n.tga, heightmap( textures/graph_sheets/detail_texture01.tga, 2 ) )
+	specularmap		textures/graph_sheets/graph_sheet128_s.tga
+}
+
+textures/graph_sheets/graph_sheet256
+{
+	qer_editorimage 	textures/graph_sheets/graph_sheet256.tga
+	diffusemap		textures/graph_sheets/graph_sheet256.tga
+	bumpmap			addnormals( textures/graph_sheets/graph_sheet256_n.tga, heightmap( textures/graph_sheets/detail_texture01.tga, 2 ) )
+	specularmap		textures/graph_sheets/graph_sheet256_s.tga
+}
+
+textures/graph_sheets/graph_sheet512
+{
+	qer_editorimage 	textures/graph_sheets/graph_sheet512.tga
+	diffusemap		textures/graph_sheets/graph_sheet512.tga
+	bumpmap			addnormals( textures/graph_sheets/graph_sheet512_n.tga, heightmap( textures/graph_sheets/detail_texture01.tga, 2 ) )
+	specularmap		textures/graph_sheets/graph_sheet512_s.tga
+}
+
+textures/graph_sheets/graph_sheet_exit
+{
+	qer_editorimage 	textures/graph_sheets/graph_sheet_exit.tga
+	diffusemap		textures/graph_sheets/graph_sheet_exit.tga
+	bumpmap			addnormals( textures/graph_sheets/graph_sheet_exit_n.tga, heightmap( textures/graph_sheets/detail_texture02.tga, 2 ) )
+	specularmap		textures/graph_sheets/graph_sheet_exit_s.tga
+}
+
+textures/graph_sheets/graph_mover128
+{
+	qer_editorimage 	textures/graph_sheets/graph_mover128.tga
+	diffusemap		textures/graph_sheets/graph_mover128.tga
+	bumpmap			addnormals( textures/graph_sheets/graph_mover128_n.tga, heightmap( textures/graph_sheets/detail_texture01.tga, 2 ) )
+	specularmap		textures/graph_sheets/graph_mover128_s.tga
+}                     

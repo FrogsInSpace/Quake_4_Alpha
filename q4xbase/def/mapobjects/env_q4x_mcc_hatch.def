@@ -1,0 +1,40 @@
+/***********************************************************************
+Hatch climb sequence in MCC Second
+***********************************************************************/
+
+export env_q4x_mcc_hatch
+{
+	options -game /q4xbase -scale .3937 -prefix HATCH_ -keep  origin base lid ladder -sourcedir models/mapobjects/mcc_second/hatch/animations -destdir models/mapobjects/mcc_second/hatch
+
+	mesh	hatch_climb.ma					-dest mesh
+	anim	hatch_climb.ma			-range 2 3 	-dest idle
+	anim	hatch_climb.ma					-dest hatch_climb
+	anim	hatch_climb.ma			-range 193 194 	-dest end_idle
+
+}
+
+model model_env_q4x_mcc_hatch
+
+{
+	mesh				models/mapobjects/mcc_second/hatch/mesh.md5mesh
+	anim idle			models/mapobjects/mcc_second/hatch/idle.md5anim
+	
+	anim hatch_climb		models/mapobjects/mcc_second/hatch/hatch_climb.md5anim
+	{
+	}
+
+	anim end_idle			models/mapobjects/mcc_second/hatch/end_idle.md5anim
+}
+
+entityDef env_q4x_mcc_hatch
+{
+	"editor_color"			"0 .5 .25"
+	"editor_mins"			"-32 -32 0"
+	"editor_maxs"			"32 32 16"
+
+	"spawnclass"			"idAnimated"
+
+	"model"					"model_env_q4x_mcc_hatch"
+	"anim"					"idle"
+	
+}

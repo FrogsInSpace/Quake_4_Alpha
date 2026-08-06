@@ -1,0 +1,301 @@
+//===============================================================
+//===============================================================
+// Persona def for m04 stranarus trench intro
+//===============================================================
+//===============================================================
+//
+//
+//char_q4x_marine
+//char_q4x_marine_shotgun
+//char_q4x_marine_hyperblaster
+//
+//
+//
+//char_q4x_marine_medic
+//char_q4x_marine_medic_shotgun
+//char_q4x_marine_medic_hyperblaster
+//
+//
+//
+//char_q4x_marine_tech
+//char_q4x_marine_tech_medic_shotgun
+//char_q4x_marine_tech_hyperblaster
+//
+//
+//char_q4x_marine_trench
+//===============================================================
+//===============================================================
+// Falcon squad guys
+//===============================================================
+entityDef m01_dekard
+{
+	"inherit1"			"char_q4x_marine"
+	"inherit2"			"char_q4x_marine_dekard"
+	"inherit3"			"char_npc_dekard_M01_stranarus_trench_vo"
+	"editor_menu"		"char_npc_q4x_m01"
+	"npc_description"	"Falcon Squad"
+	"def_persona"		"persona_q4x_dekard_sgt"
+}
+
+entityDef m01_tak
+{
+	"inherit1"			"char_q4x_marine_tech"
+	"inherit2"			"char_npc_tak_M01_stranarus_trench_vo"
+	"editor_menu"		"char_npc_q4x_m01"
+	"npc_description"	"Falcon Squad"
+	"def_persona"		"persona_q4x_tak_pvt"
+	
+	"followRange"	"64 128"
+	
+	//+ use dialog goes here
+}
+
+entityDef m01_darnell
+{
+	"inherit1"			"char_q4x_marine_shotgun"
+	"inherit2"			"char_npc_darnell_M01_stranarus_trench_vo"
+	"editor_menu"		"char_npc_q4x_m01"
+	"npc_description"	"Falcon Squad"
+	"def_persona"		"persona_q4x_darnell_pfc"
+	
+	"followRange"	"64 128"
+	
+	//+ use dialog goes here
+}
+
+entityDef m01_darnell_intro
+{
+	"inherit1"			"char_q4x_marine"
+	"inherit2"			"char_npc_darnell_M01_stranarus_trench_vo"
+	"editor_menu"		"char_npc_q4x_m01"
+	"npc_description"	"Falcon Squad"
+	"def_persona"		"persona_q4x_darnell_pfc"
+	
+	"followRange"	"64 128"
+	
+	//+ use dialog goes here
+}
+
+entityDef m01_navajas
+{
+	"inherit1"			"char_q4x_marine"
+	"inherit2"			"char_npc_navajas_M01_stranarus_trench_vo"
+	"editor_menu"		"char_npc_q4x_m01"
+	"npc_description"	"Falcon Squad"
+	"def_persona"		"persona_q4x_darnell_pfc"
+	
+	"followRange"	"64 128"
+	
+	//+ use dialog goes here
+}
+
+entityDef m01_navajas_unarmed
+{
+	"inherit1"			"char_q4x_marine_unarmed"
+	"inherit2"			"char_npc_navajas_M01_stranarus_trench_vo"
+	"editor_menu"		"char_npc_q4x_m01"
+	"npc_description"	"Falcon Squad"
+	"def_persona"		"persona_q4x_darnell_pfc"
+	
+	"followRange"	"64 128"
+	
+	//+ use dialog goes here
+}
+
+entityDef m01_markswell
+{
+	"inherit1"			"char_q4x_marine_hyperblaster"
+	"inherit2"			"char_npc_markswell_M01_stranarus_trench_vo"
+	"editor_menu"		"char_npc_q4x_m01"
+	"npc_description"	"Falcon Squad"
+	"def_persona"		"persona_q4x_markswell_lt"
+	
+	"followRange"	"64 128"
+	
+	//+ use dialog goes here
+}
+
+entityDef m01_markswell_intro
+{
+	"inherit1"			"char_q4x_marine"
+	"inherit2"			"char_npc_markswell_M01_stranarus_trench_vo"
+	"editor_menu"		"char_npc_q4x_m01"
+	"npc_description"	"Falcon Squad"
+	"def_persona"		"persona_q4x_markswell_lt"
+	
+	"followRange"	"64 128"
+	
+	//+ use dialog goes here
+}
+
+entityDef m01_mitchell
+{
+	"inherit1"			"char_q4x_marine_medic"
+	"inherit2"			"char_npc_mitchell_M01_stranarus_trench_vo"
+	"editor_menu"		"char_npc_q4x_m01"
+	"npc_description"	"Falcon Squad"
+	"def_persona"		"persona_q4x_mitchell_pvt"
+	
+	"followRange"	"64 128"
+	
+	//+ use dialog goes here
+}
+
+entityDef m01_mitchell_unarmed
+{
+	"inherit1"			"char_q4x_marine_medic_unarmed"
+	"inherit2"			"char_npc_mitchell_M01_stranarus_trench_vo"
+	"editor_menu"		"char_npc_q4x_m01"
+	"npc_description"	"Falcon Squad"
+	"def_persona"		"persona_q4x_mitchell_pvt"
+	
+	"followRange"	"64 128"
+	
+	//+ use dialog goes here
+}
+
+entityDef m01_atkins
+{
+	"inherit1"			"char_q4x_marine"
+	"inherit2"			"char_npc_atkins_M01_stranarus_trench_vo"
+	"editor_menu"		"char_npc_q4x_m01"
+	"npc_description"	"Falcon Squad"
+	"npc_name" 			"PVT atkins"
+	"def_head"			"char_marinehead_gen_white_4"
+	
+	"followRange"	"64 128"
+	
+	//+ use dialog goes here
+}
+
+entityDef m01_townsend
+{
+	"inherit1"			"char_q4x_marine"
+	"inherit2"			"char_npc_townsend_M01_stranarus_trench_vo"
+	"editor_menu"		"char_npc_q4x_m01"
+	"npc_description"	"Falcon Squad"
+	"npc_name" 			"PVT townsend"
+	"def_head"			"char_marinehead_gen_african_american_3"
+	
+	"followRange"	"256 384"
+	
+	//+ use dialog goes here
+}
+
+entityDef m01_atlas1
+{
+	"inherit1"			"char_q4x_marine_trench"
+	"inherit2"			"char_npc_atlas1_M01_stranarus_trench_vo"
+	"inherit3"			"lipsync_marine_act1_1"
+	"editor_menu"		"char_npc_q4x_m01"
+	"npc_name" 			"PVT Kyle"
+	"npc_description"	"Atlas Squad"
+	"def_head"			"char_marinehead_helmet"
+	
+	"followRange"	"256 384"
+	
+	//+ use dialog goes here
+}
+
+entityDef m01_atlas2
+{
+	"inherit1"			"char_q4x_marine_trench"
+	"inherit2"			"char_npc_atlas2_M01_stranarus_trench_vo"
+	"inherit3"			"lipsync_marine_act1_1"
+	"editor_menu"		"char_npc_q4x_m01"
+	"npc_name" 			"PVT George"
+	"npc_description"	"Atlas Squad"
+	"def_head"			"char_marinehead_helmet"
+	
+	"followRange"	"256 384"
+	
+	//+ use dialog goes here
+}
+
+entityDef m01_atlas3
+{
+	"inherit1"			"char_q4x_marine_trench"
+	"inherit2"			"char_npc_atlas3_M01_stranarus_trench_vo"
+	"inherit3"			"lipsync_marine_act1_1"
+	"editor_menu"		"char_npc_q4x_m01"
+	"npc_name" 			"PVT Conner"
+	"npc_description"	"Atlas Squad"
+	"def_head"			"char_marinehead_helmet"
+	
+	"followRange"	"256 384"
+	
+	//+ use dialog goes here
+}
+
+entityDef m01_atlas4
+{
+	"inherit1"			"char_q4x_marine_trench"
+	"inherit2"			"char_npc_atlas4_M01_stranarus_trench_vo"
+	"inherit3"			"lipsync_marine_act1_1"
+	"editor_menu"		"char_npc_q4x_m01"
+	"npc_name" 			"PVT Kenny"
+	"npc_description"	"Atlas Squad"
+	"def_head"			"char_marinehead_helmet"
+	
+	"followRange"	"256 384"
+	
+	//+ use dialog goes here
+}
+
+entityDef m01_atlas5
+{
+	"inherit1"			"char_q4x_marine_trench"
+	"inherit2"			"char_npc_atlas5_M01_stranarus_trench_vo"
+	"inherit3"			"lipsync_marine_act1_1"
+	"editor_menu"		"char_npc_q4x_m01"
+	"npc_name" 			"PVT Carter"
+	"npc_description"	"Atlas Squad"
+	"def_head"			"char_marinehead_helmet"
+	
+	"followRange"	"256 384"
+	
+	//+ use dialog goes here
+}
+
+entityDef m01_atlas6
+{
+	"inherit1"			"char_q4x_marine_tech"
+	"inherit2"			"char_npc_atlas6_M01_stranarus_trench_vo"
+	"inherit3"			"lipsync_marine_act1_1"
+	"editor_menu"		"char_npc_q4x_m01"
+	"npc_name" 			"PVT Steve"
+	"npc_description"	"Atlas Squad"
+	"def_head"			"char_marinehead_helmet"
+	
+	"followRange"	"256 384"
+	
+	//+ use dialog goes here
+}
+
+entityDef m01_hades1
+{
+	"inherit1"			"char_q4x_marine_shotgun"
+	"inherit2"			"char_npc_hades1_M01_stranarus_trench_vo"
+	"inherit3"			"lipsync_marine_act1_1"
+	"editor_menu"		"char_npc_q4x_m01"
+	"npc_name" 			"PVT Set"
+	"npc_description"	"Hades Squad"
+	"def_head"			"char_marinehead_helmet"
+	
+	"followRange"	"256 384"
+	
+	//+ use dialog goes here
+}
+
+entityDef m01_hades2
+{
+	"inherit1"			"char_q4x_marine"
+	"inherit2"			"char_npc_hades2_M01_stranarus_trench_vo"
+	"inherit3"			"lipsync_marine_act1_1"
+	"editor_menu"		"char_npc_q4x_m01"
+	"npc_name" 			"PVT Jeth"
+	"npc_description"	"Hades Squad"
+	"def_head"			"char_marinehead_helmet"
+	
+	"followRange"	"256 384"
+}

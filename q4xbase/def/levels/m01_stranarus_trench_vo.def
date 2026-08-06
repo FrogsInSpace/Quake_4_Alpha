@@ -1,0 +1,1846 @@
+
+entityDef char_npc_atkins_M01_stranarus_trench_vo
+{
+ // CHARACTER: ATKINS
+ // CONTEXT:Dismissive
+ // DIALOG : Relax man, Lieutenant Markswell will tell us when we’re getting close.
+ "lipsync_atkins_rlxman"        "vo_atkins_rlxman"
+
+
+ // CHARACTER: ATKINS
+ // CONTEXT:Sarcastic
+ // DIALOG : This doesn't feel like minimal resistance to me!
+ "lipsync_atkins_minres"        "vo_atkins_minres"
+
+
+ // CHARACTER: ATKINS
+ // CONTEXT:Death imminent
+ // DIALOG : Arrgghhh!  Help me!
+ "lipsync_atkins_ahhelpme"        "vo_atkins_ahhelpme"
+
+
+ // CHARACTER: ATKINS
+ // CONTEXT:Death imminent
+ // DIALOG : I can't hold on!
+ "lipsync_atkins_icanthold"        "vo_atkins_icanthold"
+
+
+ // CHARACTER: ATKINS
+ // CONTEXT:Death scream
+ // DIALOG : Arrrghh!
+ "lipsync_atkins_die"        "vo_atkins_die"
+
+}
+
+entityDef char_npc_atlas1_M01_stranarus_trench_vo
+{
+ // CHARACTER: ATLAS MARINE 1
+ // CONTEXT:Tense
+ // DIALOG : This is Kimball from Atlas squad, we're gettin' killed by these Strogg turrets, we need support at all forward positions!
+ "lipsync_atlas1_kimballk"        "vo_atlas1_kimballk"
+
+
+ // CHARACTER: ATLAS MARINE 1
+ // CONTEXT:Commanding
+ // DIALOG : Walker 4, 8 and 15, flank those mounted positions!
+ "lipsync_atlas1_walker4815"        "vo_atlas1_walker4815"
+
+
+ // CHARACTER: ATLAS MARINE 1
+ // CONTEXT:Tense
+ // DIALOG : Walker 8 and 15 are disabled in the east supply tunnel, drivers are injured and need backup!
+ "lipsync_atlas1_walk815dis"        "vo_atlas1_walk815dis"
+
+ // CHARACTER: ATLAS MARINE 1
+ // CONTEXT:Tense
+ // DIALOG : Atlas squad is down to 5 active walkers!
+ "lipsync_atlas_atlas42"        "vo_atlas_atlas42"
+
+
+ // CHARACTER: ATLAS MARINE 1
+ // CONTEXT:Tense
+ // DIALOG : Atlas squad is down to 1 active walker!
+ "lipsync_atlas_5walkers"        "vo_atlas_5walkers"
+
+
+ // CHARACTER: ATLAS MARINE 1
+ // CONTEXT:Tense
+ // DIALOG : Atlas squad has been decimated
+ "lipsync_atlas_1walker"        "vo_atlas_1walker"
+
+
+ // CHARACTER: ATLAS MARINE 1
+ // CONTEXT:Tense
+ // DIALOG : All Atlas walkers have been disabled!  
+ "lipsync_atlas_disabled"        "vo_atlas_disabled"
+
+}
+
+entityDef char_npc_atlas2_M01_stranarus_trench_vo
+{
+ // CHARACTER: ATLAS MARINE 2
+ // CONTEXT:Yelling
+ // DIALOG : Move Move Move!
+ "lipsync_atlas2_mvmvmvm"        "vo_atlas2_mvmvmvm"
+
+
+ // CHARACTER: ATLAS MARINE 2
+ // CONTEXT:Yelling
+ // DIALOG : Get those walkers into position!
+ "lipsync_atlas2_getwalkpos"        "vo_atlas2_getwalkpos"
+
+
+ // CHARACTER: ATLAS MARINE 2
+ // CONTEXT:Yelling
+ // DIALOG : Take cover!
+ "lipsync_atlas2_takecvr"        "vo_atlas2_takecvr"
+
+
+ // CHARACTER: ATLAS MARINE 2
+ // CONTEXT:Tense
+ // DIALOG : Walker 4 Is destroyed!
+ "lipsync_atlas2_walk4dest"        "vo_atlas2_walk4dest"
+
+
+ // CHARACTER: ATLAS MARINE 2
+ // CONTEXT:Tense
+ // DIALOG : Enemy fire!  Take cover!
+ "lipsync_atlas2_enemyfr"        "vo_atlas2_enemyfr"
+
+
+ // CHARACTER: ATLAS MARINE 2
+ // CONTEXT:Calm
+ // DIALOG : Roger, walker group 2 starting flanking maneuver.
+ "lipsync_atlas2_rogwlk2"        "vo_atlas2_rogwlk2"
+
+
+ // CHARACTER: ATLAS MARINE 2
+ // CONTEXT:Tense
+ // DIALOG : Walker 4, watch those  turrets!
+ "lipsync_atlas2_wlk4wtch"        "vo_atlas2_wlk4wtch"
+
+
+ // CHARACTER: ATLAS MARINE 2
+ // CONTEXT:Tense
+ // DIALOG : Our air support just went down, GOC please advise!
+ "lipsync_atlas2_airsupp"        "vo_atlas2_airsupp"
+
+
+ // CHARACTER: ATLAS MARINE 2
+ // CONTEXT:Tense
+ // DIALOG : GOC, please repeat last transmission.
+ "lipsync_atlas2_gocplsrpt"        "vo_atlas2_gocplsrpt"
+
+ // CHARACTER: ATLAS MARINE 2
+ // CONTEXT:Tense
+ // DIALOG : This is Atlas 42, Harvester is down.
+ "lipsync_atlas_harvester"        "vo_atlas_harvester"
+
+}
+
+entityDef char_npc_atlas3_M01_stranarus_trench_vo
+{
+
+ // CHARACTER: ATLAS MARINE 3
+ // CONTEXT:Yelling
+ // DIALOG : What do you see?
+ "lipsync_atlas3_whatsee"        "vo_atlas3_whatsee"
+
+
+ // CHARACTER: ATLAS MARINE 3
+ // CONTEXT:Panic
+ // DIALOG : Shit!  Medic!
+ "lipsync_atlas3_shitmedic"        "vo_atlas3_shitmedic"
+}
+
+entityDef char_npc_atlas4_M01_stranarus_trench_vo
+{
+
+ // CHARACTER: ATLAS MARINE 4
+ // CONTEXT:Yelling
+ // DIALOG : We might be able to make it up this way, there are only …
+ "lipsync_atlas4_wemightmakethe"        "vo_atlas4_wemightmakethe"
+
+
+ // CHARACTER: ATLAS MARINE 4
+ // CONTEXT:Death scream
+ // DIALOG : Arrrghh!
+ "lipsync_atlas4_die"        "vo_atlas4_die"
+
+}
+
+entityDef char_npc_atlas5_M01_stranarus_trench_vo
+{
+ // CHARACTER: ATLAS MARINE 5
+ // CONTEXT:In Pain
+ // DIALOG : (groans in pain variation)
+ "lipsync_atlas5_groan1"        "vo_atlas5_groan1"
+
+
+ // CHARACTER: ATLAS MARINE 5
+ // CONTEXT:In Pain
+ // DIALOG : (groans in pain variation)
+ "lipsync_atlas5_groan2"        "vo_atlas5_groan2"
+
+
+ // CHARACTER: ATLAS MARINE 5
+ // CONTEXT:In Pain
+ // DIALOG : Oh god, it hurts…
+ "lipsync_atlas5_ohgodpain"        "vo_atlas5_ohgodpain"
+}
+
+entityDef char_npc_atlas6_M01_stranarus_trench_vo
+{
+
+ // CHARACTER: ATLAS MARINE 6
+ // CONTEXT:Excited
+ // DIALOG : You’re Falcon squad- good. The entire walker unit was wiped out. Our last two walkers are on the other side of this tunnel, but some spider legged Strogg piece of shit is tearing them apart.
+ "lipsync_atlas6_youfalcsq"        "vo_atlas6_youfalcsq"
+
+
+ // CHARACTER: ATLAS MARINE 6
+ // CONTEXT:
+ // DIALOG : You’re Falcon squad- good.  The entire walker unit was wiped out. Our last walker is on the other side of this tunnel, but some spider legged Strogg piece of shit is tearing it apart.
+ "lipsync_atlas6_goodentire"        "vo_atlas6_goodentire"
+
+
+ // CHARACTER: ATLAS MARINE 6
+ // CONTEXT:Death Scream
+ // DIALOG : Arrrghh!
+ "lipsync_atlas6_die"        "vo_atlas6_die"
+
+}
+
+entityDef char_npc_darnell_M01_stranarus_trench_vo
+{
+ // CHARACTER: DARNELL
+ // CONTEXT:Dismissive
+ // DIALOG : Stop worryin doc, those Tetranode squads are some of the marine core's finest- the Squibs don't stand a chance.
+ "lipsync_darn_stopworry"        "vo_darn_stopworry"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Sarcastic
+ // DIALOG : Shut up Navajas!  You and sci-tech get your gear ready.  The new Sarge isn’t going to put up with your shit.
+ "lipsync_nava_shutupnav"        "vo_nava_shutupnav"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Calm
+ // DIALOG : Yea – I know him.  Name’s Dekard.  We were in the same unit during the Earth invasion – man, that was some crazy shit.  Strogg just kept comin’..
+ "lipsync_darn_yeahknwdek"        "vo_darn_yeahknwdek"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Commanding
+ // DIALOG : Hold on man, grab on!
+ "lipsync_darn_holdonman"        "vo_darn_holdonman"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Angry
+ // DIALOG : Shit!
+ "lipsync_darn_shit"        "vo_darn_shit"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Calling for Attention
+ // DIALOG : Dekard!  Over here!
+ "lipsync_darn_dekoverhr"        "vo_darn_dekoverhr"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Calling for Attention
+ // DIALOG : Dekard!  Here!
+ "lipsync_darn_dekhere"        "vo_darn_dekhere"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Informative
+ // DIALOG : We landed in a real mess huh?  The rest of the squad moved ahead to provide support for Hades and Atlas squads, they're getting torn to shreds by these Strogg turrets.
+ "lipsync_darn_welandmss"        "vo_darn_welandmss"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Informative
+ // DIALOG : We need to get moving, stay low and take cover when those Strogg turrets take aim.
+ "lipsync_darn_wenedgetmv"        "vo_darn_wenedgetmv"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Commanding
+ // DIALOG : Let's go!
+ "lipsync_darn_letsgo"        "vo_darn_letsgo"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Commanding
+ // DIALOG : Hold on, we need to stay back until those fire positions are off of us.
+ "lipsync_darn_holdon"        "vo_darn_holdon"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Yelling
+ // DIALOG : Marine!  Get down!  You're in their line of fire!
+ "lipsync_darn_marinegtdwn"        "vo_darn_marinegtdwn"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Calm
+ // DIALOG : Ok, get ready to move.
+ "lipsync_darn_okgtrdymv"        "vo_darn_okgtrdymv"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Yelling
+ // DIALOG : Go Go Go!
+ "lipsync_darn_gogogo"        "vo_darn_gogogo"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Yelling
+ // DIALOG : Go!  Now!
+ "lipsync_darn_gonow1"        "vo_darn_gonow1"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Yelling
+ // DIALOG : Ok, let's go!
+ "lipsync_darn_okltsgo1"        "vo_darn_okltsgo1"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Yelling
+ // DIALOG : Strogg!
+ "lipsync_darn_strg1"        "vo_darn_strg1"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Yelling
+ // DIALOG : Open Fire!
+ "lipsync_darn_openfr1"        "vo_darn_openfr1"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Yelling
+ // DIALOG : Dekard!  You're exposed, get to cover!
+ "lipsync_darn_dekexposcvr"        "vo_darn_dekexposcvr"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Yelling
+ // DIALOG : Keep movin'
+ "lipsync_darn_keepmov"        "vo_darn_keepmov"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Yelling
+ // DIALOG : The squad is dead ahead
+ "lipsync_darn_sqddedah"        "vo_darn_sqddedah"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Yelling
+ // DIALOG : Take cover!
+ "lipsync_darn_tkcov"        "vo_darn_tkcov"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Yelling
+ // DIALOG : The Strogg turrets are on us, get down!
+ "lipsync_darn_strggturrdwn"        "vo_darn_strggturrdwn"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Military
+ // DIALOG : Yes sir.
+ "lipsync_darn_yessir2"        "vo_darn_yessir2"
+
+
+ // CHARACTER: DARNELL +USE
+ // CONTEXT:Informative
+ // DIALOG : They’re waiting on us, Dekard.
+ "lipsync_darn_theywait"        "vo_darn_theywait"
+
+
+ // CHARACTER: DARNELL +USE
+ // CONTEXT:Informative
+ // DIALOG : The rest of the Squad is pinned down ahead, we need to move!
+ "lipsync_darn_therest"        "vo_darn_therest"
+
+
+ // CHARACTER: DARNELL +USE
+ // CONTEXT:Informative
+ // DIALOG : This reminds of that shit-storm we made it through back on Earth, eh Dekard?
+ "lipsync_darn_thisreminsthat"        "vo_darn_thisreminsthat"
+
+
+ // CHARACTER: DARNELL +USE
+ // CONTEXT:Reassuring
+ // DIALOG : Well be fine, Dekard.  The lieutenant and I can hold our own.
+ "lipsync_darn_webefine"        "vo_darn_webefine"
+
+
+ // CHARACTER: DARNELL +USE
+ // CONTEXT:Annoyed
+ // DIALOG : Get going Dekard, we can't stay here forever.
+ "lipsync_darn_getgoforev"        "vo_darn_getgoforev"
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Combat
+ // DIALOG : Stay back!
+ "lipsync_dar_tre_stayback"        "vo_dar_tre_stayback"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Combat
+ // DIALOG : Hold on!
+ "lipsync_dar_tre_hold"        "vo_dar_tre_hold"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Combat
+ // DIALOG : Dekard, what are you doing?
+ "lipsync_dar_tre_whatdoing"        "vo_dar_tre_whatdoing"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Combat
+ // DIALOG : Go!
+ "lipsync_dar_tre_go"        "vo_dar_tre_go"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Combat
+ // DIALOG : Move!
+ "lipsync_dar_tre_move"        "vo_dar_tre_move"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Combat
+ // DIALOG : Moving
+ "lipsync_dar_tre_moving"        "vo_dar_tre_moving"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Combat
+ // DIALOG : I'm moving
+ "lipsync_dar_tre_moving2"        "vo_dar_tre_moving2"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Combat
+ // DIALOG : They're reloading, go!
+ "lipsync_dar_tre_reloading"        "vo_dar_tre_reloading"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Combat
+ // DIALOG : Take cover!
+ "lipsync_dar_tre_takecover"        "vo_dar_tre_takecover"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Combat
+ // DIALOG : Get to cover!
+ "lipsync_dar_tre_getcover"        "vo_dar_tre_getcover"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Combat
+ // DIALOG : Atlas is moving to flank! 
+ "lipsync_dar_tre_atlasflank"        "vo_dar_tre_atlasflank"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Combat
+ // DIALOG : Move up marines!
+ "lipsync_dar_tre_moveup"        "vo_dar_tre_moveup"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Combat
+ // DIALOG : Everybody stop!
+ "lipsync_dar_tre_stop"        "vo_dar_tre_stop"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Combat
+ // DIALOG : Dekard!  Get down!
+ "lipsync_dar_tre_getdown"        "vo_dar_tre_getdown"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Combat
+ // DIALOG : Harvester!
+ "lipsync_dar_tre_harvester"        "vo_dar_tre_harvester"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Combat
+ // DIALOG : Get Down!  Harvester!
+ "lipsync_dar_tre_getharvest"        "vo_dar_tre_getharvest"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Combat
+ // DIALOG : Dekard, keep us covered while we move this walker!
+ "lipsync_dar_tre_coverwalk"        "vo_dar_tre_coverwalk"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Combat
+ // DIALOG : On three, one, two THREE. 
+ "lipsync_dar_tre_123move"        "vo_dar_tre_123move"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Heavy lift struggle
+ // DIALOG : URGHHH
+ "lipsync_dar_tre_urgmove"        "vo_dar_tre_urgmove"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Informative, Combat
+ // DIALOG : Got it!  Let's go!
+ "lipsync_dar_tre_got_it_go"        "vo_dar_tre_got_it_go"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Informative, Combat
+ // DIALOG : Got it, Let's move!
+ "lipsync_dar_tre_letsmove"        "vo_dar_tre_letsmove"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Informative, Combat
+ // DIALOG : Dekard, come on, let's go!
+ "lipsync_dar_tre_comeon"        "vo_dar_tre_comeon"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Combat
+ // DIALOG : We need to move this harvester leg!
+ "lipsync_dar_harvestleg"        "vo_dar_harvestleg"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Combat
+ // DIALOG : Dekard, behind you, keep us covered!
+ "lipsync_dar_tre_behindyou"        "vo_dar_tre_behindyou"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Combat
+ // DIALOG : Again, on three, one, two, three!
+ "lipsync_dar_tre_again123move"        "vo_dar_tre_again123move"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Heavy lift struggle
+ // DIALOG : URGGHH
+ "lipsync_tak_tre_urgmove2"        "vo_tak_tre_urgmove2"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Combat
+ // DIALOG : Let's go!
+ "lipsync_dar_tre_letsgo"        "vo_dar_tre_letsgo"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Informative, Combat
+ // DIALOG : This channel is directly in line with the Strogg turrets.
+ "lipsync_dar_tre_stroggturrets"        "vo_dar_tre_stroggturrets"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Informative, Combat
+ // DIALOG : They'll tear us to shreds unless we move while they reload.
+ "lipsync_dar_tre_shreds"        "vo_dar_tre_shreds"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Informative, Combat
+ // DIALOG : We need to move while they are reloading!
+ "lipsync_dar_tre_movereload"        "vo_dar_tre_movereload"
+}
+
+entityDef char_npc_goc_M01_stranarus_trench_vo
+{
+ // CHARACTER: GOC
+ // CONTEXT:Calm
+ // DIALOG : Falcon, Atlas walker force is initiating operation CITADEL.  Report minimal resistance on your inbound vector - you are GO for ground assault.
+ "lipsync_goc_falconatlaswlk"        "vo_goc_falconatlaswlk"
+
+
+ // CHARACTER: GOC
+ // CONTEXT:Calm
+ // DIALOG : Confirm Falcon.
+ "lipsync_goc_conffalc"        "vo_goc_conffalc"
+
+
+ // CHARACTER: GOC
+ // CONTEXT:Garbled
+ // DIALOG : Come in Atlas squad, do you read me over.
+ "lipsync_goc_garble"        "vo_goc_garble"
+
+}
+
+entityDef char_npc_hades1_M01_stranarus_trench_vo
+{
+ // CHARACTER: HADES MARINE 1
+ // CONTEXT:Intense
+ // DIALOG : Take that you fuckin' squibs!
+ "lipsync_hades1_takthtfck"        "vo_hades1_takthtfck"
+
+
+ // CHARACTER: HADES MARINE 1
+ // CONTEXT:Intense
+ // DIALOG : Incoming fire!
+ "lipsync_hades1_incoming"        "vo_hades1_incoming"
+
+
+ // CHARACTER: HADES MARINE 1
+ // CONTEXT:Intense
+ // DIALOG : Suppressing fire!
+ "lipsync_hades1_suppfire"        "vo_hades1_suppfire"
+
+
+ // CHARACTER: HADES MARINE 1
+ // CONTEXT:Intense
+ // DIALOG : Get down marine!  You're in their line of fire!
+ "lipsync_hades1_getdwnmr"        "vo_hades1_getdwnmr"
+
+
+ // CHARACTER: HADES MARINE 1
+ // CONTEXT:Tense
+ // DIALOG : Where the hell is our air support?!
+ "lipsync_hades1_whrhellair"        "vo_hades1_whrhellair"
+
+}
+
+entityDef char_npc_hades2_M01_stranarus_trench_vo
+{
+ // CHARACTER: HADES MARINE 2
+ // CONTEXT:Death scream  (riddled with high caliber bullets)
+ // DIALOG : Arrghh!
+ "lipsync_hades2_die"        "vo_hades2_die"
+
+
+ // CHARACTER: HADES MARINE 2
+ // CONTEXT:Informative
+ // DIALOG : Hey Falcon, rest of your squad is over there.
+ "lipsync_hades2_heyfalc"        "vo_hades2_heyfalc"
+
+
+ // CHARACTER: HADES MARINE 2 +USE
+ // CONTEXT:Discouraged
+ // DIALOG : We needed more support for this attack.
+ "lipsync_hades2_weneedsupp2"        "vo_hades2_weneedsupp2"
+
+
+ // CHARACTER: HADES MARINE 2 +USE
+ // CONTEXT:Discouraged
+ // DIALOG : Command didn't send enough troops.
+ "lipsync_hades2_cmdsenden"        "vo_hades2_cmdsenden"
+
+
+ // CHARACTER: HADES MARINE 2 +USE
+ // CONTEXT:Sarcastic
+ // DIALOG : Why is this antique facility so heavily guarded anyhow?
+ "lipsync_hades2_whyisthisant"        "vo_hades2_whyisthisant"
+
+}
+
+entityDef char_npc_markswell_M01_stranarus_trench_vo
+{
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Calm
+ // DIALOG : At ease. The man standing beside me is Sergeant Dekard Chase.  Shortly before our deployment from the Patton, he was transferred to this squad.  Darnell and I served with him on Earth – best non-com in the outfit as far as I’m concerned.  I’ll be coordinating operations through him from now on.
+ "lipsync_marks_ateastman"        "vo_marks_ateastman"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : That's us gentlemen, briefing will continue in the air, let's get this show on the road!
+ "lipsync_marks_thatsusgent"        "vo_marks_thatsusgent"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Falcon Squad, saddle up!
+ "lipsync_marks_falconsqsd"        "vo_marks_falconsqsd"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Calm
+ // DIALOG : Ok, listen up!  We've been ordered in with Atlas walker squad and Hades infantry unit to hit one of the Strogg's oldest raw materials processing facilities. Our objective is to gather data from the facility, while Hades and Atlas prep to destroy it.  This facility is heavily guarded.
+ "lipsync_marks_oklisten"        "vo_marks_oklisten"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Tense
+ // DIALOG : Everybody hold on!  Vansen, we lost two marines and the starboard hull is compromised.
+ "lipsync_marks_evholdvans"        "vo_marks_evholdvans"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Understood.  Tak, prepare a step-out line, we're taking the hard way out.
+ "lipsync_marks_understdt"        "vo_marks_understdt"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Everybody up!  Grab your gear!
+ "lipsync_marks_everbdyup"        "vo_marks_everbdyup"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Tak, cut them out of there!
+ "lipsync_marks_takcutem"        "vo_marks_takcutem"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : You heard the lady, move!  Go Go Go!  Hit the ground and get moving!
+ "lipsync_marks_hrdlady"        "vo_marks_hrdlady"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Darnell, Dekard, Tak, get the hell up here.  We're pinned down!
+ "lipsync_marks_darndektakg"        "vo_marks_darndektakg"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Dekard, Darnell, get Tak up here, we need a tech here immediately!
+ "lipsync_marks_ddtgetup"        "vo_marks_ddtgetup"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Marines, where are you?! Regroup at my position!
+ "lipsync_marks_marineswher"        "vo_marks_marineswher"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : What's the hold up marines!?  
+ "lipsync_marks_whatsholdup"        "vo_marks_whatsholdup"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Calling for Attention
+ // DIALOG : Dekard, over here!
+ "lipsync_marks_dekoverhr"        "vo_marks_dekoverhr"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Informative
+ // DIALOG : Two walkers tried to flank the turrets through the supply tunnels, but they were ambushed.  The walkers are intact, but damaged.  Dekard, Navajas, Tak breach those tunnels and repair those Walkers.  It’s the only way we’re gonna get past these turrets.
+ "lipsync_marks_twowalkfl"        "vo_marks_twowalkfl"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Informative
+ // DIALOG : Walkers tried to flank the turrets through the supply tunnels, but they were ambushed.  One walker is left and intact, but damaged.  Dekard, Navajas, Tak breach those tunnels and repair that Walker.  It’s the only way we’re gonna get past these turrets.
+ "lipsync_marks_twowalkfl_alt"        "vo_marks_twowalkfl_alt"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Calm; dark
+ // DIALOG : Roger that.
+ "lipsync_marks_rogertht2"        "vo_marks_rogertht2"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Tense
+ // DIALOG : We’re under heavy fire.  We need assistance, how close are you?
+ "lipsync_marks_underhvyfr"        "vo_marks_underhvyfr"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Tense
+ // DIALOG : Get it finished and get back here!
+ "lipsync_marks_geitfin"        "vo_marks_geitfin"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Roger, double time it Navajas.
+ "lipsync_marks_rogdbl"        "vo_marks_rogdbl"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Dekard, take out those turrets!
+ "lipsync_marks_dektkoutturr"        "vo_marks_dektkoutturr"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Dekard, Tak, take out those turrets!
+ "lipsync_marks_dektaktake"        "vo_marks_dektaktake"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Calm
+ // DIALOG : Roger that.
+ "lipsync_marks_rogthat2"        "vo_marks_rogthat2"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Ok marines, up and over!
+ "lipsync_marks_okmarup"        "vo_marks_okmarup"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Calm
+ // DIALOG : Good job Tak, Dekard.  
+ "lipsync_marks_goodjbtakdek"        "vo_marks_goodjbtakdek"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Calm
+ // DIALOG : Good job Dekard!
+ "lipsync_marks_goodjobdek"        "vo_marks_goodjobdek"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Calm
+ // DIALOG : All able bodied Atlas and Hades squad members have moved into the facility via the tunnels your team cleared.  Dekard, Tak, Navajas, you're with me.  Darnell, stay behind and cover Mitchell until the wounded are stabilized.
+ "lipsync_marks_allableatlas"        "vo_marks_allableatlas"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Military
+ // DIALOG : On me, Move out!
+ "lipsync_marks_onmemove"        "vo_marks_onmemove"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Military
+ // DIALOG : Move out!
+ "lipsync_marks_moveout2"        "vo_marks_moveout2"
+
+
+ // CHARACTER: MARKSWELL +USE
+ // CONTEXT:Informative
+ // DIALOG : The forward entrance to the facility is too heavily defended, we can’t get any closer.  
+ "lipsync_marks_forwent"        "vo_marks_forwent"
+
+
+ // CHARACTER: MARKSWELL +USE
+ // CONTEXT:Annoyed
+ // DIALOG : Get moving marine!
+ "lipsync_marks_getmov"        "vo_marks_getmov"
+
+
+ // CHARACTER: MARKSWELL +USE
+ // CONTEXT:Annoyed
+ // DIALOG : Dekard, I'm not going to tell you again.
+ "lipsync_marks_deknottell"        "vo_marks_deknottell"
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Dekard, get out of that walker!
+ "lipsync_mark_tre_getout"        "vo_mark_tre_getout"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Dekard, fall in.
+ "lipsync_mark_tre_fallin"        "vo_mark_tre_fallin"
+
+}
+
+entityDef char_npc_mcc_M01_stranarus_trench_vo
+{
+ // CHARACTER: MCC ANNOUNCE
+ // CONTEXT:Robotic
+ // DIALOG : All operation Advantage forces are clear.
+ "lipsync_mcc_allop"        "vo_mcc_allop"
+
+
+ // CHARACTER: MCC ANNOUNCE
+ // CONTEXT:Robotic
+ // DIALOG : Attention, all operation Citadel squads, Atlas, Hades, and Falcon.  Prep for immediate departure.
+ "lipsync_mcc_attentcidcd"        "vo_mcc_attentcidcd"
+
+
+ // CHARACTER: MCC ANNOUNCE
+ // CONTEXT:Robotic
+ // DIALOG : Attention, all operation Citadel squads, prep for immediate departure.
+ "lipsync_mcc_attallopcitsq"        "vo_mcc_attallopcitsq"
+
+}
+
+entityDef char_npc_mitchell_M01_stranarus_trench_vo
+{
+ // CHARACTER: MITCHELL
+ // CONTEXT:Anxious
+ // DIALOG : Hey Darnell, you think those EMP jockeys will actually get the job done?
+ "lipsync_mitch_heydarn"        "vo_mitch_heydarn"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Frustrated
+ // DIALOG : Don’t tell me we’re already takin’ fire.
+ "lipsync_mitch_dnttellwetk"        "vo_mitch_dnttellwetk"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Commanding
+ // DIALOG : Grab my hand!
+ "lipsync_mitch_grabhand"        "vo_mitch_grabhand"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Concerned
+ // DIALOG : Lieutenant!  The shoulder harnesses are jammed.
+ "lipsync_mitch_ltshldjam"        "vo_mitch_ltshldjam"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Discouraged
+ // DIALOG : There's nothing I can do for him.
+ "lipsync_mitch_therenothing2"        "vo_mitch_therenothing2"
+
+
+ // CHARACTER: MITCHELL +USE
+ // CONTEXT:Informative
+ // DIALOG : Most of my medical equipment blew out when our dropship was hit.
+ "lipsync_mitch_mostmed"        "vo_mitch_mostmed"
+
+
+ // CHARACTER: MITCHELL +USE
+ // CONTEXT:Informative
+ // DIALOG : I've done all I can for these guys without my equipment.
+ "lipsync_mitch_ivedoneall"        "vo_mitch_ivedoneall"
+
+
+ // CHARACTER: MITCHELL +USE
+ // CONTEXT:Informative
+ // DIALOG : Keep an eye out for the Atlas or Hades medics.
+ "lipsync_mitch_keepeyeatlas"        "vo_mitch_keepeyeatlas"
+
+}
+
+entityDef char_npc_navajas_M01_stranarus_trench_vo
+{
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Sarcastic
+ // DIALOG : Yeah, one of these days we'll get a nice candy ass assignment like that, instead of all the shit work they keep throwin our way.
+ "lipsync_nava_yeahone"        "vo_nava_yeahone"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Inquisitive
+ // DIALOG : So Darnell, spill it – what’s the scoop on the new sarge?
+ "lipsync_nava_sodrnspill"        "vo_nava_sodrnspill"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Sarcastic
+ // DIALOG : See you on the ground!
+ "lipsync_nava_seegrn"        "vo_nava_seegrn"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Informative
+ // DIALOG : Blast door.  I don’t have enough charges to get through.
+ "lipsync_nava_blsenoughchrg"        "vo_nava_blsenoughchrg"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Yelling
+ // DIALOG : Strogg!
+ "lipsync_nava_strgg1"        "vo_nava_strgg1"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Inquisitive
+ // DIALOG : Damn.  You take care of this one too, Tak?
+ "lipsync_nava_damnyoutakec"        "vo_nava_damnyoutakec"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Resolute
+ // DIALOG : Then we do it my way.  Give me a minute and I’ll make us an entrance.  Watch my back.
+ "lipsync_nava_thenwedoitmy"        "vo_nava_thenwedoitmy"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Calm
+ // DIALOG : Here we go.  Setting the first charge.
+ "lipsync_nava_herewegset"        "vo_nava_herewegset"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Calm
+ // DIALOG : Second charge in place.  One more.
+ "lipsync_nava_seconchrg"        "vo_nava_seconchrg"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Commanding
+ // DIALOG : That’s it.  Everybody back.  Clear.  Clear.
+ "lipsync_nava_thatsit"        "vo_nava_thatsit"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Commanding
+ // DIALOG : Dekard, move away from the charges!
+ "lipsync_nava_demvawaychrg"        "vo_nava_demvawaychrg"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Commanding
+ // DIALOG : Those charges are live, get back!
+ "lipsync_nava_thosechrglive"        "vo_nava_thosechrglive"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Yelling
+ // DIALOG : Detonating!
+ "lipsync_nava_detonat"        "vo_nava_detonat"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Informative
+ // DIALOG : We've got company!
+ "lipsync_nava_wegotcom"        "vo_nava_wegotcom"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Informative
+ // DIALOG : Not unless you want this entire area to cave in.
+ "lipsync_nava_nounless"        "vo_nava_nounless"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Informative
+ // DIALOG : The supply tunnels should be ahead.
+ "lipsync_nava_supplyahd"        "vo_nava_supplyahd"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Calm
+ // DIALOG : Sounds like a Strogg problem, not mine.
+ "lipsync_nava_sndslkstrogg"        "vo_nava_sndslkstrogg"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Informative
+ // DIALOG : This must be Razor 16, no survivors.
+ "lipsync_nava_razor16surv"        "vo_nava_razor16surv"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Commanding
+ // DIALOG : Kill it!
+ "lipsync_nava_killit"        "vo_nava_killit"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Informative
+ // DIALOG : They're both nearly destroyed.
+ "lipsync_tak_theybothdest"        "vo_tak_theybothdest"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Informative
+ // DIALOG : It's nearly destroyed.
+ "lipsync_tak_itdest"        "vo_tak_itdest"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Informative
+ // DIALOG : It looks like Atlas almost breached this door, a couple of charges should finish the job.
+ "lipsync_nava_itlooklkatlas"        "vo_nava_itlooklkatlas"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Informative
+ // DIALOG : Tak, once the walker is repaired, I'll blow the door.
+ "lipsync_nava_takoncerep"        "vo_nava_takoncerep"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Calm
+ // DIALOG : First charge in place.
+ "lipsync_nava_firstchrg"        "vo_nava_firstchrg"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Calm
+ // DIALOG : Second charge up.
+ "lipsync_nava_secondchrg"        "vo_nava_secondchrg"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Commanding
+ // DIALOG : That’s it.  Door is ready!
+ "lipsync_nava_thatitdr"        "vo_nava_thatitdr"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Commanding
+ // DIALOG : Dekard, move away from the charges!
+ "lipsync_nava_dekmvawaychrgs"        "vo_nava_dekmvawaychrgs"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Commanding
+ // DIALOG : Those charges are live, get back!
+ "lipsync_nava_thosechrglv"        "vo_nava_thosechrglv"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Yelling
+ // DIALOG : Detonating!
+ "lipsync_nava_detonating"        "vo_nava_detonating"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Yelling
+ // DIALOG : Strogg incoming!
+ "lipsync_nava_strgincom1"        "vo_nava_strgincom1"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Yelling
+ // DIALOG : Blowing the door!
+ "lipsync_nava_blowdoor2"        "vo_nava_blowdoor2"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Informative
+ // DIALOG : Lieutenant, Dekard and Tak are inbound with walker support, I'm coming back around on foot.
+ "lipsync_nava_ltdektak"        "vo_nava_ltdektak"
+
+
+ // CHARACTER: NAVAJAS +USE
+ // CONTEXT:Annoyed
+ // DIALOG : Formal introductions can wait Sergeant, needless to say, I'm your demolitions expert.
+ "lipsync_nava_formintro"        "vo_nava_formintro"
+
+
+ // CHARACTER: NAVAJAS +USE
+ // CONTEXT:Annoyed
+ // DIALOG : Let's chat after we've accomplished our objective.
+ "lipsync_nava_letschatob"        "vo_nava_letschatob"
+
+
+ // CHARACTER: NAVAJAS +USE
+ // CONTEXT:Annoyed
+ // DIALOG : Time is short Sergeant, you do your job, I'll do mine.
+ "lipsync_nava_timeisshort"        "vo_nava_timeisshort"
+
+
+ // CHARACTER: NAVAJAS +USE
+ // CONTEXT:Annoyed
+ // DIALOG : Obviously you didn't hear the lieutenant.
+ "lipsync_nava_obvioyouhr"        "vo_nava_obvioyouhr"
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Informative
+ // DIALOG : I'll stay here and keep Tak covered.
+ "lipsync_nav_tre_stay"        "vo_nav_tre_stay"
+
+
+}
+
+entityDef char_npc_pilot_M01_stranarus_trench_vo
+{
+ // CHARACTER: PILOT
+ // CONTEXT:Tense
+ // DIALOG : This is Razor 16, we've been hit and are going down.
+ "lipsync_pilot_razor16"        "vo_pilot_razor16"
+
+}
+
+entityDef char_npc_tak_M01_stranarus_trench_vo
+{
+ // CHARACTER: TAK
+ // CONTEXT:Sarcastic
+ // DIALOG : Hey Corporal! The name is Tak. And unlike some grunts, Sci-Tech is always ready to go.
+ "lipsync_tak_heycorptak"        "vo_tak_heycorptak"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Military
+ // DIALOG : Yes sir!
+ "lipsync_tak_yessir1"        "vo_tak_yessir1"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Military
+ // DIALOG : Line secure!
+ "lipsync_tak_linesec"        "vo_tak_linesec"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Commanding
+ // DIALOG : Ok Mitchell, you're out!  Go!
+ "lipsync_tak_okmitchout"        "vo_tak_okmitchout"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Dry
+ // DIALOG : I'll have you out in a second sarge.
+ "lipsync_tak_outsecsarge"        "vo_tak_outsecsarge"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Dry
+ // DIALOG : Almost there.
+ "lipsync_tak_almostth"        "vo_tak_almostth"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Commanding
+ // DIALOG : Got it!  Dekard, let's go!
+ "lipsync_tak_gotitdek"        "vo_tak_gotitdek"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Calling for Attention
+ // DIALOG : Dekard!
+ "lipsync_tak_dek1"        "vo_tak_dek1"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Calling for Attention
+ // DIALOG : Dekard, This way!
+ "lipsync_tak_dekthiswy"        "vo_tak_dekthiswy"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Yelling
+ // DIALOG : Strogg!
+ "lipsync_tak_strg1"        "vo_tak_strg1"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Yelling
+ // DIALOG : Open Fire!
+ "lipsync_tak_openfr1"        "vo_tak_openfr1"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Yelling
+ // DIALOG : Look out!
+ "lipsync_tak_lookout1"        "vo_tak_lookout1"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Yelling
+ // DIALOG : Dekard! Look out!
+ "lipsync_tak_deklkout1"        "vo_tak_deklkout1"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Yelling
+ // DIALOG : Keep moving, we're almost there!
+ "lipsync_tak_kpmov2"        "vo_tak_kpmov2"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Yelling
+ // DIALOG : Almost there.
+ "lipsync_tak_almsthr2"        "vo_tak_almsthr2"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Yelling
+ // DIALOG : Take cover!
+ "lipsync_tak_tkcov2"        "vo_tak_tkcov2"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Yelling
+ // DIALOG : The Strogg turrets are on us, get down!
+ "lipsync_tak_strgturrs2"        "vo_tak_strgturrs2"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Calm
+ // DIALOG : Always trying to blow something up eh Navajas?  I'll get it open.
+ "lipsync_tak_alwaysblow"        "vo_tak_alwaysblow"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Calm
+ // DIALOG : Gimme a second.
+ "lipsync_tak_gimmeasec"        "vo_tak_gimmeasec"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Calm
+ // DIALOG : There we go.  See no need for…
+ "lipsync_tak_therewego"        "vo_tak_therewego"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Surprised
+ // DIALOG : Whoa!
+ "lipsync_tak_whoa"        "vo_tak_whoa"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Relieved
+ // DIALOG : Whew, that was close!
+ "lipsync_tak_whewcls"        "vo_tak_whewcls"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Inquisitive
+ // DIALOG : What's that?
+ "lipsync_tak_whattht"        "vo_tak_whattht"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : This is a Strogg weapon I've never seen before, some kind of cold fire cannon. Here Sarge, I'm sure you can make better use of this than I can.
+ "lipsync_tak_strggweapnseen"        "vo_tak_strggweapnseen"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Not from here.  This terminal is shot.
+ "lipsync_tak_notfrmhr"        "vo_tak_notfrmhr"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Excited
+ // DIALOG : Let me get this bridge up.
+ "lipsync_tak_letmegetbr"        "vo_tak_letmegetbr"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : Almost got it.  Keep em off me!
+ "lipsync_tak_almskeepoff"        "vo_tak_almskeepoff"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Inquisitive
+ // DIALOG : Navajas, can you clear this debris?
+ "lipsync_tak_navaclrdeb"        "vo_tak_navaclrdeb"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Calm
+ // DIALOG : Getting there’s going to be difficult. Strogg resistance is intense.
+ "lipsync_tak_getttherdiff"        "vo_tak_getttherdiff"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Dekard, that cold fire Strogg weapon should be able to tame this fire.
+ "lipsync_tak_thatcoldfire"        "vo_tak_thatcoldfire"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Dekard, you can clear this fire with that Strogg cold fire weapon.
+ "lipsync_tak_dekclrfirecld"        "vo_tak_dekclrfirecld"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Reassuring
+ // DIALOG : Good job Dekard!
+ "lipsync_tak_goodjbdek"        "vo_tak_goodjbdek"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Lieutenant, we've located the Razor 16 dropship, no survivors.
+ "lipsync_tak_ltrazor16"        "vo_tak_ltrazor16"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Panic
+ // DIALOG : What the hell is that thing?!
+ "lipsync_tak_whthelltht"        "vo_tak_whthelltht"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : There they are.
+ "lipsync_tak_thertheyr"        "vo_tak_thertheyr"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : There it is.
+ "lipsync_tak_thereitis"        "vo_tak_thereitis"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Confident
+ // DIALOG : Nah, the weapon and guidance systems are still on line on this one.  The actuators are shot, though, and this thing’s not going anywhere until the drive pistons are getting power.  It’ll shoot, but it won’t walk.  I’ll Take care of that last part; you guys keep the Strogg of me.
+ "lipsync_tak_nahweapgonline"        "vo_tak_nahweapgonline"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Confident
+ // DIALOG : Nah, the weapon and guidance systems are still on line.  The actuators are shot, though, and this thing’s not going anywhere until the drive pistons are getting power.  It’ll shoot, but it won’t walk.  I’ll Take care of that last part; you guys keep the Strogg of me.
+ "lipsync_tak_nahweapgon2"        "vo_tak_nahweapgon2"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Calm
+ // DIALOG : Got it.
+ "lipsync_tak_gotit1"        "vo_tak_gotit1"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Commanding
+ // DIALOG : Dekard!  Get in the walker, the weapons are working!
+ "lipsync_tak_dekgetwlk"        "vo_tak_dekgetwlk"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Okay, I got the actuator patched.  I’m routing power to the drive pistons now.
+ "lipsync_tak_okactuator"        "vo_tak_okactuator"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Power at twenty-five percent.
+ "lipsync_tak_pwr25"        "vo_tak_pwr25"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : We’re at fifty percent.
+ "lipsync_tak_pwr50"        "vo_tak_pwr50"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Almost there, seventy-five percent.
+ "lipsync_tak_pwr75"        "vo_tak_pwr75"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Drive pistons are active.  I just need to realign the hydraulic governor and –
+ "lipsync_tak_drivepist"        "vo_tak_drivepist"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Walker’s nearly functional, Sir.  
+ "lipsync_tak_walknrlyfun"        "vo_tak_walknrlyfun"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Walker number one nearly functional, Sir.
+ "lipsync_tak_walknumonefun"        "vo_tak_walknumonefun"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Roger that.
+ "lipsync_tak_rogerthat"        "vo_tak_rogerthat"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Dekard, you’re good to go.  Navajas and I will meet back with Falcon Squad.  Take the Walker through the supply tunnel and meet us back outside.  Be careful- this thing’s patched up, but it won’t take much of a beating.
+ "lipsync_tak_dekgoodtogo"        "vo_tak_dekgoodtogo"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : You’re good to go, Dekard.  Hold on, let me see if I can get this other walker up quickly.
+ "lipsync_tak_goodholdwlk"        "vo_tak_goodholdwlk"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : This walker is in much better shape!
+ "lipsync_tak_thiswlkbetter"        "vo_tak_thiswlkbetter"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : Keep them off me!
+ "lipsync_tak_keepoff2"        "vo_tak_keepoff2"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Excited
+ // DIALOG : This baby is alive again!
+ "lipsync_tak_babyalive"        "vo_tak_babyalive"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Excited
+ // DIALOG : Ok Dekard, lets go, you take point!
+ "lipsync_tak_okdekpoint"        "vo_tak_okdekpoint"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Excited
+ // DIALOG : Let's go!
+ "lipsync_tak_ltsgo2"        "vo_tak_ltsgo2"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Excited
+ // DIALOG : Turret disabled!
+ "lipsync_tak_turrdis"        "vo_tak_turrdis"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Excited
+ // DIALOG : I got one!
+ "lipsync_tak_igotone2"        "vo_tak_igotone2"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Excited
+ // DIALOG : Turrets are down!
+ "lipsync_tak_turrdown"        "vo_tak_turrdown"
+
+
+ // CHARACTER: TAK +USE
+ // CONTEXT:Sarcastic
+ // DIALOG : Quite an operation for your first command eh Sarge?
+ "lipsync_tak_quiteop"        "vo_tak_quiteop"
+
+
+ // CHARACTER: TAK +USE
+ // CONTEXT:Informative
+ // DIALOG : Markswell wants us to regroup. 
+ "lipsync_tak_marksregrp"        "vo_tak_marksregrp"
+
+
+ // CHARACTER: TAK +USE
+ // CONTEXT:Sarcastic
+ // DIALOG : I don't recall the Sci-Tech job description including anything like this…
+ "lipsync_tak_dntrecallsci"        "vo_tak_dntrecallsci"
+
+
+ // CHARACTER: TAK +USE
+ // CONTEXT:Informative
+ // DIALOG : Let's get to those walkers.
+ "lipsync_tak_letsgetwlk"        "vo_tak_letsgetwlk"
+
+
+ // CHARACTER: TAK +USE
+ // CONTEXT:Informative
+ // DIALOG : Let's get to that walker.
+ "lipsync_tak_letsget1walk"        "vo_tak_letsget1walk"
+
+
+ // CHARACTER: TAK +USE
+ // CONTEXT:Informative
+ // DIALOG : I hope those walkers aren't too beat up
+ "lipsync_tak_ihopethosewl"        "vo_tak_ihopethosewl"
+
+
+ // CHARACTER: TAK +USE
+ // CONTEXT:Informative
+ // DIALOG : I hope that walker isn't too beat up
+ "lipsync_tak_ihopethat"        "vo_tak_ihopethat"
+
+
+ // CHARACTER: TAK +USE
+ // CONTEXT:Informative
+ // DIALOG : We need to keep moving Sarge.
+ "lipsync_tak_weneedmvsrg"        "vo_tak_weneedmvsrg"
+
+ // CHARACTER: TAK
+ // CONTEXT:Combat
+ // DIALOG : Moving
+ "lipsync_tak_tre_moving"        "vo_tak_tre_moving"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Combat
+ // DIALOG : I'm moving
+ "lipsync_tak_tre_moving2"        "vo_tak_tre_moving2"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Combat
+ // DIALOG : Dekards goin for it! 
+ "lipsync_tak_tre_dekardgo"        "vo_tak_tre_dekardgo"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Combat
+ // DIALOG : Right behind you Dekard!
+ "lipsync_tak_tre_rightbehind"        "vo_tak_tre_rightbehind"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Combat
+ // DIALOG : Go Atlas!
+ "lipsync_tak_tre_goatlas"        "vo_tak_tre_goatlas"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Combat
+ // DIALOG : Dekard!  Stop!
+ "lipsync_tak_tre_stop"        "vo_tak_tre_stop"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative, Combat
+ // DIALOG : Shit!  That walker is blocking our path!
+ "lipsync_tak_tre_shitwalker"        "vo_tak_tre_shitwalker"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Combat
+ // DIALOG : Dekard, we need cover!
+ "lipsync_tak_tre_needocver"        "vo_tak_tre_needocver"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Heavy lift struggle
+ // DIALOG : URGGHH
+ "lipsync_tak_tre_urgmove"        "vo_tak_tre_urgmove"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Combat
+ // DIALOG : Damn, it's stuck in the ground, lift it up!
+ "lipsync_tak_tre_legstuck"        "vo_tak_tre_legstuck"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Heavy lift struggle
+ // DIALOG : URGHHH
+ "lipsync_dar_tre_urgmove2"        "vo_dar_tre_urgmove2"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative, Combat
+ // DIALOG : Leg is moved!  Let's go!
+ "lipsync_tak_tre_legmoved"        "vo_tak_tre_legmoved"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : This security door can't be opened from here.
+ "lipsync_tak_tre_secdoor"        "vo_tak_tre_secdoor"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Access panel has to be nearby
+ "lipsync_tak_tre_accesspanel"        "vo_tak_tre_accesspanel"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : This is the right panel for that door, but it's been locked out from that security room.
+ "lipsync_tak_tre_lockedout"        "vo_tak_tre_lockedout"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : I've opened the door leading to the security room, but the hallway is on fire.
+ "lipsync_tak_tre_hallwayfire"        "vo_tak_tre_hallwayfire"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : You should be able to get through there with that Strogg freezing weapon.
+ "lipsync_tak_tre_stroggweapon"        "vo_tak_tre_stroggweapon"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : You should be able to get through there with your cold cannon.
+ "lipsync_tak_tre_stroggweapon2"        "vo_tak_tre_stroggweapon2"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : Dekard, I can't get that door open until you bypass the lockouts.
+ "lipsync_tak_tre_bypassremind"        "vo_tak_tre_bypassremind"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : Dekard, what's the hold up!  
+ "lipsync_tak_tre_holdup"        "vo_tak_tre_holdup"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : Dekard, come on!  Bypass that security lockout so we can proceed!
+ "lipsync_tak_tre_bypassremind2"        "vo_tak_tre_bypassremind2"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : Ok, that did it, I can get this door open now.
+ "lipsync_tak_tre_thatdidit"        "vo_tak_tre_thatdidit"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : Dekard, We'll open the door once you get back here.
+ "lipsync_tak_tre_getback"        "vo_tak_tre_getback"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : Sarge, we are waiting on you to get back before proceeding!
+ "lipsync_tak_tre_waiting"        "vo_tak_tre_waiting"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Excited
+ // DIALOG : Ok, opening the door!
+ "lipsync_tak_tre_opening"        "vo_tak_tre_opening"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Let me get this door open.
+ "lipsync_tak_pris_door1"        "vo_tak_pris_door1"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Opening this door
+ "lipsync_tak_pris_door2"        "vo_tak_pris_door2"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Accessing the door panel
+ "lipsync_tak_pris_door3"        "vo_tak_pris_door3"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : One second for this door
+ "lipsync_tak_pris_door4"        "vo_tak_pris_door4"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Opening the door
+ "lipsync_tak_pris_door5"        "vo_tak_pris_door5"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : I'll open this door
+ "lipsync_tak_pris_door6"        "vo_tak_pris_door6"
+
+}
+
+entityDef char_npc_townsend_M01_stranarus_trench_vo
+{
+ // CHARACTER: TOWNSEND
+ // CONTEXT:Military
+ // DIALOG : Officer on deck!
+ "lipsync_towns_offdeck"        "vo_towns_offdeck"
+
+
+ // CHARACTER: TOWNSEND
+ // CONTEXT:Death scream
+ // DIALOG : Arrrghhh!
+ "lipsync_towns_arrgg"        "vo_towns_arrgg"
+
+}
+
+entityDef char_npc_vansen_M01_stranarus_trench_vo
+{
+ // CHARACTER: VANSEN (PILOT)
+ // CONTEXT:Calm
+ // DIALOG : This is Dropship Falcon en route from the Hannibal heading zero–seven–zero, two minutes to station.  Requesting sit-rep from ground ops.
+ "lipsync_vansen_dropflcn"        "vo_vansen_dropflcn"
+
+
+ // CHARACTER: VANSEN (PILOT)
+ // CONTEXT:Calm
+ // DIALOG : Roger that, package is prepped and ready for transfer – eat to drop in one-zero-niner.
+ "lipsync_vansen_rogerthtp"        "vo_vansen_rogerthtp"
+
+
+ // CHARACTER: VANSEN (PILOT)
+ // CONTEXT:Tense
+ // DIALOG : Everybody get to their seats, we have incoming!
+ "lipsync_vansen_everseat"        "vo_vansen_everseat"
+
+
+ // CHARACTER: VANSEN (PILOT)
+ // CONTEXT:Tense
+ // DIALOG : GOC, receiving heavy AA fire, re-routing approach to LZ.
+ "lipsync_vansen_gochvyaa"        "vo_vansen_gochvyaa"
+
+
+ // CHARACTER: VANSEN (PILOT)
+ // CONTEXT:Tense
+ // DIALOG : We're hit!
+ "lipsync_vansen_wehit"        "vo_vansen_wehit"
+
+
+ // CHARACTER: VANSEN (PILOT)
+ // CONTEXT:Tense
+ // DIALOG : GOC, we've been hit hard, trying to stabilize..
+ "lipsync_vansen_gochithard"        "vo_vansen_gochithard"
+
+
+ // CHARACTER: VANSEN (PILOT)
+ // CONTEXT:Tense
+ // DIALOG : Roger lieutenant, starboard engine is at 20 percent, we've got no rear landing struts, and we are losing altitude fast.
+ "lipsync_vansen_rgrltst20"        "vo_vansen_rgrltst20"
+
+
+ // CHARACTER: VANSEN (PILOT)
+ // CONTEXT:Calm
+ // DIALOG : Falcon, we are imminent to new LZ, short 1.5 klicks of planned LZ.  You guys need to get out quick, we are still under fire and I can't hold this position for long.
+ "lipsync_vansen_falconweimm"        "vo_vansen_falconweimm"
+
+
+ // CHARACTER: VANSEN (PILOT)
+ // CONTEXT:Terse
+ // DIALOG : Falcon, we are stable at new LZ, everybody out!
+ "lipsync_vansen_stablelz"        "vo_vansen_stablelz"
+
+
+ // CHARACTER: VANSEN (PILOT)
+ // CONTEXT:Tense
+ // DIALOG : I can't hold this position much longer.
+ "lipsync_vansen_cntholdpos"        "vo_vansen_cntholdpos"
+
+
+ // CHARACTER: VANSEN (PILOT)
+ // CONTEXT:Tense
+ // DIALOG : Starboard engine at 10 percent
+ "lipsync_vansen_stbeng10"        "vo_vansen_stbeng10"
+
+
+ // CHARACTER: VANSEN (PILOT)
+ // CONTEXT:Angry
+ // DIALOG : We're out of time marines!
+ "lipsync_vansen_weouttime"        "vo_vansen_weouttime"
+
+
+ // CHARACTER: VANSEN (PILOT)
+ // CONTEXT:Tense
+ // DIALOG : Dropship Falcon clearing hot zone.
+ "lipsync_vansen_dropshphot"        "vo_vansen_dropshphot"
+
+}

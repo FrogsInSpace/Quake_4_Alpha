@@ -1,0 +1,1146 @@
+
+lipSync vo_mitch_whathelldo
+{
+	text		"What the hell do they do down here?"
+	visemes	"english"	"x3m <What> w5q AH3q t4h <the> DH7u IY3q <hell> h18r EH3q l10x <do> d3r UW3q <they> DH8u EY9s x13i <do> d3s UW13v <down> d8w AW11t n7o <here> h8p IH11s r5q x18j "
+}
+
+
+lipSync vo_fox5_dntwntknw
+{
+	text		"I don’t want to know."
+	visemes	"english"	"<I> AY4q <dont> d3r AA3q n15l t6w <want> w20z AA4q n15r t3t <to> t4u UW5q <know> n3s OW18x x34h "
+}
+
+
+lipSync vo_mitch_youheartht
+{
+	text		"You hear that?"
+	visemes	"english"	"x6k <You> y5q UW3q <hear> h7v IH11t r3q <that> DH5x AE15w t5f x13a "
+}
+
+
+lipSync vo_fox5_weallhrd
+{
+	text		"We all heard it."
+	visemes	"english"	"x4i <We> w5q IY9s <all> AO11t l19u <heard> h3p ER8q d4n <it> IH10r t6k x15h "
+}
+
+
+lipSync vo_mitch_thatsndmar
+{
+	text		"That… That sounded like marines."
+	visemes	"english"	"x5l <That> DH4w AE11t t3c x33a <That> DH7p AE4q t5k <sounded> s7u AW6q n3v d3v AH3q d3q <like> l5v AY5q k3j <marines> m8r ER13v IY20z n9p z11m x10f "
+}
+
+
+lipSync vo_fox5_shutup
+{
+	text		"Shut up."
+	visemes	"english"	"x4k <Shut> SH15s AH9s t3s <up> AH14v p5m x24n "
+}
+
+
+lipSync vo_mitch_butthose
+{
+	text		"But those screams.  I –"
+	visemes	"english"	"<But> b4v AH3q t3l <those> DH5v OW6q z12p <screams> s3e k6o r4q IY10s m4v z8t <I> AY15w x8f "
+}
+
+
+lipSync vo_fox5_saidshutp
+{
+	text		"I said shut up."
+	visemes	"english"	"x4h <I> AY9r <said> s12s EH8r d5o <shut> SH14t AH28z t3k <up> AH3q p5g x24a "
+}
+
+
+lipSync vo_tak_gotalok
+{
+	text		"I’ve got a lock on Strauss."
+	visemes	"english"	"<Ive> AY5q v5q EH3q <got> g3w AA3q t3y <a> AH3q <lock> l6x AA8r k6r <on> AA8r n7s <Strauss> s9p t5v r3q AW20z s14l x9a "
+}
+
+
+lipSync vo_tak_keepmvcls
+{
+	text		"Keep moving, Dekard.  You’re getting closer."
+	visemes	"english"	"<Keep> k5p IY7r p3w <moving> m5z UW7r v6u IH4q NG6q <Dekard> d4r IH9s k6p AA3q r3q d3m <Youre> y3q UW3q r3q EH5q <getting> g3v EH3q t3t IH3q NG3j <closer> k5q l4y OW12u s8r ER7q x21i "
+}
+
+
+lipSync vo_tak_straightah
+{
+	text		"Straight ahead, Dekard."
+	visemes	"english"	"x3m <Straight> s7p t6u r4q EY3q t3u <ahead> AH4q h7v EH7r d4p <Dekard> d6r IH11t k3j AA3q r9s d5n x16k "
+}
+
+
+lipSync vo_tak_chkright
+{
+	text		"Check the right."
+	visemes	"english"	"<Check> CH4x EH6q k3k <the> DH5u IY3q <right> r12u AY13u t8k x18c "
+}
+
+
+lipSync vo_tak_hetoleft
+{
+	text		"He’s to the left."
+	visemes	"english"	"<Hes> h5o EH4q s4n <to> t6s UW5q <the> DH3y IY3q <left> l14z EH13u f6l t10i x18a "
+}
+
+
+lipSync vo_tak_closingin
+{
+	text		"You’re closing in on him, Dekard."
+	visemes	"english"	"<Youre> y4q UW3q r3q EH3f <closing> k7t l3z OW8r z5v IH4q NG5x <in> IH6q n3z <on> AA7q n3r <him> h3s IH3q m8o <Dekard> d3v IH8r k8p AA3q r3q d9n x10c "
+}
+
+
+lipSync vo_tak_straussdsnt
+{
+	text		"Strauss doesn’t have much time."
+	visemes	"english"	"x5i <Strauss> s10r t7v r3q AW10s s3o x5j <doesnt> d3x AH9s z3u n3w t4w <have> h3y AE8r v3p <much> m4u AH7r CH10q <time> t7s AY26z m8k x16a "
+}
+
+
+lipSync vo_scrmar1_pain
+{
+	text		"(Screams in pain)"
+	visemes	"english"	"x3a <Screams> s3a k3f r3q IY3q m4r z3t <in> IH29z n3s <pain> p99s p99s p99s p44s EY4q n12i x99c x99c x1c "
+}
+
+
+lipSync vo_scrmar1_nonono
+{
+	text		"No. No. Noooooo."
+	visemes	"english"	"x56p <No> n3p OW3q <No> n4n OW6q <Noooooo> n3n UW7q UW3q UW3q x99s x99s x99s x99s x99s x85s "
+}
+
+
+lipSync vo_scrmar2_killmepls
+{
+	text		"Kill me!  Please just kill me."
+	visemes	"english"	"x8a <Kill> k46s IH40z l3s <me> m4s IY12t <Please> p4q l3q IY3q z3n <just> j3n AH13t s3n t3o <kill> k8t IH99z IH11z l4v x81s <me> m3m IY3q x99f x99f x31f "
+}
+
+
+lipSync vo_scrmar2_whatwnt
+{
+	text		"What do you want from me?"
+	visemes	"english"	"x8a <What> w6q AH99z AH15z t3t <do> d21u UW6q x63p <you> y3q UW10q <want> w3q AA3g n5g t3f <from> f3f r6q AH4e m3e x21e <me> m3c IY6a x99a x34a "
+}
+
+
+lipSync vo_scrmar3_noplsno
+{
+	text		"No, please no. I – (Screams)"
+	visemes	"english"	"x14a <No> n46n OW4q <please> p5l l19m IY3q z3p x60s <no> n3r OW4q x13p <I> AY99z AY99z AY34z <Screams> s3v k99t k92t r3q IY3q m3m z3n x99f x99f x64f "
+}
+
+
+lipSync vo_scrmar3_nonothth
+{
+	text		"No.  Not that. Not tha-(Screams)"
+	visemes	"english"	"<No> n5o OW8q <Not> n29q AA19x t3k <that> DH4m AE57z t3s x27t <Not> n3v AA4q t3u <tha> TH3v AH29z x99u x3u <Screams> s3w k99u k14u r3q IY3q m3l z4l x65g "
+}
+
+
+lipSync vo_scrmar4_pain
+{
+	text		"(Screams in pain)"
+	visemes	"english"	"x5m <Screams> s3q k99u k99u k31u r3q IY3q m3m z3l <in> IH3q n3k <pain> p5k EY3q n3j x99e x99e x26e "
+}
+
+
+lipSync vo_scrmar4_notnomr
+{
+	text		"(Screams) Not again.  No more. Please, No more."
+	visemes	"english"	"x6a <Screams> s3a k6n r3q IY3q m3q z3s <Not> n3s AA6q t3u <again> AH56z g3n EH79z n3s <No> n3s OW5q <more> m3v AO6q r3q <Please> p81t l5q IY3q z3r x59s <No> n12s OW3q x90s <more> m3m AO4q r3q x99e x99e x99e x8e "
+}
+
+
+lipSync vo_scrmar5_plsstop
+{
+	text		"(Screams) Please, Stop.  Just stop (Screams)"
+	visemes	"english"	"x8c <Screams> s3i k14r r6q IY5q m3s z3s <Please> p3r l3r IY3q z3p x19o <Stop> s3p t3r AA3q p14u <Just> j3t AH76z s3k t3n <stop> s3r t3r AA3q p5r x33r <Screams> s3s k99u k99u k3u r3q IY3q m3k z3k x99e x99e x26e "
+}
+
+
+lipSync vo_scrmar5_giveyou
+{
+	text		"I’ll give you whatever you want, just please sto- (Screams)"
+	visemes	"english"	"x32k <Ill> IH59z l4q <give> g3r IH14u v3p <you> y3q UW4q <whatever> w3q AH42z t3p EH7q v3n ER5q x19m <you> y3q UW5q x74q <want> w3q AA4q n4t t3s <just> j3t AH42z s3u t3t <please> p99u p99u p9u l10p IY3q z3n x3m <sto> s3l t4l UW3q <Screams> s3l k6k r5q IY3q m3i z3i x99e x40e "
+}
+
+
+lipSync vo_scrmar6_youdo
+{
+	text		"What are you doing to me?"
+	visemes	"english"	"x20k <What> w3q AH5q t3p <are> AA3q r3q <you> y3q UW4q <doing> d4o UW6q IH99z IH99z IH49z NG3a <to> t3a UW12a <me> m3a IY3a x69a "
+}
+
+
+lipSync vo_scrmar6_smbdy
+{
+	text		"Somebody, help!  Please."
+	visemes	"english"	"x6e <Somebody> s3e AH3q m3q b3s AA3q d3w IY3q <help> h99v h80v EH32z l3m p3m <Please> p4l l6k IY10q z3k x99e x79e "
+}
+
+
+lipSync vo_mitch_whathell
+{
+	text		"What the hell?"
+	visemes	"english"	"x6l <What> w9s AH5q t5h <the> DH8q IY3q <hell> h17t EH12u l14t x12h "
+}
+
+
+lipSync vo_fox5_whatmatt
+{
+	text		"What’s the matter, you afraid of the dark?"
+	visemes	"english"	"x4l <Whats> w6q AH5q t3l s3o <the> DH3v IY3q <matter> m9v AE14v t3p ER7q <you> y10r UW3q <afraid> AH6q f8p r3q EY3q d3w <of> AH3q v3n <the> DH3q IY3q <dark> d10r AA7q r10s k9i x6g "
+}
+
+
+lipSync vo_mitch_nahafraid
+{
+	text		"Nah, I’m afraid of what’s in it."
+	visemes	"english"	"x10o <Nah> n5z AA14v x25n <Im> IH4q m8r <afraid> AH3q f7n r3q EY3q d3x <of> AH3q v4u <whats> w4q AH3q t3j s5q <in> IH6q n4w <it> IH12u t4h x11g "
+}
+
+
+lipSync vo_mitch_wegonna
+{
+	text		"We’re gonna have to find away into that control room."
+	visemes	"english"	"x6l <Were> w3q ER4q <gonna> g6u AA3q n4u AH3q <have> h3x AE5q v3i <to> t4q UW3q <find> f8q AY7r n3u d3w <away> AH3q w8r EY13v <into> IH5q n3r t3r UW3q <that> DH4w AE10s t3g <control> k4s AH3q n3n t9q r3q OW5q l8x <room> r7q UW11s m10j x24c "
+}
+
+
+lipSync vo_fox5_theoverr
+{
+	text		"The override for the field generator has to be up in that control room."
+	visemes	"english"	"x7h <The> DH4w IY7r <override> OW12u v6t ER3q r5q AY7r d5n <for> f4n AO3q r3q <the> DH3w IY3q <field> f11l IY7r l7z d6r <generator> j6s EH6q n5u ER4q EY8r t3u ER9s <has> h7s AE9s z4k <to> t5n UW3q <be> b3w IY9s <up> AH6q p4n <in> IH3q n3r <that> DH3w AE6q t4i <control> k3q AH3q n6p t7p r3q OW5q l7v <room> r5q UW11s m6l x18f "
+}
+
+
+lipSync vo_fox5_heyover
+{
+	text		"Hey, over here."
+	visemes	"english"	"x4r <Hey> h6x EY21z x14o <over> OW8r v5s ER9s <here> h4v IH16w r9s x50g "
+}
+
+
+lipSync vo_fox5_thresupp
+{
+	text		"There are some supply lines below, they might provide a way past this generator"
+	visemes	"english"	"<There> DH3w EH3q r3q <are> AA3q r3q <some> s6u AH3q m8r <supply> s7t AH8q p6r l4x AY8r <lines> l7v AY9s n5r z7l <below> b7s AH3q l17u OW11s x22k <they> DH4o EY3q <might> m8q AY10s t3i x4c <provide> p4r r3q AH3q v4s AY9s d3r <a> AH3q <way> w11t EY11t <past> p5p AE15v s4r t3o <this> DH3p IH3q s5p <generator> j8r EH5q n4s ER9r EY6q t3m ER5q x29i "
+}
+
+
+lipSync vo_mitch_thereexhaust
+{
+	text		"There should be an exhaust vent somewhere for that field generator"
+	visemes	"english"	"<There> DH4t EH3q r5q <should> SH10y UH3q d6n <be> b3u IY6q <an> AE3q n4w <exhaust> IH7q g3v z13w AO9s s3r t7r <vent> v3w EH6q n4l t3t <somewhere> s7u AH7q m3s w3q EH5q r3q x5u <for> f3t AO3q r3q <that> DH3x AE7q t5o <field> f6x IY5q l4v d4l <generator> j8w EH6q n3u ER6q EY9s t5w ER5q x17s "
+}
+
+
+lipSync vo_mitch_deklookex
+{
+	text		"Dekard, look for an exhaust vent attached to that field generator"
+	visemes	"english"	"x3k <Dekard> d4x IH7q k3q AA5q r3q d4r x40k <look> l3w UH4q k5t <for> f3s AO3q r3q <an> AE3q n3x <exhaust> IH4q g4v z7w AO14v s3q t11s <vent> v3w EH6q n6m t3s <attached> AH3q t8v AE8r CH5u t6t <to> t4l UW3q <that> DH3x AE9s t3o <field> f8t IY4q l4w d4l <generator> j12v EH4q n4u ER6q EY7q t3v ER5q x21q "
+}
+
+
+lipSync vo_mitch_dektryblow
+{
+	text		"Dekard, try blowing up the field generator, it's in there somewhere!"
+	visemes	"english"	"<Dekard> d9w IH10s k5x AA3q r3q d13r x12a <try> t8x r3q AY11t x4r <blowing> b3w l7w OW3q IH4q NG3u <up> AH5q p4o x5o <the> DH3x IY3q x10m <field> f4w IY6q l8v d3o <generator> j9w EH5q n6v ER3q EY8r t3w ER7q x19r <its> IH3q t3v s3t <in> IH5q n3v <there> DH3x EH7q r5q <somewhere> s7x AH15w m3t w3q EH7q r3q x38p "
+}
+
+
+lipSync vo_mitch_damnmarst
+{
+	text		"Damn, that marine didn't stand a chance.  I couldn't do anything for him."
+	visemes	"english"	"<Damn> d12w AE17x m3n x19r <that> DH3v AE6q t7r <marine> m5v ER3q IY14v n3r <didnt> d3x IH3q d3q AH3q n3v t3v <stand> s3q t6x AE6q n3v d3x <a> AH4q <chance> CH14x AE16w n4q s13t x42n <I> AY4q <couldnt> k9t UH4q d3q AH3q n3k t3w <do> d3x UW4q <anything> EH6q n4v IY5q TH4t IH10s NG3n x7r <for> f3v AO3q r3q <him> h16u IH3q m5k x14c "
+}
+
+
+lipSync vo_fox5_yourmeds
+{
+	text		"Your medic seems a bit twitchy."
+	visemes	"english"	"x3s <Your> y3q AO3q r3q <medic> m6v EH7q d3s IH5q k5p <seems> s9u IY3q m6p z6r <a> AH3q <bit> b5o IH8r t4f x4a <twitchy> t10q w4q IH5q t3r CH9v IH3q x39k "
+}
+
+
+lipSync vo_fox5_ihearyour
+{
+	text		"I hear your squad got hit pretty hard on the Citadel mission."
+	visemes	"english"	"x6r <I> AY5q <hear> h3u IH5q r3q <your> y4q AO3q r5q <squad> s9u k6t w3q AA3q d8q <got> g3r AA5q t3p <hit> h4t IH8q t4f <pretty> p3p r3q IH3q t3t IY5q <hard> h8v AA6q r9r d3q <on> AA3q n5o <the> DH3n IY4q <Citadel> s10t IH4q t3t AH3q d4p EH3q l8r <mission> m9p IH5q SH12w AH3q n3o x23l "
+}
+
+
+lipSync vo_fox5_strausswait
+{
+	text		"Strauss won't wait forever."
+	visemes	"english"	"<Strauss> s11v t8u r3q AW12u s8s <wont> w4q OW5q n3q t3r <wait> w5q EY6q t4n <forever> f10q ER9s EH6q v9p ER9q x30e "
+}
+
+
+lipSync vo_mitch_wowcanyou
+{
+	text		"Wow, can you imagine what goes on in this place?"
+	visemes	"english"	"x12n <Wow> w8r AW15v x36l <can> k7n AE3q n4z <you> y4q UW4q <imagine> IH3q m11v AE11t j6p AH3q n4q <what> w3q AH3q t3j <goes> g6s OW8r z4r <on> AA13u n6r <in> IH3q n4s <this> DH3t IH6q s7p x4a <place> p3m l7v EY11t s16q x12a "
+}
+
+
+lipSync vo_mitch_oncewe
+{
+	text		"Once we find Strauss, I'll feel much better."
+	visemes	"english"	"x4n <Once> w6q AH3q n3s s7u <we> w3q IY5q <find> f4t AY10s n5r d3u <Strauss> s6t t7s r4q AW19y s13q x4i <Ill> AY3q l6p <feel> f7n IY4q l4s <much> m8u AH6q CH9q x6c <better> b3s EH8r t3s ER7q x33k "
+}
+
+
+lipSync vo_mitch_icantwait
+{
+	text		"I can't wait to get the hell outta here."
+	visemes	"english"	"x6l <I> AY3e <cant> k6s AE6q n3p t3p <wait> w7q EY6q t3l <to> t3q UW3q <get> g3v EH3q t6i <the> DH3s IY3q <hell> h7t EH4q l19w <outta> UW4q t3o AH4q <here> h7n IH10r r4q x28i "
+}
+
+
+lipSync vo_mitch_fieldgen
+{
+	text		"Field generator is down Dekard.  Good work."
+	visemes	"english"	"x4i <Field> f5v IY9s l3y d5p <generator> j5u EH6q n3y ER4q EY6q t3t ER9s <is> IH6q z4m <down> d9u AW15w n5p <Dekard> d5p IH9r k7o AA3q r3q d8l x7e <Good> g4w UH3q d11t <work> w8r ER13u k9i x13a "
+}
+
+
+lipSync vo_fox5_incom
+{
+	text		"Incoming Strogg!"
+	visemes	"english"	"x14n <Incoming> IH8r n10v k3z AH3q m3v IH8r NG5s <Strogg> s8n t7u r5q AA29z g6o x23f "
+}
+
+
+lipSync vo_fox5_arrg
+{
+	text		"Argggh!!"
+	visemes	"english"	"x8r <Argggh> AA69z r4q g4i g3e x23c "
+}
+
+
+lipSync vo_mitch_whatdonestrg
+{
+	text		"What have they done?  How can the Strogg do this?"
+	visemes	"english"	"x6k <What> w4q AH3q t3v <have> h3y AE3q v3l <they> DH4p EY8q x12k <done> d4x AH17x n10n x31i <How> h4o AW6q <can> k6q AE3q n3w <the> DH3x IY4q <Strogg> s8o t7s r6q AA6q g6p x9g <do> d4s UW13u <this> DH6r IH12t s16o x20c "
+}
+
+
+lipSync vo_mitch_nothinggd
+{
+	text		"Nothing good happens to humans in this place."
+	visemes	"english"	"x8r <Nothing> n9z AH11t TH5p IH3q NG13o <good> g3o UH7q d5q <happens> h6t AE9r p4p AH3q n5q z4k <to> t5n UW3q <humans> h8q y4q UW3q m8u AH3q n6s z4s <in> IH3q n4u <this> DH4w IH7q s5l x5e <place> p4o l5t EY14u s12o x23a "
+}
+
+
+lipSync vo_mitch_theycom
+{
+	text		"They’re coming."
+	visemes	"english"	"<Theyre> DH3x EY3q r4q EH3q <coming> k7v AH12u m4w IH9s NG6o x14f "
+}
+
+
+lipSync vo_mitch_takeco
+{
+	text		"Take cover."
+	visemes	"english"	"<Take> t4v EY10s k3m <cover> k6v AH15w v3u ER10t x25f "
+}
+
+
+lipSync vo_mitch_covm
+{
+	text		"Cover me."
+	visemes	"english"	"<Cover> k6w AH9s v5w ER5q <me> m7v IY13u x17h "
+}
+
+
+lipSync vo_mitch_underhvyfr
+{
+	text		"I’m under heavy fire."
+	visemes	"english"	"x4s <Im> IH3q m6x <under> AH6q n3u d3w ER3q <heavy> h10w EH6q v3v IY10t <fire> f10l AY24z ER11t x16e "
+}
+
+
+lipSync vo_mitch_check6
+{
+	text		"Check your six."
+	visemes	"english"	"x3a <Check> CH7v EH6q k5t <your> y4q AO3q r4q <six> s13r IH16x k5n s13n x16a "
+}
+
+
+lipSync vo_mitch_theyflnk
+{
+	text		"They’re trying to flank."
+	visemes	"english"	"<Theyre> DH4v EY3q r3q EH3q <trying> t9w r3q AY9s IH3q NG3u <to> t3z UW4q <flank> f11m l12y AE7r NG9w k8k x17a "
+}
+
+
+lipSync vo_mitch_tolft
+{
+	text		"To the left."
+	visemes	"english"	"<To> t8s UW5q <the> DH3u IY3q <left> l16z EH16x f7l t9h x14a "
+}
+
+
+lipSync vo_mitch_comingin
+{
+	text		"Coming in from the right."
+	visemes	"english"	"x3a <Coming> k7v AH3q m5u IH5q NG4y <in> IH6q n6s <from> f3q r3q AH3q m7y <the> DH3w IY3q <right> r7r AY18y t9m x7g "
+}
+
+
+lipSync vo_mitch_getdwn
+{
+	text		"Get down!"
+	visemes	"english"	"x3a <Get> g5u EH3q t3p <down> d9u AW34z n5n x26e "
+}
+
+
+lipSync vo_mitch_chkdoor
+{
+	text		"Check the door."
+	visemes	"english"	"x7c <Check> CH7x EH6q k4o <the> DH3w IY5q <door> d9t AO22z r9s x23h "
+}
+
+
+lipSync vo_viper1_johnvip
+{
+	text		"This is Burleson from Viper squad, anybody out there, we need a medic..."
+	visemes	"english"	"<This> DH5u IH5q s3w <is> IH6q z4q x7k <Burleson> b3w ER5q l4z AH13u s4u AH4q n5s <from> f3s r3q AH3q m8s <Viper> v4w AY14v p4v ER7r <squad> s8p k4n w6q AA18y d3w <anybody> EH4q n3w IY8r b5v AH4q d5x IY9s <out> AW9s t4x <there> DH10t EH11t r3q <we> w12u IY5q <need> n3y IY11t d3y <a> AH4q <medic> m13v EH11t d3z IH9s k11i x6a "
+}
+
+
+lipSync vo_viper1_diestrgg
+{
+	text		"Die Strogg!"
+	visemes	"english"	"x3c <Die> d5x AY26z <Strogg> s8s t7u r8r AA19z g5p x28k "
+}
+
+
+lipSync vo_viper1_johngld
+{
+	text		"Burleson, Viper squad, wow am I glad to see you guys"
+	visemes	"english"	"x7p <Burleson> b3y ER6q l3z AH11t s9p AH3q n5l x10f <Viper> v5t AY13v p4o ER7q <squad> s7q k4f w6q AA13u d6k x17h <wow> w15v AW17x <am> AE3q m6s <I> AY10s <glad> g8q l3z AE6q d3v <to> t4r UW4q <see> s12q IY5q <you> y10s UW6q <guys> g6v AY23z z10m x14c "
+}
+
+
+lipSync vo_mitch_mitchhowget
+{
+	text		"Mitchell, Dekard, Falcon squad...how did you get down here?"
+	visemes	"english"	"<Mitchell> m10w IH5q CH8s AH5q l3l x9k <Dekard> d3x IH9s k8m AA3q r3q d7i x20f <Falcon> f4q AE12u l4s k5k AH3q n3l <squad> s3i k4f w3q AA3g d3a x53a <how> h5p AW3q <did> d3y IH3q d3s <you> y5q UW4q <get> g5x EH3q t3n <down> d8u AW15w n7v <here> h3s IH10r r4q x21i "
+}
+
+
+lipSync vo_viper1_weweresq
+{
+	text		"We were one of the squads looking for pre-strogged marines, got caught up and the rest of our squad was ambushed."
+	visemes	"english"	"x6l <We> w3q IY5q <were> w4q ER3q <one> w17x AH3q n4w <of> AH3q v3u <the> DH3y IY3q <squads> s12m k4e w7r AA12u d5r z3q <looking> l3x UH4q k3u IH4q NG5q <for> f5s AO3q r3q x5e <pre> p3r r3q IY10s <strogged> s6o t5r r5q AA6q g3r EH3q d3r <marines> m3w ER10t IY17x n8n z13o x23c <got> g4r AA8r t3i x4h <caught> k6t AA13v t3x <up> AH3q p3x <and> AE6q n8o d3r <the> DH3t IY3q <rest> r9s EH3q s4n t4l <of> AH4q v5u <our> AW3q ER6q <squad> s8r k4k w6q AA8r d3r <was> w3q AA3q z8s <ambushed> AE13v m4r b3q UH8q SH10n t6j x13e "
+}
+
+
+lipSync vo_viper1_cometech
+{
+	text		"Come with me, my tech is injured in the next room, he can help get us outta here"
+	visemes	"english"	"x9l <Come> k4v AH5q m3w <with> w5q IH3q DH5n <me> m7v IY13u x17l <my> m3q AY4q <tech> t9s EH11t k3u <is> IH5q z6r <injured> IH6q n4v j4w ER3q d4u <in> IH6q n3t <the> DH3v IY3q <next> n4v EH8r k3o s4k t6s <room> r3q UW14v m10l x24c <he> h5s IY3q <can> k4s AE3q n3w <help> h3w EH3q l3z p3q <get> g3w EH5q t11s <us> AH6q s3z <outta> UW8r t3w AH3q <here> h8q IH7q r3q x25i "
+}
+
+
+lipSync vo_viper1_philipmed
+{
+	text		"Stark, got a medic for you!"
+	visemes	"english"	"x6i <Stark> s3p t5y AA4q r11t k3m x22n <got> g4v AA4q t3x <a> AH3q <medic> m9w EH7r d3x IH4q k5i <for> f9r AO5q r3q <you> y6q UW6q x17f "
+}
+
+
+lipSync vo_mitch_somestim
+{
+	text		"Some stims and a medpak and he'll come around "
+	visemes	"english"	"x7i <Some> s4s AH3q m8u <stims> s7t t7u IH3q m9x z5v <and> AE3q n3x d3z <a> AH3q <medpak> m10v EH6q d5r p3j AE3f k4y <and> AE16w n6o d4p <hell> h3t IY4q l7u <come> k6s AH3q m5s <around> ER14v AW18x n4l d5h x18c "
+}
+
+
+lipSync vo_viper2_goodtogo
+{
+	text		"Urgh... Allright, I'm good to go."
+	visemes	"english"	"x9k <Urgh> ER17w g6s x74p <Allright> AA15u l20r r12u AY12t t3n x9k <Im> AY3q m14n <good> g6s UH4q d5o <to> t4r UW5q <go> g11s OW26z x14c "
+}
+
+
+lipSync vo_viper2_twodoorsld
+{
+	text		"These two doors lead to remote access bridges, if we can get into one of the bridge control areas, I should be able to help you guys proceed"
+	visemes	"english"	"<These> DH10l IY10s z5r <two> t6t UW7r <doors> d6w AO15w r3q z6l <lead> l6v EH3q d7m <to> t3s UW3q <remote> r5q AH7q m8v OW10t t3w <access> AE12u k3o s6r EH7q s7o <bridges> b5n r3q IH4q j7o AH6q z13m x37g <if> IH3g f4o <we> w3q IY3q <can> k3t AE3q n6y <get> g8u EH9s t3w <into> IH4q n5r t3t UW3q <one> w9s AH4q n3v <of> AH3q v4y <the> DH6r IY3q <bridge> b3s r4q IH3q j9p <control> k9q AH3q n3o t9r r3q OW3q l9z <areas> EH3q r8q IY9r AH7q z8l x34j <I> AY6q <should> SH10t UH3q d3u <be> b5t IY3q <able> EY3q b3z AH3q l6u <to> t3t UW3q <help> h4u EH3q l3r p3l <you> y7q UW4q <guys> g5u AY13u z4k x3c <proceed> p4o r3q AH3q s10q IY20z d7j x14h "
+}
+
+
+lipSync vo_viper1_wipeout
+{
+	text		"We've been wiping out squbs for hours now, you'd think they'd stop coming after a while."
+	visemes	"english"	"x4o <Weve> w3q IY3q v4s <been> b3v IH3q n10t <wiping> w5q AY8r p3g IH3q NG8r <out> AW11t t12q <squbs> s3e k4s w3q b5q z13t <for> f4p AO4q r8r <hours> AW16w ER6q z8r <now> n6n AW11s <youd> y3q UW3q d3o x26k <think> TH5q IH3q NG4r k3o <theyd> DH3v EY4q d5n <stop> s3m t5s AA8r p3h x5a <coming> k8t AH4q m5t IH3q NG7p <after> AE8q f3g t8p ER5q <a> AH4q <while> w8q AY15v l8s x20i "
+}
+
+
+lipSync vo_viper1_preinvm
+{
+	text		"Those pre-invasion marine supply drops have saved our ass, the Strogg pulled those supplies all over their facilities"
+	visemes	"english"	"x8g <Those> DH3w OW7q z6r x6e <pre> p4u r3q IY6q <invasion> IH3q n8q v3t EY11t ZH6u AH3q n8r <marine> m6s ER5q IY13u n5s <supply> s6t AH4q p10p l3y AY10s <drops> d10q r3q AA6q p3m s6u <have> h3o AE3q v3u <saved> s12t EY6q v4o d5s <our> AW4q ER9r <ass> AE23z s14r x39a <the> DH3n IY3q <Strogg> s6t t8t r5q AA6q g4m x5h <pulled> p5q UH4q l3u d3p <those> DH3v OW9r z3v <supplies> s5t AH4q p12p l6w AY14v z7t <all> AO3q l10v <over> OW5q v3q ER3q <their> DH4s EH3q r4q <facilities> f5m AH4q s9t IH5q l8u AH4q t3o IY14u z20r x18a "
+}
+
+
+lipSync vo_viper1_egghead
+{
+	text		"Finally the eggheads got something right."
+	visemes	"english"	"x4f <Finally> f8q AY7q n6t AH3q l3v IY3q <the> DH7r IY11t <eggheads> EH7r g6s h6w EH3q d4o z5q <got> g5u AA4q t3v <something> s4r AH3q m5s TH3v IH3q NG7v <right> r10s AY13u t11l x17a "
+}
+
+
+lipSync vo_viper2_squadhard
+{
+	text		"Our squad got hit pretty hard."
+	visemes	"english"	"<Our> AW7q ER3q <squad> s8u k5n w6q AA8r d3q <got> g6q AA7q t3t <hit> h3x IH5q t3k x4j <pretty> p4t r4q IH3q t3w IY3q <hard> h5x AA16w r5q d10l x15a "
+}
+
+
+lipSync vo_viper2_firstmarh
+{
+	text		"You two are the first marines we've seen in hours"
+	visemes	"english"	"<You> y6q UW5q <two> t8u UW3q <are> AA3q r3q <the> DH4s IY3q <first> f9q ER6q s4p t4f <marines> m5p ER6q IY11t n5u z5s <weve> w3q IY3q v3u <seen> s9w IY4q n3t <in> IH5q n5s <hours> AW20z ER14u z20r x11a "
+}
+
+
+lipSync vo_viper2_thinkshore
+{
+	text		"Just think, if they could've popped just ONE of those EMPs, we'd all be on shore leave right now."
+	visemes	"english"	"<Just> j6t AH11t s6r t3j <think> TH4p IH8r NG9r k6q <if> IH3q f3k x15c <they> DH5r EY3q <couldve> k6t UH3q d3v AH3q v5i <popped> p4t AA8r p3k t4n <just> j3s AH6q s3p t7k <ONE> w12t AH6q n3u <of> AH4q v4n <those> DH3s OW10s z8q x5q <EMPs> EH8r m8o p3p s3s <wed> w3q IY15v d4t x29o <all> AO9s l5s <be> b4s IY7q <on> AA4q n9s <shore> SH13v AO8r r4q <leave> l8o IY8q v8l <right> r3q AY11s t5l <now> n3p AW24z x18a "
+}
+
+
+lipSync vo_viper1_letsgo
+{
+	text		"Let's go"
+	visemes	"english"	"x4q <Lets> l3y EH4q t4o s3t <go> g10v OW18y x23i "
+}
+
+
+lipSync vo_viper2_accbrid
+{
+	text		"Accessing the bridge controls"
+	visemes	"english"	"x9n <Accessing> AE8r k4o s5t EH7q s3q IH6q NG3x <the> DH3y IY3q <bridge> b9s r3q IH5q j8o <controls> k4t AH3q n4s t9p r4q OW6q l10u z11m x12e "
+}
+
+
+lipSync vo_viper2_takelong
+{
+	text		"This shouldn't take long"
+	visemes	"english"	"x5e <This> DH4s IH6q s3w <shouldnt> SH7w UH5q d3u AH3q n5t t4s <take> t3x EY7q k3l <long> l8w AO18y NG8n x24e "
+}
+
+
+lipSync vo_viper1_incstrgg
+{
+	text		"Incoming Strogg!"
+	visemes	"english"	"x7p <Incoming> IH7r n5t k5w AH4q m6x IH6q NG4t <Strogg> s8r t7u r6q AA25z g8n x16g "
+}
+
+
+lipSync vo_viper1_whthell
+{
+	text		"What the hell?!  Take it down!"
+	visemes	"english"	"x8n <What> w5q AH3q t4k <the> DH4w IY3q <hell> h15v EH6q l13y x11h <Take> t5w EY7q k3p <it> IH6q t6l <down> d3x AW30z n4o x20h "
+}
+
+
+lipSync vo_viper1_diesqb
+{
+	text		"Die squibs!"
+	visemes	"english"	"x6k <Die> d5z AY22z <squibs> s8r k5k w10t IH13v b3r z14o x16a "
+}
+
+
+lipSync vo_viper2_bridgeext
+{
+	text		"Ok, the bridge will extended for anybody now."
+	visemes	"english"	"x16i <Ok> OW10s k10t EY19y x18g <the> DH3q IY3q <bridge> b12q r3q IH7r j8o <will> w3q IH3q l3z <extended> IH3q k3m s6r t5v EH3q n3x d3t AH3q d3i <for> f7t AO3q r3q x3p <anybody> EH6q n5w IY8r b3u AH5q d3u IY5q <now> n8p AW20y x21e "
+}
+
+
+lipSync vo_viper2_staybeh
+{
+	text		"We need to stay behind, we have orders to gain access to the other side of the facility."
+	visemes	"english"	"x3p <We> w3q IY3q <need> n3y IY6q d3s <to> t3v UW4q <stay> s5s t4t EY10t <behind> b6w AH3q h8t AY18y n8n d3l x8k <we> w3q IY4q <have> h3y AE4q v8n <orders> AO11t r3q d3z ER7r z4n <to> t4p UW4q <gain> g7t EY9s n4v <access> AE17x k3n s5q EH7q s4m <to> t7k UW3q <the> DH3u IY5q <other> AH3q DH4v ER7q <side> s6s AY7r d3u <of> AH3q v24s x5q <the> DH19y IY16v x53k <facility> f11s AH47z s3p IH14v l4q AH10s t4x IY16x x28n "
+}
+
+
+lipSync vo_viper2_napalm
+{
+	text		"Before you go, let me see your Napalm Launcher, I can enhance it for you."
+	visemes	"english"	"x4g <Before> b5w AH3q f9r AO4q r3q <you> y5q UW7q <go> g3z OW11t x10s <let> l4z EH13v t3n x19l <me> m8s IY6q <see> s7s IY4q <your> y3q AO3q r3q <Napalm> n5x EY10t p9v AA12t m7o <Launcher> l4s AO7q n4o CH7q ER8q x21k <I> AY6q <can> k6s AE4q n3x <enhance> EH4q n5v h8u AE8r n5q s4o <it> IH5q t3f <for> f7m AO6q r4q <you> y5q UW6q x10e "
+}
+
+
+lipSync vo_viper2_therezoom
+{
+	text		"There you go, when you zoom, the pilot light will ignite allowing for a flame thrower like functionality"
+	visemes	"english"	"x6i <There> DH3y EH4q r5q <you> y5q UW4q <go> g8u OW25z x46e <when> w4q EH3q n3z <you> y4q UW7q <zoom> z10s UW16x m19q <the> DH5p IY3q <pilot> p14s AY5q l9z AH6q t3l <light> l5r AY3q t3q <will> w11t IH3q l5x <ignite> IH3q g5n n7s AY14u t3i x28i <allowing> AH3q l5w AW8r IH3q NG9u x4j <for> f5s AO3q r7q <a> AH3q <flame> f13m l5y EY10t m8s <thrower> TH5q r5q OW6q ER8r <like> l8s AY8r k5g <functionality> f6r AH5q NG3r k3p SH7s AH3q n5w AE11t l7s AH3q t3m IY7q x26e "
+}
+
+
+lipSync vo_tak_watchdek
+{
+	text		"You’re almost there, Dekard.  But I'm seeing some unusual activity on the Strogg network, the process Strauss is going to go through doesn't look good.  Watch yourself, Dekard, we have no idea what’s down there."
+	visemes	"english"	"<Youre> y3q UW3q r4q EH3q <almost> AO3q l5x m6w OW9s s3o t5l <there> DH4z EH11t r4q <Dekard> d5q IH12t k7l AA3q r4q d6o x37e <But> b3r AH3q t3x <Im> AY3q m6v <seeing> s9t IY4q IH3q NG6s <some> s8u AH4q m5w <unusual> AH5q n7w y6q UW9s ZH4u AH3q w4q AH3q l7y <activity> AE6q k3g t7p IH6q v3u AH3q t3t IY6q <on> AA3q n4s <the> DH3t IY3q <Strogg> s8u t7u r4q AA8r g3o <network> n5t EH7q t3o w10r ER4q k10e x34c <the> DH4s IY3q x6i <process> p5t r6q AA7q s7t EH7q s4s <Strauss> s6q t6r r6q AW11t s3r <is> IH8r z6l <going> g4t OW4q IH3q NG3t <to> t3w UW3q <go> g6t OW11t <through> TH10o r4q UW7q <doesnt> d5w AH7r z3q AH3q n3w t3x <look> l5y UH5q k5h <good> g6u UH13v d13l x45f <Watch> w7r AA5q CH7p <yourself> y3q ER4q s8u EH6q l3p f4h <Dekard> d5n IH10s k8p AA3q r3q d6r x15n <we> w5q IY3q <have> h3u AE3q v7r <no> n7y OW8r <idea> AY9s d4t IY3q AH3q <whats> w10t AH3q t4j s6i <down> d6u AW17x n5q <there> DH3p EH9r r4q x21f "
+}
+
+
+lipSync vo_tak_dekstrss
+{
+	text		"Dekard.  Strauss should be just ahead."
+	visemes	"english"	"<Dekard> d3z IH11t k8p AA3q r3q d5k x12g <Strauss> s9o t4u r3q AW15w s3o <should> SH4s UH3q d3p <be> b4v IY5q <just> j9u AH6q s4n t5u <ahead> AH3q h10w EH12u d7k x15c "
+}
+
+
+lipSync vo_mitch_therestrss
+{
+	text		"There's Strauss, we need to try and get him down"
+	visemes	"english"	"x6n <Theres> DH3y EH4q r4q z5w <Strauss> s6s t7v r3q AW18y s11p x7l <we> w3q IY3q <need> n3w IY5q d3s <to> t3w UW3q <try> t8s r4q AY5q <and> AE3q n3r d3l <get> g3v EH3q t3t <him> h3y IH3q m6w <down> d5v AW27z n8k x15a "
+}
+
+
+lipSync vo_mitch_dektrystop
+{
+	text		"Dekard, try to stop or slow down this machine!"
+	visemes	"english"	"x12p <Dekard> d3z IH10t k6q AA3q r4q d8k x25e <try> t6r r3q AY4q <to> t3y UW6q <stop> s13r t6u AA13v p4s <or> AO3q r5q <slow> s10r l7z OW3q <down> d3z AW10t n3v <this> DH3v IH6q s3l <machine> m4s IH6q SH12u IY18y n9o x21e "
+}
+
+
+lipSync vo_mitch_budge
+{
+	text		"Arrghh...It won't budge"
+	visemes	"english"	"x5o <Arrghh> AH22z r4q g3v x38k <It> IH3q t3q <wont> w11t OW7r n4o t4f <budge> b4w AH18y j17p x10a "
+}
+
+
+lipSync vo_mitch_gethim
+{
+	text		"I can't get him out!"
+	visemes	"english"	"x8n <I> AY5q x5f <cant> k7v AE6q n4r t3n <get> g3w EH4q t3y <him> h3z IH3q m5w <out> AW23z t3o x20i "
+}
+
+
+lipSync vo_mitch_needfollw
+{
+	text		"We need to follow him!  Lets go Dekard!"
+	visemes	"english"	"x7p <We> w5q IY9s <need> n4r IY4q d3y <to> t3o UW3q <follow> f4u AA11t l4z OW12u <him> h5v IH4q m11n <Lets> l4r EH6q t4k s4o <go> g6u OW12u <Dekard> d8v IH13v k5u AA3q r3q d9p x17j "
+}
+
+
+lipSync vo_mitch_thereheis
+{
+	text		"There he is."
+	visemes	"english"	"x4h <There> DH6x EH4q r7r <he> h3z IY13v <is> IH10t z16o x14a "
+}
+
+
+lipSync vo_mitch_iseehim
+{
+	text		"I see him"
+	visemes	"english"	"x10s <I> AY7q <see> s11v IY14v <him> h3z IH3q m8s x15g "
+}
+
+
+lipSync vo_mitch_therestrss2
+{
+	text		"There's Strauss.  "
+	visemes	"english"	"x6e <Theres> DH3x EH5q r5q z4v <Strauss> s7s t7t r6q AW18y s16p x18a "
+}
+
+
+lipSync vo_mitch_gotletout
+{
+	text		"It's got to let out somewhere!"
+	visemes	"english"	"x3s <Its> IH4q t4o s3r <got> g7v AA6q t3n <to> t3r UW3q <let> l10z EH3q t3y <out> AW12u t4m <somewhere> s8r AH8r m9v w3q EH12u r4q x20k "
+}
+
+
+lipSync vo_mitch_wecangetst
+{
+	text		"Here, we can get Strauss out here."
+	visemes	"english"	"x4j <Here> h4y IH12u r9r x10k <we> w3q IY3q <can> k3s AE3q n4y <get> g4y EH5q t7m <Strauss> s6n t6v r3q AW10t s5v <out> AW12u t3v <here> h7v IH11t r8r x20g "
+}
+
+
+lipSync vo_mitch_whathll
+{
+	text		"What the hell?"
+	visemes	"english"	"x8e <What> w7r AH5q t3h <the> DH5u IY3q <hell> h15w EH9s l17z x20f "
+}
+
+
+lipSync vo_mitch_arrrg
+{
+	text		"Arrrghhh!"
+	visemes	"english"	"x4q <Arrrghhh> AH59z r4q r4q g3i x26a "
+}
+
+
+lipSync vo_tak_holdtgt
+{
+	text		"Hold tight, Dekard.  We’re on our way."
+	visemes	"english"	"<Hold> h5u OW3q l7z d6k <tight> t4u AY11t t6m <Dekard> d4y IH8r k5q AA3q r3q d7o <Were> w6q ER7r <on> AA8r n3x <our> AW7r ER5q <way> w9s EY35z x15a "
+}
+
+
+lipSync vo_tak_wontmuch
+{
+	text		"It won’t be much longer, Dekard."
+	visemes	"english"	"<It> IH3q t3p <wont> w3q OW3q n3v t3q <be> b3x IY5q <much> m6v AH7q CH4r <longer> l14y AO3q NG3v g3x ER7q <Dekard> d3t IH13v k6s AA3q r3q d9k x10a "
+}
+
+
+lipSync vo_tak_evacdek
+{
+	text		"We just called for an Evac, Dekard.  The dropship’s inbound.  Just hold on."
+	visemes	"english"	"x5k <We> w5q IY3q <just> j7y AH6q s4p t3f <called> k5t AO4q l8z d4n <for> f5s AO4q r7q <an> AE3q n10w <Evac> EH3q v7u AE10t k4m x5h <Dekard> d3w IH10s k5s AA3q r3q d10r <The> DH3c IY5a x22k <dropships> d13s r3q AA9s p3q SH6u IH5q p3o s7s <inbound> IH7r n8v b3y AW17x n7k d3h <Just> j5p AH5q s3q t5o <hold> h5u OW9s l4x d3y <on> AA25z n9k x12a "
+}
+
+
+lipSync vo_tak_wecntget
+{
+	text		"We can't get into the chamber you are in, something is keeping us out!"
+	visemes	"english"	"x7q <We> w4q IY5q <cant> k13s AE7r n3y t3s <get> g8t EH5q t3y <into> IH5q n4t t3s UW4q <the> DH3x IY7q <chamber> CH10t EY11t m3t b3y ER4q <you> y9s UW3q <are> AA3q r3q <in> IH8r n10n x8f <something> s6o AH4q m3u TH3x IH3q NG3x <is> IH5q z4p <keeping> k6s IY7q p3u IH5q NG3y <us> AH8r s6v <out> AW22z t6m x20c "
+}
+
+
+lipSync vo_tak_almostshit
+{
+	text		"Almost there.  We – Shit, they patched the security bypass.  We’ll be there as soon as we can, Dekard."
+	visemes	"english"	"x7o <Almost> AO5q l3y m6w OW10t s5l t3o <there> DH3z EH18y r5q x20m <We> w5q IY14v x26c <Shit> SH25u IY10s t4n x11l <they> DH3x EY11t x91r <patched> p6u AE14v CH4x t4x <the> DH12r IY6q x21w <security> s20p IH8r k9p y3q UH3q r5q AH3q t3q IY3q <bypass> b4u AY15w p7r AE20z s13m x39e <Well> w3q EH3q l3r <be> b6v IY10t <there> DH3z EH5q r7r <as> AE4q z3q <soon> s5t UW3q n3y <as> AE3q z8s <we> w3q IY7q <can> k8t AE14v n4t <Dekard> d3s IH11t k7p AA3q r3q d7p x6i "
+}
+
+
+lipSync vo_strauss_muffled
+{
+	text		"(Muffled dialog)"
+	visemes	"english"	"<Muffled> m14n AH7q f3u AH3q l55x d3y <dialog> d3z AY10t AH24z l27w AO61z g3m x21c "
+}
+
+
+
+
+lipSync vo_marine1_agony1
+{
+ text  "(Screams of agony)"
+}
+
+
+lipSync vo_marine2_agony1
+{
+ text  "(Screams of agony)"
+}
+
+
+lipSync vo_marine3_agony1
+{
+ text  "(Screams of agony)"
+}
+lipSync vo_darn_dammitch
+{
+	text		"Damn, Mitchell...This was his first tour.  We can't just leave him here.."
+	visemes	"english"	"x10a <Damn> d5v AE21z m7m <Mitchell> m19v IH5q CH10s AH3q l13n x24i <This> DH4n IH4q s4u <was> w3q AA3q z7u <his> h3v IH3q z9s <first> f4s ER11t s6s t5o <tour> t4t UH5q r3q <We> w5q IY3q x71k <cant> k12r AE6q n3r t3t <just> j3v AH3q s3p t6n <leave> l4y IY8r v3p <him> h3q IH3q m5q <here> h6q IH5q r3q x69k "
+}
+
+
+lipSync vo_nava_exttakecare
+{
+	text		"The extraction teams will take care of him, we need to keep moving."
+	visemes	"english"	"x3g <The> DH3x IY4q <extraction> IH4q k3t s7u t6t r3q AE10s k3p SH4u AH4q n8q <teams> t5s IY7q m3q z4r <will> w3q IH3q l3j <take> t7t EY5q k3e <care> k8s EH8r r4q <of> AH3q v3j <him> h3l IH3q m5i x17e <we> w4q IY3q <need> n4r IY9s d5s <to> t3p UW3g <keep> k7r IY6q p3n <moving> m8t UW14v v4n IH7q NG11k x19a "
+}
+
+
+lipSync vo_marks_dekstatrep
+{
+	text		"Dekard, status report."
+	visemes	"english"	"<Dekard> d10w IH6q k7w AA3q r3q d7q <status> s5u t7v AE9s t4x AH3q s3y x7x <report> r3q IY4q p11s AO10s r4q t4a x4a "
+}
+
+
+lipSync vo_dek_wegotstrss
+{
+	text		"We've got Strauss, Mitchell is dead, ready for evac."
+	visemes	"english"	"x10n <Weve> w3q IY3q v3q <got> g6t AA12t t4k <Strauss> s11s t6r r5q AW20z s27r x9i <Mitchell> m5s IH3q CH7s AH4q l6w <is> IH3q z8s x8m <dead> d4w EH16w d5l x27h <ready> r5q EH3q d3v IY7q x3l <for> f4s AO3q r13u <evac> EH4q v9q AE15v k12l x24a "
+}
+
+
+lipSync vo_marks_shitstrss
+{
+	text		"Shit.  What about Strauss, what's his condition?"
+	visemes	"english"	"<Shit> SH18y IY9s t14u x28l <What> w3q AH3q t3x <about> AH4q b3w AW12u t4r <Strauss> s9w t8w r3q AW20z s10w x6l <whats> w4q AH4q t3r s3w <his> h6x IH3q z7s <condition> k5w AH3q n3p d5t IH7q SH16w AH5q n4j x12a "
+}
+
+
+lipSync vo_nava_battfine
+{
+	text		"A little battered, but fine.  Aside from shutting down his med-chip, the Strogg didn't do anything to him.  From the looks of it, we got here just in time."
+	visemes	"english"	"x16i <A> AH3q <little> l7y IH4q t3t AH3q l3r <battered> b10s AE11t t3q ER4q d3l <but> b8k AH7q t3e <fine> f8q AY24z n7l x27f <Aside> AH4q s8t AY9s d4l <from> f3n r3q AH3q m3n <shutting> SH9t AH6q t3t IH3q NG3s <down> d3x AW6q n4r <his> h3t IH3q z6o x3i <med> m4u EH7q d4n <chip> CH10s IH6q p3j x14c <the> DH3k IY3q <Strogg> s8u t7u r3q AA7q g3p <didnt> d4p IH3q d3u AH3q n4r t3s <do> d3w UW7q <anything> EH5q n3t IY7q TH3n IH5q NG6n <to> t7p UW4q <him> h3o IH3q m16k x47a <From> f4r r3q AH3q m3w <the> DH3w IY3q <looks> l5w UH7q k3t s7v <of> AH3q v5v <it> IH7q t3l <we> w5q IY3q <got> g18p AA5q t3t <here> h3v IH3q r3q <just> j8r AH8r s3r t6q <in> IH4q n7t <time> t7r AY24z m9k x36a "
+}
+
+
+lipSync vo_nava_couplehrs
+{
+	text		"Couple hours rest and he’ll be back to his old self."
+	visemes	"english"	"<Couple> k6s AH4q p7o AH3q l7x <hours> AW11t ER7q z9p <rest> r7q EH7q s4o t4m <and> AE3q n3q d3r <hell> h3s EH3q l4r <be> b3v IY4q <back> b8s AE12t k3i <to> t3q UW3q <his> h3v IH3q z9u <old> OW9s l4t d5o <self> s12u EH7q l9p f16h x20a "
+}
+
+
+lipSync vo_marks_niceevac
+{
+	text		"Nice work, Falcon.  Evac is landing now.  Panther and Tiger Squads are moving through the upper floors, we’re gonna pull out as many marines as we can. Get back to the surface and get Strauss back to the Hannibal."
+	visemes	"english"	"x6q <Nice> n3x AY13u s4y x6s <work> w3q ER3q k23u <Falcon> f3w AE7q l3w k9u AH7q n11m x19o <Evac> EH3q v5v AE12u k9v <is> IH5q z6s x3t <landing> l6w AE4q n3s d3w IH3q NG4t <now> n7v AW28z x51j <Panther> p3y AE11t n4t TH3x ER4q <and> AE5q n3t d3o <Tiger> t8w AY13u g3w ER7q <Squads> s7u k6t w3q AA10s d3p z8w <are> AA3q r3q <moving> m4u UW6q v3s IH6q NG7t <through> TH5w r3q UW3q <the> DH3x IY8r <upper> AH4q p8r ER6q x4t <floors> f6q l3v AO10s r14v z14t x46m <were> w4q ER4q <gonna> g3v AA3q n3j AH3e <pull> p6u UH3q l5w <out> AW5q t3x <as> AE10s z7s <many> m4v EH4q n3x IY8r <marines> m5t ER8r IY10s n3s z4v <as> AE3q z9v <we> w3q IY4q <can> k12u AE25z n4l x55e <Get> g5v EH3q t3j <back> b4u AE9s k3t <to> t4u UW3q <the> DH3y IY4q <surface> s12w ER11t f6u AH7q s8v <and> AE4q n3p d4t <get> g3y EH5q t6u <Strauss> s3t t9v r4q AW10s s4u x8m <back> b3x AE10s k4n <to> t4u UW3q <the> DH3t IY3q <Hannibal> h16w AE3q n3w AH7q b3p AH8q l4l x18a "
+}
+
+
+lipSync vo_dek_yessir5
+{
+	text		"Yes sir."
+	visemes	"english"	"<Yes> y7q EH10s s12t <sir> s5u ER20z x16k "
+}
+
+
+lipSync vo_dek_taknavast
+{
+	text		"Tak, Navajas, you hold back with Strauss, Darnell and I will clear out the exit halls, you move up when we call all clear."
+	visemes	"english"	"x4a <Tak> t7t AE14v k3h x7h <Navajas> n3p AE4q v10s AE12u j3t AE15v s19o x12g <you> y6q UW4q <hold> h3v OW3q l6u d3m <back> b5t AE11t k7m <with> w3q IH3q DH3s <Strauss> s11s t6s r4q AW18x s21p x46a <Darnell> d4t AA5q r3q n4u EH4q l9x <and> AE3q n4u d3x <I> AY8r <will> w3q IH3q l7r <clear> k10o l3x IH3q r3q <out> AW4q t3l x7j <the> DH3u IY5q <exit> EH7q g4q z6s AH4q t4p <halls> h7u AO6q l10m z15p x51l <you> y6q UW5q <move> m6z UW9s v4t <up> AH15w p5h <when> w3q EH3q n3n <we> w3q IY6q <call> k7p AO11t l7u <all> AO10s l5u <clear> k10o l6w IH9r r4q x50k "
+}
+
+
+lipSync vo_strauss_allthat2
+{
+	text		"After all of that, you plan on just leaving me behind?"
+	visemes	"english"	"x7r <After> AE8r f4j t7r ER5q <all> AO6q l4w <of> AH13u v5n <that> DH3v AE14v t6l x38k <you> y3q UW3q x6e <plan> p4o l3v AE7q n3w <on> AA5q n3s <just> j3t AH5q s3p t6m <leaving> l3u IY6q v4t IH3q NG5w <me> m4w IY9s <behind> b4v AH3q h13t AY15w n19s d11a x19a "
+}
+
+
+lipSync vo_dek_youtwoete
+{
+	text		"You two keep a close eye on Strauss, make sure nothing happens to him"
+	visemes	"english"	"x8a <You> y7q UW7q <two> t8u UW9s <keep> k6s IY9s p4t <a> AH4q <close> k10p l3x OW6q s7u <eye> AY12u <on> AA3q n6r <Strauss> s10t t6t r3q AW17x s11p <make> m4n EY3q k3n <sure> SH8v UH3q r3q <nothing> n4u AH6q TH3t IH3q NG4u <happens> h3v AE13u p4k AH3q n5n z7p <to> t5q UW5q <him> h6o IH3q m6j x32a "
+}
+
+
+lipSync vo_tak_yessir6
+{
+	text		"Yes sir."
+	visemes	"english"	"<Yes> y8r EH6q s7t <sir> s8u ER17x x18k "
+}
+
+
+lipSync vo_strauss_gratitude
+{
+	text		"Thank you Sergeant, you have my gratitude."
+	visemes	"english"	"<Thank> TH7u AE4q NG7t k3n <you> y5q UW4q <Sergeant> s12v AA8r r4q j4q AH4q n9t t10p x23l <you> y13u UW5q <have> h6t AE5q v3m <my> m9t AY5q <gratitude> g12q r3q AE6q t3s AH4q t12p UW15v d5i x39a "
+}
+
+
+lipSync vo_darn_roomclr
+{
+	text		"Room clear, Tak, Navajas, move up with Strauss."
+	visemes	"english"	"x4l <Room> r8r UW6q m8t <clear> k5n l6y IH14v r11t x9c <Tak> t6t AE15w k3k <Navajas> n6p AE4q v9t AE11t j3v AE14v s8l x6c <move> m6w UW3q v4x <up> AH9s p3n <with> w4q IH3q DH3o <Strauss> s8m t7t r3q AW21z s13o x14a "
+}
+
+
+lipSync vo_darn_allclr
+{
+	text		"All clear."
+	visemes	"english"	"x4j <All> AO8r l11v <clear> k4q l6z IH12u r10s x14i "
+}
+
+
+lipSync vo_darn_takmoveup
+{
+	text		"Tak, move up."
+	visemes	"english"	"x5e <Tak> t5w AE16w k3k <move> m5t UW10t v6w <up> AH30z p5a "
+}
+
+
+lipSync vo_darn_taklift
+{
+	text		"Tak, we need you at this lift."
+	visemes	"english"	"x4l <Tak> t8x AE13v k6k <we> w3q IY5q <need> n4y IY6q d3q <you> y6q UW3q <at> AE6q t3l <this> DH3w IH7q s7n <lift> l10x IH10s f7l t14k "
+}
+
+
+lipSync vo_tak_moving5
+{
+	text		"Moving."
+	visemes	"english"	"<Moving> m4v UW3q v3x IH27z NG3m x13e "
+}
+
+
+lipSync vo_tak_rogmoveup
+{
+	text		"Roger, moving up."
+	visemes	"english"	"<Roger> r4q AA16w j7x ER6q <moving> m3k UW5q v5r IH18y NG3w <up> AH7r p17u x7a "
+}
+
+
+lipSync vo_tak_downmin
+{
+	text		"I'll have this down in a minute"
+	visemes	"english"	"x5q <Ill> AY7q l3u <have> h3v AE8r v4m <this> DH4t IH5q s3k <down> d5t AW9s n6w <in> IH8r n5x <a> AH3q <minute> m9x IH5q n7s AH3q t3f x20a "
+}
+
+
+lipSync vo_strauss_dobypass
+{
+	text		"What are you doing, bypassing the Strogg systems is quite inefficient"
+	visemes	"english"	"x25q <What> w12t AH5q t8q <are> AA3q r3q <you> y7q UW7q x14k <doing> d3t UW10s IH8r NG10s x41e <bypassing> b6r AY12u p6s AE11t s4p IH5q NG5x <the> DH3x IY3q <Strogg> s11q t6t r5q AA7q g5p <systems> s7r IH4q s3m t6s AH3q m7v z5q <is> IH3q z8r x7j <quite> k7p w6q AY6q t7o <inefficient> IH5q n4v AH4q f11p IH8r SH6t AH4q n7m t8k x16a "
+}
+
+
+lipSync vo_tak_really2
+{
+	text		"Really?"
+	visemes	"english"	"x6o <Really> r16x IH10s l6q IY8q x31c "
+}
+
+
+lipSync vo_strauss_stepas
+{
+	text		"Step aside."
+	visemes	"english"	"x9f <Step> s6p t9u EH5q p5t <aside> AH5q s10t AY17x d11n x20f "
+}
+
+
+lipSync vo_strauss_infutur
+{
+	text		"In the future, you should proceed directly to the maintenance cycle"
+	visemes	"english"	"x5o <In> IH4q n5z <the> DH3z IY4q x5i <future> f6o y3q UW6q CH9p ER10r <you> y13t UW4q <should> SH8t UH3q d8l <proceed> p6q r9s AH18x s9t IY8r d10t <directly> d4v ER6q EH7r k3k t3k l3q IY4q <to> t4j UW3g <the> DH4t IY3q <maintenance> m11x EY6q n5p t3o AH3q n3o AH3q n3k s5o <cycle> s4q AY12t k6l AH8q l4f x23a "
+}
+
+
+lipSync vo_strauss_execcmd
+{
+	text		"From there you can execute any command without tripping the security lockouts."
+	visemes	"english"	"x8f <From> f4v r3q AH3q m4z <there> DH3z EH6q r7r <you> y10s UW3q <can> k7t AE3q n4q <execute> EH9r k4p s8p AH3q k3p y4q UW5q t4l <any> EH4q n10w IY7q <command> k7s AH3q m7w AE8r n3s d3s <without> w5q IH3q TH5s AW9s t3k x7j <tripping> t4t r3q IH3q p4r IH4q NG5t <the> DH3r IY3q <security> s9q IH4q k10p y3q UH4q r3q AH3q t3s IY9r <lockouts> l6w AA10s k8n AW13t t5i s3f x14a "
+}
+
+
+lipSync vo_tak_damnfast
+{
+	text		"Damn, that is faster!  Wow.  Thanks."
+	visemes	"english"	"x9l <Damn> d3x AE28z m3i x22g <that> DH3m AE5q t3n <is> IH11t z7p <faster> f7o AE15v s7p t5o ER8q x43k <Wow> w4q AW16w x40e <Thanks> TH4r AE9s NG7p k3k s13o x16a "
+}
+
+
+lipSync vo_darn_evlift
+{
+	text		"Everybody on the lift, let's move"
+	visemes	"english"	"x9p <Everybody> EH5q v3t r4q IY3q b4r AA4q d4t IY6q <on> AA3q n5r <the> DH3x IY3q <lift> l9v IH8r f3l t3i x7e <lets> l3n EH4q t4k s4o <move> m7x UW22z v10h x18a "
+}
+
+
+lipSync vo_darn_ahwhthell
+{
+	text		"Ah what the hell?"
+	visemes	"english"	"x4p <Ah> AA16w <what> w9s AH8q t3l <the> DH3t IY3q <hell> h15u EH10s l14p x15c "
+}
+
+
+lipSync vo_tak_givsec
+{
+	text		"Give it a second."
+	visemes	"english"	"<Give> g4w IH4q v5r <it> IH3q t3r <a> AH5q <second> s10s EH9r k5m AH3q n6n d5i x10a "
+}
+
+
+lipSync vo_strauss_confmak
+{
+	text		"I was captured while trying to disable the tetranode with my squad. I wonder what happened to Corporal Kane, he was confronted by the Makron."
+	visemes	"english"	"x5t <I> AY3q <was> w3q AA3q z8q <captured> k11r AE7q p3k CH8u ER3q d3n x5o <while> w3q AY3q l5q <trying> t8s r3q AY3q IH3q NG3o <to> t3s UW3q <disable> d6q IH4q s10t EY9s b4o AH3q l3o <the> DH6p IY3q <tetranode> t9p EH5q t9r r3q AE3q n3t OW3q d3t EH3q <with> w3q IH3q DH5n <my> m4t AY10s <squad> s10u k6o w9s AA12t d8k x50f <I> AY5q <wonder> w4q AH4q n3s d4w ER3q <what> w3q AH4q t3s <happened> h9u AE5q p4n AH3q n5w d5w <to> t4k UW4e <Corporal> k8t AO3q r3q p7n ER3q AH3q l3f x4a <Kane> k9r EY3q n4w <he> h3x IY10s x31n <was> w5q AA3q z8t <confronted> k5u AH4q n7n f7r r3q AH3q n3p t3s AH3q d3n <by> b7p AY4q <the> DH4q IY3q <Makron> m10s AE15v k6r r6q AA9r n7p x20f "
+}
+
+
+lipSync vo_strauss_nevepredict
+{
+	text		"This should have never happened, we could have never predicted that another Makron would appear so quickly."
+	visemes	"english"	"x14a <This> DH3w IH4q s3v <should> SH9v UH4q d3t <have> h3w AE3q v3q <never> n8u EH6q v5s ER6q <happened> h9s AE10s p6o AH4q n4p d3p <we> w3q IY3q x43a <could> k4o UH4q d7s <have> h7v AE3q v6q <never> n5v EH5q v4p ER9r <predicted> p5m r3q AH3q d3x IH6q k3q t3s AH3q d3p <that> DH3q AE4q t3s <another> AH6q n3w AH4q DH3r ER3q <Makron> m6t AE11t k9o r4q AA3q n4q <would> w4q UH7q d3m <appear> AH3q p7r IH3q r4q <so> s10t OW7q x6g <quickly> k5s w3q IH7q k8n l3o IY7q x19g "
+}
+
+
+lipSync vo_strauss_sqlist
+{
+	text		"My squadmates should have listened to me when I said I needed more protection."
+	visemes	"english"	"x5k <My> m4w AY10s <squadmates> s14u k8l w7q AE4q d5p m4s EY4q t3v EH3q s5v <should> SH8v UH3q d4w <have> h5p AE3q v3w <listened> l4x IH4q s5s AH3q n3u d3q <to> t4q UW3q <me> m3u IY9s <when> w5q EH3q n3w <I> AY10s <said> s10r EH5q d3t <I> AY7q <needed> n4t IY7q d3v AH3q d3s <more> m12w AO4q r7q x4c <protection> p3s r4q AH5q t7r EH9r k3o SH9u AH4q n9r x31f "
+}
+
+
+lipSync vo_nava_takebeast
+{
+	text		"To take down that beast single-handedly was quite a feat"
+	visemes	"english"	"x4a <To> t4s UW4q x9g <take> t6u EY4q k3o x8l <down> d3x AW10s n4q <that> DH3u AE8r t3n <beast> b9q IY14v s3w t3v <single> s5u IH5q NG3u g3v AH4q l5w <handedly> h7v AE6q n3r d3s AH3q d4p l4r IY7q <was> w5q AA3q z9r <quite> k5r w4q AY3q t3r <a> AH7q <feat> f14p IY14v t14q x10a "
+}
+
+
+lipSync vo_nava_stayshrp
+{
+	text		"Stay sharp Dekard."
+	visemes	"english"	"x4l <Stay> s11w t10t EY13u <sharp> SH10x AA9s r4q p4h x5h <Dekard> d5s IH9r k6l AA3q r4q d7n x19g "
+}
+
+
+lipSync vo_nava_wealmstout
+{
+	text		"We're almost out of this place."
+	visemes	"english"	"x3p <Were> w3q IY3q r8r <almost> AO3q l7w m5v OW8r s3s t5u <out> AW8r t3t <of> AH5q v4k <this> DH4o IH4q s6t x9i <place> p3q l6t EY14u s24u x21a "
+}
+
+
+lipSync vo_tak_strssdecrypt
+{
+	text		"Now that we have Strauss, he should be able to decrypt the Strogg data."
+	visemes	"english"	"<Now> n4u AW6q <that> DH3r AE3q t3r <we> w3q IY4q <have> h3u AE5q v3n <Strauss> s10u t7r r3q AW16w s13s x12f <he> h3r IY6q <should> SH7w UH3q d3q <be> b3s IY4q <able> EY3q b3u AH3q l5t <to> t6p UW3q <decrypt> d6s EH3q k11s r4q IH3q p3i t3e <the> DH5m IY3q <Strogg> s8u t7q r4q AA9r g5n <data> d6s EY9s t3t AH4q x45k "
+}
+
+
+lipSync vo_strauss_whatdata
+{
+	text		"What data?"
+	visemes	"english"	"<What> w5q AH5q t3e x6a <data> d4t EY9r t4m AH3q x39l "
+}
+
+
+lipSync vo_tak_wefndunprot
+{
+	text		"We found an unprotected Nexus access terminal earlier today, downloaded an enormous amount of encrypted Strogg data- data nobody in Sci-tech has ever seen before."
+	visemes	"english"	"x12l <We> w3q IY3q <found> f7t AW4q n3v d4v <an> AE3q n14o <unprotected> AH12t n7r p4u r4q AH3g t6s EH6q k5k t4o AH3q d5n x3n <Nexus> n5s EH8r k4t s5s AH6q s6q <access> AE18x k4t s5s EH6q s4s <terminal> t7q ER5q m3r AH3q n3r AH3q l8p <earlier> ER7q l6t IY3q ER6q <today> t9r AH4q d5t EY16w x63i <downloaded> d4w AW3q n7t l8w OW3q d3r AH3q d7q <an> AE7q n4s <enormous> AH8r n10t AO9s r3q m5u AH6q s5r <amount> AH3q m6s AW3q n3t t3s <of> AH3q v4q <encrypted> EH4q n5p k4q r3q IH3q p3e t5p AH3q d3k <Strogg> s9s t8s r4q AA8r g6n <data> d5t EY9s t3s AH4q x54k <data> d9t EY5q t3s AH4q <nobody> n9t OW7q b3q AA3q d3u IY3q <in> IH4q n6p <Sci> s13t IY9r <tech> t6r EH4q k3n <has> h3r AE3q z6u <ever> EH3q v6r ER6q <seen> s14u IY8r n4t <before> b5t AH4q f11n AO12t r4q x29n "
+}
+
+
+lipSync vo_strauss_nowisee
+{
+	text		"Now I see why they sent an entire squad to get me, I'm the only one who has a chance of getting into that data.  You must get me back to the Hannibal quickly."
+	visemes	"english"	"x14m <Now> n5x AW20z <I> AY13u <see> s10r IY4q <why> w7q AY5q <they> DH5o EY5q <sent> s8s EH3q n4r t3t <an> AE3q n6u <entire> EH4q n5s t7s AY3q ER10s <squad> s9u k7m w4q AA8r d3o <to> t5p UW3q <get> g8q EH4q t3k <me> m7n IY10r x50i <Im> AY7q m5w <the> DH3y IY7q <only> OW5q n3s l3v IY3q <one> w11t AH4q n8s <who> h4u UW7q <has> h3u AE4q z6s <a> AH3q x8i <chance> CH9u AE3q n11t s5p <of> AH5q v3i <getting> g6q EH4q t3r IH4q NG8r <into> IH3q n3p t4q UW3q <that> DH4t AE12t t3p <data> d3x EY9s t3s AH3q x70k <You> y4q UW3q <must> m10y AH7q s3p t5k <get> g4s EH3q t3m <me> m4p IY7q <back> b8r AE9r k3h <to> t5p UW3q <the> DH5u IY3q <Hannibal> h8s AE7q n3v AH4q b4q AH3q l6q x4e <quickly> k6r w3q IH6q k5k l5n IY8q x28e "
+}
+
+
+lipSync vo_darn_getout
+{
+	text		"We need to get hell outta here."
+	visemes	"english"	"x5m <We> w6q IY3q <need> n5z IY7r d3p <to> t3t UW5q <get> g3w EH5q t3y <hell> h13z EH3q l3x <outta> UW3q t3n AH3q <here> h4s IH9r r6q x16i "
+}
+
+
+lipSync vo_darn_workloc
+{
+	text		"Good work locating Strauss Dekard.  "
+	visemes	"english"	"x3c <Good> g5x UH4q d6r <work> w5q ER7r k8o <locating> l5z OW4q k8s EY4q t3v IH3q NG7u <Strauss> s7r t8t r3q AW13u s7q x4f <Dekard> d3q IH8q k7n AA3q r3q d6o x28e "
+}
+
+
+lipSync vo_darn_hardbrass
+{
+	text		"It's going to be hard to keep the brass away from you after this operation."
+	visemes	"english"	"x3f <Its> IH3q t3l s4p <going> g4t OW3q IH3q NG3v <to> t3t UW3q <be> b3u IY6q <hard> h5v AA3q r3q d3v <to> t4u UW3q <keep> k6o IY5q p3i <the> DH4v IY3q <brass> b10q r3q AE16w s4r <away> AH3q w7q EY8r <from> f6o r3q AH3q m3w <you> y10t UW9s <after> AE10s f4f t5n ER4q <this> DH3s IH5q s4q <operation> AA9r p7m ER8r EY12t SH10p AH3q n9r x15c "
+}
+
+
+lipSync vo_tak_docreat
+{
+	text		"Strauss, do you know what that thing was planning on doing to you?"
+	visemes	"english"	"x7h <Strauss> s10u t7v r4q AW19y s14n x17c <do> d5l UW4q <you> y3q UW3q <know> n5x OW4q <what> w6q AH4q t3e <that> DH5u AE6q t8i <thing> TH3r IH4q NG6o <was> w8r AA3q z7o x5c <planning> p5s l4x AE3q n3v IH3q NG6t <on> AA4q n8r <doing> d6o UW6q IH4q NG6u <to> t3t UW3q <you> y11t UW12t x20c "
+}
+
+
+lipSync vo_strauss_obvcap
+{
+	text		"That creature was obviously capable of downloading data from humans into the Nexus."
+	visemes	"english"	"x10i <That> DH3v AE5q t6f <creature> k9s r3q IY3q CH8s ER4q <was> w5q AA4q z13q <obviously> AA7q b3w v5r IY6q AH3q s7o l3t IY5q <capable> k8t EY8r p3s AH5q b5p AH3q l4u <of> AH6q v4n <downloading> d6s AW8r n6r l4v OW3q d3u IH3q NG9q <data> d6v EY7q t3t AH8q <from> f6o r3q AH3q m5r <humans> h3r y5q UW3q m3w AH5q n10q z7s <into> IH4q n3s t3t UW3q <the> DH5w IY3q <Nexus> n7s EH8r k6s s5q AH7q s19q x35a "
+}
+
+
+lipSync vo_strauss_revealnex
+{
+	text		"Anybody successfully connected to that equipment would instantly reveal any key information to the Nexus, and therefore to every Strogg."
+	visemes	"english"	"x5p <Anybody> EH6q n4w IY8r b5r AH5q d5r IY8r <successfully> s8r AH3q k5m s9u EH8r s7q f5p AH3q l6u IY7q <connected> k5p AH3q n5t EH8r k5l t3n AH3q d4o <to> t5r UW3q <that> DH7t AE3q t3u <equipment> IH5q k12n w3q IH3q p3q m3r AH5q n4n t3m <would> w4q UH3q d5p x8m <instantly> IH3q n6z s3n t6q AH3q n3v t3t l3w IY4q <reveal> r6q IH3q v8p IY9s l15s x3n <any> EH4q n4v IY13u <key> k11q IY7q <information> IH3q n4n f6o ER3q m6v EY9s SH6u AH4q n3p <to> t10r UW5q <the> DH6u IY3q <Nexus> n3w EH3q k5s s5s AH9r s18s x34l <and> AE4q n4v d3v <therefore> DH3y EH3q r6q f9l AO8q r7q x6a <to> t5p UW8q <every> EH8r v5n ER5q IY4q <Strogg> s9t t6p r6q AA16w g7k x49a "
+}
+
+
+lipSync vo_darn_sndtort
+{
+	text		"Sounds like they tortured the information out of the marines from what I heard."
+	visemes	"english"	"<Sounds> s12v AW9s n3t d3q z3s <like> l3w AY3q k3m x3k <they> DH5u EY4q <tortured> t12s AO4q r5q CH6u ER5q d5q <the> DH3t IY6q <information> IH3q n6s f6u ER3q m7w EY10s SH8w AH3q n3u <out> AW7q t3t <of> AH4q v3s <the> DH3u IY3q <marines> m7t ER11t IY14v n7t z6w <from> f4t r3q AH3q m4t <what> w3q AH5q t3t <I> AY17x <heard> h6t ER13u d7n x10a "
+}
+
+
+lipSync vo_strauss_iassure
+{
+	text		"I assure you, being connected into the Nexus in that way would not be pleasant."
+	visemes	"english"	"x15p <I> AY12t <assure> AH3q SH15u UH4q r4q <you> y7q UW13t <being> b16n IY6q IH3q NG9m <connected> k6q AH3q n4u EH7q k4m t3u AH3q d6u <into> IH4q n5t t3t UW3q <the> DH4v IY3q <Nexus> n11t EH10s k4t s6s AH6q s9s <in> IH3q n5s <that> DH3u AE11t t3l x4l <way> w5q EY8r <would> w10r UH3q d3m <not> n12t AA11t t3e x4a <be> b3l IY6q x4a <pleasant> p4n l8t EH4q z5r AH4q n6m t11l x31a "
+}
+
+
+lipSync vo_strauss_trunklines
+{
+	text		"Trunklines from the Nexus were visible in that room, we were so close."
+	visemes	"english"	"x7e <Trunklines> t9w r3q AH3q NG4r k6q l5z AY9s n4s EH3q s4r <from> f5p r8r AH3q m4x <the> DH3y IY3q <Nexus> n3z EH5q k3l s6n AH6q s5m x3m <were> w3q ER3q <visible> v7r IH7r z5r AH5q b5r AH3q l5w <in> IH3q n3s <that> DH3u AE9r t3n <room> r6q UW12u m9r x42i <we> w3q IY3q <were> w7q ER7r <so> s11v OW8r x5e <close> k9p l6z OW15w s14n x18c "
+}
+
+
+lipSync vo_marks_marinesget
+{
+	text		"Dropship is dirtside marines.  Get to the surface."
+	visemes	"english"	"x7l <Dropship> d8v r7r AA8r p3o SH9t IH10t p3u <is> IH7r z6o <dirtside> d6s ER12u t6l s7u AY13v d5s EH3q <marines> m3y ER5q IY19z n5v z8o <Get> g7q EH8r t4m <to> t3r UW3q <the> DH3x IY6q <surface> s11u ER14v f6n AH8q s15p x19c "
+}
+
+
+lipSync vo_vansen_hannfalsq
+{
+	text		"Hannibal, Falcon squad has rendezvoused with us and is heading your way now."
+	visemes	"english"	"x3v <Hannibal> h8x AE4q n3u AH7q b3q AH3q l5s x31n <Falcon> f3u AE5q l5w k6u AH3q n5u <squad> s4y k8t w3q AA6q d3u <has> h3x AE3q z11t <rendezvoused> r5q EH5q n3s d3y EH3q z3s v3w AH3q s3v EH3q d4v <with> w3q IH4q DH3w <us> AH17x s11u <and> AE4q n3s d3u <is> IH3q z3v <heading> h7x EH3q d3x IH5q NG4u <your> y6q AO6q r3q <way> w5q EY14v <now> n5u AW24z x19g "
+}
+lipSync vo_mitch_needtogetdown
+{
+	text		"There's Strauss, we need to get down there!"
+	visemes	"english"	"<Theres> DH3q EH5q r5q z4m <Strauss> s6k t5n r4q AW20z s9h x7h <we> w3q IY3q <need> n3q IY8r d6o <to> t3q UW7q <get> g8q EH3q t3y <down> d3y AW8r n4m <there> DH3q EH15v r3q x6c "
+}
+
+
+
+
+lipSync vo_mitch_stopmachine
+{
+ text  "Damnit, I can't stop this machine!"
+}
+lipSync vo_mitch_letout
+{
+	text		"This machine has to let out somewhere, we need to follow him."
+	visemes	"english"	"<This> DH4u IH5q s4m <machine> m7s IH4q SH7o IY10s n3y <has> h3z AE6q z4j <to> t3n UW5q <let> l10z EH3q t3z <out> AW9s t4i <somewhere> s11p AH8r m6t w9s EH8r r5q x7k <we> w4q IY3q <need> n3y IY7r d3n <to> t3t UW4q x3g <follow> f4s AA10t l12x OW3q <him> h3u IH5q m14l "
+}
+
+
+lipSync vo_mitch_dooropen
+{
+	text		"I should be able to open this door so we can follow him"
+	visemes	"english"	"x10p <I> AY5q <should> SH10v UH4q d4q <be> b4w IY6q <able> EY3q b3z AH3q l6u <to> t3x UW10t <open> OW3q p3m AH3q n3s <this> DH3u IH6q s6j <door> d5q AO11t r7q <so> s9p OW4q <we> w4q IY6q <can> k3n AE3q n8m <follow> f4r AA10t l9w OW6q <him> h3s IH5q m12l x5g "
+}
+
+
+lipSync vo_mitch_there
+{
+	text		"There!"
+	visemes	"english"	"x3c <There> DH3v EH15w r5q x7c "
+}
+
+
+
+
+

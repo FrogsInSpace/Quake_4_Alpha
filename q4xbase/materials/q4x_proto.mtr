@@ -1,0 +1,14 @@
+textures/proto/cap_lg
+{
+	qer_editorimage textures/proto/cap_lg_d.tga
+ 	noShadows
+	nonsolid
+	{       
+      	 blend	diffusemap
+		 map	textures/proto/cap_lg_d.tga
+		alphaTest 0.5
+	}
+
+	specularmap	textures/proto/cap_lg_s.tga
+	bumpmap 	addnormals (textures/proto/cap_lg_local.tga, heightmap (textures/proto/cap_lg_h.tga, 1 ))
+}

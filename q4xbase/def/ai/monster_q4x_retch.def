@@ -1,0 +1,491 @@
+/*
+===============================================================================
+
+	Retch
+
+===============================================================================
+*/
+
+export Retch
+{	
+	options -game q4xbase/ -prefix RETCH_ -align ALL -scale .34 -parent root origin -keep  hips_forward hips_backward shoulders root neck gun_barrel DM_end NG_muzzle2 NG_end NG_muzzle1 DM_muzzle1 piston1 jaw -sourcedir /models/monsters/retch/animations -destdir models/monsters/retch
+	
+	mesh	idle.ma					-dest retch
+	anim	idle.ma			-range 1 120	-dest idle01
+	anim	idle.ma			-range 120 240	-dest idle02
+	anim	af_pose.ma				-dest af_pose
+	anim	melee01.ma				-dest melee01	
+	anim	melee02.ma				-dest melee02	
+	anim	melee03.ma				-dest melee03	
+	anim	ranged01.ma				-dest ranged01
+	anim	turn_left.ma				-dest turn_left
+	anim	turn_right.ma				-dest turn_right
+	anim	walk.ma					-dest walk
+	anim	walk_left.ma				-dest walk_left
+	anim	walk_right.ma				-dest walk_right
+	anim	walk_backward.ma			-dest walk_backward
+	anim	run.ma					-dest run
+	anim	evade_left.ma				-dest evade_left
+	anim	evade_right.ma				-dest evade_right
+	anim	evade_left_hop.ma			-dest evade_left_hop
+	anim	evade_right_hop.ma			-dest evade_right_hop
+	anim	pain01.ma				-dest pain01
+	anim	buff01.ma				-dest buff01
+	anim	onfire03.ma				-dest pain_fire
+	anim	st_retch_intro.ma	-range 114 264	-dest st_retch_intro
+	anim	bio_flesh_spire.ma			-dest bio_flesh_spire
+	anim	pr_wall_climb.ma	-range 60 118	-dest pr_wall_climb
+}
+
+/*
+===============================================================================
+
+	Retch Model
+
+===============================================================================
+*/
+
+model model_monster_q4x_retch
+{
+	mesh									models/monsters/retch/retch.md5mesh
+	
+	channel torso								( *waist )
+	channel legs								( *root origin -*waist )
+
+	anim ik_pose								models/monsters/retch/af_pose.md5anim
+	anim af_pose								models/monsters/retch/af_pose.md5anim
+
+	// -------------------------------- Standard Anims ------------------------
+
+		
+	anim idle								models/monsters/retch/idle01.md5anim
+	{
+		frame 1					sound_body2			retch_idle
+		frame	22							sound			snd_breathe2
+		frame	34, 39, 40, 28, 76, 78, 80, 81, 103, 106, 108, 111	footstep
+		frame 40						sound			retch_servomove	
+		frame 58, 65, 87					sound			retch_beepsmall	
+		frame 81						sound			retch_beeplarge	
+		frame 87						sound			retch_servomove
+		
+	}
+	
+	anim walk								models/monsters/retch/walk.md5anim	
+	{
+		sync_cycle
+		frame	1						sound_body2		retch_walkloop		
+		//frame	2, 6, 7, 14						sound_body2		retch_footsteps
+		frame	2, 6, 7, 14						footstep
+	}
+	
+	anim walk_backwards							models/monsters/retch/walk_backward.md5anim	
+	{
+		sync_cycle
+		frame	1						sound_body2		retch_walkloop		
+		//frame	2, 6, 7, 14						sound		retch_footsteps
+		frame	2, 6, 7, 14						footstep
+	
+	}
+		
+	anim run								models/monsters/retch/run.md5anim	
+	{
+		sync_cycle
+		//frame	3							sound			snd_breathe
+		frame	1						sound_body2		retch_runloop		
+		frame	1, 4, 5, 9						footstep
+		//frame	1, 4, 5, 9						sound		retch_footsteps
+	}	
+	
+	anim run_backwards							models/monsters/retch/walk_backward.md5anim	
+	{
+		sync_cycle
+		frame	1						sound_body2		retch_walkloop			
+		frame	2, 6, 7, 14						footstep
+		//frame	2, 8						sound		retch_footsteps		
+	}
+	
+	anim evade_left1								models/monsters/retch/evade_left.md5anim	
+	{
+		sync_cycle
+		frame	1						sound_body2		retch_runloop			
+		frame	6, 8, 9, 14						footstep
+		//frame	6, 8, 9, 14						sound		retch_footsteps		
+	}
+	
+	anim evade_right1							models/monsters/retch/evade_right.md5anim	
+	{
+		sync_cycle
+		frame	1						sound_body2		retch_runloop			
+		frame	6, 11, 12, 14						footstep
+		//frame	6, 11, 12, 14						sound		retch_footsteps	
+	}
+	
+	anim evade_left2							models/monsters/retch/evade_left_hop.md5anim	
+	{
+		sync_cycle
+		frame	1						sound_body2		retch_runloop			
+		frame	6, 8, 9, 14						footstep
+		//frame	6, 8, 9, 14						sound		retch_footsteps		
+	}
+	
+	anim evade_right2							models/monsters/retch/evade_right_hop.md5anim	
+	{
+		sync_cycle
+		frame	1						sound_body2		retch_runloop			
+		frame	6, 11, 12, 14						footstep
+		//frame	6, 11, 12, 14						sound		retch_footsteps	
+	}
+	
+	anim walk_left								models/monsters/retch/walk_left.md5anim	
+	{
+		sync_cycle
+		frame	6, 8, 9, 14						footstep
+		frame	1						sound_body2		retch_walkloop		
+		//frame	6, 8, 9, 14						sound		retch_footsteps		
+	}
+	
+	anim walk_right								models/monsters/retch/walk_right.md5anim	
+	{
+		sync_cycle
+		frame	1						sound_body2		retch_walkloop
+		frame	6, 11, 12, 14						footstep
+		//frame	6, 11, 12, 14						sound		retch_footsteps
+	}
+	
+	anim run_left								models/monsters/retch/walk_left.md5anim	
+	{
+		sync_cycle
+		frame	1						sound_body2		retch_runloop			
+		frame	6, 8, 9, 14						footstep
+		//frame	6, 8, 9, 14						sound		retch_footsteps		
+	}
+	
+	anim run_right								models/monsters/retch/walk_right.md5anim	
+	{
+		sync_cycle
+		frame	1						sound_body2		retch_runloop			
+		frame	6, 11, 12, 14						footstep
+		//frame	6, 11, 12, 14						sound		retch_footsteps		
+	}
+	
+	anim turn_left_90							models/monsters/retch/turn_left.md5anim, models/monsters/retch/turn_left.md5anim	
+	{
+		sync_cycle
+		frame	1						sound_body2		retch_walkloop		
+		frame	6, 11, 12, 14						footstep
+		//frame	6, 11, 12, 14						sound		retch_footsteps		
+	}
+	
+	anim turn_right_90							models/monsters/retch/turn_right.md5anim, models/monsters/retch/turn_right.md5anim	
+	{
+		sync_cycle
+		frame	6, 9, 11, 14						footstep
+		frame	1						sound_body2		retch_walkloop		
+		//frame	6, 9, 11, 14						sound		retch_footsteps		
+	}
+	
+
+	// ------------------------------------------------------------------------------------------
+	//
+	//									Pain Animations
+	//
+	// ------------------------------------------------------------------------------------------
+
+	anim pain1								models/monsters/retch/pain01.md5anim
+	{
+		frame	1							sound_voice			retch_pain
+		frame	1							sound_body			retch_servopain
+		
+		frame	9, 12, 13, 17, 38, 40, 42, 44				footstep
+		//frame	9, 12, 13, 17, 38, 40, 42, 44				sound		retch_footsteps
+		
+	}
+	
+	anim pain_concussive1								models/monsters/retch/pain01.md5anim
+	{
+		frame	1							sound_voice			retch_pain
+		frame	1							sound_body			retch_servopain		
+		frame	9, 12, 13, 17, 38, 40, 42, 44				footstep
+		//frame	9, 12, 13, 17, 38, 40, 42, 44				sound		retch_footsteps
+		
+	}
+	
+	// ------------------------------------------------------------------------------------------
+	//
+	//									Attack Animations
+	//
+	// ------------------------------------------------------------------------------------------
+
+	anim melee_attack1							models/monsters/retch/melee01.md5anim
+	{
+		frame	1							sound_body			retch_meleeattack
+		frame	6							fx				fx_fly			DM_muzzle1
+		frame	7							ai_attack_melee		melee
+		frame	14, 19							footstep
+	}
+
+	anim melee_attack2							models/monsters/retch/melee02.md5anim
+	{
+		frame	1							sound_body			retch_meleeattack
+		frame	6							fx				fx_swipe		DM_muzzle1
+		frame	7							ai_attack_melee			melee
+		frame	14, 19							footstep
+		frame   9							sound				snd_blade_clang
+		frame	18							fx				fx_charge		DM_muzzle1
+		frame	6							fx				fx_fly			DM_muzzle1
+		frame	9, 11, 13						fx				fx_burst		gun_barrel
+		frame	10, 12, 14						fx				fx_blast		gun_barrel
+	}
+	
+	anim melee_attack3							models/monsters/retch/melee03.md5anim
+	{
+		frame	1							sound_body			retch_meleeattack
+		frame	7, 10							fx				fx_fly			DM_muzzle1
+		frame	13, 16							ai_attack_melee		melee
+		frame	3, 6, 7, 18, 19, 22, 25, 26, 28				footstep
+	}
+
+	anim range_attack1							models/monsters/retch/ranged01.md5anim
+	{
+		frame	1							sound_body			retch_servoattack	
+		frame	1							sound_weapon			retch_powerup
+		frame	7							sound_weapon			retch_firesmall		
+		frame	19, 21, 24, 25, 53, 55, 57, 59				footstep
+		frame 	9							ai_attack	lightningburst				DM_muzzle1
+		frame 	9 							fx		fx_burst		DM_muzzle1
+		frame	22							fx		fx_gundone		DM_muzzle1
+		frame 50							sound			retch_servomove		
+	}
+			
+			
+	// The buff animation
+	anim buff							models/monsters/retch/buff01.md5anim
+	{
+		frame 1								sound_body2		retch_idle
+		frame	15							sound			snd_breathe2
+		frame 21, 26, 35						sound			retch_beepsmall	
+		frame 41							sound			retch_beeplarge	
+				
+	}	
+
+
+	anim pain_fire								models/monsters/retch/pain_fire.md5anim
+	{
+		frame	1							sound_voice			retch_pain
+		frame	1							sound_body			retch_servopain
+		
+		
+	}
+
+
+	anim st_retch_intro								models/monsters/retch/st_retch_intro.md5anim
+	{	
+	}
+
+
+	anim bio_flesh_spire								models/monsters/retch/bio_flesh_spire.md5anim
+	{	
+	}
+
+
+	anim pr_wall_climb								models/monsters/retch/pr_wall_climb.md5anim
+	{	
+	}
+
+	
+}
+
+/*
+===============================================================================
+
+	Retch Attacks
+
+===============================================================================
+*/
+
+entityDef hitscan_retch_bullet
+{
+	"inherit"					"hitscan_lightninggun"
+	
+	"fx_impact"					"effects/weapons/lightninggun/impact.fx"
+	"fx_impact_water"			"effects/ambient/splash_med.fx"
+	"fx_path"					"effects/weapons/lightninggun/trail.fx"
+}
+
+
+entityDef melee_retch
+{
+	"inherit"								"melee_monster_base"
+	"damage"								"20"
+	"knockback"								"40"
+}
+
+/*
+===============================================================================
+
+	Retch Entity Definition
+
+===============================================================================
+*/
+
+entityDef monster_q4x_retch
+{
+	"inherit"								"actor_default"
+	"spawnclass"							"riMonsterRetch"
+
+	// ------------------------------- Actions ------------------------------------
+	"actionTimer_evade_rate"				"3"
+	
+	"action_meleeAttack"					"1"
+	"action_meleeAttack_maxRange"			"128"
+	
+	"action_rangedAttack"					"1"
+	"action_rangedAttack_rate"				"1"	
+	"action_rangedAttack_minRange"			"300"
+	"action_rangedAttack_maxRange"			"800"
+	
+	"action_evadeLeft"						"1"
+	"action_evadeLeft_minrange"				"150"
+
+	"action_evadeRight"						"1"
+	"action_evadeRight_minrange"			"150"
+		
+	"action_strafe"						"1"
+	"action_strafe_anim"				"evade_left2"
+	"action_strafe_anim2"				"evade_right2"
+	"action_strafe_minRange"			"200"
+	"action_strafe_maxRange"			"800"
+	"action_strafe_rate"				"0.75"
+	"action_strafe_chance"				"0.10"
+	"action_strafe_noturn"				"0"	
+		
+	// --------------------------------- Body ------------------------------------
+	"model"									"model_monster_q4x_retch"
+	"ragdoll"								"monster_retch"	
+	"size"									"48 48 80 "
+	"use_aas"								"aas96"
+
+	"chatter_idle_rate"						"8"
+	"chatter_combat_rate"					"8"	
+	
+	// --------------------------------- Combat ----------------------------------
+	"health"								"250"
+	"painThreshold"							"1"
+	"missile_visibility_joint"				"DM_muzzle1"
+	"attackRange"							"0 500"
+	
+	"directionalMovement"					"1"
+	"walkRange"								"50"
+	
+	"tactical_ranged"						"1"
+	"tactical_rush"							"1"
+	"tactical_cover"						"0"
+	"tactical_hide"							"0"
+
+	"melee_range"							"64"	
+	
+	"def_attack_lightningburst"					"hitscan_retch_bullet"
+	"attack_lightningburst_hitscan"				"1"
+	"attack_lightningburst_accuracy"			"1"
+	"attack_lightningburst_predict"				"1"
+
+	"def_attack_melee"						"melee_retch"
+	"damageBoostMult"						"2"
+	"defenseBoostMult"						"0.25"
+	
+	"joint_eyeOffset"						"jaw"
+	"fov"								"30"	
+	// --------------------------------- Damage Zones -----------------------------
+	"damage_zone head"						"*neck"
+	"damage_zone legs"						"*root origin  -*waist"
+	"damage_scale head"						"2"	
+	"damage_scale legs"						".75"	
+
+	// -------------------------------- Look Joints -----------------------------
+	"look_joint waist"					"0.2 0.2 0"
+	 // "look_joint spine"					"0.2 0.2 0"
+	    //"look_joint chest"					"0.3 0.3 0"
+		//  "look_joint muzzle_flash"			"0.4 0.4 0"
+	      "look_joint neck"					"0 0.6 0"
+	       "look_joint head"				"0 0.5 0"
+
+	// --------------------------------- IK --------------------------------------
+/*	
+	"ik_numLegs"							"2"
+	"ik_footSize"							"4"
+	"ik_waist"								"Body"
+	"ik_hip1"								"rt_up_leg"
+	"ik_hip2"								"lft_up_leg"
+	"ik_knee1"								"rt_knee"
+	"ik_knee2"								"lft_knee"
+	"ik_ankle1"								"rt_ankle"
+	"ik_ankle2"								"lft_ankle"
+	"ik_foot1"								"rt_mid_foot"
+	"ik_foot2"								"lft_mid_foot"
+*/
+
+	// --------------------------------- Sounds ----------------------------------
+	"lipsync_sight"							"retch_sight"
+	"lipsync_rush"							"grunt_rush"
+	
+	"snd_rush"								"retch_rush"
+	
+	"lipsync_chatter_idle"					"retch_chatter_idle"
+	"lipsync_chatter_combat"				"retch_chatter_combat"
+	
+	"retch_pain"								"retch_pain"
+	"retch_fire"								"retch_fire"
+	"snd_punch"								"grunt_punch"
+	"snd_smash"								"grunt_breakthru"
+	"snd_wiff"								"grunt_wiff"
+	"snd_blaster"							"grunt_blaster"
+	"snd_gatling"							"grunt_gatling"
+	
+	"snd_footstep"							"grunt_footsteps"
+	"snd_footstep_sand"						"grunt_footsteps_dirt"
+	"snd_footstep_dirt"						"grunt_footsteps_dirt"
+	"snd_footstep_hollowmetal"				"grunt_footsteps_hollow_metal"
+	"snd_footstep_rock"						"grunt_footsteps"
+	
+	"snd_jump"								"grunt_jump"
+	"snd_pain"								"retch_pain"
+	"snd_breathe"							"grunt_breathe"
+	"snd_breathe2"							"grunt_breathe_quiet"
+	"snd_growl"								"grunt_growl"
+	"snd_adren"								"grunt_adrenaline"
+	"snd_anger"								"grunt_anger"
+	"snd_fall"								"grunt_fall"
+	"snd_poundground"						"grunt_poundground"
+	"snd_fall_special"						"grunt_fall_special"
+	"snd_flesh"								"bullet_impact_flesh"
+	
+	"snd_crack_glass"						"grunt_glass_crack"
+	"snd_feeding"							"ambient_feed"
+	"snd_debris"							"grunt_debris"
+	
+	"snd_glass_hit"							"grunt_hit_glass"
+
+	// --------------------------------- Effects ---------------------------------
+	"fx_chaingun_flash"						"effects/monsters/grunt/bullet_mflash.fx"
+	"fx_adrenaline_arms"					"effects/monsters/grunt/adrenaline_steam.fx"
+	"fx_swipe"								"effects/monsters/grunt/swipe_attack.fx"
+	"fx_gundone"							"effects/monsters/grunt/gundone.fx"
+	"fx_camerashake"						"effects/monsters/grunt/gruntcamerashake.fx"
+	"fx_poundground"						"effects/monsters/grunt/poundground.fx"
+	"fx_bloodburst"							"effects/monsters/grunt/bloodburst.fx"
+	"fx_crack_glass1"						"effects/impact/glass_impact.fx"
+	"fx_gib"								"effects/monsters/gib.fx"
+	"fx_buffBeam"							"effects/weapons/lightninggun/trail.fx"
+	
+	
+	"fx_charge"							"effects/monsters/retch/electric_charge.fx"
+	"fx_blast"							"effects/monsters/retch/electric_blast.fx"
+	"fx_fly"							"effects/monsters/retch/charge_fly.fx"
+	"fx_burst"							"effects/monsters/retch/charge_burst.fx"
+	
+	"snd_burn_lightning"				"effects_sparks02"
+	"fx_burn_lightning"					"effects/monsters/lightning_death.fx"	
+	"fx_burn_particles"					"effects/monsters/teleport3.fx"
+	"fx_burn_particles_chest"			"effects/monsters/teleport4.fx"
+}
+

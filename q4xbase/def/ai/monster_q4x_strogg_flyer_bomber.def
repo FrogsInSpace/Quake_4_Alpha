@@ -1,0 +1,76 @@
+/*
+===============================================================================
+
+	QFX Strogg Flyer Bomber
+
+===============================================================================
+*/
+
+model model_monster_q4x_strogg_flyer_bomber
+{
+	mesh							models/monsters/q4x_strogg_flyer_bomber/q4x_strogg_bomber.md5mesh	
+	anim idle						models/monsters/q4x_strogg_flyer_bomber/q4x_strogg_bomber.md5anim
+}
+
+
+
+
+/*
+===============================================================================
+
+	Projectile and damage
+
+===============================================================================
+*/
+
+entityDef damage_strogg_flyer_bomber
+{
+	"inherit"						"damage_rocketDirect"
+	"damage"						"25"
+	"push"							"0"
+	"gib"							"0"
+	"deathPush"						"0"
+	"deathPushMin"						"0 0"
+	"deathPushMax"						"0 0"
+	"filter_m01bomber"					"1"
+}
+
+entityDef projectile_strogg_flyer_bomber
+{
+	"inherit"						"projectile_m03_scripted_red_rocket"
+	"def_damage"						"damage_strogg_flyer_bomber"
+}
+
+/*
+===============================================================================
+
+	Strogg Flyer Bomber Entity Definition
+
+===============================================================================
+*/
+
+entityDef monster_q4x_strogg_flyer_space_bomber
+{
+	"inherit"						"monster_q4x_strogg_flyer_space"
+	"def_attack_blaster"					"projectile_strogg_flyer_bomber"
+	"attackRange"						"100 14000"
+	"action_blasterAttack_maxRange"				"14000"
+	"action_blasterAttack_maxRange2d"			"14000"
+	"action_blasterAttack_rate"				"2"
+	"blasterAttackDuration"					"6"
+	"blasterAttackRate"					"2"
+	"model"							"model_monster_q4x_strogg_flyer_bomber"
+	"health"						"1800"
+	"fx_muzzleflash"					"effects/monsters/flyer_space/q4x_bomber_burst.fx"
+	"joint_thruster"					"tail_thrusters01"
+	"fx_exhaust"						"effects/monsters/strogg_flyer/smoke_trail3.fx"
+	"fx_death"						""	
+	"useMasterPitch"					"1"
+	"useMasterRoll"						"1"
+	"projectileTargetOffset"			"0 0 80"
+	
+}
+
+
+	
+

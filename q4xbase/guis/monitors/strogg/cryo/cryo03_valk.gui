@@ -1,0 +1,177 @@
+windowDef Desktop
+{
+	comment	"gui_parm_broken = 1 adds broken glass cracks to the gui, gui_parm_stroyent = 1 adds stroyent junk on the screen"
+	visible	1
+	rect	0,0,640,480
+	backcolor	0,0,0,1
+	definevec4	"white"	1,1,1,1
+	definevec4	"white_0"	1,1,1,0
+	definevec4	"burst"	0.749,0.843,0.866,1
+
+	onNamedEvent valkinfluenceOn {
+		set "data::visible"		"0";
+		set "Alpha::visible"		"0";
+		set "Beta::visible"		"0";
+		set "Zed::visible"		"0";
+		set "bg::visible"		"0";
+		set "scrolltext::visible"	"0";
+		set "scrolltext3::visible"	"0";
+		set "topstuff::visible"		"0";
+		set "Tech1::visible"		"0";
+		set "Rotate::visible"		"0";
+		set "Rotate2::visible"		"0";
+		set "valkimage::visible"	"1";
+	}
+
+	onNamedEvent valkinfluenceOff {
+		set "valkimage::visible"	"0";
+		set "data::visible"		"1";
+		set "Alpha::visible"		"1";
+		set "Beta::visible"		"1";
+		set "Zed::visible"		"1";
+		set "bg::visible"		"1";
+		set "scrolltext::visible"	"1";
+		set "scrolltext3::visible"	"1";
+		set "topstuff::visible"		"1";
+		set "Tech1::visible"		"1";
+		set "Rotate::visible"		"1";
+		set "Rotate2::visible"		"1";
+	}
+
+	windowDef data
+	{
+		rect	14,0,623,480
+		visible	1
+		background	"gfx/guis/common/strogg/data"
+		matcolor	1,1,1,0.0392
+		shear	0, .064
+		matscalex	-1
+	}
+	windowDef Alpha
+	{
+		rect	58,394,159,51
+		visible	1
+		forecolor	1,1,1,1
+		text	"ALPHA"
+		textscale	1.25
+		font	"fonts/strogg"
+	}
+	windowDef Beta
+	{
+		rect	276,398,128,48
+		visible	1
+		forecolor	1,1,1,1
+		text	"BETA"
+		textscale	1.2
+		font	"fonts/strogg"
+	}
+	windowDef Zed
+	{
+		rect	455,397,36,49
+		visible	1
+		forecolor	1,1,1,1
+		text	"Z"
+		textscale	1.2
+		font	"fonts/strogg"
+	}
+	windowDef bg
+	{
+		rect	0,0,640,480
+		visible	1
+		background	"gfx/guis/maps/cryo/cryo03_bg"
+		matcolor	0.960,0.576,0.0549,0.878*guitable_8_10[time*0.00065]
+	}
+	windowDef scrolltext
+	{
+		rect	195,113,119,64
+		visible	1
+		background	"gfx/guis/common/strogg/scrolltext3"
+		matcolor	0.533,1,1,0.8
+		shear	0,.06
+	}
+	windowDef scrolltext3
+	{
+		rect	450,119,45,173
+		visible	1
+		background	"gfx/guis/common/strogg/scrolltext2fast"
+		matcolor	0,0.501,1,0.8
+		shear	0,.06
+	}
+	windowDef topstuff
+	{
+		visible	1
+		rect	0,0,640,480
+		windowDef sline
+		{
+			visible	1
+			rect	1,-204,640,906
+			background	"gfx/guis/common/monitor_line6"
+			matcolor	0.972,0.741,0.321,0.2
+		}
+		windowDef monitor_mid
+		{
+			visible	1
+			rect	0,-141,640,693
+			background	"gfx/guis/common/monitor_mid"
+			matcolor	0.8,0.913,0.917,0.8*guitable_8_10[time*0.0005]
+		}
+		windowDef topreflect
+		{
+			visible	1
+			rect	-20,23,667,422
+			background	"gfx/guis/common/gradient"
+			matcolor	0.674,0.8,0.635,0.2*guitable_8_10[time*0.002]
+		}
+		windowDef broken_glass_b
+		{
+			visible	"gui::gui_parm_broken"
+			rect	2,5,640,480
+			background	"gfx/guis/common/broken_glass4"
+			matcolor	0,0,0,1
+			matscalex	-1
+		}
+		windowDef broken_glass
+		{
+			visible	"gui::gui_parm_broken"
+			rect	0,0,640,480
+			background	"gfx/guis/common/broken_glass4"
+			matcolor	0.819,0.905,0.921,1
+			matscalex	-1
+		}
+		windowDef monitor_darkedge
+		{
+			visible	1
+			rect	0,0,640,480
+			background	"gfx/guis/common/monitor_darkedge2"
+			matcolor	0,0,0,1
+		}
+	}
+	windowDef Tech1
+	{
+		rect	0,0,638,481
+		visible	1
+		background	"gfx/guis/maps/cryo/cryo03_tech1"
+		matcolor	0,0.623,0.733,1
+	}
+	windowDef Rotate
+	{
+		rect	111,254,100,78
+		visible	1
+		background	"gfx/guis/maps/cryo/cryo01_center2"
+		matcolor	0.584,0.564,0.156,1
+	}
+	windowDef Rotate2
+	{
+		rect	275,276,43,31
+		visible	1
+		background	"gfx/guis/maps/cryo/cryo01_center2"
+		matcolor	0.584,0.564,0.156,1
+	}
+	windowDef valkimage
+	{
+		rect 0,0,640,480
+		visible 0
+		background	"gfx/guis/maps/cryo/valkimage_alpha"
+		matcolor	1,1,1,1
+	}
+}

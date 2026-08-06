@@ -1,0 +1,1054 @@
+/*
+===============================================================================
+
+	Q4X valkaryne
+
+===============================================================================
+*/
+
+export valkaryne
+{
+	options -game q4xbase/ -prefix VALK_ -align ALL -parent body origin -scale .3 -keep r_melee_tip l_melee_tip r_ranged_barrell_top l_ranged_barrell_top l_ranged_barrell_middle l_ranged_barrell_bottom r_ranged_barrell_middle r_ranged_barrell_bottom -sourcedir models/monsters/valkaryne/animations -destdir models/monsters/valkaryne
+
+	mesh	idle.ma 							-dest valkaryne
+
+	anim	plugin.ma 							-dest idle_plugin
+	anim	idle.ma 					-range 1 31	-dest idle
+	anim	idle.ma 					-range 32 161	-dest idle_ambient
+	anim	idle.ma								-dest af_pose
+		
+	anim	run.ma 								-dest run
+	anim	evade_left.ma							-dest evade_left
+	anim	evade_right.ma							-dest evade_right
+	anim	run_left.ma							-dest run_left
+	anim	run_right.ma							-dest run_right
+	anim	turn_left.ma						 	-dest turn_left
+	anim	turn_right.ma							-dest turn_right
+	anim	run_backward.ma							-dest run_backward
+	
+	anim	ranged01.ma 				 			-dest ranged01
+	anim	ranged02.ma							-dest ranged02
+	anim	ranged03.ma							-dest ranged03
+	anim	ranged_wave_attack.ma						-dest ranged_wave_attack
+	anim	plugin_wave_attack.ma						-dest plugin_wave_attack
+	
+	anim	run_to_plugin.ma 				 		-dest run_to_plugin	
+	anim	plugin_ranged01.ma 				 		-dest plugin_ranged01
+	anim	plugin_ranged02.ma						-dest plugin_ranged02
+	anim	plugin_ranged03.ma						-dest plugin_ranged03
+	anim	plugin_to_idle.ma 				 		-dest plugin_to_idle
+		
+	anim	leanleft.ma							-dest leanleft
+	anim	leanright.ma							-dest leanright
+	anim	melee01.ma 							-dest melee01
+	anim	melee02.ma 							-dest melee02
+	anim	melee03.ma 							-dest melee03
+	
+	anim	pain01.ma 							-dest pain01
+	anim	pain02.ma 							-dest pain02
+	anim	pain03.ma 							-dest pain03
+	anim    pain04.ma 							-dest pain04
+	anim    pain05.ma 							-dest pain05
+	anim	pain06.ma							-dest pain06
+	
+	
+	anim	plugin_pain01.ma 						-dest plugin_pain01
+	anim	plugin_pain02.ma 						-dest plugin_pain02
+
+	anim	va_najavas_dies.ma 						-dest va_najavas_dies
+	anim	cr_idle.ma 							-dest cr_idle
+	anim	cr_idle_upside_down.ma 						-dest cr_idle_upside_down
+	anim	cr_idle_land_attack.ma 			-range 0 193		-dest cr_idle_land_attack
+	anim	cr_idle_land_attack.ma 			-range 194 260		-dest cr_ceiling_idle
+	anim	cr_kill_tak.ma 							-dest cr_kill_tak
+
+
+
+
+
+}
+
+/*
+===============================================================================
+
+	valkaryne Model
+
+===============================================================================
+*/
+
+model model_monster_q4x_valkaryne
+{	
+	mesh										models/monsters/valkaryne/valkaryne.md5mesh	
+	
+	channel torso									( *body -*waist)
+	channel legs									( *waist origin )
+	
+	anim af_pose									models/monsters/valkaryne/af_pose.md5anim
+	
+	anim idle									models/monsters/valkaryne/idle.md5anim 
+	{	
+	frame 1 											sound_body		snd_idle
+	}	
+
+	anim walk									models/monsters/valkaryne/run.md5anim 
+	{
+	rate 1.5
+	frame 22, 29, 50, 57 								footstep
+	frame 22, 29, 50, 57 								sound		snd_step
+	frame 1 											sound_body		snd_walk
+	
+	}
+
+	anim walk_backwards								models/monsters/valkaryne/run_backward.md5anim
+	{
+	rate 2.0
+	frame 24, 30, 50, 52								footstep
+	frame 24, 30, 50, 52								sound		snd_step
+	frame 1 											sound_body		snd_walk_backwards
+	}
+	
+	anim walk_right									models/monsters/valkaryne/run_right.md5anim
+	{
+	rate 1.5
+	frame 23, 34, 40, 48								footstep
+	frame 23, 34, 40, 48								sound		snd_step
+	frame 1 											sound_body		snd_walk_side	
+	}
+	
+	anim walk_left									models/monsters/valkaryne/run_left.md5anim
+	{
+	rate 1.5
+	frame 23, 39, 46, 57 								footstep
+	frame 23, 39, 46, 57 								sound		snd_step
+	frame 1 											sound_body		snd_walk_side	
+	}
+
+	anim turn_right_90								models/monsters/valkaryne/turn_right.md5anim, models/monsters/valkaryne/turn_right.md5anim
+	{
+	rate 2.5
+	anim_turn
+	frame 22, 29, 50, 57 								footstep
+	frame 22, 29, 50, 57 								sound		snd_step
+	frame 1 											sound_body		snd_turn	
+	}
+	
+	anim turn_left_90								models/monsters/valkaryne/turn_left.md5anim, models/monsters/valkaryne/turn_left.md5anim
+	{
+	rate 2.5
+	anim_turn
+	frame 22, 23, 46, 53  								footstep
+	frame 22, 23, 46, 53  								sound		snd_step
+	frame 1 											sound_body		snd_turn
+	}
+	
+	anim run									models/monsters/valkaryne/run.md5anim 
+	{
+	rate 1.5
+	frame 22, 29, 50, 57 								footstep
+	frame 22, 29, 50, 57 								sound		snd_step
+	frame 1 											sound_body		snd_run	
+	}
+		
+	anim run_right									models/monsters/valkaryne/run_right.md5anim 
+	{
+	rate 1.5
+	frame 23, 34, 40, 48  								footstep
+	frame 23, 34, 40, 48  								sound		snd_step
+	frame 1 											sound_body		snd_run
+	}
+
+	anim run_left									models/monsters/valkaryne/run_left.md5anim 
+	{
+	rate 1.5
+	frame 23, 39, 46, 57  								footstep
+	frame 23, 39, 46, 57  								sound		snd_step
+	frame 1 											sound_body		snd_run	
+	}
+
+	anim run_backwards								models/monsters/valkaryne/run_backward.md5anim 
+	{
+	rate 1.5
+	frame 24, 30, 50, 52  								footstep
+	frame 24, 30, 50, 52  								sound		snd_step
+	frame 1 											sound_body		snd_run	
+	}
+
+	anim evade_right								models/monsters/valkaryne/evade_right.md5anim 
+	{
+	rate 3.0
+	frame 22, 33, 40, 48  								footstep
+	frame 22, 33, 40, 48  								sound		snd_step
+	frame 1  											sound_body		snd_evade		
+	}
+
+	anim evade_left								models/monsters/valkaryne/evade_left.md5anim 
+	{
+	rate 3.0
+	frame 22, 38, 50, 56  								footstep
+	frame 22, 38, 50, 56  								sound		snd_step
+	frame 1  											sound_body		snd_evade
+	}
+
+	anim crouch									models/monsters/valkaryne/idle.md5anim 
+	{
+	frame 1  											sound_body		snd_crouch			
+	}
+	
+	anim jump_back									models/monsters/valkaryne/run_backward.md5anim
+	{
+	rate 3.0
+	frame 24, 30, 50, 52  								footstep
+	frame 24, 30, 50, 52  								sound		snd_step
+	frame 1  											sound_body		snd_jumpback
+	}
+	
+	anim plugin									models/monsters/valkaryne/idle_plugin.md5anim 
+	{
+	frame 1  											sound_body		snd_plugin
+	}
+	
+	anim plugin_to_idle								models/monsters/valkaryne/plugin_to_idle.md5anim 
+	{	
+	frame 	44, 52, 71, 72								footstep 
+	frame 	44, 52, 71, 72								sound		snd_step
+	frame 1  											sound_body		snd_plugintoidle
+	
+	//frame	44									fx			fx_stomp_wave			rf_5
+	//frame	52									fx			fx_stomp_wave			lf_5
+	//frame	45								object_call			Frame_StompAttack	
+	//frame 38, 67, 96, 120								sound		snd_plugout	
+	}
+
+	anim run_to_plugin								models/monsters/valkaryne/run_to_plugin.md5anim 
+	{
+	frame 44, 52, 71, 72 								footstep
+	frame 44, 52, 71, 72 								sound		snd_step
+	frame 1 											sound_body		snd_runtoplugin
+
+	}
+	
+	//anim plugin_shockwave_attack							models/monsters/valkaryne/idle_plugin.md5anim 
+	//{
+	//frame 	1									fx			fx_stomp_wave			origin
+	//frame 	1								object_call			Frame_StompAttack	
+	//}
+	
+	anim plugin_range_attack1							models/monsters/valkaryne/plugin_ranged01.md5anim 
+	{
+	rate 2.0
+	frame 1 									sound_weapon		snd_plugin_range_attack_one
+	frame 23, 29 								sound_weapon		snd_range_fire_one
+	frame 17									fx			fx_railgun_charge		l_ranged_barrell_top
+	frame 20									fx			fx_railgun_charge		r_ranged_barrell_bottom	
+	
+	frame 17									ai_lockEnemyOrigin
+	
+	frame 23, 29									ai_attack		railgun				l_ranged_barrell_top	
+	frame 23, 29									fx			fx_railgun_flash		l_ranged_barrell_top
+	
+	frame 24, 30									ai_attack		railgun				r_ranged_barrell_bottom	
+	frame 24, 30									fx			fx_railgun_flash		r_ranged_barrell_bottom
+	}
+
+	anim plugin_range_attack2							models/monsters/valkaryne/plugin_ranged02.md5anim 
+	{
+	rate 2.0
+	frame 1 									sound_weapon		snd_plugin_range_attack_one	
+	frame 20, 22 								sound_weapon		snd_range_fire_two	
+	frame 20									ai_attack		grenade				r_ranged_barrell_middle
+	frame 20									fx			fx_grenade_flash		r_ranged_barrell_middle
+
+	
+	frame 15									ai_lockEnemyOrigin
+	
+	frame 22									ai_attack		grenade				l_ranged_barrell_middle
+	frame 22									fx			fx_grenade_flash		l_ranged_barrell_middle
+
+	
+	}	
+
+	anim plugin_range_attack_big					models/monsters/valkaryne/plugin_ranged03.md5anim 
+	{
+	rate 2.0
+	frame 1 									sound_weapon		snd_plugin_range_attack_big	
+	frame 25									fx			fx_deathray_charge		l_ranged_barrell_top
+	frame 26									fx			fx_deathray_charge		r_ranged_barrell_bottom	
+	
+	frame 97, 99, 101, 103, 105, 107, 109, 111, 113, 115				ai_attack		deathray			r_ranged_barrell_top	
+	frame 96, 98, 100, 102, 104, 106, 108, 110, 112, 114				ai_attack		deathray			r_ranged_barrell_bottom	
+	frame 97									ai_attack		deathrayvis			l_ranged_barrell_top		
+	frame 97, 98, 99, 100, 101							ai_attack		deathrayburn			l_ranged_barrell_top	
+	frame 65									fx			fx_deathray_flash		l_ranged_barrell_top
+	
+	frame 70 									ai_lockEnemyOrigin
+	
+	frame 97, 99, 101, 103, 105, 107, 109, 111, 113, 115				ai_attack		deathray			l_ranged_barrell_top
+	frame 96, 98, 100, 102, 104, 106, 108, 110, 112, 114				ai_attack		deathray			l_ranged_barrell_bottom	
+	frame 96		 							ai_attack		deathrayvis			r_ranged_barrell_bottom	
+	frame 97, 98, 99, 100, 101							ai_attack		deathrayburn			r_ranged_barrell_bottom	
+	frame 92									fx			fx_deathray_flash		r_ranged_barrell_bottom
+	}
+			
+	anim range_attack1								models/monsters/valkaryne/ranged01.md5anim 
+	{
+	rate 2.0
+	frame 1 									sound_body		snd_range_one
+	frame 23, 29 								sound_weapon		snd_range_fire_one
+		
+	frame 17									fx			fx_railgun_charge		l_ranged_barrell_top
+	frame 20									fx			fx_railgun_charge		r_ranged_barrell_bottom	
+	
+	frame 17 									ai_lockEnemyOrigin
+	frame 23, 29									ai_attack		railgun				l_ranged_barrell_top	
+	frame 23, 29									fx			fx_railgun_flash		l_ranged_barrell_top
+	
+	frame 24, 30									ai_attack		railgun				r_ranged_barrell_bottom	
+	frame 24, 30									fx			fx_railgun_flash		r_ranged_barrell_bottom
+	}
+
+	anim range_attack2								models/monsters/valkaryne/ranged02.md5anim 
+	{
+	rate 2.0
+	frame 1 									sound_body		snd_range_two	
+	frame 20, 22 								sound_weapon		snd_range_fire_two
+	
+	frame 22									ai_attack		grenade				r_ranged_barrell_middle
+	frame 22									fx			fx_grenade_flash		r_ranged_barrell_middle
+
+	
+	frame 20									ai_attack		grenade				l_ranged_barrell_middle
+	frame 20									fx			fx_grenade_flash		l_ranged_barrell_middle
+	}	
+
+	anim range_attack3								models/monsters/valkaryne/ranged02.md5anim 
+	{
+	rate 2.0
+	frame 1 									sound_body		snd_range_two	
+	frame 20, 22 								sound_weapon		snd_range_fire_two
+	
+	frame 22									ai_attack		rocket				r_ranged_barrell_middle
+	frame 22									fx			fx_grenade_flash		r_ranged_barrell_middle
+
+	
+	frame 20									ai_attack		rocket				l_ranged_barrell_middle
+	frame 20									fx			fx_grenade_flash		l_ranged_barrell_middle
+	}	
+
+	anim range_attack4								models/monsters/valkaryne/ranged01.md5anim 
+	{
+	rate 2.0
+	frame 1 									sound_body		snd_range_one
+	frame 23, 29 								sound_weapon		snd_range_fire_one
+		
+	frame 17									fx			fx_railgun_charge		l_ranged_barrell_top
+	frame 17									fx			fx_railgun_charge		r_ranged_barrell_top
+	
+	frame 17 										ai_lockEnemyOrigin
+	frame 23									ai_attack		railgun				l_ranged_barrell_top	
+	frame 23									fx			fx_railgun_flash		l_ranged_barrell_top
+	frame 23									ai_attack		railgun				r_ranged_barrell_top	
+	frame 23									fx			fx_railgun_flash		r_ranged_barrell_top
+	
+	frame 29									ai_attack		rocket				r_ranged_barrell_middle
+	frame 29									fx			fx_grenade_flash		r_ranged_barrell_middle
+	frame 30									ai_attack		rocket				l_ranged_barrell_middle
+	frame 30									fx			fx_grenade_flash		l_ranged_barrell_middle
+	}
+
+	anim lean_attack_left								models/monsters/valkaryne/leanleft.md5anim 
+	{
+	rate 2.0
+	frame 11, 14, 20, 40, 46 							footstep 
+	frame 11, 14, 20, 40, 46 							sound		snd_step
+	frame 1 									sound_body		snd_leanattack_L	
+	
+	frame 17									fx			fx_railgun_charge		l_ranged_barrell_top
+	frame 20									fx			fx_railgun_charge		l_ranged_barrell_bottom	
+	
+	frame 17 									ai_lockEnemyOrigin
+	frame 23, 29									ai_attack		railgun				l_ranged_barrell_top	
+	frame 23, 29									fx			fx_railgun_flash		l_ranged_barrell_top
+	
+
+	frame 26, 32									ai_attack		railgun				l_ranged_barrell_bottom	
+	frame 26, 32									fx			fx_railgun_flash		l_ranged_barrell_bottom
+	
+	}
+
+	anim lean_attack_right								models/monsters/valkaryne/leanright.md5anim 
+	{
+	rate 2.0
+	frame 10, 15, 23, 39, 41, 46 							footstep 
+	frame 10, 15, 23, 39, 41, 46 							sound		snd_step
+	frame 1 									sound_body		snd_leanattack_R	
+		
+	frame 17									fx			fx_railgun_charge		r_ranged_barrell_top
+	frame 20									fx			fx_railgun_charge		r_ranged_barrell_bottom	
+	
+	frame 17 									ai_lockEnemyOrigin
+	frame 24, 30									ai_attack		railgun				r_ranged_barrell_top	
+	frame 24, 30									fx			fx_railgun_flash		r_ranged_barrell_top
+	
+	frame 27, 33									ai_attack		railgun				r_ranged_barrell_bottom	
+	frame 27, 33									fx			fx_railgun_flash		r_ranged_barrell_bottom
+	
+	}
+		
+	anim melee_attack1								models/monsters/valkaryne/melee01.md5anim
+	{
+	frame 1 										sound_body		snd_melee_one	
+	frame 23, 26									ai_attack_melee 	melee
+	}
+	
+	anim melee_attack2								models/monsters/valkaryne/melee02.md5anim
+	{
+	frame 1 										sound_body		snd_melee_one	
+	frame 24, 24									ai_attack_melee 	melee
+	}
+	
+	anim leap_attack								models/monsters/valkaryne/melee03.md5anim
+	{
+	frame 1 										sound		snd_leapattack	
+	frame 22, 29, 50, 54 							footstep
+	frame 22, 29, 50, 54 							sound		snd_step
+	frame 21, 43									ai_attack_melee 	melee
+	}
+
+
+	anim pain1									models/monsters/valkaryne/pain01.md5anim
+	{
+	frame 9, 10, 22, 25								footstep
+	frame 1 										sound_body2		snd_pain	
+	frame 9, 10, 22, 25 							sound		snd_step
+	}
+							
+	anim pain2									models/monsters/valkaryne/pain02.md5anim
+	{
+	frame 9, 10, 22, 25								footstep
+	frame 1 										sound_body2		snd_pain	
+	frame 9, 10, 22, 25 							sound		snd_step	 	
+	}
+	
+	anim pain3									models/monsters/valkaryne/pain03.md5anim
+	{
+	frame 9, 10, 22, 25 								footstep
+	frame 1 										sound_body2		snd_pain	
+	frame 9, 10, 22, 25 							sound		snd_step	 
+	}
+	
+	anim pain4									models/monsters/valkaryne/pain04.md5anim
+	{
+	frame 9, 10, 22, 25								footstep
+	frame 1 										sound_body2		snd_pain	
+	frame 9, 10, 22, 25 							sound		snd_step	 
+	}
+
+	anim pain5									models/monsters/valkaryne/pain05.md5anim
+	{
+	frame 9, 10, 22, 25								footstep
+	frame 1 										sound_body2		snd_pain	
+	frame 9, 10, 22, 25 							sound		snd_step	 
+	}
+
+	anim pain6									models/monsters/valkaryne/pain06.md5anim
+	{
+	frame 9, 10, 22, 25 								footstep
+	frame 1 										sound_body2		snd_pain	
+	frame 9, 10, 22, 25 							sound		snd_step	 
+	}
+
+	anim death									models/monsters/valkaryne/pain06.md5anim
+	{
+	frame 9, 10, 22, 25 								footstep
+	frame 1 										sound_body2		snd_death	
+	frame 9, 10, 22, 25 							sound		snd_step	 
+	}
+	
+	anim plugin_pain1									models/monsters/valkaryne/plugin_pain01.md5anim
+	{
+	frame 1 										sound_body2		snd_pain	
+	}
+	
+	anim plugin_pain2									models/monsters/valkaryne/plugin_pain02.md5anim
+	{
+	frame 1 										sound_body2		snd_pain	
+	}
+
+	anim va_najavas_dies									models/monsters/valkaryne/va_najavas_dies.md5anim
+	{	
+	}
+
+	anim cr_idle									models/monsters/valkaryne/cr_idle.md5anim
+	{	
+	}
+
+	anim cr_idle_upside_down							models/monsters/valkaryne/cr_idle_upside_down.md5anim
+	{	
+	}
+
+	anim cr_idle_land_attack							models/monsters/valkaryne/cr_idle_land_attack.md5anim
+	{	
+		frame	1										ai_disablePain
+		frame	1										disableGravity
+		frame	1										disableClip
+		frame	193										enableGravity
+		frame	193										enableClip
+	}
+
+	anim cr_kill_tak							models/monsters/valkaryne/cr_kill_tak.md5anim
+	{	
+	}
+
+	anim cr_ceiling_idle							models/monsters/valkaryne/cr_ceiling_idle.md5anim
+	{
+		frame	1										ai_disablePain
+		frame	1										disableGravity
+		frame	1										disableClip
+		frame	66										enableGravity
+		frame	66										enableClip	
+	}
+}
+	
+/*===============================================================================
+
+	valkaryne Attacks
+
+===============================================================================
+*/
+
+
+entityDef damage_q4x_valkaryne_grenade
+{
+	"inherit"					"damage_monster_base"
+	"knockback"					"0"
+	"damage"					"60"
+	"push"						"10000"
+	
+	"tv_scale"					"0.7"
+	"tv_time"					"4200"
+
+	// Hearing Loss
+	"hl_volumeDB"				"-25"
+	"hl_fadeOutTime"			".5"
+	"hl_time"					"3.5"
+	"hl_fadeInTime"				"1"
+	"snd_hl"					"player_sounds_ringing2"
+}
+
+entityDef damage_q4x_valkaryne_grenade_splash
+{
+	"inherit"					"damage_monster_base"
+	"knockback"					"0"
+	"damage"					"80"
+	"radius"					"200"
+	"push"						"10000"
+
+	"tv_scale"					"0.7"
+	"tv_time"					"4200"
+
+	// Hearing Loss
+	"hl_volumeDB"				"-25"
+	"hl_fadeOutTime"			".5"
+	"hl_time"					"2.5"
+	"hl_fadeInTime"				"1"
+	"snd_hl"					"player_sounds_ringing"
+}
+
+entityDef projectile_q4x_valkaryne_grenade
+{
+	"inherit"					"projectile_grenade_base"
+	"model"					"models/weapons/grenadelauncher/w_grenade.lwo"
+	"mins"						"-4 -4 -4"
+	"maxs"						"4 4 4"
+	"cone"						""
+	"noshadows"					"1"
+	"clipmask_largeshot"		"1"
+	
+	
+	"fuse_atrest"				".4"
+	
+	"fx_fly"					"effects/monsters/valkaryne/grenade_fly.fx"
+	"fx_detonate"				"effects/monsters/valkaryne/grenade_burst.fx"
+	"fx_impact"					"effects/monsters/valkaryne/grenade_burst.fx"
+
+	"def_splash_damage"			"damage_q4x_valkaryne_grenade_splash"
+	"def_damage"				"damage_q4x_valkaryne_grenade"
+
+	"linear_friction"			"0"
+	"angular_friction"			"0"
+	"contact_friction"			"10"
+
+	"bounce_count"				"-1"
+
+	"gravity"					"1"
+	"bounce"					".3"
+
+	"health"					"10"
+	"solid"						"1"
+
+	"delay_splash"				".2"
+
+	"snd_ricochet"				"grenade_bounce"		
+}
+
+entityDef damage_valkaryne_railgunSplash
+{
+	"inherit"					"damage_nailSplash"
+	"damage"					"20"
+	"radius"					"150"
+}
+
+entityDef damage_valkaryne_railgun
+{
+	"inherit"							"damage_railgun_base"
+	"damage"							"20"
+	"kickdir"							"1 0 0"
+
+	"deathPush"							"150"
+	"deathPushMin"							"3000 2000"
+	"deathPushMax"							"5000 3000"
+}
+
+entityDef hitscan_valkaryne_railgun
+{
+	"inherit"							"hitscan_base"
+	"push"								"40000"
+	"def_damage"							"damage_valkaryne_railgun"
+	"def_splash_damage"						"damage_valkaryne_railgunSplash"
+	"fx_impact"							"effects/monsters/valkaryne/railgun_burst.fx"
+	"fx_path"							"effects/monsters/valkaryne/railgun_trail.fx"
+}
+
+entityDef damage_valkaryne_rocket_direct
+{
+	"damage"							"50"
+	"knockback"							"140"
+	"push"								"140"
+	"mtr_splat"							""
+	"gib"								"1"
+
+	"deathPush"							"100"
+	"deathPushMin"							"3000 2000"
+	"deathPushMax"							"5000 3000"
+}
+
+entityDef damage_valkaryne_rocket_splash
+{
+	"damage"							"20"
+	"radius"							"500"
+	"knockback"							"80"
+	"push"								"80"
+	"gib"								"1"
+
+	"deathPush"							"100"
+	"deathPushMin"							"3000 2000"
+	"deathPushMax"							"5000 3000"
+}
+
+
+entityDef projectile_valkaryne_rocket
+{
+	"inherit"							"projectile_rocket"
+	"spawnclass"						"rvDriftingProjectile"
+
+	"driftOffset"						"15"
+	"driftSpeed"						"100"
+	"driftTime"							".35"
+	"speed"								"850"
+
+	"def_damage"						"damage_valkaryne_rocket_direct"
+	"def_splash_damage"					"damage_valkaryne_rocket_splash"
+
+	"fx_fly"							"effects/monsters/tank/rocket_fly.fx"
+	"snd_fly"							"tank_missile_loop"
+	"fx_impact"							"effects/monsters/tank/rocket_impact.fx"
+}
+
+
+
+entityDef melee_valkaryne 
+{
+	"inherit"							"melee_monster_base"
+	"damage"							"50"
+	"knockback"							"250"
+	"push"								"250"
+	"pushdir"							"0 10 -10"
+	
+	"deathPush"							"250"
+	"deathPushMin"							"3000 2000"
+	"deathPushMax"							"5000 3000"
+
+	"snd_hit"							"tank_punch"
+	"snd_miss"							"tank_swing"
+}
+
+entityDef damage_valkaryne_deathray
+{
+	"inherit"							"damage_railgun_base"
+	"damage"							"60"
+	"kickdir"							"1 0 0"
+
+	"filter_valkaryne"						"1"
+
+	"deathPush"							"150"
+	"deathPushMin"							"3000 2000"
+	"deathPushMax"							"5000 3000"
+}
+
+entityDef hitscan_valkaryne_deathray
+{
+	"inherit"							"hitscan_base"
+	"push"								"40000"
+	"def_damage"							"damage_valkaryne_deathray"
+	"def_splash_damage"						"damage_valkaryne_deathraySplash"
+
+}
+
+entityDef hitscan_valkaryne_deathrayvis
+{
+	"inherit"							"hitscan_base"
+	"push"								"40000"
+	"def_damage"							"damage_valkaryne_railgun"
+	"def_splash_damage"						"damage_valkaryne_railgunSplash"
+	"fx_impact"							"effects/monsters/valkaryne/deathray_burst.fx"
+	"fx_path"							"effects/monsters/valkaryne/deathray_trail.fx"
+	//"fx_impact_actor"						"effects/monsters/valkaryne/burn"
+	//"impactEntity"							"effects/monsters/valkaryne/burn"
+	"fx_detonate"							"effects/monsters/valkaryne/burn"
+}
+
+entityDef damage_valkaryne_deathraySplash
+{
+	"inherit"					"damage_nailSplash"
+	"damage"					"20"
+	"radius"					"250"
+}
+
+entityDef projectile_deathrayBurn
+
+{
+									
+	"velocity"					"1500 0 0"
+	"fuse"						"10"
+	"push"						"7500"
+	"fx_impact"					"effects/monsters/valkaryne/burn"
+	//"fx_impact_actor"				"effects/monsters/valkaryne/burn"
+	//"impactEntity"					"effects/monsters/valkaryne/burn"
+	"fx_detonate"					"effects/monsters/valkaryne/burn"
+	
+	"spawnclass"				"idProjectile"
+	"size"						"7 7 7"
+	"cone"						"2"
+	"noshadows"					"1"
+	"clipmask_largeshot"		"1"
+	"no_contents"				"0"
+
+	"angular_velocity"			"10 10 10"
+	"settle_duration"			"0.08"
+	
+	"linear_friction"			"0"
+	"angular_friction"			"0"
+	"contact_friction"			"10"
+	"bounce"					"0"
+	"gravity"					"1"
+								
+	"detonate_on_fuse"			"1"
+	"detonate_on_death"			"0"
+	"detonate_on_world"			"1"
+	"detonate_on_actor"			"1"
+								
+	"impact_gib"				"1"
+	"decal_size"				"75"
+
+	"flyEffectAttenuateSpeed"	"200"
+	
+	"airBurst_desc"				"midair_"
+
+	"fx_impact_water"			"effects/ambient/splash_med.fx"
+
+	"snd_ricochet"				"weapon_goobgun_bounce"
+	
+
+	"delay_residual"				"1"
+	"residual_time"					"1"
+	"def_residual_damage"			"damage_lightTank_residualPlasma"	
+
+
+	//spawn impact entity information
+	"numImpactEntities"			"8"
+	"ieMinPitch"				"200"
+	"ieMaxPitch"				"80"
+	"ieSlicePercentage"			"0.80"
+}
+
+
+entityDef impact_deathrayburn_projectile
+
+{
+	"inherit" 					"projectile_lightTank_fireball"
+	"fx_impact"					"effects/monsters/valkaryne/burn"
+	//"fx_impact_actor"				"effects/monsters/valkaryne/burn"
+	"fx_fly"					"effects/monsters/valkaryne/burn"
+	"def_damage"					"damage_deathrayburnDirect"
+	//"def_splash_damage"				"damage_deathrayburnSplash"
+
+	"mins"							"-16 -16 -16"
+	"maxs"							"16 16 16"
+	"no_contents"	"0"
+	
+	"angular_velocity"			"10 10 10"
+	"gravity"					"1"
+	"fuse"							"1"
+	"velocity"						"100"
+	"speed"							"100"
+	
+	"detonate_on_fuse"				"1"
+	"detonate_on_death"				"0"
+	"detonate_on_world"				"1"
+	"detonate_on_actor"				"1"
+
+
+	"delay_residual"				"1"
+	"residual_time"					"1"
+	"def_residual_damage"			"damage_lightTank_residualPlasma"	
+	
+}
+
+
+entityDef damage_deathrayburnDirect 
+{
+	"inherit"					"damage_bullet"
+
+	"fx_dmgeffect"				"effects/weapons/valkaryne/burn"
+}
+
+
+/*
+===============================================================================
+
+	Valkaryne
+
+===============================================================================
+*/
+
+entityDef monster_q4x_valkaryne
+{	
+	
+	// ---------------------------- General -----------------------------------------
+	"inherit"								"actor_default"
+	"model"									"model_monster_q4x_valkaryne"
+	"spawnclass"							"riMonsterValkaryne"
+	
+	"directionalMovement"					"1"
+
+	"forceWalk"								"1"
+	"ignore_obstacles"						"1"
+	
+
+	"size"									"48 48 80"
+	"use_aas"								"aas48"
+	"bleed"									"1"
+	"removeDelay"							"5"
+	"anim"									"idle"
+	"no_drops"								"0"
+	"focus_align_time"						"0"
+	//"joint_leftEye"						"Lfteye_Focus"
+	//"joint_rightEye"						"Rteye_Focus"
+	"joint_eyeOffset"						"head"
+	"joint_chestOffset"						"spine"
+	"kick_force"							"50"
+	"health"								"4000"
+	"forceEnemy"							"1"
+
+	"turn_rate"								"60"
+
+	"fov"									"140"
+	"remove_on_death"						"0"
+	"melee_range"							"400"
+	"painThreshold"							"500"
+	"aggressiveRange"						"1024"
+
+	"missile_visibility_joint"				""
+
+	"burnaway"								"4"
+	"nodeHealth"							"100"
+	"attackRange"							"0 512"
+
+	// ---------------------------- Actions -----------------------------------------
+	
+	"attackSightDelay"						".75"
+	
+	//"action_talk_noturn" "0"
+	
+	"actionTimer_rangedAttack_rate"			"2"				
+	"actionTimer_meleeAttack_rate"			"2"
+	"actionTimer_specialAttack_rate"		"3"	
+	"actionTimer_evade_rate"				"2"				
+	"actionTimer_pain_rate"					".5"
+
+	"action_jumpBack_maxRange"				"80"
+	"action_jumpBack_anim"					"jump_back"
+	
+	"action_meleeAttack_minRange"			"0"
+	"action_meleeAttack_maxRange"			"400"
+	"action_meleeAttack_anim"				"melee_attack"
+
+	"action_pluginAttackBig_minRange"			"200"
+	"action_pluginAttackBig_maxRange"			"2048"
+	"action_pluginAttackBig_anim"				"plugin_range_attack"
+	"action_pluginAttackBg_failRate"			".25"
+
+	//"action_pluginAttackShockwave_minRange"			"0"
+	//"action_pluginAttackShockwave_maxRange"			"200"
+	//"action_pluginAttackShockwave_anim"			"plugin_shockwave_attack"
+	//"action_pluginAttackShockwave_failRate"			".25"
+
+	"action_rangedAttack_minRange"			"400"
+	"action_rangedAttack_maxRange"			"800"
+	"action_rangedAttack_anim"				"range_attack"
+	"action_rangedAttack_failRate"			".25"
+	
+	"action_leapAttack_rate"				"3"
+	"action_leapAttack_noPain"				"1"						// Dont allow pain animations during a leap attack
+	"action_leapAttack_noTurn"				"1"			
+	"action_leapAttack_anim"				"leap_attack"
+
+	"action_evadeLeft_anim"					"evade_left"
+	"action_evadeRight_anim"				"evade_right"
+	"action_leanLeftAttack_anim"			"lean_attack_left"
+	"action_leanRightAttack_anim"			"lean_attack_right"
+
+	"tactical_ranged"						"1"
+	"tactical_rush"							"0"
+	"tactical_cover"						"0"
+	"tactical_hide"							"0"
+	
+	//"def_projectile"					"projectile_blastewave"
+	
+	"def_attack_melee"					"melee_valkaryne"
+	
+	"def_attack_jointDir"				"hitscan_valkaryne_railgun"
+	"attack_jointDir_hitscan"			"1"
+	"attack_jointDir_locktojoint"		"1"
+	"attack_jointDir_accuracy"			"0"
+	
+	"def_attack_rocket"					"projectile_valkaryne_rocket"
+	"attack_rocket_accuracy"			"2"
+	
+	"def_attack_railgun"				"hitscan_valkaryne_railgun"
+	"attack_railgun_hitscan"			"1"
+	"attack_railgun_accuracy"			"1"
+	"attack_railgun_missFirstShot"			"0"
+	"attack_railgun_predict"			"1"
+	
+	"def_attack_grenade"					"projectile_q4x_valkaryne_grenade"
+	"attack_grenade_accuracy"				"3"
+	
+	"def_attack_deathray"				"hitscan_valkaryne_deathray"
+	"attack_deathray_hitscan"			"1"
+	"attack_deathray_spread"			"10"
+	"attack_deathray_count"				"10"
+	"attack_deathray_accuracy"			"1"
+	"attack_deathray_missFirstShot"			"0"
+	"attack_deathray_predict"			"1"
+	
+	"def_attack_deathrayvis"			"hitscan_valkaryne_deathrayvis"
+	"attack_deathrayvis_hitscan"			"1"
+	"attack_deathrayvis_accuracy"			"1"
+	"attack_deathrayvis_missFirstShot"			"0"
+	"attack_deathrayvis_predict"			"1"
+	
+	"def_attack_deathrayburn"			"projectile_deathrayBurn"
+	
+	"def_valkarye_shockwave_damage"			"damage_makron_stomp_damage"
+	// ---------------------------- Look Joints ---------------------------------------
+	
+	  "look_joint spine"					"0.1 0.2 0.4"
+	  //  "look_joint shoulders"				"0.2 0.2 0"
+	    	 "look_joint r_ranged_arm"				"0.4 0.4 0.4"
+		 	 "look_joint r_ranged_elbo"				"0.4 0.4 0.4"
+		  "look_joint l_ranged_arm"				"0.4 0.4 0.4"
+		 	 "look_joint l_ranged_elbo"				"0.4 0.4 0.4"
+	      "look_joint neck"					"0.2 0.2 0.2"
+	        "look_joint head"				"0.2 0.2 0.2"
+	        
+	        
+	        
+	// ---------------------------- Damage Zones --------------------------------------------      
+	//"damage_zone hit_1" 			"hit_1 r_top_underplate r_top_overplate"
+	//"damage_zone hit_2" 			"hit_2 l_top_underplate l_top_overplate"
+	//"damage_zone hit_3" 			"hit_3"
+	//"damage_zone hit_4" 			"hit_4 r_bottom_overplate r_bottom_underplate" 
+	//"damage_zone hit_5" 			"hit_5 l_bottom_overplate l_bottom_underplate"
+	//"damage_zone hit_6" 			"hit_6 head_plate"
+
+	// ---------------------------- FX --------------------------------------------
+	"fx_pain"						"effects/monsters/pain.fx"
+	"fx_pain10"						"effects/monsters/pain25.fx"
+	"fx_pain_hollowmetal"					"effects/monsters/pain_metal.fx"
+	"fx_pain10_hollowmetal"					"effects/monsters/pain25_metal.fx"
+	
+	"fx_railgun_flash"					"effects/monsters/valkaryne/railgun_mflash.fx"
+	"fx_railgun_charge"					"effects/monsters/valkaryne/railgun_charge.fx"
+	"fx_railglow"						"effects/monsters/valkaryne/railgun_mflash.fx"
+	
+	"fx_deathray_flash"					"effects/monsters/valkaryne/deathray_mflash.fx"
+	"fx_deathray_charge"					"effects/monsters/valkaryne/deathray_charge.fx"
+	"fx_deathraylow"					"effects/monsters/valkaryne/deathray_mflash.fx"
+	
+
+	"fx_testlight"						"effects/test/testlight.fx"
+	
+	"fx_grenade_flash"					"effects/monsters/gunner/grenade_mflash.fx"
+	
+	
+	"fx_stomp_wave"						"effects/monsters/makron/ground_impact.fx"
+	
+	"mtr_light"							"lights/rav_slowfalloff"
+	"light_color"						"1 1 .9"
+	"light_radius"						"1800"
+	"light_angle"						"15.0"
+	"light_target"						"2000 0 0"
+	"light_up"							"0 900 0"
+	"light_right"						"0 0 -1300"
+	"light_pointLight"					"1"	
+	
+	
+	"mtr_wound"						"textures/decals/hurt02"
+	"mtr_splat"						"textures/decals/dsplat2"
+	"mtr_splat2"						"textures/decals/dsplat5"
+	"mtr_splat3"						"textures/decals/dsplat7"
+	"mtr_splat4"						"textures/decals/dsplat11"
+	
+	// ---------------------------- Sounds -------------------------------------------
+	"snd_burn"								"effects_burn_away"
+	"snd_bounce"							"generic_creature_fall_beefy"
+	"snd_step"								"valkaryne_footsteps"
+	"snd_idle"								"valkaryne_idle"
+	"snd_walk"								"valkaryne_walk"
+	"snd_walk_backwards"					"valkaryne_walk_backwards"
+	"snd_walk_side"							"valkaryne_walk_side"
+	"snd_turn"								"valkaryne_turn"
+	"snd_run"								"valkaryne_run"
+	"snd_runtoplugin"						"valkaryne_runtoplugin"	
+	"snd_evade"								"valkaryne_evade"
+	"snd_crouch"							"valkaryne_crouch"
+	"snd_jumpback"							"valkaryne_jumpback"
+	"snd_plugin_range_attack_one"			"valkaryne_plugin_range"
+	"snd_plugin_range_attack_big"			"valkaryne_plugin_range_big"	
+	"snd_plugin"							"valkaryne_idle"
+	"snd_plugintoidle"						"valkaryne_plugintoidle"
+	"snd_range_one"							"valkaryne_range_one"
+	"snd_range_two"							"valkaryne_range_two"
+	"snd_leanattack_L"						"valkaryne_leanattack_L"
+	"snd_leanattack_R"						"valkaryne_leanattack_R"
+	"snd_projectilespread"					"valkaryne_projectilespread"
+	"snd_shockwave"							"valkaryne_shockwave"	
+	"snd_range_fire_one"					"valkaryne_range_fire_one"
+	"snd_range_fire_two"					"valkaryne_range_fire_two"
+	"snd_melee_one"							"valkaryne_melee_one"
+	"snd_melee_two"							"valkaryne_melee_two"	
+	"snd_leapattack"						"valkaryne_leapattack"
+	"snd_pain"								"valkaryne_pain"
+	"snd_death"								"valkaryne_death"
+}

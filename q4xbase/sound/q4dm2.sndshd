@@ -1,0 +1,317 @@
+lavaloop_01L
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-9
+
+	sound/environment/lava/lava_loop1L.wav
+}
+
+lavaloop_01R
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-9
+
+	sound/environment/lava/lava_loop1R.wav
+}
+
+lavaloop_02
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-9
+
+	sound/environment/lava/lava_loop2.wav
+}
+
+
+lavaloop_03L
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-9
+
+	sound/environment/lava/lava_loop3L.wav
+}
+
+lavaloop_03R
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-9
+
+	sound/environment/lava/lava_loop3R.wav
+}
+
+lavaloop_04
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-9
+
+	sound/environment/lava/lava_loop4.wav
+}
+
+
+lavaloop_muted
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-2
+
+	sound/environment/lava/lava_muted.wav
+}
+
+
+wind_flue_01
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-1
+
+	sound/environment/fire/fire_windflue1.wav
+}
+
+
+water_lapverb_01
+{
+	minDistance	128
+	maxDistance	384
+	looping
+	volumeDb		0
+
+	sound/environment/water/water_lapverb1.wav
+}
+
+water_lapverb_02
+{
+	minDistance	128
+	maxDistance	384
+	looping
+	volumeDb		0
+
+	sound/environment/water/water_lapverb2.wav
+}
+
+water_flow_01
+{
+	minDistance	128
+	maxDistance	384
+	looping
+	volumeDb		0
+
+	sound/environment/water/water_flowmetal1.wav
+}
+
+machine_lift_01
+{
+	minDistance	128
+	maxDistance	768
+	volumeDb		-1
+
+	sound/lifts/machine_lift1.wav
+}
+
+
+machine_teleport_01
+{
+	minDistance	64
+	maxDistance	384
+	volumeDb		-6
+	looping
+
+	sound/machines/teleport_loop_1.wav
+}
+
+
+machine_ambient_01
+{
+	minDistance	128
+	maxDistance	512
+	volumeDb		-1
+
+	sound/machines/machine_ambloop1.wav
+}
+
+
+
+machine_grind_01
+{
+	minDistance	128
+	maxDistance	512
+	volumeDb		-1
+	looping
+
+	sound/machines/machine_grinding1.wav
+}
+
+machine_grind_02
+{
+	minDistance	128
+	maxDistance	512
+	volumeDb		-1
+	looping
+
+	sound/machines/machine_grinding2.wav
+}
+
+
+machine_armswing_01
+{
+	minDistance	100
+	maxDistance	760
+	volumeDb		0
+
+	sound/machines/arm_swing1.wav
+}
+
+
+switch_large_01
+{
+	minDistance	5
+	maxDistance	8
+	volumeDb		-1
+
+	sound/switches/switch_large1.wav
+}
+
+
+machine_small_01
+{
+	minDistance	128
+	maxDistance	384
+	volumeDb		-1
+
+	sound/machines/short_machine1.wav
+}
+
+giant_lava_pit
+{
+	minDistance	140
+	maxDistance	740
+	volumeDb		1
+
+	sound/machines/lavatrap.wav
+}
+
+//////////////////////////
+// ONE SECOND MACHINE ////
+//////////////////////////
+
+machine_1second
+{
+	minDistance	128
+	maxDistance	640
+	volumeDb		-1
+
+	sound/machines/machine_1s.wav
+}
+//////////////////////////
+// LEVELWIDE   ///////////
+//////////////////////////
+
+q1dm2_levelwide
+{
+	minDistance	4096
+	maxDistance	4096
+	volumeDb		-11
+	looping
+
+	sound/machines/q2dm1_amb1.wav
+}
+
+//////////////////////////
+// WINDOWGEARS ///////////
+//////////////////////////
+
+windowgear_startstop1
+{
+	minDistance	128
+	maxDistance	640
+	volumeDb		-3
+
+	sound/machines/windowgearsmall.wav
+}
+
+windowgear_startstop2
+{
+	minDistance	128
+	maxDistance	640
+	volumeDb		-3
+
+	sound/machines/windowgear2.wav
+}
+
+windowgear_startstop3
+{
+	minDistance	128
+	maxDistance	640
+	volumeDb		-3
+
+	sound/machines/windowgear3.wav
+}
+
+windowgear_startstop4
+{
+	minDistance	128
+	maxDistance	640
+	volumeDb		-3
+
+	sound/machines/windowgear4.wav
+}
+
+windowgear_startstop5
+{
+	minDistance	128
+	maxDistance	640
+	volumeDb		-3
+
+	sound/machines/windowgear5.wav
+}
+
+windowgear_small1
+{
+	minDistance	128
+	maxDistance	640
+	volumeDb		-3
+
+	sound/machines/windowgearsmall.wav
+}
+
+//////////////////////////
+// LAVA TRAPS  ///////////
+//////////////////////////
+
+lavatrap2start
+{
+	minDistance	128
+	maxDistance	640
+	volumeDb		-3
+	looping
+	sound/environment/lava/lava_loop1L.wav
+}
+
+lavatrap2gear
+{
+	minDistance	128
+	maxDistance	640
+	volumeDb		-3
+	sound/machines/lavatrap2start.wav
+}
+
+lavatrap2stop
+{
+	minDistance	128
+	maxDistance	640
+	volumeDb		-3
+	sound/machines/windowgearsmall.wav
+}

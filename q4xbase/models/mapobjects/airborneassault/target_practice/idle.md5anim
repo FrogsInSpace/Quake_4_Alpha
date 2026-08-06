@@ -1,0 +1,28 @@
+MD5Version 10
+commandline "anim cinematics/air_assault/target_practice/animations/idle.ma -dest models/mapobjects/airborneassault/target_practice//idle.md5anim -game Quake4 -prefix TGT_ -scale .3937 -align ALL -keep origin root"
+
+numFrames 2
+numJoints 2
+frameRate 24
+numAnimatedComponents 0
+
+hierarchy {
+	"origin"	-1 0 0	//
+	"root"	0 0 0	// origin
+}
+
+bounds {
+	( -63.9998703003 -63.9998703003 -63.9998703003 ) ( 63.9998703003 63.9998703003 63.9998703003 )
+	( -63.9998703003 -63.9998703003 -63.9998703003 ) ( 63.9998703003 63.9998703003 63.9998703003 )
+}
+
+baseframe {
+	( 0 0 0 ) ( -0.5 -0.5 -0.5 )
+	( 0 0 0 ) ( 0 0 0 )
+}
+
+frame 0 {
+}
+
+frame 1 {
+}

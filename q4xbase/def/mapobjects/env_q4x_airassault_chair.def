@@ -1,0 +1,116 @@
+//Dropship Chairs
+
+export env_q4x_airassault_chair
+{
+	options -game /q4xbase  -prefix CHAIR_ -scale .3937  -keep origin -sourcedir cinematics/air_assault/dropship_interior/chair/animations -destdir models/mapobjects/airborneassault/chair
+
+	mesh	idle.ma								-dest mesh
+	anim	idle.ma								-dest idle
+	anim	idle_to_sitting.ma						-dest idle_to_sitting
+	anim	sitting_idle.ma							-dest sitting_idle
+	anim	sitting_to_idle.ma						-dest sitting_to_idle
+}
+
+model model_env_q4x_airassault_chair
+
+{
+	mesh					models/mapobjects/airborneassault/chair/mesh.md5mesh
+	anim idle				models/mapobjects/airborneassault/chair/idle.md5anim
+	anim idle_to_sitting			models/mapobjects/airborneassault/chair/idle_to_sitting.md5anim
+	anim sitting_idle			models/mapobjects/airborneassault/chair/sitting_idle.md5anim
+	anim sitting_to_idle			models/mapobjects/airborneassault/chair/sitting_to_idle.md5anim
+	
+}
+
+entityDef env_q4x_airassault_chair
+{
+	"editor_color"			"0 .5 .25"
+	"editor_mins"			"-32 -32 0"
+	"editor_maxs"			"32 32 16"
+
+	"spawnclass"			"idAnimated"
+
+	"model"				"model_env_q4x_airassault_chair"
+	"anim"				"idle"
+
+	
+}
+
+
+
+
+//Najavas Chair
+
+export env_q4x_airassault_back_chair
+{
+	options -game /q4xbase  -prefix BCHAIR_ -scale .3937  -keep origin -sourcedir cinematics/air_assault/dropship_interior/back_chair/animations -destdir models/mapobjects/airborneassault/back_chair
+
+	mesh	idle.ma								-dest mesh
+	anim	idle.ma								-dest idle
+	anim	idle_to_sitting.ma						-dest idle_to_sitting
+	anim	sitting_idle.ma							-dest sitting_idle
+	anim	sitting_to_idle.ma						-dest sitting_to_idle
+	anim	fire.ma								-dest fire
+}
+
+model model_env_q4x_airassault_back_chair
+
+{
+	mesh					models/mapobjects/airborneassault/back_chair/mesh.md5mesh
+	anim idle				models/mapobjects/airborneassault/back_chair/idle.md5anim
+	anim idle_to_sitting			models/mapobjects/airborneassault/back_chair/idle_to_sitting.md5anim
+	anim sitting_idle			models/mapobjects/airborneassault/back_chair/sitting_idle.md5anim
+	anim sitting_to_idle			models/mapobjects/airborneassault/back_chair/sitting_to_idle.md5anim
+	anim fire				models/mapobjects/airborneassault/back_chair/fire.md5anim
+	
+}
+
+entityDef env_q4x_airassault_back_chair
+{
+	"editor_color"			"0 .5 .25"
+	"editor_mins"			"-32 -32 0"
+	"editor_maxs"			"32 32 16"
+
+	"spawnclass"			"idAnimated"
+
+	"model"				"model_env_q4x_airassault_back_chair"
+	"anim"				"idle"
+
+	
+}
+
+
+//Taks Chair
+
+export env_q4x_airassault_front_chair
+{
+	options -game /q4xbase  -prefix BCHAIR_ -scale .3937  -keep origin -sourcedir cinematics/air_assault/dropship_interior/front_chair/animations -destdir models/mapobjects/airborneassault/front_chair
+
+	anim	aa_tak_turnaround.ma		-range 0 30	-dest idle_to_standing
+	anim	aa_tak_turnaround.ma		-range 31 170	-dest standing_idle
+	anim	aa_tak_turnaround.ma		-range 170 200	-dest standing_to_idle
+	anim	aa_tak_turnaround.ma		-range 201 330	-dest idle
+}
+
+model model_env_q4x_airassault_front_chair
+
+{
+	mesh					models/mapobjects/airborneassault/back_chair/mesh.md5mesh
+	anim idle				models/mapobjects/airborneassault/front_chair/idle.md5anim
+	anim idle_to_standing			models/mapobjects/airborneassault/front_chair/idle_to_standing.md5anim
+	anim standing_idle			models/mapobjects/airborneassault/front_chair/standing_idle.md5anim
+	anim standing_to_idle			models/mapobjects/airborneassault/front_chair/standing_to_idle.md5anim
+	
+}
+
+entityDef env_q4x_airassault_front_chair
+{
+	"editor_color"			"0 .5 .25"
+	"editor_mins"			"-32 -32 0"
+	"editor_maxs"			"32 32 16"
+
+	"spawnclass"			"idAnimated"
+
+	"model"				"model_env_q4x_airassault_front_chair"
+
+}

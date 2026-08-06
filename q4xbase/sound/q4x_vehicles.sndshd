@@ -1,0 +1,488 @@
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Q4X SPEEDER	
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+sound vehicle_speeder_shield_warning
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	4
+
+	sound/vehicles/speeder/shieldlow.wav
+}
+
+sound vehicle_speeder_shield_recharge
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	4
+
+	sound/vehicles/speeder/shieldcharge.wav
+}
+
+sound vehicle_speeder_flareon
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	4
+
+	sound/vehicles/speeder/start.wav
+}
+
+
+sound vehicle_speeder_flareoff
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+
+	sound/vehicles/speeder/stop.wav
+}
+
+sound vehicle_speeder_engine_start
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	4
+
+	sound/vehicles/speeder/start.wav
+}
+
+
+sound vehicle_speeder_engine_stop
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+
+	sound/vehicles/speeder/stop.wav
+}
+
+
+sound vehicle_speeder_engine_loop
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	2
+	looping
+
+	sound/vehicles/speeder/loop1.wav
+}
+
+sound vehicle_speeder_engine_throttledown
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	4
+
+	sound/vehicles/speeder/throttleoff.ogg
+}
+
+sound vehicle_speeder_turret_move
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+	looping
+
+	sound/vehicles/speeder/turret.wav
+}
+
+sound vehicle_speeder_machinegun_fire
+{
+	minDistance	39
+	maxDistance	1181
+	volumeDb	-5
+	frequencyshift	1,1.5
+
+	sound/vehicles/speeder/fire0.wav
+	sound/vehicles/speeder/fire1.wav
+}
+
+
+sound vehicle_speeder_hoverpad
+{
+	minDistance	39
+	maxDistance	1181
+	volumeDb	-12
+	looping
+
+	sound/vehicles/speeder/pad_loop1.wav
+}
+
+
+sound vehicle_speeder_cannon
+{
+	minDistance	1181
+	maxDistance	1574
+	volumeDb	6
+
+	sound/vehicles/speeder/cannonfire.wav
+}
+
+
+sound vehicle_speeder_cannon_kickback
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	-6
+
+	sound/vehicles/gev/kickback.wav
+}
+
+
+sound vehicle_speeder_boost
+{
+	minDistance	196
+	maxDistance	1181
+//	volumeDb	-3
+	volumeDb	6
+
+	sound/vehicles/speeder/boost1
+}
+
+sound vehicle_speeder_boost_end
+{
+	minDistance	196
+	maxDistance	1181
+//	volumeDb	-6
+	volumeDb	3
+
+	sound/vehicles/speeder/stop
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////// SPACE TURRETS //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+sound vehicle_tone_seek
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	-10
+	looping
+	
+	sound/weapons/turret/tone_seek.wav
+}
+
+sound vehicle_tone_lock
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	-10
+	looping
+	
+	sound/weapons/turret/tone_lock.wav
+}
+
+//////////////////////////////////////////////////////////////////////////////////
+sound space_cannon_fire
+{
+	minDistance	1181
+	maxDistance	1574
+	volumeDb	-11
+	frequentlyused	
+	//sound/weapons/turret/shot1a
+	//sound/weapons/turret/shot2a
+	//sound/weapons/turret/shot3a
+	//sound/weapons/turret/shot4a
+	//sound/weapons/turret/shot5a
+	
+	sound/weapons/turret/turret_gun.ogg
+	//sound/weapons/turret/space_turret_fire_2.ogg
+}
+
+sound space_cannon_gun
+{
+	minDistance	1181
+	maxDistance	1574
+	volumeDb	0
+
+	sound/weapons/turret/turret_gun.ogg
+}
+
+
+sound space_cannon_fire_left
+{
+	minDistance	1181
+	maxDistance	1574
+	volumeDb	-8
+
+	sound/weapons/turret/space_turret_fire_2_L.ogg
+}
+sound space_cannon_fire_right
+{
+	minDistance	1181
+	maxDistance	1574
+	volumeDb	-8
+
+	sound/weapons/turret/space_turret_fire_2_R.ogg
+}
+
+sound space_cannon_fire_multi
+{
+	minDistance	1181
+	maxDistance	1574
+	volumeDb	-6
+
+	sound/weapons/turret/space_turret_fire_2_multi.ogg
+}
+
+sound space_cannon_fire_stereo
+{
+	minDistance	1181
+	maxDistance	1574
+	volumeDb	-6
+
+	sound/weapons/turret/space_turret_fire_2.ogg
+}
+
+sound space_cannon_move
+{
+	minDistance	1181
+	maxDistance	1574
+	volumeDb	0
+	looping
+	
+	sound/weapons/turret/spacegun_turretmove.wav
+}
+
+sound space_cannon_reload
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	-11
+
+	sound/weapons/turret/mcc_turret_reload3a.wav
+}
+
+sound space_cannon_overheat
+{
+	minDistance	1181
+	maxDistance	1574
+	volumeDb	-4
+	looping
+	
+	sound/weapons/turret/spacegun_cannon_overheat.ogg
+}
+
+sound space_cannon_recover
+{
+	minDistance	1181
+	maxDistance	1574
+	volumeDb	-4
+	
+	sound/weapons/turret/spacegun_cannon_recover.ogg
+}
+
+sound space_cannon_overheatfire
+{
+	minDistance	1181
+	maxDistance	1574
+	volumeDb	-2
+	
+	sound/weapons/turret/spacegun_cannon_overf.ogg
+}
+
+
+sound space_cannon_startup
+{
+	minDistance	1181
+	maxDistance	1574
+	volumeDb	-2
+	
+	sound/weapons/turret/turret_startup_a.ogg
+}
+
+
+sound space_cannon_switch_to_missiles
+{
+	minDistance	1181
+	maxDistance	1574
+	volumeDb	-2
+	
+	sound/weapons/turret/missile_switch_a.ogg
+}
+
+sound space_cannon_switch_to_turret
+{
+	minDistance	1181
+	maxDistance	1574
+	volumeDb	-2
+	
+	sound/weapons/turret/turret_switch.ogg
+}
+
+
+sound space_cannon_jam
+{
+	minDistance	1181
+	maxDistance	1574
+	volumeDb	2
+	
+	sound/weapons/turret/turret_jam.ogg
+}
+
+sound space_cannon_jamcleared
+{
+	minDistance	1181
+	maxDistance	1574
+	volumeDb	2
+	
+	sound/weapons/turret/turret_jam_cleared.ogg
+}
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+sound vehicle_strogg_fighter_13second
+{
+	minDistance	5181
+	maxDistance	15574
+	volumeDb	-5
+
+	sound/vehicles/strogg_flyer/stroggflyerbyby1mono.ogg
+	sound/vehicles/strogg_flyer/stroggflyerbyby2mono.ogg
+	sound/vehicles/strogg_flyer/stroggflyerbyby3mono.ogg
+	//sound/vehicles/strogg_flyer/stroggflyerbyby4mono.ogg
+}
+
+sound vehicle_strogg_destroyer_50second
+{
+	minDistance	5181
+	maxDistance	15574
+	volumeDb	-5
+
+	sound/vehicles/strogg_flyer/destroyer1.ogg
+	sound/vehicles/strogg_flyer/destroyer2.ogg
+
+}
+
+sound vehicle_strogg_fighter_flyby
+{
+	minDistance	5181
+	maxDistance	15574
+	volumeDb	0
+
+	sound/vehicles/strogg_flyer/strogg_fighter_by1.ogg
+	sound/vehicles/strogg_flyer/strogg_fighter_by2.ogg	
+	sound/vehicles/strogg_flyer/strogg_fighter_by3.ogg
+	sound/vehicles/strogg_flyer/strogg_fighter_by4.ogg	
+}
+
+sound vehicle_strogg_fighter_explode
+{
+	minDistance	20181
+	maxDistance	55574
+	volumeDb	8
+
+	sound/vehicles/strogg_flyer/space_explo1.ogg
+	sound/vehicles/strogg_flyer/space_explo2.ogg	
+	sound/vehicles/strogg_flyer/space_explo3.ogg
+	sound/vehicles/strogg_flyer/space_explo4.ogg	
+}
+
+sound q4x_flyer_shot1
+{
+	minDistance	10000
+	maxDistance	30000
+	volumeDb	-7
+	sound/ambience/m01/flyer_shot1.ogg
+	shakeData 0 yyywsskiheeeddccbaaaaaaaaaaaaaaaaaaaaaaa	
+	sound/ambience/m01/flyer_shot2.ogg
+	shakeData 1 zyyxrtlmghfedeedcbaaaaaaaaaaaaaaaaaaaaaa	
+}
+
+sound q4x_effects_blaster_hit01
+{
+	minDistance	696
+	maxDistance	2952
+	volumeDb	-8
+	//shakes 0.2
+
+	sound/ambience/m03/metalimp1aa.ogg
+	sound/ambience/m03/metalimp2aa.ogg	
+	sound/ambience/m03/metalimp3aa.ogg
+	sound/ambience/m03/metalimp4aa.ogg
+	sound/ambience/m03/metalimp5aa.ogg
+}
+
+sound airassault_flyerexplode
+{
+	minDistance	20000
+	maxDistance	40000
+	volumeDb	6
+	soundClass	1
+	shakes		0.5
+	
+	sound/vehicles/strogg_flyer/space_explo1
+	sound/vehicles/strogg_flyer/space_explo2
+	sound/vehicles/strogg_flyer/space_explo3
+	sound/vehicles/strogg_flyer/space_explo4
+
+
+	shakeData 0 zzzvzuxyuxxxwwwwrstvuoroonrotrppookpjilljmhhhkjjgjijigfgfgefecdbccccbabbaaaaaa
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+sound dropship_engine1
+{
+	minDistance	50
+	maxDistance	200
+	volumeDb	-6
+	looping
+	
+	sound/vehicles/dropship/dropship_engine1.wav
+}
+
+sound dropship_engine2
+{
+	minDistance	50
+	maxDistance	200
+	volumeDb	-6
+	looping
+	
+	sound/vehicles/dropship/dropship_engine2.wav
+}
+
+sound dropship_engine3
+{
+	minDistance	50
+	maxDistance	200
+	volumeDb	-6
+	looping
+	
+	sound/vehicles/dropship/dropship_engine3.wav
+}
+
+sound strogg_secturret_scan
+{
+	minDistance	70
+	maxDistance	400
+	volumeDb	0
+	looping
+	
+	sound/weapons/secturret/turret_scan.ogg
+}
+
+sound strogg_secturret_alert
+{
+	minDistance	70
+	maxDistance	400
+	volumeDb	0
+	
+	sound/weapons/secturret/turret_alert.ogg
+}
+
+sound strogg_secturret_fire
+{
+	minDistance	70
+	maxDistance	400
+	volumeDb	0
+	
+	sound/weapons/secturret/turret_fire.ogg
+}

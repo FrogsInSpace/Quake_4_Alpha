@@ -1,0 +1,94 @@
+//busted dropship
+
+export env_q4x_dropship_busted_second
+{
+	options -game /q4xbase  -prefix SUCK_ -scale .3937  -align all -keep all origin body chair_1 chair_2 chair_3  -destdir models/mapobjects/stranarustrench/dropshipbusted
+
+	mesh	cinematics/stranarus_trench/intro/referenced/dropshipbusted.ma				-dest mesh
+	anim	cinematics/stranarus_trench/intro/referenced/dropshipbusted.ma		-range	1 2	-dest idle
+	anim	cinematics/stranarus_trench/intro/referenced/dropshipbusted.ma				-dest intro
+
+
+
+	mesh	cinematics/stranarus_trench/intro/referenced/dropshipbusted_a.ma			-dest mesh_a
+	mesh	cinematics/stranarus_trench/intro/referenced/dropshipbusted_b.ma			-dest mesh_b
+
+	anim	cinematics/stranarus_trench/intro/referenced/dropshipbusted_a.ma	-range	1 2	-dest idle_a
+	anim	cinematics/stranarus_trench/intro/referenced/dropshipbusted_b.ma	-range	1 2	-dest idle_b
+
+	anim	cinematics/stranarus_trench/intro/referenced/dropshipbusted_a.ma			-dest intro_a
+	anim	cinematics/stranarus_trench/intro/referenced/dropshipbusted_b.ma			-dest intro_b
+
+}
+
+model model_env_q4x_dropship_busted_second
+
+{
+	mesh					models/mapobjects/stranarustrench/dropshipbusted/mesh.md5mesh
+	anim idle				models/mapobjects/stranarustrench/dropshipbusted/idle.md5anim
+	anim intro				models/mapobjects/stranarustrench/dropshipbusted/intro.md5anim
+
+	
+}
+
+model model_env_q4x_dropship_busted_second_a
+
+{
+	mesh					models/mapobjects/stranarustrench/dropshipbusted/mesh_a.md5mesh
+	anim idle				models/mapobjects/stranarustrench/dropshipbusted/idle_a.md5anim
+	anim intro				models/mapobjects/stranarustrench/dropshipbusted/intro_a.md5anim
+
+	
+}
+
+model model_env_q4x_dropship_busted_second_b
+
+{
+	mesh					models/mapobjects/stranarustrench/dropshipbusted/mesh_b.md5mesh
+	anim idle				models/mapobjects/stranarustrench/dropshipbusted/idle_b.md5anim
+	anim intro				models/mapobjects/stranarustrench/dropshipbusted/intro_b.md5anim
+
+	
+}
+
+entityDef env_q4x_dropship_busted_second
+{
+	"editor_color"			"0 .5 .25"
+	"editor_mins"			"-32 -32 0"
+	"editor_maxs"			"32 32 16"
+
+	"spawnclass"			"idAnimated"
+
+	"model"				"model_env_q4x_dropship_busted_second"
+	"anim"				"idle"
+
+	
+}
+
+entityDef env_q4x_dropship_busted_second_a
+{
+	"editor_color"			"0 .5 .25"
+	"editor_mins"			"-32 -32 0"
+	"editor_maxs"			"32 32 16"
+
+	"spawnclass"			"idAnimated"
+
+	"model"				"model_env_q4x_dropship_busted_second_a"
+	"anim"				"idle"
+
+	
+}
+
+entityDef env_q4x_dropship_busted_second_b
+{
+	"editor_color"			"0 .5 .25"
+	"editor_mins"			"-32 -32 0"
+	"editor_maxs"			"32 32 16"
+
+	"spawnclass"			"idAnimated"
+
+	"model"				"model_env_q4x_dropship_busted_second_b"
+	"anim"				"idle"
+
+	
+}

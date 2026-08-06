@@ -1,0 +1,1883 @@
+
+
+void VO_harp_falcsqcom( entity ent )
+{
+ //Harper/Davenport: Falcon squad, I'm here to compliment you on your efforts today, your team has pulled off the impossible by getting Strauss back in one piece, and the Strogg data you collected has become essential to the entire war effort, Strauss...  
+ aiSpeakWait( ent, "lipsync_vo_harp_falcsqcom" );
+}
+
+
+void VO_strauss_workingondata( entity ent )
+{
+ //Strauss: I've been working on the data decryption since my rescue, it took me the better part of a day, but I’ve finished the decryption algorithms.  
+ aiSpeakWait( ent, "lipsync_vo_strauss_workingondata" );
+}
+
+
+void VO_strauss_somuchdat( entity ent )
+{
+ //Strauss: There is so much data, it could take weeks to fully decode, but, as you can see here, we have every available CPU dedicated to the task.  
+ aiSpeakWait( ent, "lipsync_vo_strauss_somuchdat" );
+}
+
+
+void VO_strauss_thatsaid( entity ent )
+{
+ //Strauss: That said, some of the decrypted information has already proven useful in outlining our next major offensive against the Nexus.  
+ aiSpeakWait( ent, "lipsync_vo_strauss_thatsaid" );
+}
+
+
+void VO_harp_withinhr( entity ent )
+{
+ //Harper/Davenport: Within the hour, we will be launching a major strike against the source of the Strogg communication network, the Core.  
+ aiSpeakWait( ent, "lipsync_vo_harp_withinhr" );
+}
+
+
+void VO_harp_anothrhin( entity ent )
+{
+ //Harper/Davenport: Another Rhino squad member, Corporal Kain was pulled from the medlabs just before he was fully converted into a Strogg soldier.    
+ aiSpeakWait( ent, "lipsync_vo_harp_anothrhin" );
+}
+
+
+void VO_harp_accorddata( entity ent )
+{
+ //Harper/Davenport: According to the data you collected, Kain's newly acquired Strogg physiology will allow us to get inside the Core to destroy the Nexus, and possibly the Makron.  Lieutenant...  
+ aiSpeakWait( ent, "lipsync_vo_harp_accorddata" );
+}
+
+
+void VO_marks_commandfinordlong( entity ent )
+{
+ //Markswell: Command is finalizing our orders as we speak, the long and short of it is that we aren't going in with the Nexus assault.  They've got something else planned for us, Sci-Tech has uncovered something critical inside the Strogg data, and until that information is fully decoded, we are in a holding pattern.    
+ aiSpeakWait( ent, "lipsync_vo_marks_commandfinordlong" );
+}
+
+
+void VO_strauss_likehelp( entity ent )
+{
+ //Strauss: I would like to help the decryption effort, but my skills are required for the upcoming Nexus assault, it cannot succeed without my assistance.  
+ aiSpeakWait( ent, "lipsync_vo_strauss_likehelp" );
+}
+
+
+void VO_strauss_leftdecrypt( entity ent )
+{
+ //Strauss: I’ve left the decryption algorithms with Sci-tech. Find your Technician, Tak. He is the only one at Sci-Tech with the intellect to finish the work I’ve begun. Good luck.  
+ aiSpeakWait( ent, "lipsync_vo_strauss_leftdecrypt" );
+}
+
+
+void VO_marks_dekgetsci( entity ent )
+{
+ //Markswell: Dekard, get to sci-tech and see where Tak is with the decryption efforts.  Dismissed.  
+ aiSpeakWait( ent, "lipsync_vo_marks_dekgetsci" );
+}
+
+
+
+void VO_strauss_itoldcmdint( entity ent )
+{
+ //Strauss +use: I've told command time and time again, it's intellect that will win this war  
+ aiSpeakWait( ent, "lipsync_vo_strauss_itoldcmdint" );
+}
+
+
+void VO_strauss_youshouldcmd( entity ent )
+{
+ //Strauss +use: You should be commended for your skills Sergeant, had I succumbed to the Strogg, this war would be over  
+ aiSpeakWait( ent, "lipsync_vo_strauss_youshouldcmd" );
+}
+
+
+void VO_strauss_waitingrh( entity ent )
+{
+ //Strauss +use: I'm waiting on the rest of Rhino squad for our Nexus briefing, it was good to meet you Sergeant Chase  
+ aiSpeakWait( ent, "lipsync_vo_strauss_waitingrh" );
+}
+
+
+
+void VO_benn_serg( entity ent )
+{
+ //Bennette +use: Sergeant?  
+ aiSpeakWait( ent, "lipsync_vo_benn_serg" );
+}
+
+
+void VO_benn_yess( entity ent )
+{
+ //Bennette +use: Yes sir?  
+ aiSpeakWait( ent, "lipsync_vo_benn_yess" );
+}
+
+
+void VO_benn_youneed( entity ent )
+{
+ //Bennette +use: Do you need something sir?  
+ aiSpeakWait( ent, "lipsync_vo_benn_youneed" );
+}
+
+
+void VO_graves_rhinsq( entity ent )
+{
+ //Graves +use: Rhino squad's next up for this briefing room.  
+ aiSpeakWait( ent, "lipsync_vo_graves_rhinsq" );
+}
+
+
+void VO_graves_doyouneed( entity ent )
+{
+ //Graves +use: Do you need anything else sir?  
+ aiSpeakWait( ent, "lipsync_vo_graves_doyouneed" );
+}
+
+
+void VO_graves_canihelp( entity ent )
+{
+ //Graves +use: Can I help you?  
+ aiSpeakWait( ent, "lipsync_vo_graves_canihelp" );
+}
+
+
+void VO_trab_didkain( entity ent )
+{
+ //Trabbold +use: Did you hear about Kain from Rhino Squad?  
+ aiSpeakWait( ent, "lipsync_vo_trab_didkain" );
+}
+
+
+void VO_shower_saveass( entity ent )
+{
+ //Showers (response): Yeah, they saved his ass right before being turned into a full on Squib.  
+ aiSpeakWait( ent, "lipsync_vo_shower_saveass" );
+}
+
+
+void VO_trab_donttrus( entity ent )
+{
+ //Trabbold (response): I don't trust him, with that much Squib hardware, who knows when he's gonna flip.  
+ aiSpeakWait( ent, "lipsync_vo_trab_donttrus" );
+}
+
+
+void VO_shower_wewaitkain( entity ent )
+{
+ //Showers +use: We're waiting for Kain to show up, got a few things to say to that Squib.  
+ aiSpeakWait( ent, "lipsync_vo_shower_wewaitkain" );
+}
+
+
+void VO_trab_yeahwatchass( entity ent )
+{
+ //Trabbold (response): Yeah, like "watch your ass"  
+ aiSpeakWait( ent, "lipsync_vo_trab_yeahwatchass" );
+}
+
+
+void VO_shower_notshitturn( entity ent )
+{
+ //Showers (response): No shit, he better no turn his back on me.   
+ aiSpeakWait( ent, "lipsync_vo_shower_notshitturn" );
+}
+
+
+void VO_( entity ent )
+{
+ //Williams +use: I'm busy, piss off (find a suitable Raven line here, one that doesn't reference Kain or Corporal)  
+ aiSpeakWait( ent, "lipsync_vo_" );
+}
+
+
+void VO_( entity ent )
+{
+ //Williams +use: I'm busy, piss off (find a suitable Raven line here, one that doesn't reference Kain or Corporal)  
+ aiSpeakWait( ent, "lipsync_vo_" );
+}
+
+
+void VO_( entity ent )
+{
+ //Williams +use: I'm busy, piss off (find a suitable Raven line here, one that doesn't reference Kain or Corporal)  
+ aiSpeakWait( ent, "lipsync_vo_" );
+}
+
+
+void VO_luch_youhrkain( entity ent )
+{
+ //Luch +use: You hear about Corporal Kain?  He's been (beat) Stroggified  
+ aiSpeakWait( ent, "lipsync_vo_luch_youhrkain" );
+}
+
+
+void VO_luch_canteven( entity ent )
+{
+ //Luch +use: I can't even imagine what that's like  
+ aiSpeakWait( ent, "lipsync_vo_luch_canteven" );
+}
+
+
+void VO_luch_wonderrer( entity ent )
+{
+ //Luch +use: I wonder if they rerouted the neural pathways to account for the icreased neural activity?  
+ aiSpeakWait( ent, "lipsync_vo_luch_wonderrer" );
+}
+
+
+void VO_holdorf_iwondkain( entity ent )
+{
+ //Holdorf +use: I wonder what kind of hardware Corporal Kain's got in his head right now.  
+ aiSpeakWait( ent, "lipsync_vo_holdorf_iwondkain" );
+}
+
+
+void VO_holdorf_iwondinst( entity ent )
+{
+ //Holdorf +use: I really wonder how many instructions per second he can perform.  
+ aiSpeakWait( ent, "lipsync_vo_holdorf_iwondinst" );
+}
+
+
+void VO_holdorf_youthinkstrgg( entity ent )
+{
+ //Holdorf +use: You think the Strogg are using nanotechnology to enhance the celluar membranes?  
+ aiSpeakWait( ent, "lipsync_vo_holdorf_youthinkstrgg" );
+}
+
+
+void VO_( entity ent )
+{
+ //Stienberg +use: I'm busy, piss off (find a suitable Raven line here, one that doesn't reference Kain or Corporal)  
+ aiSpeakWait( ent, "lipsync_vo_" );
+}
+
+
+void VO_( entity ent )
+{
+ //Stienberg +use: I'm busy, piss off (find a suitable Raven line here, one that doesn't reference Kain or Corporal)  
+ aiSpeakWait( ent, "lipsync_vo_" );
+}
+
+
+void VO_( entity ent )
+{
+ //Stienberg +use: I'm busy, piss off (find a suitable Raven line here, one that doesn't reference Kain or Corporal)  
+ aiSpeakWait( ent, "lipsync_vo_" );
+}
+
+
+void VO_( entity ent )
+{
+ //Johnson +use: I'm busy, piss off (find a suitable Raven line here, one that doesn't reference Kain or Corporal)  
+ aiSpeakWait( ent, "lipsync_vo_" );
+}
+
+
+void VO_( entity ent )
+{
+ //Johnson +use: I'm busy, piss off (find a suitable Raven line here, one that doesn't reference Kain or Corporal)  
+ aiSpeakWait( ent, "lipsync_vo_" );
+}
+
+
+void VO_( entity ent )
+{
+ //Johnson +use: I'm busy, piss off (find a suitable Raven line here, one that doesn't reference Kain or Corporal)  
+ aiSpeakWait( ent, "lipsync_vo_" );
+}
+
+
+void VO_yoshi_icanbellett( entity ent )
+{
+ //Yoshida +use: I can't believe they're just letting him walk around!  
+ aiSpeakWait( ent, "lipsync_vo_yoshi_icanbellett" );
+}
+
+
+void VO_yoshi_swearmust( entity ent )
+{
+ //Yoshida +use: I swear, command must be desperate if they're putting Kain back in the field  
+ aiSpeakWait( ent, "lipsync_vo_yoshi_swearmust" );
+}
+
+
+void VO_yoshi_bettrnot( entity ent )
+{
+ //Yoshida +use: They better not let him wander the ship without his bodyguard.  
+ aiSpeakWait( ent, "lipsync_vo_yoshi_bettrnot" );
+}
+
+
+void VO_mustaine_leavenex( entity ent )
+{
+ //Mustaine +use: My Squad leaves for the Nexus in a half-hour.  
+ aiSpeakWait( ent, "lipsync_vo_mustaine_leavenex" );
+}
+
+
+void VO_mustaine_icantwait( entity ent )
+{
+ //Mustaine +use: I can’t wait to end this war.  
+ aiSpeakWait( ent, "lipsync_vo_mustaine_icantwait" );
+}
+
+
+void VO_mustaine_ilost3sq( entity ent )
+{
+ //Mustaine +use: I lost three squad mates in the Prison Assault.  I’ll make the Strogg the pay.  
+ aiSpeakWait( ent, "lipsync_vo_mustaine_ilost3sq" );
+}
+
+
+void VO_luwg_quiteamaz( entity ent )
+{
+ //Dr Ludwig: It's really quite amazing that anbody survives the Stroggification procedure  
+ aiSpeakWait( ent, "lipsync_vo_luwg_quiteamaz" );
+}
+
+
+void VO_luwg_rigtest( entity ent )
+{
+ //Dr Ludwig: Most likely through rigirious testing on live subjects  
+ aiSpeakWait( ent, "lipsync_vo_luwg_rigtest" );
+}
+
+
+void VO_luwg_howover( entity ent )
+{
+ //Dr Ludwig: How they overcame the body rejecting all the foreign hardware is baffling   
+ aiSpeakWait( ent, "lipsync_vo_luwg_howover" );
+}
+
+
+void VO_core_strggperf( entity ent )
+{
+ //Dr Coreman: It would seem the Strogg have perfected their process.  
+ aiSpeakWait( ent, "lipsync_vo_core_strggperf" );
+}
+
+
+void VO_core_earlystrgg( entity ent )
+{
+ //Dr Coreman: Agreed, I would expect that early Stroggification proved quite unsuccessful.  
+ aiSpeakWait( ent, "lipsync_vo_core_earlystrgg" );
+}
+
+
+void VO_core_wonderwill( entity ent )
+{
+ //Dr Coreman: I wonder if they will let us look into that by studying Corporal Kain?  
+ aiSpeakWait( ent, "lipsync_vo_core_wonderwill" );
+}
+
+
+void VO_marks_dekprettybsy( entity ent )
+{
+ //Markswell +use: Dekard, I'm pretty busy at the moment  
+ aiSpeakWait( ent, "lipsync_vo_marks_dekprettybsy" );
+}
+
+
+void VO_marks_dekordersci( entity ent )
+{
+ //Markswell +use: Dekard, didn't I order you to get to Sci-Tech?  
+ aiSpeakWait( ent, "lipsync_vo_marks_dekordersci" );
+}
+
+
+void VO_marks_takwaitfor( entity ent )
+{
+ //Markswell +use: Tak is waiting for you in Sci-tech Dekard, get moving.  
+ aiSpeakWait( ent, "lipsync_vo_marks_takwaitfor" );
+}
+
+
+void VO_marks_thiwasthear( entity ent )
+{
+ //Markswell: This was the area we received heavy air defense fire, I'm positive there is a key Strogg position near those mountains  
+ aiSpeakWait( ent, "lipsync_vo_marks_thiwasthear" );
+}
+
+
+void VO_( entity ent )
+{
+ //McNutt +use: I'm busy, piss off (find a suitable Raven line here, one that doesn't reference Kain or Corporal)  
+ aiSpeakWait( ent, "lipsync_vo_" );
+}
+
+
+void VO_( entity ent )
+{
+ //McNutt +use: I'm busy, piss off (find a suitable Raven line here, one that doesn't reference Kain or Corporal)  
+ aiSpeakWait( ent, "lipsync_vo_" );
+}
+
+
+void VO_( entity ent )
+{
+ //McNutt +use: I'm busy, piss off (find a suitable Raven line here, one that doesn't reference Kain or Corporal)  
+ aiSpeakWait( ent, "lipsync_vo_" );
+}
+
+
+void VO_renner_cantyousee( entity ent )
+{
+ //Renner +use: Can't you see I'm a bit busy right now?  
+ aiSpeakWait( ent, "lipsync_vo_renner_cantyousee" );
+}
+
+
+void VO_renner_sargpls( entity ent )
+{
+ //Renner +use: Sargeant, please...  
+ aiSpeakWait( ent, "lipsync_vo_renner_sargpls" );
+}
+
+
+void VO_renner_ivgotno( entity ent )
+{
+ //Renner +use: I've got nothing else to say to you.  
+ aiSpeakWait( ent, "lipsync_vo_renner_ivgotno" );
+}
+
+
+void VO_renner_whatpos( entity ent )
+{
+ //Renner  : What is your position?  
+ aiSpeakWait( ent, "lipsync_vo_renner_whatpos" );
+}
+
+
+void VO_marine_noideawe( entity ent )
+{
+ //Marine: I have no idea, we are totally pinned down and need immediate support!  
+ aiSpeakWait( ent, "lipsync_vo_marine_noideawe" );
+}
+
+
+void VO_renner_yousigisnt( entity ent )
+{
+ //Renner: Your signal isn't clear, we can't determine your position from here, you'll need to get to a better transmisison point!  
+ aiSpeakWait( ent, "lipsync_vo_renner_yousigisnt" );
+}
+
+
+void VO_marine_ifwemovedie( entity ent )
+{
+ //Marine: If we move, we die!  Just send some help and tell them to listen for the gunfire!  
+ aiSpeakWait( ent, "lipsync_vo_marine_ifwemovedie" );
+}
+
+
+void VO_hughes_imsorrtn( entity ent )
+{
+ //Hughes +use: I'm sorry Sargeant, not right now.  
+ aiSpeakWait( ent, "lipsync_vo_hughes_imsorrtn" );
+}
+
+
+void VO_hughes_maybewec( entity ent )
+{
+ //Hughes +use: Maybe we can chat another time.  
+ aiSpeakWait( ent, "lipsync_vo_hughes_maybewec" );
+}
+
+
+void VO_hughes_notsay( entity ent )
+{
+ //Hughes +use: I'm not going to say it again.  
+ aiSpeakWait( ent, "lipsync_vo_hughes_notsay" );
+}
+
+
+void VO_hughes_isposs( entity ent )
+{
+ //Hughes: It's possible, we don't have any recon data for that area at all  
+ aiSpeakWait( ent, "lipsync_vo_hughes_isposs" );
+}
+
+
+void VO_weldon_mainescirc( entity ent )
+{
+ //Weldon +use: These marines have been running in circles for hours.  
+ aiSpeakWait( ent, "lipsync_vo_weldon_mainescirc" );
+}
+
+
+void VO_weldon_triedtell( entity ent )
+{
+ //Weldon +use: I've tried to tell them, but they keep getting turned around.  
+ aiSpeakWait( ent, "lipsync_vo_weldon_triedtell" );
+}
+
+
+void VO_weldon_frustra( entity ent )
+{
+ //Weldon +use: This is so frustrating.  
+ aiSpeakWait( ent, "lipsync_vo_weldon_frustra" );
+}
+
+
+void VO_( entity ent )
+{
+ //Cordes +use: I'm busy, piss off (find a suitable Raven line here, one that doesn't reference Kain or Corporal)  
+ aiSpeakWait( ent, "lipsync_vo_" );
+}
+
+
+void VO_( entity ent )
+{
+ //Cordes +use: I'm busy, piss off (find a suitable Raven line here, one that doesn't reference Kain or Corporal)  
+ aiSpeakWait( ent, "lipsync_vo_" );
+}
+
+
+void VO_( entity ent )
+{
+ //Cordes +use: I'm busy, piss off (find a suitable Raven line here, one that doesn't reference Kain or Corporal)  
+ aiSpeakWait( ent, "lipsync_vo_" );
+}
+
+
+void VO_inglis_heywhy( entity ent )
+{
+ //Inglis +use: Hey, why aren't you part of the Nexus assault like the rest of us?  
+ aiSpeakWait( ent, "lipsync_vo_inglis_heywhy" );
+}
+
+
+void VO_mccaugh_shutinglis( entity ent )
+{
+ //McCaughey (response): Shut the hell up Inglis, their squad lost 3 members today, these guys have already been on two full ops while you were still dreaming about Earth  
+ aiSpeakWait( ent, "lipsync_vo_mccaugh_shutinglis" );
+}
+
+
+void VO_inglis_reallysht( entity ent )
+{
+ //Inglis (response): Really?  Oh shit..  
+ aiSpeakWait( ent, "lipsync_vo_inglis_reallysht" );
+}
+
+
+void VO_mccaugh_falcsqisinall( entity ent )
+{
+ //McCaughey +use: Falcon squad is in all the news this morning.  
+ aiSpeakWait( ent, "lipsync_vo_mccaugh_falcsqisinall" );
+}
+
+
+void VO_inglis_whofalc( entity ent )
+{
+ //Inglis (response): Who's Falcon squad again?  
+ aiSpeakWait( ent, "lipsync_vo_inglis_whofalc" );
+}
+
+
+void VO_mccaugh_nevermind( entity ent )
+{
+ //McCaughey (response): Nevermind.  
+ aiSpeakWait( ent, "lipsync_vo_mccaugh_nevermind" );
+}
+
+
+void VO_martel_itsamaz( entity ent )
+{
+ //Martel +use: It's amazing this damn ship has stood up as long as it has.  
+ aiSpeakWait( ent, "lipsync_vo_martel_itsamaz" );
+}
+
+
+void VO_martel_stuckrert( entity ent )
+{
+ //Martel +use: I'm stuck here re-routing systems day in and day out  
+ aiSpeakWait( ent, "lipsync_vo_martel_stuckrert" );
+}
+
+
+void VO_martel_maybeoneofthese( entity ent )
+{
+ //Martel +use: Maybe one of these days I'll get re-assigned to a modern ship.  
+ aiSpeakWait( ent, "lipsync_vo_martel_maybeoneofthese" );
+}
+
+
+void VO_banks_peridef( entity ent )
+{
+ //Banks +use: The Perimeter Defense System is ready.  We’re just doing the last few checks.  
+ aiSpeakWait( ent, "lipsync_vo_banks_peridef" );
+}
+
+
+void VO_banks_nexass( entity ent )
+{
+ //Banks +use: If the Nexus Assault is successful, the war will be over before we'll ever need these defense systems.  
+ aiSpeakWait( ent, "lipsync_vo_banks_nexass" );
+}
+
+
+void VO_banks_coupltarg( entity ent )
+{
+ //Banks +use: We only have a couple more tests.  The system should be good to go.  
+ aiSpeakWait( ent, "lipsync_vo_banks_coupltarg" );
+}
+
+
+void VO_scott_almostev( entity ent )
+{
+ //Scott +use: Almost everyone’s already headed out for the Nexus Assault.  
+ aiSpeakWait( ent, "lipsync_vo_scott_almostev" );
+}
+
+
+void VO_scott_ihopethiswar( entity ent )
+{
+ //Scott +use: I hope this war ends soon.  
+ aiSpeakWait( ent, "lipsync_vo_scott_ihopethiswar" );
+}
+
+
+void VO_scott_stroggtear( entity ent )
+{
+ //Scott +use: The Strogg have been tearing us up, Sir.  But if this works, it will all be worth it.  
+ aiSpeakWait( ent, "lipsync_vo_scott_stroggtear" );
+}
+
+
+void VO_mcken_yourdefch( entity ent )
+{
+ //McKenzie +use: You’re Dekard Chase, aren’t you?  
+ aiSpeakWait( ent, "lipsync_vo_mcken_yourdefch" );
+}
+
+
+void VO_mcken_ihrdwhat( entity ent )
+{
+ //McKenzie +use: I heard what you went through to rescue Strauss.  I’ve met the guy.  I’ve gotta say, you’re a bigger man than I am.  
+ aiSpeakWait( ent, "lipsync_vo_mcken_ihrdwhat" );
+}
+
+
+void VO_mcken_glattomeet( entity ent )
+{
+ //McKenzie +use: Glad to meet you Sargeant, but I've got to get back to work now.  
+ aiSpeakWait( ent, "lipsync_vo_mcken_glattomeet" );
+}
+
+
+void VO_( entity ent )
+{
+ //Donaldson +use: I'm sorry, sir but you don't have clearance to enter the gun pods. (This is a Raven line)  
+ aiSpeakWait( ent, "lipsync_vo_" );
+}
+
+
+void VO_( entity ent )
+{
+ //Donaldson +use: Sir, you cannot enter the pods. Please step away. (This is a Raven line)  
+ aiSpeakWait( ent, "lipsync_vo_" );
+}
+
+
+void VO_( entity ent )
+{
+ //Donaldson +use: I don't want any problems so back it up, Marine. (This is a Raven line)  
+ aiSpeakWait( ent, "lipsync_vo_" );
+}
+
+
+void VO_tak_dekinsci( entity ent )
+{
+ //Tak: Dekard, I need you in Sci-tech  
+ aiSpeakWait( ent, "lipsync_vo_tak_dekinsci" );
+}
+
+
+void VO_tak_heydekwhenyou( entity ent )
+{
+ //Tak: Hey Dekard, when you get a chance, stop by Sci-tech  
+ aiSpeakWait( ent, "lipsync_vo_tak_heydekwhenyou" );
+}
+
+
+void VO_tak_dekyougoing( entity ent )
+{
+ //Tak: Dekard, you're going to want to see the data we've uncovered here in Sci-tech  
+ aiSpeakWait( ent, "lipsync_vo_tak_dekyougoing" );
+}
+
+
+void VO_mcc_primaryreact( entity ent )
+{
+ //MCC Announce: Primary reactor operating at seventy-six percent.  
+ aiSpeakWait( ent, "lipsync_vo_mcc_primaryreact" );
+}
+
+
+void VO_mcc_perimdefon( entity ent )
+{
+ //MCC Announce: Perimeter Defense System is back online.  Coil charge at thirty-seven percent.  
+ aiSpeakWait( ent, "lipsync_vo_mcc_perimdefon" );
+}
+
+
+void VO_mcc_warnposscont( entity ent )
+{
+ //MCC Announce: Warning.  Possible containment breach on deck 4.  
+ aiSpeakWait( ent, "lipsync_vo_mcc_warnposscont" );
+}
+
+
+void VO_mcc_dropintrp( entity ent )
+{
+ //MCC Announce: Dropship Intrepid is ready for deployment.  
+ aiSpeakWait( ent, "lipsync_vo_mcc_dropintrp" );
+}
+
+
+void VO_mcc_warnpower( entity ent )
+{
+ //MCC Announce: Warning.  Power fluctuations detected in auxiliary sensor array.    
+ aiSpeakWait( ent, "lipsync_vo_mcc_warnpower" );
+}
+
+
+void VO_mcc_heatshiedn( entity ent )
+{
+ //MCC Announce: Heat shielding on the main port thruster has been repaired.  
+ aiSpeakWait( ent, "lipsync_vo_mcc_heatshiedn" );
+}
+
+
+void VO_mcc_navsysdia( entity ent )
+{
+ //MCC Announce: Navigation system diagnostic complete, system is functioning within normal parameters.  
+ aiSpeakWait( ent, "lipsync_vo_mcc_navsysdia" );
+}
+
+
+void VO_mcc_alertcool( entity ent )
+{
+ //MCC Announce: Alert.  Coolant rupture detected on deck 5.  Immediate repair is required.  
+ aiSpeakWait( ent, "lipsync_vo_mcc_alertcool" );
+}
+
+
+void VO_mcc_warnseis( entity ent )
+{
+ //MCC Announce: Warning.  Seismic activity detected.  Waveform is outside acceptable range.  
+ aiSpeakWait( ent, "lipsync_vo_mcc_warnseis" );
+}
+
+
+void VO_mcc_thirdo2( entity ent )
+{
+ //MCC Announce: Third and Forth oxygen filters are now online.  Oxygen content increased by three hundred and fifty parts per million.  
+ aiSpeakWait( ent, "lipsync_vo_mcc_thirdo2" );
+}
+
+
+
+void VO_nix_datayourteam( entity ent )
+{
+ //Nix +use: This data your team collected is amazing.  
+ aiSpeakWait( ent, "lipsync_vo_nix_datayourteam" );
+}
+
+
+void VO_nix_weableacc( entity ent )
+{
+ //Nix +use: We've been able to access information about this history of the Strogg world that we've never seen before  
+ aiSpeakWait( ent, "lipsync_vo_nix_weableacc" );
+}
+
+
+void VO_nix_itseemstrgg( entity ent )
+{
+ //Nix +use: It seems that the Strogg were much like us once, until they tried to genetically engineer themselves into perfection.  
+ aiSpeakWait( ent, "lipsync_vo_nix_itseemstrgg" );
+}
+
+
+void VO_bergr_datateam( entity ent )
+{
+ //Berger +use: I'm sure you've already heard, but without the data your team collected, there would be no Nexus assault  
+ aiSpeakWait( ent, "lipsync_vo_bergr_datateam" );
+}
+
+
+void VO_bergr_prochand( entity ent )
+{
+ //Berger +use: It's too much data for us to process by hand, so we have search algorythims looking for key tactical information  
+ aiSpeakWait( ent, "lipsync_vo_bergr_prochand" );
+}
+
+
+void VO_bergr_study( entity ent )
+{
+ //Berger +use: We will be strudying this find for years to come, even after the war is over.  
+ aiSpeakWait( ent, "lipsync_vo_bergr_study" );
+}
+
+
+void VO_schuch_strogghist( entity ent )
+{
+ //Schuch +use: The Strogg history is well guarded  
+ aiSpeakWait( ent, "lipsync_vo_schuch_strogghist" );
+}
+
+
+void VO_schuch_planetravag( entity ent )
+{
+ //Schuch +use: Their planet was ravaged by some kind of civil war for decades.  
+ aiSpeakWait( ent, "lipsync_vo_schuch_planetravag" );
+}
+
+
+void VO_schuch_geneteng( entity ent )
+{
+ //Schuch +use: Genetically engineered Strogg versus another group of un-engineered Strogg, must have been a bloodbath  
+ aiSpeakWait( ent, "lipsync_vo_schuch_geneteng" );
+}
+
+
+void VO_tak_dekwepouringover( entity ent )
+{
+ //Tak: Dekard, we've been pouring over the data since Strauss provided the decryption algorithms, and we've come across something really disturbing...  
+ aiSpeakWait( ent, "lipsync_vo_tak_dekwepouringover" );
+}
+
+
+void VO_tak_numrefvalk( entity ent )
+{
+ //Tak: There are a number of references to the Makron, or Makrons, we aren't sure, but more importantly, there is talk of some kind of Makron Guardian, the Strogg refer to it as the Valkaryne.  
+ aiSpeakWait( ent, "lipsync_vo_tak_numrefvalk" );
+}
+
+
+void VO_tak_wemins( entity ent )
+{
+ //Tak: We're minutes away from fully decoding this sequence, once that is complete we will...  
+ aiSpeakWait( ent, "lipsync_vo_tak_wemins" );
+}
+
+
+void VO_tak_whathellgo( entity ent )
+{
+ //Tak: What the hell is going on?!  
+ aiSpeakWait( ent, "lipsync_vo_tak_whathellgo" );
+}
+
+
+void VO_mcc_allperidef( entity ent )
+{
+ //MCC Announce: All perimeter defense trained marines, report to a perimeter defense pod immediately.  
+ aiSpeakWait( ent, "lipsync_vo_mcc_allperidef" );
+}
+
+
+void VO_marks_dekgettodef( entity ent )
+{
+ //Markswell: Dekard, get to a perimeter defense gun, now!  
+ aiSpeakWait( ent, "lipsync_vo_marks_dekgettodef" );
+}
+
+
+void VO_tak_dekperi( entity ent )
+{
+ //Tak +use: Dekard, get to a perimeter defense gun!  
+ aiSpeakWait( ent, "lipsync_vo_tak_dekperi" );
+}
+
+
+void VO_tak_ineedtostay( entity ent )
+{
+ //Tak +use: I need to stay here and get this data decoded!  
+ aiSpeakWait( ent, "lipsync_vo_tak_ineedtostay" );
+}
+
+
+void VO_tak_sorrydekn( entity ent )
+{
+ //Tak +use: Sorry Dekard, I need to focus on this data!  
+ aiSpeakWait( ent, "lipsync_vo_tak_sorrydekn" );
+}
+
+
+void VO_martel_greatstrgg( entity ent )
+{
+ //Martel +use: Great!  Now the Strogg are going to help this ship fall apart!  
+ aiSpeakWait( ent, "lipsync_vo_martel_greatstrgg" );
+}
+
+
+void VO_martel_oncethose( entity ent )
+{
+ //Martel +use: Once those shields go down, this ship doesn't stand a chance.  
+ aiSpeakWait( ent, "lipsync_vo_martel_oncethose" );
+}
+
+
+void VO_martel_wellsucc( entity ent )
+{
+ //Martel +use: Well, if they are successful, at least we'll get to move to a more moden ship.  
+ aiSpeakWait( ent, "lipsync_vo_martel_wellsucc" );
+}
+
+
+void VO_smith_sirperidef( entity ent )
+{
+ //Smith +use: Sir, they need you on a perimeter defense cannon!  
+ aiSpeakWait( ent, "lipsync_vo_smith_sirperidef" );
+}
+
+
+void VO_smith_comdctr( entity ent )
+{
+ //Smith +use: The command center is closed access right now  
+ aiSpeakWait( ent, "lipsync_vo_smith_comdctr" );
+}
+
+
+void VO_smith_sir5( entity ent )
+{
+ //Smith +use: Sir!  
+ aiSpeakWait( ent, "lipsync_vo_smith_sir5" );
+}
+
+
+void VO_rich_nocmdctr( entity ent )
+{
+ //Richardson +use: I can't let you in the command center right now, sorry sir.  
+ aiSpeakWait( ent, "lipsync_vo_rich_nocmdctr" );
+}
+
+
+void VO_rich_thesqbredy( entity ent )
+{
+ //Richardson +use: If the squibs get on board, I'll be ready  
+ aiSpeakWait( ent, "lipsync_vo_rich_thesqbredy" );
+}
+
+
+void VO_rich_siravadef( entity ent )
+{
+ //Richardson +use: Sir, available defense cannons are just down the hallway.  
+ aiSpeakWait( ent, "lipsync_vo_rich_siravadef" );
+}
+
+
+void VO_darn_overdef( entity ent )
+{
+ //Darnell: Dekard, over here, this defense turret is ready for you!  
+ aiSpeakWait( ent, "lipsync_vo_darn_overdef" );
+}
+
+
+void VO_marine1_thisperdef( entity ent )
+{
+ //Marine 1: This is perimeter defense control, I've got waves of Strogg fighters incoming, ready up marines!  
+ aiSpeakWait( ent, "lipsync_vo_marine1_thisperdef" );
+}
+
+
+void VO_marine1_harvinb( entity ent )
+{
+ //Marine 1: Harvester is inbound, south turrets incoming!  
+ aiSpeakWait( ent, "lipsync_vo_marine1_harvinb" );
+}
+
+
+void VO_marine1_morestrgg( entity ent )
+{
+ //Marine 1: More Strogg fighters moving in from the east!  
+ aiSpeakWait( ent, "lipsync_vo_marine1_morestrgg" );
+}
+
+
+void VO_marine1_nexdroppod( entity ent )
+{
+ //Marine 1: The Nexus assault drop pods are exiting the ship!  
+ aiSpeakWait( ent, "lipsync_vo_marine1_nexdroppod" );
+}
+
+
+void VO_marine1_nexasspod( entity ent )
+{
+ //Marine 1: Nexus assault pods are away, good job marines!  
+ aiSpeakWait( ent, "lipsync_vo_marine1_nexasspod" );
+}
+
+
+void VO_marine1_nexgrnd( entity ent )
+{
+ //Marine 1: Nexus assault ground forces are departing the ship, marines, cover those ground forces!  
+ aiSpeakWait( ent, "lipsync_vo_marine1_nexgrnd" );
+}
+
+
+void VO_marine1_grnsred( entity ent )
+{
+ //Marine 1: The ground foces are getting torn to shreads.  Marines, cover those ground forces!  
+ aiSpeakWait( ent, "lipsync_vo_marine1_grnsred" );
+}
+
+
+void VO_marks_attfalcspeed( entity ent )
+{
+ //Markswell: Attention Falcon squad, once those ground forces are away, everybody report to the speeder hanger immediately- we have new orders!  
+ aiSpeakWait( ent, "lipsync_vo_marks_attfalcspeed" );
+}
+
+
+void VO_marine1_holdshharv( entity ent )
+{
+ //Marine 1: Holy shit, we've got a harvester climbing over the ship to get to the Nexus ground assault forces, south turrets be ready!  
+ aiSpeakWait( ent, "lipsync_vo_marine1_holdshharv" );
+}
+
+
+void VO_marine1_nexgaway( entity ent )
+{
+ //Marine 1: Nexus ground assault forces are away, we have more incoming Strogg fighters!  
+ aiSpeakWait( ent, "lipsync_vo_marine1_nexgaway" );
+}
+
+
+void VO_marks_falcgetto( entity ent )
+{
+ //Markswell: Falcon, get to the speeder hanger, double time it!  
+ aiSpeakWait( ent, "lipsync_vo_marks_falcgetto" );
+}
+
+
+void VO_marks_dekweneedspeed( entity ent )
+{
+ //Markswell: Dekard, we need you at the speeder hanger now!  Move it marine!  
+ aiSpeakWait( ent, "lipsync_vo_marks_dekweneedspeed" );
+}
+
+
+void VO_marks_dekwherehell( entity ent )
+{
+ //Markswell: Dekard, where the hell are you?!  
+ aiSpeakWait( ent, "lipsync_vo_marks_dekwherehell" );
+}
+
+
+void VO_mcc_warnhull57( entity ent )
+{
+ //MCC Announce: Warning!  Hull Breach on Decks 5, 7, and 10.  
+ aiSpeakWait( ent, "lipsync_vo_mcc_warnhull57" );
+}
+
+
+void VO_mcc_strogglife( entity ent )
+{
+ //MCC Announce: Strogg Lifeforms detected in corridor twelve.  
+ aiSpeakWait( ent, "lipsync_vo_mcc_strogglife" );
+}
+
+
+void VO_mcc_medicalatt( entity ent )
+{
+ //MCC Announce: Medical attention required on Deck 9.  
+ aiSpeakWait( ent, "lipsync_vo_mcc_medicalatt" );
+}
+
+
+void VO_mcc_warnprimar( entity ent )
+{
+ //MCC Announce: Warning.  Primary reactors exposed.  Radiation leak imminent.  
+ aiSpeakWait( ent, "lipsync_vo_mcc_warnprimar" );
+}
+
+
+void VO_mcc_primarhang( entity ent )
+{
+ //MCC Announce: Primary Hanger is under attack.  
+ aiSpeakWait( ent, "lipsync_vo_mcc_primarhang" );
+}
+
+
+void VO_mcc_hullinteg( entity ent )
+{
+ //MCC Announce: Hull integrity at 68 percent.  
+ aiSpeakWait( ent, "lipsync_vo_mcc_hullinteg" );
+}
+
+
+void VO_mcc_primpowsys( entity ent )
+{
+ //MCC Announce: Primary power systems offline.  Rerouting through secondary lines.  
+ aiSpeakWait( ent, "lipsync_vo_mcc_primpowsys" );
+}
+
+
+void VO_mcc_alertprimwe( entity ent )
+{
+ //MCC Announce: Alert!  Primary weapons battery has been destroyed.  
+ aiSpeakWait( ent, "lipsync_vo_mcc_alertprimwe" );
+}
+
+
+void VO_mcc_warnlifesupp( entity ent )
+{
+ //MCC Announce: Warning!  Life support systems failing.    
+ aiSpeakWait( ent, "lipsync_vo_mcc_warnlifesupp" );
+}
+
+
+void VO_mcc_alertreactcrit( entity ent )
+{
+ //MCC Announce: Alert!  Reactor critical.  Primary engines offline.  
+ aiSpeakWait( ent, "lipsync_vo_mcc_alertreactcrit" );
+}
+
+
+void VO_marine1_contaceng( entity ent )
+{
+ //marine 1: I got contact!  Watch the Engine Room!  
+ aiSpeakWait( ent, "lipsync_vo_marine1_contaceng" );
+}
+
+
+void VO_marine1_thereact( entity ent )
+{
+ //marine 1: They’re going for the reactor!  Push’em back!  
+ aiSpeakWait( ent, "lipsync_vo_marine1_thereact" );
+}
+
+
+void VO_marine2_thecomport( entity ent )
+{
+ //marine 2: They’re coming from Port!  Hold’em off!  
+ aiSpeakWait( ent, "lipsync_vo_marine2_thecomport" );
+}
+
+
+void VO_marine2_heavycont( entity ent )
+{
+ //marine 2: I got three heavy contacts off starboard, they’re… Oh shit. (Static)  
+ aiSpeakWait( ent, "lipsync_vo_marine2_heavycont" );
+}
+
+
+void VO_marine3_nexassalms( entity ent )
+{
+ //marine 3: Nexus Assault’s almost prepped get us a little more time!  
+ aiSpeakWait( ent, "lipsync_vo_marine3_nexassalms" );
+}
+
+
+void VO_marine3_panthersq( entity ent )
+{
+ //marine 3: Panther squad, requesting support on deck 12.  We’re being overrun.  
+ aiSpeakWait( ent, "lipsync_vo_marine3_panthersq" );
+}
+
+
+void VO_marine4_ivegothost( entity ent )
+{
+ //marine 4: I’ve got hostile signatures all over!  This is gonna get tough.  
+ aiSpeakWait( ent, "lipsync_vo_marine4_ivegothost" );
+}
+
+
+void VO_marine4_deck3lstnoon( entity ent )
+{
+ //marine 4: Deck 3 is lost.  There’s no one left.  
+ aiSpeakWait( ent, "lipsync_vo_marine4_deck3lstnoon" );
+}
+
+
+void VO_marine5_igotthreemen( entity ent )
+{
+ //marine 5: I got three men down on Deck 5.  Requesting medical assistance.  
+ aiSpeakWait( ent, "lipsync_vo_marine5_igotthreemen" );
+}
+
+
+void VO_marine5_wherenexass( entity ent )
+{
+ //marine 5: Where is the Nexus Assault?  
+ aiSpeakWait( ent, "lipsync_vo_marine5_wherenexass" );
+}
+
+
+void VO_marine6_theydroppte( entity ent )
+{
+ //marine 6: They’re dropping teleporters!  They’re gonna split us open from the inside.  
+ aiSpeakWait( ent, "lipsync_vo_marine6_theydroppte" );
+}
+
+
+void VO_marine6_thatnegpan( entity ent )
+{
+ //marine 6: That’s a negative, Panther.  They’ve locked down corridor 5.    
+ aiSpeakWait( ent, "lipsync_vo_marine6_thatnegpan" );
+}
+
+
+void VO_marine7_thehitreactch( entity ent )
+{
+ //marine 7: They’ve hit the reactor chamber.  We got two… make that three leaks near the aft cargo holds.  
+ aiSpeakWait( ent, "lipsync_vo_marine7_thehitreactch" );
+}
+
+
+void VO_marine7_watchreactcrit( entity ent )
+{
+ //marine 7: Watch it!  Reactor’s critical!  
+ aiSpeakWait( ent, "lipsync_vo_marine7_watchreactcrit" );
+}
+
+
+void VO_marine8_deack9sec( entity ent )
+{
+ //marine 8: Deck 9 secure.  Moving to (static) What the fu(ck – Static)  
+ aiSpeakWait( ent, "lipsync_vo_marine8_deack9sec" );
+}
+
+
+void VO_marine8_tarrantdmn( entity ent )
+{
+ //marine 8: Tarrant!  Lt. Tarrant!  Answer me damn… Oh geezus! (Screams)  
+ aiSpeakWait( ent, "lipsync_vo_marine8_tarrantdmn" );
+}
+
+
+void VO_marine1_wesquib( entity ent )
+{
+ //marine 1: We got squibs in the main hanger!  
+ aiSpeakWait( ent, "lipsync_vo_marine1_wesquib" );
+}
+
+
+void VO_marine1_gotcnt3( entity ent )
+{
+ //marine 1: I got contact.  Three incoming squadrons, bearing five three nine.  Watch yourselves.  
+ aiSpeakWait( ent, "lipsync_vo_marine1_gotcnt3" );
+}
+
+
+void VO_marine2_fallbbb( entity ent )
+{
+ //marine 2: They’re all over us!  Fall back.  Fall back!  
+ aiSpeakWait( ent, "lipsync_vo_marine2_fallbbb" );
+}
+
+
+void VO_marine2_ahshitwhr( entity ent )
+{
+ //marine 2: Ah shit!  We’re do they keep coming from?  
+ aiSpeakWait( ent, "lipsync_vo_marine2_ahshitwhr" );
+}
+
+
+void VO_belica_sirgun( entity ent )
+{
+ //Belica: Here sir, your guns, I also was able to modify your Cold Fire cannon with an extended clip!  Good luck!  
+ aiSpeakWait( ent, "lipsync_vo_belica_sirgun" );
+}
+
+
+void VO_belica_die( entity ent )
+{
+ //Belica: Arrrghhh!  
+ aiSpeakWait( ent, "lipsync_vo_belica_die" );
+}
+
+
+void VO_mason_theytakeng( entity ent )
+{
+ //Mason +use: They've taken engineering!  
+ aiSpeakWait( ent, "lipsync_vo_mason_theytakeng" );
+}
+
+
+void VO_mason_wegottop( entity ent )
+{
+ //Mason +use: We've got to push back in there!  
+ aiSpeakWait( ent, "lipsync_vo_mason_wegottop" );
+}
+
+
+void VO_mason_staydown5( entity ent )
+{
+ //Mason +use: Stay down!  
+ aiSpeakWait( ent, "lipsync_vo_mason_staydown5" );
+}
+
+
+void VO_russ_damnsqbs( entity ent )
+{
+ //Russell +use: Damn squbs got the jump on us!  
+ aiSpeakWait( ent, "lipsync_vo_russ_damnsqbs" );
+}
+
+
+void VO_russ_stopyamm( entity ent )
+{
+ //Russell +use: Stop yammering and take up a gun!  
+ aiSpeakWait( ent, "lipsync_vo_russ_stopyamm" );
+}
+
+
+void VO_russ_putupsht( entity ent )
+{
+ //Russell +use: Put up or shut up Sarge!  
+ aiSpeakWait( ent, "lipsync_vo_russ_putupsht" );
+}
+
+
+void VO_mason_takethatshit( entity ent )
+{
+ //Mason: Take that shit squib!  
+ aiSpeakWait( ent, "lipsync_vo_mason_takethatshit" );
+}
+
+
+void VO_mason_getyrhead( entity ent )
+{
+ //Mason: Get your head down!  
+ aiSpeakWait( ent, "lipsync_vo_mason_getyrhead" );
+}
+
+
+void VO_mason_theflank( entity ent )
+{
+ //Mason: They'll flank this position soon!  
+ aiSpeakWait( ent, "lipsync_vo_mason_theflank" );
+}
+
+
+void VO_russ_dieyoupsh( entity ent )
+{
+ //Russell: Die you piece of shit!  
+ aiSpeakWait( ent, "lipsync_vo_russ_dieyoupsh" );
+}
+
+
+void VO_russ_youlikesome( entity ent )
+{
+ //Russell: You like some of that!?  
+ aiSpeakWait( ent, "lipsync_vo_russ_youlikesome" );
+}
+
+
+void VO_russ_weneedbacks( entity ent )
+{
+ //Russell: We need backup in Sector D four!  
+ aiSpeakWait( ent, "lipsync_vo_russ_weneedbacks" );
+}
+
+
+void VO_turguy_arrrrg( entity ent )
+{
+ //Turret Guy: Arrrghhh!  
+ aiSpeakWait( ent, "lipsync_vo_turguy_arrrrg" );
+}
+
+
+void VO_nava_holdfire( entity ent )
+{
+ //Navajas: Hold your fire!  
+ aiSpeakWait( ent, "lipsync_vo_nava_holdfire" );
+}
+
+
+void VO_darn_wasted( entity ent )
+{
+ //Darnell: Holy shit, Dekard, I almost wasted you.  Let's get to the speeder hanger!  
+ aiSpeakWait( ent, "lipsync_vo_darn_wasted" );
+}
+
+
+
+void VO_marks_dekgoodnex( entity ent )
+{
+ //Markswell: Dekard, good.  The Nexus assault has lifted off, but we have an enormous problem. Tak...  
+ aiSpeakWait( ent, "lipsync_vo_marks_dekgoodnex" );
+}
+
+
+void VO_tak_wefindec( entity ent )
+{
+ //Tak: We finished decoding the data about the Makron guardian, AKA the Valkaryne?  She is the reason why another Makron appeared so quickly after the first one fell.  Her entire purpose is to awaken a new Makron when one is destroyed.    
+ aiSpeakWait( ent, "lipsync_vo_tak_wefindec" );
+}
+
+
+void VO_tak_valkact( entity ent )
+{
+ //Tak: The Valkaryne acts as a data conduit for a newly awakened Makron.  She filters all the data from the Nexus into a new Makron, making sure the Strogg leadership doesn't skip a beat.  This is even more concerning- since she can filter Nexus information directly, it's possible she doesn't need the Nexus like the other Strogg do.  She can function without it!  
+ aiSpeakWait( ent, "lipsync_vo_tak_valkact" );
+}
+
+
+void VO_tak_datapoint( entity ent )
+{
+ //Tak: The data we found  pointed us to a cryogenic facility where perhaps hundreds of Makrons are stored in stasis, if the Nexus assault is successful - the Valkaryne will just awaken another Makron immediately and we'll be back to square one.  
+ aiSpeakWait( ent, "lipsync_vo_tak_datapoint" );
+}
+
+
+void VO_marks_wetrycomm( entity ent )
+{
+ //Markswell: We've tried to communicate this data to the Nexus assault forces, but the Squib attack has cut off our communication.  So our only chance here is to strike at the Valkaryne where they least expect it.  Inside the Makron Cryogenics facility.  
+ aiSpeakWait( ent, "lipsync_vo_marks_wetrycomm" );
+}
+
+
+void VO_tak_unfortstrgg( entity ent )
+{
+ //Tak: Unfortunately, the Strogg have already begun to shut down access lines to the Cryogenics facility, like a preemptive action in case they detect that the Makron is danger.  Locking mechanisms are shutting down as we speak.  
+ aiSpeakWait( ent, "lipsync_vo_tak_unfortstrgg" );
+}
+
+
+void VO_marks_dektimeshort( entity ent )
+{
+ //Markswell: Dekard, time is short - you and these men need to haul ass to the Cryogenics facility, the rest of us are staying behind to scuttle the MCC so the Squibs don't capture it.  
+ aiSpeakWait( ent, "lipsync_vo_marks_dektimeshort" );
+}
+
+
+void VO_marks_youonlyfew( entity ent )
+{
+ //Markswell: You'll only have a few minutes to clear the MCC blast radius.  Go as fast as you can Dekard, get to the Cryogenics facility before the Strogg finish locking down the access lines  The race is on.  
+ aiSpeakWait( ent, "lipsync_vo_marks_youonlyfew" );
+}
+
+
+void VO_marks_moveout5( entity ent )
+{
+ //Markswell: Move out!  
+ aiSpeakWait( ent, "lipsync_vo_marks_moveout5" );
+}
+
+
+
+void VO_nava_dekletsgo( entity ent )
+{
+ //Navajas +use: Dekard, lets go!  
+ aiSpeakWait( ent, "lipsync_vo_nava_dekletsgo" );
+}
+
+
+void VO_nava_wehavenotime( entity ent )
+{
+ //Navajas +use: We have no time to waste!  
+ aiSpeakWait( ent, "lipsync_vo_nava_wehavenotime" );
+}
+
+
+void VO_nava_thepresson( entity ent )
+{
+ //Navajas +use: The pressures on now, eh Sarge?  
+ aiSpeakWait( ent, "lipsync_vo_nava_thepresson" );
+}
+
+
+void VO_darn_notime( entity ent )
+{
+ //Darnell +use: No time to chat now!  
+ aiSpeakWait( ent, "lipsync_vo_darn_notime" );
+}
+
+
+void VO_darn_getmv( entity ent )
+{
+ //Darnell +use: Let's get moving!  
+ aiSpeakWait( ent, "lipsync_vo_darn_getmv" );
+}
+
+
+void VO_darn_comeon5( entity ent )
+{
+ //Darnell +use: Come on!  
+ aiSpeakWait( ent, "lipsync_vo_darn_comeon5" );
+}
+
+
+void VO_marks_getmovoverr( entity ent )
+{
+ //Markswell +use: Get moving Dekard, this ship's gonna be totally overrun in minutes!  
+ aiSpeakWait( ent, "lipsync_vo_marks_getmovoverr" );
+}
+
+
+void VO_marks_gettospeed( entity ent )
+{
+ //Markswell +use: Get to your speeder!  We'll be leaving via dropshp, don't worry about us!  
+ aiSpeakWait( ent, "lipsync_vo_marks_gettospeed" );
+}
+
+
+void VO_marks_nexrely( entity ent )
+{
+ //Markswell +use: The Nexus assault is relying on your success, go!  
+ aiSpeakWait( ent, "lipsync_vo_marks_nexrely" );
+}
+
+
+void VO_tak_hundredsmak( entity ent )
+{
+ //Tak +use: Hundreds of Makrons...We've got to succeed  
+ aiSpeakWait( ent, "lipsync_vo_tak_hundredsmak" );
+}
+
+
+void VO_tak_letsgodek( entity ent )
+{
+ //Tak +use: Let's go Dekard.  
+ aiSpeakWait( ent, "lipsync_vo_tak_letsgodek" );
+}
+
+
+void VO_tak_routtocryo( entity ent )
+{
+ //Tak +use: The route to the Cryogenics facility is closing as we speak, we have to go!  
+ aiSpeakWait( ent, "lipsync_vo_tak_routtocryo" );
+}
+
+
+void VO_morgan_youknowspeed( entity ent )
+{
+ //Morgan +use: You know these speeders haven't been field tested yet?  
+ aiSpeakWait( ent, "lipsync_vo_morgan_youknowspeed" );
+}
+
+
+void VO_morgan_pushthing( entity ent )
+{
+ //Morgan +use: I wouldn't push these things too hard, who knows what can happen.  
+ aiSpeakWait( ent, "lipsync_vo_morgan_pushthing" );
+}
+
+
+void VO_morgan_onbnav( entity ent )
+{
+ //Morgan +use: The on-board navigation system is buggy as hell  
+ aiSpeakWait( ent, "lipsync_vo_morgan_onbnav" );
+}
+
+
+void VO_naymush_cntbelievgonna( entity ent )
+{
+ //Naymushin +use: Can't believe their gonna blow this ship.   
+ aiSpeakWait( ent, "lipsync_vo_naymush_cntbelievgonna" );
+}
+
+
+void VO_naymush_wegottop( entity ent )
+{
+ //Naymushin +use: We've got to get the hell outta here!  
+ aiSpeakWait( ent, "lipsync_vo_naymush_wegottop" );
+}
+
+
+void VO_naymush_wedntwant( entity ent )
+{
+ //Naymushin +use: We really don't want to be here in the next 10 minutes.  
+ aiSpeakWait( ent, "lipsync_vo_naymush_wedntwant" );
+}
+
+
+void VO_mcc_allspeed( entity ent )
+{
+ //MCC Announce: All speeder units, prepare for departure.  
+ aiSpeakWait( ent, "lipsync_vo_mcc_allspeed" );
+}
+
+
+void VO_mcc_attenallhand( entity ent )
+{
+ //MCC Announce: Attention all hands, escape pods and final dropships are leaving in 3 minutes.  
+ aiSpeakWait( ent, "lipsync_vo_mcc_attenallhand" );
+}
+
+
+void VO_mcc_hannibself( entity ent )
+{
+ //MCC Announce: Hannibal self-destruct sequence activated.  All hands, abandon ship.  
+ aiSpeakWait( ent, "lipsync_vo_mcc_hannibself" );
+}
+
+
+void VO_mcc_warninauto( entity ent )
+{
+ //MCC Announce: Warning.  Auto-destruct sequence committed.  
+ aiSpeakWait( ent, "lipsync_vo_mcc_warninauto" );
+}
+
+
+
+void VO_2_2_10_265_1( entity ent )
+{
+ //pilot_1: Paging Private Herman. Paging Private Paul Herman. Please report to General Harper's office.  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_265_1" );
+}
+
+
+void VO_2_2_10_270_1( entity ent )
+{
+ //pilot_1: Evac drills for decks 4 and 5 to commence at oh two hundred hours.  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_270_1" );
+}
+
+
+void VO_2_2_19_120_1( entity ent )
+{
+ //pilot_1: We have Strogg boarding parties on decks 2 and 3!  
+ aiSpeakWait( ent, "lipsync_vo_2_2_19_120_1" );
+}
+
+
+void VO_2_2_10_210_24( entity ent )
+{
+ //pilot_2: Battle stations. A Strogg force is incoming. Fliers and ground troops are confirmed.  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_210_24" );
+}
+
+
+void VO_2_2_10_280_1( entity ent )
+{
+ //pilot_2: Security, report to deck 2. A Strogg Warrior has been sighted.  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_280_1" );
+}
+
+
+void VO_2_2_10_290_1( entity ent )
+{
+ //pilot_2: Condor squad, report to briefing room 4.  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_290_1" );
+}
+
+
+void VO_2_2_19_140_1( entity ent )
+{
+ //pilot_2: Security, report to hangar, deck 2. Strogg boarding parties have been reported.  
+ aiSpeakWait( ent, "lipsync_vo_2_2_19_140_1" );
+}
+
+
+void VO_2_2_20_10_1( entity ent )
+{
+ //pilot_2: Wolf squad, report to engineering and repel boarding parties.  
+ aiSpeakWait( ent, "lipsync_vo_2_2_20_10_1" );
+}
+
+
+void VO_2_2_10_257_1( entity ent )
+{
+ //marine_1: HQ, this Bison commander. Get us some air support right now or we’re all dead men.  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_257_1" );
+}
+
+
+void VO_2_2_10_259_1( entity ent )
+{
+ //marine_1: Where the hell is that air support?  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_259_1" );
+}
+
+
+void VO_2_2_10_259_3( entity ent )
+{
+ //marine_1: We aren’t gonna last that long.  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_259_3" );
+}
+
+
+void VO_2_2_10_263_2( entity ent )
+{
+ //marine_1: Forget the damn computer. Target them visually.  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_263_2" );
+}
+
+
+void VO_2_2_10_254_1( entity ent )
+{
+ //marine_3: My turret’s been hit . . . aaaah, I'm on fire. Heeeelp meeee!  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_254_1" );
+}
+
+
+void VO_2_2_10_256_1( entity ent )
+{
+ //marine_3: Walker Bison 5 is on fire!  Get Banks out of there!  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_256_1" );
+}
+
+
+void VO_2_2_10_258_1( entity ent )
+{
+ //marine_3: Badger squad, this is HQ. Set up a defensive position at coordinates 43 by 82. Render assistance to Bison squad.  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_258_1" );
+}
+
+
+void VO_2_2_10_259_2( entity ent )
+{
+ //marine_3: ETA is 3 minutes.  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_259_2" );
+}
+
+
+void VO_2_2_10_261_1( entity ent )
+{
+ //marine_3: Strogg flyers approaching at 3 O’clock.  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_261_1" );
+}
+
+
+void VO_2_2_10_262_1( entity ent )
+{
+ //marine_3: Damn!  They just keep coming.  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_262_1" );
+}
+
+
+void VO_2_2_10_262_5( entity ent )
+{
+ //marine_3: There’s too many!  There’s just too damn many!  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_262_5" );
+}
+
+
+void VO_2_2_10_260_1( entity ent )
+{
+ //marine_4: Another Strogg transport just landed! Where the hell are they all coming from?  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_260_1" );
+}
+
+
+void VO_2_2_10_261_2( entity ent )
+{
+ //marine_4: I’m on ’em.  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_261_2" );
+}
+
+
+void VO_2_2_10_262_4( entity ent )
+{
+ //marine_4: They’re all over the place!  I can’t stop them!  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_262_4" );
+}
+
+
+void VO_2_2_20_60_2( entity ent )
+{
+ //marine_5: I confirm that. Re-transmitting pod flight plan.  
+ aiSpeakWait( ent, "lipsync_vo_2_2_20_60_2" );
+}
+
+
+void VO_3_1_0_10_1( entity ent )
+{
+ //marine_5: First wave has launched. All Pods are in the green.  
+ aiSpeakWait( ent, "lipsync_vo_3_1_0_10_1" );
+}
+
+
+void VO_2_2_10_251_1( entity ent )
+{
+ //marine_8: Exterior shields sustaining heavy damage.  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_251_1" );
+}
+
+
+void VO_2_2_10_251_10( entity ent )
+{
+ //marine_8: Danger! Hull has been breached on decks two and three. (Beat) Danger! Hull has been breached.  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_251_10" );
+}
+
+
+void VO_2_2_10_251_2( entity ent )
+{
+ //marine_8: Shields are at 86%.  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_251_2" );
+}
+
+
+void VO_2_2_10_251_3( entity ent )
+{
+ //marine_8: Shields at 72%, rerouting power from propulsion.  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_251_3" );
+}
+
+
+void VO_2_2_10_251_4( entity ent )
+{
+ //marine_8: Shields currently at 63%  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_251_4" );
+}
+
+
+void VO_2_2_10_251_5( entity ent )
+{
+ //marine_8: Warning. Exterior shields are at 48%.  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_251_5" );
+}
+
+
+void VO_2_2_10_251_6( entity ent )
+{
+ //marine_8: Aft shields intermittent. Damage reported on Decks 2 and 3.  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_251_6" );
+}
+
+
+void VO_2_2_10_251_7( entity ent )
+{
+ //marine_8: Warning. Shields have dropped to 29%.  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_251_7" );
+}
+
+
+void VO_2_2_10_251_8( entity ent )
+{
+ //marine_8: Danger. Exterior shields are at 13%.  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_251_8" );
+}
+
+
+void VO_2_2_10_251_9( entity ent )
+{
+ //marine_8: Exterior shields are down.   
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_251_9" );
+}
+
+
+void VO_2_2_10_255_1( entity ent )
+{
+ //marine_8: Harvesters approaching on the left flank.  We need walkers over there ASAP!  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_255_1" );
+}
+
+
+void VO_2_2_10_262_2( entity ent )
+{
+ //marine_8: Aaahhhh!  Yeah! Take that you freaking Squibs!  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_262_2" );
+}
+
+
+void VO_2_2_10_262_3( entity ent )
+{
+ //marine_8: They’re trying to take engineering!  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_262_3" );
+}
+
+
+void VO_2_2_10_263_1( entity ent )
+{
+ //marine_8: Crap. I can’t get a lock on the flyers. They’re comin’ in too low!  
+ aiSpeakWait( ent, "lipsync_vo_2_2_10_263_1" );
+}
+

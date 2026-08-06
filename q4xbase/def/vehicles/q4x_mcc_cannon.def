@@ -1,0 +1,136 @@
+//------------------------------------------------------------------------------
+// q4x_mcc_cannon.def
+//
+// Copyright 2002-2005 Ritual Software
+// Created by JFlanagan for MCC Invasion
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+//							Vehicle Defintion
+//------------------------------------------------------------------------------
+entityDef vehicle_q4x_mcc_cannon {
+	"inherit"					"vehicle_q4x_airassault_space_cannon"
+	"editor_usage"				"MCC side gun for invasion."
+	"def_position_driver"		"vehicle_q4x_mcc_cannon_driver"
+
+	"mins"						"-128 -96 0"
+	"maxs"						"64 96 128"
+	
+	"shieldMins"				"-256 -256 -64"
+	"shieldMaxs"				"256 256 256"
+	"shieldSides"				"10"
+	//"shieldHealth"			"5000"
+	//"shieldRegenDelay"		"6"
+	//"shieldRegenTime"			"3"	
+	
+	"fx_shield"					"effects/vehicles/walker/shield.fx"	
+	"gui_hud"					"guis/vehicles/mcc/cannonplayerhud.gui"
+}
+
+
+//------------------------------------------------------------------------------
+//								Positions
+//------------------------------------------------------------------------------
+entityDef vehicle_q4x_mcc_cannon_driver {
+	"inherit"					"vehicle_q4x_airassault_space_cannon_driver"
+	"def_part_turret_yaw"		"vehicle_q4x_mcc_cannon_yaw"
+	"def_part_turret_pitch"		"vehicle_q4x_mcc_cannon_pitch"
+	"def_part_weapon_pulse"		"vehicle_q4x_mcc_pulse_cannon"
+	"def_part_weapon_rocket"	"vehicle_q4x_mcc_space_cannon_weapon"
+
+	//"exitPosOffset"				"-96 0 0"	// E/W, N/S, U/D
+}
+
+
+//------------------------------------------------------------------------------
+//									Parts
+//------------------------------------------------------------------------------
+entityDef vehicle_q4x_mcc_cannon_yaw {
+	"spawnclass"				"rvVehicleTurret"
+	"minyaw"					"-65"
+	"maxyaw"					"100"
+	"snd_move"					"space_cannon_move"
+	"moveMinVolume"				"-4"
+	"moveMaxVolume"				"8"
+	"turnrate"					"360"
+	"joint"						"base"
+	"yaw"						"1"
+}
+
+
+entityDef vehicle_q4x_mcc_cannon_pitch {
+	"spawnclass"				"rvVehicleTurret"
+	"pitchinvert"				"0"
+	"minpitch"					"-75"
+	"maxpitch"					"55"
+	"snd_move"					"space_cannon_move"
+	"moveMinVolume"				"-4"
+	"moveMaxVolume"				"8"
+	"turnrate"					"360"
+	"joint"						"pivot"
+	"pitch"						"0"
+}
+
+
+entityDef hitscan_q4x_pulse_cannon_mcc
+{
+	"inherit"					"hitscan_bullet"
+	"fx_path"					"effects/vehicles/mcccannon/pulsetrail.fx"
+	"def_damage"				"damage_q4x_pulse_cannon"
+	"fx_impact"					"effects/vehicles/mcccannon/impact.fx"
+}
+
+entityDef vehicle_q4x_mcc_pulse_cannon
+{
+	"inherit"						"vehicle_q4x_airassault_pulse_cannon"
+	"spread"						"0"
+	"range"							"8000"
+	"reticuleScaleDistance"			"4000"
+	"reticuleInterpolationTime"		 "0.100"
+	"convergence"					"0.6"
+//	"convergeDistance"				"1000"
+	"def_hitscan"					"hitscan_q4x_pulse_cannon_mcc"
+	"fx_muzzleflash"				"effects/vehicles/mcccannon/pulsemuzzle.fx"
+}
+
+
+entityDef vehicle_q4x_mcc_space_cannon_weapon
+{
+	"inherit"						"vehicle_q4x_airassault_space_cannon_weapon"
+	"def_projectile"				"projectile_q4x_mcc_space_rocket"
+	"reticuleScaleDistance"			"4000"
+	"reticuleInterpolationTime"		"0.100"
+	"lockRange"						"14000"
+	"timeToHardLock"				"250"
+	"missileSpreadWeight"			"0.123"
+}
+
+
+entityDef projectile_q4x_mcc_space_rocket
+{
+	"inherit"					"projectile_q4x_airassault_space_rocket"
+	"fuse"						"3"
+	"velocity"					"1000 0 0"
+	"speed"						"2000"
+	"def_splash_damage"			"damage_mcc_cannon_splash"
+	"fx_impact"					"effects/vehicles/mcccannon/impact_rocket.fx"
+	"fx_fly"					"effects/vehicles/mcccannon/rocket_fly.fx"
+}
+
+
+entityDef damage_mcc_cannon_splash
+{
+	"inherit"							"damage_air_assault_cannon_splash"
+	"damage"							"10"
+	"radius"							"10"
+	"knockback"							"80"
+	"push"								"80"
+	"gib"								"1"
+
+	"deathPush"							"100"
+	"deathPushMin"						"3000 2000"
+	"deathPushMax"						"5000 3000"
+}
+
+

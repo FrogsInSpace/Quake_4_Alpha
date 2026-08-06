@@ -1,0 +1,244 @@
+effect effects/monsters/valkaryne/deathray_mflash
+{
+	size	1529
+
+	light "light"
+	{
+
+		light
+		{
+			duration	0.1,0.1
+			blend	add
+			material	"lights/defaultPointLight"
+
+			start
+			{
+				size { point 600,600,600 }
+				tint { line 1,0.501961,0,1,0,0 }
+			}
+		}
+	}
+	sound "sound"
+	{
+		soundShader	"tank_railgun"
+	}
+	emitter "steam"
+	{
+		duration	0.35,0.35
+		count		6,6
+
+		sprite
+		{
+			duration	1.3,1.3
+			blend	add
+			material	"gfx/effects/energy_sparks/spark2"
+			gravity		-0.05,-0.05
+			generatedOriginNormal
+
+			start
+			{
+				velocity { box 0,-5,-5,0,5,5 }
+				size { box 100,100,150,150 }
+				tint { point 1,0.501961,0.25098 }
+				fade { point 0.75 }
+				offset { box 20,0,0,40,0,0 }
+				rotate { box 0,1 }
+			}
+
+			motion
+			{
+				size { envelope "linear" }
+				fade { envelope "linear" }
+			}
+
+			end
+			{
+				size { box 300,300,400,400 }
+			}
+		}
+	}
+	emitter "steam2"
+	{
+		duration	0.35,0.35
+		count		10,10
+
+		sprite
+		{
+			duration	1.3,1.3
+			blend	add
+			material	"gfx/effects/fire/fire_plume_additive"
+			gravity		-0.05,-0.05
+			generatedOriginNormal
+
+			start
+			{
+				velocity { box 0,-10,-10,0,10,10 }
+				size { box 100,100,150,150 }
+				tint { point 1,0,0 }
+				fade { point 0.75 }
+				offset { box 20,0,0,40,0,0 }
+				rotate { box 0,1 }
+			}
+
+			motion
+			{
+				size { envelope "linear" }
+				fade { envelope "linear" }
+				rotate { envelope "linear" }
+			}
+
+			end
+			{
+				size { box 300,300,400,400 }
+				rotate { box -0.388889,0.388889 relative }
+			}
+		}
+	}
+	spawner "single_streak"
+	{
+		count		1,1
+		locked
+
+		line
+		{
+			duration	0.16,0.16
+			blend	add
+			material	"gfx/effects/energy_sparks/spark_line2"
+
+			start
+			{
+				position { point -2,0,0 }
+				size { point 300 }
+				length { box 160,0,0,180,0,0 }
+			}
+
+			motion
+			{
+				size { envelope "linear" }
+				fade { envelope "linear" }
+				length { envelope "linear" }
+			}
+
+			end
+			{
+				size { point 3 }
+				length { box 4,0,0,8,0,0 }
+			}
+		}
+	}
+	emitter "heat"
+	{
+		duration	0.35,0.35
+		count		10,10
+		locked
+
+		sprite
+		{
+			duration	0.25,0.25
+			blend	add
+			material	"gfx/effects/energy_sparks/launch_flash3"
+			generatedOriginNormal
+
+			start
+			{
+				velocity { point 0,-500,0 }
+				size { box 20,20,50,50 }
+				tint { point 1,0,0 }
+				fade { point 0 }
+				offset { box 40,0,0,60,0,0 }
+				rotate { box 0,1 }
+			}
+
+			motion
+			{
+				size { envelope "linear" }
+				tint { envelope "linear" }
+				fade { envelope "fastinslowout" }
+			}
+
+			end
+			{
+				size { point 1000,1000 }
+				tint { point 1,0.501961,0.25098 }
+				fade { point 0.3 }
+			}
+		}
+	}
+	spawner "round flash"
+	{
+		count		1,1
+		locked
+
+		sprite
+		{
+			duration	0.3,0.3
+			blend	add
+			material	"gfx/effects/energy_sparks/launch_flash3"
+
+			start
+			{
+				position { box 30,-3,-3,30,3,3 }
+				size { point 5,5 }
+				tint { point 1,0,0 }
+			}
+
+			motion
+			{
+				size { envelope "linear" }
+				tint { envelope "linear" }
+				fade { envelope "exp_x2" }
+			}
+
+			end
+			{
+				size { point 1000,1000 }
+				tint { point 1,1,1 }
+			}
+		}
+	}
+	spawner "flash"
+	{
+		count		1,1
+		locked
+
+		sprite
+		{
+			duration	0.3,0.3
+			blend	add
+			material	"gfx/effects/weapons/flash"
+
+			start
+			{
+				position { point 30,0,0 }
+				size { point 1000,1000 }
+				tint { point 1,0.501961,0.25098 }
+				rotate { box 0,1 }
+			}
+
+			motion
+			{
+				size { envelope "linear" }
+				fade { envelope "exp_x2" }
+			}
+
+			end
+			{
+				size { point 80,80 }
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

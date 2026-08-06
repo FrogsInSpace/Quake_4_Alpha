@@ -1,0 +1,3386 @@
+
+
+/*
+===============================================================================
+
+	Marine
+
+===============================================================================
+
+
+export char_marine_landing
+{
+	options -game /q4xbase -scale .3937 -prefix PLAYER_ -align ALL   -keep HB_base HB_front_rotate HB_battery HB_muzzle_flash MG_stock_joint MG_clip_joint MG_muzzle_flash SG_stock SG_clip SG_muzzle_flash SG_pump_joint l_elbo_tweak r_elbo_tweak body shoulders neckcontrol legs_channel head_channel SG_muzzle_flash MG_muzzle_flash HB_muzzle_flash -parent MG_stock_joint r_wrist -parent HB_base r_wrist -parent hips body -parent waist SPINNER -parent SPINNER body  -sourcedir cinematics/air_assault/landing/marine_01/animations -destdir models/characters/marine 
+
+	addoptions -skipmesh dummyEyeL
+	addoptions -skipmesh dummyEyeR
+	addoptions -skipmesh dummyHair1
+	addoptions -skipmesh dummyHair2
+	addoptions -skipmesh dummyHair3
+	addoptions -skipmesh dummy_head
+	
+	addoptions -skipmesh l_fatigue_arm
+	addoptions -skipmesh r_fatigue_arm
+	
+	addoptions -skipmesh PST_pistol_mesh
+ 	addoptions -skipmesh NG_stock_mesh 
+ 	addoptions -skipmesh NG_handle_mesh 
+ 	addoptions -skipmesh NG_handlebase_mesh 
+ 	addoptions -skipmesh NG_drum_mesh 
+ 	addoptions -skipmesh NG_clip_mesh 
+ 	addoptions -skipmesh NG_clip_left_mesh 
+ 	addoptions -skipmesh NG_clip_right_mesh 
+ 	addoptions -skipmesh NG_scope_mesh 
+ 	addoptions -skipmesh NG_a1_mesh 
+ 	addoptions -skipmesh NG_a2_mesh 
+ 	addoptions -skipmesh NG_b1_mesh 
+ 	addoptions -skipmesh NG_b2_mesh 
+ 	addoptions -skipmesh NG_c1_mesh 
+ 	addoptions -skipmesh NG_c2_mesh 
+ 	addoptions -skipmesh NG_d1_mesh 
+ 	addoptions -skipmesh NG_d2_mesh 
+ 	addoptions -skipmesh NG_e1_mesh 
+ 	addoptions -skipmesh NG_e2_mesh 
+ 	addoptions -skipmesh NG_f1_mesh 
+ 	addoptions -skipmesh NG_f2_mesh 
+ 	addoptions -skipmesh RKT_stock_mesh 
+ 	addoptions -skipmesh RKT_trigger_lft_mesh 
+ 	addoptions -skipmesh RKT_trigger_rt_mesh 
+ 	addoptions -skipmesh RKT_laser_sight_front_mesh 
+ 	addoptions -skipmesh RKT_laser_sight_back_mesh 
+ 	addoptions -skipmesh RKT_rack_mesh 
+ 	addoptions -skipmesh RKT_clasp_front_lft_mesh 
+ 	addoptions -skipmesh RKT_clasp_back_lft_mesh 
+ 	addoptions -skipmesh RKT_clasp_front_rt_mesh 
+ 	addoptions -skipmesh RKT_clasp_back_rt_mesh 
+ 	addoptions -skipmesh RKT_rocket_mesh 
+ 	addoptions -skipmesh RKT_fin_top_mesh 
+ 	addoptions -skipmesh RKT_fin_left_mesh 
+ 	addoptions -skipmesh RKT_fin_right_mesh 
+ 	addoptions -skipmesh GN_stock_mesh 
+ 	addoptions -skipmesh GN_ammo_mesh 
+ 	addoptions -skipmesh LG_stock_mesh 
+ 	addoptions -skipmesh LG_center_rod_mesh 
+ 	addoptions -skipmesh LG_spire_1_mesh 
+ 	addoptions -skipmesh LG_spire_2_mesh 
+ 	addoptions -skipmesh LG_spire_3_mesh 
+ 	addoptions -skipmesh LG_spire_4_mesh 
+ 	addoptions -skipmesh LG_flap_top_1 
+ 	addoptions -skipmesh LG_flap_top_2 
+ 	addoptions -skipmesh LG_flap_left_1 
+ 	addoptions -skipmesh LG_flap_left_2 
+ 	addoptions -skipmesh LG_flap_right_1 
+ 	addoptions -skipmesh LG_flap_right_2
+ 	addoptions -skipmesh RG_stock_mesh
+ 	addoptions -skipmesh DMG_body_mesh
+ 	addoptions -skipmesh DMG_l_magnet_mesh
+ 	addoptions -skipmesh DMG_r_magnet_mesh
+ 	addoptions -skipmesh DMG_outer_ring_mesh
+ 	addoptions -skipmesh DMG_middle_ring_mesh
+ 	addoptions -skipmesh DMG_inner_ring_mesh
+ 	
+ 	anim	marine_01_landing.ma				-dest marine_01_landing
+ 	anim	marine_02_landing.ma				-dest marine_02_landing
+ 	anim	marine_03_landing.ma				-dest marine_03_landing
+ 	anim	marine_04_landing.ma				-dest marine_04_landing
+ 	anim	marine_05_landing.ma				-dest marine_05_landing
+  	anim	marine_06_landing.ma				-dest marine_06_landing
+	anim	console_with_weapon_loop.ma			-dest console_w_weapon_loop
+}
+ 
+export char_q4x_marine
+{
+	options -game /q4xbase -scale .3937 -prefix PLAYER_ -align ALL   -keep HB_base HB_front_rotate HB_battery HB_muzzle_flash MG_stock_joint MG_clip_joint MG_muzzle_flash SG_stock SG_clip SG_muzzle_flash SG_pump_joint l_elbo_tweak r_elbo_tweak body shoulders neckcontrol legs_channel head_channel SG_muzzle_flash MG_muzzle_flash HB_muzzle_flash -parent MG_stock_joint r_wrist -parent HB_base r_wrist -parent hips body -parent waist SPINNER -parent SPINNER body  -sourcedir models/characters/marine/animations -destdir models/characters/marine 
+
+	addoptions -skipmesh dummyEyeL
+	addoptions -skipmesh dummyEyeR
+	addoptions -skipmesh dummyHair1
+	addoptions -skipmesh dummyHair2
+	addoptions -skipmesh dummyHair3
+	addoptions -skipmesh dummy_head
+	
+	addoptions -skipmesh l_fatigue_arm
+	addoptions -skipmesh r_fatigue_arm
+	
+	addoptions -skipmesh PST_pistol_mesh
+ 	addoptions -skipmesh NG_stock_mesh 
+ 	addoptions -skipmesh NG_handle_mesh 
+ 	addoptions -skipmesh NG_handlebase_mesh 
+ 	addoptions -skipmesh NG_drum_mesh 
+ 	addoptions -skipmesh NG_clip_mesh 
+ 	addoptions -skipmesh NG_clip_left_mesh 
+ 	addoptions -skipmesh NG_clip_right_mesh 
+ 	addoptions -skipmesh NG_scope_mesh 
+ 	addoptions -skipmesh NG_a1_mesh 
+ 	addoptions -skipmesh NG_a2_mesh 
+ 	addoptions -skipmesh NG_b1_mesh 
+ 	addoptions -skipmesh NG_b2_mesh 
+ 	addoptions -skipmesh NG_c1_mesh 
+ 	addoptions -skipmesh NG_c2_mesh 
+ 	addoptions -skipmesh NG_d1_mesh 
+ 	addoptions -skipmesh NG_d2_mesh 
+ 	addoptions -skipmesh NG_e1_mesh 
+ 	addoptions -skipmesh NG_e2_mesh 
+ 	addoptions -skipmesh NG_f1_mesh 
+ 	addoptions -skipmesh NG_f2_mesh 
+ 	addoptions -skipmesh RKT_stock_mesh 
+ 	addoptions -skipmesh RKT_trigger_lft_mesh 
+ 	addoptions -skipmesh RKT_trigger_rt_mesh 
+ 	addoptions -skipmesh RKT_laser_sight_front_mesh 
+ 	addoptions -skipmesh RKT_laser_sight_back_mesh 
+ 	addoptions -skipmesh RKT_rack_mesh 
+ 	addoptions -skipmesh RKT_clasp_front_lft_mesh 
+ 	addoptions -skipmesh RKT_clasp_back_lft_mesh 
+ 	addoptions -skipmesh RKT_clasp_front_rt_mesh 
+ 	addoptions -skipmesh RKT_clasp_back_rt_mesh 
+ 	addoptions -skipmesh RKT_rocket_mesh 
+ 	addoptions -skipmesh RKT_fin_top_mesh 
+ 	addoptions -skipmesh RKT_fin_left_mesh 
+ 	addoptions -skipmesh RKT_fin_right_mesh 
+ 	addoptions -skipmesh GN_stock_mesh 
+ 	addoptions -skipmesh GN_ammo_mesh 
+ 	addoptions -skipmesh LG_stock_mesh 
+ 	addoptions -skipmesh LG_center_rod_mesh 
+ 	addoptions -skipmesh LG_spire_1_mesh 
+ 	addoptions -skipmesh LG_spire_2_mesh 
+ 	addoptions -skipmesh LG_spire_3_mesh 
+ 	addoptions -skipmesh LG_spire_4_mesh 
+ 	addoptions -skipmesh LG_flap_top_1 
+ 	addoptions -skipmesh LG_flap_top_2 
+ 	addoptions -skipmesh LG_flap_left_1 
+ 	addoptions -skipmesh LG_flap_left_2 
+ 	addoptions -skipmesh LG_flap_right_1 
+ 	addoptions -skipmesh LG_flap_right_2
+ 	addoptions -skipmesh RG_stock_mesh
+ 	addoptions -skipmesh DMG_body_mesh
+ 	addoptions -skipmesh DMG_l_magnet_mesh
+ 	addoptions -skipmesh DMG_r_magnet_mesh
+ 	addoptions -skipmesh DMG_outer_ring_mesh
+ 	addoptions -skipmesh DMG_middle_ring_mesh
+ 	addoptions -skipmesh DMG_inner_ring_mesh
+ 	
+ 	anim	speeder_idle.ma					-dest speeder_idle
+	anim	offhandgrenade.ma				-dest offhandgrenade
+	anim	pain_fire.ma					-dest pain_fire
+	anim	unarmed_pain_fire.ma				-dest unarmed_pain_fire
+	anim	aa_turret_idle.ma				-dest aa_turret_idle
+	anim	st_trench_run.ma				-dest st_trench_run
+	anim	st_trench_walk.ma				-dest st_trench_walk
+	anim	aa_turret_prep_idle.ma				-dest aa_turret_prep_idle
+	anim	unarmed_mcc_hatch_climb.ma	-range 50 195	-dest unarmed_mcc_hatch_climb
+	anim 	dropship_console_idle.ma			-dest dropship_console_idle
+	anim 	console_impact01.ma				-dest console_impact01
+	anim 	console_impact02.ma				-dest console_impact02
+	anim 	console_impact03.ma				-dest console_impact03
+	anim 	dropship_hurt.ma				-dest dropship_hurt
+	anim 	dropship_hurt.ma		-range 2 62	-dest dropship_hurt_impact
+	anim	dropship_medic.ma				-dest dropship_medic
+	anim	dropship_medic_impact.ma			-dest dropship_medic_impact
+	anim	markswell_ladder_climb.ma			-dest markswell_ladder_climb
+	anim	markswell_ladder_descend.ma	-rotate 180	-dest markswell_ladder_descend
+	anim 	prison_glass.ma					-dest prison_glass
+	anim 	prison_glass.ma			-range 39 40	-dest prison_glass_idle
+	anim 	prison_bridge.ma		-range 2 420 	-dest prison_bridge_start
+	anim 	prison_bridge.ma		-range 300 420 	-dest prison_bridge_idle
+	anim 	prison_bridge.ma		-range 420 560 	-dest prison_bridge_end
+	anim 	tortured01.ma					-dest tortured01
+	anim 	tortured02.ma					-dest tortured02
+	anim 	mcc_stabby_stabby.ma		-range 1  58	-dest mcc_stabby_stabby
+	anim 	mcc_stabby_stabby.ma		-range 59 60	-dest mcc_stabby_stabby_end_idle
+	anim 	mcc_berzerker_pull.ma				-dest mcc_berzerker_pull
+	anim 	mcc_berzerker_pull.ma		-range 69 70	-dest mcc_berzerker_pull_end_idle
+	anim 	st_tak_hacks.ma			-range 1 92	-dest st_tak_hacks_start
+	anim 	st_tak_hacks.ma			-range 93 291	-dest st_tak_hacks_loop
+	anim 	st_tak_hacks.ma			-range 292 338	-dest st_tak_hacks_end
+	anim	st_trapped_teammate.ma				-dest st_trapped_teammate
+	anim	st_markswell_wave_ahead.ma			-dest st_markswell_wave_ahead
+	anim	st_wave_ahead.ma				-dest st_wave_ahead
+	anim	st_player_hold.ma				-dest st_player_hold
+	anim	st_retch_intro.ma		-range 1 113	-dest st_retch_intro_loop
+	anim	st_retch_intro.ma		-range 114 264	-dest st_retch_intro
+	anim	st_retch_intro.ma		-range 264 265	-dest st_retch_intro_end_idle
+	anim	st_teammate_climb.ma				-dest st_teammate_climb
+	anim	st_teammate_climb_b.ma				-dest st_teammate_climb_b
+	anim	aa_chair_alert_reaction1.ma			-dest aa_chair_alert_reaction1
+	anim	aa_chair_alert_reaction2.ma			-dest aa_chair_alert_reaction2
+	anim	aa_chair_alert_reaction3.ma			-dest aa_chair_alert_reaction3
+	anim	aa_chair_alert_reaction4.ma			-dest aa_chair_alert_reaction4
+	anim	aa_chair_idle1.ma				-dest aa_chair_idle1
+	anim	aa_chair_idle2.ma				-dest aa_chair_idle2
+	anim	aa_chair_idle3.ma				-dest aa_chair_idle3
+	anim	aa_chair_idle4.ma				-dest aa_chair_idle4
+	anim	aa_chair_enter.ma				-dest aa_chair_enter
+	anim	aa_chair_exit.ma				-dest aa_chair_exit
+	anim	aa_chair_end_idle1.ma				-dest aa_chair_end_idle1
+	anim	aa_chair_end_idle2.ma				-dest aa_chair_end_idle2
+	anim	aa_chair_end_idle3.ma				-dest aa_chair_end_idle3
+	anim	aa_chair_end_idle4.ma				-dest aa_chair_end_idle4
+	anim	aa_back_chair_enter.ma				-dest aa_back_chair_enter
+	anim	aa_back_chair_exit.ma				-dest aa_back_chair_exit
+	anim	aa_back_chair_idle1.ma				-dest aa_back_chair_idle1
+	anim	aa_back_chair_idle2.ma				-dest aa_back_chair_idle2
+	anim	aa_back_chair_fire.ma				-dest aa_back_chair_fire
+	anim	aa_tak_turnaround.ma		-range 0 30	-dest aa_tak_turnaround_intro
+	anim	aa_tak_turnaround.ma		-range 31 170	-dest aa_tak_turnaround_loop
+	anim	aa_tak_turnaround.ma		-range 170 200	-dest aa_tak_turnaround_end
+	anim	aa_tak_turnaround.ma		-range 201 330	-dest aa_tak_idle_loop
+	anim	mcc_speeder_mount.ma		-range 1 45	-dest mcc_speeder_mount
+	anim	mcc_speeder_mount.ma		-range 46 106	-dest mcc_speeder_mount_idle1
+	anim	mcc_speeder_mount.ma		-range 107 166	-dest mcc_speeder_mount_idle2
+	anim	mcc_speeder_dismount.ma		-range 2 60	-dest mcc_speeder_dismount_idle1
+	anim	mcc_speeder_dismount.ma		-range 61 120	-dest mcc_speeder_dismount_idle2
+	anim	mcc_speeder_dismount.ma		-range 121 180	-dest mcc_speeder_dismount
+	anim	bio_catscan_getup.ma		-range 2 59	-dest bio_catscan_loop
+	anim	bio_catscan_getup.ma		-range 60 103	-dest bio_catscan_getup
+	anim	pr_darnell_grate.ma				-dest pr_darnell_grate
+	anim	pr_dekard_glass.ma				-dest pr_dekard_glass
+	anim	pr_drag_marine.ma				-dest pr_drag_marine
+	anim	st_mitchel_intro.ma				-dest st_mitchel_intro
+	anim	st_darnell_intro.ma				-dest st_darnell_intro
+	anim	st_navajas_intro.ma				-dest st_navajas_intro
+	anim	st_atkins_intro.ma				-dest st_atkins_intro
+	anim	st_townsend_intro.ma				-dest st_townsend_intro
+	anim	st_dekard_intro.ma				-dest st_dekard_intro
+	anim	st_markswell_intro.ma				-dest st_markswell_intro
+	anim	st_tak_intro.ma					-dest st_tak_intro
+	anim	pr_gunner_throw.ma				-dest pr_gunner_throw
+	anim	pr_climb_down.ma				-dest pr_climb_down
+	//anim	st_chair_to_idle.ma				-dest st_chair_to_idle
+}	
+  */
+export char_q4x_marine
+{
+	options -game /q4xbase -scale .3937 -prefix PLAYER_ -align ALL -parent l_wrist l_forarm -parent r_wrist r_forarm -keep HB_base HB_front_rotate HB_battery HB_muzzle_flash MG_stock_joint MG_clip_joint MG_muzzle_flash SG_stock SG_clip SG_muzzle_flash SG_pump_joint l_elbo_tweak r_elbo_tweak body shoulders neckcontrol legs_channel head_channel SG_muzzle_flash MG_muzzle_flash HB_muzzle_flash -parent MG_stock_joint r_wrist -parent HB_base r_wrist -parent hips body -parent waist SPINNER -parent SPINNER body  -sourcedir models/characters/marine/animations -destdir models/characters/marine 
+
+	addoptions -skipmesh dummyEyeL
+	addoptions -skipmesh dummyEyeR
+	addoptions -skipmesh dummyHair1
+	addoptions -skipmesh dummyHair2
+	addoptions -skipmesh dummyHair3
+	addoptions -skipmesh dummy_head
+	addoptions -skipmesh l_fatigue_arm
+	addoptions -skipmesh r_fatigue_arm
+	addoptions -skipmesh PST_pistol_mesh
+ 	addoptions -skipmesh NG_stock_mesh 
+ 	addoptions -skipmesh NG_handle_mesh 
+ 	addoptions -skipmesh NG_handlebase_mesh 
+ 	addoptions -skipmesh NG_drum_mesh 
+ 	addoptions -skipmesh NG_clip_mesh 
+ 	addoptions -skipmesh NG_clip_left_mesh 
+ 	addoptions -skipmesh NG_clip_right_mesh 
+ 	addoptions -skipmesh NG_scope_mesh 
+ 	addoptions -skipmesh NG_a1_mesh 
+ 	addoptions -skipmesh NG_a2_mesh 
+ 	addoptions -skipmesh NG_b1_mesh 
+ 	addoptions -skipmesh NG_b2_mesh 
+ 	addoptions -skipmesh NG_c1_mesh 
+ 	addoptions -skipmesh NG_c2_mesh 
+ 	addoptions -skipmesh NG_d1_mesh 
+ 	addoptions -skipmesh NG_d2_mesh 
+ 	addoptions -skipmesh NG_e1_mesh 
+ 	addoptions -skipmesh NG_e2_mesh 
+ 	addoptions -skipmesh NG_f1_mesh 
+ 	addoptions -skipmesh NG_f2_mesh 
+ 	addoptions -skipmesh RKT_stock_mesh 
+ 	addoptions -skipmesh RKT_trigger_lft_mesh 
+ 	addoptions -skipmesh RKT_trigger_rt_mesh 
+ 	addoptions -skipmesh RKT_laser_sight_front_mesh 
+ 	addoptions -skipmesh RKT_laser_sight_back_mesh 
+ 	addoptions -skipmesh RKT_rack_mesh 
+ 	addoptions -skipmesh RKT_clasp_front_lft_mesh 
+ 	addoptions -skipmesh RKT_clasp_back_lft_mesh 
+ 	addoptions -skipmesh RKT_clasp_front_rt_mesh 
+ 	addoptions -skipmesh RKT_clasp_back_rt_mesh 
+ 	addoptions -skipmesh RKT_rocket_mesh 
+ 	addoptions -skipmesh RKT_fin_top_mesh 
+ 	addoptions -skipmesh RKT_fin_left_mesh 
+ 	addoptions -skipmesh RKT_fin_right_mesh 
+ 	addoptions -skipmesh GN_stock_mesh 
+ 	addoptions -skipmesh GN_ammo_mesh 
+ 	addoptions -skipmesh LG_stock_mesh 
+ 	addoptions -skipmesh LG_center_rod_mesh 
+ 	addoptions -skipmesh LG_spire_1_mesh 
+ 	addoptions -skipmesh LG_spire_2_mesh 
+ 	addoptions -skipmesh LG_spire_3_mesh 
+ 	addoptions -skipmesh LG_spire_4_mesh 
+ 	addoptions -skipmesh LG_flap_top_1 
+ 	addoptions -skipmesh LG_flap_top_2 
+ 	addoptions -skipmesh LG_flap_left_1 
+ 	addoptions -skipmesh LG_flap_left_2 
+ 	addoptions -skipmesh LG_flap_right_1 
+ 	addoptions -skipmesh LG_flap_right_2
+ 	addoptions -skipmesh RG_stock_mesh
+ 	addoptions -skipmesh DMG_body_mesh
+ 	addoptions -skipmesh DMG_l_magnet_mesh
+ 	addoptions -skipmesh DMG_r_magnet_mesh
+ 	addoptions -skipmesh DMG_outer_ring_mesh
+ 	addoptions -skipmesh DMG_middle_ring_mesh
+ 	addoptions -skipmesh DMG_inner_ring_mesh
+ 	
+	anim	st_chair_to_idle.ma				-dest st_chair_to_idle
+	anim	st_tak_weld.ma			-range 77 606	-dest st_tak_weld
+	anim	st_tak_weld.ma			-range 1 76	-dest st_tak_weld_walk
+	anim	st_tak_zipline.ma		-range 1 84	-dest st_tak_zipline_start
+	anim	st_tak_zipline.ma		-range 85 119	-dest st_tak_zipline
+	anim	st_tak_zipline.ma		-range 120 192	-dest st_tak_zipline_end
+	anim	st_repelling.ma					-dest st_repelling
+	anim	st_dropship_chair.ma				-dest st_dropship_chair
+	anim	st_dropship_chair_rocked.ma			-dest st_dropship_chair_rocked
+	anim	st_markswell_sits.ma		-range	1 101	-dest st_markswell_enters
+	anim	st_markswell_sits.ma		-range	102 480	-dest st_markswell_talks
+	anim	st_markswell_sits.ma		-range	481 644	-dest st_markswell_sits
+	anim	st_darnell_reach.ma				-dest st_darnell_reach
+	anim	st_mitchel_hold.ma				-dest st_mitchel_hold
+	anim	st_atkins_fall.ma				-dest st_atkins_fall
+	anim	st_atkins_fall.ma		-range 70 90	-dest st_townsend_fall
+	anim	st_najavas_react.ma				-dest st_najavas_react
+	anim	st_tak_nudge.ma					-dest st_tak_nudge
+	anim	st_dropship_stand.ma				-dest st_dropship_stand
+	anim	st_dropship_walk.ma				-dest st_dropship_walk
+	anim	tr_tak_duck.ma					-dest tr_tak_duck
+	anim	tr_doorlift.ma			-range 1 32	-dest tr_doorlift_start
+	anim	tr_doorlift.ma			-range 33 70	-dest tr_doorlift_loop_1
+	anim	tr_doorlift.ma			-range 71 88	-dest tr_doorlift_higher
+	anim	tr_doorlift.ma			-range 89 114	-dest tr_doorlift_loop_2
+	anim	tr_doorlift.ma			-range 115 128	-dest tr_doorlift_end
+	anim	cr_ladder_descend.ma				-dest cr_ladder_descend
+
+
+}
+/*
+===============================================================================
+
+	Marine Model Definition
+
+===============================================================================
+*/
+
+model model_char_q4x_marine
+{
+	mesh										models/characters/marine/newmarine_mesh2.md5mesh
+
+	channel torso	( *waist )
+	channel legs	( *origin *hips -*waist )
+
+	// ------------------------------------------------------------------------------------------
+	//
+	//									Idle Animations
+	//
+	// ------------------------------------------------------------------------------------------
+
+	anim idle									models/characters/marine/idle.md5anim
+	anim cover_idle								models/characters/marine/idle.md5anim
+	anim af_pose								models/characters/marine/af_pose.md5anim	
+
+	anim talk_idle								models/characters/marine/relax_idle.md5anim
+		
+	anim relax_idle_start						models/characters/marine/relax_idle_start.md5anim
+	anim relax_idle								models/characters/marine/relax_idle.md5anim
+	anim relax_idle_end							models/characters/marine/relax_idle_end.md5anim
+	{
+		rate	1.5
+	}
+
+	anim pain_fire								models/characters/marine/pain_fire.md5anim
+	{
+		rate 0.8
+		frame 1									speak_random	lipsync_pain
+	}
+
+
+
+	// ------------------------------------------------------------------------------------------
+	//
+	//									Movement Animations
+	//
+	// ------------------------------------------------------------------------------------------
+
+//	anim sprint_backwards						models/characters/marine/sprint_backwards.md5anim
+//	{
+//	}
+
+	anim run									models/characters/marine/run_forward.md5anim
+	{
+		sync_cycle
+		frame	4,11							sound		snd_gear
+		frame	1,9								footstep
+	}
+	
+	anim nearcover_run							models/characters/marine/nearcover_run.md5anim
+	{
+		sync_cycle
+		frame	4,11							sound		snd_gear
+		frame	1,9								footstep
+	}
+		
+	anim run_backwards							models/characters/marine/run_backwards.md5anim
+	{
+		sync_cycle
+		frame	7,14,23,29						footstep
+		frame	3,10,16,24						sound	snd_gear
+	}
+	anim nearcover_run_backwards			models/characters/marine/nearcover_run_backwards.md5anim
+	{
+		sync_cycle
+		frame	5,13							footstep
+		frame	3,10							sound	snd_gear
+	}
+	anim run_right								models/characters/marine/walk_strafe_fast_right.md5anim
+	{
+		sync_cycle
+		frame	5,14							footstep
+		frame	8,16							sound	snd_gear
+	}
+	anim nearcover_run_right								models/characters/marine/nearcover_run_right.md5anim
+	{
+		sync_cycle
+		frame	5,14							footstep
+		frame	8,16							sound	snd_gear
+	}
+	anim run_left								models/characters/marine/walk_strafe_fast_left.md5anim
+	{
+		sync_cycle
+		frame	6,13							footstep
+		frame	3,10							sound	snd_gear
+	}
+	anim nearcover_run_left								models/characters/marine/nearcover_run_left.md5anim
+	{
+		sync_cycle
+		frame	6,13							footstep
+		frame	3,10							sound	snd_gear
+	}
+
+	anim walk									models/characters/marine/walk_gun_aimed.md5anim // walk_gun_relax.md5anim
+	{
+		sync_cycle
+		frame	5,20							footstep
+	}
+	
+	anim nearcover_walk							models/characters/marine/walk_gun_up.md5anim // walk_gun_relax.md5anim
+	{
+		sync_cycle
+		frame	5,20							footstep
+	}
+		
+	anim walk_alert								models/characters/marine/walk_gun_alert.md5anim
+	{
+		sync_cycle
+		frame	7,23,35,48						footstep
+	}
+	anim walk_backwards							models/characters/marine/walk_back.md5anim
+	{
+		sync_cycle
+		frame	1,11,23,33						footstep
+	}
+	anim nearcover_walk_backwards				models/characters/marine/walk_back_gun_up.md5anim
+	{
+		sync_cycle
+		frame	1,11,23,33						footstep
+	}
+	
+	anim walk_right								models/characters/marine/walk_strafe_slow_right.md5anim
+	{
+		sync_cycle
+		frame	6,20							footstep
+	}
+	anim nearcover_walk_right					models/characters/marine/walk_right_gun_up.md5anim
+	{
+		sync_cycle
+		frame	6,20							footstep
+	}
+	anim walk_left								models/characters/marine/walk_strafe_slow_left.md5anim
+	{
+		sync_cycle
+		frame	10,21							footstep
+	}
+	anim nearcover_walk_left								models/characters/marine/walk_left_gun_up.md5anim
+	{
+		sync_cycle
+		frame	10,21							footstep
+	}
+
+	// ------------------------------------------------------------------------------------------
+	//
+	//								Unarmed Animations
+	//
+	// ------------------------------------------------------------------------------------------
+
+	anim unarmed_idle							models/characters/marine/weaponless_idle_1.md5anim	
+	anim unarmed_walk							models/characters/marine/weaponless_walk_slow.md5anim	
+	{
+		sync_cycle
+		frame	9,25,37,51								footstep
+	}	
+	anim unarmed_walk_backwards					models/characters/marine/walk_back_nogun.md5anim	
+	{
+		sync_cycle
+		frame	6,20							footstep
+	}	
+	anim unarmed_run_backwards					models/characters/marine/walk_back_nogun.md5anim	
+	{
+		sync_cycle
+		frame	6,20							footstep
+	}	
+	anim unarmed_walk_fatigues						models/characters/marine/weaponless_walk_slow_fatigues.md5anim	
+	{
+		sync_cycle
+	}	
+
+	anim unarmed_walk_fast						models/characters/marine/weaponless_walk_fast.md5anim	
+	{
+		sync_cycle
+		frame	7,19									footstep
+	}	
+	anim unarmed_run							models/characters/marine/weaponless_run.md5anim	
+	{
+		sync_cycle
+		frame	7,16									sound	snd_gear
+		frame	8,17									footstep
+	}
+
+	anim unarmed_walk_left						models/characters/marine/walk_left_nogun.md5anim	
+	{
+		sync_cycle
+		frame	6,20							footstep
+	}	
+	anim unarmed_walk_right						models/characters/marine/walk_right_nogun.md5anim	
+	{
+		sync_cycle
+		frame	6,20							footstep
+	}	
+
+	anim unarmed_run_left						models/characters/marine/walk_left_nogun.md5anim	
+	{
+		sync_cycle
+		frame	6,20							footstep
+	}	
+	anim unarmed_run_right						models/characters/marine/walk_right_nogun.md5anim	
+	{
+		sync_cycle
+		frame	6,20							footstep
+	}
+
+//Q4x fire anim
+
+	anim unarmed_pain_fire					models/characters/marine/unarmed_pain_fire.md5anim
+	{
+		rate 0.8
+		frame 1									speak_random	lipsync_pain
+	}
+
+
+	// ------------------------------------------------------------------------------------------
+	//
+	//									Relaxed Animations
+	//
+	// ------------------------------------------------------------------------------------------
+
+	anim relaxed_idle							models/characters/marine/relax_idle.md5anim
+	anim relaxed_walk							models/characters/marine/walk02_gun_relax.md5anim
+	anim relaxed_walk_backwards						models/characters/marine/relaxed_walk_backwards.md5anim
+	anim relaxed_walk_left							models/characters/marine/relaxed_walk_left.md5anim
+	anim relaxed_walk_right							models/characters/marine/relaxed_walk_right.md5anim
+	{
+		sync_cycle
+		frame	15,28								footstep
+	}	
+	anim relaxed_run							models/characters/marine/sprint_forward.md5anim
+	{
+		sync_cycle
+		frame	8,16								sound	snd_gear
+		frame	6,15								footstep
+	}
+	anim relaxed_run_backwards						models/characters/marine/relaxed_walk_backwards.md5anim
+	anim relaxed_run_left							models/characters/marine/relaxed_walk_left.md5anim
+	anim relaxed_run_right							models/characters/marine/relaxed_walk_right.md5anim
+	{
+		sync_cycle
+		frame	15,28								footstep
+	}	
+
+	// ------------------------------------------------------------------------------------------
+	//
+	//									At Attention Animations
+	//
+	// ------------------------------------------------------------------------------------------
+
+	anim at_attention_idle						models/characters/marine/at_attention_idle.md5anim
+
+	// ------------------------------------------------------------------------------------------
+	//
+	//									Posture Transitions
+	//
+	// ------------------------------------------------------------------------------------------
+
+	anim stand_to_crouch							models/characters/marine/drop_to_knee.md5anim
+	{
+		rate	2
+	}
+	anim crouch_to_stand							models/characters/marine/knee_to_idle.md5anim
+	{
+		rate	2
+	}
+	anim relaxed_to_crouch							models/characters/marine/relaxed_to_crouch.md5anim
+
+	anim crouch_to_relaxed							models/characters/marine/crouch_to_relaxed.md5anim
+
+	anim stand_to_cover_right						models/characters/marine/cover_right_intro.md5anim
+	{
+		rate	2
+	}
+//	anim stand_to_crouch_cover_right2				models/characters/marine/stand_to_ccr.md5anim
+	anim stand_to_crouch_cover_right				models/characters/marine/cover_right_intro.md5anim
+	{
+		rate	2
+	}
+	anim stand_to_crouch_cover						models/characters/marine/cover_right_intro.md5anim
+	{
+		rate	2
+	}
+	anim stand_to_cover_left						models/characters/marine/cover_left_intro.md5anim
+	{
+		rate	2
+	}
+//	anim stand_to_crouch_cover_left2				models/characters/marine/stand_to_ccl.md5anim
+	anim stand_to_crouch_cover_left					models/characters/marine/cover_left_intro.md5anim
+	{
+		rate	2
+	}
+	anim crouch_cover_right_to_crouch_cover_left	models/characters/marine/ccr_to_ccl.md5anim
+
+	anim stand_to_relaxed							models/characters/marine/relax_idle_start.md5anim
+	anim relaxed_to_stand							models/characters/marine/relax_idle_end.md5anim
+	{
+		rate	1.5
+	}
+	
+	anim cover_right_to_cover_left					models/characters/marine/turn_right_to_left.md5anim
+	anim cover_left_to_cover_right					models/characters/marine/turn_left_to_right.md5anim
+
+	anim relaxed_to_at_attention					models/characters/marine/at_attention_start.md5anim
+	anim at_attention_to_relaxed					models/characters/marine/at_attention_end.md5anim
+
+	// ------------------------------------------------------------------------------------------
+	//
+	//								Standing Cover Right Animations
+	//
+	// ------------------------------------------------------------------------------------------
+
+	anim cover_right_idle						models/characters/marine/cover_right_idle.md5anim
+	anim cover_right_reload						models/characters/marine/crouch_cover_reload.md5anim
+	{
+		frame 20								ai_disablePain
+	}
+	anim cover_right_pain						models/characters/marine/cover_right_pain.md5anim
+	{
+		frame 1									speak_random	lipsync_pain
+	}
+	anim cover_right_pain_concussive					models/characters/marine/cover_right_pain.md5anim
+	{
+		frame 1									speak_random	lipsync_pain
+	}
+	anim cover_right_peek						models/characters/marine/cover_right_peek.md5anim
+	{
+		frame 12								object_call	Frame_Peek
+	}
+
+	anim cover_right_range_attack_start			models/characters/marine/lean_out_up_right.md5anim
+	anim cover_right_range_attack				models/characters/marine/lean_right_up_gun.md5anim
+	{
+		frame 1									fx					fx_base_flash		MG_muzzle_flash
+		frame 1									ai_attack			base				MG_muzzle_flash
+		frame 1									sound_weapon		snd_base_flash
+	}	
+	anim cover_right_range_attack_end			models/characters/marine/lean_in_up_right.md5anim
+
+//	anim cover_right_to_stand					models/characters/marine/walk_strafe_fast_right.md5anim
+//	{
+//		ai_no_turn
+//		sync_cycle
+//		frame	5,14							footstep
+//		frame	8,16							sound	snd_gear
+//	}
+	anim cover_right_to_crouch					models/characters/marine/walk_strafe_slow_right.md5anim
+	{
+		frame	6,20							footstep
+	}
+//	anim cover_right_to_relaxed						models/characters/marine/relaxed_walk_right.md5anim
+	anim cover_right_to_relaxed						models/characters/marine/cover_right_to_fire.md5anim
+	{
+		ai_no_turn
+	}
+	anim cover_right_to_stand						models/characters/marine/cover_right_to_fire.md5anim
+	{
+		ai_no_turn
+	}
+
+	// ------------------------------------------------------------------------------------------
+	//
+	//								Standing Cover Left Animations
+	//
+	// ------------------------------------------------------------------------------------------
+	
+	anim cover_left_idle						models/characters/marine/cover_left_idle.md5anim
+	anim cover_left_reload						models/characters/marine/crouch_left_reload.md5anim
+	{
+		frame 20								ai_disablePain
+	}
+	anim cover_left_pain						models/characters/marine/cover_left_pain.md5anim
+	{
+		frame 1									speak_random	lipsync_pain
+	}
+	anim cover_left_pain_concussive					models/characters/marine/cover_left_pain.md5anim
+	{
+		frame 1									speak_random	lipsync_pain
+	}
+	anim cover_left_peek						models/characters/marine/cover_left_peek.md5anim
+	{
+		frame 12								object_call	Frame_Peek
+	}
+
+	anim cover_left_range_attack_start			models/characters/marine/lean_out_up_left.md5anim
+	anim cover_left_range_attack				models/characters/marine/lean_left_up_gun.md5anim
+	{
+		frame 1									fx					fx_base_flash		MG_muzzle_flash
+		frame 1									ai_attack			base				MG_muzzle_flash
+		frame 1									sound_weapon		snd_base_flash
+	}	
+	anim cover_left_range_attack_end			models/characters/marine/lean_in_up_left.md5anim
+
+//	anim cover_left_to_stand					models/characters/marine/walk_strafe_fast_left.md5anim
+//	{
+//		ai_no_turn
+//		sync_cycle
+//		frame	6,13							footstep
+//		frame	3,10							sound	snd_gear
+//	}
+	anim cover_left_to_crouch					models/characters/marine/walk_strafe_slow_left.md5anim
+	{
+		sync_cycle
+		frame	10,21							footstep
+	}
+//	anim cover_left_to_relaxed					models/characters/marine/relaxed_walk_left.md5anim
+	anim cover_left_to_relaxed					models/characters/marine/cover_left_to_fire.md5anim
+	{
+		ai_no_turn
+	}
+	anim cover_left_to_stand					models/characters/marine/cover_left_to_fire.md5anim
+	{
+		ai_no_turn
+	}
+
+	// ------------------------------------------------------------------------------------------
+	//
+	//									Crouching Animations 
+	//
+	// ------------------------------------------------------------------------------------------
+
+	anim crouch_idle							models/characters/marine/knee_idle.md5anim
+	anim crouch_reload							models/characters/marine/reload_at_knee.md5anim
+	{
+		frame 20								ai_disablePain
+	}
+ 	anim crouch_pain							models/characters/marine/knee_pain.md5anim
+	{
+		frame 1									speak_random	lipsync_pain
+	}
+ 	anim crouch_pain_concussive						models/characters/marine/knee_pain.md5anim
+	{
+		frame 1									speak_random	lipsync_pain
+	}
+	anim crouch_range_attack					models/characters/marine/knee_fire.md5anim
+	{
+		frame 1									fx					fx_base_flash			MG_muzzle_flash
+		frame 1									ai_attack			base					MG_muzzle_flash
+		frame 1									sound_weapon		snd_base_flash
+	}
+
+	// ------------------------------------------------------------------------------------------
+	//
+	//								Crouching Cover Animations 
+	//
+	// ------------------------------------------------------------------------------------------
+
+	anim crouch_cover_idle						models/characters/marine/crouch_right_idle.md5anim
+	anim crouch_cover_reload					models/characters/marine/crouch_cover_reload.md5anim
+	{
+		frame 20								ai_disablePain
+	}
+	anim crouch_cover_pain						models/characters/marine/crouch_pain01.md5anim
+	{
+		frame 1									speak_random	lipsync_pain
+	}
+	anim crouch_cover_pain_concussive					models/characters/marine/crouch_pain01.md5anim
+	{
+		frame 1									speak_random	lipsync_pain
+	}
+	anim crouch_cover_peek						models/characters/marine/crouch_right_popup.md5anim
+	{
+		frame 13								object_call	Frame_Peek
+	}
+
+	anim crouch_cover_range_attack_start		models/characters/marine/crouch_right_popup_start.md5anim
+	anim crouch_cover_range_attack_end			models/characters/marine/crouch_right_popup_end.md5anim
+	anim crouch_cover_range_attack				models/characters/marine/crouch_right_popup_loop.md5anim
+	{
+		frame 1									fx					fx_base_flash			MG_muzzle_flash
+		frame 1									ai_attack			base					MG_muzzle_flash
+		frame 1									sound_weapon		snd_base_flash
+	}
+	anim crouch_cover_killswitch				models/characters/marine/cover_killswitch_up.md5anim
+	{
+		frame 11,13,15,17,19,25,27,29,31,33		fx					fx_base_flash			MG_muzzle_flash
+		frame 11,13,15,17,19,25,27,29,31,33		ai_attack			killswitch				MG_muzzle_flash
+		frame 11,13,15,17,19,25,27,29,31,33		sound_weapon		snd_base_flash
+	}
+
+//	anim crouch_cover_to_stand					models/characters/marine/run_backwards.md5anim
+//	{
+//		ai_no_turn
+//		sync_cycle
+//		frame	7,14,23,29						footstep
+//		frame	3,10,16,24						sound	snd_gear
+//	}
+	anim crouch_cover_to_stand					models/characters/marine/knee_to_fire.md5anim
+	{
+		ai_no_turn
+	}
+	anim crouch_cover_to_crouch					models/characters/marine/walk_back.md5anim
+	{
+		sync_cycle
+		frame	1,11,23,33						footstep
+	}
+//	anim crouch_cover_to_relaxed					models/characters/marine/relaxed_walk_backwards.md5anim
+	anim crouch_cover_to_relaxed					models/characters/marine/knee_to_fire.md5anim
+	{
+		ai_no_turn
+	}
+	
+	// ------------------------------------------------------------------------------------------
+	//
+	//								Crouching Cover Right Animations 
+	//
+	// ------------------------------------------------------------------------------------------
+
+
+	anim crouch_cover_right_idle				models/characters/marine/crouch_right_idle.md5anim
+	anim crouch_cover_right_peek				models/characters/marine/crouch_right_peek.md5anim
+	{
+		frame 26								object_call	Frame_Peek
+	}
+	
+	anim crouch_cover_right_reload				models/characters/marine/crouch_cover_reload.md5anim
+	{
+		frame 20								ai_disablePain
+	}
+	anim crouch_cover_right_pain				models/characters/marine/crouch_pain01.md5anim
+	{
+		frame 1									speak_random	lipsync_pain
+	}
+	anim crouch_cover_right_pain_concussive			models/characters/marine/crouch_pain01.md5anim
+	{
+		frame 1									speak_random	lipsync_pain
+	}
+	anim crouch_cover_right_range_attack_start	models/characters/marine/crouch_lean_right_start.md5anim
+	anim crouch_cover_right_range_attack		models/characters/marine/crouch_lean_right_loop.md5anim
+	{
+		frame 1									fx					fx_base_flash			MG_muzzle_flash
+		frame 1									ai_attack			base					MG_muzzle_flash
+		frame 1									sound_weapon		snd_base_flash
+	}
+	anim crouch_cover_right_range_attack_end	models/characters/marine/crouch_lean_right_end.md5anim
+
+	anim crouch_cover_right_killswitch			models/characters/marine/cover_killswitch_up.md5anim
+	{
+		frame 11,13,15,17,19,25,27,29,31,33		fx					fx_base_flash			MG_muzzle_flash
+		frame 11,13,15,17,19,25,27,29,31,33		ai_attack			killswitch				MG_muzzle_flash
+		frame 11,13,15,17,19,25,27,29,31,33		sound_weapon		snd_base_flash
+	}
+	
+//	anim crouch_cover_right_to_stand			models/characters/marine/ccr_to_stand.md5anim
+//	anim crouch_cover_right_to_stand			models/characters/marine/walk_strafe_fast_right.md5anim
+//	{
+//		ai_no_turn
+//		sync_cycle
+//		frame	5,14							footstep
+//		frame	8,16							sound	snd_gear
+//	}
+	anim crouch_cover_right_to_stand			models/characters/marine/ccr_to_fire.md5anim
+	{
+		ai_no_turn
+	}
+	anim crouch_cover_right_to_crouch			models/characters/marine/walk_strafe_slow_right.md5anim
+//	anim crouch_cover_right_to_relaxed			models/characters/marine/relaxed_walk_right.md5anim
+	anim crouch_cover_right_to_relaxed			models/characters/marine/ccr_to_fire.md5anim
+	{
+		ai_no_turn
+	}
+
+	// ------------------------------------------------------------------------------------------
+	//
+	//							Crouching Cover Left Animations 
+	//
+	// ------------------------------------------------------------------------------------------
+	
+	anim crouch_cover_left_idle					models/characters/marine/crouch_left_idle.md5anim
+	anim crouch_cover_left_peek					models/characters/marine/crouch_left_peek.md5anim
+	{
+		frame 26								object_call	Frame_Peek
+	}
+	anim crouch_cover_left_reload				models/characters/marine/crouch_left_reload.md5anim
+	{
+		frame 20								ai_disablePain
+	}
+	anim crouch_cover_left_pain					models/characters/marine/crouch_pain_left.md5anim
+	{
+		frame 1									speak_random	lipsync_pain
+	}
+	anim crouch_cover_left_pain_concussive				models/characters/marine/crouch_pain_left.md5anim
+	{
+		frame 1									speak_random	lipsync_pain
+	}
+	anim crouch_cover_left_range_attack_start	models/characters/marine/crouch_lean_left_start.md5anim
+	anim crouch_cover_left_range_attack			models/characters/marine/crouch_lean_left_loop.md5anim
+	{
+		frame 1									fx					fx_base_flash			MG_muzzle_flash
+		frame 1									ai_attack			base					MG_muzzle_flash
+		frame 1									sound_weapon		snd_base_flash
+	}
+	anim crouch_cover_left_range_attack_end		models/characters/marine/crouch_lean_left_end.md5anim
+	
+//	anim crouch_cover_left_to_stand				models/characters/marine/ccl_to_stand.md5anim
+//	anim crouch_cover_left_to_stand				models/characters/marine/walk_strafe_fast_left.md5anim
+//	{
+//		ai_no_turn
+//		sync_cycle
+//		frame	6,13							footstep
+//		frame	3,10							sound	snd_gear
+//	}
+	anim crouch_cover_left_to_stand				models/characters/marine/ccl_to_fire.md5anim
+	{
+		ai_no_turn
+	}
+	anim crouch_cover_left_to_crouch				models/characters/marine/walk_strafe_slow_right.md5anim
+//	anim crouch_cover_left_to_relaxed			models/characters/marine/relaxed_walk_left.md5anim
+	anim crouch_cover_left_to_relaxed				models/characters/marine/ccl_to_fire.md5anim
+	{
+		ai_no_turn
+	}
+		
+	// ------------------------------------------------------------------------------------------
+	//
+	//								Standing animations
+	//
+	// ------------------------------------------------------------------------------------------
+
+	anim range_attack_start						models/characters/marine/machinegun_start.md5anim
+	anim range_attack_end						models/characters/marine/machinegun_end.md5anim
+	anim range_attack							models/characters/marine/machinegun_fire.md5anim
+	{
+		rate 2
+		frame 1									fx					fx_base_flash		MG_muzzle_flash
+		frame 1									ai_attack			base				MG_muzzle_flash
+		frame 1									sound_weapon		snd_base_flash
+	}
+	anim range_attack_torso						models/characters/marine/machinegun_fire_torso.md5anim
+	{
+		rate 2
+		frame 1									fx					fx_base_flash		MG_muzzle_flash
+		frame 1									ai_attack			base				MG_muzzle_flash
+		frame 1									sound_weapon		snd_base_flash
+	}
+	anim reload									models/characters/marine/machinegun_reload.md5anim
+	{
+		frame 20								ai_disablePain
+	}
+
+	anim melee_attack							models/characters/marine/rifle_butt.md5anim
+	{
+		rate 2
+		frame 32								ai_attack_melee		meleeRiflebutt			
+	}	
+	anim melee_elbow							models/characters/marine/elbo_step.md5anim
+	{
+		rate 1.5
+		frame 32								ai_attack_melee		meleeRifleButt			
+	}	
+
+
+//	anim pain_std								models/characters/marine/pain_std.md5anim
+//	{
+//		frame 1									speak_random	lipsync_pain
+//	}
+//	anim pain_std2								models/characters/marine/pain_std2.md5anim
+//	{
+//		frame 1									speak_random	lipsync_pain
+//	}
+//	anim pain_std3								models/characters/marine/pain_std3.md5anim
+//	{
+//		frame 1									speak_random	lipsync_pain
+//	}
+	anim pain_concussive							models/characters/marine/pain_concussive.md5anim
+	{
+		frame 1									speak_random	lipsync_pain
+	}
+	anim pain_concussive1							models/characters/marine/pain_concussive1.md5anim
+	{
+		frame 1									speak_random	lipsync_pain
+	}
+	anim 	pain_concussive2			models/characters/marine/pain_concussive2.md5anim
+	{
+		frame 1									speak_random	lipsync_pain
+	}
+	anim	pain_concussive3			models/characters/marine/pain_concussive3.md5anim
+	{
+		frame 1									speak_random	lipsync_pain
+	}
+	anim	pain_concussive4			models/characters/marine/pain_concussive4.md5anim
+	{
+		frame 1									speak_random	lipsync_pain
+	}
+	anim	pain_concussive5			models/characters/marine/pain_concussive5.md5anim
+	{
+		rate 1.3
+		frame 1									speak_random	lipsync_pain
+	}
+
+	
+
+
+//	anim pain01							models/characters/marine/pain01.md5anim
+//	anim pain02							models/characters/marine/pain02.md5anim
+//	anim pain03							models/characters/marine/pain03.md5anim
+
+	anim pain1							models/characters/marine/pain01_long.md5anim
+	{
+		frame 1									speak_random	lipsync_pain
+	}
+	anim pain2							models/characters/marine/pain02_long.md5anim
+	{
+		frame 1									speak_random	lipsync_pain
+	}
+	anim pain3							models/characters/marine/pain03_long.md5anim
+	{
+		frame 1									speak_random	lipsync_pain
+	}
+	
+//	anim pain01_med						models/characters/marine/pain01_med.md5anim
+//	{
+//		frame 1									speak_random	lipsync_pain
+//	}
+//	anim pain02_med						models/characters/marine/pain02_med.md5anim
+//	{
+//		frame 1									speak_random	lipsync_pain
+//	}
+//	anim pain03_med						models/characters/marine/pain03_med.md5anim
+//	{
+//		frame 1									speak_random	lipsync_pain
+//	}
+//	anim painbehind01_med				models/characters/marine/painbehind01_med.md5anim
+//	{
+//		frame 1									speak_random	lipsync_pain
+//	}
+//
+//	anim left_90						models/characters/marine/left_90.md5anim
+//	{
+//		anim_turn
+//	}
+//	anim right_90						models/characters/marine/right_90.md5anim
+//	{
+//		anim_turn
+//	}
+
+	anim wrist_gui_2					models/characters/marine/wrist_gui_2.md5anim
+	
+	anim point_up						models/characters/marine/point_up.md5anim
+	anim point_down						models/characters/marine/point_down.md5anim
+	anim point_left						models/characters/marine/point_left.md5anim
+	anim point_right					models/characters/marine/point_right.md5anim
+	anim point_back						models/characters/marine/point_back.md5anim
+	anim point_forward					models/characters/marine/point_forward.md5anim
+	anim cover_kswitch_rt_start			models/characters/marine/cover_kswitch_rt_start.md5anim
+	anim cover_kswitch_rt_loop			models/characters/marine/cover_kswitch_rt_loop.md5anim
+	anim cover_kswitch_rt_end			models/characters/marine/cover_kswitch_rt_end.md5anim
+	anim cover_kswitch_lt_start			models/characters/marine/cover_kswitch_lt_start.md5anim
+	anim cover_kswitch_lt_loop			models/characters/marine/cover_kswitch_lt_loop.md5anim
+	anim cover_kswitch_lt_end			models/characters/marine/cover_kswitch_lt_end.md5anim
+	anim turn_180						models/characters/marine/turn_180.md5anim
+	{
+		anim_turn
+	}
+			
+	// ************************************************************************
+	// ******
+	// ******
+	// ******
+	// ******
+	// ****** THE FOLLOWING ANIMATIONS DO NOT BELONG IN THE BASE MARINE *******
+	// ******
+	// ******
+	// ******
+	// ******
+	// ************************************************************************
+
+//ETHAN
+//	anim wrist_shotgun				models/characters/marine/wrist_shotgun_fire.md5anim
+
+	anim    tram_driving_idle		models/characters/marine/tram_driving_idle.md5anim
+	{
+		ai_look_head_only
+	}
+
+	anim weapon_check_1					models/characters/marine/weapon_check_1.md5anim
+	{
+
+		frame	37,53						sound	snd_gear
+	}
+	anim weapon_check_2					models/characters/marine/weapon_check_2.md5anim
+	{
+		frame	30						sound	snd_weapon_slap
+		frame	42						sound	snd_gun_ready 
+	}
+	anim weapon_check_3					models/characters/marine/weapon_check_3.md5anim
+	{
+		ai_no_look	
+		frame	14,78					sound	snd_gear
+	}
+	anim console_idle					models/characters/marine/console_idle.md5anim
+	{
+		ai_look_head_only
+	}
+	anim console_talk					models/characters/marine/console_idle.md5anim
+	{
+		ai_look_head_only
+		rate .05
+	}
+	anim console_exit					models/characters/marine/console_exit.md5anim
+	{
+		ai_look_head_only
+	}
+
+/* ETHAN
+	anim console_exit_idle				models/characters/marine/console_exit_idle.md5anim
+	{
+		ai_look_head_only
+	}
+*/
+/* ETHAN
+	anim wincing						models/characters/marine/wincing.md5anim
+	anim console_w_weapon				models/characters/marine/console_w_weapon.md5anim
+	{
+		ai_look_head_only
+	}
+*/
+
+	anim plant_tnt_high					models/characters/marine/plant_tnt_high.md5anim
+	{
+		ai_look_head_only
+	}
+
+
+	anim plant_tnt_low_start				models/characters/marine/plant_tnt_low_start.md5anim
+	{
+		frame 1,12				sound	snd_gear
+		frame 32				call	map_hangar2::showCharge	
+		frame 32				sound	hangar_bomb_plant
+	}
+	anim plant_tnt_low_loop					models/characters/marine/plant_tnt_low_loop.md5anim
+	anim plant_tnt_low_end					models/characters/marine/plant_tnt_low_end.md5anim
+
+	anim working_wall_panel				models/characters/marine/working_wall_panel.md5anim
+	{
+		ai_look_head_only
+	}
+	anim working_wall_panel_2			models/characters/marine/working_wall_panel_2.md5anim
+	{
+		ai_look_head_only
+	}
+	anim working_wall_panel_3			models/characters/marine/working_wall_panel_3.md5anim
+	{
+		ai_look_head_only
+	}
+
+	anim aim_snappy_1					models/characters/marine/m_stand_aim_snappy_1.md5anim
+	anim aim_snappy_2					models/characters/marine/m_stand_aim_snappy_2.md5anim
+	anim idle_scan_1					models/characters/marine/idle_scan_1.md5anim
+	anim idle_scan_2					models/characters/marine/idle_scan_2.md5anim
+	anim idle_scan_3					models/characters/marine/idle_scan_3.md5anim
+	anim ad_sgt_holding_wounded			models/characters/marine/ad_sgt_holding_wounded.md5anim
+	{
+		ai_look_head_only
+	}
+
+	anim	player_gift_start					models/characters/marine/player_gift_start.md5anim					
+	anim	player_gift_loop					models/characters/marine/player_gift_loop.md5anim			
+	anim	player_gift_end						models/characters/marine/player_gift_end.md5anim
+
+	anim	player_gift2_start					models/characters/marine/player_gift2_start.md5anim					
+	anim	player_gift2_loop					models/characters/marine/player_gift2_loop.md5anim			
+	anim	player_gift2_end					models/characters/marine/player_gift2_end.md5anim	
+			
+	anim ad_wounded_on_knee				models/characters/marine/ad_wounded_on_knee.md5anim
+	{
+		ai_look_head_only
+	}
+	anim ad_wounded_on_knee_loop		models/characters/marine/ad_wounded_on_knee_loop.md5anim
+	{
+		ai_no_look
+	}
+	anim medic_treating1					models/characters/marine/medic_treating.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim idle_sitting_1					models/characters/marine/idle_sitting_1.md5anim
+	{
+		ai_no_look
+	}
+/* ETHAN
+	anim idle_sitting_2					models/characters/marine/idle_sitting_2.md5anim
+	{
+		ai_look_head_only
+	}
+*/
+/* ETHAN
+	anim idle_reclined_1				models/characters/marine/idle_reclined_1.md5anim
+	{
+		ai_look_head_only
+	}
+*/
+	anim idle_reclined_2				models/characters/marine/idle_reclined_2.md5anim
+	{
+		ai_look_head_only
+	}
+	anim idle_reclined_3				models/characters/marine/idle_reclined_3.md5anim
+	{
+		ai_look_head_only
+	}
+/* ETHAN
+	anim idle_reclined_4				models/characters/marine/idle_reclined_4.md5anim
+	{
+		ai_look_head_only
+	}
+*/
+	anim idle_reclined_5				models/characters/marine/idle_reclined_5.md5anim
+	{
+		ai_look_head_only
+	}
+/* ETHAN
+	anim idle_reclined_6				models/characters/marine/idle_reclined_6.md5anim
+	{
+		ai_look_head_only
+	}
+*/
+	anim idle_startled_1				models/characters/marine/idle_startled_1.md5anim
+	anim idle_startled_2				models/characters/marine/idle_startled_2.md5anim
+	anim idle_stretching_1				models/characters/marine/idle_stretching_1.md5anim
+	anim idle_stretching_2				models/characters/marine/idle_stretching_2.md5anim
+	anim idle_stretching_3				models/characters/marine/idle_stretching_3.md5anim
+	anim idle_drinking_1				models/characters/marine/idle_drinking_1.md5anim
+	anim idle_checks_time				models/characters/marine/idle_checks_time.md5anim
+/* ETHAN
+	anim idle_spits						models/characters/marine/idle_spits.md5anim
+
+	anim idle_look_back_rt				models/characters/marine/idle_look_back_rt.md5anim
+*/
+	anim idle_look_back_lt				models/characters/marine/idle_look_back_lt.md5anim
+	anim waving_down_tram				models/characters/marine/waving_down_tram.md5anim
+/*ETHAN
+	anim strassaworkingstation			models/characters/marine/strassaworkingstation.md5anim
+	{
+		ai_look_head_only
+	}
+*/
+	anim at_attention_start				models/characters/marine/at_attention_start.md5anim
+	anim at_attention_end				models/characters/marine/at_attention_end.md5anim
+/* ETHAN
+	anim at_attention_move_right		models/characters/marine/at_attention_move_right.md5anim
+	anim at_attention_move_left			models/characters/marine/at_attention_move_left.md5anim
+	anim at_attention_move_forward		models/characters/marine/at_attention_move_forward.md5anim
+	anim at_attention_move_back			models/characters/marine/at_attention_move_back.md5anim
+
+	anim weaponless_point_right			models/characters/marine/weaponless_point_right.md5anim
+*/
+	anim weaponless_point_left			models/characters/marine/weaponless_point_left.md5anim
+	anim weaponless_point_up			models/characters/marine/weaponless_point_up.md5anim
+//	anim weaponless_point_down			models/characters/marine/weaponless_point_down.md5anim
+	anim weaponless_point_front			models/characters/marine/weaponless_point_front.md5anim
+//	anim weaponless_point_back			models/characters/marine/weaponless_point_back.md5anim
+	anim weaponless_idle2_start			models/characters/marine/weaponless_idle2_start.md5anim
+	anim weaponless_idle2_loop			models/characters/marine/weaponless_idle2_loop.md5anim
+	anim weaponless_idle2				models/characters/marine/weaponless_idle2_loop.md5anim
+	anim weaponless_idle2_end			models/characters/marine/weaponless_idle2_end.md5anim
+	anim weaponless_idle3_start			models/characters/marine/weaponless_idle3_start.md5anim
+	anim weaponless_idle3_loop			models/characters/marine/weaponless_idle3_loop.md5anim
+	anim weaponless_idle3				models/characters/marine/weaponless_idle3_loop.md5anim
+	anim weaponless_idle3_end			models/characters/marine/weaponless_idle3_end.md5anim
+	anim weaponless_idle4_start			models/characters/marine/weaponless_idle4_start.md5anim
+	anim weaponless_idle4_loop			models/characters/marine/weaponless_idle4_loop.md5anim
+	anim weaponless_idle4				models/characters/marine/weaponless_idle4_loop.md5anim
+	anim weaponless_idle4_end			models/characters/marine/weaponless_idle4_end.md5anim
+	anim weaponless_idle5_start			models/characters/marine/weaponless_idle5_start.md5anim
+	anim weaponless_idle5_loop			models/characters/marine/weaponless_idle5_loop.md5anim
+	anim weaponless_idle5				models/characters/marine/weaponless_idle5_loop.md5anim
+	anim weaponless_idle5_end			models/characters/marine/weaponless_idle5_end.md5anim
+	anim weaponless_idle6_start			models/characters/marine/weaponless_idle6_start.md5anim
+	anim weaponless_idle6_loop			models/characters/marine/weaponless_idle6_loop.md5anim
+	anim weaponless_idle6				models/characters/marine/weaponless_idle6_loop.md5anim
+	anim weaponless_idle6_end			models/characters/marine/weaponless_idle6_end.md5anim	
+/* ETHAN
+	anim sarge_needs_medic				models/characters/marine/sarge_needs_medic.md5anim
+	{
+		ai_look_head_only
+	}
+
+	anim test_arm						models/characters/marine/test_arm.md5anim
+	{
+		ai_no_look
+	}
+*/
+//	anim	crouch_walk_forward			models/characters/marine/crouch_walk_forward.md5anim
+	anim	cowering_start				models/characters/marine/cowering_start.md5anim
+	anim	cowering_idle				models/characters/marine/cowering_idle.md5anim
+	anim	cowering_end				models/characters/marine/cowering_end.md5anim
+/*ETHAN
+	anim	mirror_diagnostic			models/characters/marine/mirror_diagnostic.md5anim
+	anim	mirror_lean_left			models/characters/marine/mirror_lean_left.md5anim
+	anim	mirror_lean_right			models/characters/marine/mirror_lean_right.md5anim
+	anim	idle_against_wall2			models/characters/marine/idle_against_wall2.md5anim
+	{
+		ai_look_head_only
+	}
+*/
+	anim 	drop_pod_inview				models/characters/marine/drop_pod_inview.md5anim
+	anim 	weld_loop				models/characters/marine/weld_loop.md5anim
+	{
+		ai_no_look
+	}
+	anim 	weld_loop_short				models/characters/marine/weld_loop_short.md5anim
+	{
+		ai_no_look
+	}
+	anim	conversation_1				models/characters/marine/conversation_1.md5anim
+/*ETHAN
+	anim	conversation_2				models/characters/marine/conversation_2.md5anim
+	anim	wrist_talk_1				models/characters/marine/wrist_talk_1.md5anim
+	{
+		frame	26						sound	snd_comm
+	}
+	anim	medic_shot				models/characters/marine/medic_shot.md5anim
+	{
+		ai_no_look
+	}
+*/
+/*ETHAN
+	anim	kane_reaction2				models/characters/marine/kane_reaction2.md5anim
+	anim	kane_reaction1				models/characters/marine/kane_reaction1.md5anim
+	anim	kane_reaction3				models/characters/marine/kane_reaction3.md5anim
+//	anim	wlk_remitz_idle				models/characters/marine/wlk_remitz_idle.md5anim
+//	anim	wlk_remitz_death			models/characters/marine/wlk_remitz_death.md5anim
+*/
+
+/*ETHAN
+	anim	hub2_kane					models/characters/marine/hub2_kane.md5anim
+	{
+		ai_no_look
+	}
+*/
+	anim	use_gui_standing_start			models/characters/marine/standing_gui_start.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	use_gui_standing_loop			models/characters/marine/standing_gui_loop.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	use_gui_standing_end			models/characters/marine/standing_gui_end.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	idle_weapon_1_start				models/characters/marine/idle_weapon_1_start.md5anim
+	anim	idle_weapon_1_loop				models/characters/marine/idle_weapon_1_loop.md5anim
+	anim	idle_weapon_1					models/characters/marine/idle_weapon_1_loop.md5anim
+	anim	idle_weapon_1_end				models/characters/marine/idle_weapon_1_end.md5anim
+	anim	idle_weapon_2_start				models/characters/marine/idle_weapon_2_start.md5anim
+	anim	idle_weapon_2_loop				models/characters/marine/idle_weapon_2_loop.md5anim
+	anim	idle_weapon_2					models/characters/marine/idle_weapon_2_loop.md5anim
+	anim	idle_weapon_2_end				models/characters/marine/idle_weapon_2_end.md5anim
+	anim	idle_weapon_3_start				models/characters/marine/idle_weapon_3_start.md5anim
+	anim	idle_weapon_3_loop				models/characters/marine/idle_weapon_3_loop.md5anim
+	anim	idle_weapon_3					models/characters/marine/idle_weapon_3_loop.md5anim
+	anim	idle_weapon_3_end				models/characters/marine/idle_weapon_3_end.md5anim
+	anim	idle_weapon_4					models/characters/marine/idle_weapon_4.md5anim
+	{
+		ai_no_look
+	}
+//	anim	cgw_pose_first					models/characters/marine/cgw_pose.md5anim
+//	anim	cgw_pose_second					models/characters/marine/cgw_pose2.md5anim
+//	anim	cgw_pose_third					models/characters/marine/cgw_pose3.md5anim
+//	anim	flyer_pose01					models/characters/marine/flyer_pose01.md5anim
+//	anim	flyer_pose02					models/characters/marine/flyer_pose02.md5anim
+	anim	lay_loop_1a					models/characters/marine/lay_loop_1a.md5anim
+	{
+		ai_no_look
+	}
+	anim	kneel_loop_1b					models/characters/marine/kneel_loop_1b.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	liftlegs_a					models/characters/marine/liftlegs_a.md5anim
+	{
+		ai_no_look
+	}
+	anim	liftlegs_b					models/characters/marine/liftlegs_b.md5anim
+	{
+		ai_no_look
+	}
+	anim	drag_loop_a					models/characters/marine/drag_loop_a.md5anim
+	{
+		ai_no_look
+	}
+	anim	drag_loop_b					models/characters/marine/drag_loop_b.md5anim
+	{
+		ai_look_head_only
+	}
+/* ETHAN
+	anim	setdown_a					models/characters/marine/setdown_a.md5anim
+	{
+		ai_no_look
+	}
+	anim	setdown_b					models/characters/marine/setdown_b.md5anim
+	{
+		ai_no_look
+	}
+	anim	lay_loop_2a					models/characters/marine/lay_loop_2a.md5anim
+	{
+		ai_no_look
+	}
+	anim	kneel_loop_2b					models/characters/marine/kneel_loop_2b.md5anim
+	{
+		ai_look_head_only
+	}
+*/
+	anim	explosion_injured				models/characters/marine/explosion_injured.md5anim
+	{
+		ai_no_look
+	}
+	anim	explosion_injured_loop			models/characters/marine/explosion_injured_loop.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	explosion_assist				models/characters/marine/explosion_assist.md5anim
+	{
+		ai_no_look
+	}
+	anim	explosion_assist_loop			models/characters/marine/explosion_assist_loop.md5anim
+	{
+		ai_no_look
+	}
+	anim	ad_pinned_down					models/characters/marine/ad_pinned_down.md5anim
+	{
+		ai_no_look
+	}
+	/*
+	anim	idle_cards				models/characters/marine/idle_cards.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	throw_cards				models/characters/marine/throw_cards.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	lean_over_cards				models/characters/marine/lean_over_cards.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	scratch_chin_cards			models/characters/marine/scratch_chin_cards.md5anim
+	{
+		ai_look_head_only
+	}
+	anim 	rest_chin_cards_start			models/characters/marine/rest_chin_cards_start.md5anim
+	{
+		ai_no_look
+	}
+	anim	rest_chin_cards_loop			models/characters/marine/rest_chin_cards_loop.md5anim
+	{
+		ai_no_look
+	}
+	anim	rest_chin_cards_end			models/characters/marine/rest_chin_cards_end.md5anim
+	{
+		ai_no_look
+	}
+	anim	look_around_cards			models/characters/marine/look_around_cards.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	settle_cards				models/characters/marine/settle_cards.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	plan_on_ground_1			models/characters/marine/plan_on_ground_1.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	plan_on_ground_2			models/characters/marine/plan_on_ground_2.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	plan_on_ground_3			models/characters/marine/plan_on_ground_3.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	grenade_grab				models/characters/marine/grenade_grab.md5anim
+	anim	plant_gren_w_gun			models/characters/marine/plant_gren_w_gun.md5anim
+	{
+		ai_look_head_only
+	}
+*/
+	anim	com_link_start				models/characters/marine/com_link_start.md5anim
+	{
+		frame	27							sound	snd_comm
+	}
+	anim	com_link_loop				models/characters/marine/com_link_loop.md5anim
+	anim	com_link_end				models/characters/marine/com_link_end.md5anim
+/*ETHAN
+	anim	sarge_briefing_5			models/characters/marine/sarge_briefing_5.md5anim
+	{
+		ai_look_head_only
+	}
+*/
+	anim	kane_armor_box				models/characters/marine/kane_armor_box.md5anim
+	anim	console_stand_start			models/characters/marine/console_stand_start.md5anim
+	anim	console_stand_loop			models/characters/marine/console_stand_loop.md5anim
+	anim	console_stand_end			models/characters/marine/console_stand_end.md5anim
+	anim	mcc_rail_vault				models/characters/marine/mcc_rail_vault.md5anim
+	{
+		ai_no_look
+		frame 1						disableClip
+		frame 1						disableGravity
+		frame 48					enableGravity
+		frame 48					enableClip
+	}
+	
+	anim	recomp_mod_hyper						models/characters/marine/recomp_mod_hyper.md5anim
+
+	/* airdefense.def		
+	anim	treat_talk						models/characters/marine/treat_talk.md5anim
+		// airdefense1
+	anim	treat_talk_loop					models/characters/marine/treat_talk_loop.md5anim
+		// airdefense1
+	anim	treat_to_stand					models/characters/marine/treat_to_stand.md5anim
+		// airdefense1
+	anim	stand_to_treat					models/characters/marine/stand_to_treat.md5anim
+		// airdefense1
+	anim	ad_medic_treating_player			models/characters/marine/ad_medic_treating_player.md5anim
+		// airdefense1
+	*/
+	
+	// JESSE 
+	// HUB1 ANIMS
+	anim Hub_elev_1					models/characters/marine/Hub_elev_1.md5anim
+	anim Hub_elev_2					models/characters/marine/Hub_elev_2.md5anim
+	anim Hub_elev_3					models/characters/marine/Hub_elev_3.md5anim
+	anim Hub_scan_1					models/characters/marine/Hub_scan_1.md5anim
+	anim Hub_scan_3					models/characters/marine/Hub_scan_3.md5anim
+	anim Hub_scan_4					models/characters/marine/Hub_scan_4.md5anim
+	anim Hub_scan_5					models/characters/marine/Hub_scan_5.md5anim
+	anim Hub_scan_6					models/characters/marine/Hub_scan_6.md5anim
+
+	anim	hub1_bidwell_idle_emp					models/characters/marine/hub1_bidwell_idle_emp.md5anim
+	{
+		ai_no_look
+	}
+	anim	hub1_bidwell_death						models/characters/marine/hub1_bidwell_death.md5anim
+	{
+		ai_no_look
+	}
+	anim	hub1_morris_idle_emp					models/characters/marine/hub1_morris_idle_emp.md5anim
+	{
+		ai_no_look
+	}
+	anim	hub1_morris_mourn_start					models/characters/marine/hub1_morris_mourn_start.md5anim
+	{
+		ai_no_look
+	}
+	anim	hub1_morris_mourn_loop					models/characters/marine/hub1_morris_mourn_loop.md5anim
+	{
+		ai_no_look
+	}
+	anim	hub1_voss_idle_emp						models/characters/marine/hub1_voss_idle_emp.md5anim
+	{
+		ai_no_look
+	}
+	anim	hub1_voss_mourn_start					models/characters/marine/hub1_voss_mourn_start.md5anim
+	{
+		ai_no_look
+	}
+	anim	hub1_voss_mourn_loop					models/characters/marine/hub1_voss_mourn_loop.md5anim
+	{
+		ai_no_look
+	}
+	anim	hub1_voss_mourn_end						models/characters/marine/hub1_voss_mourn_end.md5anim
+	{
+		//anim_turn
+		ai_no_look
+	}
+	anim	hub1_voss_com_start						models/characters/marine/hub1_voss_com_start.md5anim
+	{
+		ai_no_look
+		frame	25										sound	snd_comm
+	}
+	anim	hub1_voss_com_loop						models/characters/marine/hub1_voss_com_loop.md5anim
+	{
+		ai_no_look
+	}
+	anim	hub1_voss_com_end						models/characters/marine/hub1_voss_com_end.md5anim
+	{
+		ai_no_look
+	}
+	anim	hub1_voss_grate							models/characters/marine/hub1_voss_grate.md5anim
+	{
+		ai_no_look
+	}
+	anim	hub1_tech_idle_emp			models/characters/marine/hub1_tech_idle_emp.md5anim
+	{
+		ai_no_look
+	}
+	anim	hub1_tech_emp				models/characters/marine/hub1_tech_emp.md5anim
+	{
+		ai_no_look
+	}
+	anim 	idle_wrist_gui_start_fast					models/characters/marine/idle_wrist_gui_start.md5anim
+	{
+		rate 1.4
+	}
+	anim 	idle_wrist_gui_loop					models/characters/marine/idle_wrist_gui_loop.md5anim
+	anim 	idle_wrist_gui_end_fast						models/characters/marine/idle_wrist_gui_end.md5anim
+	{
+		rate 1.4
+	}
+	
+	
+			
+	// ************************************************************************
+	// ******
+	// ****** THE FOLLOWING ANIMATIONS HAVE BEEN SORTED INTO THEIR PROPER DEF FILES AS NOTED
+	// ******
+	// ************************************************************************
+
+/* ETHAN
+	anim cine_wrist_shotgun				models/characters/marine/wrist_shotgun_fire.md5anim
+	{
+		ai_look_head_only
+	}
+*/
+	anim    cine_tram_driving_idle		models/characters/marine/tram_driving_idle.md5anim
+	{
+		ai_look_head_only
+		ai_look_head_only
+	}
+
+	anim cine_weapon_check_1					models/characters/marine/weapon_check_1.md5anim
+	{
+		ai_look_head_only
+		frame	37,53						sound	snd_gear
+	}
+	anim cine_weapon_check_2					models/characters/marine/weapon_check_2.md5anim
+	{
+		ai_look_head_only
+		frame	30						sound	snd_gear
+		frame	42						sound	snd_gun_ready 
+	}
+	anim cine_weapon_check_3					models/characters/marine/weapon_check_3.md5anim
+	{
+		ai_look_head_only	
+		frame	14,78					sound	snd_gear
+	}
+/* ETHAN	
+	anim cine_wincing						models/characters/marine/wincing.md5anim
+	{
+		ai_look_head_only
+	}
+*/	
+	
+	anim cine_aim_snappy_1					models/characters/marine/m_stand_aim_snappy_1.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_aim_snappy_2					models/characters/marine/m_stand_aim_snappy_2.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_idle_scan_1					models/characters/marine/idle_scan_1.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_idle_scan_2					models/characters/marine/idle_scan_2.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_idle_scan_3					models/characters/marine/idle_scan_3.md5anim
+	anim cine_ad_sgt_holding_wounded			models/characters/marine/ad_sgt_holding_wounded.md5anim
+	{
+		ai_look_head_only
+	}
+	anim cine_ad_wounded_on_knee				models/characters/marine/ad_wounded_on_knee.md5anim
+	{
+		ai_look_head_only
+	}
+	anim cine_ad_wounded_on_knee_loop		models/characters/marine/ad_wounded_on_knee_loop.md5anim
+	{
+		ai_no_look
+	}
+	anim cine_medic_treating					models/characters/marine/medic_treating.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_idle_sitting_1					models/characters/marine/idle_sitting_1.md5anim
+	{
+		ai_look_head_only
+	}
+/*ETHAN
+	anim cine_idle_sitting_2					models/characters/marine/idle_sitting_2.md5anim
+	{
+		ai_look_head_only
+	}
+
+	anim cine_idle_reclined_1				models/characters/marine/idle_reclined_1.md5anim
+	{
+		ai_look_head_only
+	}
+*/
+	anim cine_idle_reclined_2				models/characters/marine/idle_reclined_2.md5anim
+	{
+		ai_look_head_only
+	}
+	anim cine_idle_reclined_3				models/characters/marine/idle_reclined_3.md5anim
+	{
+		ai_look_head_only
+	}
+/*ETHAN
+	anim cine_idle_reclined_4				models/characters/marine/idle_reclined_4.md5anim
+	{
+		ai_look_head_only
+	}
+*/
+	anim cine_idle_reclined_5				models/characters/marine/idle_reclined_5.md5anim
+	{
+		ai_look_head_only
+	}
+/*ETHAN
+	anim cine_idle_reclined_6				models/characters/marine/idle_reclined_6.md5anim
+	{
+		ai_look_head_only
+	}
+*/	
+	anim cine_idle_startled_1				models/characters/marine/idle_startled_1.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_idle_startled_2				models/characters/marine/idle_startled_2.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_idle_stretching_1				models/characters/marine/idle_stretching_1.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_idle_stretching_2				models/characters/marine/idle_stretching_2.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_idle_stretching_3				models/characters/marine/idle_stretching_3.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_idle_drinking_1				models/characters/marine/idle_drinking_1.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_idle_checks_time				models/characters/marine/idle_checks_time.md5anim
+	{
+		ai_look_head_only
+	}
+	
+/*ETHAN
+	anim cine_idle_spits						models/characters/marine/idle_spits.md5anim
+	{
+		ai_look_head_only
+	}
+*/
+	
+/* ETHAN	
+	anim cine_idle_look_back_rt				models/characters/marine/idle_look_back_rt.md5anim
+	{
+		ai_look_head_only
+	}
+*/
+	
+	anim cine_idle_look_back_lt				models/characters/marine/idle_look_back_lt.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_waving_down_tram				models/characters/marine/waving_down_tram.md5anim
+	{
+		ai_look_head_only
+	}
+/* ETHAN
+	anim cine_strassaworkingstation			models/characters/marine/strassaworkingstation.md5anim
+	{
+		ai_look_head_only
+	}
+*/
+	anim cine_at_attention_start				models/characters/marine/at_attention_start.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_at_attention_end				models/characters/marine/at_attention_end.md5anim
+	{
+		ai_look_head_only
+	}
+/* ETHAN	
+	anim cine_at_attention_move_right		models/characters/marine/at_attention_move_right.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_at_attention_move_left			models/characters/marine/at_attention_move_left.md5anim
+	{
+		ai_look_head_only
+	}
+
+	
+	anim cine_at_attention_move_forward		models/characters/marine/at_attention_move_forward.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_at_attention_move_back			models/characters/marine/at_attention_move_back.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_weaponless_point_right			models/characters/marine/weaponless_point_right.md5anim
+	{
+		ai_look_head_only
+	}
+*/	
+	anim cine_weaponless_point_left			models/characters/marine/weaponless_point_left.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_weaponless_point_up			models/characters/marine/weaponless_point_up.md5anim
+	{
+		ai_look_head_only
+	}
+/* ETHAN	
+	anim cine_weaponless_point_down			models/characters/marine/weaponless_point_down.md5anim
+	{
+		ai_look_head_only
+	}
+*/	
+	anim cine_weaponless_point_front			models/characters/marine/weaponless_point_front.md5anim
+	{
+		ai_look_head_only
+	}
+/* ETHAN	
+	anim cine_weaponless_point_back			models/characters/marine/weaponless_point_back.md5anim
+	{
+		ai_look_head_only
+	}
+*/	
+	anim cine_weaponless_idle2_start			models/characters/marine/weaponless_idle2_start.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_weaponless_idle2_loop			models/characters/marine/weaponless_idle2_loop.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_weaponless_idle2				models/characters/marine/weaponless_idle2_loop.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_weaponless_idle2_end			models/characters/marine/weaponless_idle2_end.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_weaponless_idle3_start			models/characters/marine/weaponless_idle3_start.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_weaponless_idle3_loop			models/characters/marine/weaponless_idle3_loop.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_weaponless_idle3				models/characters/marine/weaponless_idle3_loop.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_weaponless_idle3_end			models/characters/marine/weaponless_idle3_end.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_weaponless_idle4_start			models/characters/marine/weaponless_idle4_start.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_weaponless_idle4_loop			models/characters/marine/weaponless_idle4_loop.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_weaponless_idle4				models/characters/marine/weaponless_idle4_loop.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_weaponless_idle4_end			models/characters/marine/weaponless_idle4_end.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_weaponless_idle5_start			models/characters/marine/weaponless_idle5_start.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_weaponless_idle5_loop			models/characters/marine/weaponless_idle5_loop.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_weaponless_idle5				models/characters/marine/weaponless_idle5_loop.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_weaponless_idle5_end			models/characters/marine/weaponless_idle5_end.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_weaponless_idle6_start			models/characters/marine/weaponless_idle6_start.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_weaponless_idle6_loop			models/characters/marine/weaponless_idle6_loop.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_weaponless_idle6				models/characters/marine/weaponless_idle6_loop.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_weaponless_idle6_end			models/characters/marine/weaponless_idle6_end.md5anim	
+	{
+		ai_look_head_only
+	}
+/* ETHAN	
+	anim cine_sarge_needs_medic				models/characters/marine/sarge_needs_medic.md5anim
+	{
+		ai_look_head_only
+	}
+
+	anim cine_test_arm						models/characters/marine/test_arm.md5anim
+	{
+		ai_no_look
+	}
+
+	anim	cine_crouch_walk_forward			models/characters/marine/crouch_walk_forward.md5anim
+	{
+		ai_no_look
+	}
+*/
+	anim	cine_cowering_start				models/characters/marine/cowering_start.md5anim
+	{
+		ai_no_look
+	}
+
+	anim	cine_cowering_idle				models/characters/marine/cowering_idle.md5anim
+	{
+		ai_no_look
+	}
+
+	anim	cine_cowering_end				models/characters/marine/cowering_end.md5anim
+	{
+		ai_no_look
+	}
+/*ETHAN
+	anim	cine_mirror_diagnostic			models/characters/marine/mirror_diagnostic.md5anim
+	{
+		ai_no_look
+	}
+
+	anim	cine_mirror_lean_left			models/characters/marine/mirror_lean_left.md5anim
+	{
+		ai_no_look
+	}
+
+	anim	cine_mirror_lean_right			models/characters/marine/mirror_lean_right.md5anim
+	{
+		ai_no_look
+	}
+
+	anim	cine_idle_against_wall2			models/characters/marine/idle_against_wall2.md5anim
+	{
+		ai_look_head_only
+	}
+*/	
+	anim 	cine_drop_pod_inview				models/characters/marine/drop_pod_inview.md5anim
+	{
+		ai_look_head_only
+	}
+
+	anim 	cine_weld_loop				models/characters/marine/weld_loop.md5anim
+	{
+		ai_look_head_only
+	}
+	anim 	cine_weld_loop_short				models/characters/marine/weld_loop_short.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim	cine_conversation_1				models/characters/marine/conversation_1.md5anim
+	{
+		ai_look_head_only
+	}
+/*ETHAN
+	anim	cine_conversation_2				models/characters/marine/conversation_2.md5anim
+	{
+		ai_look_head_only
+	}
+
+	anim	cine_wrist_talk_1				models/characters/marine/wrist_talk_1.md5anim
+	{
+		ai_look_head_only
+		frame	26						sound	snd_comm
+	}
+
+	anim	cine_medic_shot				models/characters/marine/medic_shot.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim	cine_kane_reaction2				models/characters/marine/kane_reaction2.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim	cine_kane_reaction1				models/characters/marine/kane_reaction1.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim	cine_kane_reaction3				models/characters/marine/kane_reaction3.md5anim
+	{
+		ai_look_head_only
+	}
+*/	
+	anim 	cine_pain_concussive2			models/characters/marine/pain_concussive2.md5anim
+	{
+		ai_look_head_only
+		frame 1									speak_random	lipsync_pain
+	}
+	anim	cine_pain_concussive3			models/characters/marine/pain_concussive3.md5anim
+	{
+		ai_look_head_only
+		frame 1									speak_random	lipsync_pain
+	}
+	anim	cine_pain_concussive4			models/characters/marine/pain_concussive4.md5anim
+	{
+		ai_look_head_only
+		frame 1									speak_random	lipsync_pain
+	}
+	anim	cine_pain_concussive5			models/characters/marine/pain_concussive5.md5anim
+	{
+		ai_look_head_only
+		frame 1									speak_random	lipsync_pain
+	}
+/*ETHAN
+	anim	cine_hub2_kane					models/characters/marine/hub2_kane.md5anim
+	{
+		ai_look_head_only
+	}
+*/	
+	anim	cine_idle_weapon_1_start				models/characters/marine/idle_weapon_1_start.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim	cine_idle_weapon_1_loop				models/characters/marine/idle_weapon_1_loop.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim	cine_idle_weapon_1					models/characters/marine/idle_weapon_1_loop.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim	cine_idle_weapon_1_end				models/characters/marine/idle_weapon_1_end.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim	cine_idle_weapon_2_start				models/characters/marine/idle_weapon_2_start.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim	cine_idle_weapon_2_loop				models/characters/marine/idle_weapon_2_loop.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim	cine_idle_weapon_2					models/characters/marine/idle_weapon_2_loop.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim	cine_idle_weapon_2_end				models/characters/marine/idle_weapon_2_end.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim	cine_idle_weapon_3_start				models/characters/marine/idle_weapon_3_start.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim	cine_idle_weapon_3_loop				models/characters/marine/idle_weapon_3_loop.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim	cine_idle_weapon_3					models/characters/marine/idle_weapon_3_loop.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim	cine_idle_weapon_3_end				models/characters/marine/idle_weapon_3_end.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim	cine_idle_weapon_4					models/characters/marine/idle_weapon_4.md5anim
+	{
+		ai_look_head_only
+	}
+
+	anim	cine_lay_loop_1a					models/characters/marine/lay_loop_1a.md5anim
+	{
+		ai_look_head_only
+	}
+
+	anim	cine_liftlegs_a					models/characters/marine/liftlegs_a.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	cine_liftlegs_b					models/characters/marine/liftlegs_b.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	cine_drag_loop_a					models/characters/marine/drag_loop_a.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	cine_drag_loop_b					models/characters/marine/drag_loop_b.md5anim
+	{
+		ai_look_head_only
+	}
+/*ETHAN
+	anim	cine_setdown_a					models/characters/marine/setdown_a.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	cine_setdown_b					models/characters/marine/setdown_b.md5anim
+	{
+		ai_look_head_only
+	}
+
+	anim	cine_lay_loop_2a					models/characters/marine/lay_loop_2a.md5anim
+	{
+		ai_look_head_only
+	}
+*/
+	anim	cine_explosion_injured				models/characters/marine/explosion_injured.md5anim
+	{
+		ai_look_head_only
+	}
+		
+	anim	cine_explosion_injured_loop			models/characters/marine/explosion_injured_loop.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	cine_explosion_assist				models/characters/marine/explosion_assist.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	cine_explosion_assist_loop			models/characters/marine/explosion_assist_loop.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	cine_ad_pinned_down					models/characters/marine/ad_pinned_down.md5anim
+	{
+		ai_look_head_only
+	}
+
+	anim	cine_com_link_start				models/characters/marine/com_link_start.md5anim
+	{
+		ai_look_head_only
+		frame	27							sound	snd_comm
+	}
+	anim	cine_com_link_loop				models/characters/marine/com_link_loop.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim	cine_com_link_end				models/characters/marine/com_link_end.md5anim
+	{
+		ai_look_head_only
+	}
+/*ETHAN	
+	anim	cine_sarge_briefing_5			models/characters/marine/sarge_briefing_5.md5anim
+	{
+		ai_look_head_only
+	}
+
+	anim	cine_screenshot_a				models/characters/marine/screenshot_a.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim	cine_screenshot_b				models/characters/marine/screenshot_b.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim	cine_screenshot_c				models/characters/marine/screenshot_c.md5anim
+	{
+		ai_look_head_only
+	}
+*/	
+	anim	cine_kane_armor_box				models/characters/marine/kane_armor_box.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim	cine_console_stand_start			models/characters/marine/console_stand_start.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim	cine_console_stand_loop			models/characters/marine/console_stand_loop.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim	cine_console_stand_end			models/characters/marine/console_stand_end.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim	cine_mcc_rail_vault				models/characters/marine/mcc_rail_vault.md5anim
+	{
+		ai_look_head_only
+		frame 1						disableClip
+		frame 1						disableGravity
+		frame 48					enableGravity
+		frame 48					enableClip
+	}
+/* ETHAN
+	anim	cine_screenshot_website			models/characters/marine/screenshot_website.md5anim
+	{
+		ai_look_head_only
+	}
+*/	
+	
+	anim	cine_recomp_mod_hyper						models/characters/marine/recomp_mod_hyper.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_ad_marine_dragged								models/characters/marine/ad_marine_dragged.md5anim
+	{	
+		ai_look_head_only
+		frame 1											disableClip
+	//	frame 4,6,8,10,12,14,16,18,20,22				ai_attack			base				MG_muzzle_flash
+		frame 4,6,10,12,18,20,22						ai_attack			fromJoint			MG_muzzle_flash
+		frame 4,6,10,12,18,20,22						sound_weapon		npc_machinegun_fire
+		frame 4,6,10,12,18,20,22						fx					fx_base_flash		MG_muzzle_flash
+
+		frame 2											sound				snd_grunt_drag_1
+		frame 60										sound				snd_grunt_drag_2
+
+	}
+	anim cine_ad_berserker_intro           					models/characters/marine/ad_berserker_intro.md5anim
+	{
+		ai_look_head_only
+		frame 1											disableClip
+		frame 14										call				map_airdefense::openSkewerDoors
+		frame 8											sound_voice			snd_call_player
+		frame 33										sound_voice			snd_skewer_scream
+		frame 41										sound				snd_bloody_body_fall
+		frame 44										fx					fx_bloody_hit		chest
+		frame 70										sound				snd_body_fall
+		frame 72										sound				snd_bloody_body_fall
+	}
+	anim cine_trench_fire            						models/characters/marine/trench_fire.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_roll_trench									models/characters/marine/roll_trench.md5anim
+	{
+		ai_look_head_only
+		frame	1										disableClip
+		frame	8										enableClip
+	}
+	anim cine_injured_arm            						models/characters/marine/injured_arm.md5anim   
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_remove_debris          						models/characters/marine/remove_debris.md5anim 
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_shielding              						models/characters/marine/shielding.md5anim                      
+	{
+		ai_look_head_only
+	}
+/*ETHAN	
+	anim cine_ad_miller_death        						models/characters/marine/ad_miller_death.md5anim                  
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_ad_miller_death_wchain 						models/characters/marine/ad_miller_death_wchain.md5anim 
+	{
+		ai_look_head_only
+	}
+*/	
+	anim cine_wounded_treated								models/characters/marine/wounded_treated.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_wounded_loop									models/characters/marine/wounded_loop.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_medic_treating_a									models/characters/marine/medic_treating.md5anim             
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_wave_over										models/characters/marine/bld_b_morris_rescue.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_crouch_popup_shoot								models/characters/marine/crouch_right_popup.md5anim
+	{
+		ai_look_head_only
+		frame 14,16,18,20,22,24,26,28,30,32,34			ai_attack			fromJoint			MG_muzzle_flash
+		frame 14,16,18,20,22,24,26,28,30,32,34			sound_weapon		npc_machinegun_fire
+		frame 14,16,18,20,22,24,26,28,30,32,34			fx					fx_base_flash		MG_muzzle_flash
+
+	}
+
+	anim cine_ad_fights_grunt_1      						models/characters/marine/ad_fights_grunt_1.md5anim
+	{
+		ai_look_head_only
+		frame  	1										disableClip
+		frame	16										sound			generic_creature_fall_small
+		frame	41,128									sound			snd_ready_shotgun
+		frame 	42										fx				fx_base_flash			SG_muzzle_flash
+		frame 	42										sound_weapon	snd_shotgun_fire
+		frame	64,90,115								sound			snd_gear
+		frame 	43										enableClip
+		frame	62,107,116								footstep
+	}
+	anim cine_ad_fights_grunt_2      						models/characters/marine/ad_fights_grunt_2.md5anim
+	{
+		ai_look_head_only
+		frame	3,107									sound			snd_gear
+		frame	15										footstep
+	}
+
+	anim cine_ad_morris_intro								models/characters/marine/ad_morris_intro.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_ad_miller										models/characters/marine/ad_miller.md5anim
+	{
+		ai_look_head_only
+	}
+/*ETHAN	
+	anim cine_miller_shuffle								models/characters/marine/miller_shuffle.md5anim	
+	{
+		ai_look_head_only
+	}
+	
+
+	anim cine_miller_talk_kovitch							models/characters/marine/miller_talk_kovitch.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_miller_talk_player								models/characters/marine/miller_talk_player.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_ad_door_marine									models/characters/marine/ad_door_marine.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim cine_ad_door_marine_idle							models/characters/marine/ad_door_marine_idle.md5anim	
+	{
+		ai_look_head_only
+	}
+	
+*/	
+	anim	cine_and_stimpack2b					models/characters/marine/and_stimpack2b.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	cine_and_stimpack2b_loop				models/characters/marine/and_stimpack2b_loop.md5anim
+	{
+		ai_look_head_only
+	}
+	anim 	cine_mhstrom_wounded_a				models/characters/marine/mhstrom_wounded_a.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	cine_mhstrom_loop_a					models/characters/marine/mhstrom_loop_a.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	cine_mhstrom_wounded_b				models/characters/marine/mhstrom_wounded_b.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	cine_mhstrom_loop_b					models/characters/marine/mhstrom_loop_b.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim	cine_ad_trench_fire					models/characters/marine/ad_trench_fire.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim	cine_ad_cover_1						models/characters/marine/ad_cover_1.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	cine_ad_cover_2						models/characters/marine/ad_cover2.md5anim
+	{
+		ai_look_head_only
+	}
+
+/*ETHAN	
+	anim	cine_ad_cover3_loop					models/characters/marine/ad_cover3_loop.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	cine_ad_cover3_guistart				models/characters/marine/ad_cover3_guistart.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	cine_ad_cover3_guiloop				models/characters/marine/ad_cover3_guiloop.md5anim
+	{
+		ai_look_head_only
+	}
+
+	anim	cine_ad_cover3_guiend				models/characters/marine/ad_cover3_guiend.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim	cine_ad_cortez_intro								models/characters/marine/ad_cortez_intro.md5anim
+	{
+		ai_look_head_only
+		frame 5,12,58									ai_attack			fromJoint			MG_muzzle_flash
+		frame 5,12,58									sound_weapon		npc_machinegun_fire
+		frame 5,12,58									fx					fx_base_flash		MG_muzzle_flash
+	
+		frame 5											call				map_airdefense::cortezVictim1 
+		frame 12										call				map_airdefense::cortezVictim2
+		frame 58										call				map_airdefense::cortezVictim3
+	}
+
+*/
+
+	anim	cine_stand_to_treat						models/characters/marine/stand_to_treat.md5anim
+	{
+		ai_look_head_only
+		frame	14								attachment_hide		medic_vaccinegun
+	}
+	anim	cine_treat_to_stand						models/characters/marine/treat_to_stand.md5anim
+	{
+		ai_look_head_only
+		frame	20								attachment_show		medic_vaccinegun
+	}
+
+/*ETHAN	
+	anim	cine_ad_medic_treating_player			models/characters/marine/ad_medic_treating_player.md5anim
+	{
+		ai_look_head_only
+		frame   5								sound			med_gun_heal
+	}
+*/
+	anim	cine_treat_talk							models/characters/marine/treat_talk.md5anim
+	{
+		ai_look_head_only
+	}
+	anim	cine_treat_talk_loop						models/characters/marine/treat_talk_loop.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	//Q4X speeder idle
+	anim	speeder_idle						models/characters/marine/speeder_idle.md5anim
+	{
+	}	
+	
+	
+	// ------------------------------------------------------------------------------------------
+	//
+	//								Q4x cinematic animations
+	//
+	// ------------------------------------------------------------------------------------------
+	
+	anim 	marine_01_landing			models/characters/marine/marine_01_landing.md5anim
+	{
+		ai_no_look
+		frame	15,28								footstep
+		frame 1						disableClip
+		frame 1						disableGravity
+		frame 699					enableGravity
+		frame 699					enableClip
+	}
+	
+	anim 	marine_02_landing			models/characters/marine/marine_02_landing.md5anim
+	{
+		ai_no_look
+		frame	15,28								footstep
+		frame 1						disableClip
+		frame 1						disableGravity
+		frame 699					enableGravity
+		frame 699					enableClip
+	}
+	
+	anim 	marine_03_landing			models/characters/marine/marine_03_landing.md5anim
+	{
+		ai_no_look
+		frame	15,28								footstep
+		frame 1						disableClip
+		frame 1						disableGravity
+		frame 699					enableGravity
+		frame 699					enableClip
+	}
+	
+	anim 	marine_04_landing			models/characters/marine/marine_04_landing.md5anim
+	{
+		ai_no_look
+		frame	15,28								footstep
+		frame 1						disableClip
+		frame 1						disableGravity
+		frame 699					enableGravity
+		frame 699					enableClip
+	}
+	
+	anim 	marine_05_landing			models/characters/marine/marine_05_landing.md5anim
+	{
+		ai_no_look
+		frame	15,28								footstep
+		frame 1						disableClip
+		frame 1						disableGravity
+		frame 699					enableGravity
+		frame 699					enableClip
+	}
+	
+	anim 	marine_06_landing			models/characters/marine/marine_06_landing.md5anim
+	{
+		ai_no_look
+		frame	15,28								footstep
+		frame 1						disableClip
+		frame 1						disableGravity
+		frame 699					enableGravity
+		frame 699					enableClip
+	}
+	
+	anim console_w_weapon_loop			models/characters/marine/console_w_weapon_loop.md5anim
+	{
+		ai_look_head_only
+	}
+
+	anim airassault_space_cannon_idle		models/characters/marine/aa_turret_idle.md5anim
+	{
+		ai_no_look
+		ai_no_turn
+	}
+
+	anim airassault_space_cannon_prep_idle		models/characters/marine/aa_turret_prep_idle.md5anim
+	{
+		ai_no_look
+		ai_no_turn
+	}
+
+	anim unarmed_mcc_hatch_climb		models/characters/marine/unarmed_mcc_hatch_climb.md5anim
+	{
+		ai_no_look
+		ai_no_turn
+		frame 1						disableClip
+		frame 1						disableGravity
+		frame 143					enableGravity
+		frame 143					enableClip
+	}
+	
+	anim dropship_console_idle		models/characters/marine/dropship_console_idle.md5anim
+	{
+	}
+
+	anim console_impact01		models/characters/marine/console_impact01.md5anim
+	{
+	}
+
+	anim console_impact02		models/characters/marine/console_impact02.md5anim
+	{
+	}
+
+	anim console_impact03		models/characters/marine/console_impact03.md5anim
+	{
+	}
+
+	anim dropship_hurt		models/characters/marine/dropship_hurt.md5anim
+	{
+	}
+
+	anim dropship_hurt_impact	models/characters/marine/dropship_hurt_impact.md5anim
+	{
+	}
+	anim dropship_medic		models/characters/marine/dropship_medic.md5anim
+	{
+	}
+	anim dropship_medic_impact		models/characters/marine/dropship_medic_impact.md5anim
+	{
+	}
+
+	anim markswell_ladder_climb		models/characters/marine/markswell_ladder_climb.md5anim
+	{
+	}
+
+	anim markswell_ladder_descend		models/characters/marine/markswell_ladder_descend.md5anim
+	{
+	}
+
+	anim prison_glass		models/characters/marine/prison_glass.md5anim
+	{
+		frame 1 					disableClip
+		frame 2 	sound 			glass_break_medlabs_tube
+	}
+
+	anim prison_glass_idle		models/characters/marine/prison_glass_idle.md5anim
+	{
+		frame 1 					disableClip
+	
+	}
+
+	anim prison_bridge_start		models/characters/marine/prison_bridge_start.md5anim
+	{
+		ai_no_look
+		ai_no_turn
+	}
+	anim prison_bridge_idle		models/characters/marine/prison_bridge_idle.md5anim
+	{
+		ai_no_look
+		ai_no_turn
+	}
+
+	anim prison_bridge_end		models/characters/marine/prison_bridge_end.md5anim
+	{
+		ai_no_look
+		ai_no_turn
+	}
+	
+	anim marine_char_idle		models/characters/marine/marine_char_idle.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim tortured01		models/characters/marine/tortured01.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+	
+	anim tortured02		models/characters/marine/tortured02.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+
+	anim mcc_stabby_stabby	models/characters/marine/mcc_stabby_stabby.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim mcc_stabby_stabby_end_idle		models/characters/marine/mcc_stabby_stabby_end_idle.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim mcc_berzerker_pull		models/characters/marine/mcc_berzerker_pull.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim mcc_berzerker_pull_end_idle		models/characters/marine/mcc_berzerker_pull_end_idle.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim st_tak_hacks_start		models/characters/marine/st_tak_hacks_start.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim st_tak_hacks_loop		models/characters/marine/st_tak_hacks_loop.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim st_tak_hacks_end		models/characters/marine/st_tak_hacks_end.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim st_trapped_teammate		models/characters/marine/st_trapped_teammate.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim st_markswell_wave_ahead		models/characters/marine/st_markswell_wave_ahead.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim st_wave_ahead		models/characters/marine/st_wave_ahead.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+
+	anim st_player_hold		models/characters/marine/st_player_hold.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+
+	anim st_retch_intro_loop		models/characters/marine/st_retch_intro_loop.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim st_retch_intro		models/characters/marine/st_retch_intro.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim st_retch_intro_end_idle		models/characters/marine/st_retch_intro_end_idle.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+	
+	anim st_teammate_climb		models/characters/marine/st_teammate_climb.md5anim
+	{
+		rate 0.9
+		ai_no_turn
+		ai_look_head_only
+		frame	1					disableGravity
+		frame	1					disableClip
+		frame 134					enableGravity
+		frame 134					enableClip
+	}
+	
+	anim st_teammate_climb_b		models/characters/marine/st_teammate_climb_b.md5anim
+	{
+		rate 0.9
+		ai_no_turn
+		ai_look_head_only
+		frame	1					disableGravity
+		frame	1					disableClip
+		frame 134					enableGravity
+		frame 134					enableClip
+	}
+
+	anim st_trench_run									models/characters/marine/st_trench_run.md5anim
+	{
+		ai_no_look
+		//sync_cycle
+		frame	5,11							sound		snd_gear
+		frame	2,10								footstep
+	}
+	
+	anim st_trench_walk									models/characters/marine/st_trench_walk.md5anim
+	{
+		ai_no_look
+		//sync_cycle
+		frame	4,17							sound		snd_gear
+		frame	2,15								footstep
+	}
+
+	anim st_mitchel_intro							models/characters/marine/st_mitchel_intro.md5anim
+	{
+		ai_no_turn
+		ai_no_look
+		frame 1						disableClip
+		frame 1						disableGravity
+	}
+
+	anim st_markswell_intro							models/characters/marine/st_markswell_intro.md5anim
+	{
+		ai_no_turn
+		ai_no_look
+		frame 1						disableClip
+		frame 1						disableGravity
+	}
+
+	anim st_townsend_intro							models/characters/marine/st_townsend_intro.md5anim
+	{
+		ai_no_turn
+		ai_no_look
+		frame 1						disableClip
+		frame 1						disableGravity
+	}
+
+	anim st_atkins_intro							models/characters/marine/st_atkins_intro.md5anim
+	{
+		ai_no_turn
+		ai_no_look
+		frame 1						disableClip
+		frame 1						disableGravity
+	}
+
+	anim st_dekard_intro							models/characters/marine/st_dekard_intro.md5anim
+	{
+		ai_no_turn
+		ai_no_look
+		frame 1						disableClip
+		frame 1						disableGravity
+	}
+
+	anim st_darnell_intro							models/characters/marine/st_darnell_intro.md5anim
+	{
+		ai_no_turn
+		ai_no_look
+		frame 1						disableClip
+		frame 1						disableGravity
+	}
+
+	anim st_najavas_intro							models/characters/marine/st_navajas_intro.md5anim
+	{
+		ai_no_turn
+		ai_no_look
+		frame 1						disableClip
+		frame 1						disableGravity
+	}
+
+	anim st_tak_intro							models/characters/marine/st_tak_intro.md5anim
+	{
+		ai_no_turn
+		ai_no_look
+		frame 1						disableClip
+		frame 1						disableGravity
+	}
+
+	anim aa_chair_alert_reaction1		models/characters/marine/aa_chair_alert_reaction1.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim aa_chair_alert_reaction2		models/characters/marine/aa_chair_alert_reaction2.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim aa_chair_alert_reaction3		models/characters/marine/aa_chair_alert_reaction3.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim aa_chair_alert_reaction4		models/characters/marine/aa_chair_alert_reaction3.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+
+	anim aa_chair_idle1		models/characters/marine/aa_chair_idle1.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim aa_chair_idle2		models/characters/marine/aa_chair_idle2.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+	
+	anim aa_chair_idle3		models/characters/marine/aa_chair_idle3.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim aa_chair_idle4		models/characters/marine/aa_chair_idle3.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim aa_chair_enter		models/characters/marine/aa_chair_enter.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim aa_chair_exit		models/characters/marine/aa_chair_exit.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+	
+	
+	anim aa_chair_end_idle1		models/characters/marine/aa_chair_end_idle1.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+	
+	anim aa_chair_end_idle2		models/characters/marine/aa_chair_end_idle2.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+	
+	anim aa_chair_end_idle3		models/characters/marine/aa_chair_end_idle3.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim aa_chair_end_idle4		models/characters/marine/aa_chair_end_idle4.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+	
+	anim aa_back_chair_enter		models/characters/marine/aa_back_chair_enter.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+	
+	anim aa_back_chair_exit		models/characters/marine/aa_back_chair_exit.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+	
+	anim aa_back_chair_idle1	models/characters/marine/aa_back_chair_idle1.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+	
+	anim aa_back_chair_idle2	models/characters/marine/aa_back_chair_idle2.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+	
+	anim aa_back_chair_fire		models/characters/marine/aa_back_chair_fire.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+	
+	anim aa_tak_turnaround_intro		models/characters/marine/aa_tak_turnaround_intro.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+	anim aa_tak_turnaround_loop		models/characters/marine/aa_tak_turnaround_loop.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+	
+	anim aa_tak_turnaround_end		models/characters/marine/aa_tak_turnaround_end.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+	
+	anim aa_tak_idle_loop		models/characters/marine/aa_tak_idle_loop.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+	
+	anim mcc_speeder_mount		models/characters/marine/mcc_speeder_mount.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+	
+	anim mcc_speeder_mount_idle1		models/characters/marine/mcc_speeder_mount_idle1.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+	
+	anim mcc_speeder_mount_idle2		models/characters/marine/mcc_speeder_mount_idle2.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+	
+	anim mcc_speeder_dismount_idle1		models/characters/marine/mcc_speeder_dismount_idle1.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+	anim mcc_speeder_dismount_idle2		models/characters/marine/mcc_speeder_dismount_idle2.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+	
+	anim mcc_speeder_dismount		models/characters/marine/mcc_speeder_dismount.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim pr_darnell_grate		models/characters/marine/pr_darnell_grate.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+	
+	anim pr_dekard_glass		models/characters/marine/pr_dekard_glass.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+	
+	anim pr_drag_marine		models/characters/marine/pr_drag_marine.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim pr_gunner_throw		models/characters/marine/pr_gunner_throw.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim pr_climb_down		models/characters/marine/pr_climb_down.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim st_chair_to_idle		models/characters/marine/st_chair_to_idle.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim st_tak_weld		models/characters/marine/st_tak_weld.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim st_tak_weld_walk		models/characters/marine/st_tak_weld_walk.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim st_tak_zipline		models/characters/marine/st_tak_zipline.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim st_tak_zipline_start		models/characters/marine/st_tak_zipline_start.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim st_tak_zipline_end		models/characters/marine/st_tak_zipline_end.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim st_repelling		models/characters/marine/st_repelling.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim st_dropship_chair		models/characters/marine/st_dropship_chair.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim st_dropship_chair_rocked		models/characters/marine/st_dropship_chair_rocked.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim st_markswell_enters		models/characters/marine/st_markswell_enters.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim st_markswell_talks		models/characters/marine/st_markswell_talks.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim st_markswell_sits		models/characters/marine/st_markswell_sits.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+
+	anim st_darnell_reach		models/characters/marine/st_darnell_reach.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+
+	anim st_mitchel_hold		models/characters/marine/st_mitchel_hold.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+
+	anim st_atkins_fall		models/characters/marine/st_atkins_fall.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim st_townsend_fall		models/characters/marine/st_townsend_fall.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim st_tak_nudge		models/characters/marine/st_tak_nudge.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim st_najavas_react		models/characters/marine/st_najavas_react.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+
+	anim st_dropship_stand		models/characters/marine/st_dropship_stand.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim st_dropship_walk		models/characters/marine/st_dropship_walk.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim tr_tak_duck		models/characters/marine/tr_tak_duck.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim tr_doorlift_start		models/characters/marine/tr_doorlift_start.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim tr_doorlift_loop_1		models/characters/marine/tr_doorlift_loop_1.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim tr_doorlift_higher		models/characters/marine/tr_doorlift_higher.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim tr_doorlift_loop_2		models/characters/marine/tr_doorlift_loop_2.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim tr_doorlift_end		models/characters/marine/tr_doorlift_end.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+	anim cr_ladder_descend		models/characters/marine/cr_ladder_descend.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+	}
+
+}
+
+entityDef char_q4x_marine
+{
+	"inherit"				"char_marine"
+	
+	"model"					"model_char_q4x_marine"
+}
+
+
+entityDef char_q4x_marine_shotgun
+{
+	"inherit"				"char_marine_shotgun"
+	
+	"model"					"model_char_q4x_marine"
+}
+
+entityDef char_q4x_marine_hyperblaster
+{
+	"inherit"				"char_marine_hyperblaster"
+	
+	"model"					"model_char_q4x_marine"
+}
+
+entityDef char_q4x_marine_unarmed
+{
+	"inherit"				"char_marine_unarmed"
+	
+	"model"					"model_char_q4x_marine"
+}
+
+model model_char_q4x_marine_trench
+{
+	inherit 				model_char_q4x_marine
+
+	anim run									models/characters/marine/st_trench_run.md5anim
+	{
+		ai_no_look
+		rate 1.2
+		//sync_cycle
+		frame	4,11							sound		snd_gear
+		frame	1,10								footstep
+	}
+
+	anim walk									models/characters/marine/st_trench_walk.md5anim
+	{
+		ai_no_look
+		rate 1.2
+		//sync_cycle
+		frame	4,11							sound		snd_gear
+		frame	1,10								footstep
+	}
+}
+
+entityDef char_q4x_marine_trench
+{
+	"inherit"				"char_marine"
+	//"tactical_ranged"						"0"
+	"model"					"model_char_q4x_marine_trench"
+
+}
+
+
+entityDef char_q4x_marine_dekard
+{
+	"inherit"				"char_marine"
+	"def_head"				"char_q4x_marinehead_dekard"
+	"skin"					"skins/models/characters/marine/viper"
+}

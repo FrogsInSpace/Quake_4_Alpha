@@ -1,0 +1,316 @@
+
+lipSync vo_8_1_1
+{
+	text		"Engage the auxiliary turbines.  You heard the LT, we need to haul ass."
+	visemes	"english"	"<Engage> EH12u n3t g4x EY12u j6w <the> DH3y IY3q <auxiliary> AA3q g4w z7w IH7q l6w y9s ER4q IY10s <turbines> t10w ER10s b3v AY20z n4q z16u x13n <You> y8r UW3q <heard> h7x ER3q d3s <the> DH3s IY10s <LT> l9w t13u <we> w3q IY16x <need> n4v IY13u d4q <to> t3w UW3q <haul> h37w AO3q l3x x5w <ass> AE9s s4v x20q "
+}
+
+
+lipSync vo_8_1_2
+{
+	text		"Strogg!"
+	visemes	"english"	"<Strogg> s9y t9w r3q AA32z g4w x18r "
+	visemes	"french"	"x5y <Strogg> s3y t4y r3q OW3q "
+	visemes	"italian"	"x3y <Strogg> s3y t3y r3q OW3q g3v "
+}
+
+
+lipSync vo_8_1_3
+{
+	text		"Shit, accelerators are malfunctioning.  My bike's going --"
+	visemes	"english"	"x5u <Shit> SH12y IY9s t13u x21p <accelerators> AE3q k8u s4x IY3q l5x EH3q r3q AE4q t4y AO3q r4q z6x <are> AA3q r3q <malfunctioning> m4w AE5q l4w f3s AH6q NG3w k11w SH9y AH3q n3y IH5q NG3v <My> m3r AY4q x17p <bikes> b5u AY11t k12x EH3q z8v <going> g3x OW10s IH3q NG3t "
+}
+
+
+
+
+lipSync vo_8_2_1
+{
+	text		"Oh hell no.  Darnell's coming, you fucking Frankenstein pieces of - Shit!  Oh Shit.  Sarge cut your acceleration, watch out for -"
+}
+lipSync vo_8_3_0
+{
+	text		"The Nexus Assault is underway, Dekard. The Strogg have pulled most of their forces to defend the core.  It won't take them long to realize what you're doing, after that it's gonna be hell."
+	visemes	"english"	"<The> DH3w IY4q <Nexus> n5t EH5q k14x s3w AH3q s3x <Assault> AH4q s11x AO7q l5v t5r <is> IH3q z7v <underway> AH6q n3v d3y ER8r w6q EY13u <Dekard> d7t IH10s k4s AA4q r3q d17s x35i <The> DH3x IY3q <Strogg> s9y t7x r3q AA3q g3x <have> h8w AE13u v3s <pulled> p7w UH3q l3s d6n <most> m3v OW10s s3v t4v <of> AH3q v3t <their> DH3x EH5q r3q x8t <forces> f3x AO6q r5q s5x AH3q z6u <to> t4u UW3q <defend> d4w AH4q f8u EH9s n4r d5w <the> DH3n IY3q <core> k8w AO18y r3q <It> IH5q t10s x42f <wont> w3q OW12u n3r t3x <take> t3x EY6q k3u <them> DH3x EH3q m5r <long> l4v AO15w NG3u <to> t3x UW7q <realize> r6q IY5q l4v AY17x z5w <what> w3q AH3q t3u <youre> y4q UH5q r3q <doing> d6v UW10s IH19y NG3r x18v <after> AE8r f3w t4x ER5q <that> DH3w AE23z t4m <its> IH3e t6p s4t <gonna> g5x AA6q n3v AH3q <be> b3v IY9s <hell> h28w EH3q l3p x27j "
+}
+
+
+lipSync vo_8_3_1
+{
+	text		"We've still got Strogg all over us, Dekard. The Hannibal is lifting off before we're completely overrun.  We'll give you what support we can after we're airborne.  Good luck, Dekard."
+	visemes	"english"	"x5i <Weve> w4q IY4q v3x <still> s5w t11v IH6q l4u <got> g4w AA4q t7u x3t <Strogg> s3w t13w r4q AA14v g4w <all> AO6q l16w <over> OW4q v4u ER5q <us> AH5q s6v x5s <Dekard> d5w IH4q k8w AA3q r3q d22o x17a <The> DH3w IY3q <Hannibal> h12w AE3q n3x AH3q b3u AH3q l5w <is> IH5q z7t <lifting> l3x IH3q f3o t5u IH6q NG3w <off> AO4q f3w <before> b3w AH17x f13t AO5q r4q <were> w3q IY3q r4q <completely> k7w AH3q m3o p13u l3x IY5q t3u l5w IY7q <overrun> OW10s v5t ER4q r3q AH25z n3p x59n <Well> w3q IY3q l3k <give> g5w IH4q v3u <you> y3q UW4q <what> w3q AH6q t7u <support> s8w AH4q p9t AO6q r3q t3p <we> w3q IY5q x5p <can> k6x AE15w n3v <after> AE8r f3t t4w ER4q <were> w3q IY3q r3q <airborne> EH25z r5q b5v AO8r r5q n3p x44o <Good> g5w UH6q d5u <luck> l4v AH6q k10s <Dekard> d4w IH11t k4w AA3q r6q d16r x15a "
+}
+
+
+lipSync vo_8_3_2
+{
+	text		"There it is. Eagle squad break off.  Flight pattern alpha nine two."
+	visemes	"english"	"x10j <There> DH3v EH7q r3q <it> IH6q t3w <is> IH18x z4q x22p <Eagle> IY10s g3v AH3q l6v <squad> s6s k4q w6q AA7q d6s x8l <break> b3w r3q EY9s k24u <off> AO4q f3n x14n <Flight> f3s l4w AY16w t3r <pattern> p5w AE9r t4u ER4q n6m <alpha> AE15w l7r f3o AH7q <nine> n7r AY16w n6m <two> t8p UW35z x13a "
+}
+
+
+lipSync vo_8_3_3
+{
+	text		"It's no good, the turret's fried.  We're gonna have to go for tone."
+	visemes	"english"	"<Its> IH11g t5n s8o <no> n13v OW4q <good> g6u UH14v d7k <the> DH4r IY5q <turrets> t11u ER3q r4q EH5q t4s s4s <fried> f7t r3q AY16w d3t <Were> w3q IY7q r3q x12i <gonna> g3p AA3q n5t AH4q <have> h9v AE3q v3m <to> t3s UW5q <go> g5u OW6q <for> f6r AO3q r3q <tone> t14s OW22z n6n x13j "
+}
+
+
+lipSync vo_8_3_4
+{
+	text		"Ship down!"
+	visemes	"english"	"x9q <Ship> SH9w IH17x p10w <down> d3v AW28z n4l x13n "
+}
+
+
+lipSync vo_8_3_5
+{
+	text		"Warning, I'm reading heavy power spikes near tower two.  "
+	visemes	"english"	"x14m <Warning> w3q AO10s r3q n3w IH11t NG3o <Im> AY10s m3o <reading> r3q EH7q d4u IH4q NG3u <heavy> h19v EH3q v3m IY3q <power> p6w AW10t ER6q <spikes> s3t p11s AY11t k3t s4q <near> n5t IH9s r4q x3t <tower> t7v AW12u ER4q x9o <two> t3t UW40z x10a "
+}
+
+
+lipSync vo_8_3_6
+{
+	text		"Ah shit, they're on me, they're on (static)"
+	visemes	"english"	"x8o <Ah> AA4q x13u <shit> SH16u IY30z t12s <theyre> DH3x EH7q r3q <on> AA7q n4r <me> m3t IY24z x7j <theyre> DH4y EH3q r3q x16w <on> AA4q n6t <static> s3y t3x AE3q t3v IH3q k3t x90s "
+}
+
+
+lipSync vo_8_3_7
+{
+	text		"I'm taking fire.  Shields holding."
+	visemes	"english"	"x12p <Im> AY5q m3o <taking> t5t EY9s k3x IH7q NG5q <fire> f9q AY31z ER5q <Shields> SH7u IY9s l12x d3o z3s <holding> h10w OW8r l11u d5t IH10r NG5e x4a "
+}
+
+
+lipSync vo_8_3_8
+{
+	text		"Eagle five, beginning assault on network tower four."
+	visemes	"english"	"x12n <Eagle> IY10s g4u AH5q l3p <five> f11r AY26z v3h <beginning> b3u IH3q g3v IH5q n3p IH7q NG4u <assault> AH3q s7s AO6q l7v t6s <on> AA5q n4q <network> n5u EH7q t3s w6q ER3q k7l <tower> t8u AW16w ER5q x7q <four> f5u AO26z r4q x22j "
+}
+
+
+lipSync vo_8_3_9
+{
+	text		"Tower four is down!"
+	visemes	"english"	"x7j <Tower> t3u AW21z ER4q x5o <four> f3t AO7r r4q <is> IH11t z4p <down> d7v AW25z n4o x20j "
+}
+
+
+lipSync vo_8_3_10
+{
+	text		"We've lost navigation control."
+	visemes	"english"	"x11k <Weve> w4q IY5q v5p <lost> l13w AO5q s4p t6l <navigation> n3u AE8r v3t AH5q g9s EY13u SH9s AH3q n4r <control> k4t AH4q n4n t8v r3q OW16x l15o x12a "
+}
+
+
+lipSync vo_8_3_11
+{
+	text		"Roger that, Command.  We're going for the Air Defense cannons now."
+	visemes	"english"	"x20n <Roger> r4q AA9s j9s ER4q <that> DH3t AE11t t5j <Command> k3t AH3q m7s AE17x n3p d3p <Were> w3q IY3q r5q <going> g4t OW7q IH10s NG3m <for> f3s AO3q r3q <the> DH3v IY9s <Air> EH5q r4q <Defense> d10s AH3q f3u EH7q n5o s5p <cannons> k6t AE6q n6r AH3q n5s z4m <now> n5t AW39z x10a "
+}
+
+
+lipSync vo_8_3_12
+{
+	text		"Shit, objective lost, Command.  I'm gonna swing around for another run."
+	visemes	"english"	"x16m <Shit> SH3w IY30z t4r x23q <objective> AH6q b3k j7u EH5q k3m t5v IH3q v5n <lost> l7v AO16w s4p t4q <Command> k5t AH3q m4t AE16w n5q d5p x21n <Im> AY6q m5a <gonna> g5r AA3q n3t AH5q <swing> s10t w3q IH7q NG3x <around> ER3q AW12u n4r d6r <for> f3w AO3q r3q <another> AH3q n3w AH3q DH3v ER4q <run> r6q AH21z n10m x17h "
+}
+
+
+lipSync vo_8_3_13
+{
+	text		"Drop off complete, squad's on the ground."
+	visemes	"english"	"<Drop> d19q r3q AA9r p8u <off> AO8r f5n <complete> k4q AH3q m3u p8q l6x IY14v t3m <squads> s6s k4o w3q AA12u d6n z3s <on> AA7q n3q <the> DH3v IY3q <ground> g10u r5q AW19y n10p d5m x18a "
+}
+
+
+lipSync vo_8_3_14
+{
+	text		"This is Eagle three, I've got a visual.  Holy shit, Guardian!  Pull up, pull up!"
+	visemes	"english"	"x12h <This> DH3u IH10s s6r <is> IH27z z6p <Eagle> IY13u g4t AH5q l4r x7s <three> TH4u r3q IY24z <Ive> AY12u v3k <got> g5u AA6q t3t <a> AH8q <visual> v4s IH11t ZH5t AH13v w3q AH22z l3a x32a <Holy> h7u OW6q l11u IY13u <shit> SH6u IY30z t4s <Guardian> g3x AA12u r3q d3v IY5q AH5q n7n x4p <Pull> p3w UH3q l3x <up> AH8r p19s <pull> p4w UH3q l9y <up> AH15v p99u p8u "
+}
+
+
+lipSync vo_8_3_15
+{
+	text		"Strogg Flyers, evasive action!"
+	visemes	"english"	"x9p <Strogg> s7t t7v r5q AA13u g3r x3p <Flyers> f4t l4z AY24z ER3q z3o x5n <evasive> IH6q v4t EY11t s3s IH7q v3v <action> AE19y k3u SH6u AH5q n9n x19c "
+}
+
+
+lipSync vo_8_3_16
+{
+	text		"I've lost the port thruster!"
+	visemes	"english"	"x17l <Ive> AY9r v3n <lost> l3u AO13u s3o t7t <the> DH3m IY3q x4n <port> p4w AO6q r4q t7p <thruster> TH3w r3q AH11t s5o t8u ER8r x38g "
+}
+
+
+lipSync vo_8_3_17
+{
+	text		"Dammit, Command.  The core security station is still on line.  I think Rhino's gonna have to take it."
+	visemes	"english"	"<Dammit> d12s AE13u m5t IH5q t5i <Command> k6t AH3q m3s AE22z n3s d3t <The> DH3j IY3q <core> k6x AO8r r6q <security> s3t IH12t k4s y5q UH4q r3q AH3q t3v IY3q <station> s3m t4q EY13u SH4t AH3q n3u <is> IH6q z3p <still> s3k t4r IH3q l9x <on> AA10s n3s <line> l5v AY13u n3v <I> AY3q <think> TH3t IH3q NG4k k3i <Rhinos> r3q h30o IH9s n5q AA6q z3w <gonna> g3u AA3q n3x AH7q <have> h22u AE4q v3p <to> t3t UW4q <take> t8t EY13u k3t <it> IH24z t3a "
+}
+
+
+lipSync vo_8_3_18
+{
+	text		"I've lost readings on the core, what's going on?"
+	visemes	"english"	"<Ive> AY5q v3g x4s <lost> l20u AO5q s3s t6r <readings> r3q EH4q d3u IH4q NG6t z5u <on> AA3q n3s <the> DH3u IY3q <core> k8r AO10t r4q <whats> w3q AH22z t4p s3q <going> g3s OW10t IH16w NG3u x7v <on> AA18y n7n x17g "
+}
+
+
+lipSync vo_8_3_19
+{
+	text		"Eagle three's not responding."
+	visemes	"english"	"x15k <Eagle> IY13u g3w AH3q l5u <threes> TH5s r3q IY16w z4q <not> n5v AA4q t4u <responding> r11t AH3q s6p p5u AA9s n3u d7r IH7q NG8i x23e "
+}
+
+
+lipSync vo_8_3_20
+{
+	text		"I got multiple contacts, should be getting a visual -- Oh shit, I've never seen this many Strogg."
+	visemes	"english"	"x12o <I> AY8r <got> g3v AA8r t3p <multiple> m6s AH3q l7v t3p AH7q p4w AH3q l5o <contacts> k13v AA5q n3n t6t AE14v k3s t3r s4s x4u <should> SH9u UH4q d5l <be> b3u IY3q <getting> g5v EH4q t3v IH3q NG6t <a> AH8r <visual> v3u IH11t ZH3u AH3q w7q AH7q l16q x60g <Oh> OW19y <shit> SH4u IY22z t3w <Ive> AY36z v6t <never> n8s EH3q v4v ER7q <seen> s3p IY7q n3p <this> DH3u IH4q s3o x3q <many> m3w EH3q n3t IY8r <Strogg> s7s t9u r3q AA26z g6r x33i "
+}
+
+
+lipSync vo_8_3_21
+{
+	text		"What the hell?  The entire core is lowering!"
+	visemes	"english"	"x12k <What> w4q AH10s t3t <the> DH3v IY3q <hell> h33v EH3q l19s <The> DH3s IY4q <entire> EH3q n3m t7t AY18x ER3q <core> k7x AO8r r3q <is> IH14v z3r <lowering> l6x OW18y ER3q IH11s NG5i x18a "
+}
+
+
+lipSync vo_8_3_22
+{
+	text		"Three bogey's six o'clock!"
+	visemes	"english"	"x14k <Three> TH6u r3q IY14v <bogeys> b3v OW20z j3x IY11t s3p <six> s3p IH8r k3t s3s <oclock> AH3q k9r l7y AA4q k32u x27a "
+}
+
+
+lipSync vo_8_3_23
+{
+	text		"Dropship Intrepid, this is Eagle 1, disengage, I repeat disengage!"
+	visemes	"english"	"<Dropship> d19p r3q AA7q p9s SH3t IH7q p3r <Intrepid> IH8r n3o t8t r3q EH6q p11t AH4q d3n <this> DH3v IH5q s3r <is> IH7q z4u <Eagle> IY10s g3v AH3q l4x <1> w3q AH32z n4h <disengage> d5p IH10s s3u AH9s n5q g3w EY22z j24p x5p <I> AY7r <repeat> r3q AH11t p12x IY21z t3f <disengage> d3t IH7q s3q AH3q n13t g3v EY26z j13r x25a "
+}
+
+
+lipSync vo_8_3_24
+{
+	text		"Watch it, Eagle 2."
+	visemes	"english"	"x6k <Watch> w3q AA12u CH6s <it> IH8r t4u <Eagle> IY9r g4u AH9s l3p <2> t5t UW38z x11a "
+}
+
+
+lipSync vo_8_3_25
+{
+	text		"Dropship Alcatraz inbound."
+	visemes	"english"	"<Dropship> d9r r3q AA8r p9s SH5v IH7q p10v <Alcatraz> AE3q l5u k5s AH4q t8u r3q AE16w z4p <inbound> IH7q n9p b3w AW20z n11p d5i x8a "
+}
+
+
+lipSync vo_8_3_26
+{
+	text		"Rhino's on the ground, Eagle 10 away!"
+	visemes	"english"	"x5j <Rhinos> r4q h9v IH3q n6w AA5q z4s <on> AA3q n3s <the> DH3s IY7q <ground> g7u r3q AW26z n4k d3r <Eagle> IY8r g4t AH8r l3l <10> t3t EH10s n3u <away> AH4q w10t EY38z x18a "
+}
+
+
+lipSync vo_8_3_27
+{
+	text		"Another wave, two seven seven, watch your back, boys."
+	visemes	"english"	"x14k <Another> AH5q n6w AH5q DH8x ER4q <wave> w9s EY33z v3c <two> t3p UW15v <seven> s10r EH11t v3q AH4q n7q x7q <seven> s3t EH22z v3r AH5q n3k <watch> w3q AA9s CH5p <your> y7q AO3q r3q <back> b3w AE21z k3r <boys> b3y OY21z z6p x27l "
+}
+
+
+lipSync vo_8_3_28
+{
+	text		"Panther and Cougar Squads just touched ground."
+	visemes	"english"	"x14n <Panther> p4u AE11t n4q TH3w ER6q <and> AE5q n3m d3s <Cougar> k3u UW11t g3v ER7q <Squads> s7q k4q w3q AA12u d7q z8q <just> j6t AH7q s3q t5l <touched> t6u AH5q CH7t t5s <ground> g5u r3q AW24z n5n d9q x10a "
+}
+
+
+lipSync vo_8_3_29
+{
+	text		"The Air Defenses are still on line, abort, (screams) (static)"
+	visemes	"english"	"x17c <The> DH4u IY6q <Air> EH5q r3q <Defenses> d3r AH3q f3t EH8r n3o s3r AH3q z8t <are> AA5q r4q <still> s5o t5r IH3q l21w <on> AA5q n7u <line> l8u AY10s n5n x20l <abort> AH10s b5w AO9s r3q t3w <screams> s3t k72u r3q IY3q m3s z4s <static> s3s t7s AE4q t5t IH4q k7s "
+}
+
+
+lipSync vo_8_3_30
+{
+	text		"Tower two is down!"
+	visemes	"english"	"x4n <Tower> t13u AW10t ER3q x7p <two> t3w UW11t <is> IH6q z4n <down> d7u AW28z n3m x37h "
+}
+
+
+lipSync vo_8_3_31
+{
+	text		"Aw shit, we just lost Eagle 9."
+	visemes	"english"	"x16l <Aw> AO25z <shit> SH3v IY33z t3j <we> w4q IY4q <just> j6u AH5q s3p t4t <lost> l5x AO7q s4p t4r <Eagle> IY8r g3w AH4q l4s <9> n5v AY27z n6o x26i "
+}
+
+
+lipSync vo_8_3_32
+{
+	text		"Dammit, get those defenses down.  They're taking us apart!"
+	visemes	"english"	"x11h <Dammit> d4u AE14v m3w IH7q t4r <get> g3x EH5q t3r <those> DH3v OW5q z6r <defenses> d5t AH6q f6s EH8r n3p s3q AH9s z6n <down> d9s AW23z n3r <Theyre> DH3v EH3q r3q <taking> t9u EY6q k3t IH4q NG7w <us> AH5q s3r <apart> AH4q p13r AA16w r6q t4o x36h "
+}
+
+
+lipSync vo_8_3_33
+{
+	text		"I just lost contact with Rhino.  What's going on down there?"
+	visemes	"english"	"x10k <I> AY12t <just> j6u AH11t s5n t3q <lost> l11v AO4q s3p t6l <contact> k6u AA6q n3t t3t AE4q k16t t4r <with> w3q IH9r DH3u <Rhino> r3q AY15w n4u OW26z x33k <Whats> w3q AH3q t3r s3k <going> g4v OW4q IH17x NG3y <on> AA8r n4p <down> d3s AW15v n4s <there> DH3v EH19y r3q x17k "
+}
+
+
+lipSync vo_8_3_34
+{
+	text		"There it is! Tower three's defenses are down!  Way to go, Rhino."
+	visemes	"english"	"<There> DH3k EH5q r3q <it> IH6q t4q <is> IH37z z10p x6f <Tower> t4r AW17x ER5q x4o <threes> TH4u r3q IY7q z4p <defenses> d5t AH7q f3v EH7q n3p s3q AH4q z7t <are> AA3q r3q <down> d8r AW30z n3l x36i <Way> w5q EY6q <to> t3v UW6q <go> g4v OW16x <Rhino> r3q AY13u n8u OW18x x17a "
+}
+
+
+lipSync vo_8_3_35
+{
+	text		"Watch it, incoming fire!"
+	visemes	"english"	"x12i <Watch> w5q AA11t CH9s <it> IH16w t3s <incoming> IH9s n3q k5v AH5q m4x IH9r NG3o <fire> f9s AY49z ER3a x7a "
+}
+
+
+lipSync vo_8_3_36
+{
+	text		"Strogg Flyer down."
+	visemes	"english"	"x4r <Strogg> s4r t9u r5q AA9s g3n x6o <Flyer> f3v l3y AY13u ER3q <down> d15t AW23z n8l x23e "
+}
+
+
+lipSync vo_8_3_37
+{
+	text		"Visual ID confirmed."
+	visemes	"english"	"x18i <Visual> v3w IH9s ZH4t AH4q w3q AH3q l16w <ID> IH24z d3i <confirmed> k5u AH3q n13o f3w ER7q m7w d17p x25a "
+}
+
+
+lipSync vo_8_3_38
+{
+	text		"I'm locked on."
+	visemes	"english"	"x12o <Im> AY6q m11t <locked> l4x AA12u k7k t4t <on> AA29z n3k x23e "
+}
+
+
+lipSync vo_8_3_39
+{
+	text		"Missiles are hot."
+	visemes	"english"	"<Missiles> m4f IH23z s4s AH5q l9u z4w <are> AA12u r3q <hot> h36v AA3e t3a "
+}
+
+
+
+
+lipSync vo_8_4_1
+{
+	text		"Yours are the first human eyes to see anything like this, Dekard. Move quick, The Valkaryne's likely locked away in the center; you'll have to fight your way there.  For what it's worth, I couldn't think of a better man for the job.  Semper Fi."
+}

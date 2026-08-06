@@ -1,0 +1,46 @@
+/*
+
+===============================================================================
+
+	Turret Entity Definition
+
+===============================================================================
+*/
+
+entityDef monster_q4x_turret_prison
+{
+	"inherit"											"monster_turret"
+	"minShots"											"6"
+	"maxShots"											"8"
+	
+	"attackSightDelay"									"4"
+	"turn_rate"											"45"
+	
+	"attack_blaster_accuracy"							".5"
+	"attack_blaster_spread"								"4"
+	"attack_blaster_cone"								"180"
+	
+	"delayedTracking"									"1"
+	"lockDelay"											"1.5"
+	"snd_turn"											"strogg_secturret_scan"
+	"snd_stop"											"strogg_secturret_alert"
+}
+
+entityDef monster_q4x_turret_prison_small
+{
+	"inherit"											"monster_turret_small"
+	"minShots"											"6"
+	"maxShots"											"8"
+	
+	"attackSightDelay"									"4"
+	"turn_rate"											"45"
+	
+	"attack_blaster_accuracy"							".5"
+	"attack_blaster_spread"								"4"
+	"attack_blaster_cone"								"180"
+	
+	"delayedTracking"									"1"
+	"lockDelay"											"1.5"
+	"snd_turn"											"strogg_secturret_scan"
+	"snd_stop"											"strogg_secturret_alert"
+}

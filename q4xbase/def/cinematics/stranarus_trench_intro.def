@@ -1,0 +1,47 @@
+export cin_stranarustrench_player_cam
+{
+	options -scale .3937 -nomesh -sourcedir cinematics\stranarus_trench\intro\referenced -destdir models/cinematics/stranarus_trench
+	camera	intro_cin_cam.ma	-range 5129 5800		-dest stranarus_trench_intro
+	camera	intro_cin_cam.ma	-range 2610 3189		-dest stranarus_trench_dropships
+}
+
+camera cin_stranarus_trench_intro_cam
+{
+	anim stranarus_trench_intro					"models/cinematics/stranarus_trench/stranarus_trench_intro.md5camera"
+	{
+
+	}	
+}
+
+camera cin_stranarus_trench_intro_cam_b
+{
+	anim stranarus_trench_dropships					"models/cinematics/stranarus_trench/stranarus_trench_dropships.md5camera"
+	{
+		frame 32				call	m04_stranarus_trench::showActCredit
+		frame 412				call	m04_stranarus_trench::showQ4XLogo
+	}
+}
+
+entityDef cin_stranarus_trench_intro_cam 
+{
+	"editor_color"					"1 .5 0"
+	"editor_mins"					"-16 -16 0"
+	"editor_maxs"					"16 16 64"
+	
+	"spawnclass"					"idCameraAnim"
+	"cinematic"						"1"
+
+	"camera"						"cin_stranarus_trench_intro_cam"
+}
+
+entityDef cin_stranarus_trench_intro_cam_b
+{
+	"editor_color"					"1 .5 0"
+	"editor_mins"					"-16 -16 0"
+	"editor_maxs"					"16 16 64"
+	
+	"spawnclass"					"idCameraAnim"
+	"cinematic"						"1"
+
+	"camera"						"cin_stranarus_trench_intro_cam_b"
+}

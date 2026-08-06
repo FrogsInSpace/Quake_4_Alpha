@@ -1,0 +1,85 @@
+/*
+===============================================================================
+
+	Iron Maiden
+
+===============================================================================
+*/
+
+export iron_maiden
+{		
+	options -prefix IRON_ -align ALL -scale .3937 -keep r_wrist waist mouth_effect muzzle_flash fx4 -parent waist cog_bone -parent upperBack lowerBack -parent lowerBack waist -parent rear01	cog_bone -parent right01 rear01 -parent left01	rear01 -parent rear02 rear01 -parent left02 rear02 -parent right02 rear02 -parent rear03 rear02 -parent left03 rear03 -parent right03 rear03 -parent rear04 rear03 -parent left04 rear04 -parent right04 rear04 -parent rear05 rear04 -parent left05 rear05	-parent right05 rear05
+		
+	anim	models/monsters/iron_maiden/nick/iron_maiden_freezing01.ma		 -dest models/monsters/iron_maiden/freezing01
+	anim	models/monsters/iron_maiden/nick/iron_maiden_freezing02.ma		 -dest models/monsters/iron_maiden/freezing02
+}
+
+/*
+===============================================================================
+
+	Iron Maiden Model
+
+===============================================================================
+*/
+
+model model_monster_q4x_iron_maiden
+{
+	inherit								model_monster_iron_maiden
+//q4x anims
+
+	anim pain_fire						models/monsters/iron_maiden/pain_fire.md5anim
+	{
+		frame	1										sound_voice			ironmaiden_onfire			
+	}
+
+
+	anim freezing01						models/monsters/iron_maiden/freezing01.md5anim
+	{
+	}
+
+	anim freezing02						models/monsters/iron_maiden/freezing02.md5anim
+	{
+	}
+}
+
+
+
+entityDef damage_q4x_ironMaiden_banshee
+{
+	"damage"							"2"
+	"knockback"							"2"
+	"gib"								"0"
+
+	// Double Vision
+	"dv_time"							"4000"
+	"dv_scale"							".05"
+
+	// Hearing Loss
+	"hl_volumeDB"						"-25"
+	"hl_fadeOutTime"					".5"
+	"hl_time"							"2.5"
+	"hl_fadeInTime"						"1"
+	"snd_hl"							"player_sounds_ringing"
+}
+/*
+===============================================================================
+
+	Iron Maiden Entity Definition
+
+===============================================================================
+*/
+
+entityDef monster_q4x_iron_maiden
+{
+	"inherit"							"monster_iron_maiden"
+
+	// --------------------------------- General ------------------------------------
+	"model"								"model_monster_q4x_iron_maiden"
+	"snd_freeze"						"iron_maiden_freeze"
+	"snd_firepain"						"iron_maiden_firepain"
+	
+	"def_banshee_damage"				"damage_q4x_ironMaiden_banshee"
+	
+	"snd_freeze"						"iron_maiden_freeze"
+	"snd_firepain"						"iron_maiden_firepain"
+}

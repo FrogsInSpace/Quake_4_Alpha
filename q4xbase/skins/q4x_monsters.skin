@@ -1,0 +1,98 @@
+/*
+===============================================================================
+
+	Q4x Gunner
+
+===============================================================================
+*/
+
+skin skins/monsters/q4x_gunner
+{
+	"models/monsters/gunner_head_base"						"models/monsters/q4x_gunner_head_base"
+	"models/monsters/gunner_gundoors_base"					"models/monsters/q4x_gunner_gundoors_base"	
+	"models/monsters/gunner_body_base"						"models/monsters/q4x_gunner_body_base"
+	"models/monsters/gunner_armr_base"						"models/monsters/q4x_gunner_armr_base"
+	"models/monsters/gunner_arml_base"						"models/monsters/q4x_gunner_arml_base"
+
+}
+/*
+===============================================================================
+
+	Q4x Grunt
+
+===============================================================================
+*/
+
+
+skin skins/monsters/q4x_grunt
+{
+	"models/monsters/grunt/grunt_head"						"models/monsters/q4x_grunt/q4x_grunt_head"
+	"models/monsters/grunt/grunt_body"						"models/monsters/q4x_grunt/q4x_grunt_body"	
+	"models/monsters/grunt/grunt_arms"						"models/monsters/q4x_grunt/q4x_grunt_arms"
+
+}
+/*
+===============================================================================
+
+	Q4x Strogg Marine
+
+===============================================================================
+*/
+
+skin skins/monsters/q4x_strogg_marine/q4x_smv_shotgun
+{
+	"models/monsters/strogg_marine/smv_head_b"					"models/monsters/q4x_strogg_marine/q4x_smv_head_b4"
+	"models/monsters/strogg_marine/smv_teeth"					"models/monsters/q4x_strogg_marine/q4x_smv_teeth"	
+	"models/monsters/strogg_marine/smv_arms_lo"					"models/monsters/q4x_strogg_marine/q4x_smv_arms2_lo"
+	"models/monsters/strogg_marine/smv_arms_lo2"				"models/monsters/q4x_strogg_marine/q4x_smv_blaster_lo"
+	"models/monsters/strogg_marine/smv_blaster_lo"				"textures/common/nodraw"
+	"models/monsters/strogg_marine/shotgunarm_lo"				"models/monsters/q4x_strogg_marine/q4x_shotgunarm_lo"
+	"models/monsters/strogg_marine/machinegunarm_lo"			"textures/common/nodraw"
+	"models/monsters/strogg_marine/smv_bodylegs_lo"				"models/monsters/q4x_strogg_marine/q4x_smv_bodylegs2_lo"
+	"models/monsters/strogg_marine/smv_eyes_right"				"models/monsters/q4x_strogg_marine/q4x_smv_eyes_right"
+	"models/monsters/strogg_marine/smv_eyes_left"				"models/monsters/q4x_strogg_marine/q4x_smv_eyes_left"
+}
+
+skin skins/monsters/q4x_strogg_marine/q4x_smv_machinegun
+{
+	"models/monsters/strogg_marine/smv_head_b"					"models/monsters/q4x_strogg_marine/q4x_smv_head_b2"
+	"models/monsters/strogg_marine/smv_teeth"					"models/monsters/q4x_strogg_marine/q4x_smv_teeth"	
+	"models/monsters/strogg_marine/smv_arms_lo"					"models/monsters/q4x_strogg_marine/q4x_smv_arms3_lo"
+	"models/monsters/strogg_marine/smv_arms_lo2"				"models/monsters/q4x_strogg_marine/q4x_smv_blaster_lo"
+	"models/monsters/strogg_marine/smv_blaster_lo"				"textures/common/nodraw"
+	"models/monsters/strogg_marine/shotgunarm_lo"				"textures/common/nodraw"
+	"models/monsters/strogg_marine/machinegunarm_lo"			"models/monsters/q4x_strogg_marine/q4x_machinegunarm_lo"
+	"models/monsters/strogg_marine/smv_bodylegs_lo"				"models/monsters/q4x_strogg_marine/q4x_smv_bodylegs3_lo"
+	"models/monsters/strogg_marine/smv_eyes_right"				"models/monsters/q4x_strogg_marine/q4x_smv_eyes_right"
+	"models/monsters/strogg_marine/smv_eyes_left"				"models/monsters/q4x_strogg_marine/q4x_smv_eyes_left"
+}
+
+skin skins/monsters/q4x_strogg_marine/q4x_smv_blaster
+{
+	"models/monsters/strogg_marine/smv_head_b"					"models/monsters/q4x_strogg_marine/q4x_smv_head_b"
+	"models/monsters/strogg_marine/smv_teeth"					"models/monsters/q4x_strogg_marine/q4x_smv_teeth"	
+	"models/monsters/strogg_marine/smv_arms_lo"					"models/monsters/q4x_strogg_marine/q4x_smv_arms_lo"
+	"models/monsters/strogg_marine/smv_arms_lo2"				"models/monsters/q4x_strogg_marine/q4x_smv_blaster_lo"
+	"models/monsters/strogg_marine/smv_blaster_lo"				"models/monsters/q4x_strogg_marine/q4x_smv_blaster_lo"
+	"models/monsters/strogg_marine/shotgunarm_lo"				"textures/common/nodraw"
+	"models/monsters/strogg_marine/machinegunarm_lo"			"textures/common/nodraw"
+	"models/monsters/strogg_marine/smv_bodylegs_lo"				"models/monsters/q4x_strogg_marine/q4x_smv_bodylegs_lo"
+	"models/monsters/strogg_marine/smv_eyes_right"				"models/monsters/q4x_strogg_marine/q4x_smv_eyes_right"
+	"models/monsters/strogg_marine/smv_eyes_left"				"models/monsters/q4x_strogg_marine/q4x_smv_eyes_left"
+}
+
+/*
+===============================================================================
+
+	Q4x Tactical Transfer
+
+===============================================================================
+*/
+
+
+skin skins/monsters/q4x_tactical
+{
+	"models/monsters/tactical/tt_body"						"models/monsters/q4x_tactical/q4x_tt_body"
+
+
+}

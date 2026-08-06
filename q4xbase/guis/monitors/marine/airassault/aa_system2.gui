@@ -1,0 +1,277 @@
+windowDef Desktop
+{
+	rect	0,0,640,480
+	visible	1
+	backcolor	0,0,0,1
+	windowDef Movetargets
+	{
+		rect	0,0,640,480
+		visible	1
+		windowDef d_rightwindow
+		{
+			rect	640,0,640,480
+			visible	1
+		}
+		windowDef d_mainwindow
+		{
+			rect	0,0,640,480
+			visible	1
+		}
+		windowDef d_leftwindow
+		{
+			rect	-640,0,640,480
+			visible	1
+		}
+	}
+	windowDef base_main
+	{
+		rect	0,0,640,480
+		visible	1
+		windowDef b_fire_supression
+		{
+			rect	50,70,540,80
+			visible	1
+			backcolor	0.388,0.466,0.270,1
+			bordersize	2
+			bordercolor	0,0,0,1
+			forecolor	0,0,0,1
+			text	"RAMP"
+			textscale	1
+			textalign	1
+
+			onMouseEnter {
+				set "b_fire_supression::backcolor" "0.488,0.566,0.370,1" "0" ;
+			}
+
+			onMouseExit {
+				set "b_fire_supression::backcolor" "0.388,0.466,0.270,1" "0" ;
+			}
+
+			onAction {
+				transition "base_main::rect" "$d_mainwindow::rect" "$d_leftwindow::rect" "500" ;
+				transition "base_fire::rect" "$d_rightwindow::rect" "$d_mainwindow::rect" "500" ;
+			}
+
+		}
+		windowDef b_lights
+		{
+			rect	50,190,540,80
+			visible	1
+			backcolor	0.250,0,0,1
+			forecolor	1,1,1,1
+			text	"CARGO"
+			textscale	1
+			bordersize	1
+			bordercolor	0,0,0,1
+			textalign	1
+
+			onMouseEnter {
+				set "b_lights::backcolor" "0.35,0.1,0.1,1" "5" ;
+			}
+
+			onMouseExit {
+				set "b_lights::backcolor" "0.25,0,0,1" "5" ;
+			}
+
+			onAction {
+				transition "base_main::rect" "$d_mainwindow::rect" "$d_leftwindow::rect" "500" ;
+				transition "base_lights::rect" "$d_rightwindow::rect" "$d_mainwindow::rect" "500" ;
+			}
+
+		}
+		windowDef b_engines
+		{
+			rect	50,310,540,79
+			visible	1
+			backcolor	0.388,0.466,0.270,1
+			bordersize	2
+			bordercolor	0,0,0,1
+			forecolor	0,0,0,1
+			text	"AMMOFEED"
+			textscale	1
+			textalign	1
+
+			onMouseEnter {
+				set "b_engines::backcolor" "0.488,0.566,0.370,1" "5" ;
+			}
+
+			onMouseExit {
+				set "b_engines::backcolor" "0.388,0.466,0.270,1" "5" ;
+			}
+
+			onAction {
+				transition "base_main::rect" "$d_mainwindow::rect" "$d_leftwindow::rect" "500" ;
+				transition "base_engines::rect" "$d_rightwindow::rect" "$d_mainwindow::rect" "500" ;
+			}
+
+		}
+	}
+	windowDef base_fire
+	{
+		rect	640,0,640,480
+		visible	1
+		windowDef b_firesystem
+		{
+			rect	30,20,580,310
+			visible	1
+			backcolor	0.745,0.745,0.745,1
+			bordersize	2
+			bordercolor	0,0,0,1
+			forecolor	0,0,0,1
+			text	"TOGGLE RAMP"
+			textscale	2
+			textalign	1
+
+			onMouseEnter {
+				set "b_firesystem::backcolor" "1,1,1,1" "5" ;
+			}
+
+			onMouseExit {
+				set "b_firesystem::backcolor" "0.749,0.749,0.749,1" "5" ;
+			}
+
+			onAction {
+				set "cmd" "play guisound_beep2 ; runscript" "$gui::gui_Parm1" ;
+			}
+
+		}
+		windowDef b_fire_back
+		{
+			rect	30,360,580,100
+			visible	1
+			backcolor	0.741,0.741,0.741,1
+			bordersize	2
+			bordercolor	0,0,0,1
+			forecolor	0,0,0,1
+			text	"BACK"
+			textscale	1.75
+			textalign	1
+
+			onMouseEnter {
+				set "b_fire_back::backcolor" "1,1,1,1" "5" ;
+			}
+
+			onMouseExit {
+				set "b_fire_back::backcolor" "0.749,0.749,0.749,1" "5" ;
+			}
+
+			onAction {
+				transition "base_main::rect" "$d_leftwindow::rect" "$d_mainwindow::rect" "500" ;
+				transition "base_fire::rect" "$d_mainwindow::rect" "$d_rightwindow::rect" "500"
+			}
+
+		}
+	}
+	windowDef base_lights
+	{
+		rect	640,0,640,480
+		visible	1
+		windowDef b_lightsystem
+		{
+			rect	30,50,580,230
+			visible	1
+			backcolor	0.741,0.741,0.741,1
+			bordersize	2
+			bordercolor	0,0,0,1
+			forecolor	0,0,0,1
+			text	"DUMPCARGO"
+			textscale	2
+			textalign	1
+
+			onMouseEnter {
+				set "b_lightsystem::backcolor" "1,1,1,1" "5" ;
+			}
+
+			onMouseExit {
+				set "b_lightsystem::backcolor" "0.749,0.749,0.749,1" "5" ;
+			}
+
+			onAction {
+				set "cmd" "play guisound_beep2 ; runscript" "$gui::gui_Parm2" ;
+			}
+
+		}
+		windowDef b_light_back
+		{
+			rect	30,320,580,120
+			visible	1
+			backcolor	0.737,0.737,0.737,1
+			bordersize	2
+			bordercolor	0,0,0,1
+			forecolor	0,0,0,1
+			text	"BACK"
+			textscale	2
+			textalign	1
+
+			onMouseEnter {
+				set "b_light_back::backcolor" "1,1,1,1" "5" ;
+			}
+
+			onMouseExit {
+				set "b_light_back::backcolor" "0.749,0.749,0.749,1" "5" ;
+			}
+
+			onAction {
+				transition "base_main::rect" "$d_leftwindow::rect" "$d_mainwindow::rect" "500" ;
+				transition "base_lights::rect" "$d_mainwindow::rect" "$d_rightwindow::rect" "500"
+			}
+
+		}
+	}
+	windowDef base_engines
+	{
+		rect	640,0,640,480
+		visible	1
+		windowDef b_enginesystem
+		{
+			rect	30,50,580,230
+			visible	1
+			backcolor	0.725,0.725,0.725,1
+			bordersize	2
+			bordercolor	0,0,0,1
+			forecolor	0,0,0,1
+			text	"AMMOFEED"
+			textscale	2
+			textalign	1
+
+			onMouseEnter {
+				set "b_enginesystem::backcolor" "1,1,1,1" "5" ;
+			}
+
+			onMouseExit {
+				set "b_enginesystem::backcolor" "0.749,0.749,0.749,1" "5" ;
+			}
+
+			onAction {
+				set "cmd" "play guisound_beep2 ; runscript" "$gui::gui_Parm3" ;
+			}
+
+		}
+		windowDef b_engine_back
+		{
+			rect	30,320,580,110
+			visible	1
+			backcolor	0.733,0.733,0.733,1
+			bordersize	2
+			bordercolor	0,0,0,1
+			forecolor	0,0,0,1
+			text	"BACK"
+			textscale	2
+			textalign	1
+
+			onMouseEnter {
+				set "b_engine_back::backcolor" "1,1,1,1" "5" ;
+			}
+
+			onMouseExit {
+				set "b_engine_back::backcolor" "0.749,0.749,0.749,1" "5" ;
+			}
+
+			onAction {
+				transition "base_main::rect" "$d_leftwindow::rect" "$d_mainwindow::rect" "500" ;
+				transition "base_engines::rect" "$d_mainwindow::rect" "$d_rightwindow::rect" "500"
+			}
+
+		}
+	}
+}

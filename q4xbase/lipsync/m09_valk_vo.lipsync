@@ -1,0 +1,377 @@
+
+lipSync vo_nava_imgonnadest
+{
+	text		"I’m gonna destroy the Makron, Dekard.  Then she'll have nothing to ressurect!"
+	visemes	"english"	"<Im> IH6q m6u <gonna> g3v AA3q n4t AH3q <destroy> d6t AH6q s8t t6v r3q OY8r <the> DH5r IY3q <Makron> m10u AE13u k8o r4q AA6q n7m <Dekard> d5q IH9r k7n AA3q r4q d8n x17f <Then> DH5r EH3q n5t <shell> SH5v IY3q l3w <have> h3w AE4q v6p <nothing> n5t AH10s TH4n IH5q NG6s <to> t3t UW3q <ressurect> r10t EH7q SH5s ER13u EH11t k6f t9k x10a "
+}
+
+
+lipSync vo_nava_hurrydek
+{
+	text		"Hurry up, Dekard!"
+	visemes	"english"	"x9c <Hurry> h7u ER5q IY12u <up> AH8r p4h <Dekard> d5n IH14v k6p AA3q r5q d7m x17e "
+}
+
+
+lipSync vo_nava_youfast
+{
+	text		"You can move faster than that, Sergeant!"
+	visemes	"english"	"x4l <You> y6q UW5q <can> k6s AE3q n3v <move> m6x UW8r v9k <faster> f4u AE17x s6m t3q ER3q <than> DH5v AE4q n7r <that> DH3v AE12u t5j <Sergeant> s8q AA11t r3q j7p AH3q n12m t4a x7a "
+}
+
+
+lipSync vo_nava_youwaitinv
+{
+	text		"You waiting for an invite?  Let’s go!"
+	visemes	"english"	"<You> y5q UW8r <waiting> w8r EY4q t3s IH3q NG6l <for> f5s AO3q r3q <an> AE3q n5s <invite> IH7q n5t v4s AY12u t3k x9f <Lets> l3q EH4q t3m s5p <go> g9q OW24z x20e "
+}
+
+
+lipSync vo_nava_dontdisapp
+{
+	text		"Don't disappoint me Sergeant!"
+	visemes	"english"	"<Dont> d5x OW7q n3q t3s <disappoint> d3y IH3q s5v AH7q p8q OY7q n3t t3q <me> m6r IY8r <Sergeant> s11v AA9s r4q j5s AH6q n12o t3a x20a "
+}
+
+
+lipSync vo_nava_keepcov
+{
+	text		"Keep me covered while I plant these charges Dekard!"
+	visemes	"english"	"<Keep> k4u IY5q p3s <me> m3x IY10s <covered> k6t AH7r v5u ER5q d3o <while> w5q AY3q l6x <I> AY7q x5i <plant> p3o l4u AE6q n3p t3l <these> DH3r IY8r z6t <charges> CH8t AA8r r6q j4r AH3q z8s <Dekard> d7r IH10s k8r AA3q r3q d20k x10a "
+}
+
+
+lipSync vo_nava_keepthingsoff
+{
+	text		"Keep those damn things offa me!"
+	visemes	"english"	"<Keep> k7s IY8r p4o <those> DH3x OW10s z4p <damn> d9r AE12u m7o <things> TH4t IH7q NG5s z7v <offa> AO12u f3n f3s AH4q <me> m7s IY20z x17a "
+}
+
+
+lipSync vo_nava_dekwhere
+{
+	text		"Dekard, where are you?"
+	visemes	"english"	"x5j <Dekard> d4z IH9s k5n AA3q r3q d3m <where> w11t EH3q r9s <are> AA11t r4q <you> y5q UW17w x12a "
+}
+
+
+lipSync vo_nava_plantcharg
+{
+	text		"I’m planting the charges now; I’m gonna blast this thing into the stratosphere."
+	visemes	"english"	"<Im> IH3q m3j x4s <planting> p3x l3x AE6q n3w t3w IH3q NG3u <the> DH3w IY6q <charges> CH6x AA10t r5q j5x AH3q z6u <now> n5o AW32z x25l <Im> IH3q m3w <gonna> g4x AA5q n3n AH3q x5r <blast> b3w l3w AE13u s4v t3u <this> DH3u IH3q s3u <thing> TH6r IH6q NG3w <into> IH6q n3o t3x UW3q <the> DH3x IY3q <stratosphere> s7x t7w r3q AE7q t3u AH6q s10x f4o IH15w r9s x8c "
+}
+
+
+lipSync vo_nava_almstdone
+{
+	text		"Almost done, Dekard.  Let’s blow this thing and get the hell out of here."
+	visemes	"english"	"x8s <Almost> AO4q l4u m5u OW7q s3u t6j <done> d5w AH10s n4u <Dekard> d9u IH7q k11v AA3q r3q d8t x43k <Lets> l3x EH5q t6q s3c x5r <blow> b4x l3w OW6q <this> DH3w IH6q s4t <thing> TH4s IH4q NG3v <and> AE4q n3u d3q <get> g3w EH7q t4r <the> DH3y IY3q <hell> h14w EH3q l6x <out> AW4q t4w <of> AH4q v3t <here> h5v IH12u r3q x33r "
+}
+
+
+lipSync vo_nava_getdet
+{
+	text		"Dekard, get down, I'm about to detonate!"
+	visemes	"english"	"<Dekard> d3x IH7q k7s AA3q r3q d3l <get> g5u EH3q t3n <down> d10s AW17x n5q <Im> AY3q m7q <about> AH6q b5s AW6q t3n <to> t5o UW4q x7n <detonate> d3v EH9s t3l AH3q n6m EY15v t3a x12a "
+}
+
+
+lipSync vo_nava_die
+{
+	text		"Arrrghhh!"
+	visemes	"english"	"<Arrrghhh> AH58z r4q r3q g3k x17a "
+}
+
+
+lipSync vo_marks_deknexusdest
+{
+	text		"Dekard, the Nexus has been destroyed and the command stream is severed.  Strogg forces are going berserk.  We’ve got seven separate reports of entire Strogg battalions destroying each other.  They’re falling apart, Sergeant."
+	visemes	"english"	"x11m <Dekard> d3z IH11t k8n AA3q r5q d9i x39a <the> DH3r IY3q <Nexus> n9t EH9s k3p s3p AH9r s3n <has> h4r AE3q z8n <been> b3w IH4q n3u <destroyed> d4u AH6q s9q t8r r3q OY13u d3v <and> AE3q n3o d4s <the> DH7q IY4q <command> k5n AH5q m11s AE7q n8t d5r <stream> s8n t6o r3q IY6q m6u <is> IH5q z8p <severed> s5t EH9s v5m ER10r d3g x41c <Strogg> s7o t6t r5q AA8r g9k <forces> f4o AO5q r6q s5q AH3q z7r <are> AA3q r3q <going> g7r OW5q IH8r NG5r <berserk> b6p ER6q s14s ER17x k10g x34a <Weve> w3a IY3a v3p EH3q <got> g7s AA9s t6e <seven> s13o EH9s v5r AH3q n8s <separate> s7p EH7q p8p ER9s EY3q t3s <reports> r3q AH3g p6p AO10s r3q t6j s4n <of> AH3q v5q <entire> EH3q n6p t9q AY4q ER11t <Strogg> s7o t5p r7q AA6q g3n <battalions> b4q AH5q t10o AE6q l7u y4q AH3q n3r z6n <destroying> d4l AH6q s8q t13q r6q OY3q IH6q NG7r <each> IY9r CH5p <other> AH6q DH6n ER10r x38a <Theyre> DH4l EY3q r4q EH3e x3f <falling> f5p AA7r l5v IH3q NG4s <apart> AH11s p6s AA10s r4q t5k <Sergeant> s7o AA5q r8q j6p AH4q n12n t4a x16a "
+}
+
+
+lipSync vo_valk_useless
+{
+	text		"…Useless…"
+	visemes	"english"	"x5m <Useless> y9s UW10s s11n l12t AH9r s5l x31k "
+}
+
+
+lipSync vo_valk_nohope
+{
+	text		"…There is no hope for you…"
+	visemes	"english"	"x6m <There> DH3z EH11t r5q <is> IH22z z7n <no> n8u OW17x <hope> h14r OW8r p9k x3f <for> f9p AO3q r3q <you> y18x UW16w x19c "
+}
+
+
+lipSync vo_valk_racewill
+{
+	text		"…Your race will become ours…"
+	visemes	"english"	"x9l <Your> y6q AO11t r3q <race> r8r EY14v s8m <will> w4q IH3q l3r <become> b4s IH7q k11q AH5q m7p x7l <ours> AW23z ER20y z15k x18a "
+}
+
+
+lipSync vo_valk_defeat
+{
+	text		"…Defeat is inevitable…"
+	visemes	"english"	"x6l <Defeat> d6x AH3q f8q IY13u t5h x7i <is> IH12u z4r <inevitable> IH5q n6u EH8r v6r AH4q t5o AH3q b6m AH3q l15p x15i "
+}
+
+
+lipSync vo_valk_yield
+{
+	text		"…You will yield or you will die…"
+	visemes	"english"	"x7m <You> y9s UW3q <will> w11t IH3q l9w <yield> y22z IY4q l21t d3c <or> AO14v r6q <you> y13u UW6q <will> w10s IH3q l14u x7j <die> d5u AY41z x33k "
+}
+
+
+lipSync vo_valk_behold
+{
+	text		"…Behold our perfection…"
+	visemes	"english"	"x7h <Behold> b4z AH3q h16u OW3q l20w d7n x10k <our> AW7q ER11t <perfection> p9n ER4q f13n EH10s k5m SH11n AH3q n14p x17g "
+}
+
+
+lipSync vo_valk_allis
+{
+	text		"…All is Strogg…"
+	visemes	"english"	"x10o <All> AO20z l28p x6h <is> IH17x z8o <Strogg> s12o t8q r7q AA29z g10k x22c "
+}
+
+
+lipSync vo_valk_deathserv
+{
+	text		"…In death you will serve…"
+	visemes	"english"	"x6o <In> IH6q n14w x4i <death> d4v EH16w TH3k x11e <you> y11s UW4q <will> w8r IH3q l11u <serve> s17p ER31z v14k x16c "
+}
+
+
+lipSync vo_valk_makronrs
+{
+	text		"…The Makron will rise…"
+	visemes	"english"	"x9f <The> DH3t IY3q <Makron> m12u AE15v k11n r5q AA10s n12q <will> w9r IH3q l18u <rise> r11t AY43z z14i x14c "
+}
+
+
+lipSync vo_valk_iseeyou2
+{
+	text		"... I see you..."
+	visemes	"english"	"x17n <I> AY34z x36v <see> s47t IY68z <you> y47z UW99z UW55z x89a "
+}
+
+
+lipSync vo_valk_timedie2
+{
+	text		"...Time to Die..."
+	visemes	"english"	"<Time> t25t AY13u m71v <to> t13t UW60z <Die> d17s AY68z x99n x99n x11n "
+}
+
+
+lipSync vo_valk_toolate2
+{
+	text		"...Too Late..."
+	visemes	"english"	"x4a <Too> t24u UW70z x28v <Late> l3v EY72z t21s x99g x45g "
+}
+
+
+lipSync vo_valk_iamthestrg2
+{
+	text		"...I am the Strogg..."
+	visemes	"english"	"x8n <I> AY49z x65r <am> AE19y m42v x8p <the> DH14u IY3q x7v <Strogg> s40t t16t r9s AA79z g4o x99l x79l "
+}
+
+
+lipSync vo_valk_youhum2
+{
+	text		"...You are human..."
+	visemes	"english"	"x6m <You> y28z UW55z <are> AA4q r5q <human> h99t h5t y7q UW4q m99s m56s AH3q n4g x96a "
+}
+
+
+lipSync vo_valk_youwillserv2
+{
+	text		"...You will serve me..."
+	visemes	"english"	"x6o <You> y26z UW53z <will> w3q IH16w l12s <serve> s39t ER3q v4u <me> m95t IY66z x99m x91m "
+}
+
+
+lipSync vo_valk_laff2
+{
+	text		"...(menacing laughter)..."
+	visemes	"english"	"x99r x40r <menacing> m4t EH3q n3u AH3q s3v IH3q NG3p x54s <laughter> l3x AE3q f3w t3w ER3q x99m x99m x99m x4m "
+}
+
+
+lipSync vo_valk_witnesso2
+{
+	text		"...Witness your oblivion..."
+	visemes	"english"	"x11k <Witness> w21z IH12u t3r n50s AH6q s40t x11p <your> y10s AO3q r3q <oblivion> AH16w b3r l5t IH7q v17n IY3q AH6q n76s x99o x99o x77o "
+}
+
+
+lipSync vo_valk_behold2
+{
+	text		"...Behold Strogg glory..."
+	visemes	"english"	"x3k <Behold> b3v AH3q h73v OW19y l6o d5q <Strogg> s32u t17s r3q AA3q g3w <glory> g3v l99u l24u AO9r r7q IY10s x99k x99k x34k "
+}
+
+
+lipSync vo_valk_persist2
+{
+	text		"...Your persistence is your weakness..."
+	visemes	"english"	"x5g <Your> y11t AO14v r9r x21m <persistence> p3o ER13u s32s IH23z s10s t3m AH13u n5s s3n <is> IH13u z94s <your> y17x AO9r r16w x19s <weakness> w5q IY44z k3o n29u AH3q s49u x99e x75e "
+}
+
+
+lipSync vo_valk_suffer2
+{
+	text		"...Suffer..."
+	visemes	"english"	"x6g <Suffer> s53u AH26z f21o ER26z x99n x99n x25n "
+}
+
+
+lipSync vo_valk_pain2
+{
+	text		"...Pain..."
+	visemes	"english"	"x7a <Pain> p14u EY3q n3v x99r x99r x65r "
+}
+
+
+lipSync vo_valk_conq2
+{
+	text		"...Conquest..."
+	visemes	"english"	"x3f <Conquest> k51u AA3q NG26u k13r w10s EH36z s35v t3q x99k x69k "
+}
+
+
+lipSync vo_valk_human2
+{
+	text		"...Humanity is mine..."
+	visemes	"english"	"x10m <Humanity> h16s y4q UW3q m37x AE10s n28u AH4q t17r IY60z <is> IH3q z17t x6s <mine> m32w AY33z n70s x99g x73g "
+}
+
+
+lipSync vo_valk_power2
+{
+	text		"...My power is beyond limits..."
+	visemes	"english"	"x7l <My> m11u AY21z x19q <power> p66u AW10s ER8q x13p <is> IH11t z17u x12n <beyond> b3s IH24z AA5q n14u d3s <limits> l3t IH3q m99u m12u AH3q t4r s40t x99f x57f "
+}
+
+
+lipSync vo_valk_yousee2
+{
+	text		"...You see my power..."
+	visemes	"english"	"x6t <You> y21z UW34z <see> s33s IY42z x24u <my> m8w AY19y x38r <power> p38u AW39z ER11t x99l x99l x32l "
+}
+
+
+lipSync vo_valk_youpowstrgg
+{
+	text		"...You see the power of the Strogg..."
+	visemes	"english"	"x4h <You> y23z UW18y <see> s37s IY34z x10q <the> DH3t IY3q x29p <power> p19u AW69z ER6q <of> AH43z v3r <the> DH8w IY3q x6r <Strogg> s27s t16r r6q AA70z g3m x99g x83g "
+}
+
+
+lipSync vo_valk_advanevo
+{
+	text		"…advancement… …evolution… …perfection…"
+	visemes	"english"	"x9n <advancement> AH23z d9t v7r AE3q n11u s3t m8t AH3q n6u t4p x99q x33q <evolution> EH13u v12u AH30z l5w UW9r SH26s AH7q n81s x8h <perfection> p10q ER20z f4p EH3q k56q SH27t AH5q n99q n59q x99a x12a "
+}
+
+
+lipSync vo_valk_etern2
+{
+	text		"…Eternal…"
+	visemes	"english"	"x70t <Eternal> IH6q t4w ER14v n19v AH70z l3k x99g x84g "
+}
+
+
+lipSync vo_valk_impstrgg2
+{
+	text		"…Impossible…  …We are Strogg…"
+	visemes	"english"	"x11n <Impossible> IH16w m34u p36v AA4q s14t AH28z b3t AH3q l99p l32p <We> w16w IY53z <are> AA30z r16w <Strogg> s36s t8q r16w AA56z g5s x99l x76l "
+}
+
+
+
+
+lipSync vo_marks_dekemclear
+{
+ text  "...Dekard....come in....Dekard..The EM interference has cleared up....whatever you did has se(t...) (static)"
+}
+lipSync vo_marks_dekhugeenrgy
+{
+	text		"Dekard, we’re reading a huge energy spike right underfoot.  Looks like that entire facility’s about to go nuclear.  Get out of there, double time, Solider."
+	visemes	"english"	"x5f <Dekard> d4x IH9s k7o AA3q r6q d3k x23e <were> w4q ER3q <reading> r10s EH3q d3v IH3q NG6u <a> AH3q <huge> h14r y3q UW9s j7u <energy> EH7r n4v ER6q j4t IY10s <spike> s6n p7q AY10s k10l <right> r8r AY4q t3w <underfoot> AH8r n3q d3q ER6q f13n UH11t t4h x53a <Looks> l4u UH3q k3p s4u <like> l3z AY4q k3q <that> DH3t AE7r t3u <entire> EH5q n6s t9p AY12u ER4q <facilitys> f6p AE5q s11r AY4q l5y AY3q t3w IH6q s3n <about> AH5q b4t AW7q t4j <to> t3q UW3q <go> g4s OW9s <nuclear> n10v UW11t k8h l4u IY10s ER7q x53c <Get> g6w EH4q t3z <out> AW8r t3u <of> AH6q v3r <there> DH3x EH5q r6q x11j <double> d3x AH7r b5u AH3q l4v <time> t7q AY14v m7r <Solider> s8r AA6q l4z AY3q d4u ER15w x32e "
+}
+
+
+lipSync vo_marks_godekk
+{
+	text		"Go Dekard!"
+	visemes	"english"	"<Go> g3x OW13u x4n <Dekard> d3w IH10s k13x AA3q r7q d9c x9a "
+}
+
+
+
+
+lipSync vo_marks_wecanhldps
+{
+ text  "We can't hold this position for long Dekard, get going!"
+}
+lipSync vo_marks_srysrg
+{
+	text		"I'm sorry Sargeant, we can't hold this position!"
+	visemes	"english"	"x5t <Im> AY3q m3v x6w <sorry> s10w AA9s r3q IY4q <Sargeant> s12x AA8r r4q j9w AH3q n3l t3l <we> w3q IY5q <cant> k17w AE4q n3w t3x <hold> h6w OW3q l3q d3t <this> DH3w IH4q s5u x4k <position> p3w AH3q z8u IH12u SH10x AH5q n7j x18e "
+}
+
+
+lipSync vo_marks_dekyougot
+{
+	text		"Dekard, you've got less than a minute to get the hell outta there!"
+	visemes	"english"	"<Dekard> d9x IH3q k4t AA3q r3q d6s <youve> y3q UW3q v3n <got> g5v AA8r t6n <less> l4x EH6q s3t x4s <than> DH3x AE4q n4w <a> AH6q <minute> m3r IH13u n3x AH4q t3r <to> t5v UW5q <get> g5v EH5q t3o <the> DH4w IY3q <hell> h30w EH3q l3w <outta> UW5q t5x AH3q <there> DH3w EH5q r3q x21n "
+}
+
+
+lipSync vo_marks_dek3min
+{
+	text		"Dekard, you've got less than three minutes to get the hell outta there!"
+	visemes	"english"	"<Dekard> d3y IH5q k5w AA4q r3q d6q <youve> y5q UW4q v3l <got> g6w AA8r t5r <less> l4x EH6q s4p x4q <than> DH3w AE7q n3o <three> TH7v r10t IY5q <minutes> m4u IH7q n3y AH4q t3u s3o <to> t5v UW4q <get> g5w EH5q t6t <the> DH3x IY3q <hell> h32x EH4q l3w <outta> UW3q t10y AH3q <there> DH3x EH3q r3q x28h "
+}
+
+
+lipSync vo_marks_dek2min
+{
+	text		"Dekard, you've only got two minutes to get out of there!"
+	visemes	"english"	"<Dekard> d3x IH11t k11x AA4q r4q d5p <youve> y5q UW4q v4r <only> OW9s n3w l3y IY3q <got> g4w AA5q t8s x3p <two> t8x UW5q <minutes> m3t IH12u n4s AH3q t4s s4w <to> t4q UW4q <get> g5w EH7q t6y <out> AW4q t4w <of> AH7q v3s <there> DH3u EH20z r3q x10i "
+}
+
+
+lipSync vo_marks_30sec
+{
+	text		"30 seconds!"
+	visemes	"english"	"x3s <30> TH3x ER4q t3y IY9s x9x <seconds> s6x EH11t k11x AH4q n3t d3p z18o "
+}
+
+
+lipSync vo_vansen_wecanthold
+{
+	text		"We can't hold this position."
+	visemes	"english"	"x5t <We> w3q IY3q <cant> k3k AE3q n3w t4x <hold> h24x OW4q l3p d3w <this> DH3w IH3q s3w <position> p26w AH3q z10y IH6q SH3q AH4q n6f x10a "
+}
+
+
+lipSync vo_vansen_stabilfail
+{
+	text		"Stabalizers are failing!"
+	visemes	"english"	"x3p <Stabalizers> s8w t11w AE8r b5w AE3q l4x AY7q z6x ER3q z11x <are> AA3q r14v <failing> f3y EY11t l13x IH4q NG7o x15f "
+}
+
+
+lipSync vo_vansen_wegonow
+{
+	text		"We've got to go now Lieutenant!"
+	visemes	"english"	"x3v <Weve> w3q IY3q v3n <got> g8v AA3q t6v <to> t6w UW4q <go> g12w OW8r <now> n4w AW23z x5t <Lieutenant> l5x UW3q t5w EH19y n3s AH3q n3n t6a "
+}
+
+

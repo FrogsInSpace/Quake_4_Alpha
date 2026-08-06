@@ -1,0 +1,381 @@
+
+
+void VO_nava_imgonnadest( entity ent )
+{
+ //Navajas: I’m gonna destroy the Makron, Dekard.  Then she'll have nothing to ressurect!  
+ aiSpeakWait( ent, "lipsync_vo_nava_imgonnadest" );
+}
+
+
+void VO_nava_hurrydek( entity ent )
+{
+ //Navajas: Hurry up, Dekard!  
+ aiSpeakWait( ent, "lipsync_vo_nava_hurrydek" );
+}
+
+
+void VO_nava_youfast( entity ent )
+{
+ //Navajas: You can move faster than that, Sergeant!  
+ aiSpeakWait( ent, "lipsync_vo_nava_youfast" );
+}
+
+
+void VO_nava_youwaitinv( entity ent )
+{
+ //Navajas: You waiting for an invite?  Let’s go!  
+ aiSpeakWait( ent, "lipsync_vo_nava_youwaitinv" );
+}
+
+
+void VO_nava_dontdisapp( entity ent )
+{
+ //Navajas: Don't disappoint me Sergeant!  
+ aiSpeakWait( ent, "lipsync_vo_nava_dontdisapp" );
+}
+
+
+void VO_nava_keepcov( entity ent )
+{
+ //Navajas: Keep me covered while I plant these charges Dekard!  
+ aiSpeakWait( ent, "lipsync_vo_nava_keepcov" );
+}
+
+
+void VO_nava_keepthingsoff( entity ent )
+{
+ //Navajas: Keep those damn things offa me!  
+ aiSpeakWait( ent, "lipsync_vo_nava_keepthingsoff" );
+}
+
+
+void VO_nava_dekwhere( entity ent )
+{
+ //Navajas: Dekard, where are you?  
+ aiSpeakWait( ent, "lipsync_vo_nava_dekwhere" );
+}
+
+
+void VO_nava_plantcharg( entity ent )
+{
+ //Navajas: I’m planting the charges now; I’m gonna blast this thing into the stratosphere.  
+ aiSpeakWait( ent, "lipsync_vo_nava_plantcharg" );
+}
+
+
+void VO_nava_almstdone( entity ent )
+{
+ //Navajas: Almost done, Dekard.  Let’s blow this thing and get the hell out of here.  
+ aiSpeakWait( ent, "lipsync_vo_nava_almstdone" );
+}
+
+
+void VO_nava_getdet( entity ent )
+{
+ //Navajas: Dekard, get down, I'm about to detonate!  
+ aiSpeakWait( ent, "lipsync_vo_nava_getdet" );
+}
+
+
+void VO_nava_die( entity ent )
+{
+ //Navajas: Arrrghhh!  
+ aiSpeakWait( ent, "lipsync_vo_nava_die" );
+}
+
+
+void VO_marks_deknexusdest( entity ent )
+{
+ //Markswell: Dekard, the Nexus has been destroyed and the command stream is severed.  Strogg forces are going berserk.  We’ve got seven separate reports of entire Strogg battalions destroying each other.  They’re falling apart, Sergeant.  
+ aiSpeakWait( ent, "lipsync_vo_marks_deknexusdest" );
+}
+
+
+void VO_valk_useless( entity ent )
+{
+ //Valkaryne: …Useless…  
+ aiSpeakWait( ent, "lipsync_vo_valk_useless" );
+}
+
+
+void VO_valk_nohope( entity ent )
+{
+ //Valkaryne: …There is no hope for you…  
+ aiSpeakWait( ent, "lipsync_vo_valk_nohope" );
+}
+
+
+void VO_valk_racewill( entity ent )
+{
+ //Valkaryne: …Your race will become ours…  
+ aiSpeakWait( ent, "lipsync_vo_valk_racewill" );
+}
+
+
+void VO_valk_defeat( entity ent )
+{
+ //Valkaryne: …Defeat is inevitable…  
+ aiSpeakWait( ent, "lipsync_vo_valk_defeat" );
+}
+
+
+void VO_valk_yield( entity ent )
+{
+ //Valkaryne: …You will yield or you will die…  
+ aiSpeakWait( ent, "lipsync_vo_valk_yield" );
+}
+
+
+void VO_valk_behold( entity ent )
+{
+ //Valkaryne: …Behold our perfection…  
+ aiSpeakWait( ent, "lipsync_vo_valk_behold" );
+}
+
+
+void VO_valk_allis( entity ent )
+{
+ //Valkaryne: …All is Strogg…  
+ aiSpeakWait( ent, "lipsync_vo_valk_allis" );
+}
+
+
+void VO_valk_deathserv( entity ent )
+{
+ //Valkaryne: …In death you will serve…  
+ aiSpeakWait( ent, "lipsync_vo_valk_deathserv" );
+}
+
+
+void VO_valk_makronrs( entity ent )
+{
+ //Valkaryne: …The Makron will rise…  
+ aiSpeakWait( ent, "lipsync_vo_valk_makronrs" );
+}
+
+
+void VO_valk_iseeyou2( entity ent )
+{
+ //Valkaryne: ... I see you...  
+ aiSpeakWait( ent, "lipsync_vo_valk_iseeyou2" );
+}
+
+
+void VO_valk_timedie2( entity ent )
+{
+ //Valkaryne: ...Time to Die...  
+ aiSpeakWait( ent, "lipsync_vo_valk_timedie2" );
+}
+
+
+void VO_valk_toolate2( entity ent )
+{
+ //Valkaryne: ...Too Late...  
+ aiSpeakWait( ent, "lipsync_vo_valk_toolate2" );
+}
+
+
+void VO_valk_iamthestrg2( entity ent )
+{
+ //Valkaryne: ...I am the Strogg...  
+ aiSpeakWait( ent, "lipsync_vo_valk_iamthestrg2" );
+}
+
+
+void VO_valk_youhum2( entity ent )
+{
+ //Valkaryne: ...You are human...  
+ aiSpeakWait( ent, "lipsync_vo_valk_youhum2" );
+}
+
+
+void VO_valk_youwillserv2( entity ent )
+{
+ //Valkaryne: ...You will serve me...  
+ aiSpeakWait( ent, "lipsync_vo_valk_youwillserv2" );
+}
+
+
+void VO_valk_laff2( entity ent )
+{
+ //Valkaryne: ...(menacing laughter)...  
+ aiSpeakWait( ent, "lipsync_vo_valk_laff2" );
+}
+
+
+void VO_valk_witnesso2( entity ent )
+{
+ //Valkaryne: ...Witness your oblivion...  
+ aiSpeakWait( ent, "lipsync_vo_valk_witnesso2" );
+}
+
+
+void VO_valk_behold2( entity ent )
+{
+ //Valkaryne: ...Behold Strogg glory...  
+ aiSpeakWait( ent, "lipsync_vo_valk_behold2" );
+}
+
+
+void VO_valk_persist2( entity ent )
+{
+ //Valkaryne: ...Your persistence is your weakness...  
+ aiSpeakWait( ent, "lipsync_vo_valk_persist2" );
+}
+
+
+void VO_valk_suffer2( entity ent )
+{
+ //Valkaryne: ...Suffer...  
+ aiSpeakWait( ent, "lipsync_vo_valk_suffer2" );
+}
+
+
+void VO_valk_pain2( entity ent )
+{
+ //Valkaryne: ...Pain...  
+ aiSpeakWait( ent, "lipsync_vo_valk_pain2" );
+}
+
+
+void VO_valk_conq2( entity ent )
+{
+ //Valkaryne: ...Conquest...  
+ aiSpeakWait( ent, "lipsync_vo_valk_conq2" );
+}
+
+
+void VO_valk_human2( entity ent )
+{
+ //Valkaryne: ...Humanity is mine...  
+ aiSpeakWait( ent, "lipsync_vo_valk_human2" );
+}
+
+
+void VO_valk_power2( entity ent )
+{
+ //Valkaryne: ...My power is beyond limits...  
+ aiSpeakWait( ent, "lipsync_vo_valk_power2" );
+}
+
+
+void VO_valk_yousee2( entity ent )
+{
+ //Valkaryne: ...You see my power...  
+ aiSpeakWait( ent, "lipsync_vo_valk_yousee2" );
+}
+
+
+void VO_valk_youpowstrgg( entity ent )
+{
+ //Valkaryne: ...You see the power of the Strogg...  
+ aiSpeakWait( ent, "lipsync_vo_valk_youpowstrgg" );
+}
+
+
+
+void VO_valk_advanevo( entity ent )
+{
+ //Valkaryne: …advancement… …evolution… …perfection…  
+ aiSpeakWait( ent, "lipsync_vo_valk_advanevo" );
+}
+
+
+void VO_valk_etern2( entity ent )
+{
+ //Valkaryne: …Eternal…  
+ aiSpeakWait( ent, "lipsync_vo_valk_etern2" );
+}
+
+
+
+void VO_valk_impstrgg2( entity ent )
+{
+ //Valkaryne: …Impossible…  …We are Strogg…  
+ aiSpeakWait( ent, "lipsync_vo_valk_impstrgg2" );
+}
+
+
+void VO_marks_dekemclear( entity ent )
+{
+ //Markswell: ...Dekard....come in....Dekard..The EM interference has cleared up....whatever you did has se(t...) (static)  
+ aiSpeakWait( ent, "lipsync_vo_marks_dekemclear" );
+}
+
+
+void VO_marks_dekhugeenrgy( entity ent )
+{
+ //Markswell: Dekard, we’re reading a huge energy spike right underfoot.  Looks like that entire facility’s about to go nuclear.  Get out of there, double time, Solider.  
+ aiSpeakWait( ent, "lipsync_vo_marks_dekhugeenrgy" );
+}
+
+
+
+void VO_marks_godekk( entity ent )
+{
+ //Markswell: Go Dekard!  
+ aiSpeakWait( ent, "lipsync_vo_marks_godekk" );
+}
+
+
+void VO_marks_wecanhldps( entity ent )
+{
+ //Markswell: We can't hold this position for long Dekard, get going!  
+ aiSpeakWait( ent, "lipsync_vo_marks_wecanhldps" );
+}
+
+
+void VO_marks_srysrg( entity ent )
+{
+ //Markswell: I'm sorry Sargeant, we can't hold this position!  
+ aiSpeakWait( ent, "lipsync_vo_marks_srysrg" );
+}
+
+
+void VO_marks_dekyougot( entity ent )
+{
+ //Markswell: Dekard, you've got less than a minute to get the hell outta there!  
+ aiSpeakWait( ent, "lipsync_vo_marks_dekyougot" );
+}
+
+
+void VO_marks_dek3min( entity ent )
+{
+ //Markswell: Dekard, you've got less than three minutes to get the hell outta there!  
+ aiSpeakWait( ent, "lipsync_vo_marks_dek3min" );
+}
+
+
+void VO_marks_dek2min( entity ent )
+{
+ //Markswell: Dekard, you've only got two minutes to get out of there!  
+ aiSpeakWait( ent, "lipsync_vo_marks_dek2min" );
+}
+
+
+void VO_marks_30sec( entity ent )
+{
+ //Markswell: 30 seconds!  
+ aiSpeakWait( ent, "lipsync_vo_marks_30sec" );
+}
+
+
+void VO_vansen_wecanthold( entity ent )
+{
+ //Vansen (pilot): We can't hold this position.  
+ aiSpeakWait( ent, "lipsync_vo_vansen_wecanthold" );
+}
+
+
+void VO_vansen_stabilfail( entity ent )
+{
+ //Vansen (pilot): Stabalizers are failing!  
+ aiSpeakWait( ent, "lipsync_vo_vansen_stabilfail" );
+}
+
+
+void VO_vansen_wegonow( entity ent )
+{
+ //Vansen (pilot): We've got to go now Lieutenant!  
+ aiSpeakWait( ent, "lipsync_vo_vansen_wegonow" );
+}

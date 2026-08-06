@@ -1,0 +1,33 @@
+/***********************************************************************
+Exploding Cryodoor
+
+***********************************************************************/
+//added by MarkM
+
+model model_env_q4x_cryodoor_exploding
+
+{
+	mesh				models/mapobjects/q4x/doors/cryodoor_explode.md5mesh
+	anim idle			models/mapobjects/q4x/doors/idle.md5anim
+	
+	anim cryodoorexplode1		models/mapobjects/q4x/doors/cryodoor_explode.md5anim
+	{
+	}
+	anim endidle		models/mapobjects/q4x/doors/endidle.md5anim
+	
+	
+	
+}
+
+entityDef env_q4x_cryodoor_exploding
+{
+	"editor_color"			"0 .5 .25"
+	"editor_mins"			"-32 -32 0"
+	"editor_maxs"			"32 32 16"
+
+	"spawnclass"			"idAnimated"
+
+	"model"					"model_env_q4x_cryodoor_exploding"
+	"anim"					"idle"
+	
+}

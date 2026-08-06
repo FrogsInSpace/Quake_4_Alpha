@@ -1,0 +1,118 @@
+
+sound q4x_strogg_flyer_loop
+{
+	minDistance	2048
+	maxDistance	4096
+	volumeDb	3
+	looping
+
+	sound/strogg/flyer/flight_loop
+	shakeData 0 voronsrlspnmnmprnonqkmlnmnpnnmnoslpnlojooklpmlompnnmnmiqpnlnmomlnokknmmnonlimqmmpnnplnomjnonppmpnjomortmpoknnloooqpolmqor
+}
+
+sound iron_maiden_freeze
+{
+	minDistance	196
+	maxDistance	900
+	volumeDb	0
+
+	//shakes 0.2
+
+	sound/strogg/iron_maiden/ironmaiden_freeze1.ogg
+	sound/strogg/iron_maiden/ironmaiden_freeze2.ogg
+	
+}
+
+sound iron_maiden_firepain
+{
+	minDistance	196
+	maxDistance	900
+	volumeDb	0
+
+	//shakes 0.2
+
+	sound/strogg/iron_maiden/ironmaiden_firepain1.ogg
+	
+}
+
+sound grunt_onfire
+{
+	minDistance	196
+	maxDistance	900
+	volumeDb	0
+
+	//shakes 0.2
+
+	sound/strogg/grunt/pain_onfire1
+	sound/strogg/grunt/pain_onfire2
+}
+
+sound gunner_onfire
+{
+	minDistance	196
+	maxDistance	900
+	volumeDb	0
+
+	//shakes 0.2
+
+	sound/strogg/gunner/pain_onfire1
+	sound/strogg/gunner/pain_onfire2
+}
+
+sound gladiator_onfire
+{
+	minDistance	196
+	maxDistance	900
+	volumeDb	0
+
+	//shakes 0.2
+
+	sound/strogg/gladiator/pain_onfire
+}
+
+sound berserker_onfire
+{
+	minDistance	196
+	maxDistance	900
+	volumeDb	0
+
+	//shakes 0.2
+
+	sound/strogg/berserker/pain_onfire1
+	sound/strogg/berserker/pain_onfire2
+	sound/strogg/berserker/pain_onfire3	
+}
+
+sound ironmaiden_onfire
+{
+	minDistance	196
+	maxDistance	900
+	volumeDb	0
+
+	//shakes 0.2
+
+	sound/strogg/iron_maiden/pain_onfire1
+	sound/strogg/iron_maiden/pain_onfire2
+	
+}
+
+sound freeze_death_begin
+{
+	minDistance	40
+	maxDistance	400
+	volumeDb	6
+	
+	sound/strogg/general/freeze_death_begin
+}
+
+
+sound freeze_death_gib
+{
+	minDistance	40
+	maxDistance	400
+	volumeDb	6
+	
+	sound/strogg/general/freeze_death_gib.wav
+}
+
+

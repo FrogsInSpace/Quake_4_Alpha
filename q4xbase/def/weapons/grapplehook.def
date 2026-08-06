@@ -1,0 +1,254 @@
+//----------------------------------------------------------------
+// railgun.def
+//
+// Copyright 2002-2004 Raven Software
+//----------------------------------------------------------------
+
+export grapplehook
+{
+	options -prefix SROCKET_ -scale .4 -parent lft_wrst srocket_body -keep lft_shldr lft_elbo lft_wrst lft_thmb_1 lft_ndx_1 lft_mddl_1 lft_ring_5 lft_pnky_1 lft_thmb_2 lft_ndx_2 lft_mddl_2 lft_ring_2 lft_pnky_2 lft_thmb_3 lft_ndx_3 lft_mddl_3 lft_ring_3 lft_pnky_3 lft_thmb_4 lft_ndx_4 lft_mddl_4 lft_ring_4 lft_pnky_4 rt_elbo rt_wrst rt_ring_1 rt_ndx_1 rt_thmb_1 rt_ring_2 rt_ndx_2 rt_thmb_2 rt_ring_3 rt_ndx_3 rt_thmb_3 rt_ring_4 rt_ndx_4 rt_thmb_4 srocket_muzzle_flash
+
+//-keepmeshprefix srocket_ 
+//-keepmesh rt_arm_mesh 
+//-keepmesh lft_arm_mesh
+
+	addoptions -skipmesh rt_strogg_arm_mesh 
+	addoptions -skipmesh lft_strogg_arm_mesh 
+
+	mesh	work/models/weapons/railgun/animations/railgun_idle.ma 		-dest models/weapons/railgun/view
+	anim	work/models/weapons/railgun/animations/railgun_idle.ma 		-dest models/weapons/railgun/idle
+	anim	work/models/weapons/railgun/animations/railgun_raise.ma 		-dest models/weapons/railgun/raise
+	anim	work/models/weapons/railgun/animations/railgun_lower.ma 		-dest models/weapons/railgun/lower
+
+	anim	work/models/weapons/railgun/animations/railgun_reload_v2.ma 		-dest models/weapons/railgun/reload
+
+// 	anim	work/models/weapons/railgun/animations/railgun_reload_noArm.ma 		-dest models/weapons/railgun/reload
+	anim	work/models/weapons/railgun/animations/railgun_fire_slow2.ma 		-dest models/weapons/railgun/fire_slow
+	anim	work/models/weapons/railgun/animations/railgun_fire_slow2.ma 		-dest models/weapons/railgun/fire_fast
+	anim	work/models/weapons/railgun/animations/railgun_fire_slow_vs01.ma		-dest models/weapons/railgun/fire_fast_2
+}
+
+export grapplehoook_strogg
+{
+	options -prefix SROCKET_ -scale .4 -parent lft_wrst srocket_body -keep lft_shldr lft_elbo lft_wrst lft_thmb_1 lft_ndx_1 lft_mddl_1 lft_ring_5 lft_pnky_1 lft_thmb_2 lft_ndx_2 lft_mddl_2 lft_ring_2 lft_pnky_2 lft_thmb_3 lft_ndx_3 lft_mddl_3 lft_ring_3 lft_pnky_3 lft_thmb_4 lft_ndx_4 lft_mddl_4 lft_ring_4 lft_pnky_4 rt_elbo rt_wrst rt_ring_1 rt_ndx_1 rt_thmb_1 rt_ring_2 rt_ndx_2 rt_thmb_2 rt_ring_3 rt_ndx_3 rt_thmb_3 rt_ring_4 rt_ndx_4 rt_thmb_4 srocket_muzzle_flash
+	addoptions -skipmesh rt_arm_mesh 
+	addoptions -skipmesh lft_arm_mesh 
+	mesh	work/models/weapons/railgun/animations/railgun_idle.ma 		-dest models/weapons/railgun/view_strogg
+}
+
+export grapplehoook
+{
+	options -prefix PLAYER_RG_ -scale .4 -keep ATTACHER -sourcedir work/models/characters/marine/animation_mocap_cinematics -destdir models/weapons/railgun/world -rename ATTACHER origin -clearorigin
+	mesh	newMarine_oneframe_idle.ma			-dest railgun
+	anim	newMarine_oneframe_idle.ma			-dest idle
+}
+
+entityDef viewStyle_shouldered_grapplehook {
+	"viewoffset"				"0 3 0"
+	"viewangles"				"-3.5 -6 3"
+}
+
+entityDef viewStyle_q3_grapplehook {
+	"viewoffset"				"0 1.6 0"
+ 	"viewangles"				"-3 -9.4 2.3"
+}
+
+//--------------------------------------------------------------------------------------------------------------------
+// Weapon Defintion
+//--------------------------------------------------------------------------------------------------------------------
+
+entityDef weapon_grapplehook
+{
+	"editor_menu"				"pickup"
+	"editor_color"				".3 .3 1"
+	"editor_mins"				"-16 -16 0"
+	"editor_maxs"				"16 16 32"
+
+	"editor_usage"				"GrappleHook"
+
+	"spawnclass"				"idItem"
+	"weaponclass"				"WeaponGrappleHook"
+	"size"						"32 32 32"
+	"model_view" 				"weapon_grapplehook_view"
+  	"model_world"				"weapon_grapplehook_world"
+	"model"						"models/weapons/railgun/world/w_rg.lwo"
+	"def_dropItem"				"weapon_grapplehook"
+
+	"joint_attach"				"RG_ATTACHER"
+	"joint_view_flash"			"srocket_muzzle_flash"
+  	"joint_view_barrel"			"srocket_muzzle_flash"
+	"joint_world_flash"			"muzzle_flash"
+
+	"fireRate"					"0.10"
+	"spread"					"0"
+
+	"inv_weapon"				"weapon_grapplehook"
+	"inv_start_ammo_railgun"	"10"
+	"inv_item"					"1"
+	"inv_icon"					"gfx/guis/hud/icons/item_railgun.tga"
+	"inv_name"					"Grapple Hook"
+	
+	//"def_hitscan"				"hitscan_railgun"	
+	"mtr_crosshair"				"gfx/guis/crosshairs/crosshair_railgun"
+
+	"ammoType"					"ammo_railgun"
+	"ammoRequired"				"1"
+	"clipSize"					"1"
+	"lowAmmo"					"1"
+	"continuousFire"			"1"
+	"dryFireReload" 			"1"
+	"switchWhenEmpty"			"0"
+	"gui"						"guis/weapons/railgun.gui"
+	"mtr_icon"					"gfx/guis/hud/icons/gun_railgun"
+	
+
+	"muzzle_kick_time"			"0.2"
+	"muzzle_kick_maxtime"		"0.6"
+	"muzzle_kick_angles"		"0 0 0"
+	"muzzle_kick_offset"		"0.5 .15 .15" // 1 1 2" //"2.5 1 2"
+
+	"recoilTime"				"600"
+	"recoilAngles"				"-.10 0 0"
+	
+	"barrelPressure"			"250"
+
+	"weapon_scriptobject"		"weapon_grapplehook"
+
+	"mtr_flashShader"			"lights/muzzleflash"
+	"flashColor"				"0.72 1 .9"
+	"flashRadius"				"260"
+	"flashPointLight"			"1"
+	"flashTime"					"1"
+	"flashViewOffset"			"15 -5 -5"
+	
+//	"def_mod1"					"wpmod_railgun_penetrate"
+//	"def_mod1"					"wpmod_railgun_reflect_I"
+//	"def_mod2"					"wpmod_railgun_reflect_II"
+
+	"snd_zoomIn"				"weapon_railgun_scope_in"
+	"snd_zoomOut"				"weapon_railgun_scope_out"
+	"snd_quaddamage"			"weapon_quaddamage_fire"
+	"snd_acquire"				"pickup_weapon"
+
+  	"fx_muzzleflash"			"effects/weapons/railgun/muzzleflash.fx"
+  	"fx_muzzleflash_world"		"effects/weapons/railgun/muzzleflash_world.fx"
+	"fx_respawn"				"effects/mp/itemrespawn.fx"
+
+	"def_viewStyle"				"viewStyle_shouldered_grapplehook"
+
+	"foreshorten"				".55"
+
+	"launchFromBarrel"			"0"
+
+	"weaponAngleOffsetAverages" "10"
+	"weaponAngleOffsetScale" 	".25"
+	"weaponAngleOffsetMax"		"5"
+	"weaponOffsetTime"			"600"
+	"weaponOffsetScale"			"0.003"
+
+	"zoomFov"					"40"
+	"zoomTime"					".1"
+	"zoomHideCrosshair"			"0"
+	"gui_zoom"					"guis/weapons/railgun_scope.gui"
+
+	"dbTitle"					"Grappling Hook"
+	"dbText"					"Description of the railgun goes here"
+	"dbFilter"					"weapon"	
+}
+
+entityDef moveable_item_grapplehoook
+{
+	"inherit"					"weapon_grapplehook"
+
+	"editor_rotatable"			"1"
+
+	"spawnclass"				"idMoveableItem"
+	"density"					"0.05"
+	"friction"					"0.2"
+	"bouncyness"				"0"
+}
+
+//--------------------------------------------------------------------------------------------------------------------
+// Models
+//-------------------------------------------------------------------------------------------------------------------0
+
+model weapon_grapplehook_view
+{
+	mesh						models/weapons/railgun/view.md5mesh
+
+	offset						(-3 1.65 .75)
+
+	anim idle 					models/weapons/railgun/idle.md5anim
+	anim raise					models/weapons/railgun/raise.md5anim
+	{
+		frame 1					sound		 weapon_grapple_raise
+		//frame 10				sound		 weapon_railgun_smallcharge
+	}
+	anim putaway				models/weapons/railgun/lower.md5anim
+	{
+		frame 1					sound		 weapon_switch
+		frame 1					sound_body		 weapon_grapple_lower
+	}		
+	anim fire 					models/weapons/railgun/fire_fast_2.md5anim
+	{
+		frame 1					sound_weapon	weapon_grapple_fire_mono
+		frame 1					sound_voice		weapon_grapple_fire
+		frame 1					sound_body		weapon_grapple_fire_loop
+		//frame 3					sound			weapon_railgun_charge
+		//frame 4					sound			weapon_railgun_readjust
+		//frame 5					sound			weapon_railgun_readjust3
+		//frame 21				sound			weapon_railgun_readjust2
+	}
+	anim reload					models/weapons/railgun/reload.md5anim
+	{
+		frame 1				sound		 weapon_grapple_reload
+		//frame 35				sound		 weapon_railgun_clipout
+		//frame 43				sound		 weapon_railgun_smallcharge
+	}
+}
+
+model weapon_grapplehook_world
+{
+
+	mesh						models/weapons/railgun/world/railgun.md5mesh
+	anim idle 					models/weapons/railgun/world/idle.md5anim
+
+/*
+	mesh						models/test/doom3/weapons/plasmagun_world/worldplasmagun.md5mesh
+	anim raise					models/test/doom3/weapons/plasmagun_world/plasmagun_idle.md5anim	
+	anim idle 					models/test/doom3/weapons/plasmagun_world/plasmagun_idle.md5anim
+	anim aim					models/test/doom3/weapons/plasmagun_world/plasmagun_idle.md5anim
+	anim fire1 					models/test/doom3/weapons/plasmagun_world/plasmagun_idle.md5anim
+	anim reload					models/test/doom3/weapons/plasmagun_world/plasmagun_idle.md5anim
+	anim noammo					models/test/doom3/weapons/plasmagun_world/plasmagun_idle.md5anim
+	anim putaway				models/test/doom3/weapons/plasmagun_world/plasmagun_idle.md5anim
+*/
+}
+
+//--------------------------------------------------------------------------------------------------------------------
+// Hitscan
+//--------------------------------------------------------------------------------------------------------------------
+
+entityDef hitscan_grapplehook
+{
+	"range"						"40000"
+
+	"push"						"40000"
+	
+	//"def_damage"				"damage_railgun"
+		
+	"fx_impact"					"effects/weapons/railgun/impact_default.fx"
+	"fx_impact_water"			"effects/ambient/splash_med.fx"
+	"fx_path"					"effects/weapons/railgun/trail.fx"
+	"fx_impact_bpglass"			"effects/weapons/railgun/impact_bpglass.fx"
+	"fx_impact_glass"			"effects/weapons/railgun/impact_glass.fx"
+	"fx_impact_concrete"		"effects/weapons/railgun/impact_concrete.fx"
+	"fx_impact_electronics"		"effects/weapons/railgun/impact_electronics.fx"
+	"fx_impact_flesh"			"effects/weapons/railgun/impact_flesh.fx"
+	"fx_impact_monstermetal"	"effects/weapons/railgun/impact_flesh.fx"
+}
+
+//--------------------------------------------------------------------------------------------------------------------
+//													Damage
+//-------------------------------------------------------------------------------------------------------------------0
+

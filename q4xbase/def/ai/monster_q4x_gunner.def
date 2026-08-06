@@ -1,0 +1,152 @@
+/*
+===============================================================================
+
+	Q4X Gunner
+
+===============================================================================
+*/
+
+export gunner
+{
+	options -prefix GUN_ -align ALL -scale .3937 -keep L_pole R_pole1 -parent Rteye_Focus head_1 -parent Lfteye_Focus head_1 -keep muzzle -parent waist hips -sourcedir /models/monsters/gunner/animations 
+
+	anim	spread_fire_left.ma	-dest models/monsters/q4x_gunner/spread_fire_left
+	anim	spread_fire_right.ma	-dest models/monsters/q4x_gunner/spread_fire_right
+	anim	grenade_attack_3x.ma	-dest models/monsters/q4x_gunner/grenade_attack_3x
+	anim	onfire.ma		-dest models/monsters/gunner/onfire
+	anim	pr_gunner_jump_down.ma		-dest models/monsters/gunner/pr_gunner_jump_down
+	anim	pr_gunner_throw.ma		-dest models/monsters/gunner/pr_gunner_throw
+
+}
+
+/*
+===============================================================================
+
+	Gunner Model
+
+===============================================================================
+*/
+
+model model_monster_q4x_gunner
+{
+	inherit										model_monster_gunner
+
+   	//Q4X Onfire Anim
+	anim pain_fire								models/monsters/gunner/onfire.md5anim
+	{
+		frame	1										sound_voice			gunner_onfire		
+	}
+
+	anim pr_gunner_jump_down						models/monsters/gunner/pr_gunner_jump_down.md5anim
+	{
+	}
+
+	anim pr_gunner_throw						models/monsters/gunner/pr_gunner_throw.md5anim
+	{
+	}
+}
+
+model model_monster_q4x_gunner_elite
+{
+	inherit										model_monster_q4x_gunner
+	
+   	// ------------------------------------------------------------------------------------------
+   	//
+   	//									Attack Animations
+   	//
+   	// ------------------------------------------------------------------------------------------
+	anim grenade_attack1						models/monsters/gunner/grenade_attack.md5anim			
+   	{
+   		frame 13								sound				snd_grenade_prepare	
+   		frame 18								sound				snd_grenade_yell
+   		frame 40								ai_attack			grenade					muzzle
+   		frame 40								fx					fx_grenade_flash		muzzle
+   		frame 40								sound_weapon		snd_grenade_launch
+   	}
+	
+   	anim range_attack_spread_fire_left			models/monsters/q4x_gunner/spread_fire_left.md5anim
+ 	{
+ 		frame 1						sound			snd_ready_weapon				
+ 		frame 7, 11, 14, 17, 20, 23, 26, 29, 32		ai_attack		nail				muzzle
+ 		frame 7, 11, 14, 17, 20, 23, 26, 29, 32		fx			fx_nail_flash			muzzle
+ 		frame 7, 11, 14, 17, 20, 23, 26, 29, 32		sound_weapon		snd_nailgun_fire
+ 	}
+   
+ 	anim range_attack_spread_fire_right			models/monsters/q4x_gunner/spread_fire_right.md5anim
+ 	{
+ 		frame 1						sound			snd_ready_weapon				
+ 		frame 7, 11, 14, 17, 20, 23, 26, 29, 32		ai_attack		nail				muzzle
+ 		frame 7, 11, 14, 17, 20, 23, 26, 29, 32		fx			fx_nail_flash			muzzle
+ 		frame 7, 11, 14, 17, 20, 23, 26, 29, 32		sound_weapon		snd_nailgun_fire
+ 	}
+ 	
+ 	anim nailgun_short_loop_2x				models/monsters/gunner/nailgun_short_loop.md5anim
+ 	{
+ 		frame 1						ai_attack		nail				muzzle
+ 		frame 1						fx			fx_nail_flash			muzzle
+ 		frame 1						sound_weapon		snd_nailgun_fire
+ 		rate 1.50
+ 	}
+ 	
+ 	anim nailgun_long_loop_2x				models/monsters/gunner/nailgun_long_loop.md5anim
+ 	{
+ 		frame 1						ai_attack		nail				muzzle
+ 		frame 1						fx			fx_nail_flash			muzzle
+ 		frame 1						sound_weapon		snd_nailgun_fire
+ 		rate 1.50
+ 	}
+ 	
+ 	anim grenade_attack2							models/monsters/q4x_gunner/grenade_attack_3x.md5anim			
+ 	{
+ 		frame 13								sound				snd_grenade_prepare	
+ 		frame 18								sound				snd_grenade_yell
+ 		frame 40, 47, 52							ai_attack			grenade					muzzle
+ 		frame 40, 47, 52							fx					fx_grenade_flash		muzzle
+ 		frame 40, 47, 52							sound_weapon		snd_grenade_launch
+ 	}	
+}
+
+/*
+===============================================================================
+
+	Gunner Entity Definition
+
+===============================================================================
+*/
+
+entityDef monster_q4x_gunner
+{
+	"inherit"								"monster_gunner"
+	// --------------------------------- Body ------------------------------------
+	"model"									"model_monster_q4x_gunner"
+}
+
+entityDef monster_q4x_gunner_grenade_only
+{
+	"inherit"								"monster_q4x_gunner"
+	
+	// Action customization
+	"action_grenadeAttack_rate"				"2"
+	
+	"action_nailgunAttack"					"0"
+}
+
+entityDef monster_q4x_gunner_long_distance
+{
+	"inherit"								"monster_q4x_gunner"
+	"attackRange"							"0 2000"
+	
+	"action_grenadeAttack_maxRange"			"1200"
+	"action_nailgunAttack_maxRange"			"2400"
+}
+
+entityDef monster_q4x_gunner_elite
+{
+	"inherit"								"monster_q4x_gunner"
+	// --------------------------------- Body ------------------------------------
+	"model"									"model_monster_q4x_gunner_elite"
+	"q4xElite"								"1"
+	
+	"health"								"600"
+	"skin" 									"skins/monsters/q4x_gunner"
+}

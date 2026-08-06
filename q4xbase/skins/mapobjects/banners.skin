@@ -1,0 +1,43 @@
+
+
+skin skins/models/mapobjects/q4x/trench_banner/trench_banner_1_tall
+{
+	"textures/banners/4_tall_ripped" "textures/banners/1_tall"
+
+}
+
+skin skins/models/mapobjects/q4x/trench_banner/trench_banner_1_tall_ripped
+{
+	"textures/banners/4_tall_ripped" "textures/banners/1_tall_ripped"
+
+}
+
+skin skins/models/mapobjects/q4x/trench_banner/trench_banner_2_tall
+{
+	"textures/banners/4_tall_ripped" "textures/banners/2_tall"
+
+}
+
+skin skins/models/mapobjects/q4x/trench_banner/trench_banner_2_tall_ripped
+{
+	"textures/banners/4_tall_ripped" "textures/banners/2_tall_ripped"
+
+}
+
+skin skins/models/mapobjects/q4x/trench_banner/trench_banner_3_tall
+{
+	"textures/banners/4_tall_ripped" "textures/banners/3_tall"
+
+}
+
+skin skins/models/mapobjects/q4x/trench_banner/trench_banner_3_tall_ripped
+{
+	"textures/banners/4_tall_ripped" "textures/banners/3_tall_ripped"
+
+}
+
+skin skins/models/mapobjects/q4x/trench_banner/trench_banner_4_tall
+{
+	"textures/banners/4_tall_ripped" "textures/banners/4_tall"
+
+}

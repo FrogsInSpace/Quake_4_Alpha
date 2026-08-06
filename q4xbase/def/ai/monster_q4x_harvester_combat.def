@@ -1,0 +1,279 @@
+/*
+===============================================================================
+	Harvester
+===============================================================================
+*/
+
+export monster_q4x_harvester
+{
+	options -prefix HARV_ -scale 1  -align ALL -sourcedir cinematics/stranarus_trench/harvester_attack -destdir models/monsters/q4x_harvester
+	addoptions -keep lft_muzzle_flash
+	addoptions -keep rt_muzzle_flash 
+	addoptions -keep l_hopper_muzzle_flash
+	addoptions -keep r_hopper_muzzle_flash 
+	addoptions -keep l_toe_front
+	addoptions -keep r_toe_front
+	addoptions -keep l_toe_back
+	addoptions -keep r_toe_back
+	addoptions -keep l_side_can_tip
+	addoptions -keep back_can_tip
+	
+		
+
+
+	anim	harvester_raiseup.ma				-range 3 3	-dest hide
+	anim	harvester_raiseup.ma				-dest riseup
+	anim 	harvester_death.ma				-dest death_trench
+	anim 	harvester_death.ma				-range 236 236 -dest death_end_idle
+	anim	mcc_climb_down.ma				-dest mcc_climb_down
+	anim	mcc_mountain_climb.ma				-dest mcc_mountain_climb
+}
+
+
+/*
+===============================================================================
+	Harvester
+===============================================================================
+*/
+export monster_q4x_harvester_race
+ {
+	options -prefix HARV_ -scale 1  -align ALL -sourcedir models/monsters/harvester/animations -destdir models/monsters/harvester
+	addoptions -keep lft_muzzle_flash
+	addoptions -keep rt_muzzle_flash 
+	addoptions -keep l_hopper_muzzle_flash
+	addoptions -keep r_hopper_muzzle_flash 
+	addoptions -keep l_toe_front
+	addoptions -keep r_toe_front
+	addoptions -keep l_toe_back
+	addoptions -keep r_toe_back
+	addoptions -keep l_side_can_tip
+	addoptions -keep back_can_tip
+	
+	anim	HARV_Attack_nofall.ma 	 					-dest taunt_nofall
+
+}
+
+model model_monster_q4x_harvester_combat
+{
+	inherit						model_monster_harvester_combat
+
+	//q4x anims
+	anim	hide				models/monsters/q4x_harvester/hide.md5anim
+	{
+	}
+	
+	anim	riseup				models/monsters/q4x_harvester/riseup.md5anim
+	{
+		frame	21									fx fx_step l_toe_front
+		frame	27									fx fx_step l_toe_back
+		frame	50									fx fx_step r_toe_back
+		frame	59									fx fx_step r_toe_front
+	}
+	
+	anim	death				models/monsters/q4x_harvester/death_trench.md5anim
+	{
+		//rate 0.75
+		frame	1				sound_voice	snd_death
+		frame	17, 97, 192,  203		fx			fx_step r_toe_back
+		frame	33, 43, 57, 184, 199		fx			fx_step r_toe_front
+		frame	158, 171, 198 			fx			fx_step l_toe_back
+		frame	32, 75, 193			fx			fx_step r_toe_front
+		frame	70				sound		snd_creak
+		frame	85				sound		snd_twist
+		frame	95				sound		snd_twist
+		frame	1				fx			fx_death_explosion_small	head
+		frame	24				fx			fx_death_explosion_small	l_loleg_back
+		frame	37				fx			fx_death_explosion_small	l_loleg_front
+		frame	64				fx			fx_death_explosion_small	r_loleg_back
+		frame	170				fx			fx_death_explosion_small	back_shield
+		frame	172				fx			fx_death_explosion_small	r_loleg_front
+		frame	185				fx			fx_death_explosion_small	r_side_can_base
+		frame	192				fx			fx_death_explosion_small	l_side_can_base
+		frame	193				fx			fx_death_explosion_small	abdomen_3
+		frame	211				fx			fx_death_explosion_big		waist
+	}
+	
+	anim 	death_end_idle				models/monsters/q4x_harvester/death_end_idle.md5anim
+	{
+	}
+
+	anim 	mcc_climb_down				models/monsters/q4x_harvester/mcc_climb_down.md5anim
+	{
+	}
+
+	anim 	mcc_mountain_climb			models/monsters/q4x_harvester/mcc_mountain_climb.md5anim
+	{
+		frame 	200						call	m06b::harvesterKillsTurret
+	}
+	
+	anim 	trench_dead_idle			models/monsters/q4x_harvester/trench_dead_idle.md5anim
+	{
+	}
+	
+	anim 	trench_push_leg			models/monsters/q4x_harvester/trench_push_leg.md5anim
+	{
+	}
+	
+	anim 	trench_push_leg_idle			models/monsters/q4x_harvester/trench_push_leg_idle.md5anim
+	{
+	}
+	
+	anim	taunt					models/monsters/harvester/taunt_nofall.md5anim	
+}
+
+
+entityDef monster_q4x_harvester_combat
+{
+	"inherit"							"monster_harvester_combat"
+	"model"								"model_monster_q4x_harvester_combat"
+	//"remove_on_death"					"0"
+	//"holdRange"						"0 1000"
+	//"removeDelay"						"-1"
+ 	//"burnaway"						"1"
+ 	//"canturn"							"0"
+ 	
+ 	"def_attack_rocket"					"projectile_q4x_harvester_rocket"
+	"attack_rocket_accuracy"			"0"
+	"attack_rocket_locktojoint"			"1"	
+	"projectileTargetOffset"			"0 0 350"
+
+}
+
+
+entityDef projectile_q4x_harvester_rocket  // NEW HARVESTER ROCKET
+{
+	"inherit"					"projectile_rocket"
+	"spawnclass"				"idGuidedProjectile"
+
+	"model"						"models/monsters/heavyhovertank/rocket.lwo"
+	"scale"						"4"
+	"size"						"32 32 32"
+	"clipmask_rendermodel"		"0"
+	"no_contents"				"0"
+
+	"health"					"20"
+	"detonate_on_death"			"1"
+
+	"driftRange"				"20"
+	"driftRate"					".4"	
+	"driftRotate"				"90"
+	"driftDiversity"			"1"
+	"driftProjectRange"			"256"
+	"driftDelay"				"3"
+
+	"delaySpeed"				"325"
+	"speed"						"600"
+	"fuse"						"20"
+	
+	"turn_max"					"180"
+	"delayGuide"				"3"
+
+	"def_damage"				"damage_harvester_rocket_direct"
+	"def_splash_damage"			"damage_harvester_rocket_splash"
+
+	"fx_fly"					"effects/monsters/harvester/q4x_rocket_trail.fx"
+	"fx_impact"					"effects/monsters/harvester/q4x_rocket_explosion.fx"
+	"fx_detonate"				"effects/monsters/harvester/q4x_rocket_explosion.fx"
+	"fx_fuse"					"effects/monsters/harvester/q4x_rocket_explosion.fx"
+}
+
+
+/*
+===============================================================================
+	Trench wall
+===============================================================================
+*/
+
+export env_q4x_trench_wall
+{
+	options -sourcedir cinematics/stranarus_trench/harvester_attack -destdir models/monsters/q4x_harvester
+	
+	mesh	wall.ma						-dest wall_mesh
+	anim 	wall.ma						-range 0 1	-dest wall_idle
+	anim	wall.ma						-dest wall_explode
+	anim 	wall.ma						-range 277 278	-dest wall_end_idle
+	
+}
+
+
+model model_env_q4x_trench_wall
+{
+mesh									models/monsters/q4x_harvester/wall_mesh.md5mesh
+anim	idle								models/monsters/q4x_harvester/wall_idle.md5anim
+anim	wall_explode								models/monsters/q4x_harvester/wall_explode.md5anim
+anim	wall_end_idle								models/monsters/q4x_harvester/wall_end_idle.md5anim
+}
+
+
+entityDef env_q4x_trench_wall
+{	
+	"editor_color"			"0 .5 .25"
+	"editor_mins"			"-32 -32 0"
+	"editor_maxs"			"32 32 16"
+
+	"spawnclass"			"idAnimated"
+
+	"model"					"model_env_q4x_trench_wall"
+	"anim"					"idle"
+}
+
+/*
+===============================================================================
+	harvester for trench
+===============================================================================
+*/
+
+entityDef env_q4x_trench_harvester
+{	
+	"editor_color"			"0 .5 .25"
+	"editor_mins"			"-32 -32 0"
+	"editor_maxs"			"32 32 16"
+
+	"spawnclass"			"idAnimated"
+
+	"model"					"model_env_q4x_harvester_trench"
+	"anim"					"idle"
+}
+
+
+
+model model_env_q4x_harvester_trench
+{
+	mesh						models/monsters/q4x_harvester/trench_mesh.md5mesh
+
+	anim 	idle				models/monsters/q4x_harvester/trench_idle.md5anim
+
+	
+}
+
+
+
+
+
+
+entityDef monster_q4x_harvester_race
+{	
+"inherit"			"monster_harvester_combat"
+
+"model"				"model_monster_q4x_harvester_race"
+
+}
+
+
+model model_monster_q4x_harvester_race
+{
+	inherit						model_monster_harvester_combat
+
+	anim	taunt					models/monsters/harvester/taunt_nofall.md5anim	
+	{
+	/*
+	frame	1										disableGravity
+	frame	1										disableClip
+	frame	56										enableGravity
+	frame	56										enableClip
+	*/
+	}
+
+
+
+}

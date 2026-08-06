@@ -1,0 +1,266 @@
+windowDef Desktop
+{
+	visible	1
+	rect	0,0,640,480
+	forceaspect	0
+	,	480
+	definevec4	"edge_off"	0.901,0.615,0.0235,1
+	definevec4	"edge_off1"	0.894,0.458,0.0196,1
+	definevec4	"edge_off2"	0.745,0.274,0.0470,1
+	definevec4	"bar_on"	0.988,0.756,0.0627,1
+	definevec4	"bar_off"	0.345,0.345,0.345,0.8
+	definevec4	"bg_on"	0.874,0.6,0.184,1
+	definevec4	"bg_off"	0.862,0.474,0.188,1
+	float	"on"	1
+	windowDef bg
+	{
+		rect	0,0,640,480
+		visible	1
+		background	"gfx/guis/common/strogg/lightswitch_bg"
+		matcolor	0.874,0.6,0.184,1
+	}
+	windowDef top_arrow
+	{
+		rect	247,24,158,37
+		visible	1
+		background	"gfx/guis/common/arrow2"
+		matcolor	0.984,0.752,0.0588,.24
+	}
+	windowDef btm_arrow
+	{
+		rect	247,417,158,37
+		visible	1
+		background	"gfx/guis/common/arrow2"
+		matcolor	0.984,0.752,0.0588,.24
+		matscaley	-1
+	}
+	windowDef l_edge
+	{
+		rect	10,0,90,480
+		visible	1
+		background	"gfx/guis/common/strogg/lightswitch_edge"
+		matcolor	0.901,0.615,0.0235,1
+	}
+	windowDef r_edge
+	{
+		rect	543,0,90,480
+		visible	1
+		background	"gfx/guis/common/strogg/lightswitch_edge"
+		matcolor	0.901,0.615,0.0235,1
+		matscalex	-1
+	}
+	windowDef p_bars
+	{
+		rect	0,0,640,480
+		visible	1
+		windowDef bar1
+		{
+			rect	112,71,422,67
+			visible	1
+			background	"gfx/guis/common/strogg/box6"
+			matcolor	0.988,0.756,0.0627,1
+		}
+		windowDef bar2
+		{
+			rect	112,137,422,67
+			visible	1
+			background	"gfx/guis/common/strogg/box6"
+			matcolor	0.988,0.756,0.0627,1
+		}
+		windowDef bar3
+		{
+			rect	112,205,422,67
+			visible	1
+			background	"gfx/guis/common/strogg/box6"
+			matcolor	0.988,0.756,0.0627,1
+		}
+		windowDef bar4
+		{
+			rect	112,272,422,67
+			visible	1
+			background	"gfx/guis/common/strogg/box6"
+			matcolor	0.988,0.756,0.0627,1
+		}
+		windowDef bar5
+		{
+			rect	112,338,422,67
+			visible	1
+			background	"gfx/guis/common/strogg/box6"
+			matcolor	0.988,0.756,0.0627,1
+		}
+	}
+	windowDef l_edge_off
+	{
+		rect	10,0,90,480
+		visible	0
+		background	"gfx/guis/common/strogg/lightswitch_edge"
+		matcolor	0.901,0.615,0.0235,1
+
+		onTime 0 {
+			transition "matcolor" "$desktop::edge_off1" "$desktop::edge_off2" "200" ;
+		}
+
+		onTime 200 {
+			transition "matcolor" "$desktop::edge_off2" "$desktop::edge_off1" "700" ;
+		}
+
+		onTime 900 {
+			resettime "0" ;
+		}
+
+	}
+	windowDef r_edge_off
+	{
+		rect	543,0,90,480
+		visible	0
+		background	"gfx/guis/common/strogg/lightswitch_edge"
+		matcolor	0.901,0.615,0.0235,1
+		matscalex	-1
+
+		onTime 0 {
+			transition "matcolor" "$desktop::edge_off1" "$desktop::edge_off2" "200" ;
+		}
+
+		onTime 200 {
+			transition "matcolor" "$desktop::edge_off2" "$desktop::edge_off1" "700" ;
+		}
+
+		onTime 900 {
+			resettime "0" ;
+		}
+
+	}
+	windowDef topstuff
+	{
+		visible	1
+		rect	0,0,640,480
+		windowDef gradient
+		{
+			visible	1
+			rect	-109,-37,876,173
+			background	"gfx/guis/common/gradient"
+			matcolor	0.611,0.937,0.905,0.4
+		}
+		windowDef sline
+		{
+			visible	1
+			rect	0,-356,640,1228
+			background	"gfx/guis/common/monitor_line3"
+			matcolor	0.811,0.858,0.862,1
+		}
+		windowDef dirt
+		{
+			visible	1
+			rect	-349,0,1413,480
+			background	"gfx/guis/common/screen_dirt7"
+			matcolor	0.239,0.223,0.145,1
+		}
+		windowDef dirt_stroyent
+		{
+			visible	"gui::gui_parm_stroyent"
+			rect	-7,-18,1627,501
+			background	"gfx/guis/common/screen_dirt5"
+			matcolor	0.223,0.278,0.0470,1
+		}
+		windowDef monitor_darkedge
+		{
+			visible	1
+			rect	0,0,640,480
+			background	"gfx/guis/common/monitor_darkedge2"
+			matcolor	0,0,0,1
+		}
+	}
+	windowDef anim_off
+	{
+		rect	1,1,1,1
+		visible	1
+		notime	1
+
+		onTime 0 {
+			transition "bg::matcolor" "$desktop::bg_on" "$desktop::bg_off" "100" ;
+			transition "bar1::matcolor" "$desktop::bar_on" "$desktop::bar_off" "100" ;
+		}
+
+		onTime 50 {
+			transition "bar2::matcolor" "$desktop::bar_on" "$desktop::bar_off" "100" ;
+		}
+
+		onTime 100 {
+			transition "bar3::matcolor" "$desktop::bar_on" "$desktop::bar_off" "100" ;
+		}
+
+		onTime 150 {
+			transition "bar4::matcolor" "$desktop::bar_on" "$desktop::bar_off" "100" ;
+		}
+
+		onTime 200 {
+			transition "bar5::matcolor" "$desktop::bar_on" "$desktop::bar_off" "100" ;
+		}
+
+		onTime 300 {
+			set "l_edge_off::visible" "1" ;
+			set "r_edge_off::visible" "1" ;
+			set "l_edge_on::visible" "0" ;
+			set "r_edge_on::visible" "0" ;
+			
+			set "desktop::on" "0" ;
+		}
+
+	}
+	windowDef anim_on
+	{
+		rect	1,1,1,1
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "l_edge_off::visible" "0" ;
+			set "r_edge_off::visible" "0" ;
+			set "l_edge_on::visible" "1" ;
+			set "r_edge_on::visible" "1" ;
+		}
+
+		onTime 50 {
+			transition "bar5::matcolor" "$desktop::bar_off" "$desktop::bar_on" "100" ;
+		}
+
+		onTime 100 {
+			transition "bar4::matcolor" "$desktop::bar_off" "$desktop::bar_on" "100" ;
+		}
+
+		onTime 150 {
+			transition "bar3::matcolor" "$desktop::bar_off" "$desktop::bar_on" "100" ;
+		}
+
+		onTime 200 {
+			transition "bar2::matcolor" "$desktop::bar_off" "$desktop::bar_on" "100" ;
+		}
+
+		onTime 250 {
+			transition "bg::matcolor" "$desktop::bg_off" "$desktop::bg_on" "100" ;
+			transition "bar1::matcolor" "$desktop::bar_off" "$desktop::bar_on" "100" ;
+		}
+
+		onTime 350 {
+			set "desktop::on" "1" ;
+		}
+
+	}
+	windowDef button
+	{
+		rect	0,0,640,480
+		visible	1
+
+		onAction {
+			if ("desktop::on" == 1) {
+				resettime "anim_off" "0" ;
+				set "desktop::on" "2" ;
+			}
+			if ("desktop::on" == 0) {
+				resettime "anim_on" "0" ;
+				set "desktop::on" "2" ;
+			}
+		}
+
+	}
+}

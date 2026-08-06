@@ -1,0 +1,2289 @@
+//------------------------------------------------------------------------------------
+// M10_valkaryne.script
+//
+// (c) Ritual Entertainment 2005
+// Author:  JSchuch and Reid Kimball
+//------------------------------------------------------------------------------------
+
+namespace map_m10
+{
+
+#include "scripts/doom_defs.script"
+
+// Prototypes
+	void navajasDies();
+	void animateNavajas();
+	void bobbing_dropship();
+	void rolling_dropship();
+	void turning_dropship();	
+	void dropshipAbortsExtraction();
+	void gunners4and5Fight();
+	void animDropShipFlyByLanding();
+	void theEnd();
+	void animBanners();
+	void makronMovers();
+
+// Global Vars
+	boolean MACHINE1ACTIVE;
+	boolean MACHINE2ACTIVE;
+	boolean MACHINE3ACTIVE;
+	boolean MACHINE4ACTIVE;
+	boolean EXIT_DOOR_ONE_CLOSED;
+	boolean EXIT_DOOR_TWO_CLOSED;
+	boolean EXIT_DOOR_THREE_CLOSED;
+	boolean ESCAPE_ELEVATOR_CLEAR;
+	boolean PLAYER_ON_EXIT_ELEVATOR;
+	boolean VALK_ALIVE;
+	boolean VALK_DOCKED;
+	boolean PLAYER_ON_DROPSHIP;
+	boolean GAME_OVER;
+	
+	entity entValkaryne;
+	
+	float q4doorIsOpen = 1;
+	float valkStageOneSpeed = 8;	// this is time in seconds
+	float valkStageTwoSpeed = 4;	// this is time in seconds
+	float valkStageThreeSpeed = 1;	// this is time in seconds
+	float valkStage = 1;
+	float intValk01_moving = 1;	// which spline for valk to move on	
+	float intTimer = 1;
+	float intPlayerOnDropShip = 0;
+	
+
+///////////////////////////////////////////////////////////////
+//  Objectives                                               //
+///////////////////////////////////////////////////////////////
+
+void m10_giveObjective( float n )
+{
+	entity p;
+
+	p = sys.getEntity( "item_objective_" + n );
+	sys.trigger( p );
+}
+
+void m10_completeObjective( float m )
+{
+	entity q;
+
+	q = sys.getEntity( "item_objectivecomplete_" + m );
+	sys.trigger( q );
+}
+
+void valk01_moves()
+{
+	$mvr_valk01.time( 6 );
+	$mvr_valk01.accelTime( 0.5 );
+	$mvr_valk01.decelTime( 0.5 );
+	
+	if ( intValk01_moving == 1 )
+	{
+		sys.println( intValk01_moving );
+		$mvr_valk01.startSpline( $spline_valk01 );
+		intValk01_moving = intValk01_moving + 1;
+		sys.waitFor( $mvr_valk01 );		
+	}
+	else if ( intValk01_moving == 2 )
+	{
+		sys.println( intValk01_moving );
+		$mvr_valk01.startSpline( $spline_valk02 );
+		intValk01_moving = intValk01_moving + 1;
+		sys.waitFor( $mvr_valk01 );
+	}
+	else if ( intValk01_moving == 3 )
+	{
+		sys.println( intValk01_moving );
+		$mvr_valk01.startSpline( $spline_valk03 );
+		sys.waitFor( $mvr_valk01 );
+	}
+	else
+	{
+		sys.println( "COUNTER NOT WORKING" );
+	}
+}
+
+///////////////////////////////////////////////////////////////
+//  Valkaryne Taunts                                         //
+///////////////////////////////////////////////////////////////
+
+//In first large cave after initial descent
+void valktauntOne()
+{
+	float r;
+	entity t;
+
+	for(r=0;r<=30;r++) {
+		t = sys.getEntity( "vt_light_" + r );
+		t.fadeOutLight( 0.05 );
+	}
+
+	sys.wait( 1 );
+	$func_static_55279.guiEvent( "valkinfluenceOn" );
+	$vt_light_red_1.fadeInLight( 0.5 );
+	sys.wait( 3.5 );
+	$vt_light_red_1.fadeOutLight( 0.5 );
+	$func_static_55279.guiEvent( "valkinfluenceOff" );
+	sys.wait( 1 );
+
+	for(r=31;r>=1;r--) {
+		t = sys.getEntity( "vt_light_" + r );
+		t.fadeInLight( 0.25 );
+	}
+}
+
+//Part way down second tube shaft, following the Valkaryne
+void valktauntTwo()
+{
+	float r;
+	entity t;
+
+	for(r=0;r<=14;r++) {
+		t = sys.getEntity( "vt2_light_" + r );
+		t.fadeOutLight( 0.05 );
+	}
+
+	sys.wait( 1 );
+	$func_static_54716.guiEvent( "valkinfluenceOn" );
+	$vt2_light_red_1.fadeInLight( 0.5 );
+	sys.wait( 3.5 );
+	$vt2_light_red_1.fadeOutLight( 0.5 );
+	$func_static_54716.guiEvent( "valkinfluenceOff" );
+	sys.wait( 1 );
+
+	for(r=15;r>=1;r--) {
+		t = sys.getEntity( "vt2_light_" + r );
+		t.fadeInLight( 0.25 );
+	}
+}
+
+//In the round blue tube room, on the elevator console
+void valktauntThree()
+{
+	float r;
+	entity t;
+
+	for(r=0;r<=10;r++) {
+		t = sys.getEntity( "vt3_light_" + r );
+		t.fadeOutLight( 0.05 );
+	}
+
+	sys.wait( 1 );
+	$func_elevator_1_call_1_valk.guiEvent( "valkinfluenceOn" );
+	$func_elevator_1_call_1.hide();
+	$func_elevator_1_call_1_valk.show();
+	$vt3_light_red_1.fadeInLight( 0.5 );
+	sys.wait( 3.5 );
+	$vt3_light_red_1.fadeOutLight( 0.5 );
+	$func_elevator_1_call_1_valk.hide();
+	$func_elevator_1_call_1.show();
+	sys.wait( 1 );
+
+	for(r=11;r>=1;r--) {
+		t = sys.getEntity( "vt3_light_" + r );
+		t.fadeInLight( 0.25 );
+	}
+}
+
+void showElevatorGUI()
+{
+	$func_elevator_1_call_1_fake.hide();
+	$func_elevator_1_call_1.show();
+}
+
+///////////////////////////////////////////////////////////////
+//  Repair Bots                                              //
+///////////////////////////////////////////////////////////////
+void repairBotOne()
+{
+	float t;
+
+	aiScriptedMoveWait( $repbot_1, $repbot_repspot_1, 8, 0 );
+	aiScriptedFaceWait( $repbot_1, $repspot_1_target, 0 );
+	$repbot_1.bind( $repbot_repspot_1 );
+	sys.wait( 1 );
+
+	for(t=0;t++;t<5) {
+		aiScriptedActionWait( $repbot_1, $repspot_1_target, 0 );
+		sys.wait( 8 );
+	}
+}
+
+void endRepairBotOne()
+{
+	$repbot_1.unbind();
+	aiScriptedAnimLoop( $repbot_1, "idle", 12 );
+}
+
+void repairBotTwo()
+{
+	float t;
+
+	aiScriptedMoveWait( $repbot_2, $repbot_repspot_2, 8, 0 );
+	aiScriptedFaceWait( $repbot_2, $repspot_2_target, 0 );
+	$repbot_2.bind( $repbot_repspot_2 );
+	sys.wait( 1 );
+
+	for(t=0;t++;t<5) {
+		aiScriptedActionWait( $repbot_2, $repspot_2_target, 0 );
+		sys.wait( 8 );
+	}
+}
+
+void endRepairBotTwo()
+{
+	$repbot_2.unbind();
+	aiScriptedAnimLoop( $repbot_2, "idle", 12 );
+}
+
+///////////////////////////////////////////////////////////////
+//  Valkaryne Chamber Machines                               //
+///////////////////////////////////////////////////////////////
+
+
+
+///////////////////////////////////////////////////////////////
+//  Valkaryne Finale                                         //
+///////////////////////////////////////////////////////////////
+void makron_shield_battle()
+{
+	// 550 - health = 50
+	$mak_shield.time( valkStageOneSpeed * 1.5 );
+	$mak_shield.accelTime( valkStageOneSpeed * 1.5 );
+	$mak_shield.decelTime( 0 );
+
+	$mak_shield_1.time( valkStageOneSpeed * 1.5);
+	$mak_shield_1.accelTime( valkStageOneSpeed * 1.5 );
+	$mak_shield_1.decelTime( 0 );
+	
+	$mak_shield.rotate( '60 0 0' );
+	$mak_shield_1.rotate( '60 0 0' );
+	
+	//sys.waitFor( $mak_shield );
+	//sys.waitFor( $mak_shield_1 );
+}
+
+/*
+void valkStageOne()
+{
+	$mak_shield.time( valkStageOneSpeed * 1.5 );
+	$mak_shield.accelTime( valkStageOneSpeed * 1.5 );
+	$mak_shield.decelTime( 0 );
+	$mak_shield_1.time( valkStageOneSpeed * 1.5);
+	$mak_shield_1.accelTime( valkStageOneSpeed * 1.5 );
+	$mak_shield_1.decelTime( 0 );
+	$mak_shield.rotateOnce( '360 0 0' );
+	$mak_shield_1.rotateOnce( '360 0 0' );
+	sys.waitFor( $mak_shield );
+	sys.waitFor( $mak_shield_1 );
+
+	while( VALK_DOCKED ) {
+		$mak_shield.time( valkStageOneSpeed );
+		$mak_shield.accelTime( 0 );
+		$mak_shield.decelTime( 0 );
+		$mak_shield_1.time( valkStageOneSpeed );
+		$mak_shield_1.accelTime( 0 );
+		$mak_shield_1.decelTime( 0 );
+		$mak_shield.rotateOnce( '360 0 0' );
+		$mak_shield_1.rotateOnce( '360 0 0' );
+		sys.waitFor( $mak_shield );
+		sys.waitFor( $mak_shield_1 );
+		sys.waitFrame();
+	}
+
+	$mak_shield.time( valkStageOneSpeed * 1.5 );
+	$mak_shield.accelTime( 0 );
+	$mak_shield.decelTime( valkStageOneSpeed * 1.5 );
+	$mak_shield_1.time( valkStageOneSpeed * 1.5 );
+	$mak_shield_1.accelTime( 0 );
+	$mak_shield_1.decelTime( valkStageOneSpeed * 1.5 );
+	$mak_shield.rotateOnce( '360 0 0' );
+	$mak_shield_1.rotateOnce( '360 0 0' );
+	sys.waitFor( $mak_shield );
+	sys.waitFor( $mak_shield_1 );
+}
+
+void valkStageTwo()
+{
+	$mak_shield.time( valkStageTwoSpeed * 1.5 );
+	$mak_shield.accelTime( valkStageTwoSpeed * 1.5 );
+	$mak_shield.decelTime( 0 );
+	$mak_shield_1.time( valkStageTwoSpeed * 1.5 );
+	$mak_shield_1.accelTime( valkStageTwoSpeed * 1.5);
+	$mak_shield_1.decelTime( 0 );
+	$mak_shield.rotateOnce( '360 0 0' );
+	$mak_shield_1.rotateOnce( '360 0 0' );
+	sys.waitFor( $mak_shield );
+	sys.waitFor( $mak_shield_1 );
+
+	//$mak_sphere_200.setOrigin( '-3520 -208 -4352' ); 
+	$mak_sphere_200.setOrigin( '-3520 -200 -4348' );
+	$mak_sphere_200.show();
+	$mak_sphere_300.remove();
+
+	while( VALK_DOCKED ) {
+		$mak_shield.time( valkStageTwoSpeed );
+		$mak_shield.accelTime( 0 );
+		$mak_shield.decelTime( 0 );
+		$mak_shield_1.time( valkStageTwoSpeed );
+		$mak_shield_1.accelTime( 0 );
+		$mak_shield_1.decelTime( 0 );
+		$mak_shield.rotateOnce( '360 0 0' );
+		$mak_shield_1.rotateOnce( '360 0 0' );
+		sys.waitFor( $mak_shield );
+		sys.waitFor( $mak_shield_1 );
+		sys.waitFrame();
+	}
+
+	$mak_shield.time( valkStageTwoSpeed * 1.5 );
+	$mak_shield.accelTime( 0 );
+	$mak_shield.decelTime( valkStageTwoSpeed * 1.5 );
+	$mak_shield_1.time( valkStageTwoSpeed * 1.5 );
+	$mak_shield_1.accelTime( 0 );
+	$mak_shield_1.decelTime( valkStageTwoSpeed * 1.5 );
+	$mak_shield.rotateOnce( '360 0 0' );
+	$mak_shield_1.rotateOnce( '360 0 0' );
+	sys.waitFor( $mak_shield );
+	sys.waitFor( $mak_shield_1 );
+}
+
+void valkStageThree()
+{
+	$mak_shield.time( valkStageThreeSpeed * 1.5 );
+	$mak_shield.accelTime( valkStageThreeSpeed * 1.5);
+	$mak_shield.decelTime( 0 );
+	$mak_shield_1.time( valkStageThreeSpeed * 1.5 );
+	$mak_shield_1.accelTime( valkStageThreeSpeed * 1.5);
+	$mak_shield_1.decelTime( 0 );
+	$mak_shield.rotateOnce( '360 0 0' );
+	$mak_shield_1.rotateOnce( '360 0 0' );
+	sys.waitFor( $mak_shield );
+	sys.waitFor( $mak_shield_1 );
+
+	//$mak_sphere_100.setOrigin( '-3520 -208 -4352' );
+	$mak_sphere_100.setOrigin( '-3520 -200 -4348' );
+	$mak_sphere_100.show();
+	$mak_sphere_200.remove();
+
+	while( VALK_DOCKED ) {
+		$mak_shield.time( valkStageThreeSpeed );
+		$mak_shield.accelTime( 0 );
+		$mak_shield.decelTime( 0 );
+		$mak_shield_1.time( valkStageThreeSpeed );
+		$mak_shield_1.accelTime( 0 );
+		$mak_shield_1.decelTime( 0 );
+		$mak_shield.rotateOnce( '360 0 0' );
+		$mak_shield_1.rotateOnce( '360 0 0' );
+		sys.waitFor( $mak_shield );
+		sys.waitFor( $mak_shield_1 );
+		sys.waitFrame();
+	}
+
+	$mak_shield.time( valkStageThreeSpeed * 1.5 );
+	$mak_shield.accelTime( 0 );
+	$mak_shield.decelTime( valkStageThreeSpeed * 1.5 );
+	$mak_shield_1.time( valkStageThreeSpeed * 1.5 );
+	$mak_shield_1.accelTime( 0 );
+	$mak_shield_1.decelTime( valkStageThreeSpeed * 1.5 );
+	$mak_shield.rotateOnce( '360 0 0' );
+	$mak_shield_1.rotateOnce( '360 0 0' );
+	sys.waitFor( $mak_shield );
+	sys.waitFor( $mak_shield_1 );
+}
+*/
+
+void valkaryne_dock()
+{
+	vector valkloc;		//Where is she?
+	vector valkdockloc;	//Her docking spot
+
+	entValkaryne = $valk;
+
+	sys.println( "Valk docking" );
+
+	valkloc = $valk.getOrigin();
+	valkdockloc = $dock.getOrigin();
+	$valk_tele_fx.setOrigin( valkloc );
+	sys.waitFrame();
+	sys.trigger( $valk_tele_fx );
+
+	$valk.hide();
+	entValkaryne.docked();
+	$valk.setOrigin( valkdockloc );
+	sys.wait( 4 );
+	$valk_tele_fx.setOrigin( valkdockloc );
+	sys.waitFrame();
+	sys.trigger( $valk_tele_fx );
+	aiScriptedFace( $valk, $faceNode, 1);
+	$valk.show();
+
+	VALK_DOCKED = true;
+
+/*	NOT NEEDED ANYMORE
+	if( valkStage == 2 ) {
+		valkStageTwo();
+	}
+
+	if( valkStage == 3 ) {
+		valkStageThree();
+	}
+*/
+
+}
+
+void valkaryne_undock()
+{
+	entValkaryne = $valk;
+	//valkStage = ( valkStage + 1 );
+	entValkaryne.undock();
+	
+	sys.wait( 3 );
+	sys.trigger( $target_bossValk );
+}
+
+/*
+void makSphere300dead()
+{
+	aiScriptedAnim( $valk, "plugin_pain1", 4, 1 );
+	VALK_DOCKED = false;
+	sys.wait( 3 );
+
+	valkaryne_undock();
+}
+
+void makSphere200dead()
+{
+	aiScriptedAnim( $valk, "plugin_pain2", 4, 1 );
+	VALK_DOCKED = false;
+	sys.wait( 3 );
+
+	valkaryne_undock();
+}
+*/
+
+void makSphereDead()
+{
+	//turn on goo spawning
+	$mak_sphere.remove();
+	sys.trigger( $baby_goo01 );
+	sys.wait( 0.2 );
+	sys.trigger( $baby_goo02 );
+	sys.wait( 0.7 );
+	sys.trigger( $baby_goo03 );
+	
+	//stop the rotating pieces of armor
+	$mak_shield_1.rotate( '0 0 0' );
+	$mak_shield.rotate( '0 0 0' );
+	
+	aiScriptedAnim( $valk, "plugin_pain1", 4, 1 );
+	VALK_DOCKED = false;
+	sys.wait( 3 );
+
+	valkaryne_undock();
+	
+	//turn off goo spawning
+	sys.trigger( $baby_goo01 );
+	sys.wait( 0.2 );
+	sys.trigger( $baby_goo02 );
+	sys.wait( 0.7 );
+	sys.trigger( $baby_goo03 );
+}
+
+void animMakronRolling()
+{	
+	// makron ball rolls into position
+	$makShield01.accelTime( 0 );
+	$makShield01.decelTime( 1 );
+	$makShield01.time( 6 );
+	
+	$makShield01.rotate( '-180 0 0' );
+	
+	$makShield01.disableSplineAngles();
+	$makShield01.startSpline( $spline_makShield );
+	sys.waitFor( $makShield01 );
+	$mvr_makShields.rotate( '0 0 0' );	
+}
+
+void initValk()
+{
+	//$mak_sphere_100.setOrigin( '-3808 1224 -4520' );
+	//$mak_sphere_200.setOrigin( '-3808 1224 -4520' );
+	
+	sys.trigger( $target_bossMakronEgg );	
+
+	VALK_DOCKED = true;
+	
+	thread makronMovers();
+	thread makron_shield_battle();
+	// valkStageOne();
+}
+
+void valkIntro()
+{
+	VALK_ALIVE = true;
+
+	sys.trigger( $valkcamera );
+	//sys.wait( 1 );
+	
+	animMakronRolling();
+	
+	$makShield01.remove();
+	$makShield02.remove();
+	
+	$mak_shield_1.show();
+	$mak_shield.show();
+	$baby_mak.show();
+	$baby_mak_light01.On();
+	$mak_sphere.show();
+
+	$func_door_119.lock( 1 );
+	$func_door_120.lock( 1 );
+	$func_static_54386.setShaderParm( 7, 0 );
+	sys.trigger( $valkcamera );
+
+	sys.wait( 2 );
+	$valk.becomeAggressive();
+	thread initValk();
+}
+
+void makronMovers()
+{
+	$side_rotator01.bind( $orig_side_rotator01 );
+	$top_rotator01.bind( $orig_top_rotator01 );
+	
+	$orig_top_rotator01.accelTime( 0.5 );
+	$orig_top_rotator01.decelTime( 0.5 );
+	$orig_top_rotator01.time( 2 );
+	
+	$orig_side_rotator01.accelTime( 0.5 );
+	$orig_side_rotator01.decelTime( 0.5 );
+	$orig_side_rotator01.time( 2 );
+	
+	// 
+	while( 1 )
+	{		
+		$orig_top_rotator01.rotateUpTo( 1, 90 );
+		$orig_side_rotator01.rotateUpTo( 2, 90 );
+		
+		sys.wait( 3 );
+		
+		$orig_top_rotator01.rotateDownTo( 1, 0 );
+		$orig_side_rotator01.rotateDownTo( 2, 0 );
+	}	
+}
+
+void valkDead()
+{
+	VALK_ALIVE = false;
+
+	thread m10_completeObjective( 1 );
+	sys.wait( 1 );
+
+	//exit area out of Valk chamber
+	sys.trigger( $undervalkdoor );
+	$valkseat_static.remove();
+	sys.trigger( $undervalk_steamfx_1 );
+	sys.trigger( $undervalk_steamfx_2 );
+	sys.trigger( $undervalk_steamfx_3 );
+	sys.trigger( $undervalk_steamfx_4 );
+	sys.trigger( $undervalk_steamfx_5 );
+	sys.trigger( $undervalk_steamfx_6 );
+
+	sys.trigger( $valkroom_rumble );
+	sys.trigger( $func_fx_50 );
+	sys.wait( 2 );
+	sys.trigger( $func_fx_53 );
+	sys.wait( 1 );
+	sys.trigger( $func_fx_52 );
+	sys.wait( 1.25 );
+	sys.trigger( $func_fx_54 );
+	sys.wait( 1.5 );
+	sys.trigger( $func_fx_55 );
+	sys.wait( 2 );
+	sys.trigger( $func_fx_51 );
+
+	//blow some shit up and stuff
+	sys.wait( 4 );
+	thread m10_giveObjective( 2 );
+
+	//time for player to get out of Valk room
+	sys.wait( 10 );
+	sys.trigger( $valkroom_bigfx );
+	sys.trigger( $valkroom_hurt );
+	sys.wait( 1 );
+	sys.trigger( $valkroom_bigsmoke );
+	sys.trigger( $valkroom_bigsmoke_1 );
+
+
+	//time for player to get out of Markron room
+	sys.wait( 10 );
+	if( !EXIT_DOOR_ONE_CLOSED ) {
+		sys.trigger( $makronroom_bigfx );
+		$monster_makron_6.kill();
+		$monster_makron_5.kill();
+		$monster_makron_8.kill();
+		$monster_makron_10.kill();
+
+		sys.trigger( $makronroom_hurt );
+		sys.wait( 1 );
+		sys.trigger( $makronroom_bigsmoke );
+	}
+	if( EXIT_DOOR_ONE_CLOSED ) {
+		sys.trigger( $makron_exp_speaker_1 );
+		sys.wait( 1 );
+		sys.trigger( $makron_exp_speaker_2 );
+		//give the player a few extra seconds because he closed the doors
+		sys.wait( 2 );
+	}
+
+
+	//time for player to get out of first tunnel section
+	sys.wait( 5 );
+	if( !EXIT_DOOR_TWO_CLOSED ) {
+		sys.trigger( $exit_tun_bigfx );
+		sys.trigger( $exit_tun_hurt_1 );
+		sys.wait( 1 );
+		sys.trigger( $exit_tun_1_bigsmoke );
+	}
+	if( EXIT_DOOR_TWO_CLOSED ) {
+		sys.trigger( $exit_tun_1_exp_speaker_1 );
+		sys.wait( 1 );
+		sys.trigger( $exit_tun_1_exp_speaker_2 );
+		//give the player a few extra seconds because he closed the doors
+		sys.wait( 2 );
+	}
+
+
+
+	//time for player to get out of second tunnel section
+	sys.wait( 5 );
+	if( !EXIT_DOOR_THREE_CLOSED ) {
+		sys.trigger( $exit_tun_bigfx_2 );
+		sys.trigger( $exit_tun_hurt_2 );
+		sys.wait( 1 );
+		sys.trigger( $exit_tun_2_bigsmoke );
+	}
+	if( EXIT_DOOR_THREE_CLOSED ) {
+		sys.trigger( $exit_tun_2_exp_speaker_1 );
+		sys.wait( 1 );
+		sys.trigger( $exit_tun_2_exp_speaker_2 );
+		//give the player a few extra seconds because he closed the doors
+		sys.wait( 2 );
+	}
+
+
+	//time for player to get out of third tunnel section
+	sys.wait( 5 );
+	sys.trigger( $exit_tun_bigfx_3 );
+	sys.trigger( $exit_tun_hurt_3 );
+	sys.wait( 1 );
+	sys.trigger( $exit_tun_3_bigsmoke );
+
+}
+
+///////////////////////////////////////////////////////////////
+//  Escape Sequence                                          //
+///////////////////////////////////////////////////////////////
+
+void exitDoorOneDisable()
+{
+	$exitdooronepanel.setGuiParm( "noninteractive", "1" );
+	sys.wait( 2 );
+	EXIT_DOOR_ONE_CLOSED = true;
+}
+
+void exitDoorTwoDisable()
+{
+	$exitdoortwopanel.setGuiParm( "noninteractive", "1" );
+	sys.wait( 2 );
+	EXIT_DOOR_TWO_CLOSED = true;
+}
+
+void exitDoorThreeDisable()
+{
+	$exitdoorthreepanel.setGuiParm( "noninteractive", "1" );
+	sys.wait( 2 );
+	EXIT_DOOR_THREE_CLOSED = true;
+}
+
+void animateMakrons()
+{
+	// DELETE THE MAKRONS
+	// MAKE THIS ROOM THE ROOM WHERE YOU SEE ALL THE MANUFACTURING CRAP FOR THE MAKRONS?!
+	
+	$monster_makron_5.becomePassive( 1 );
+	$monster_makron_6.becomePassive( 1 );
+	$monster_makron_8.becomePassive( 1 );
+	$monster_makron_10.becomePassive( 1 );
+
+	aiScriptedAnim( $monster_makron_8, "death_start", 16, 1 );
+	sys.wait( 0.2 );
+	aiScriptedAnim( $monster_makron_10, "death_start", 16, 1 );
+	sys.wait( 0.5 );
+	aiScriptedAnim( $monster_makron_5, "death_start", 16, 1 );
+	sys.wait( 0.7 );
+	aiScriptedAnim( $monster_makron_6, "death_start", 16, 1 );
+	sys.wait( 0.3 );
+}
+
+void broken_glass01()
+{
+	$broken_glass01.show();
+	sys.trigger( $broken_glass_steam01 );
+}
+
+void rd_spawner( entity rag )
+{
+	sys.wait( 2.5 );
+	rag.kill();
+}
+
+void escapeSeqExplosions()
+{
+	//Series of timed explosion FX and trigger hurts up the exit tunnel
+
+	//Give the elevator time to get to its stopping point
+	if( PLAYER_ON_EXIT_ELEVATOR ) {
+		sys.wait( 40 );
+	}
+
+	//Activate FX and trigger hurt
+	sys.trigger( $esc_bot_bigfx_1 );
+	sys.trigger( $esc_bot_hurt_1 );
+	//Kill the large light for that section of tunnel
+	$esc_light_1.Off();
+	//Start the secondary smoke
+	sys.trigger( $esc_bot_bigfx_1b );
+
+	sys.wait( 8 );
+	sys.trigger( $esc_bot_bigfx_2 );
+	sys.trigger( $esc_bot_hurt_2 );
+	$esc_light_2.Off();
+	sys.trigger( $esc_bot_bigfx_2b );
+
+	sys.wait( 8 );
+	sys.trigger( $esc_bot_bigfx_3 );
+	sys.trigger( $esc_bot_hurt_3 );
+	$esc_light_3.Off();
+	sys.trigger( $esc_bot_bigfx_3b );
+
+	sys.wait( 8 );
+	sys.trigger( $esc_bot_bigfx_4 );
+	sys.trigger( $esc_bot_hurt_4 );
+	$esc_light_4.Off();
+	sys.trigger( $esc_bot_bigfx_4b );
+
+	sys.wait( 8 );
+	sys.trigger( $esc_bot_bigfx_5 );
+	sys.trigger( $esc_bot_hurt_5 );
+	$esc_light_5.Off();
+	sys.trigger( $esc_bot_bigfx_5b );
+	//Remove the secondary smoke as its very, very far below
+	sys.trigger( $esc_bot_bigfx_1b );
+
+	sys.wait( 8 );
+	sys.trigger( $esc_bot_bigfx_6 );
+	sys.trigger( $esc_bot_hurt_6 );
+	sys.trigger( $esc_bot_bigfx_6b );
+	//Remove the secondary smoke as its very, very far below
+	sys.trigger( $esc_bot_bigfx_2b );
+
+	sys.wait( 8 );
+	sys.trigger( $esc_bot_bigfx_7 );
+	sys.trigger( $esc_bot_hurt_7 );
+	sys.trigger( $esc_bot_bigfx_7b );
+	//Remove the secondary smoke as its very, very far below
+	sys.trigger( $esc_bot_bigfx_3b );
+}
+
+//If the player doesn't get on and start the elevator, start the explosions and kill him
+void esc_playerEnteredShaft()
+{
+	sys.wait( 15 );
+	if( !PLAYER_ON_EXIT_ELEVATOR ) {
+		thread escapeSeqExplosions();
+	}
+}
+
+void esc_playerRidingElevator()
+{
+	PLAYER_ON_EXIT_ELEVATOR = true;
+}
+
+void esc_startSwingBeam()
+{
+	$esc_swingbeam.time( 2 );
+	$esc_swingbeam.accelTime( 0.5 );
+	$esc_swingbeam.decelTime( 0.5 );
+	$esc_swingbeam.rotateOnce( '0 0 95' );
+	sys.waitFor( $esc_swingbeam );
+	$esc_swingbeam.time( 2 );
+	$esc_swingbeam.accelTime( 0.5 );
+	$esc_swingbeam.decelTime( 0.5 );
+	$esc_swingbeam.rotateOnce( '0 0 -35' );
+	sys.waitFor( $esc_swingbeam );
+	$esc_swingbeam.time( 2 );
+	$esc_swingbeam.accelTime( 0.5 );
+	$esc_swingbeam.decelTime( 0.5 );
+	$esc_swingbeam.rotateOnce( '0 0 25' );
+	sys.waitFor( $esc_swingbeam );
+	$esc_swingbeam.time( 2 );
+	$esc_swingbeam.accelTime( 0.5 );
+	$esc_swingbeam.decelTime( 1 );
+	$esc_swingbeam.rotateOnce( '0 0 -5' );
+	sys.waitFor( $esc_swingbeam );
+}
+
+void esc_dropBeamOne()
+{
+	$esc_beam_1.time( 5 );
+	$esc_beam_1.accelTime( 1 );
+	$esc_beam_1.move( DOWN, 2264 );
+	$esc_beam_1.rotateOnce( '180 180 180' );
+	sys.waitFor( $esc_beam_1 );
+}
+
+void esc_dropBeamTwo()
+{
+	$esc_beam_2.time( 9 );
+	$esc_beam_2.accelTime( 1 );
+	$esc_beam_2.move( DOWN, 3352 );
+	$esc_beam_2.rotateOnce( '180 180 180' );
+	sys.waitFor( $esc_beam_2 );
+}
+
+void esc_dropBeamSix()
+{
+	sys.trigger( $esc_beam6_static );
+	$esc_beam_6.time( 3 );
+	$esc_beam_6.accelTime( 1 );
+	$esc_beam_6.move( DOWN, 1048 );
+	$esc_beam_6.rotateOnce( '-180 180 -180' );
+	sys.waitFor( $esc_beam_6 );
+}
+
+void esc_dropBeamThree()
+{
+	sys.wait( 5 );
+	$esc_beam_3.time( 2 );
+	$esc_beam_3.accelTime( 1 );
+	$esc_beam_3.move( DOWN, 1048 );
+	$esc_beam_3.rotateOnce( '180 180 180' );
+	sys.waitFor( $esc_beam_3 );
+
+	//hits beam_6
+	sys.wait( 0.01 );
+	thread esc_dropBeamSix();
+
+	$esc_beam_3.time( 3 );
+	$esc_beam_3.accelTime( 1 );
+	$esc_beam_3.move( DOWN, 1048 );
+	$esc_beam_3.rotateOnce( '180 180 180' );
+	sys.waitFor( $esc_beam_3 );
+}
+
+void esc_dropBeamFive()
+{
+	sys.wait( 0.1 );
+	$esc_beam_5.time( 5 );
+	$esc_beam_5.accelTime( 1 );
+	$esc_beam_5.move( DOWN, 2000 );
+	$esc_beam_5.rotateOnce( '-180 -180 -180' );
+	sys.waitFor( $esc_beam_5 );
+}
+
+void esc_dropBeamFour()
+{
+	sys.wait( 0.25 );
+	thread esc_dropBeamFive();
+	$esc_beam_4.time( 5 );
+	$esc_beam_4.accelTime( 1 );
+	$esc_beam_4.move( DOWN, 2000 );
+	$esc_beam_4.rotateOnce( '180 180 180' );
+	sys.waitFor( $esc_beam_4 );
+}
+
+void esc_walkwayFallOne()
+{
+	$esc_walkway_1.time( 10 );
+	$esc_walkway_1.accelTime( 1 );
+	$esc_walkway_1.move( DOWN, 4600 );
+	$esc_walkway_1.rotateOnce( '180 360 360' );
+	sys.waitFor( $esc_walkway_1 );
+}
+
+void esc_elevatorHit()
+{
+	sys.wait( 8 );
+	sys.trigger( $esc_elv_hitbottom );
+}
+
+void esc_elevatorFall()
+{
+	ESCAPE_ELEVATOR_CLEAR = true;
+
+	sys.trigger( $esc_speaker_1 );
+	sys.wait( 0.35 );
+	sys.trigger( $esc_speaker_2 );
+	sys.wait( 1 );
+	sys.trigger( $esc_fake_elev_speaker );
+
+	thread esc_elevatorHit();
+
+	$exit_fake_elevator.show();
+	$exit_elevator_panel_fake.show();
+	sys.wait( 0.1 );
+	$exit_elevator.remove();
+
+	$exit_fake_elevator.time( 8 );
+	$exit_fake_elevator.accelTime( 3 );
+	$exit_fake_elevator.move( DOWN, 5872 );
+	sys.trigger( $fake_ele_sparks_1 );
+	sys.trigger( $fake_ele_sparks_2 );
+	sys.trigger( $fake_ele_sparks_3 );
+	sys.trigger( $fake_ele_sparks_4 );
+	sys.waitFor( $exit_fake_elevator );
+
+	$fake_ele_sparks_1.remove();
+	$fake_ele_sparks_2.remove();
+	$fake_ele_sparks_3.remove();
+	$fake_ele_sparks_4.remove();
+}
+
+//the elevator is at the top, wait a bit and if the player hasn't grappled off of it, drop the sucker
+void esc_elevatorUp()
+{
+	sys.wait( 10 );
+	if( !ESCAPE_ELEVATOR_CLEAR ) {
+		sys.trigger( $esc_speaker_2 );
+		sys.wait( 1 );
+		sys.trigger( $esc_speaker_1 );
+	}
+
+	sys.wait( 5 );
+
+	if( !ESCAPE_ELEVATOR_CLEAR ) {
+		thread esc_elevatorFall();
+	}
+}
+
+///////////////////////////////////////////////////////////////
+//  AI intro stuff                                           //
+///////////////////////////////////////////////////////////////
+
+void navajasPlantsBomb()
+{
+	sys.println( "NAVAJAS: I'm going to rig a bomb on the Makron egg" );
+	// navajas jumps in daring fashion, what a hero
+	sys.wait( 3 );
+	aiScriptedAnimWait( $navajas, "cine_mcc_rail_vault", 10, 1 );
+
+	// play place bomb anim
+	aiScriptedFaceWait( $navajas, $lookAtMeDickhead, 1 );
+	aiScriptedAnimLoop( $navajas, "cine_medic_treating", 10 );
+	$navajas.bind( $mover_icecube );
+	sys.wait( 3 );
+	sys.trigger( $bomb01 );
+	$light_bomb01.On();
+	sys.println( "NAVAJAS: Find another way to follow me, I'll meet you later." );
+}
+
+//Called via a trigger_once just before first platform the player lands on after grappling
+void activate_ai_room_1()
+{
+	sys.println( "moving gunners" );
+	//thread gunner01();
+	$monster_gunner_2.becomeAggressive();	
+	aiScriptedMove( $monster_gunner_2, $gunner02_spot01, 8, 1 );
+	
+	aiScriptedTetherMoveWait( $monster_gunner_1, $ai_tether_radius_5 );
+	$monster_gunner_1.faceEntity( $func_static_55019  );
+	aiScriptedAnim( $monster_gunner_1, "gunner_intro", 10, 1 );
+	$monster_gunner_1.becomeAggressive();
+}
+
+void gunner01()
+{
+	aiScriptedTetherMoveWait( $monster_gunner_1, $ai_tether_radius_5 );
+	$monster_gunner_1.faceEntity( $func_static_55019  );
+	aiScriptedAnim( $monster_gunner_1, "gunner_intro", 10, 1 );
+	$monster_gunner_1.becomeAggressive();
+}
+
+void jumpDownGuy()
+{
+	sys.trigger( $osbt_1 );	//turn off the AAS obstacle on the ledge
+	sys.trigger( $geronimo );
+	sys.wait( 0.1 );
+	aiScriptedMoveWait( $geronimo, $geronimo_jumpnull, 8, 1);
+	$geronimo.scriptedJumpDown( 90 ); // this is the jump angle
+	aiScriptedWait( $geronimo );
+	sys.wait( 0.1 );
+	$geronimo.becomeAggressive();
+}
+
+void domeRoomJump1()
+{
+	sys.trigger( $dude1 );
+	sys.trigger( $cold_breath_39 );
+	sys.wait( 0.1 );
+	aiScriptedMoveWait( $dude1, $domeroomnull, 8, 1);
+	aiScriptedWait( $dude1 );
+	$dude1.scriptedJumpDown( 150 ); // this is the jump angle
+	aiScriptedWait( $dude1 );
+	sys.wait( 0.1 );
+	aiScriptedMoveWait( $dude1, $domenull2, 8, 1);
+	$dude1.becomeAggressive();
+}
+
+void domeRoomJump3()
+{
+	sys.trigger( $dude3 );
+	sys.trigger( $cold_breath_38 );
+	sys.wait( 0.1 );
+	aiScriptedMoveWait( $dude3, $domeroomnull, 8, 1);
+	aiScriptedWait( $dude3 );
+	$dude3.scriptedJumpDown( 150 ); // this is the jump angle
+	aiScriptedWait( $dude3 );
+	sys.wait( 0.1 );
+	aiScriptedMoveWait( $dude3, $domenull2, 8, 1);
+	$dude3.becomeAggressive();
+}
+
+void domeRoomJump4()
+{
+	sys.trigger( $dude4 );
+	sys.trigger( $cold_breath_37 );
+	sys.wait( 0.1 );
+	aiScriptedMoveWait( $dude4, $domeroomnull, 8, 1);
+	aiScriptedWait( $dude4 );
+	$dude4.scriptedJumpDown( 150 ); // this is the jump angle
+	aiScriptedWait( $dude4 );
+	sys.wait( 0.1 );
+	aiScriptedMoveWait( $dude4, $domenull2, 8, 1);
+	$dude4.becomeAggressive();
+}
+
+///////////////////////////////////////////////////////////////
+                                                             //
+///////////////////////////////////////////////////////////////
+//
+///////////////////////////////////////////////////////////////
+//  Machines                                                 //
+///////////////////////////////////////////////////////////////
+void steamersLoop()
+{
+	while( 1 ) {
+		$steamer_1_light.On();
+		sys.wait( 0.1 );
+		$steamer_1_lightb.On();
+
+		$steamer_1_light.fadeInLight( 4 );
+
+		sys.trigger( $steamer_1_liquid_speaker );
+
+		$steamer_1_fluid.time( 6 );
+		$steamer_1_fluid.move( UP, 390 );
+		sys.waitFor( $steamer_1_fluid );
+
+		$steamer_1_part_1.time( 2 );
+		$steamer_1_part_1.move( DOWN, 84 );
+		sys.waitFor( $steamer_1_part_1 );
+
+		$steamer_1_part_2.time( 2 );
+		$steamer_1_part_2.move( DOWN, 60 );
+		sys.waitFor( $steamer_1_part_2 );
+
+		$steamer_1_light.fadeOutLight( 5 );
+		$steamer_1_lightb.fadeInLight( 5 );
+		sys.wait( 5 );
+
+		$steamer_1_part_1.time( 2 );
+		$steamer_1_part_1.move( UP, 84 );
+		sys.waitFor( $steamer_1_part_1 );
+
+		$steamer_1_part_2.time( 2 );
+		$steamer_1_part_2.move( UP, 60 );
+		sys.waitFor( $steamer_1_part_2 );
+
+		$steamer_1_lightb.fadeOutLight( 6 );
+
+		$steamer_1_fluid.time( 6 );
+		$steamer_1_fluid.move( DOWN, 390 );
+		sys.waitFor( $steamer_1_fluid );
+
+		sys.trigger( $steamer_1_liquid_speaker );
+
+		$steamer_1_light.Off();
+		sys.wait( 0.1 );
+		$steamer_1_lightb.Off();
+
+		sys.wait( 2 );
+
+		$steamer_2_light.On();
+		sys.wait( 0.1 );
+		$steamer_2_lightb.On();
+
+		$steamer_2_light.fadeInLight( 4 );
+
+		sys.trigger( $steamer_2_liquid_speaker );
+
+		$steamer_2_fluid.time( 6 );
+		$steamer_2_fluid.move( UP, 390 );
+		sys.waitFor( $steamer_2_fluid );
+
+		$steamer_2_part_1.time( 2 );
+		$steamer_2_part_1.move( DOWN, 84 );
+		sys.waitFor( $steamer_2_part_1 );
+
+		$steamer_2_part_2.time( 2 );
+		$steamer_2_part_2.move( DOWN, 60 );
+		sys.waitFor( $steamer_1_part_2 );
+
+		$steamer_2_light.fadeOutLight( 5 );
+		$steamer_2_lightb.fadeInLight( 5 );
+		sys.wait( 5 );
+
+		$steamer_2_part_1.time( 2 );
+		$steamer_2_part_1.move( UP, 84 );
+		sys.waitFor( $steamer_2_part_1 );
+
+		$steamer_2_part_2.time( 2 );
+		$steamer_2_part_2.move( UP, 60 );
+		sys.waitFor( $steamer_2_part_2 );
+
+		$steamer_2_lightb.fadeOutLight( 6 );
+
+		$steamer_2_fluid.time( 6 );
+		$steamer_2_fluid.move( DOWN, 390 );
+		sys.waitFor( $steamer_2_fluid );
+
+		sys.trigger( $steamer_2_liquid_speaker );
+
+		$steamer_2_light.Off();
+		sys.wait( 0.1 );
+		$steamer_2_lightb.Off();
+
+		sys.wait( 2 );
+	}	
+}
+
+void init_steamers()
+{
+	$steamer_1_light.bind( $steamer_1_fluid );
+	$steamer_2_light.bind( $steamer_2_fluid );
+	$steamer_1_lightb.bind( $steamer_1_fluid );
+	$steamer_2_lightb.bind( $steamer_2_fluid );
+
+	$steamer_1_light.fadeOutLight( 1 );
+	$steamer_1_lightb.fadeOutLight( 1 );
+	$steamer_2_light.fadeOutLight( 1 );
+	$steamer_2_lightb.fadeOutLight( 1 );
+
+	sys.wait( 0.1 );
+
+	$steamer_1_fluid.time( 0.1 );
+	$steamer_1_fluid.move( DOWN, 390 );
+	sys.waitFor( $steamer_1_fluid );
+
+	sys.wait( 0.1 );
+
+	$steamer_1_part_1.time( 2 );
+	$steamer_1_part_1.move( UP, 84 );
+	sys.waitFor( $steamer_1_part_1 );
+
+	sys.wait( 0.1 );
+
+	$steamer_1_part_2.time( 2 );
+	$steamer_1_part_2.move( UP, 60 );
+	sys.waitFor( $steamer_1_part_2 );
+
+	sys.wait( 0.1 );
+
+	$steamer_2_fluid.time( 0.1 );
+	$steamer_2_fluid.move( DOWN, 390 );
+	sys.waitFor( $steamer_2_fluid );
+
+	sys.wait( 0.1 );
+
+	$steamer_2_part_1.time( 2 );
+	$steamer_2_part_1.move( UP, 84 );
+	sys.waitFor( $steamer_2_part_1 );
+
+	sys.wait( 0.1 );
+
+	$steamer_2_part_2.time( 2 );
+	$steamer_2_part_2.move( UP, 60 );
+	sys.waitFor( $steamer_2_part_2 );
+
+	sys.wait( 0.1 );
+
+	thread steamersLoop();
+}
+
+//Machines in the dome cave room
+void machine_1_on()
+{
+	MACHINE1ACTIVE = true ;
+
+	while( MACHINE1ACTIVE ) {
+		$machine_1.time( 2 );
+		$machine_1.accelTime( 0.25 );
+		$machine_1.decelTime( 0.25 );
+		$machine_1.rotateOnce( '0 40 0' );
+		sys.waitFor( $machine_1 );
+
+		sys.wait( 0.1 );
+
+		$machine_1.time( 2 );
+		$machine_1.accelTime( 0.25 );
+		$machine_1.decelTime( 0.25 );
+		$machine_1.rotateOnce( '0 -40 0' );
+		sys.waitFor( $machine_1 );
+
+		sys.wait( 0.1 );
+	}
+}
+
+void machine_1_off()
+{
+	MACHINE1ACTIVE = false;
+	$machine_1_light.fadeOutLight( 1 );
+}
+
+void machine_2_on()
+{
+	MACHINE2ACTIVE = true ;
+
+	while( MACHINE2ACTIVE ) {
+		$machine_2.time( 2 );
+		$machine_2.accelTime( 0.25 );
+		$machine_2.decelTime( 0.25 );
+		$machine_2.rotateOnce( '0 40 0' );
+		sys.waitFor( $machine_2 );
+
+		sys.wait( 0.1 );
+
+		$machine_2.time( 2 );
+		$machine_2.accelTime( 0.25 );
+		$machine_2.decelTime( 0.25 );
+		$machine_2.rotateOnce( '0 -40 0' );
+		sys.waitFor( $machine_2 );
+
+		sys.wait( 0.1 );
+	}
+}
+
+void machine_2_off()
+{
+	thread machine_1_off();
+	MACHINE2ACTIVE = false;
+	$machine_2_light.fadeOutLight( 1 );
+}
+
+void machine_4_on()
+{
+	MACHINE4ACTIVE = true ;
+
+	while( MACHINE4ACTIVE ) {
+		$machine_4.time( 2 );
+		$machine_4.accelTime( 0.25 );
+		$machine_4.decelTime( 0.25 );
+		$machine_4.rotateOnce( '0 40 0' );
+		sys.waitFor( $machine_4 );
+
+		sys.wait( 0.1 );
+
+		$machine_4.time( 2 );
+		$machine_4.accelTime( 0.25 );
+		$machine_4.decelTime( 0.25 );
+		$machine_4.rotateOnce( '0 -40 0' );
+		sys.waitFor( $machine_4 );
+
+		sys.wait( 0.1 );
+	}
+}
+
+void machine_4_off()
+{
+	MACHINE4ACTIVE = false;
+	$machine_4_light.fadeOutLight( 1 );
+}
+
+void machine_3_on()
+{
+	MACHINE3ACTIVE = true ;
+
+	while( MACHINE3ACTIVE ) {
+		$machine_3.time( 2 );
+		$machine_3.accelTime( 0.25 );
+		$machine_3.decelTime( 0.25 );
+		$machine_3.rotateOnce( '0 40 0' );
+		sys.waitFor( $machine_3 );
+
+		sys.wait( 0.1 );
+
+		$machine_3.time( 2 );
+		$machine_3.accelTime( 0.25 );
+		$machine_3.decelTime( 0.25 );
+		$machine_3.rotateOnce( '0 -40 0' );
+		sys.waitFor( $machine_3 );
+
+		sys.wait( 0.1 );
+	}
+}
+
+void machine_3_off()
+{
+	thread machine_4_off();
+	MACHINE3ACTIVE = false;
+	$machine_3_light.fadeOutLight( 1 );
+}
+
+void start_machines()
+{
+	thread machine_1_on();
+	sys.wait( 0.4 );
+	thread machine_2_on();
+	sys.wait( 0.3 );
+	thread machine_3_on();
+	sys.wait( 0.6 );
+	thread machine_4_on();
+}
+
+void sendLiftUp()
+{
+	$elevator_1.gotoFloor( 2 );
+}
+
+// The second tall tunnel
+void moveIceCubeDown2()
+{
+	$navajas.remove();
+	$valkaryne01.remove();
+	
+	// navajas animated on the makron egg
+	sys.trigger( $navajas02 );
+	aiScriptedAnimLoop( $navajas02, "cine_medic_treating", 10 );
+	sys.trigger( $bomb02 );
+	$light_bomb02.On();
+	
+	// open door
+	sys.trigger( $tubedoor2_north );
+
+	//move out of tube
+	$mover_icecube_2.bind( $mover_icecube_trackthing_2 );
+
+	$mover_icecube_trackthing_2.time( 3 ); // was 5
+	$mover_icecube_trackthing_2.moveTo( $cube_null_4 );
+	sys.waitFor( $mover_icecube_trackthing_2 );
+
+	sys.trigger( $tubedoor2_north );
+
+	//open the teeth
+	$s2_upperarm_teeth_1.time( 1 );
+	$s2_upperarm_teeth_1.move( 225, 32 );
+	sys.waitFor( $s2_upperarm_teeth_1 );
+	$s2_upperarm_teeth_2.time( 1 );
+	$s2_upperarm_teeth_2.move( 45, 32 );
+	sys.waitFor( $s2_upperarm_teeth_2 );
+
+	//Move out to end of track and move the upper grabber into position
+	$mover_icecube_trackthing_2.time( 6 );
+	$mover_icecube_trackthing_2.decelTime( 1 );
+	$mover_icecube_trackthing_2.moveTo( $cube_null_5 );
+	$mover_icecube_trackthing_3.time( 5 );
+	$mover_icecube_trackthing_3.accelTime( 1 );
+	$mover_icecube_trackthing_3.decelTime( 1 );
+	$mover_icecube_trackthing_3.moveTo( $cube_null_7 );
+	$mover_upper_icecube_grabber.time( 5 );
+	$mover_upper_icecube_grabber.accelTime( 1 );
+	$mover_upper_icecube_grabber.decelTime( 1 );
+	$mover_upper_icecube_grabber.rotateOnce( '0 -180 0' );
+	sys.waitFor( $mover_icecube_trackthing_2 );
+
+	sys.wait( 1 );
+
+	$mover_icecube_2.unbind();
+	$mover_icecube_2.bind( $mover_upper_icecube_grabber );
+
+	//close the teeth
+	$s2_upperarm_teeth_1.time( 1 );
+	$s2_upperarm_teeth_1.move( 225, 32 );
+	sys.waitFor( $s2_upperarm_teeth_1 );
+	$s2_upperarm_teeth_2.time( 1 );
+	$s2_upperarm_teeth_2.move( 45, 32 );
+	sys.waitFor( $s2_upperarm_teeth_2 );
+
+	//move the upper grabber out over the middle
+	$mover_icecube_trackthing_3.time( 5 );
+	$mover_icecube_trackthing_3.accelTime( 1 );
+	$mover_icecube_trackthing_3.decelTime( 1 );
+	$mover_icecube_trackthing_3.moveTo( $cube_null_6 );
+	$mover_upper_icecube_grabber.time( 5 );
+	$mover_upper_icecube_grabber.accelTime( 1 );
+	$mover_upper_icecube_grabber.decelTime( 1 );
+	$mover_upper_icecube_grabber.rotateOnce( '0 180 0' );
+
+	sys.waitFor( $mover_icecube_trackthing_3 );
+	
+	thread navajasDies();
+	
+	sys.wait( 1 );
+
+	//move the upper grabber down
+	$mover_upper_icecube_grabber.time( 3 );
+	$mover_upper_icecube_grabber.accelTime( 0.5 );
+	$mover_upper_icecube_grabber.decelTime( 0.5 );
+	$mover_upper_icecube_grabber.move( -2, 224 );
+	sys.waitFor( $mover_upper_icecube_grabber );
+
+	sys.wait( 1 );
+
+	//open the teeth
+	$s2_upperarm_teeth_1.time( 1 );
+	$s2_upperarm_teeth_1.move( 225, 32 );
+	sys.waitFor( $s2_upperarm_teeth_1 );
+	$s2_upperarm_teeth_2.time( 1 );
+	$s2_upperarm_teeth_2.move( 45, 32 );
+	sys.waitFor( $s2_upperarm_teeth_2 );
+
+	$mover_icecube_2.unbind();
+
+	//move the upper grabber back up
+	$mover_upper_icecube_grabber.time( 1.5 );
+	$mover_upper_icecube_grabber.accelTime( 0.5 );
+	$mover_upper_icecube_grabber.decelTime( 0.5 );
+	$mover_upper_icecube_grabber.move( -1, 224 );
+	sys.waitFor( $mover_upper_icecube_grabber );
+
+
+	//---------------------------
+	//Begin descent
+	//---------------------------
+	$mover_icecube_2.bind( $mover_spiralarms );
+
+	$mover_spiralarms.time( 5 );
+	$mover_spiralarms.accelTime( 1 );
+	$mover_spiralarms.decelTime( 1 );
+	$mover_spiralarms.move( -2, 360 );
+	$mover_spiralarms.rotateOnce( '0 45 0' );
+	sys.waitFor( $mover_spiralarms );
+
+		//Machine 1 - do something cool!
+		$mover_tube2_mach_1.time( 5 );
+		$mover_tube2_mach_1.accelTime( 0.5 );
+		$mover_tube2_mach_1.decelTime( 0.5 );
+		$mover_tube2_mach_1.rotateOnce( '0 45 0' );
+		sys.waitFor( $mover_tube2_mach_1 );
+
+		sys.wait( 2 );
+
+		$mover_tube2_mach_1.time( 5 );
+		$mover_tube2_mach_1.accelTime( 0.5 );
+		$mover_tube2_mach_1.decelTime( 0.5 );
+		$mover_tube2_mach_1.rotateOnce( '0 -45 0' );
+		sys.waitFor( $mover_tube2_mach_1 );
+
+		sys.wait( 1 );
+
+	$mover_spiralarms.time( 5 );
+	$mover_spiralarms.accelTime( 1 );
+	$mover_spiralarms.decelTime( 1 );
+	$mover_spiralarms.move( -2, 360 );
+	$mover_spiralarms.rotateOnce( '0 45 0' );
+	sys.waitFor( $mover_spiralarms );
+
+		//Machine 2 - do something cool!
+		$mover_tube2_mach_2.time( 5 );
+		$mover_tube2_mach_2.accelTime( 0.5 );
+		$mover_tube2_mach_2.decelTime( 0.5 );
+		$mover_tube2_mach_2.rotateOnce( '0 35 0' );
+		sys.waitFor( $mover_tube2_mach_2 );
+
+		sys.wait( 2 );
+
+		$mover_tube2_mach_2.time( 5 );
+		$mover_tube2_mach_2.accelTime( 0.5 );
+		$mover_tube2_mach_2.decelTime( 0.5 );
+		$mover_tube2_mach_2.rotateOnce( '0 -35 0' );
+		sys.waitFor( $mover_tube2_mach_2 );
+
+		sys.wait( 1 );
+
+	$mover_spiralarms.time( 5 );
+	$mover_spiralarms.accelTime( 1 );
+	$mover_spiralarms.decelTime( 1 );
+	$mover_spiralarms.move( -2, 360 );
+	$mover_spiralarms.rotateOnce( '0 45 0' );
+	sys.waitFor( $mover_spiralarms );
+
+		//Machine 3 - do something cool!
+		$mover_tube2_mach_3.time( 5 );
+		$mover_tube2_mach_3.accelTime( 0.5 );
+		$mover_tube2_mach_3.decelTime( 0.5 );
+		$mover_tube2_mach_3.rotateOnce( '0 45 0' );
+		sys.waitFor( $mover_tube2_mach_3 );
+
+		sys.wait( 2 );
+
+		$mover_tube2_mach_3.time( 5 );
+		$mover_tube2_mach_3.accelTime( 0.5 );
+		$mover_tube2_mach_3.decelTime( 0.5 );
+		$mover_tube2_mach_3.rotateOnce( '0 -45 0' );
+		sys.waitFor( $mover_tube2_mach_3 );
+
+		sys.wait( 1 );
+
+	$light_spiralarms_1.Off();
+	$light_spiralarms_2.Off();
+	$light_spiralarms_3.Off();
+	$light_spiralarms_4.Off();
+
+	//nothing else to do, move it all the way down
+	$mover_spiralarms.time( 25 );
+	$mover_spiralarms.accelTime( 1 );
+	$mover_spiralarms.decelTime( 1 );
+	$mover_spiralarms.move( -2, 1800 );
+	$mover_spiralarms.rotateOnce( '0 225 0' );
+	sys.waitFor( $mover_spiralarms );
+}
+
+void navajasWhereAreYou()
+{
+	sys.println( "NAVAJAS: Dekard, where are you?" );
+	sys.wait( 3 );
+	sys.println( "NAVAJAS: I've almost got the charges set!" );
+}
+
+void navajasDies()
+{
+	// Navajas jumps off the Makron egg
+	aiScriptedAnimWait( $navajas02, "idle", 10, 1 );
+	$navajas02.remove();
+	sys.trigger( $navajas03 );	
+	$navajas03.becomePassive( 1 );
+		
+	// Valkaryne preys on navajas
+	sys.trigger( $valkaryne02 );
+	$valkaryne02.becomePassive( 1 );
+	aiScriptedMove( $navajas02, $navajas02_spot01, 8, 1 );	
+	thread animateNavajas();
+	aiScriptedAnimWait( $valkaryne02, "va_najavas_dies", 10, 1 );
+	$valkaryne02.remove();
+}
+
+void animateNavajas()
+{
+	sys.wait( 3 );
+	$navajas03.kill(); // aaaaahhhhhhhhhhhhHHHHHH... *SPLAT*
+}
+
+void spawnTactical01()
+{
+	//
+	sys.println( "OPEN THE FUCKING DOOR!" ); 
+	sys.trigger( $monster_lt_tank_3 );
+	$tact_door01.lock( 0 );
+	$tact_door01.open();
+	aiScriptedMoveWait( $monster_lt_tank_3, $monster_lt_tank_3_spot01, 8, 1 );
+	$monster_lt_tank_3.becomeAggressive();
+	$tact_door01.lock( 1 );
+	$tact_door01.close();
+}
+
+//The first tall tunnel
+void moveIceCubeDown()
+{
+	thread navajasPlantsBomb();
+	
+	// ** VO **
+	sys.trigger( $valk_speaker_1 );	//"<valkaryne:> .Reborn."
+	sys.wait( 3 );
+	radioChatterPlay( $radiochatter, "vo_10_1_2" );	//"<markswell:> <Over Radio> Dekard!  What's going on?  We're getting heavy(static) EM interference and (static) Losing you."
+
+	$mover_icecube.bind( $mover_icecubearm_1 );
+	$mover_icecubearm_1.bind( $mover_icecubearmbase_1 );
+	$mover_icecubearm_2.bind( $mover_icecubearmbase_2 );
+
+	$mover_icecubearmbase_1.time( 60 );
+	$mover_icecubearmbase_1.decelTime( 1 );
+	$mover_icecubearmbase_1.move( -2, 1064 ); // 1144
+	$mover_icecubearmbase_2.time( 60 );
+	$mover_icecubearmbase_2.decelTime( 1 );
+	$mover_icecubearmbase_2.move( -2, 1064 ); // 1144
+	sys.waitFor( $mover_icecubearmbase_1 );
+
+	sys.wait( 1 );
+
+	$mover_icecubearm_1_teeth.time( 1 );
+	$mover_icecubearm_1_teeth.move( SOUTH, 24 );
+	sys.waitFor( $mover_icecubearm_1_teeth );
+
+	$mover_icecubearm_2_teeth.time( 1 );
+	$mover_icecubearm_2_teeth.move( WEST, 24 );
+	sys.waitFor( $mover_icecubearm_2_teeth );
+
+	sys.wait( 1 );
+
+	$mover_icecube.unbind();
+
+	$mover_icecubearm_1.time( 6 );
+	$mover_icecubearm_1.accelTime( 1 );
+	$mover_icecubearm_1.decelTime( 1 );
+	$mover_icecubearm_2.time( 6 );
+	$mover_icecubearm_2.accelTime( 1 );
+	$mover_icecubearm_2.decelTime( 1 );
+	$mover_icecubearmbase_1.move( -1, 1062 ); // 1142
+	$mover_icecubearmbase_2.move( -1, 1062 ); // 1142
+	$mover_icecubearm_1.rotateOnce( '0 0 60' );
+	$mover_icecubearm_2.rotateOnce( '-60 0 0' );
+	sys.waitFor( $mover_icecubearm_1 );
+
+	$mover_icecube.bind( $mover_icecube_trackthing );
+	$mover_icecube_trackthing.time( 5 );
+	$mover_icecube_trackthing.accelTime( 1 );
+	$mover_icecube_trackthing.decelTime( 1 );
+	$mover_icecube_trackthing.moveTo( $cube_null_1 );
+	sys.waitFor( $mover_icecube_trackthing );
+}
+
+//Large iris doors at bottom of second descent shaft
+void operate_4door()  //opens and closes 4 part door
+{
+
+	if ( q4doorIsOpen == 1 )
+			{
+		//close door
+		$mover_4door_1.time( 3 );
+		$mover_4door_2.time( 3 );
+		$mover_4door_3.time( 3 );
+		$mover_4door_4.time( 3 );
+		$mover_4door_1.accelTime( 0.5 );
+		$mover_4door_2.accelTime( 0.5 );
+		$mover_4door_3.accelTime( 0.5 );
+		$mover_4door_4.accelTime( 0.5 );
+		$mover_4door_1.decelTime( 0.5 );
+		$mover_4door_2.decelTime( 0.5 );
+		$mover_4door_3.decelTime( 0.5 );
+		$mover_4door_4.decelTime( 0.5 );
+		$mover_4door_1.rotateOnce( '0 45 0' );
+		$mover_4door_2.rotateOnce( '0 45 0' );
+		$mover_4door_3.rotateOnce( '0 45 0' );
+		$mover_4door_4.rotateOnce( '0 45 0' );
+		sys.waitFor( $mover_4door_1 );
+		q4doorIsOpen	= 0;
+	}
+
+	else
+	{
+		//open door
+		$mover_4door_1.time( 3 );
+		$mover_4door_2.time( 3 );
+		$mover_4door_3.time( 3 );
+		$mover_4door_4.time( 3 );
+		$mover_4door_1.accelTime( 0.5 );
+		$mover_4door_2.accelTime( 0.5 );
+		$mover_4door_3.accelTime( 0.5 );
+		$mover_4door_4.accelTime( 0.5 );
+		$mover_4door_1.decelTime( 0.5 );
+		$mover_4door_2.decelTime( 0.5 );
+		$mover_4door_3.decelTime( 0.5 );
+		$mover_4door_4.decelTime( 0.5 );
+		$mover_4door_1.rotateOnce( '0 -45 0' );
+		$mover_4door_2.rotateOnce( '0 -45 0' );
+		$mover_4door_3.rotateOnce( '0 -45 0' );
+		$mover_4door_4.rotateOnce( '0 -45 0' );
+		sys.waitFor( $mover_4door_1 );
+		q4doorIsOpen	= 1;
+	}
+}
+
+void moveDropship()
+{
+	sys.trigger( $char_dropship);
+	aiScriptedAnimLoop( $char_dropship, "ad_bidwell_wave", 10 );
+	sys.trigger( $dropship );
+	//sys.trigger( $dropship_thruster01 ); // effects/cinematics/intro/vtol_5sec
+	//sys.trigger( $dropship_thruster02 );
+	//sys.trigger( $dropship_thruster03 );
+	//sys.trigger( $dropship_thruster04 );	
+	playAnimWait( $dropship, ANIMCHANNEL_ALL, "intro_idle" );
+	$mover_dropship.time( 3 );
+	$mover_dropship.decelTime( 1 );
+	$mover_dropship.moveTo( $dropship_null );
+	$mover_dropship.rotateOnce( '0 -180 0' );
+	sys.waitFor( $mover_dropship );
+
+	$mover_dropship.time( 3 );
+	$mover_dropship.accelTime( 1 );
+	$mover_dropship.decelTime( 1 );
+	$mover_dropship.moveTo( $dropship_null_1 );
+	$mover_dropship.rotateOnce( '0 -180 0' );
+	sys.wait( 2 );
+	
+	$busted_beam01.remove();
+	sys.trigger( $busted_beam_explo01 );
+	$busted_beam02.remove();
+	sys.trigger( $busted_beam_explo02 );
+	
+	sys.waitFor( $mover_dropship );
+	
+	thread bobbing_dropship();
+	thread rolling_dropship();
+	thread turning_dropship();
+}
+
+void bobbing_dropship()
+{	
+	//scriptEvent	void 	bob( float speed, float phase, vector distance );	
+	
+	$mover_dropship.accelTime( 0.3 );
+	$mover_dropship.decelTime( 0.3 );
+	$mover_dropship.time( 1.5 );
+	
+	$mover_dropship.bob( 8, 0, '0 0 6' );
+}
+
+void rolling_dropship()
+{
+	//scriptEvent	void 	sway( float speed, float phase, vector angles );
+	
+	$mover_dropship.accelTime( 0.3 );
+	$mover_dropship.decelTime( 0.3 );
+	$mover_dropship.time( 1.5 );
+	
+	$mover_dropship.sway( 8, 4, '10 0 0' );
+}
+
+void turning_dropship()
+{	
+	//scriptEvent	void 	sway( float speed, float phase, vector angles );
+	
+	$mover_dropship.accelTime( 0.3 );
+	$mover_dropship.decelTime( 0.3 );
+	$mover_dropship.time( 1.5 );
+
+	$mover_dropship.sway( 4, 1, '0 5 0' );
+}
+
+//Large iris doors at end of level
+void operate_exit_4door()  //opens and closes 4 part door
+{
+	thread dropshipAbortsExtraction(); // waits 20 seconds
+		
+	sys.println( "HURRY! The doors are closing!" );
+
+	//close door | time was 25
+	$mover_4door_5.time( 45 );
+	$mover_4door_6.time( 45 );
+	$mover_4door_7.time( 45 );
+	$mover_4door_8.time( 45 );
+	$mover_4door_5.accelTime( 0.5 );
+	$mover_4door_6.accelTime( 0.5 );
+	$mover_4door_7.accelTime( 0.5 );
+	$mover_4door_8.accelTime( 0.5 );
+	$mover_4door_5.decelTime( 0.5 );
+	$mover_4door_6.decelTime( 0.5 );
+	$mover_4door_7.decelTime( 0.5 );
+	$mover_4door_8.decelTime( 0.5 );
+	$mover_4door_5.rotateOnce( '0 45 0' );
+	$mover_4door_6.rotateOnce( '0 45 0' );
+	$mover_4door_7.rotateOnce( '0 45 0' );
+	$mover_4door_8.rotateOnce( '0 45 0' );
+	sys.waitFor( $mover_4door_5 );
+}
+
+void youAreTehWinnar()
+{
+	aiScriptedAnimLoop( $char_dropship, "relaxed_idle", 10 );
+	
+	PLAYER_ON_DROPSHIP = true;
+	
+	$player1.bind( $mover_dropship );
+	$player1.disableWeapon();
+	$mover_dropship.time( 5 );
+	$mover_dropship.accelTime( 1 );
+	$mover_dropship.moveTo( $dropship_null_2 );
+	sys.waitFor( $mover_dropship );
+	$mover_dropship.moveTo( $dropship_null_3 );
+	sys.waitFor( $mover_dropship );
+	
+	thread animBanners(); // animate the banners outside facility
+		
+	// cut to outside room 
+	sys.trigger( $cine_shot01 );	
+	
+	// make ship fly
+	$mover_cine_dropship.enableSplineAngles();
+	playAnimWait( $cine_dropship, ANIMCHANNEL_ALL, "idle_all_closed" );
+	$mover_cine_dropship.time( 10 );
+	$mover_cine_dropship.accelTime( 2 );
+	$mover_cine_dropship.decelTime( 0.5 );
+	$mover_cine_dropship.startSpline( $spline_dropship );	
+	
+	// wait a sec or two
+	sys.wait( 3.5 );
+	
+	// trigger explosions
+	sys.trigger( $cine_explo01 );
+	sys.wait( 0.7 );
+	sys.trigger( $cine_explo02 );	
+	
+	sys.wait( 4 );
+	
+	//sys.println( "FANTASTIC! Blowjobs for everyone!" );	
+	//sys.fadeOut( '0 0 0', 3 );
+	
+	// rock the camera
+	$cine_shot01.bind( $mover_cine_shot01 );
+	
+	//scriptEvent	void 	bob( float speed, float phase, vector distance );
+	$mover_cine_shot01.bob( 10, 1, '0 0 16' );
+	
+	//scriptEvent	void 	sway( float speed, float phase, vector angles );
+	$mover_cine_shot01.sway( 10, 1, '0 10 0' );
+	sys.wait( 3 );
+	
+	$cine_shot01.unbind();
+		
+	sys.trigger( $cine_shot01 );
+	$player1.unbind();
+	
+	// teleport player to the next cinematic scene which has a trigger_once that executes the "end_cine02" thread below
+	$player1.setWorldOrigin( $cine02.getOrigin() );	
+}
+
+void end_cine02()
+{
+	// WARPTO( "$cine02" );
+	sys.println( "ENDING IN SPACE" );
+	
+	// unhide space props
+	sys.trigger( $stroggos );
+	sys.trigger( $destroyer );
+	sys.trigger( $outro_dropship );
+	
+	// make dropship fly away from stroggos
+	thread animDropShipFlyByLanding();
+	
+	$cine02_shot00.bind( $mover_shot00 );
+	// start camera shot00 in space
+	sys.trigger( $cine02_shot00 );	
+	
+	$mover_shot00.accelTime( 1 );
+	$mover_shot00.decelTime( 1 );
+	$mover_shot00.time( 2 );
+	
+	//scriptEvent	void 	bob( float speed, float phase, vector distance );	
+	$mover_shot00.bob( 10, 1, '0 0 8' );
+	$mover_shot00.sway( 10, 1, '0 12 0' );
+	
+	sys.wait( 8 );
+		
+	// RHINO SQUAD???
+	sys.trigger( $npc_fatigues01 );
+	sys.trigger( $npc_fatigues02 );
+	sys.trigger( $npc_fatigues03 );
+	sys.trigger( $npc_fatigues04 );
+	sys.trigger( $npc_fatigues05 );
+
+	// Bay doors open up for dropship	
+	sys.trigger( $door_uppper_top_2 );
+	
+	sys.println( "ENDING IN PATTON BAY" );
+		
+	// start camera shot01 in patton bay
+	sys.trigger( $cine02_shot01 );
+	
+	sys.wait( 12 );
+	
+	sys.trigger( $npc_dekard );
+	
+	$npc_dekard.setAnimRate( 1.2 );
+	$npc_dekard.setMoveSpeed( AIMOVESPEED_WALK );
+	aiScriptedMoveWait( $npc_dekard, $dekard_spot01, 8, 0 );
+	aiScriptedMoveWait( $npc_dekard, $dekard_spot02, 8, 0 );
+	
+	// show makron/valkaryne emerging
+		
+	thread theEnd();
+}
+
+void theEnd()
+{
+	sys.println( "GAME OVER!! BLOWJOBS FOR EVERYONE!" );
+	sys.fadeOut( '0 0 0', 5);
+	sys.wait( 5 );
+	sys.trigger( $TEHEND );
+}
+
+void animDropShipFlyByLanding()
+{
+	$outro_dropship.playAnim(ANIMCHANNEL_ALL, "outro_dropship");
+	sys.wait(25);
+	sys.trigger($light_1846); //turn off red spinner	
+}
+
+void dropshipAbortsExtraction()
+{
+	// sys.println( "dropshipAbortsExtraction thread waiting 20sec" );
+	sys.wait( 20 );
+	// sys.println( PLAYER_ON_DROPSHIP );
+	
+	if( !PLAYER_ON_DROPSHIP )
+	{
+		sys.println( "DROPSHIP: We can't wait anymore, the doors are about to shut on us, we gotta jet, NOW!" );
+		$mover_dropship.time( 5 );
+		$mover_dropship.accelTime( 1 );
+		$mover_dropship.moveTo( $dropship_null_2 );
+		sys.waitFor( $mover_dropship );
+		$mover_dropship.moveTo( $dropship_null_3 );
+		sys.waitFor( $mover_dropship );
+		
+		sys.println( "YOU BOOB! You were too slow!" );
+		sys.wait( 1 );
+		sys.fadeOut( '0 0 0', 5);
+	}
+}
+
+void gotchaDekard()
+{
+	aiScriptedAnimLoop( $char_dropship, "medic_treating", 10 );
+	sys.println( "I gotcha Dekard, just hop on up here!" );
+}
+
+//Crane with grapple node attached
+void moveCrane()
+{
+	$cranepipe.time( 8 );
+	$cranepipe.accelTime( 2 );
+	$cranepipe.decelTime( 2 );
+	$cranepipe.move( UP, 280 );
+	sys.waitFor( $cranepipe );
+}
+
+//This is called by a trigger_once when the player is at the bottom of the first shaft
+void playerBottomShaftOne()
+{
+	thread endRepairBotOne();
+	thread endRepairBotTwo();
+
+	//Move the Valk into the tube
+	$mover_icecube.bind( $mover_icecube_trackthing );
+	$mover_icecube_trackthing.time( 5 );
+	$mover_icecube_trackthing.accelTime( 1 );
+	$mover_icecube_trackthing.decelTime( 1 );
+	$mover_icecube_trackthing.moveTo( $cube_null_2 );
+	sys.waitFor( $mover_icecube_trackthing );
+
+	sys.trigger( $tubedoor1_north );
+
+	$mover_icecube.bind( $mover_icecube_trackthing );
+	$mover_icecube_trackthing.time( 5 );
+	$mover_icecube_trackthing.accelTime( 1 );
+	$mover_icecube_trackthing.decelTime( 1 );
+	$mover_icecube_trackthing.moveTo( $cube_null_3 );
+	sys.waitFor( $mover_icecube_trackthing );
+
+	sys.trigger( $tubedoor1_north );
+}
+
+void nexusDestroyed()
+{
+	$monster_q4x_tactical_railgun_1.becomePassive( 1 );
+	aiScriptedAnimLoop( $monster_q4x_tactical_railgun_1, "floating_tube", 10 );
+	// thread gunners4and5Fight();
+	sys.trigger( $nexus_sparks01 );
+	sys.trigger( $nexus_sparks02 );
+	sys.trigger( $nexus_sparks03 );
+	sys.trigger( $nexus_sparks04 );
+	sys.println( "MARKSWELL: The nexus has been destroyed, the Strogg communication network is down." );
+	sys.wait( 3 );
+	sys.println( "MARKSWELL: All the Strogg are fighting each other!" );
+}
+
+void gunners4and5Fight()
+{
+	//
+	$monster_gunner_4.becomePassive( 1 );
+	$monster_gunner_5.becomePassive( 1 );
+	while ( 1 )
+	{
+		aiScriptedAnim( $monster_gunner_4, "melee_attack1", 10, 1 );
+		aiScriptedAnimWait( $monster_gunner_5, "evade_right", 10, 1 );
+		sys.wait( 0.5 );
+		aiScriptedAnim( $monster_gunner_4, "evade_left", 10, 1 );
+		aiScriptedAnimWait( $monster_gunner_5, "melee_attack2", 10, 1 );
+		sys.wait( 0.5 );
+	}
+}
+
+void sci_madienFight()
+{
+	sys.println( "scientist fights maiden" );
+	sys.trigger( $monster_scientist_1 );
+	$monster_scientist_1.becomePassive( 1 );
+	aiScriptedMoveWait( $monster_scientist_1, $ms01_spot01, 8, 1 );
+	aiScriptedAnimWait( $monster_scientist_1, "melee_attack1", 10, 1 );
+	aiScriptedAnimWait( $monster_scientist_1, "melee_attack3", 10, 1 );
+	aiScriptedAnimWait( $monster_scientist_1, "melee_attack1", 10, 1 );
+	sys.trigger( $env_wall_casket_6 );
+	sys.trigger( $monster_iron01 );	
+	$monster_scientist_1.becomePassive( 0 );
+}
+
+void killValk()
+{
+	// script thread map_m10::killValk();
+	$valk.kill();
+}
+
+void warpTo( entity warp )
+{
+	$player1.setWorldOrigin( warp.getOrigin() );
+}
+
+void animBanners()
+{
+	$env_q4x_banner_1.playCycle( ANIMCHANNEL_ALL, "idle" );
+	$env_q4x_banner_2.playCycle( ANIMCHANNEL_ALL, "idle" );
+	$env_q4x_banner_3.playCycle( ANIMCHANNEL_ALL, "idle" );
+	$env_q4x_banner_4.playCycle( ANIMCHANNEL_ALL, "idle" );
+	$env_q4x_banner_5.playCycle( ANIMCHANNEL_ALL, "idle" );
+	$env_q4x_banner_6.playCycle( ANIMCHANNEL_ALL, "idle" );
+	$env_q4x_banner_7.playCycle( ANIMCHANNEL_ALL, "idle" );
+	$env_q4x_banner_8.playCycle( ANIMCHANNEL_ALL, "idle" );
+}
+	
+
+// script thread map_m10::warpTo( nexus ); 
+
+//////////////////////////
+//
+// Raven's Core Room Script
+//
+///////////////////////////
+void streamerScrolling() 
+{	
+	sys.println( "streamer started" );
+	
+	// fancy stuff to make sure that the shader effects don't get out of sync with the effects emitters
+
+	float streamerPosition = 0;
+	float oldTime = sys.getTime();
+	float nowTime = sys.getTime();
+	float startTime = sys.getTime();
+	float deltaTime;
+	float streamerState = 0;
+	float streamerSpeed = -0.125;
+	
+	while(1){
+		
+		nowTime = sys.getTime();
+		deltaTime = nowTime - oldTime;
+		oldTime = nowTime;
+	
+		streamerPosition += streamerSpeed * deltaTime;
+		$coreStreamers.setShaderParm( 4, streamerPosition );
+
+		if ((nowTime - startTime) >= 8.0) {
+			//sys.print("reset");
+			startTime = nowTime;
+			streamerState = 0;
+		} else if ((nowTime - startTime) >= 1.7 && streamerState == 2) {
+			//sys.print("third one");
+			sys.trigger($thirdHex);
+			streamerState = 3;
+		} else if ((nowTime - startTime) >= 1.4 && streamerState == 1) {
+			//sys.print("second one");
+			sys.trigger($secondHex);
+			streamerState = 2;
+		} else if ((nowTime - startTime) >= 0.35 && streamerState == 0) {
+			//sys.print("first one");
+			sys.trigger($firstHex);
+			streamerState = 1;
+		}
+		
+		sys.waitFrame();
+	
+	}
+
+}
+
+void markswellIsMrObvious()
+{
+	sys.println( "MARKSWELL: Dekard, get out of there! The place is falling apart!" );
+}
+
+void parallax()
+{
+	$skyportal.bind( $mvr_skyportal );
+	$mvr_skyportal.time( 12 );
+	$mvr_skyportal.accelTime( 0 );
+	$mvr_skyportal.decelTime( 0 );
+	
+	//while( 1 )
+	//{
+		$mvr_skyportal.moveTo( $target_sky_spot02 );
+		//sys.waitFor( $mvr_skyportal );
+		//$mvr_skyportal.moveTo( $target_sky_spot01 );
+		//sys.waitFor( $mvr_skyportal );
+	//}
+}
+
+void newsky()
+{
+	// move the skyportal ent to a new sky location
+	$skyportal.setOrigin( $sky_null.getOrigin() );
+}
+
+///////////////////
+//
+//  AI cold breath
+//
+///////////////////
+
+void coldInHere()
+{
+	$cold_breath_1.bindToJoint( $monster_gunner_1, "legs_channel", 1 );
+	$cold_breath_1.setOrigin( '10 0 72' );	//gunner position
+	$cold_breath_2.bindToJoint( $monster_gunner_2, "legs_channel", 1 );
+	$cold_breath_2.setOrigin( '10 0 72' );
+	$cold_breath_4.bindToJoint( $monster_iron_maiden_2, "legs_channel", 1 );
+	$cold_breath_4.setOrigin( '6 0 92' );
+	$cold_breath_5.bindToJoint( $monster_gunner_3, "legs_channel", 1 );
+	$cold_breath_5.setOrigin( '10 0 72' );
+	$cold_breath_7.bindToJoint( $monster_strogg_marine_3, "legs_channel", 1 );
+	$cold_breath_7.setOrigin( '4 0 60' );	//Strogg Marine Position
+	$cold_breath_8.bindToJoint( $monster_hh_tank_1, "legs_channel", 1 );		//scientist
+	$cold_breath_8.setOrigin( '26 0 26' );	//Scientist position
+	$cold_breath_10.bindToJoint( $monster_q4x_berserker_1, "legs_channel", 1 );
+	$cold_breath_10.setOrigin( '8 0 72' );	//Berserker position
+	$cold_breath_11.bindToJoint( $monster_lt_tank_3, "legs_channel", 1 );		//tactical railgun
+	$cold_breath_11.setOrigin( '0 0 0' );	//Tactical position
+	$cold_breath_12.bindToJoint( $monster_lt_tank_2, "legs_channel", 1 );		//tactical railgun
+	$cold_breath_12.setOrigin( '0 0 0' );
+	$cold_breath_14.bindToJoint( $monster_lt_tank_4, "legs_channel", 1 );
+	$cold_breath_14.setOrigin( '4 0 90' );	//Lt Tank position
+	$cold_breath_15.bindToJoint( $monster_strogg_marine_2, "legs_channel", 1 );
+	$cold_breath_15.setOrigin( '4 0 60' );
+	$cold_breath_16.bindToJoint( $monster_gunner_9, "legs_channel", 1 );
+	$cold_breath_16.setOrigin( '10 0 72' );
+	$cold_breath_17.bindToJoint( $monster_q4x_tank_1, "legs_channel", 1 );		//Lt Tank
+	$cold_breath_17.setOrigin( '4 0 90' );
+	$cold_breath_18.bindToJoint( $monster_q4x_strogg_marine_1, "legs_channel", 1 );
+	$cold_breath_18.setOrigin( '4 0 60' );
+	$cold_breath_19.bindToJoint( $monster_gunner_11, "legs_channel", 1 );
+	$cold_breath_19.setOrigin( '10 0 72' );
+	$cold_breath_20.bindToJoint( $monster_strogg_marine_4, "legs_channel", 1 );
+	$cold_breath_20.setOrigin( '4 0 60' );
+	$cold_breath_21.bindToJoint( $monster_berserker_2, "legs_channel", 1 );
+	$cold_breath_21.setOrigin( '8 0 72' );
+	$cold_breath_22.bindToJoint( $monster_berserker_1, "legs_channel", 1 );
+	$cold_breath_22.setOrigin( '8 0 72' );
+	$cold_breath_23.bindToJoint( $monster_scientist_3, "legs_channel", 1 );
+	$cold_breath_23.setOrigin( '26 0 26' );
+	$cold_breath_24.bindToJoint( $monster_hh_tank_2, "legs_channel", 1 );		//scientist
+	$cold_breath_24.setOrigin( '26 0 26' );
+	$cold_breath_25.bindToJoint( $monster_gunner_8, "legs_channel", 1 );
+	$cold_breath_25.setOrigin( '10 0 72' );
+	$cold_breath_26.bindToJoint( $monster_scientist_4, "legs_channel", 1 );	
+	$cold_breath_26.setOrigin( '26 0 26' );
+	$cold_breath_27.bindToJoint( $geronimo, "legs_channel", 1 );	
+	$cold_breath_27.setOrigin( '4 0 60' );
+	$cold_breath_28.bindToJoint( $monster_gunner_7, "legs_channel", 1 );	
+	$cold_breath_28.setOrigin( '10 0 72' );
+	$cold_breath_29.bindToJoint( $monster_q4x_tactical_railgun_1, "legs_channel", 1 );	
+	$cold_breath_29.setOrigin( '0 0 0' );
+	$cold_breath_30.bindToJoint( $monster_gunner_5, "legs_channel", 1 );	
+	$cold_breath_30.setOrigin( '10 0 72' );
+	$cold_breath_31.bindToJoint( $monster_gunner_4, "legs_channel", 1 );	
+	$cold_breath_31.setOrigin( '10 0 72' );
+	$cold_breath_32.bindToJoint( $monster_scientist_1, "legs_channel", 1 );	
+	$cold_breath_32.setOrigin( '26 0 26' );
+	$cold_breath_33.bindToJoint( $monster_tactical_railgun_1, "legs_channel", 1 );		//retch
+	$cold_breath_33.setOrigin( '12 13 64' );	//Retch position
+	$cold_breath_34.bindToJoint( $monster_scientist_2, "legs_channel", 1 );	
+	$cold_breath_34.setOrigin( '26 0 26' );
+	$cold_breath_35.bindToJoint( $monster_gunner_6, "legs_channel", 1 );	
+	$cold_breath_35.setOrigin( '10 0 72' );
+	$cold_breath_37.bindToJoint( $dude4, "legs_channel", 1 );	//Strogg Marine	
+	$cold_breath_37.setOrigin( '4 0 60' );	
+	$cold_breath_38.bindToJoint( $dude3, "legs_channel", 1 );	//Strogg Marine
+	$cold_breath_38.setOrigin( '4 0 60' );	
+	$cold_breath_39.bindToJoint( $dude1, "legs_channel", 1 );	//Strogg Marine
+	$cold_breath_39.setOrigin( '4 0 60' );	
+	$cold_breath_40.bindToJoint( $monster_gladiator_1, "legs_channel", 1 );
+	$cold_breath_40.setOrigin( '20 0 86' );	//Gladiator Position
+	$cold_breath_41.bindToJoint( $monster_gladiator_2, "legs_channel", 1 );		//Gunner
+	$cold_breath_41.setOrigin( '10 0 72' );
+}
+
+///////////////////////////////////////////////////////////////
+                                                             //
+///////////////////////////////////////////////////////////////
+//
+///////////////////////////////////////////////////////////////
+//  Initialization Threads                                   //
+///////////////////////////////////////////////////////////////
+
+void setupMachines()
+{
+	$mover_icecube_trackthing_3.time( 5 );
+	$mover_icecube_trackthing_3.accelTime( 1 );
+	$mover_icecube_trackthing_3.decelTime( 1 );
+	$mover_icecube_trackthing_3.moveTo( $cube_null_6 );
+	sys.waitFor( $mover_icecube_trackthing_3 );
+
+	$mover_tube2_mach_2.time( 5 );
+	$mover_tube2_mach_2.accelTime( 0.5 );
+	$mover_tube2_mach_2.decelTime( 0.5 );
+	$mover_tube2_mach_2.rotateOnce( '0 10 0' );
+	sys.waitFor( $mover_tube2_mach_2 );
+}
+
+///////////////////////////////////////////////////////////////
+                                                             //
+///////////////////////////////////////////////////////////////
+//
+///////////////////////////////////////////////////////////////
+//  Main                                                     //
+///////////////////////////////////////////////////////////////
+
+void main()
+{	
+	thread setupMachines();
+	thread init_steamers();
+
+	//Setup booleans
+	ESCAPE_ELEVATOR_CLEAR = false;
+	PLAYER_ON_EXIT_ELEVATOR = false;
+	EXIT_DOOR_ONE_CLOSED = false;
+	EXIT_DOOR_TWO_CLOSED = false;
+	EXIT_DOOR_THREE_CLOSED = false;
+
+	sys.trigger( $navajas );
+	$navajas.becomePassive( 1 );
+	sys.trigger( $valkaryne01 );
+	$valkaryne01.becomePassive( 1 );
+	aiScriptedAnimLoop( $valkaryne01, "idle", 10 );
+	sys.trigger( $monster_gunner_1 );
+	sys.trigger( $monster_gunner_2 );
+	sys.trigger( $repbot_1 );
+	sys.trigger( $repbot_2 );
+
+	thread coldInHere();
+	thread repairBotOne();
+	thread repairBotTwo();
+
+	sys.wait( 2 );
+	m10_giveObjective( 1 );
+
+	thread moveIceCubeDown();
+	
+	PLAYER_ON_DROPSHIP = false;
+	GAME_OVER = false;
+}
+
+} // end namespace
+

@@ -1,0 +1,173 @@
+
+/***********************************************************************
+MCC Landing Ship
+***********************************************************************/
+
+
+export  MCC_ship
+{
+	options  -prefix MCCEXP_ -align ALL -keep blast -sourcedir cinematics/air_assault/mcc_exploding/animations -destdir models/mapobjects/airborneassault/mcc_exploding -keep ALL Ship_Base Top_turret_AIM_RShape Top_turret_AIM_R top_turret_AIM_LShape top_turret_AIM_L MCC_Part_3_joint MCC_Part_5_joint MCC_Part_6_joint MCC_Part_7_joint MCC_Part_8_joint F_belly_turret_muzzle_R1 F_belly_turret_muzzle_R2 F_belly_turret_stock_R F_belly_turret_base_R vent_back_R MCC_Part_9_joint MCC_Part_10_joint B_belly_turret_muzzle_R1 B_belly_turret_muzzle_R2 B_belly_turret_stock_R B_belly_turret_base_R MCC_Part_11_joint MCC_Part_12_joint B_belly_turret_muzzle_L1 B_belly_turret_muzzle_L2 B_belly_turret_stock_L B_belly_turret_base_L MCC_Part_14_joint MCC_Part_15_joint MCC_Part_16_joint F_belly_turret_muzzle_L2 F_belly_turret_muzzle_L1 F_belly_turret_stock_L F_belly_turret_base_L vent_back_L MCC_Part_17_joint MCC_Part_18_joint MCC_Part_19_joint MCC_Part_20_joint vent_front_R vent_side_R4 vent_side_R3 vent_side_R2 vent_side_R1 MCC_Part_21_joint vent_front_L vent_side_L4 vent_side_L3 vent_side_L2 vent_side_L1 MCC_Part_22_joint MCC_Part_24_joint MCC_Part_25_joint MCC_Part_26_joint MCC_Part_27_joint MCC_Part_28_joint MCC_Part_29_joint MCC_Part_31_joint engine_top_C2 engine_top_C1 MCC_Part_32_joint MCC_Part_35_joint MCC_Part_36_joint MCC_Part_37_joint MCC_Part_38_joint MCC_Part_39_joint top_turret_muzzle_L2 top_turret_muzzle_L1 top_turret_stock_L_aimConstraint1 top_turret_stock_L top_turret_base_L_aimConstraint1 top_turret_base_L top_turret_muzzle_R1 top_turret_muzzle_R2 top_turret_stock_R_aimConstraint1 top_turret_stock_R top_turret_base_R_aimConstraint1 top_turret_base_R MCC_Part_40_joint engine_bottom_R2 engine_bottom_R1 engine_top_R1 engine_top_R2 engine_bottom_C2 engine_bottom_C1 engine_bottom_L2 engine_bottom_L1 engine_top_L2 engine_top_L1 polySurface163_joint polySurface164_joint breakaway Ship_Body
+
+	mesh	idle.ma					-dest MCC_explode
+	anim	space_explosion.ma	-range 1 2	-dest idle
+	anim	space_explosion.ma			-dest space_explode
+	anim	impact.ma		-range 100 238	-dest impact
+	
+	
+}
+
+entityDef env_q4x_MCC_explode
+{
+	"editor_color"					"0 .5 .25"
+	"editor_mins"					"-32 -32 0"
+	"editor_maxs"					"32 32 16"
+
+	"editor_usage"					"MCC exploding"
+
+	"spawnclass"					"idAnimated"
+
+	"model"						"model_q4x_MCC_explode"
+	"anim"						"idle"
+	
+	"fx_burn"					"effects/levels/airassault/q4x_burn_trail.fx"
+	"fx_explode"					"effects/monsters/flyer_space/q4x_explode.fx"
+	"fx_big_explode"				"effects/levels/airassault/q4x_big_explode.fx"
+	"fx_electrical"					"effects/levels/airassault/q4x_electrical_play.fx"
+
+	"fx_bigshotfly"					"effects/levels/airassault/q4x_big_gunfly.fx"
+	"fx_impact"					"effects/levels/airassault/q4x_big_gunfly.fx"
+
+}
+
+model model_q4x_MCC_explode
+{
+	mesh					models/mapobjects/airborneassault/mcc_exploding/MCC_explode.md5mesh
+	
+	anim idle				models/mapobjects/airborneassault/mcc_exploding/idle.md5anim
+	
+	anim impact				models/mapobjects/airborneassault/mcc_exploding/impact.md5anim
+	{
+	frame 1					fx		fx_bigshotfly		blast
+	frame 138				fx		fx_impact		blast
+	}
+	
+
+	anim space_explode			models/mapobjects/airborneassault/mcc_exploding/space_explode.md5anim
+	{
+	
+	//electrical play
+	
+		
+	frame 1				fx				fx_electrical	MCC_Part_18_joint
+	frame 2				fx				fx_electrical	MCC_Part_7_joint
+	frame 1				fx				fx_electrical	MCC_Part_25_joint
+	frame 3				fx				fx_electrical	MCC_Part_39_joint
+	frame 1				fx				fx_electrical	MCC_Part_19_joint
+	frame 1				fx				fx_electrical	MCC_Part_28_joint
+	
+	frame 5				fx				fx_electrical	MCC_Part_21_joint
+	frame 4				fx				fx_electrical	MCC_Part_22_joint
+	frame 6				fx				fx_electrical	MCC_Part_29_joint
+	frame 5				fx				fx_electrical	MCC_Part_37_joint
+	frame 4				fx				fx_electrical	MCC_Part_20_joint
+	frame 7				fx				fx_electrical	MCC_Part_6_joint
+	frame 8				fx				fx_electrical	MCC_Part_38_joint
+	
+	frame 12			fx				fx_electrical	MCC_Part_5_joint
+	frame 13			fx				fx_electrical	MCC_Part_3_joint
+	frame 14			fx				fx_electrical	MCC_Part_31_joint
+	frame 15			fx				fx_electrical	MCC_Part_27_joint
+	frame 16			fx				fx_electrical	MCC_Part_36_joint
+	frame 12			fx				fx_electrical	polySurface164_joint
+		
+	frame 15			fx				fx_electrical	MCC_Part_9_joint
+	frame 16			fx				fx_electrical	MCC_Part_11_joint
+	frame 16			fx				fx_electrical	MCC_Part_14_joint
+	frame 17			fx				fx_electrical	MCC_Part_17_joint
+	frame 15			fx				fx_electrical	MCC_Part_15_joint
+	frame 16			fx				fx_electrical	MCC_Part_12_joint
+	frame 16			fx				fx_electrical	MCC_Part_10_joint
+	frame 17			fx				fx_electrical	MCC_Part_16_joint
+	frame 15			fx				fx_electrical	MCC_Part_40_joint
+	
+	frame 20			fx				fx_electrical	polySurface163_joint
+	frame 20			fx				fx_electrical	MCC_Part_32_joint
+	
+
+	//ASPLODE!!
+	
+	frame 17			fx				fx_explode	MCC_Part_18_joint
+	frame 18			fx				fx_explode	MCC_Part_7_joint
+	frame 19			fx				fx_explode	MCC_Part_25_joint
+	frame 20			fx				fx_explode	MCC_Part_39_joint
+	frame 21			fx				fx_explode	MCC_Part_19_joint
+	frame 22			fx				fx_explode	MCC_Part_28_joint
+	
+	frame 39			fx				fx_explode	MCC_Part_21_joint
+	frame 40			fx				fx_explode	MCC_Part_6_joint
+	frame 41			fx				fx_explode	MCC_Part_38_joint
+	frame 44			fx				fx_explode	MCC_Part_29_joint
+	frame 42			fx				fx_explode	MCC_Part_22_joint
+	frame 41			fx				fx_explode	MCC_Part_37_joint
+	
+	frame 48			fx				fx_explode	MCC_Part_20_joint
+	frame 49			fx				fx_explode	MCC_Part_5_joint
+	frame 48			fx				fx_explode	MCC_Part_27_joint
+	frame 50			fx				fx_explode	MCC_Part_36_joint
+	frame 48			fx				fx_explode	MCC_Part_3_joint
+	frame 52			fx				fx_explode	MCC_Part_31_joint
+	
+	frame 56			fx				fx_explode	polySurface164_joint
+	frame 57			fx				fx_explode	MCC_Part_14_joint
+	frame 60			fx				fx_explode	MCC_Part_11_joint
+	frame 64			fx				fx_explode	MCC_Part_40_joint
+	frame 68			fx				fx_explode	MCC_Part_9_joint
+	frame 67			fx				fx_explode	MCC_Part_17_joint
+	frame 66			fx				fx_explode	MCC_Part_15_joint
+	frame 69			fx				fx_explode	MCC_Part_16_joint
+	frame 69			fx				fx_explode	MCC_Part_12_joint
+	frame 68			fx				fx_explode	MCC_Part_10_joint
+	
+	frame 78			fx				fx_big_explode	polySurface163_joint
+	frame 74			fx				fx_explode	MCC_Part_32_joint
+	
+	//Burn baby burn
+	
+	frame 27			fx				fx_burn	MCC_Part_18_joint
+	frame 28			fx				fx_burn	MCC_Part_7_joint
+	frame 29			fx				fx_burn	MCC_Part_25_joint
+	frame 20			fx				fx_burn	MCC_Part_39_joint
+	frame 21			fx				fx_burn	MCC_Part_19_joint
+	frame 22			fx				fx_burn	MCC_Part_28_joint
+	
+	frame 39			fx				fx_burn	MCC_Part_21_joint
+	frame 30			fx				fx_burn	MCC_Part_6_joint
+	frame 31			fx				fx_burn	MCC_Part_38_joint
+	frame 34			fx				fx_burn	MCC_Part_29_joint
+	frame 32			fx				fx_burn	MCC_Part_22_joint
+	frame 31			fx				fx_burn	MCC_Part_37_joint
+	
+	frame 48			fx				fx_burn	MCC_Part_20_joint
+	frame 49			fx				fx_burn	MCC_Part_5_joint
+	frame 48			fx				fx_burn	MCC_Part_27_joint
+	frame 40			fx				fx_burn	MCC_Part_36_joint
+	frame 48			fx				fx_burn	MCC_Part_3_joint
+	frame 42			fx				fx_burn	MCC_Part_31_joint
+	
+	frame 56			fx				fx_burn	polySurface164_joint
+	frame 57			fx				fx_burn	MCC_Part_14_joint
+	frame 60			fx				fx_burn	MCC_Part_11_joint
+	frame 64			fx				fx_burn	MCC_Part_40_joint
+	frame 58			fx				fx_burn	MCC_Part_9_joint
+	frame 77			fx				fx_burn	MCC_Part_17_joint
+	frame 70			fx				fx_burn	MCC_Part_15_joint
+	frame 73			fx				fx_burn	MCC_Part_16_joint
+	frame 72			fx				fx_burn	MCC_Part_12_joint
+	frame 76			fx				fx_burn	MCC_Part_10_joint
+	
+	frame 88			fx				fx_burn	polySurface163_joint
+	frame 88			fx				fx_burn	MCC_Part_32_joint
+	
+	}
+
+}

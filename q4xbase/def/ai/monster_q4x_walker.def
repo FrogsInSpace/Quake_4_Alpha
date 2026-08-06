@@ -1,0 +1,570 @@
+//------------------------------------------------------------------------------
+// New Walker
+//
+// 
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+//							Vehicle Definition
+//------------------------------------------------------------------------------
+
+entityDef monster_q4x_walker
+{
+	"editor_color"				"1 .5 0"
+	"editor_mins"				"-8 -8 -8"
+	"editor_maxs"				"8 8 8"
+
+	"inherit"				"actor_default"
+	"spawnclass"				"riMonsterWalker"
+
+
+	"model"						"model_monster_q4x_walker"
+	
+	//"size"						"110 110 140"
+	//"use_aas"					"aas96"
+	
+	"size"					"32 32 32"
+	"use_aas"					"aas32"
+	
+	
+	"health"					"1000"
+	"mass"						"30000"
+	"awareRange"						"30000"
+	
+	"snd_footstep"				"vehicle_walker_steps"
+	"snd_servo"				"vehicle_walker_servo"
+	"snd_start"				"vehicle_walker_power_up"
+	"snd_stop"				"vehicle_walker_power_down"
+	"snd_voiceHazard"			"vehicle_walker_hazard1"
+	"snd_voiceSafe"				"vehicle_walker_hazard2"
+	"snd_voiceLowHealth"			"vehicle_walker_armor"
+	"snd_voiceNoExit"			"vehicle_walker_denied"
+	"snd_shieldWarning"			"vehicle_walker_shield_warning"
+	"snd_shieldRecharge"			"vehicle_walker_shield_recharge"
+	"snd_malfunction"			"vehicle_walker_malfunction"
+	"snd_incomingProjectile"		"ambient_incoming_klaxon"
+
+	"fx_death"					"effects/vehicles/walker/explosion.fx"
+	"fx_shield"					"effects/vehicles/walker/shield.fx"
+	"fx_electrical_stall"				"effects/monsters/lightning_death.fx"	
+	"fx_machinegun_flash"				"effects/monsters/tank/machinegun_flash.fx"
+	"joint_eyeOffset"			"eye"
+	"joint_chestOffset"						"Cockpit"
+	
+	
+	
+	"action_evadeRight"				"1"
+	"action_evadeLeft"				"1"
+	
+	"action_rangedAttack"					"1"
+	"action_rangedAttack_rate"				"1"	
+	"action_rangedAttack_minRange"			"64"
+	"action_rangedAttack_maxRange"			"30000"
+	
+	"action_meleeAttack"				"1"
+	"action_meleeAttack_maxRange"			"100"
+	
+	"tactical_rush"						"1"
+	"tactical_hide"						"0"
+	"tactical_ranged"					"1"
+	"tactical_cover"					"0"
+	"tactical_passive"					"0"
+	
+	"forceEnemy"						"0"
+
+	
+	"af_push_moveables"					"1"
+	"turn_rate"					"135"
+	
+	
+	"def_attack_cannon"				"hitscan_q4x_walker_bullet"	
+	"attack_cannon_hitscan"				"1"
+	"def_attack_rocket"					"projectile_q4x_walker_rocket"
+	"def_attack_melee"				"melee_q4x_walkerCrush"
+	
+	"bleed"								"0"
+	"melee_range"						"50"
+	"canBePinned"						"0"
+	"team"							"0"
+	"attackRange"							"0 30000"
+	"aggressiveRange"						"30000"
+
+	"kick_force"							"1000"
+	"directionalMovement"						"1"
+	
+	"fov"							"120"
+	"look_joint Cockpit"					"0.4 0.4 0"
+
+}
+
+
+model model_monster_q4x_walker
+{
+	mesh						models/vehicles/walker/walker_base.md5mesh
+
+	offset						( -20 0 0 )
+
+	channel legs				( *origin -*Cannon_Pivot )
+	channel	torso				( *Cannon_Pivot )
+
+	anim	idle				models/vehicles/walker/idleoff.md5anim
+	
+	anim	pain				models/vehicles/walker/idleoff.md5anim
+	
+	anim	idle_offline		models/vehicles/walker/offline_idle.md5anim
+	
+	anim	forward_start		models/vehicles/walker/forward_start.md5anim
+	{
+		rate	1.5
+	}	
+	
+	anim	walk			models/vehicles/walker/forward.md5anim
+	{
+		sync_cycle
+		rate	1.5
+		frame	5,25			sound			snd_footstep
+		frame	7,29			sound			snd_servo
+		
+
+	}	
+	
+	anim	melee_attack1			models/vehicles/walker/forward.md5anim
+	{
+		//sync_cycle
+		rate	1.5
+		frame 	1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16	 ai_attack_melee 	melee
+		frame 	17,18,19,20,21,22,23,24,25,26,27,28,29	 ai_attack_melee 	melee
+		frame	5,25			sound			snd_footstep
+		frame	7,29			sound			snd_servo
+		
+
+	}
+	
+	anim	run			models/vehicles/walker/forward.md5anim
+	{
+		sync_cycle
+		rate	1.5
+		frame	5,25			sound			snd_footstep
+		frame	7,29			sound			snd_servo
+		
+
+	}
+	anim	ad_intro_walker			models/vehicles/walker/ad_intro_walker.md5anim
+	{
+		rate	1.2
+		frame	21,41,62		sound			snd_footstep
+		frame	7,29			sound			snd_servo
+		
+	}	
+	anim	forward_stop_left	models/vehicles/walker/forward_stop_left.md5anim	
+	{
+		rate	1.5
+		
+		frame	18				sound			snd_footstep
+	}	
+
+	anim	forward_stop_right	models/vehicles/walker/forward_stop_right.md5anim	
+	{
+		rate	1.5
+
+		frame	18				sound			snd_footstep
+	}	
+	
+	anim	forward_stop_rightmid	models/vehicles/walker/forward_stop_rightmid.md5anim	
+	{
+		rate	1.5
+
+		frame	5,24			sound			snd_footstep
+		frame	7				sound			snd_servo
+	}	
+
+	anim	forward_stop_leftmid	models/vehicles/walker/forward_stop_leftmid.md5anim	
+	{
+		rate	1.5
+
+		frame	5,24			sound			snd_footstep
+		frame	7				sound			snd_servo
+	}	
+
+	anim	backward_start		models/vehicles/walker/backward_start.md5anim
+	{
+		rate	1.5
+	}	
+
+	anim	walk_backwards		models/vehicles/walker/backward.md5anim
+	{
+		rate	1.5
+		frame	5,25			sound			snd_footstep
+		frame	7,29			sound			snd_servo
+		
+	}	
+	
+	anim	run_backwards		models/vehicles/walker/backward.md5anim
+	{
+		rate	1.5
+		frame	5,25			sound			snd_footstep
+		frame	7,29			sound			snd_servo
+		
+	}
+
+	anim	backward_stop_left	models/vehicles/walker/backward_stop_left.md5anim	
+	{
+		rate	1.5
+		
+		frame	18				sound			snd_footstep
+	}	
+
+	anim	backward_stop_right	models/vehicles/walker/backward_stop_right.md5anim	
+	{
+		rate	1.5
+
+		frame	18				sound			snd_footstep
+	}	
+	
+	anim	backward_stop_rightmid	models/vehicles/walker/backward_stop_rightmid.md5anim	
+	{
+		rate	1.5
+
+		frame	5,23			sound			snd_footstep
+		frame	7				sound			snd_servo
+	}	
+
+	anim	backward_stop_leftmid	models/vehicles/walker/backward_stop_leftmid.md5anim
+	{
+		rate	1.5
+
+		frame	5,24			sound			snd_footstep
+		frame	7				sound			snd_servo
+	}	
+
+	anim	start				models/vehicles/walker/start.md5anim
+	{
+		frame	1				sound			snd_start
+	}
+	anim	stop				models/vehicles/walker/stop.md5anim
+	{
+		frame	1				sound			snd_stop
+	}	
+/*
+	anim	range_attack1			models/vehicles/walker/cannon.md5anim
+	{
+	frame 1					ai_attack	cannon		Cannon1	
+	frame 2					ai_attack	cannon		Cannon2
+	}
+	
+	anim	range_attack2			models/vehicles/walker/cannon.md5anim
+	{
+	frame 1					ai_attack	rocket		rocket1	
+	frame 2					ai_attack	rocket		rocket2
+	frame 2					ai_attack	rocket		rocket3
+	}
+
+	anim	range_attack3			models/vehicles/walker/cannon.md5anim
+	{
+	frame 1					ai_attack	rocket		rocket4	
+	frame 2					ai_attack	rocket		rocket5
+	frame 2					ai_attack	rocket		rocket6
+	}
+*/
+
+	anim	range_attack1			models/vehicles/walker/stand_and_fire.md5anim
+	{
+		frame	12,92		sound			snd_servo
+
+		frame 	18,20,22,24,26,28,30,32,36,38,40,42,44,46,48			ai_attack	cannon		cannon2
+		frame 	19,21,23,25,27,29,31,33,37,39,41,43,45,47,49			ai_attack	cannon		cannon1
+		frame   18,20,22,24,26,28,30,32,36,38,40,42,44,46,48			fx		fx_machinegun_flash		cannon2
+		frame 	19,21,23,25,27,29,31,33,37,39,41,43,45,47,49			fx		fx_machinegun_flash		cannon1
+		frame 52					ai_attack	rocket		rocket1	
+		frame 57					ai_attack	rocket		rocket2
+		frame 64					ai_attack	rocket		rocket3
+		frame	18			sound		snd_footstep
+		frame	26			sound		snd_start
+		frame	46			sound		snd_stop
+		frame	105			sound		snd_footstep		
+	}
+	
+	
+	anim	range_attack2			models/vehicles/walker/stand_and_fire.md5anim
+	{
+		frame	12,92		sound			snd_servo
+
+		frame 	18,20,22,24,26,28,30,32,36,38,40,42,44,46,48			ai_attack	cannon		cannon2
+		frame 	19,21,23,25,27,29,31,33,37,39,41,43,45,47,49			ai_attack	cannon		cannon1
+		frame   18,20,22,24,26,28,30,32,36,38,40,42,44,46,48			fx		fx_machinegun_flash		cannon2
+		frame 	19,21,23,25,27,29,31,33,37,39,41,43,45,47,49			fx		fx_machinegun_flash		cannon1
+		frame 54					ai_attack	rocket		rocket4	
+		frame 58					ai_attack	rocket		rocket5
+		frame 65					ai_attack	rocket		rocket6
+		frame	18			sound		snd_footstep
+		frame	26			sound		snd_start
+		frame	46			sound		snd_stop
+		frame	105			sound		snd_footstep		
+	}
+	anim	turn_left			models/vehicles/walker/turn_left.md5anim
+	{
+		sync_cycle
+		frame	14,28			sound			snd_footstep
+		frame	3				sound			snd_servo
+	}
+	anim	turn_right			models/vehicles/walker/turn_right.md5anim
+	{
+		sync_cycle
+		frame	14,28			sound			snd_footstep
+		frame	3				sound			snd_servo
+	}
+	anim	death				models/vehicles/walker/knocked_down.md5anim
+	{
+		frame	1			sound			snd_malfunction
+		frame	9			sound			snd_footstep
+		frame	17			sound			snd_footstep	
+		frame  10			fx			fx_death	cockpit
+	}
+
+	anim	backing_into_dock		models/vehicles/walker/backing_into_dock.md5anim
+	{
+		frame 	1					disableClip
+		frame	1,21,42,74,90		sound			snd_servo
+		frame	14,38,63,82,100		sound			snd_footstep
+		frame	115			sound			snd_stop
+		frame	149				enableClip		
+	}
+	anim	vista_overlook			models/vehicles/walker/vista_overlook.md5anim
+	{
+		frame	43					call	map_airdefense::vistaWalkerActions1
+		frame	166					call	map_airdefense::vistaWalkerActions2
+		frame	321					call	map_airdefense::vistaWalkerActions1
+		frame	400					call	map_airdefense::vistaWalkerActions3
+			
+		//walker is knocked over.
+		//frame	477					call	map_airdefense::vistaWalkerActions5
+	
+		//walker explodes all kafoom like
+		frame	540					call	map_airdefense::vistaWalkerActions4
+	}
+	anim	evade_left				models/vehicles/walker/strafe_left.md5anim
+	anim	evade_right			models/vehicles/walker/strafe_right.md5anim
+	
+	anim	walk_left				models/vehicles/walker/strafe_left.md5anim
+	{
+	frame	5,24			sound			snd_footstep
+	frame	7,24			sound			snd_servo
+	}
+	anim	walk_right			models/vehicles/walker/strafe_right.md5anim
+	{
+	frame	5,24			sound			snd_footstep
+	frame	7,24			sound			snd_servo
+	}
+	
+	anim	run_left				models/vehicles/walker/strafe_left.md5anim
+	{
+	frame	5,24			sound			snd_footstep
+	frame	7,24			sound			snd_servo
+	}
+	anim	run_right			models/vehicles/walker/strafe_right.md5anim
+	{
+	frame	5,24			sound			snd_footstep
+	frame	7,24			sound			snd_servo
+	}
+	
+	anim	diagnostic_start		models/vehicles/walker/diagnostic_start.md5anim
+	{
+		frame	1				sound			snd_start
+	}
+	anim	diagnostic_sweep		models/vehicles/walker/diagnostic_sweep.md5anim
+	{
+		frame	12,92		sound			snd_servo
+		frame	18			sound			snd_footstep
+		frame	26			sound			snd_start
+		frame	46			sound			snd_stop
+		frame	105			sound			snd_footstep	
+	}
+	anim	diagnostic_stop			models/vehicles/walker/diagnostic_stop.md5anim	
+	{
+		frame	1				sound			snd_stop
+	}
+	anim	trench_dead_idle			models/vehicles/walker/trench_dead_idle.md5anim	
+	{
+	}
+	anim	trench_push_leg			models/vehicles/walker/trench_push_leg.md5anim	
+	{
+	}
+	anim	trench_push_leg_idle			models/vehicles/walker/trench_push_leg_idle.md5anim	
+	{
+	}
+}
+
+//------------------------------------------------------------------------------
+//									Parts
+//------------------------------------------------------------------------------
+
+
+
+//------------------------------------------------------------------------------
+//								Projectiles
+//------------------------------------------------------------------------------
+
+entityDef hitscan_q4x_walker_bullet
+{
+	"inherit"					"hitscan_gev_bullet"	
+	
+	"fx_impact"					"effects/vehicles/walker/machinegun/impact_default.fx"
+	"fx_impact_water"			"effects/ambient/splash_smll.fx"
+	"fx_impact_concrete"		"effects/vehicles/walker/machinegun/impact_concrete.fx"
+	"fx_impact_electronics"		"effects/vehicles/walker/machinegun/impact_electronics.fx"
+	"fx_impact_flesh"			"effects/vehicles/walker/machinegun/impact_flesh.fx"						
+	"fx_impact_glass"			"effects/vehicles/walker/machinegun/impact_glass.fx"
+	"fx_impact_monstermetal"	"effects/vehicles/walker/machinegun/impact_monstermetal.fx"
+	"fx_impact_rock"			"effects/vehicles/walker/machinegun/impact_rock.fx"
+	
+	"fx_tracer"					"effects/vehicles/walker/machinegun/tracer.fx"
+
+}
+
+
+entityDef projectile_q4x_walker_rocket
+{
+	//"spawnclass"				"idGuidedProjectile"
+	
+	"inherit"							"projectile_rocket"
+	"spawnclass"						"rvDriftingProjectile"
+	"mins"						"-2 -2 -2"
+	"maxs"						"2 2 2"
+	"cone"						"1"
+	"noshadows"					"1"
+
+
+	
+	"model"						"models/weapons/nailgun/nail.ase"
+
+	"def_damage"				"damage_q4x_walker_rocket"
+	"def_splash_damage"			"damage_q4x_walker_rocket_splash"
+											
+	"decal_scale"				"8"											
+
+	"min_dist"					"160"
+	"turn_max"					"3600"
+																
+	"speed"						"1000"
+	"mass"						"6"
+	"gravity"					"0"
+	"fuse"						"8"
+								
+	"detonate_on_fuse"			"1"
+	"detonate_on_death"			"0"
+	"detonate_on_world"			"1"
+	"detonate_on_actor"			"1"
+								
+	"impact_gib"				"1"
+								
+	"decal_bounce"				""
+	"decal_size"				"8"
+
+	"fx_fly"					"effects/vehicles/walker/rocket/fly.fx"
+	"fx_detonate"				"effects/vehicles/walker/rocket/detonate.fx"
+
+	"fx_impact"					"effects/vehicles/walker/rocket/impact.fx"
+	"fx_impact_rock"			"effects/vehicles/walker/rocket/impact_rock.fx"
+	"fx_impact_dirt"			"effects/vehicles/walker/rocket/impact_rock.fx"
+	"fx_impact_sand"			"effects/vehicles/walker/rocket/impact_rock.fx"
+	"fx_impact_gravel"			"effects/vehicles/walker/rocket/impact_rock.fx"
+	"fx_impact_concrete"		"effects/vehicles/walker/rocket/impact_rock.fx"
+
+	"light_shader"				""
+	"light_color"				"0 0 0"
+	"light_radius"				"0"
+	"light_offset"				"0 0 0"
+
+	"detonate_light_shader"		""
+	"detonate_light_color"		"0 0 0"
+	"detonate_light_radius"		"0"
+	"detonate_light_removetime"	"0"	
+}
+
+entityDef projectile_q4x_walker_main
+{
+	"inherit"				"projectile_gev_main"
+
+	"fx_fly"				"effects/vehicles/walker/maingun/fly.fx"
+	"fx_impact"				"effects/vehicles/walker/maingun/impact.fx"
+	"fx_impact_rock"			"effects/vehicles/walker/maingun/impact_rock.fx"
+	"fx_impact_dirt"			"effects/vehicles/walker/maingun/impact_rock.fx"
+	"fx_impact_sand"			"effects/vehicles/walker/maingun/impact_rock.fx"
+	"fx_impact_gravel"			"effects/vehicles/walker/maingun/impact_rock.fx"
+	"fx_impact_concrete"			"effects/vehicles/walker/maingun/impact_rock.fx"
+	"fx_detonate"				"effects/vehicles/walker/maingun/detonate.fx"		
+}
+
+
+//------------------------------------------------------------------------------
+//								Damage Defs
+//------------------------------------------------------------------------------
+
+entityDef damage_q4x_walker_rocket
+{
+	"inherit"			"damage_bullet"
+	"damage"			"200"
+	"push"				"60000"
+	"gib"				"1"
+}
+
+entityDef damage_q4x_walker_rocket_splash
+{
+	"inherit"			"damage_walker_rocket"
+	
+	"damage"			"150"
+	"radius"			"180"
+}
+
+
+entityDef melee_q4x_walkerCrush 
+{
+	"inherit"					"melee_monster_base"
+	"damage"							"10000"
+	"knockback"							"350"
+	"push"								"350"
+	"pushdir"							"0 10 -10"
+	
+	"deathPush"							"350"
+	"deathPushMin"							"3000 2000"
+	"deathPushMax"						"5000 3000"
+	"gib"							"1"
+}
+
+/*
+===============================================================================
+	walker for trench
+===============================================================================
+*/
+
+entityDef env_q4x_trench_walker
+{	
+	"editor_color"			"0 .5 .25"
+	"editor_mins"			"-32 -32 0"
+	"editor_maxs"			"32 32 16"
+
+	"spawnclass"			"idAnimated"
+
+	"model"					"model_monster_q4x_walker_trench"
+	"anim"					"idle"
+}
+
+model model_monster_q4x_walker_trench
+{
+	mesh						models/vehicles/walker/walker_base.md5mesh
+
+
+	anim 	idle	models/vehicles/walker/trench_dead_idle.md5anim
+	{
+	}
+	
+	anim 	trench_push_leg			models/vehicles/walker/trench_push_leg.md5anim
+	{
+	}
+	
+	anim 	trench_push_leg_idle			models/vehicles/walker/trench_push_leg_idle.md5anim
+	{
+	}
+	
+}

@@ -1,0 +1,39 @@
+textures/grapplehook/grapplebeam
+{
+	noshadows
+	translucent
+	nonsolid
+	{
+	                vertexProgram           heatHazeWithMask.vfp
+	                vertexParm              0       time * 0.25 , time * 0
+	                vertexParm              1       2
+	                fragmentProgram			heatHazeWithMask.vfp
+	                fragmentMap             0       _currentRender
+	                fragmentMap             1       textures/grapplehook/grabber_beam_warp.tga
+                	fragmentMap             2       textures/grapplehook/grabber_beam_warp_alpha.tga
+	}
+	
+	{
+		if ( parm7 == 0 )
+		map			textures/grapplehook/grabber_beam_fx.tga
+		blend		add
+		translate	time * 1.25, 0
+		scale		1, 1
+	}
+
+	{
+		if ( parm7 == 0 )
+		map			textures/grapplehook/grabber_beam_fx.tga
+		blend		GL_DST_COLOR, GL_ONE
+		translate	0.5 + time*4, 0.12 * sinTable[time*2]
+		scale		0.5, 0.9
+	}
+
+}
+
+
+textures/grapplehook/node_grapple
+{
+	qer_editorimage 	textures/grapplehook/node_grapple.tga
+	diffusemap			textures/grapplehook/node_grapple.tga	
+}

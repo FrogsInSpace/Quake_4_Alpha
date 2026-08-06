@@ -1,0 +1,565 @@
+
+
+sound valkaryne_footsteps
+{
+	description	"various footsteps for valkaryne walking."
+
+	minDistance	1393
+	maxDistance	1984
+	volumeDb	-7
+	frequencyshift	0.8000000119,1.2000000477
+	no_dups
+	shakes 0.1
+
+	sound/strogg/valkaryne/valkaryne_step1.ogg
+	sound/strogg/valkaryne/valkaryne_step2.ogg
+	//sound/strogg/valkaryne/valkaryne_step3.wav		
+}
+
+sound valkaryne_idle
+{
+
+	minDistance	1393
+	maxDistance	1984
+	volumeDb	-7
+
+	sound/strogg/valkaryne/valkaryne_idle_breath.ogg
+}
+
+
+sound valkaryne_crouch
+{
+
+	minDistance	1393
+	maxDistance	1984
+	volumeDb	-7
+
+	sound/strogg/valkaryne/valkaryne_idle_breath.ogg
+}
+
+
+
+sound valkaryne_walk
+{
+
+	minDistance	1393
+	maxDistance	1984
+	volumeDb	-7
+
+	sound/strogg/valkaryne/valkaryne_walk.ogg
+}
+
+sound valkaryne_walk_backwards
+{
+
+	minDistance	1393
+	maxDistance	1984
+	volumeDb	-7
+
+	sound/strogg/valkaryne/valkaryne_walk_backwards.ogg
+}
+
+sound valkaryne_walk_side
+{
+
+	minDistance	1393
+	maxDistance	1984
+	volumeDb	-7
+
+	sound/strogg/valkaryne/valkaryne_walk_right.ogg
+}
+
+sound valkaryne_turn
+{
+
+	minDistance	1393
+	maxDistance	1984
+	volumeDb	-7
+
+	sound/strogg/valkaryne/valkaryne_turnright.ogg
+}
+
+sound valkaryne_run
+{
+
+	minDistance	1393
+	maxDistance	1984
+	volumeDb	-2
+
+	sound/strogg/valkaryne/valkaryne_run.ogg
+}
+
+sound valkaryne_runtoplugin
+{
+
+	minDistance	1393
+	maxDistance	1984
+	volumeDb	-7
+
+	sound/strogg/valkaryne/valkaryne_run_toplugin.ogg
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// valkaryne MOVEMENT
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+sound valkaryne_plugin_range
+{
+
+	minDistance	1393
+	maxDistance	1984
+	volumeDb	0
+
+
+	sound/strogg/valkaryne/valkaryne_plugin_range.ogg
+}
+
+sound valkaryne_plugin_range_big
+{
+
+	minDistance	1393
+	maxDistance	1984
+	volumeDb	0
+
+
+	sound/strogg/valkaryne/valkaryne_plugin_range_big.ogg
+}
+
+sound valkaryne_range_one
+{
+
+	minDistance	1393
+	maxDistance	1984
+	volumeDb	0
+
+
+	sound/strogg/valkaryne/valkaryne_range_one.ogg
+}
+
+sound valkaryne_range_two
+{
+
+	minDistance	1393
+	maxDistance	1984
+	volumeDb	0
+
+
+	sound/strogg/valkaryne/valkaryne_range_two.ogg
+}
+
+sound valkaryne_leanattack_L
+{
+
+	minDistance	1393
+	maxDistance	1984
+	volumeDb	0
+
+	sound/strogg/valkaryne/valkaryne_leanattack_L.ogg
+}
+
+
+sound valkaryne_leanattack_R
+{
+
+	minDistance	1393
+	maxDistance	1984
+	volumeDb	0
+
+	sound/strogg/valkaryne/valkaryne_leanattack_R.ogg
+}
+
+sound valkaryne_melee
+{
+
+	minDistance	1393
+	maxDistance	1984
+	volumeDb	0
+
+
+	sound/strogg/valkaryne/valkaryne_melee_one.ogg
+}
+
+sound valkaryne_melee_one
+{
+
+
+	minDistance	1393
+	maxDistance	1984
+	volumeDb	0
+
+
+	sound/strogg/valkaryne/valkaryne_melee_one.ogg
+}
+
+sound valkaryne_melee_two
+{
+
+
+	minDistance	1393
+	maxDistance	1984
+	volumeDb	0
+
+
+	sound/strogg/valkaryne/valkaryne_melee_two.ogg
+}
+
+sound valkaryne_leapattack
+{
+
+
+	minDistance	1393
+	maxDistance	1984
+	volumeDb	0
+
+
+	sound/strogg/valkaryne/valkaryne_leapattack.ogg
+}
+
+
+valkaryne_range_fire_one
+{
+
+
+	minDistance	1393
+	maxDistance	1984
+	volumeDb	0
+
+
+	sound/strogg/valkaryne/valkaryne_range_one.ogg
+}
+
+valkaryne_range_fire_two
+{
+
+
+	minDistance	1393
+	maxDistance	1984
+	volumeDb	0
+
+
+	sound/strogg/valkaryne/valkaryne_range_two.ogg
+}
+
+sound valkaryne_swing
+{
+	description	"whiff"
+
+	minDistance	1393
+	maxDistance	1393
+	volumeDb	10
+
+	//sound/weapons/impact/whooshes_melee/whoosh1.wav
+	//sound/weapons/impact/whooshes_melee/whoosh2.wav
+	//sound/weapons/impact/whooshes_melee/whoosh3.wav
+	//sound/weapons/impact/whooshes_melee/whoosh4.wav
+	sound/strogg/valkaryne/valkaryne_melee1.wav
+	//sound/strogg/valkaryne/growl2.wav
+}
+
+
+sound valkaryne_growl
+{
+	description	"grrrrr"
+
+	minDistance	1393
+	maxDistance	1393
+	volumeDb	0
+	no_dups
+
+	sound/strogg/valkaryne/growl1.wav
+	sound/null.wav
+	sound/strogg/valkaryne/growl2.wav
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// valkaryne WEAPONS
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+sound valkaryne_nailgun_fire
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+	frequencyshift	0.8000000119,1.2000000477
+
+	sound/strogg/valkaryne/valkaryne_nailgunfire.wav
+}
+
+sound valkaryne_machinegun_fire
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+	frequencyshift	0.8000000119,1.2000000477
+
+	sound/strogg/valkaryne/m_gun1.wav
+	sound/strogg/valkaryne/m_gun2.wav
+	sound/strogg/valkaryne/m_gun3.wav
+}
+
+sound valkaryne_missile_loop
+{
+	description	"missile loop"
+
+	minDistance	30
+	maxDistance	350
+	volumeDb	0
+	looping
+
+	sound/strogg/valkaryne/valkaryne_missileloop.wav
+
+}
+
+sound valkaryne_punch
+{
+	description	"pow"
+
+	minDistance	39
+	maxDistance	787
+	volumeDb	-4
+	frequencyshift	0.8000000119,1.2000000477
+
+	sound/weapons/impact/whooshes_melee/melee_hit1.wav
+	sound/weapons/impact/whooshes_melee/melee_hit2.wav
+	sound/weapons/impact/whooshes_melee/melee_hit3.wav
+}
+
+
+sound valkaryne_railgun
+{
+	description	"voip"
+
+	minDistance	196
+	maxDistance	1281
+	volumeDb	1
+	frequencyshift	0.8000000119,1.2000000477
+
+	sound/strogg/valkaryne/valkaryne_railgunfire.wav
+}
+
+sound valkaryne_chargerailgun
+{
+	description	"voip"
+
+	minDistance	196
+	maxDistance	1181
+	volumeDb	-4
+	frequencyshift	0.8000000119,1.2000000477
+
+	sound/strogg/valkaryne/valkaryne_railpowerup.wav
+}
+
+sound valkaryne_grenade_launch
+{
+
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+
+	sound/strogg/valkaryne/valkaryne_missilefire.wav
+}
+
+sound valkaryne_missile_launch
+{
+	description	"test sound for valkaryne idle"
+
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+
+	sound/strogg/valkaryne/valkaryne_missilefire.wav
+}
+
+sound valkaryne_machinegun
+{
+	description	"test sound for valkaryne idle"
+
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+	frequencyshift	0.8000000119,1.2000000477
+
+	sound/strogg/valkaryne/machinegun_01.wav
+	sound/strogg/valkaryne/machinegun_02.wav
+}
+
+sound valkaryne_nailgun_fireseq
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	4
+	//frequencyshift	0.8000000119,1.2000000477
+
+	sound/strogg/valkaryne/valkaryne_nailgunfireseq.wav
+
+}
+
+sound valkaryne_missileexp
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	10
+	frequencyshift	0.7000000119,1.3000000477
+	//shake 0.4
+	
+	sound/strogg/valkaryne/valkaryne_missileexp1.wav
+	sound/strogg/valkaryne/valkaryne_missileexp2.wav
+	
+
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// valkaryne VOCALIZATIONS
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+sound valkaryne_evade
+{
+
+	minDistance	1393
+	maxDistance	1968
+	volumeDb	-6
+
+	sound/strogg/valkaryne/valkaryne_evade.ogg
+}
+
+sound valkaryne_jumpback
+{
+
+	minDistance	1393
+	maxDistance	1968
+	volumeDb	-6
+
+	sound/strogg/valkaryne/valkaryne_evade.ogg
+}
+
+
+
+sound valkaryne_plugintoidle
+{
+
+	minDistance	1393
+	maxDistance	1968
+	volumeDb	0
+
+	sound/strogg/valkaryne/valkaryne_plugintoidle.ogg
+}
+
+
+sound valkaryne_breathe
+{
+
+	minDistance	1393
+	maxDistance	1968
+	volumeDb	-9
+	//no_dups
+
+	//sound/strogg/valkaryne/valkaryne_melee1.wav
+	//sound/strogg/valkaryne/breath02.wav
+	//sound/strogg/valkaryne/breath03.wav
+	//sound/strogg/valkaryne/breath04.wav
+	//sound/null.wav
+}
+
+
+
+
+////////////////////////////
+// valkaryne DEATH, PAIN, BODY
+////////////////////////////
+sound valkaryne_pain
+{
+
+
+	minDistance	1393
+	maxDistance	1984
+	volumeDb	0
+
+	sound/strogg/valkaryne/valkaryne_pain_one.ogg
+	sound/strogg/valkaryne/valkaryne_pain_two.ogg
+	sound/strogg/valkaryne/valkaryne_pain_three.ogg
+	sound/strogg/valkaryne/valkaryne_pain_four.ogg	
+}
+
+
+sound valkaryne_pain_one
+{
+
+
+	minDistance	1393
+	maxDistance	1984
+	volumeDb	0
+
+	sound/strogg/valkaryne/valkaryne_pain_one.ogg
+}
+
+sound valkaryne_pain_two
+{
+
+
+	minDistance	1393
+	maxDistance	1984
+	volumeDb	0
+
+	sound/strogg/valkaryne/valkaryne_pain_two.ogg
+}
+
+sound valkaryne_pain_three
+{
+
+
+	minDistance	1393
+	maxDistance	1984
+	volumeDb	0
+
+	sound/strogg/valkaryne/valkaryne_pain_three.ogg
+}
+
+sound valkaryne_pain_four
+{
+
+
+	minDistance	1393
+	maxDistance	1984
+	volumeDb	0
+
+	sound/strogg/valkaryne/valkaryne_pain_four.ogg
+}
+
+sound valkaryne_death
+{
+	description	"death to the valkaryne"
+
+	minDistance	1393
+	maxDistance	2377
+	volumeDb	0
+
+	sound/strogg/valkaryne/valkaryne_death.ogg
+}
+
+sound valkaryne_shockwave
+{
+	description	"death to the valkaryne"
+
+	minDistance	1393
+	maxDistance	2377
+	volumeDb	0
+
+	sound/strogg/valkaryne/valkaryne_shockwave.ogg
+}
+
+sound valkaryne_projectilespread
+{
+	description	"death to the valkaryne"
+
+	minDistance	1393
+	maxDistance	2377
+	volumeDb	0
+
+	sound/strogg/valkaryne/valkaryne_proj_spread.ogg
+}
+
+

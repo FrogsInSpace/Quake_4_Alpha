@@ -1,0 +1,576 @@
+/*
+===============================================================================
+
+	tank
+
+===============================================================================
+*/
+
+export tank
+{
+	options -game q4xbase/ -prefix TNK_ -align ALL -scale .6 -keep L_Ankle launcherarm3 head_1 tube4 tube3 tube2 tube1 launcher_door launcher_break laucher  L_gunSpinJoint L_muzzle05 L_muzzle04 L_muzzle03  L_muzzle06  L_muzzle01  L_muzzle02  R_gunJoint L_toe L_hoof L_footflap_dummy  L_footflap_2 L_footflap1  R_toe R_hoof  R_footflap2 R_flootflap1 R_Ankle jaw mid_forhead forhead  l_uplid l_lolid r_uplid r_lolid shoulders -parent Rteye_Focus head_1 -parent Lfteye_Focus head_1 -keep muzzle -parent waist hips -sourcedir models/monsters/tank/animations -destdir models/monsters/tank
+
+	mesh	idle_alert.ma 						-dest tank
+
+	anim	idle.ma 							-dest idle_ambient
+	anim	idle_alert.ma 						-dest idle
+	anim	af_pose.ma							-dest af_pose
+	
+	anim	run.ma 								-dest run
+	anim	walk.ma 							-dest walk
+	anim	evade_left.ma						-dest evade_left
+	anim	evade_right.ma						-dest evade_right
+	anim	walk_left.ma						-dest walk_left
+	anim	walk_right.ma						-dest walk_right
+	anim	walk_left.ma						-dest run_left
+	anim	walk_right.ma						-dest run_right
+	anim	turn_left.ma						-dest turn_left
+	anim	turn_right.ma						-dest turn_right
+	anim	walk_backward.ma					-dest walk_backward
+	
+	anim	ranged01.ma 				 		-dest machinegun_attack
+	anim	ranged02.ma							-dest railgun_attack
+	anim	ranged03.ma							-dest rocket_attack
+	anim	melee01.ma 							-dest kick
+	anim	melee02.ma 							-dest swipe
+	anim	melee03.ma 							-dest chop
+	anim	pain01.ma 							-dest pain_head
+	anim	pain02.ma 							-dest pain_left
+	anim	pain03.ma 							-dest pain_right
+
+	anim    pain01.ma 			-range 1  10	-dest block_start
+	anim    pain01.ma 			-range 10 11	-dest block_loop
+	anim	pain01.ma			-range 11 21	-dest block_end
+
+	anim 	pain_fire.ma					-dest pain_fire
+
+
+}
+
+/*
+===============================================================================
+
+	tank Model
+
+===============================================================================
+*/
+
+model model_monster_tank
+{	
+	mesh												models/monsters/tank/tank.md5mesh	
+	
+	channel torso										( *waist )
+	channel legs										( *hips origin -*waist)
+	
+	anim af_pose										models/monsters/tank/af_pose.md5anim
+	
+	anim idle											models/monsters/tank/idle.md5anim 
+	{
+		//frame	18										sound				snd_clamp
+		//frame	1,13									sound_voice			snd_breathe			
+	}	
+
+	anim walk											models/monsters/tank/walk.md5anim 
+	{
+		sync_cycle			
+		frame 1,13										footstep
+		frame 5,16										sound		snd_servo
+	}
+
+	anim walk_backwards									models/monsters/tank/walk_backward.md5anim
+	{
+		frame 1,13										footstep
+		frame 5,16										sound		snd_servo
+	}
+	
+	anim walk_right										models/monsters/tank/walk_right.md5anim
+	{
+		sync_cycle			
+		frame 1,13										footstep
+		frame 5,16										sound		snd_servo
+	}
+	
+	anim walk_left										models/monsters/tank/walk_left.md5anim
+	{
+		sync_cycle			
+		frame 1,13										footstep
+		frame 5,16										sound		snd_servo
+	}
+
+	anim turn_right										models/monsters/tank/turn_right.md5anim
+	{
+		sync_cycle			
+		frame 1,13										footstep
+		frame 5,16										sound		snd_servo
+	}
+	
+	anim turn_left										models/monsters/tank/turn_left.md5anim
+	{
+		sync_cycle				
+		frame 1,13										footstep
+		frame 5,16										sound		snd_servo
+	}
+	
+	anim run											models/monsters/tank/run.md5anim 
+	{
+		sync_cycle			
+		frame 1,13										footstep
+		frame 5,16										sound		snd_servo
+	}
+		
+	anim run_right											models/monsters/tank/run_right.md5anim 
+	{
+		sync_cycle			
+		frame 1,13										footstep
+		frame 5,16										sound		snd_servo
+	}
+
+	anim run_left											models/monsters/tank/run_left.md5anim 
+	{
+		sync_cycle			
+		frame 1,13										footstep
+		frame 5,16										sound		snd_servo
+	}
+
+	anim evade_right									models/monsters/tank/evade_right.md5anim 
+	{
+		sync_cycle			
+		frame 11, 21									footstep
+		frame 5, 16										sound		snd_servo
+	}
+
+	anim evade_left										models/monsters/tank/evade_left.md5anim 
+	{
+		sync_cycle			
+		frame 11, 21									footstep
+		frame 5,16										sound		snd_servo
+	}
+	
+	anim run_backwards									models/monsters/tank/walk_backward.md5anim 
+	{
+		sync_cycle			
+		frame 1,13										footstep
+		frame 5,16										sound		snd_servo
+	}
+
+	anim railgun_attack									models/monsters/tank/railgun_attack.md5anim 
+	{
+		//frame 20											fx					fx_railgun_charge		R_gunJoint
+		
+		frame 11, 58										footstep
+		frame 6, 53											sound		snd_servo
+		
+		//frame 39											ai_lockEnemyOrigin
+		frame 36, 38, 44, 47, 49, 52, 55								ai_attack			railgun					R_gunJoint	
+		//frame 36											fx					fx_railgun_flash		R_gunJoint
+	}						
+	anim rocket_attack									models/monsters/tank/rocket_attack.md5anim 
+	{
+
+		frame 28, 41, 55, 62								footstep
+		frame 23, 36, 49, 57								sound		snd_servo
+		
+		frame 51											sound			snd_grenade_prepare	
+		frame 20											ai_attack		rocket				tube1
+		frame 20											fx				fx_rocket_flash		gunBarrelReal
+		frame 20											sound	snd_missile_launch
+				
+		frame 55											sound			snd_grenade_prepare	
+		frame 27											ai_attack		rocket				tube1
+		frame 27											fx				fx_rocket_flash		gunBarrelReal
+		frame 27											sound_weapon	snd_missile_launch
+		
+		frame 59											sound			snd_grenade_prepare	
+		frame 35											ai_attack		rocket				tube1
+		frame 35											fx				fx_rocket_flash		gunBarrelReal
+		frame 35											sound_weapon	snd_missile_launch
+		
+		frame 63											sound			snd_grenade_prepare	
+		frame 41											ai_attack		rocket				tube1
+		frame 41											fx				fx_rocket_flash		gunBarrelReal
+		frame 41											sound_weapon	snd_missile_launch
+	}	
+						
+	anim machinegun_attack								models/monsters/tank/machinegun_attack.md5anim 
+	{
+		frame 18											sound				snd_tankpowerup
+	
+		frame 13, 77										sound		snd_servo
+		frame 18, 81										footstep
+
+		frame 49, 51, 53, 55								ai_attack			blaster					L_muzzle02
+		frame 49, 51, 53, 55								fx					fx_machinegun_flash		L_muzzle02
+		
+		frame 43, 45, 47									ai_attack			blaster					L_muzzle03
+		frame 43, 45, 47									fx					fx_machinegun_flash		L_muzzle03
+		
+		frame 52											ai_attack			blaster					L_muzzle04
+		frame 52											fx					fx_machinegun_flash		L_muzzle04
+		
+		frame 48, 50, 54, 56								ai_attack			blaster					L_muzzle05
+		frame 48, 50, 54, 56								fx					fx_machinegun_flash		L_muzzle05
+		
+		frame 42, 44, 46									ai_attack			blaster					L_muzzle06
+		frame 42, 44, 46									fx					fx_machinegun_flash		L_muzzle06
+		
+		//old compound seq:frame 42, 44, 46, 48, 50, 54, 56, 43, 45, 47, 49, 51, 52, 53, 55	sound_weapon	snd_tanknailgun_fire
+		frame 30											sound_weapon	snd_tanknailgun_fire
+	
+	}	
+		
+	anim melee_attack1				models/monsters/tank/kick.md5anim
+	{
+		frame	10					ai_attack_melee 	melee
+		frame   1					sound_voice   		snd_breathe
+		frame   16, 24				footstep
+		frame   1, 6, 17			sound				snd_servo
+	}
+	
+	anim melee_attack2				models/monsters/tank/swipe.md5anim
+	{
+		frame	15					ai_attack_melee 	melee
+		frame   1					sound_voice   		snd_breathe
+		frame   6, 12				sound				snd_servo
+	}
+	
+	anim melee_attack3				models/monsters/tank/chop.md5anim
+	{
+		frame	19					ai_attack_melee 	melee
+		frame   1				    sound_voice   		snd_breathe
+		frame   1, 15				sound				snd_servo
+	}
+
+
+	anim pain1						models/monsters/tank/pain_left.md5anim
+	{
+		frame	1					sound_voice			snd_pain
+		frame   1  			    	sound				snd_servo
+	}
+	
+	anim pain2						models/monsters/tank/pain_right.md5anim
+	{
+		frame	1					sound_voice			snd_pain
+	}
+	
+	anim pain_big					models/monsters/tank/pain_head.md5anim
+	{
+		frame	1					sound_voice			snd_pain
+	}
+	
+	
+
+	anim pain_fire						models/monsters/tank/pain_fire.md5anim
+	{
+		frame	1					sound_voice			snd_pain
+	}
+
+
+	// ------------------------------------ Scripted Anims --------------------
+
+	anim blaster_end				models/monsters/tank/block_end.md5anim
+	{
+	}
+}
+
+
+/*===============================================================================
+
+	tank Attacks
+
+===============================================================================
+*/
+
+entityDef damage_tank_rocket_direct
+{
+	"damage"							"100"
+	"knockback"							"140"
+	"push"								"140"
+	"mtr_splat"							""
+	"gib"								"1"
+
+	"deathPush"							"100"
+	"deathPushMin"							"3000 2000"
+	"deathPushMax"							"5000 3000"
+}
+
+entityDef damage_tank_rocket_splash
+{
+	"damage"							"20"
+	"radius"							"500"
+	"knockback"							"80"
+	"push"								"80"
+	"gib"								"1"
+
+	"deathPush"							"100"
+	"deathPushMin"							"3000 2000"
+	"deathPushMax"							"5000 3000"
+}
+
+
+entityDef projectile_tank_rocket
+{
+	"inherit"							"projectile_rocket"
+	"spawnclass"						"rvDriftingProjectile"
+
+	"driftOffset"						"15"
+	"driftSpeed"						"100"
+	"driftTime"							".35"
+	"speed"								"850"
+
+	"def_damage"						"damage_tank_rocket_direct"
+	"def_splash_damage"					"damage_tank_rocket_splash"
+
+	"fx_fly"							"effects/monsters/tank/rocket_fly.fx"
+	"snd_fly"							"tank_missile_loop"
+	"fx_impact"							"effects/monsters/tank/rocket_impact.fx"
+}
+
+entityDef hitscan_tank_bullet
+{
+	"inherit"					"hitscan_bullet_base"
+	"def_damage"				"damage_tank_bullet"
+	
+	"attack_spread_horizontal"				"10"
+	"attack_spread_vertical"				"7"
+	
+	"fx_impact"							"effects/monsters/tank/machinegun_burst.fx"
+	"fx_tracer"							"effects/monsters/tank/machinegun_fly.fx"
+	"fx_fly"							"effects/monsters/tank/machinegun_fly.fx"
+	"snd_fly"							"weapon_energy_projectile_loop"
+}
+
+entityDef damage_tank_bullet
+{
+	"inherit"					"damage_bullet_base"
+	"push"						"75"
+	"knockback"					"10"
+	"damage"					"10"
+	"gib"								"1"
+
+	"deathPush"							"100"
+	"deathPushMin"							"3000 2000"
+	"deathPushMax"							"5000 3000"
+}
+
+entityDef damage_tank_railgunSplash
+{
+	"inherit"					"damage_nailSplash"
+	"damage"					"20"
+	"radius"					"150"
+}
+
+entityDef damage_tank_railgun
+{
+	"inherit"							"damage_railgun_base"
+	"damage"							"90"
+	"kickdir"							"1 0 0"
+
+	"deathPush"							"150"
+	"deathPushMin"							"3000 2000"
+	"deathPushMax"							"5000 3000"
+}
+
+entityDef hitscan_tank_railgun
+{
+	"inherit"							"hitscan_base"
+	"push"								"40000"
+	"def_damage"						"damage_tank_railgun"
+	"def_splash_damage"					"damage_tank_railgunSplash"
+	"fx_impact"							"effects/monsters/tank/railgun_burst.fx"
+	"fx_path"							"effects/monsters/tank/railgun_trail.fx"
+
+}
+
+entityDef melee_tank 
+{
+	"inherit"							"melee_monster_base"
+	"damage"							"50"
+	"knockback"							"250"
+	"push"								"250"
+	"pushdir"							"0 10 -10"
+	
+	"deathPush"							"150"
+	"deathPushMin"							"3000 2000"
+	"deathPushMax"							"5000 3000"
+
+	"snd_hit"							"tank_punch"
+	"snd_miss"							"tank_swing"
+}
+
+
+/*
+===============================================================================
+
+	tank Entity Definition
+
+===============================================================================
+*/
+
+entityDef monster_q4x_tank
+{
+	"inherit"							"actor_default"
+
+	// ------------------------------- Actions ------------------------------------
+	//"action_evadeRight"						"1"
+	//"action_evadeLeft"						"1"
+	
+	"action_machinegunAttack"				"1"
+	"action_machinegunAttack_anim"			"machinegun_attack"
+	"action_machinegunAttack_minRange"		"25"
+	"action_machinegunAttack_maxRange"		"500"
+	"action_machinegunAttack_rate"			"1.2"
+	"action_machinegunAttack_chance"		"0.35"
+
+	"action_meleeAttack"				"1"
+	"action_meleeAttack_maxRange"		"100"
+	"action_meleeAttack_chance"			"1"
+	"action_meleeAttack_rate"			"0.1"
+	"action_meleeAttack_failrate"		"0.1"
+	
+	"action_railgunAttack"				"1"
+	"action_railgunAttack_minRange"		"150"
+	"action_railgunAttack_maxRange"		"1500"
+	"action_railgunAttack_anim"			"railgun_attack"
+	"action_railgunAttack_rate"			"2"
+	//"action_railgunAttack_failrate"		"0.1"
+	"action_railgunAttack_chance"		"1"
+	"action_railgunAttack_nopain"		"1"
+	"actionTimer_rangedAttack_rate"		"1.2"				
+	"actionTimer_specialAttack_rate"	"2"
+	
+	"action_rocketAttack"				"1"
+	"action_rocketAttack_minRange"		"150"
+	"action_rocketAttack_maxRange"		"800"
+	"action_rocketAttack_rate"			"6"
+	"action_rocketAttack_anim"			"rocket_attack"
+	
+	// --------------------------------- Body ------------------------------------
+	"spawnclass"						"riMonsterTank"
+	"model"								"model_monster_tank"
+	"ragdoll"							"monster_tank"	
+	"mass"								"600"
+	"size"								"48 48 48"
+	"use_aas"							"aas48"
+	"joint_chestOffset"					"chest"
+	"joint_eyeOffset"					"rt_up_lid"
+	
+	"canBePinned"						"0"
+
+	//"gravityDir"						"0 0 1"
+	"directionalMovement"				"1"	
+	
+	//"af_push_moveables"					"1"
+	
+	"ragdoll_slomoStart"				"-5"
+	"ragdoll_slomoEnd"					"5"
+	
+	"missile_visibility_joint"				"head"
+	
+	// --------------------------------- Combat ----------------------------------
+	"health"							"1700"
+	"bleed"								"0"
+	"launcherHealth"					"200"
+	"chestHealth"						"200"
+	"painThreshold"						"100"
+	"painThresholdBig"					"500"
+	"melee_range"						"80"
+	"fov"								"120"
+	"tactical_rush"						"1"
+	"tactical_hide"						"1"
+	"tactical_ranged"					"1"
+	"tactical_cover"					"0"
+	"awareRange"						"800"
+	//"ignore_obstacles"					 "1"
+
+	
+	"def_attack_rocket"					"projectile_tank_rocket"
+	"attack_rocket_accuracy"			".5"
+	"attack_rocket_predict"				"1"
+	
+	"def_attack_melee"					"melee_tank"
+
+	"def_attack_blaster"				"hitscan_tank_bullet"	
+	"attack_blaster_hitscan"				"1"
+	"attack_blaster_accuracy"				"1"
+
+	"def_attack_railgun"				"projectile_hyperblaster"
+	//"attack_railgun_hitscan"			"1"
+	//"attack_railgun_accuracy"			"1"
+	//"attack_railgun_missFirstShot"		"0"
+	"attack_railgun_predict"			"1"
+
+	// --------------------------------- Damage Zones -----------------------------
+	"damage_zone head"					"*head_1 R_Atrium L_Atrium R_Ventricle L_Ventricle"
+	"damage_zone legs"					"*hips origin -*head_1 -R_Atrium -L_Atrium -R_Ventricle -L_Ventricle"
+	"damage_zone left_arm"				"*L_clavicle"
+	//"damage_zone right_arm" 			"*R_arm"
+	"damage_zone launcher"				"*laucher"
+	"damage_zone chest"					"*chestbreak"
+	//"damage_zone heart" 				"R_Atrium L_Atrium R_Ventricle L_Ventricle"
+	"damage_scale head"					"6"	
+	"damage_scale legs"					"0.05"	
+	//"damage_scale left_arm"				"0.05"
+	//"damage_scale right_arm" 			"0.05"
+	"damage_scale launcher"				"0.05"	
+	"damage_scale chest"				"0.05"	
+	//"damage_scale heart" 				"15"
+
+	// --------------------------------- Look Joints -----------------------------
+	"look_joint waist"					"0 0.75 0"
+	"look_joint head_1"					"0.2 0.2 0"
+	"look_joint L_gunFore"				"0.4 0.4 0"
+	"look_joint R_gunFore"				"0.4 0.4 0"
+	"look_chest"						"0.75 0.75 0.75"
+
+	// --------------------------------- Effects ---------------------------------
+	"fx_machinegun_flash"				"effects/monsters/tank/machinegun_flash.fx"
+	"fx_railgun_flash"					"effects/monsters/tank/railgun_mflash.fx"
+	"fx_railgun_charge"					"effects/monsters/tank/railgun_charge.fx"
+	"fx_footstomp"						"effects/monsters/tank/footstomp.fx"
+	"fx_railglow"						"effects/monsters/tank/railglow.fx"
+	"fx_gunglow"						"effects/monsters/tank/gunglow.fx"
+	"fx_swipe"							"effects/monsters/grunt/swipe_attack.fx"		// FX_REPLACE
+	"fx_railgun_explode"				"effects/monsters/light_tank/destroy_arm.fx"
+	"fx_railgun_burn"					"effects/monsters/tank/destroy_part_trail.fx"
+	"fx_chest_explode"					"effects/monsters/tank/destroy_chest.fx"
+	"fx_launcher_explode"				"effects/monsters/tank/destroy_launcher.fx"
+	
+	"snd_burn_lightning"				"effects_sparks02"
+	"fx_burn_lightning"					"effects/monsters/lightning_death.fx"	
+	"fx_burn_particles"					"effects/monsters/teleport3.fx"
+	"fx_burn_particles_chest"			"effects/monsters/teleport4.fx"
+	
+	//"fx_chestbreak"					"INSERT FX HERE"
+	//"fx_launcherbreak"				"INSERT FX HERE"
+	//"fx_launchersmoke"				"INSERT FX HERE"
+	
+	// --------------------------------- Sounds ----------------------------------
+	"lipsync_sight"						"tank_alert"
+
+	"snd_footstep"						"tank_footsteps"
+	"snd_footstep_sand"					"tank_footsteps_dirt"
+	"snd_footstep_dirt"					"tank_footsteps_dirt"
+	"snd_footstep_hollowmetal"			"tank_footsteps_hollow_metal"
+	"snd_footstep_rock"					"tank_footsteps"
+	
+	"snd_bounce"						"generic_creature_fall_metal"
+	
+	"snd_swipe"							"tank_swing"
+	"snd_swing"							"tank_swing"
+	"snd_land"							"tank_jump_land"
+	"snd_start"							"tank_jump_start"
+	"snd_death"							"tank_die"
+	"snd_servo"							"tank_servo"
+	"snd_breathe"						"tank_breathe"
+	"snd_clamp"							"tank_clamp"
+	"snd_rip"							"tank_rip"
+	"snd_pain"							"tank_pain"
+	"snd_fence_tear"					"grunt_fence_land"
+	"snd_fence_touch"					"grunt_fence_climb"
+	"snd_fence_break"					"grunt_fence_break"
+	"snd_flesh"							"bullet_impact_flesh"
+	
+	"snd_missile_launch"							"tank_missile_launch"
+	"snd_tanknailgun_fire"							"tank_nailgun_fireseq"
+	"snd_tankpowerup"							"tank_powerup"
+}

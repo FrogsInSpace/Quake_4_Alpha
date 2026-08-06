@@ -1,0 +1,19 @@
+//NPC heads added by MarkM 11/12/2005
+
+
+models/characters/marine_heads/navajas
+{
+	//unSmoothedTangents
+	materialType flesh
+	noSelfShadow
+		//renderbump  -size 2048 1024 -trace 0.05 -aa 1  models/characters/player_head/dekard_local.tga work/models/characters/player_head/player_head_highpoly.obj
+	
+	materialImage models/characters/marineheads/najavas_d.tga
+	
+	
+	diffuseMap 		models/characters/marineheads/navajas_d.tga		
+	bumpmap			models/characters/marineheads/navajas_local.tga
+	specularmap		models/characters/marineheads/navajas_s.tga
+	
+	
+}

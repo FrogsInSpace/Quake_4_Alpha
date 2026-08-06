@@ -1,0 +1,74 @@
+/***********************************************************************
+blowing banner
+
+***********************************************************************/
+//added by nick
+
+model model_env_q4x_banner
+
+{
+	mesh				models/mapobjects/q4x/trench_banner/trench_banner.md5mesh
+	anim idle01			models/mapobjects/q4x/trench_banner/idle01.md5anim
+	anim left01			models/mapobjects/q4x/trench_banner/left01.md5anim
+	anim left02			models/mapobjects/q4x/trench_banner/left02.md5anim
+	anim side01			models/mapobjects/q4x/trench_banner/side01.md5anim
+	anim side02			models/mapobjects/q4x/trench_banner/side02.md5anim
+	anim right01		models/mapobjects/q4x/trench_banner/right01.md5anim
+	anim right02		models/mapobjects/q4x/trench_banner/right02.md5anim
+	anim wall01			models/mapobjects/q4x/trench_banner/wall01.md5anim
+	
+}
+
+entityDef env_q4x_banner_4_tall_ripped
+{
+	"editor_color"			"0 .5 .25"
+	"editor_mins"			"-32 -32 0"
+	"editor_maxs"			"32 32 16"
+
+	"spawnclass"			"idAnimated"
+
+	"model"					"model_env_q4x_banner"
+	"anim"					"idle01"
+}
+
+entityDef env_q4x_banner_1_tall
+{
+	"inherit"				"env_q4x_banner_4_tall_ripped"
+	"skin"					"skins/models/mapobjects/q4x/trench_banner/trench_banner_1_tall"
+}
+
+entityDef env_q4x_banner_1_tall_ripped
+{
+	"inherit"				"env_q4x_banner_4_tall_ripped"
+	"skin"					"skins/models/mapobjects/q4x/trench_banner/trench_banner_1_tall_ripped"
+}
+
+entityDef env_q4x_banner_2_tall
+{
+	"inherit"				"env_q4x_banner_4_tall_ripped"
+	"skin"					"skins/models/mapobjects/q4x/trench_banner/trench_banner_2_tall"
+}
+
+entityDef env_q4x_banner_2_tall_ripped
+{
+	"inherit"				"env_q4x_banner_4_tall_ripped"
+	"skin"					"skins/models/mapobjects/q4x/trench_banner/trench_banner_2_tall_ripped"
+}
+
+entityDef env_q4x_banner_3_tall
+{
+	"inherit"				"env_q4x_banner_4_tall_ripped"
+	"skin"					"skins/models/mapobjects/q4x/trench_banner/trench_banner_3_tall"
+}
+
+entityDef env_q4x_banner_3_tall_ripped
+{
+	"inherit"				"env_q4x_banner_4_tall_ripped"
+	"skin"					"skins/models/mapobjects/q4x/trench_banner/trench_banner_3_tall_ripped"
+}
+
+entityDef env_q4x_banner_4_tall
+{
+	"inherit"				"env_q4x_banner_4_tall_ripped"
+	"skin"					"skins/models/mapobjects/q4x/trench_banner/trench_banner_4_tall"
+}

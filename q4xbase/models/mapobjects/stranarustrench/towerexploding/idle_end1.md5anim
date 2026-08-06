@@ -1,0 +1,84 @@
+MD5Version 10
+commandline "anim cinematics/stranarus_trench/exploding_tower/animations/idle1_end.ma -dest models/mapobjects/stranarustrench/towerexploding/idle_end1.md5anim -game Quake4 -game /q4xbase -scale 2 -keep origin effects1 effects2 explodingtower3 effects3 effects4 effects5 effects6 explodingtower8 effects7 explodingtower10 effects8 effects9 effects10 effects11 effects12 effects13 explodingtower17 effects14 effects15 explodingtower20 effects16 effects17 effects18 effects19 explodingtower25 effects20 effects21 effects22 explodingtower29"
+
+numFrames 2
+numJoints 30
+frameRate 24
+numAnimatedComponents 0
+
+hierarchy {
+	"origin"	-1 0 0	//
+	"explodingtower10"	0 0 0	// origin
+	"effects7"	1 0 0	// explodingtower10
+	"explodingtower17"	0 0 0	// origin
+	"effects10"	3 0 0	// explodingtower17
+	"effects11"	3 0 0	// explodingtower17
+	"effects12"	3 0 0	// explodingtower17
+	"effects13"	3 0 0	// explodingtower17
+	"effects8"	3 0 0	// explodingtower17
+	"effects9"	3 0 0	// explodingtower17
+	"explodingtower20"	0 0 0	// origin
+	"effects14"	10 0 0	// explodingtower20
+	"effects15"	10 0 0	// explodingtower20
+	"explodingtower25"	0 0 0	// origin
+	"effects16"	13 0 0	// explodingtower25
+	"effects17"	13 0 0	// explodingtower25
+	"effects18"	13 0 0	// explodingtower25
+	"effects19"	13 0 0	// explodingtower25
+	"explodingtower29"	0 0 0	// origin
+	"effects20"	18 0 0	// explodingtower29
+	"effects21"	18 0 0	// explodingtower29
+	"effects22"	18 0 0	// explodingtower29
+	"explodingtower3"	0 0 0	// origin
+	"effects1"	22 0 0	// explodingtower3
+	"effects2"	22 0 0	// explodingtower3
+	"explodingtower8"	0 0 0	// origin
+	"effects3"	25 0 0	// explodingtower8
+	"effects4"	25 0 0	// explodingtower8
+	"effects5"	25 0 0	// explodingtower8
+	"effects6"	25 0 0	// explodingtower8
+}
+
+bounds {
+	( -2178.2231445313 -1194.0006103516 -526.310546875 ) ( 1441.0925292969 998.6683349609 -112.2762908936 )
+	( -2178.2231445313 -1194.0006103516 -526.310546875 ) ( 1441.0925292969 998.6683349609 -112.2762908936 )
+}
+
+baseframe {
+	( 0 0 0 ) ( 0 0 0 )
+	( -274.0913085938 -261.1730041504 -448.1598205566 ) ( 0.2970224619 -0.0107085109 -0.953710556 )
+	( -6.4748854637 -80.4885635376 15.874958992 ) ( 0 0 0 )
+	( 1175.1733398438 671.6264038086 -313.8897399902 ) ( -0.1867937446 -0.959192574 0.0493140481 )
+	( 39.3951377869 -117.9542617798 -163.6675567627 ) ( 0 0 0 )
+	( 44.8758201599 -766.1678466797 183.1380615234 ) ( 0 0 0 )
+	( 153.1353607178 -234.5029754639 101.6974105835 ) ( 0 0 0 )
+	( -180.8976135254 -165.3128662109 9.5296621323 ) ( 0 0 0 )
+	( -180.8976745605 -171.1167144775 33.5816078186 ) ( 0 0 0 )
+	( 17.8638000488 -231.1285247803 -15.0020189285 ) ( 0 0 0 )
+	( 979.3625488281 -514.525390625 -447.0382080078 ) ( 0.3338634074 -0.0389272198 -0.9354854226 )
+	( -51.1181640625 0.0000250613 9.7955713272 ) ( 0 0 0 )
+	( -51.1181488037 548.254699707 9.7955732346 ) ( 0 0 0 )
+	( -2012.0433349609 -805.6903686523 -354.7392883301 ) ( 0.0425421894 0.5422382355 -0.0050047361 )
+	( -58.5545082092 356.1375732422 -82.8890762329 ) ( 0 0 0 )
+	( -13.9789972305 475.4975891113 102.320854187 ) ( 0 0 0 )
+	( 61.5942382813 140.5076904297 -9.1166610718 ) ( 0 0 0 )
+	( -58.3358726501 15.5691843033 -133.6944885254 ) ( 0 0 0 )
+	( 619.7955322266 328.0451660156 -294.1684875488 ) ( -0.4793355763 -0.6810739636 0.3288124204 )
+	( -1.3756244183 281.4988708496 70.7790298462 ) ( 0 0 0 )
+	( -190.2322998047 330.2968444824 -6.4808163643 ) ( 0 0 0 )
+	( 153.4364013672 316.7834777832 155.9247283936 ) ( 0 0 0 )
+	( 349.0858459473 644.2374267578 -357.1362304688 ) ( -0.8653132319 0.453687042 -0.1887739599 )
+	( -166.5296630859 13.8547372818 78.7868652344 ) ( 0 0 0 )
+	( 169.5441589355 -134.543762207 238.8520202637 ) ( 0 0 0 )
+	( -315.1739807129 90.4774551392 -388.9747924805 ) ( 0.2968849838 -0.014010773 -0.9541611075 )
+	( 116.0730743408 99.8668060303 -58.5986938477 ) ( 0 0 0 )
+	( -55.1746482849 214.8474578857 -137.2850952148 ) ( 0 0 0 )
+	( -34.4729881287 -226.359954834 -36.7855682373 ) ( 0 0 0 )
+	( -129.4468078613 -313.7880249023 -72.4905471802 ) ( 0 0 0 )
+}
+
+frame 0 {
+}
+
+frame 1 {
+}

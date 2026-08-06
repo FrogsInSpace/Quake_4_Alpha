@@ -1,0 +1,57 @@
+/*
+===============================================================================
+
+	Light Tank
+
+===============================================================================
+*/
+
+export lt_tank {
+	options -prefix LTNK_ -scale .3937 -align ALL -keep SPINNER BODY_MAIN gun_effect -parent SPINNER BODY_MAIN -parent hips BODY_MAIN -parent waist SPINNER -keep eye_target Lfteye_Focus Rteye_Focus -parent eye_target head_1 -parent Lfteye_Focus Lft_EyeBall -parent Rteye_Focus Rt_EyeBall 
+
+	anim	models/monsters/light_tank/animations/ltnk_pain_fire.ma		-dest models/monsters/lt_tank/pain_fire
+	anim	models/monsters/light_tank/animations/pr_jump_down.ma		-dest models/monsters/lt_tank/pr_jump_down
+
+}
+
+/*
+===============================================================================
+
+	Light Tank Model Definition
+
+===============================================================================
+*/
+
+model model_monster_q4x_lt_tank
+{
+	inherit		model_monster_lt_tank
+	anim	pain_fire			models/monsters/lt_tank/pain_fire.md5anim
+	{
+		frame	2										sound_voice			snd_pain
+		frame	8,18										footstep
+	}
+	anim	pr_jump_down			models/monsters/lt_tank/pr_jump_down.md5anim
+	{
+		frame	2										sound_voice			snd_pain
+		frame	8,18										footstep
+	}
+
+
+	// --------- ANIMS THAT AREN'T CURRENTLY BEGIN REFERENCED GO BELOW HERE --------------
+	
+}
+
+
+/*
+===============================================================================
+
+	Light Tank Entity Definition
+
+===============================================================================
+*/
+
+entityDef monster_q4x_lt_tank
+{
+	"inherit"						"monster_lt_tank"
+	"model"							"model_monster_q4x_lt_tank"
+}

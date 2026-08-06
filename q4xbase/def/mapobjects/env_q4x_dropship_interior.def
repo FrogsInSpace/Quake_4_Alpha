@@ -1,0 +1,98 @@
+/***********************************************************************
+DROPSHIP INTERIOR Q4X
+***********************************************************************/
+
+export dropship_interior
+{
+	options -scale .3937 -prefix DropShipINT_ -keep fx1 fx2 fx3 fx4 fx5 fx6 fx7 fx8 -align ALL -sourcedir models/vehicles/dropship_interior/   -destdir models/vehicles/dropship_interior
+	 
+	anim markswell_enters.ma					-dest markswell_enters
+	anim markswell_sits.ma				-range 481 482	-dest st_idle_1
+	anim markswell_sits.ma						-dest markswell_sits
+	anim markswell_sits.ma				-range 573 574	-dest st_idle_2
+
+	
+}
+
+
+entityDef env_q4x_dropship_interior
+{
+	"editor_usage"					"animated_dropship_interior"
+	"editor_color"					"0 .5 .25"
+	"editor_mins"					"-32 -32 0"
+	"editor_maxs"					"32 32 16"
+
+	"spawnclass"					"idAnimated"
+
+	"model"						"model_q4x_dropship_interior"
+	"anim"						"idle"
+	
+	"sound_bone"				"door"
+	
+
+	
+	
+}
+
+model model_q4x_dropship_interior
+{
+	inherit							model_dropship_interior
+	anim idle						models/vehicles/dropship_interior/idle.md5anim
+	anim st_idle_1						models/vehicles/dropship_interior/st_idle_1.md5anim
+	anim st_idle_2						models/vehicles/dropship_interior/st_idle_2.md5anim
+	anim markswell_sits					models/vehicles/dropship_interior/markswell_sits.md5anim
+	anim markswell_enters					models/vehicles/dropship_interior/markswell_enters.md5anim
+	{
+		frame	27,54							sound		mcc_door_open
+		frame	36,64							sound		mcc_door_close
+	}
+
+}
+
+/***********************************************************************
+DROPSHIP Harness Q4X
+***********************************************************************/
+
+
+
+export dropship_harness
+{
+	options -scale .3937 -prefix HARN_ -keep origin -align ALL -sourcedir models/vehicles/dropship_interior/animations   -destdir models/vehicles/dropship_interior/harness
+	 
+	mesh open.ma							-dest mesh
+	anim open.ma					-range 0 1	-dest idle
+	anim open.ma					-range 1 65	-dest open
+	anim open.ma					-range 66 67	-dest open_idle
+	anim mitchell_open.ma						-dest mitchell_open
+	anim dekard_open.ma						-dest dekard_open
+}
+
+entityDef env_q4x_dropship_harness
+{
+	"editor_usage"					"animated_dropship_harness"
+	"editor_color"					"0 .5 .25"
+	"editor_mins"					"-32 -32 0"
+	"editor_maxs"					"32 32 16"
+
+	"spawnclass"					"idAnimated"
+
+	"model"						"model_q4x_dropship_harness"
+	"anim"						"idle"
+	
+}
+
+model model_q4x_dropship_harness
+{
+	mesh 							models/vehicles/dropship_interior/harness/mesh.md5mesh
+	anim idle						models/vehicles/dropship_interior/harness/idle.md5anim
+	anim open						models/vehicles/dropship_interior/harness/open.md5anim
+	anim open_idle						models/vehicles/dropship_interior/harness/open_idle.md5anim
+	anim mitchell_open					models/vehicles/dropship_interior/harness/mitchell_open.md5anim
+	anim dekard_open					models/vehicles/dropship_interior/harness/dekard_open.md5anim
+
+
+}
+
+	
+
+	

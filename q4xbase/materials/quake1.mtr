@@ -1,0 +1,285 @@
+// quake 1 materials
+// -Castle
+
+textures/quake/city2_6
+{
+	qer_editorimage 	textures/quake/city2_6.tga
+	diffusemap		textures/quake/city2_6_d.tga
+	bumpmap			addnormals( textures/quake/city2_6_n.tga, heightmap( textures/quake/detail_texture01.tga, 2 ) )
+	specularmap		textures/quake/city2_6_s.tga
+}
+
+textures/quake/city2_7
+{
+	qer_editorimage 	textures/quake/city2_7.tga
+	diffusemap		textures/quake/city2_7_d.tga
+	bumpmap			addnormals( textures/quake/city2_7_n.tga, heightmap( textures/quake/detail_texture01.tga, 2 ) )
+	specularmap		textures/quake/city2_7_s.tga
+}
+
+textures/quake/city2_8
+{
+	qer_editorimage 	textures/quake/city2_8.tga
+	diffusemap		textures/quake/city2_8_d.tga
+	bumpmap			addnormals( textures/quake/city2_8_n.tga, heightmap( textures/quake/detail_texture01.tga, 2 ) )
+	specularmap		textures/quake/city2_8_s.tga
+}
+
+textures/quake/city4_2
+{
+	qer_editorimage 	textures/quake/city4_2.tga
+	diffusemap		textures/quake/city4_2_d.tga
+	bumpmap			textures/quake/city4_2_n.tga
+	specularmap		textures/quake/city4_2_s.tga
+}
+
+textures/quake/cop1_1
+{
+	qer_editorimage 	textures/quake/cop1_1.tga
+	diffusemap		textures/quake/cop1_1_d.tga
+	bumpmap			addnormals( textures/quake/cop1_1_n.tga, heightmap( textures/quake/detail_texture01.tga, 2 ) )
+	specularmap		textures/quake/cop1_1_s.tga
+}
+
+textures/quake/cop1_7
+{
+	qer_editorimage 	textures/quake/cop1_7.tga
+	diffusemap		textures/quake/cop1_7_d.tga
+	bumpmap			textures/quake/cop1_7_n.tga
+	specularmap		textures/quake/cop1_7_s.tga
+}
+
+
+textures/quake/ground1_5
+{
+	qer_editorimage 	textures/quake/ground1_5.tga
+	diffusemap		textures/quake/ground1_5_d.tga
+	bumpmap			addnormals( textures/quake/ground1_5_n.tga, heightmap( textures/quake/detail_texture01.tga, 2 ) )
+	specularmap		textures/quake/ground1_5_s.tga
+}
+
+textures/quake/metal4_4
+{
+	qer_editorimage 	textures/quake/metal4_4.tga
+	diffusemap		textures/quake/metal4_4_d.tga
+	bumpmap			addnormals( textures/quake/metal4_4_n.tga, heightmap( textures/quake/detail_texture01.tga, 2 ) )
+	specularmap		textures/quake/metal4_4_s.tga
+}
+
+textures/quake/wmet4_8
+{
+	qer_editorimage 	textures/quake/wmet4_8.tga
+	diffusemap		textures/quake/wmet4_8_d.tga
+	bumpmap			addnormals( textures/quake/wmet4_8_n.tga, heightmap( textures/quake/detail_texture01.tga, 2 ) )
+	specularmap		textures/quake/wmet4_8_s.tga
+}
+
+textures/quake/base_brick01
+{
+	qer_editorimage 	textures/quake/base_brick01.tga
+	diffusemap		textures/quake/base_brick01_d.tga
+	bumpmap			addnormals( textures/quake/base_brick01_n.tga, heightmap( textures/quake/detail_texture01.tga, 2 ) )
+	specularmap		textures/quake/base_brick01_s.tga
+}
+
+textures/quake/q1wood_ceil01
+{
+	qer_editorimage 	textures/quake/q1wood_ceil01.tga
+	diffusemap		textures/quake/q1wood_ceil01_d.tga
+	bumpmap			addnormals( textures/quake/q1wood_ceil01_n.tga, heightmap( textures/quake/detail_texture01.tga, 2 ) )
+	specularmap		textures/quake/q1wood_ceil01_s.tga
+}
+
+textures/quake/stone_floor01
+{
+	qer_editorimage 	textures/quake/stone_floor01.tga
+	diffusemap		textures/quake/stone_floor01.tga
+	bumpmap			addnormals( textures/quake/stone_floor01_n.tga, heightmap( textures/quake/detail_texture01.tga, 2 ) )
+	specularmap		textures/quake/stone_floor01_s.tga
+}
+
+textures/quake/wall_window01
+{
+	qer_editorimage 	textures/quake/wall_window01.tga
+	diffusemap		textures/quake/wall_window01_d.tga
+	bumpmap			textures/quake/wall_window01_n.tga
+	specularmap		textures/quake/wall_window01_s.tga
+
+}
+
+textures/quake/base_trim01
+{
+	qer_editorimage 	textures/quake/base_trim01.tga
+	diffusemap		textures/quake/base_trim01_d.tga
+	bumpmap			textures/quake/base_trim01_n.tga
+	specularmap		textures/quake/base_trim01_s.tga
+}
+
+textures/quake/base_metal01
+{
+	qer_editorimage 	textures/quake/base_metal01.tga
+	diffusemap		textures/quake/base_metal01_d.tga
+	bumpmap			textures/quake/base_metal01_n.tga
+	specularmap		textures/quake/base_metal01_s.tga
+}
+
+//Cool blood material
+
+table threestage { { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } }
+table elevenstage { { .5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } }
+table sixstage { { 1, 0, 0, 0, 0, 0 } }
+
+table slowstart_one_zero { { 1.000000, 0.999699, 0.998795, 0.997290, 0.995185, 0.992480, 0.989177, 0.985278, 
+0.980785, 0.975702, 0.970031, 0.963776, 0.956940, 0.949528, 0.941544, 0.932993, 
+0.923880, 0.914210, 0.903989, 0.893224, 0.881921, 0.870087, 0.857729, 0.844854, 
+0.831470, 0.817585, 0.803208, 0.788346, 0.773010, 0.757209, 0.740951, 0.724247, 
+0.707107, 0.689541, 0.671559, 0.653173, 0.634393, 0.615232, 0.595699, 0.575808, 
+0.555570, 0.534998, 0.514103, 0.492898, 0.471397, 0.449611, 0.427555, 0.405241, 
+0.382683, 0.359895, 0.336890, 0.313682, 0.290285, 0.266713, 0.242980, 0.219101, 
+0.195090, 0.170962, 0.146730, 0.122411, 0.098017, 0.073565, 0.049068, 0.024541
+} }
+
+table faststart_zero_one { { 0.024541, 0.049068, 0.073565, 0.098017, 0.122411, 0.146730, 0.170962, 
+0.195090, 0.219101, 0.242980, 0.266713, 0.290285, 0.313682, 0.336890, 0.359895, 
+0.382683, 0.405241, 0.427555, 0.449611, 0.471397, 0.492898, 0.514103, 0.534998, 
+0.555570, 0.575808, 0.595699, 0.615232, 0.634393, 0.653173, 0.671559, 0.689541, 
+0.707107, 0.724247, 0.740951, 0.757209, 0.773010, 0.788346, 0.803208, 0.817585, 
+0.831470, 0.844854, 0.857729, 0.870087, 0.881921, 0.893224, 0.903989, 0.914210, 
+0.923880, 0.932993, 0.941544, 0.949528, 0.956940, 0.963776, 0.970031, 0.975702, 
+0.980785, 0.985278, 0.989177, 0.992480, 0.995185, 0.997290, 0.998795, 0.999699, 
+1.000000 } }
+
+table watersplashscaletable { { 0.024541, 0.049068, 0.073565, 0.098017, 0.122411, 0.146730, 0.170962, 
+0.195090, 0.219101, 0.242980, 0.266713, 0.290285, 0.313682, 0.336890, 0.359895, 
+0.382683, 0.405241, 0.427555, 0.449611, 0.471397, 0.492898, 0.514103, 0.534998, 
+0.555570, 0.575808, 0.595699, 0.615232, 0.634393, 0.653173, 0.671559, 0.689541, 
+0.707107, 0.724247, 0.740951, 0.757209, 0.773010, 0.788346, 0.803208, 0.817585, 
+0.831470, 0.844854, 0.857729, 0.870087, 0.881921, 0.893224, 0.903989, 0.914210, 
+0.923880, 0.932993, 0.941544, 0.949528, 0.956940, 0.963776, 0.970031, 0.975702, 
+0.980785, 0.985278, 0.989177, 0.992480, 0.995185, 0.997290, 0.998795, 0.999699, 
+1.000000 } }
+
+
+table watersplashrgbtable { { 0, 1, 1, 1, .8, .6, .4, .2, .1, .05, 0 } }
+table s_lightningtable { { 1, .5, 1, 0, 0, 0, 0, 1, 1, 0, .5, 1, 0, 1, .5, 0, 0, 0, 0, 0, 0, 0} }
+table s_lightningtable2 { { 1, 2, 1, 3 } }
+
+table snapTen { snap { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 } }
+table snapFive { snap { 1, 0, 0, 0, 0 } }
+table lerp2Table { { 0, 1 } }
+
+//
+// This shader features a cross-faded, animating bump map, which is tedious to set up.
+// Bump maps can't really be blended, so it selects one bump map and blends the diffuse
+// and specular maps, then selects an adjacent bump map and inverse blends the diffuse
+// and specular maps.  There must be an even number of frames, with the odd numbered
+// frames going in the first pass, and the even numbered frames going in the second.
+//
+// It is probably easiest to just ask John to set these up.
+//
+
+textures/sfx/waterbump
+{
+	qer_editorimage textures\sfx\bloodpool01_jim
+	nonsolid
+	//
+	// first part of the crossfade
+	//
+	{
+		if snapFive[ time * Parm3 * 0.5 + Parm4 + 0.0 / 5 ]
+		blend 	bumpmap
+		map	heightmap (textures/sfx/untitled001, 4)
+		rgb	elevenstage [ time * Parm3 + Parm4 + 10.0 / 11 ]
+	}
+	{
+		if snapFive[ time * Parm3 * 0.5 + Parm4 + 1.0 / 5 ]
+		blend 	bumpmap
+		map	heightmap (textures/sfx/untitled003, 4)
+	}
+	{
+		if snapFive[ time * Parm3 * 0.5 + Parm4 + 2.0 / 5 ]
+		blend 	bumpmap
+		map	heightmap (textures/sfx/untitled005, 4)
+	}
+	{
+		if snapFive[ time * Parm3 * 0.5 + Parm4 + 3.0 / 5 ]
+		blend 	bumpmap
+		map	heightmap (textures/sfx/untitled007, 4)
+	}
+	{
+		if snapFive[ time * Parm3 * 0.5 + Parm4 + 4.0 / 5 ]
+		blend 	bumpmap
+		map	heightmap (textures/sfx/untitled009, 4)
+	}
+	{
+		blend	diffusemap
+		rgb		lerp2Table[ ( time * Parm3 * 0.5 + Parm4 ) * 5  ]
+		map		textures\decals\bloodpool01_jim
+	}
+	{
+		blend	specularmap
+		rgb		lerp2Table[ ( time * Parm3 * 0.5 + Parm4 ) * 5  ]
+		map		_white
+	}
+	
+
+	//
+	// second part of the crossfade
+	//
+	{
+		if snapFive[ time * Parm3 * 0.5 + Parm4 + 0.5 / 5 ]
+		blend 	bumpmap
+		map	heightmap (textures/sfx/untitled002, 4)
+	}
+	{
+		if snapFive[ time * Parm3 * 0.5 + Parm4 + 1.5 / 5 ]
+		blend 	bumpmap
+		map	heightmap (textures/sfx/untitled004, 4)
+	}
+	{
+		if snapFive[ time * Parm3 * 0.5 + Parm4 + 2.5 / 5 ]
+		blend 	bumpmap
+		map	heightmap (textures/sfx/untitled006, 4)
+	}
+	{
+		if snapFive[ time * Parm3 * 0.5 + Parm4 + 3.5 / 5 ]
+		blend 	bumpmap
+		map	heightmap (textures/sfx/untitled008, 4)
+	}
+	{
+		if snapFive[ time * Parm3 * 0.5 + Parm4 + 4.5 / 5 ]
+		blend 	bumpmap
+		map	heightmap (textures/sfx/untitled010, 4)
+	}
+	{
+		blend	diffusemap
+		rgb		1.0 - lerp2Table[ ( time * Parm3 * 0.5 + Parm4 ) * 5  ]
+		map		textures\decals\bloodpool01_jim
+	}
+	{
+		blend	specularmap
+		rgb		1.0 - lerp2Table[ ( time * Parm3 * 0.5 + Parm4 ) * 5  ]
+		map		_white
+	}
+
+}
+
+//Emissive
+
+textures/quake/ironcrosslt1
+{
+	qer_editorimage 	textures/quake/ironcrosslt1.tga
+	diffusemap		textures/quake/ironcrosslt1_d.tga
+	bumpmap			textures/quake/ironcrosslt1_n.tga
+	specularmap		textures/quake/ironcrosslt1_s.tga
+
+	{
+		blend		add
+		map		textures/quake/ironcrosslt1_blend.tga
+	}
+}
+
+// Models
+
+
+

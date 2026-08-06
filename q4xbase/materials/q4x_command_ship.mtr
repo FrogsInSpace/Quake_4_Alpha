@@ -1,0 +1,7 @@
+guide textures/command_ship/mcc_ceilingnew1_med generic_Localvariant("command_ship/mcc_ceilingnew1", "command_ship/mcc_ceilingnew1_med")
+guide textures/command_ship/MCC_Flr128_01 generic_shader("command_ship/MCC_Flr128_01")
+guide textures/command_ship/c_flr5_trim generic_shader("command_ship/c_flr5_trim")
+guide textures/command_ship/MCC_VHalf32_02 generic_shader("command_ship/MCC_VHalf32_02")
+guide textures/command_ship/mcc_ceilingnew2 generic_shader("command_ship/mcc_ceilingnew2")
+guide textures/command_ship/cs_longtrim generic_shader("command_ship/cs_longtrim")
+

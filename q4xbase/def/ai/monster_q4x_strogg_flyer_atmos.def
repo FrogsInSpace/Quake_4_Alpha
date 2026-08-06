@@ -1,0 +1,16 @@
+
+entityDef monster_q4x_strogg_flyer_atmos
+{
+	"inherit"									"monster_q4x_strogg_flyer_space"
+	"spawnclass"									"rvMonsterStroggFlyer"
+
+	"snd_flyloop"									""
+
+	// --------------------------------- Effects ---------------------------------
+
+	"fx_death"									"effects/monsters/strogg_flyer/q4x_fadedeath.fx"
+
+	// --------------------------------- DB Info   -------------------------------
+	"dbTitle"									"QFX Strogg Flyer (Atmosphere)"
+	"dbText"									"This is the expansion pack version of the flyer"
+}

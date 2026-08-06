@@ -1,0 +1,1022 @@
+ 
+entityDef char_npc_darnell_M05_Bio_vo
+{
+ // CHARACTER: DARNELL
+ // CONTEXT:Grim
+ // DIALOG : Damn, Mitchell...This was his first tour.  We can't just leave him here..
+ "lipsync_darn_dammitch"        "vo_darn_dammitch"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Military
+ // DIALOG : Room clear, Tak, Navajas, move up with Strauss.
+ "lipsync_darn_roomclr"        "vo_darn_roomclr"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Military
+ // DIALOG : All clear.
+ "lipsync_darn_allclr"        "vo_darn_allclr"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Commanding
+ // DIALOG : Tak, move up.
+ "lipsync_darn_takmoveup"        "vo_darn_takmoveup"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Commanding
+ // DIALOG : Tak, we need you at this lift.
+ "lipsync_darn_taklift"        "vo_darn_taklift"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Commanding
+ // DIALOG : Everybody on the lift, let's move
+ "lipsync_darn_evlift"        "vo_darn_evlift"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Unhappy
+ // DIALOG : Ah what the hell?
+ "lipsync_darn_ahwhthell"        "vo_darn_ahwhthell"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Sarcastic
+ // DIALOG : Sounds like they tortured the information out of the marines from what I heard.
+ "lipsync_darn_sndtort"        "vo_darn_sndtort"
+
+
+ // CHARACTER: DARNELL +USE
+ // CONTEXT:Tense
+ // DIALOG : We need to get hell outta here.
+ "lipsync_darn_getout"        "vo_darn_getout"
+
+
+ // CHARACTER: DARNELL +USE
+ // CONTEXT:Complementary
+ // DIALOG : Good work locating Strauss Dekard.  
+ "lipsync_darn_workloc"        "vo_darn_workloc"
+
+
+ // CHARACTER: DARNELL +USE
+ // CONTEXT:Complementary
+ // DIALOG : It's going to be hard to keep the brass away from you after this operation.
+ "lipsync_darn_hardbrass"        "vo_darn_hardbrass"
+
+}
+ 
+entityDef char_npc_dekard_M05_Bio_vo
+{
+ // CHARACTER: DEKARD
+ // CONTEXT:Military
+ // DIALOG : We've got Strauss, Mitchell is dead, ready for evac.
+ "lipsync_dek_wegotstrss"        "vo_dek_wegotstrss"
+
+
+ // CHARACTER: DEKARD
+ // CONTEXT:Military
+ // DIALOG : Yes sir.
+ "lipsync_dek_yessir5"        "vo_dek_yessir5"
+
+
+ // CHARACTER: DEKARD
+ // CONTEXT:Commanding
+ // DIALOG : Tak, Navajas, you hold back with Strauss, Darnell and I will clear out the exit halls, you move up when we call all clear.
+ "lipsync_dek_taknavast"        "vo_dek_taknavast"
+
+
+ // CHARACTER: DEKARD
+ // CONTEXT:Commanding
+ // DIALOG : You two keep a close eye on Strauss, make sure nothing happens to him
+ "lipsync_dek_youtwoete"        "vo_dek_youtwoete"
+
+}
+ 
+entityDef char_npc_fox5_M05_Bio_vo
+{
+ // CHARACTER: FOX MARINE 5
+ // CONTEXT:Dismissive
+ // DIALOG : I don’t want to know.
+ "lipsync_fox5_dntwntknw"        "vo_fox5_dntwntknw"
+
+
+ // CHARACTER: FOX MARINE 5
+ // CONTEXT:Dismissive
+ // DIALOG : We all heard it.
+ "lipsync_fox5_weallhrd"        "vo_fox5_weallhrd"
+
+
+ // CHARACTER: FOX MARINE 5
+ // CONTEXT:Dismissive
+ // DIALOG : Shut up.
+ "lipsync_fox5_shutup"        "vo_fox5_shutup"
+
+
+ // CHARACTER: FOX MARINE 5
+ // CONTEXT:Dismissive
+ // DIALOG : I said shut up.
+ "lipsync_fox5_saidshutp"        "vo_fox5_saidshutp"
+
+
+ // CHARACTER: FOX MARINE 5
+ // CONTEXT:Sarcastic
+ // DIALOG : What’s the matter, you afraid of the dark?
+ "lipsync_fox5_whatmatt"        "vo_fox5_whatmatt"
+
+
+ // CHARACTER: FOX MARINE 5
+ // CONTEXT:Informative
+ // DIALOG : The override for the field generator has to be up in that control room.
+ "lipsync_fox5_theoverr"        "vo_fox5_theoverr"
+
+
+ // CHARACTER: FOX MARINE 5
+ // CONTEXT:Calling for Attention
+ // DIALOG : Hey, over here.
+ "lipsync_fox5_heyover"        "vo_fox5_heyover"
+
+
+ // CHARACTER: FOX MARINE 5
+ // CONTEXT:Informative
+ // DIALOG : There are some supply lines below, they might provide a way past this generator
+ "lipsync_fox5_thresupp"        "vo_fox5_thresupp"
+
+
+ // CHARACTER: FOX MARINE 5
+ // CONTEXT:Yelling
+ // DIALOG : Incoming Strogg!
+ "lipsync_fox5_incom"        "vo_fox5_incom"
+
+
+ // CHARACTER: FOX MARINE 5
+ // CONTEXT:Death Scream
+ // DIALOG : Argggh!!
+ "lipsync_fox5_arrg"        "vo_fox5_arrg"
+
+
+ // CHARACTER: FOX MARINE 5 +USE
+ // CONTEXT:Prodding, hushed
+ // DIALOG : Your medic seems a bit twitchy.
+ "lipsync_fox5_yourmeds"        "vo_fox5_yourmeds"
+
+
+ // CHARACTER: FOX MARINE 5 +USE
+ // CONTEXT:Prodding
+ // DIALOG : I hear your squad got hit pretty hard on the Citadel mission.
+ "lipsync_fox5_ihearyour"        "vo_fox5_ihearyour"
+
+
+ // CHARACTER: FOX MARINE 5 +USE
+ // CONTEXT:Annoyed
+ // DIALOG : Strauss won't wait forever.
+ "lipsync_fox5_strausswait"        "vo_fox5_strausswait"
+
+}
+ 
+entityDef char_npc_marines_M05_Bio_vo
+{
+ // CHARACTER: MARINE 1
+ // CONTEXT:Death Scream
+ // DIALOG : (Screams of agony)
+ "lipsync_marine1_agony1"        "vo_marine1_agony1"
+
+
+ // CHARACTER: MARINE 2
+ // CONTEXT:Death Scream
+ // DIALOG : (Screams of agony)
+ "lipsync_marine2_agony1"        "vo_marine2_agony1"
+
+
+ // CHARACTER: MARINE 3
+ // CONTEXT:Death Scream
+ // DIALOG : (Screams of agony)
+ "lipsync_marine3_agony1"        "vo_marine3_agony1"
+
+}
+ 
+entityDef char_npc_markswell_M05_Bio_vo
+{
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Dekard, status report.
+ "lipsync_marks_dekstatrep"        "vo_marks_dekstatrep"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Serious, Questioning
+ // DIALOG : Shit.  What about Strauss, what's his condition?
+ "lipsync_marks_shitstrss"        "vo_marks_shitstrss"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Informative
+ // DIALOG : Nice work, Falcon.  Evac is landing now.  Panther and Tiger Squads are moving through the upper floors, we’re gonna pull out as many marines as we can. Get back to the surface and get Strauss back to the Hannibal.
+ "lipsync_marks_niceevac"        "vo_marks_niceevac"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Dropship is dirtside marines.  Get to the surface.
+ "lipsync_marks_marinesget"        "vo_marks_marinesget"
+}
+ 
+entityDef char_npc_mitchell_M05_Bio_vo
+{
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Inquisitive
+ // DIALOG : What the hell do they do down here?
+ "lipsync_mitch_whathelldo"        "vo_mitch_whathelldo"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Jumpy
+ // DIALOG : You hear that?
+ "lipsync_mitch_youheartht"        "vo_mitch_youheartht"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Shaken
+ // DIALOG : That… That sounded like marines.
+ "lipsync_mitch_thatsndmar"        "vo_mitch_thatsndmar"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Shaken
+ // DIALOG : But those screams.  I –
+ "lipsync_mitch_butthose"        "vo_mitch_butthose"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Gloomy
+ // DIALOG : Nah, I’m afraid of what’s in it.
+ "lipsync_mitch_nahafraid"        "vo_mitch_nahafraid"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Informative
+ // DIALOG : We’re gonna have to find away into that control room.
+ "lipsync_mitch_wegonna"        "vo_mitch_wegonna"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Informative
+ // DIALOG : There should be an exhaust vent somewhere for that field generator
+ "lipsync_mitch_thereexhaust"        "vo_mitch_thereexhaust"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Informative
+ // DIALOG : Dekard, look for an exhaust vent attached to that field generator
+ "lipsync_mitch_deklookex"        "vo_mitch_deklookex"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Informative
+ // DIALOG : Dekard, try blowing up the field generator, it's in there somewhere!
+ "lipsync_mitch_dektryblow"        "vo_mitch_dektryblow"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Informative
+ // DIALOG : Damn, that marine didn't stand a chance.  I couldn't do anything for him.
+ "lipsync_mitch_damnmarst"        "vo_mitch_damnmarst"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Complementary
+ // DIALOG : Field generator is down Dekard.  Good work.
+ "lipsync_mitch_fieldgen"        "vo_mitch_fieldgen"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Amazed, tense
+ // DIALOG : What have they done?  How can the Strogg do this?
+ "lipsync_mitch_whatdonestrg"        "vo_mitch_whatdonestrg"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Grim
+ // DIALOG : Nothing good happens to humans in this place.
+ "lipsync_mitch_nothinggd"        "vo_mitch_nothinggd"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Warning
+ // DIALOG : They’re coming.
+ "lipsync_mitch_theycom"        "vo_mitch_theycom"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Warning
+ // DIALOG : Take cover.
+ "lipsync_mitch_takeco"        "vo_mitch_takeco"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Combat
+ // DIALOG : Cover me.
+ "lipsync_mitch_covm"        "vo_mitch_covm"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Combat
+ // DIALOG : I’m under heavy fire.
+ "lipsync_mitch_underhvyfr"        "vo_mitch_underhvyfr"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Combat
+ // DIALOG : Check your six.
+ "lipsync_mitch_check6"        "vo_mitch_check6"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Combat
+ // DIALOG : They’re trying to flank.
+ "lipsync_mitch_theyflnk"        "vo_mitch_theyflnk"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Combat
+ // DIALOG : To the left.
+ "lipsync_mitch_tolft"        "vo_mitch_tolft"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Combat
+ // DIALOG : Coming in from the right.
+ "lipsync_mitch_comingin"        "vo_mitch_comingin"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Combat
+ // DIALOG : Get down!
+ "lipsync_mitch_getdwn"        "vo_mitch_getdwn"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Warning 
+ // DIALOG : Check the door.
+ "lipsync_mitch_chkdoor"        "vo_mitch_chkdoor"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Introduction, Questioning
+ // DIALOG : Mitchell, Dekard, Falcon squad...how did you get down here?
+ "lipsync_mitch_mitchhowget"        "vo_mitch_mitchhowget"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Calm
+ // DIALOG : Some stims and a medpak and he'll come around 
+ "lipsync_mitch_somestim"        "vo_mitch_somestim"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Determined
+ // DIALOG : There's Strauss, we need to try and get him down
+ "lipsync_mitch_therestrss"        "vo_mitch_therestrss"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Determined
+ // DIALOG : Dekard, try to stop or slow down this machine!
+ "lipsync_mitch_dektrystop"        "vo_mitch_dektrystop"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Determined
+ // DIALOG : Arrghh...It won't budge
+ "lipsync_mitch_budge"        "vo_mitch_budge"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Determined
+ // DIALOG : I can't get him out!
+ "lipsync_mitch_gethim"        "vo_mitch_gethim"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Determined
+ // DIALOG : We need to follow him!  Lets go Dekard!
+ "lipsync_mitch_needfollw"        "vo_mitch_needfollw"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Determined
+ // DIALOG : There he is.
+ "lipsync_mitch_thereheis"        "vo_mitch_thereheis"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Determined
+ // DIALOG : I see him
+ "lipsync_mitch_iseehim"        "vo_mitch_iseehim"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Determined
+ // DIALOG : There's Strauss.  
+ "lipsync_mitch_therestrss2"        "vo_mitch_therestrss2"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Determined
+ // DIALOG : It's got to let out somewhere!
+ "lipsync_mitch_gotletout"        "vo_mitch_gotletout"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Excited
+ // DIALOG : Here, we can get Strauss out here.
+ "lipsync_mitch_wecangetst"        "vo_mitch_wecangetst"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Surprised
+ // DIALOG : What the hell?
+ "lipsync_mitch_whathll"        "vo_mitch_whathll"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Death Scream
+ // DIALOG : Arrrghhh!
+ "lipsync_mitch_arrrg"        "vo_mitch_arrrg"
+
+
+ // CHARACTER: MITCHELL +USE
+ // CONTEXT:Hushed
+ // DIALOG : Wow, can you imagine what goes on in this place?
+ "lipsync_mitch_wowcanyou"        "vo_mitch_wowcanyou"
+
+
+ // CHARACTER: MITCHELL +USE
+ // CONTEXT:Hushed, Tense
+ // DIALOG : Once we find Strauss, I'll feel much better.
+ "lipsync_mitch_oncewe"        "vo_mitch_oncewe"
+
+
+ // CHARACTER: MITCHELL +USE
+ // CONTEXT:Hushed
+ // DIALOG : I can't wait to get the hell outta here.
+ "lipsync_mitch_icantwait"        "vo_mitch_icantwait"
+
+
+ // CHARACTER: MITHCELL
+ // CONTEXT:Surprised
+ // DIALOG : What the hell?
+ "lipsync_mitch_whathell"        "vo_mitch_whathell"
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Determined
+ // DIALOG : There's Strauss, we need to get down there!
+ "lipsync_mitch_needtogetdown"        "vo_mitch_needtogetdown"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Determined
+ // DIALOG : Damnit, I can't stop this machine!
+ "lipsync_mitch_stopmachine"        "vo_mitch_stopmachine"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Determined
+ // DIALOG : This machine has to let out somewhere, we need to follow him.
+ "lipsync_mitch_letout"        "vo_mitch_letout"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Determined
+ // DIALOG : I should be able to open this door so we can follow him
+ "lipsync_mitch_dooropen"        "vo_mitch_dooropen"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Determined
+ // DIALOG : There!
+ "lipsync_mitch_there"        "vo_mitch_there"
+
+}
+ 
+entityDef char_npc_navajas_M05_Bio_vo
+{
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Somber
+ // DIALOG : The extraction teams will take care of him, we need to keep moving.
+ "lipsync_nava_exttakecare"        "vo_nava_exttakecare"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Informative
+ // DIALOG : A little battered, but fine.  Aside from shutting down his med-chip, the Strogg didn't do anything to him.  From the looks of it, we got here just in time.
+ "lipsync_nava_battfine"        "vo_nava_battfine"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Informative
+ // DIALOG : Couple hours rest and he’ll be back to his old self.
+ "lipsync_nava_couplehrs"        "vo_nava_couplehrs"
+
+
+ // CHARACTER: NAVAJAS +USE
+ // CONTEXT:Complementary
+ // DIALOG : To take down that beast single-handedly was quite a feat
+ "lipsync_nava_takebeast"        "vo_nava_takebeast"
+
+
+ // CHARACTER: NAVAJAS +USE
+ // CONTEXT:Tense
+ // DIALOG : Stay sharp Dekard.
+ "lipsync_nava_stayshrp"        "vo_nava_stayshrp"
+
+
+ // CHARACTER: NAVAJAS +USE
+ // CONTEXT:Tense
+ // DIALOG : We're almost out of this place.
+ "lipsync_nava_wealmstout"        "vo_nava_wealmstout"
+
+}
+ 
+entityDef char_npc_sreammarines_M05_Bio_vo
+{
+ // CHARACTER: SCREAMING MARINE 1
+ // CONTEXT:Tortured
+ // DIALOG : (Screams in pain)
+ "lipsync_scrmar1_pain"        "vo_scrmar1_pain"
+
+
+ // CHARACTER: SCREAMING MARINE 1
+ // CONTEXT:Tortured
+ // DIALOG : No. No. Noooooo.
+ "lipsync_scrmar1_nonono"        "vo_scrmar1_nonono"
+
+
+ // CHARACTER: SCREAMING MARINE 2
+ // CONTEXT:Tortured
+ // DIALOG : Kill me!  Please just kill me.
+ "lipsync_scrmar2_killmepls"        "vo_scrmar2_killmepls"
+
+
+ // CHARACTER: SCREAMING MARINE 2
+ // CONTEXT:Tortured
+ // DIALOG : What do you want from me?
+ "lipsync_scrmar2_whatwnt"        "vo_scrmar2_whatwnt"
+
+
+ // CHARACTER: SCREAMING MARINE 3
+ // CONTEXT:Tortured
+ // DIALOG : No, please no. I – (Screams)
+ "lipsync_scrmar3_noplsno"        "vo_scrmar3_noplsno"
+
+
+ // CHARACTER: SCREAMING MARINE 3
+ // CONTEXT:Tortured
+ // DIALOG : No.  Not that. Not tha-(Screams)
+ "lipsync_scrmar3_nonothth"        "vo_scrmar3_nonothth"
+
+
+ // CHARACTER: SCREAMING MARINE 4
+ // CONTEXT:Tortured
+ // DIALOG : (Screams in pain)
+ "lipsync_scrmar4_pain"        "vo_scrmar4_pain"
+
+
+ // CHARACTER: SCREAMING MARINE 4
+ // CONTEXT:Tortured
+ // DIALOG : (Screams) Not again.  No more. Please, No more.
+ "lipsync_scrmar4_notnomr"        "vo_scrmar4_notnomr"
+
+
+ // CHARACTER: SCREAMING MARINE 5
+ // CONTEXT:Tortured
+ // DIALOG : (Screams) Please, Stop.  Just stop (Screams)
+ "lipsync_scrmar5_plsstop"        "vo_scrmar5_plsstop"
+
+
+ // CHARACTER: SCREAMING MARINE 5
+ // CONTEXT:Tortured
+ // DIALOG : I’ll give you whatever you want, just please sto- (Screams)
+ "lipsync_scrmar5_giveyou"        "vo_scrmar5_giveyou"
+
+
+ // CHARACTER: SCREAMING MARINE 6
+ // CONTEXT:Tortured
+ // DIALOG : What are you doing to me?
+ "lipsync_scrmar6_youdo"        "vo_scrmar6_youdo"
+
+
+ // CHARACTER: SCREAMING MARINE 6
+ // CONTEXT:Tortured
+ // DIALOG : Somebody, help!  Please.
+ "lipsync_scrmar6_smbdy"        "vo_scrmar6_smbdy"
+}
+ 
+entityDef char_npc_strauss_M05_Bio_vo
+{
+
+ // CHARACTER: STRAUSS
+ // CONTEXT:Panic
+ // DIALOG : (Muffled dialog)
+ "lipsync_strauss_muffled"        "vo_strauss_muffled"
+
+
+ // CHARACTER: STRAUSS
+ // CONTEXT:Calm to Frustrated
+ // DIALOG : After all of that, you plan on just leaving me behind?
+ "lipsync_strauss_allthat2"        "vo_strauss_allthat2"
+
+
+ // CHARACTER: STRAUSS
+ // CONTEXT:Calm
+ // DIALOG : Thank you Sergeant, you have my gratitude.
+ "lipsync_strauss_gratitude"        "vo_strauss_gratitude"
+
+
+ // CHARACTER: STRAUSS
+ // CONTEXT:Frustrated
+ // DIALOG : What are you doing, bypassing the Strogg systems is quite inefficient
+ "lipsync_strauss_dobypass"        "vo_strauss_dobypass"
+
+
+ // CHARACTER: STRAUSS
+ // CONTEXT:Hurried
+ // DIALOG : Step aside.
+ "lipsync_strauss_stepas"        "vo_strauss_stepas"
+
+
+ // CHARACTER: STRAUSS
+ // CONTEXT:Cocky, informative
+ // DIALOG : In the future, you should proceed directly to the maintenance cycle
+ "lipsync_strauss_infutur"        "vo_strauss_infutur"
+
+
+ // CHARACTER: STRAUSS
+ // CONTEXT:Informative
+ // DIALOG : From there you can execute any command without tripping the security lockouts.
+ "lipsync_strauss_execcmd"        "vo_strauss_execcmd"
+
+
+ // CHARACTER: STRAUSS
+ // CONTEXT:Arrogant
+ // DIALOG : That creature was obviously capable of downloading data from humans into the Nexus.
+ "lipsync_strauss_obvcap"        "vo_strauss_obvcap"
+
+
+ // CHARACTER: STRAUSS
+ // CONTEXT:Arrogant
+ // DIALOG : Anybody successfully connected to that equipment would instantly reveal any key information to the Nexus, and therefore to every Strogg.
+ "lipsync_strauss_revealnex"        "vo_strauss_revealnex"
+
+
+ // CHARACTER: STRAUSS
+ // CONTEXT:Arrogant
+ // DIALOG : I assure you, being connected into the Nexus in that way would not be pleasant.
+ "lipsync_strauss_iassure"        "vo_strauss_iassure"
+
+
+ // CHARACTER: STRAUSS
+ // CONTEXT:Distant
+ // DIALOG : Trunklines from the Nexus were visible in that room, we were so close.
+ "lipsync_strauss_trunklines"        "vo_strauss_trunklines"
+
+
+ // CHARACTER: STRAUSS (RESPONSE)
+ // CONTEXT:Questioning
+ // DIALOG : What data?
+ "lipsync_strauss_whatdata"        "vo_strauss_whatdata"
+
+
+ // CHARACTER: STRAUSS +USE
+ // CONTEXT:Informative
+ // DIALOG : I was captured while trying to disable the tetranode with my squad. I wonder what happened to Corporal Kane, he was confronted by the Makron.
+ "lipsync_strauss_confmak"        "vo_strauss_confmak"
+
+
+ // CHARACTER: STRAUSS +USE
+ // CONTEXT:Annoyed
+ // DIALOG : This should have never happened, we could have never predicted that another Makron would appear so quickly.
+ "lipsync_strauss_nevepredict"        "vo_strauss_nevepredict"
+
+
+ // CHARACTER: STRAUSS +USE
+ // CONTEXT:Annoyed
+ // DIALOG : My squadmates should have listened to me when I said I needed more protection.
+ "lipsync_strauss_sqlist"        "vo_strauss_sqlist"
+
+
+ // CHARACTER: STRUASS (RESPONSE)
+ // CONTEXT:Cocky then Excited
+ // DIALOG : Now I see why they sent an entire squad to get me, I'm the only one who has a chance of getting into that data.  You must get me back to the Hannibal quickly.
+ "lipsync_strauss_nowisee"        "vo_strauss_nowisee"
+
+}
+ 
+entityDef char_npc_tak_M05_Bio_vo
+{
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : I’ve got a lock on Strauss.
+ "lipsync_tak_gotalok"        "vo_tak_gotalok"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Keep moving, Dekard.  You’re getting closer.
+ "lipsync_tak_keepmvcls"        "vo_tak_keepmvcls"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Straight ahead, Dekard.
+ "lipsync_tak_straightah"        "vo_tak_straightah"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Check the right.
+ "lipsync_tak_chkright"        "vo_tak_chkright"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : He’s to the left.
+ "lipsync_tak_hetoleft"        "vo_tak_hetoleft"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : You’re closing in on him, Dekard.
+ "lipsync_tak_closingin"        "vo_tak_closingin"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Concerned
+ // DIALOG : Strauss doesn’t have much time.
+ "lipsync_tak_straussdsnt"        "vo_tak_straussdsnt"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : You’re almost there, Dekard.  But I'm seeing some unusual activity on the Strogg network, the process Strauss is going to go through doesn't look good.  Watch yourself, Dekard, we have no idea what’s down there.
+ "lipsync_tak_watchdek"        "vo_tak_watchdek"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Dekard.  Strauss should be just ahead.
+ "lipsync_tak_dekstrss"        "vo_tak_dekstrss"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : Hold tight, Dekard.  We’re on our way.
+ "lipsync_tak_holdtgt"        "vo_tak_holdtgt"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Reassuring
+ // DIALOG : It won’t be much longer, Dekard.
+ "lipsync_tak_wontmuch"        "vo_tak_wontmuch"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Reassuring
+ // DIALOG : We just called for an Evac, Dekard.  The dropship’s inbound.  Just hold on.
+ "lipsync_tak_evacdek"        "vo_tak_evacdek"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Frustrated
+ // DIALOG : We can't get into the chamber you are in, something is keeping us out!
+ "lipsync_tak_wecntget"        "vo_tak_wecntget"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Frustrated
+ // DIALOG : Almost there.  We – Shit, they patched the security bypass.  We’ll be there as soon as we can, Dekard.
+ "lipsync_tak_almostshit"        "vo_tak_almostshit"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Military
+ // DIALOG : Yes sir.
+ "lipsync_tak_yessir6"        "vo_tak_yessir6"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Military
+ // DIALOG : Moving.
+ "lipsync_tak_moving5"        "vo_tak_moving5"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Military
+ // DIALOG : Roger, moving up.
+ "lipsync_tak_rogmoveup"        "vo_tak_rogmoveup"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Confident
+ // DIALOG : I'll have this down in a minute
+ "lipsync_tak_downmin"        "vo_tak_downmin"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Surprised
+ // DIALOG : Really?
+ "lipsync_tak_really2"        "vo_tak_really2"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Surprised
+ // DIALOG : Damn, that is faster!  Wow.  Thanks.
+ "lipsync_tak_damnfast"        "vo_tak_damnfast"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Reassuring
+ // DIALOG : Give it a second.
+ "lipsync_tak_givsec"        "vo_tak_givsec"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Questioning
+ // DIALOG : Strauss, do you know what that thing was planning on doing to you?
+ "lipsync_tak_docreat"        "vo_tak_docreat"
+
+
+ // CHARACTER: TAK (RESPONSE)
+ // CONTEXT:Informative
+ // DIALOG : We found an unprotected Nexus access terminal earlier today, downloaded an enormous amount of encrypted Strogg data- data nobody in Sci-tech has ever seen before.
+ "lipsync_tak_wefndunprot"        "vo_tak_wefndunprot"
+
+
+ // CHARACTER: TAK +USE
+ // CONTEXT:Hushed, hurried
+ // DIALOG : Now that we have Strauss, he should be able to decrypt the Strogg data.
+ "lipsync_tak_strssdecrypt"        "vo_tak_strssdecrypt"
+
+}
+ 
+entityDef char_npc_vansen_M05_Bio_vo
+{
+ // CHARACTER: VANSEN (PILOT)
+ // CONTEXT:Calm
+ // DIALOG : Hannibal, Falcon squad has rendezvoused with us and is heading your way now.
+ "lipsync_vansen_hannfalsq"        "vo_vansen_hannfalsq"
+}
+ 
+entityDef char_npc_viper1_M05_Bio_vo
+{
+
+ // CHARACTER: VIPER MARINE 1
+ // CONTEXT:Tense
+ // DIALOG : This is Burleson from Viper squad, anybody out there, we need a medic...
+ "lipsync_viper1_johnvip"        "vo_viper1_johnvip"
+
+
+ // CHARACTER: VIPER MARINE 1
+ // CONTEXT:Combat, Angry
+ // DIALOG : Die Strogg!
+ "lipsync_viper1_diestrgg"        "vo_viper1_diestrgg"
+
+
+ // CHARACTER: VIPER MARINE 1
+ // CONTEXT:Introduction, Relieved
+ // DIALOG : Burleson, Viper squad, wow am I glad to see you guys
+ "lipsync_viper1_johngld"        "vo_viper1_johngld"
+
+
+ // CHARACTER: VIPER MARINE 1
+ // CONTEXT:Informative
+ // DIALOG : We were one of the squads looking for pre-strogged marines, got caught up and the rest of our squad was ambushed.
+ "lipsync_viper1_weweresq"        "vo_viper1_weweresq"
+
+
+ // CHARACTER: VIPER MARINE 1
+ // CONTEXT:Informative
+ // DIALOG : Come with me, my tech is injured in the next room, he can help get us outta here
+ "lipsync_viper1_cometech"        "vo_viper1_cometech"
+
+
+ // CHARACTER: VIPER MARINE 1
+ // CONTEXT:Hurried
+ // DIALOG : Stark, got a medic for you!
+ "lipsync_viper1_philipmed"        "vo_viper1_philipmed"
+
+
+ // CHARACTER: VIPER MARINE 1
+ // CONTEXT:Determined
+ // DIALOG : Let's go
+ "lipsync_viper1_letsgo"        "vo_viper1_letsgo"
+
+
+ // CHARACTER: VIPER MARINE 1
+ // CONTEXT:Combat
+ // DIALOG : Incoming Strogg!
+ "lipsync_viper1_incstrgg"        "vo_viper1_incstrgg"
+
+
+ // CHARACTER: VIPER MARINE 1
+ // CONTEXT:Surprise 
+ // DIALOG : What the hell?!  Take it down!
+ "lipsync_viper1_whthell"        "vo_viper1_whthell"
+
+
+ // CHARACTER: VIPER MARINE 1
+ // CONTEXT:Combat
+ // DIALOG : Die squibs!
+ "lipsync_viper1_diesqb"        "vo_viper1_diesqb"
+
+
+ // CHARACTER: VIPER MARINE 1 +USE
+ // CONTEXT:Calm
+ // DIALOG : We've been wiping out squbs for hours now, you'd think they'd stop coming after a while.
+ "lipsync_viper1_wipeout"        "vo_viper1_wipeout"
+
+
+ // CHARACTER: VIPER MARINE 1 +USE
+ // CONTEXT:Calm
+ // DIALOG : Those pre-invasion marine supply drops have saved our ass, the Strogg pulled those supplies all over their facilities
+ "lipsync_viper1_preinvm"        "vo_viper1_preinvm"
+
+
+ // CHARACTER: VIPER MARINE 1 +USE
+ // CONTEXT:Laughing, Tense
+ // DIALOG : Finally the eggheads got something right.
+ "lipsync_viper1_egghead"        "vo_viper1_egghead"
+
+}
+ 
+entityDef char_npc_viper2_M05_Bio_vo
+{
+ // CHARACTER: VIPER MARINE 2
+ // CONTEXT:Revived
+ // DIALOG : Urgh... Allright, I'm good to go.
+ "lipsync_viper2_goodtogo"        "vo_viper2_goodtogo"
+
+
+ // CHARACTER: VIPER MARINE 2
+ // CONTEXT:Informative
+ // DIALOG : These two doors lead to remote access bridges, if we can get into one of the bridge control areas, I should be able to help you guys proceed
+ "lipsync_viper2_twodoorsld"        "vo_viper2_twodoorsld"
+
+
+ // CHARACTER: VIPER MARINE 2
+ // CONTEXT:Informative
+ // DIALOG : Accessing the bridge controls
+ "lipsync_viper2_accbrid"        "vo_viper2_accbrid"
+
+
+ // CHARACTER: VIPER MARINE 2
+ // CONTEXT:Informative
+ // DIALOG : This shouldn't take long
+ "lipsync_viper2_takelong"        "vo_viper2_takelong"
+
+
+ // CHARACTER: VIPER MARINE 2
+ // CONTEXT:Informative
+ // DIALOG : Ok, the bridge will extended for anybody now.
+ "lipsync_viper2_bridgeext"        "vo_viper2_bridgeext"
+
+
+ // CHARACTER: VIPER MARINE 2
+ // CONTEXT:Informative
+ // DIALOG : We need to stay behind, we have orders to gain access to the other side of the facility.
+ "lipsync_viper2_staybeh"        "vo_viper2_staybeh"
+
+
+ // CHARACTER: VIPER MARINE 2
+ // CONTEXT:Informative
+ // DIALOG : Before you go, let me see your Napalm Launcher, I can enhance it for you.
+ "lipsync_viper2_napalm"        "vo_viper2_napalm"
+
+
+ // CHARACTER: VIPER MARINE 2
+ // CONTEXT:Informative
+ // DIALOG : There you go, when you zoom, the pilot light will ignite allowing for a flame thrower like functionality
+ "lipsync_viper2_therezoom"        "vo_viper2_therezoom"
+
+
+ // CHARACTER: VIPER MARINE 2 +USE
+ // CONTEXT:Grim
+ // DIALOG : Our squad got hit pretty hard.
+ "lipsync_viper2_squadhard"        "vo_viper2_squadhard"
+
+
+ // CHARACTER: VIPER MARINE 2 +USE
+ // CONTEXT:Grim
+ // DIALOG : You two are the first marines we've seen in hours
+ "lipsync_viper2_firstmarh"        "vo_viper2_firstmarh"
+
+
+ // CHARACTER: VIPER MARINE 2 +USE
+ // CONTEXT:Frustrated, Grim
+ // DIALOG : Just think, if they could've popped just ONE of those EMPs, we'd all be on shore leave right now.
+ "lipsync_viper2_thinkshore"        "vo_viper2_thinkshore"
+
+}

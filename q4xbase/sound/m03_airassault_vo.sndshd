@@ -1,0 +1,3051 @@
+sound vo_w_scream
+{
+	description "<Eagle15 Pilot:> (Wilhelm scream)"
+	minDistance 80
+	maxDistance 900
+	volumeDb -5
+
+	sound/vo/M03_AirAssault/w_scream.wav
+}
+
+sound vo_nava_howhedo
+{
+ description "<Navajas:> How’s he doing doc?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/nava_howhedo.wav
+}
+
+
+sound vo_mitch_aswell
+{
+ description "<Mitchell:> As well as can be expected with three holes in his abdomen.  I’ve got him sedated but we need to keep a close eye on his vitals."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/mitch_aswell.wav
+}
+
+
+sound vo_mitch_gladfalc
+{
+ description "<Mitchell:> I’m glad to be back on board the Falcon.  I’ll take a heavy gunship over those dropships any day."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/mitch_gladfalc.wav
+}
+
+
+sound vo_nava_considwedid
+{
+ description "<Navajas:> Considering we didn’t actually crash after that impact, we got lucky."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/nava_considwedid.wav
+}
+
+
+sound vo_darn_townsatk
+{
+ description "<Darnell:> Townsend and Atkins weren’t so lucky.  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/darn_townsatk.wav
+}
+
+
+sound vo_nava_yeahwellwe
+{
+ description "<Navajas:> Yeah, well, we accomplished the mission.  Speaking of which- Tak- what’s the verdict on that data we collected?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/nava_yeahwellwe.wav
+}
+
+
+sound vo_tak_sciconftac
+{
+ description "<Tak:> Sci-tech confirmed what I suspected.  The data contains tactical information about the Strogg that nobody has seen before.  Most of it is encrypted.  They're trying to get in touch with Rhino Squad’s tech, Strauss.  He's one of 3 techs in the entire SMC that can decrypt Strogg data like this, and the only one that’s currently dirtside."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_sciconftac.wav
+}
+
+
+sound vo_marks_goodbadworse
+{
+ description "<Markswell:> Good news, bad news, and worse news gentlemen.  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_goodbadworse.wav
+}
+
+
+sound vo_marks_goodfirst
+{
+ description "<Markswell:> Good news first, despite our losses, our mission to the Trianthinide facility was a success.  The facility was successfully destroyed and the data that we collected has perked the interests of SMC top brass.  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_goodfirst.wav
+}
+
+
+sound vo_darn_goodhobtakdek
+{
+ description "<Darnell:> Good job Tak and Dekard!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/darn_goodhobtakdek.wav
+}
+
+
+sound vo_marks_worsenews
+{
+ description "<Markswell:> Worse news, we just got word from the Hannibal, all four operation advantage EMP convoys were wiped out.  Most of the ground forces are captured or dead, and it would seem that the Strogg have replaced their leader with a new Makron."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_worsenews.wav
+}
+
+
+sound vo_nava_what2
+{
+ description "<Navajas:> What?!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/nava_what2.wav
+}
+
+
+sound vo_darn_whathellwar
+{
+ description "<Darnell:> What the hell, this war just took ten steps in the wrong direction."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/darn_whathellwar.wav
+}
+
+
+sound vo_mitch_holyshit
+{
+ description "<Mitchell:> Holy shit?!   We committed more than half our ground forces to those objectives."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/mitch_holyshit.wav
+}
+
+
+sound vo_tak_straussconv
+{
+ description "<Tak:> Strauss was in one of those convoys- without him, this data is worthless!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_straussconv.wav
+}
+
+
+sound vo_marks_empeffortf
+{
+ description "<Markswell:> That’s right, after the EMP effort failed, sci-tech turned to the data we collected and discovered fragments pointing to how the Strogg brought a new Makron online so quickly. Unfortunately the rest of the data is heavily encrypted; and since it was our find, we’ve been tasked with locating the only marine that can unlock the rest of this critical data."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_empeffortf.wav
+}
+
+
+sound vo_tak_straussalive
+{
+ description "<Tak:> Strauss.  Strauss is alive?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_straussalive.wav
+}
+
+
+sound vo_marks_yeshannib
+{
+ description "<Markswell:> Yes, the Hannibal has determined that Strauss is alive and en route to a Strogg bio processing center."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_yeshannib.wav
+}
+
+
+sound vo_marks_nowbadnews
+{
+ description "<Markswell:> Now the bad news, we aren’t heading back to the MCC.  We’ve changed course to join up with a multiple unit task force to infiltrate the Strogg medlabs, prisons, and bio processing centers.  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_nowbadnews.wav
+}
+
+
+sound vo_marks_theirgoal
+{
+ description "<Markswell:> Their goal, to locate pre-stroggified marines. Our goal, to locate and rescue Strauss."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_theirgoal.wav
+}
+
+
+sound vo_darnell_wetwomen
+{
+ description "<Darnell:> We’re two men short!  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/darnell_wetwomen.wav
+}
+
+
+sound vo_nava_anothershit
+{
+ description "<Navajas:> Another shit job.."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/nava_anothershit.wav
+}
+
+
+sound vo_vansen_ltwing3
+{
+ description "<Vansen (Pilot):> Lieutenant, we’ve just joined up with wing three of the task force, they’ve spotted Strogg air resistance on our vector."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_ltwing3.wav
+}
+
+
+sound vo_marks_iknowshort
+{
+ description "<Markswell:> Marines, I know we're short-handed, but stay frosty- getting this data decrypted could change the tide of this war in Earth’s favor.  Dekard, Darnell, I don’t have to tell you what’s at stake here, you’ve seen what the Strogg did to Earth firsthand.."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_iknowshort.wav
+}
+
+
+sound vo_vansen_wegotincom1
+{
+ description "<Vansen (Pilot):> We’ve got incoming Strogg flyers!  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_wegotincom1.wav
+}
+
+
+sound vo_marks_everystation
+{
+ description "<Markswell:> Everybody to stations!  Go!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_everystation.wav
+}
+
+
+
+sound vo_marks_dekgbelly
+{
+ description "<Markswell:> Dekard, get to the belly turret!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_dekgbelly.wav
+}
+
+
+sound vo_marks_dekmanbell
+{
+ description "<Markswell:> Dekard, man that belly turret now!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_dekmanbell.wav
+}
+
+
+sound vo_makrs_movedek1
+{
+ description "<Markswell:> Move Dekard!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/makrs_movedek1.wav
+}
+
+
+sound vo_computer_targsysonline
+{
+ description "<Computer Voice:> Targeting systems online, missile batteries, check, cannons, check.  Weapons ready."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/computer_targsysonline.wav
+}
+
+
+sound vo_tak_sarge1
+{
+ description "<Tak +use:> Sarge?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_sarge1.wav
+}
+
+
+sound vo_tak_dektherealot
+{
+ description "<Tak +use:> Dekard, there are a lot of incoming targets!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_dektherealot.wav
+}
+
+
+sound vo_mitch_soundsside
+{
+ description "<Mitchell +use:> Sounds like I've been sidelined."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/mitch_soundsside.wav
+}
+
+
+sound vo_mitch_guessshort
+{
+ description "<Mitchell +use:> I guess being shorthanded, we can't afford to lose the only medic."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/mitch_guessshort.wav
+}
+
+
+sound vo_nava_getintopos
+{
+ description "<Navajas +use:> Get into position Sergeant."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/nava_getintopos.wav
+}
+
+
+sound vo_nava_weneedpost
+{
+ description "<Navajas +use:> We need you at your post."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/nava_weneedpost.wav
+}
+
+
+sound vo_marks_okstations
+{
+ description "<Markswell:> Ok, stations check."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_okstations.wav
+}
+
+
+sound vo_vansen_pilot55
+{
+ description "<Vansen (Pilot):> Pilot, 5 by 5."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_pilot55.wav
+}
+
+
+sound vo_vansen_pilotrog
+{
+ description "<Vansen (Pilot):> Pilot, roger."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_pilotrog.wav
+}
+
+
+sound vo_nava_munitonline
+{
+ description "<Navajas:> Munitions, online."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/nava_munitonline.wav
+}
+
+
+sound vo_tak_tacnavready
+{
+ description "<Tak:> Tactical and Navigation ready."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_tacnavready.wav
+}
+
+
+sound vo_tak_tactnavradar
+{
+ description "<Tak:> Tactical, Navigation and Radar ready."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_tactnavradar.wav
+}
+
+
+sound vo_darn_topsideturr
+{
+ description "<Darnell:> Topside turret good to go."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/darn_topsideturr.wav
+}
+
+
+sound vo_marks_mitchremain
+{
+ description "<Markswell:> Mitchell, remain seated at all times, keep an eye on our guest and stay out of harms way."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_mitchremain.wav
+}
+
+
+sound vo_mitch_roger1
+{
+ description "<Mitchell:> Roger."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/mitch_roger1.wav
+}
+
+
+sound vo_marks_dekfloat
+{
+ description "<Markswell:> Dekard, you're on floating duty - stay on your toes."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_dekfloat.wav
+}
+
+
+sound vo_marks_takwherearewe
+{
+ description "<Markswell:> Tak, where are we?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_takwherearewe.wav
+}
+
+
+sound vo_tak_we75clk
+{
+ description "<Tak:> We're 75 clicks from target."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_we75clk.wav
+}
+
+
+sound vo_marks_thirdwingf1
+{
+ description "<Markswell:> Third wing, this is Falcon 1, status, over."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_thirdwingf1.wav
+}
+
+
+sound vo_eagle23_ready
+{
+ description "<Pilot (Eagle 23):> Eagle 23 ready, over."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/eagle23_ready.wav
+}
+
+
+sound vo_eagle15_ready
+{
+ description "<Pilot (Eagle 15):> Eagle 15, good to go, over."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/eagle15_ready.wav
+}
+
+
+sound vo_raven8_combatrdy
+{
+ description "<Pilot (Raven 8):> Raven 8, combat ready, over."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/raven8_combatrdy.wav
+}
+
+
+sound vo_tak_strgairbursts
+{
+ description "<Tak:> Strogg air bursts inbound!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_strgairbursts.wav
+}
+
+
+sound vo_marks_hangon
+{
+ description "<Markswell:> Hold on!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_hangon.wav
+}
+
+
+sound vo_vansen_desttail
+{
+ description "<Vansen (Pilot):> We've got a destroyer on our tail, Get that thing offa me!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_desttail.wav
+}
+
+
+sound vo_vansen_cantshkd
+{
+ description "<Vansen (Pilot):> I can't shake this destroyer."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_cantshkd.wav
+}
+
+
+sound vo_vansen_cantshkf
+{
+ description "<Vansen (Pilot):> I can't shake this fighter!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_cantshkf.wav
+}
+
+
+sound vo_marks_dektakedest
+{
+ description "<Markswell:> Dekard, take out that destoryer on our tail!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_dektakedest.wav
+}
+
+
+sound vo_marks_dekfightt
+{
+ description "<Markswell:> Dekard, that fighter on our tail is ripping us apart, take it out!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_dekfightt.wav
+}
+
+
+sound vo_marks_takeoutt6
+{
+ description "<Markswell:> Dekard, take out that target on our 6!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_takeoutt6.wav
+}
+
+
+sound vo_tak_hol60inb
+{
+ description "<Tak:> Holy .... We have almost 60 inbound Strogg targets!  All heading to intercept!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_hol60inb.wav
+}
+
+
+sound vo_tak_50targ
+{
+ description "<Tak:> 50 Strogg targets remaining!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_50targ.wav
+}
+
+
+sound vo_tak_40targ
+{
+ description "<Tak:> 40 Strogg fighters left!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_40targ.wav
+}
+
+
+sound vo_tak_30targ
+{
+ description "<Tak:> 30 Strogg targets remaining!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_30targ.wav
+}
+
+
+sound vo_tak_15targ
+{
+ description "<Tak:> 15 Strogg targets still inbound!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_15targ.wav
+}
+
+
+sound vo_tak_5targ
+{
+ description "<Tak:> We are getting close marines, there are only 5 Strogg targets on radar!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_5targ.wav
+}
+
+
+sound vo_tak_nastyfire
+{
+ description "<Tak:> We've got a nasty fire back here! "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_nastyfire.wav
+}
+
+
+sound vo_tak_firespread
+{
+ description "<Tak:> The fire has spread to the cargo!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_firespread.wav
+}
+
+
+sound vo_tak_holyshit2
+{
+ description "<Tak:> Holy shit!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_holyshit2.wav
+}
+
+
+sound vo_mitch_trianthrupt
+{
+ description "<Mitchell:> The Trianthinide cargo just ruptured, we've got shrapnel all over the place down here!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/mitch_trianthrupt.wav
+}
+
+
+sound vo_mitch_damnrazor
+{
+ description "<Mitchell:> Damn!  Our guest from Razor squad just took some shrapnel!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/mitch_damnrazor.wav
+}
+
+
+sound vo_marks_takhitsupp
+{
+ description "<Markswell:> Tak, hit the fire suppression system!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_takhitsupp.wav
+}
+
+
+sound vo_tak_suppdead
+{
+ description "<Tak:> Suppression system is dead, damnit, nothing!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_suppdead.wav
+}
+
+
+sound vo_marks_taktact
+{
+ description "<Markswell:> Tak, get back to tactical. Dekard, grab that Strogg cold cannon and put out those fires!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_taktact.wav
+}
+
+
+sound vo_mairs_dekshutturr
+{
+ description "<Markswell:> Dekard, I'm shutting down your turret, put out that fire!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/mairs_dekshutturr.wav
+}
+
+
+sound vo_tak_trianthtoohot
+{
+ description "<Tak:> That Trianthinide is still too hot, I'm dumping the cargo.  Stand clear of the cargo ramp!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_trianthtoohot.wav
+}
+
+
+sound vo_tak_cargoaway
+{
+ description "<Tak:> Cargo away!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_cargoaway.wav
+}
+
+
+sound vo_tak_stroggtrginb
+{
+ description "<Tak:> Strogg targets inbound!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_stroggtrginb.wav
+}
+
+
+sound vo_tak_strggflyers12low
+{
+ description "<Tak:> Strogg flyers, 12 o'clock low!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_strggflyers12low.wav
+}
+
+
+sound vo_tak_targs2oclock
+{
+ description "<Tak:> Targets at 2 o'clock!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_targs2oclock.wav
+}
+
+
+sound vo_tak_fly3oclock
+{
+ description "<Tak:> Flyers at 3 o'clock!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_fly3oclock.wav
+}
+
+
+sound vo_tak_inb5oclock
+{
+ description "<Tak:> Inbound, 5 o'clock!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_inb5oclock.wav
+}
+
+
+sound vo_tak_flyerson6
+{
+ description "<Tak:> Flyers on our 6!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_flyerson6.wav
+}
+
+
+sound vo_tak_cont8oclock
+{
+ description "<Tak:> Contact, 8 o'clock!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_cont8oclock.wav
+}
+
+
+sound vo_tak_flyers9oclock
+{
+ description "<Tak:> Flyers, 9 o'clock!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_flyers9oclock.wav
+}
+
+
+sound vo_tak_contact10oclock
+{
+ description "<Tak:> Contact, 10 o'clock!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_contact10oclock.wav
+}
+
+
+sound vo_tak_incoming12oclock
+{
+ description "<Tak:> Incoming, 12 o'clock!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_incoming12oclock.wav
+}
+
+
+sound vo_tak_strgvec90m315
+{
+ description "<Tak:> Strogg flyers, vector 90 mark 315!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_strgvec90m315.wav
+}
+
+
+sound vo_tak_targsb135m315
+{
+ description "<Tak:> Targets bearing 135 mark 315!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_targsb135m315.wav
+}
+
+
+sound vo_tak_flyers180m380
+{
+ description "<Tak:> Flyers at 180 mark 380!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_flyers180m380.wav
+}
+
+
+sound vo_tak_inbound225m300
+{
+ description "<Tak:> Inbound, 225 mark 300!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_inbound225m300.wav
+}
+
+
+sound vo_tak_flyersi270m315
+{
+ description "<Tak:> Flyers vector 270 mark 315!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_flyersi270m315.wav
+}
+
+
+sound vo_tak_contact315m380
+{
+ description "<Tak:> Contact, bearing 315 mark 380!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_contact315m380.wav
+}
+
+
+sound vo_tak_flyersiv360m315
+{
+ description "<Tak:> Flyers, vector 360 mark 315!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_flyersiv360m315.wav
+}
+
+
+sound vo_tak_contact45m330
+{
+ description "<Tak:> Contact, 45 mark 330!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_contact45m330.wav
+}
+
+
+sound vo_tak_incomingv90
+{
+ description "<Tak:> Incoming, vector 90!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_incomingv90.wav
+}
+
+
+sound vo_tak_targb135
+{
+ description "<Tak:> Targets bearing 135!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_targb135.wav
+}
+
+
+sound vo_tak_flyersv180
+{
+ description "<Tak:> Flyers at vector 180!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_flyersv180.wav
+}
+
+
+sound vo_tak_inboundv225
+{
+ description "<Tak:> Inbound, vector 225!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_inboundv225.wav
+}
+
+
+sound vo_tak_flyersv270m315
+{
+ description "<Tak:> Flyers vector 270!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_flyersv270m315.wav
+}
+
+
+sound vo_tak_contactb315
+{
+ description "<Tak:> Contact, bearing 315!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_contactb315.wav
+}
+
+
+sound vo_tak_flyersv360m315
+{
+ description "<Tak:> Flyers, vector 360!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_flyersv360m315.wav
+}
+
+
+sound vo_tak_contactv45
+{
+ description "<Tak:> Contact, vector 45!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_contactv45.wav
+}
+
+
+sound vo_tak_dest12oclock
+{
+ description "<Tak:> Strogg destroyers, 12 o'clock high!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_dest12oclock.wav
+}
+
+
+sound vo_tak_dest2oclock
+{
+ description "<Tak:> Destroyers at 2 o'clock high!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_dest2oclock.wav
+}
+
+
+sound vo_tak_dest3oclock
+{
+ description "<Tak:> Destroyers at 3 o'clock high!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_dest3oclock.wav
+}
+
+
+sound vo_tak_dest5oclock
+{
+ description "<Tak:> Inbound Destroyer at 5 o'clock high!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_dest5oclock.wav
+}
+
+
+sound vo_tak_dest6oclock
+{
+ description "<Tak:> Destroyers on our high 6!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_dest6oclock.wav
+}
+
+
+sound vo_tak_dest8oclock
+{
+ description "<Tak:> Destroyers, 8 o'clock high!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_dest8oclock.wav
+}
+
+
+sound vo_tak_dest9oclock
+{
+ description "<Tak:> Destroyers, 9 o'clock high!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_dest9oclock.wav
+}
+
+
+sound vo_tak_dest10oclock
+{
+ description "<Tak:> Destroyers, 10 o'clock high!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_dest10oclock.wav
+}
+
+
+sound vo_tak_dest12oclock2
+{
+ description "<Tak:> Destroyers, 12 o'clock high!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_dest12oclock2.wav
+}
+
+
+sound vo_tak_flyersv90m45
+{
+ description "<Tak:> Strogg flyers, vector 90 mark 45!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_flyersv90m45.wav
+}
+
+
+sound vo_tak_targs135m35
+{
+ description "<Tak:> Targets bearing 135 mark 35!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_targs135m35.wav
+}
+
+
+sound vo_tak_flyers180m50
+{
+ description "<Tak:> Flyers at 180 mark 50!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_flyers180m50.wav
+}
+
+
+sound vo_tak_inbound225m45
+{
+ description "<Tak:> Inbound, 225 mark 45!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_inbound225m45.wav
+}
+
+
+sound vo_tak_flyersv270m45
+{
+ description "<Tak:> Flyers vector 270 mark 45!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_flyersv270m45.wav
+}
+
+
+sound vo_tak_contact315m50
+{
+ description "<Tak:> Contact, bearing 315 mark 50!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_contact315m50.wav
+}
+
+
+sound vo_tak_flyers360m45
+{
+ description "<Tak:> Flyers, vector 360 mark 45!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_flyers360m45.wav
+}
+
+
+sound vo_tak_contact45m30
+{
+ description "<Tak:> Contact, 45 mark 30!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_contact45m30.wav
+}
+
+
+sound vo_marks_gunnersfire
+{
+ description "<Markswell:> Gunners, fire at will!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_gunnersfire.wav
+}
+
+
+sound vo_marks_darndekfirew
+{
+ description "<Markswell:> Darnell, Dekard, fire at will!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_darndekfirew.wav
+}
+
+
+sound vo_tak_multtargallq
+{
+ description "<Tak:> Multiple targets!  All quadrants!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_multtargallq.wav
+}
+
+
+sound vo_tak_toomany
+{
+ description "<Tak:> There are too many of em'!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_toomany.wav
+}
+
+
+sound vo_tak_multtargallvec
+{
+ description "<Tak:> Multiple targets!  All vectors!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_multtargallvec.wav
+}
+
+
+sound vo_tak_theyeveryw
+{
+ description "<Tak:> They’re everywhere!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_theyeveryw.wav
+}
+
+
+sound vo_tak_shitpassair
+{
+ description "<Tak:> Shit, we're passing through some active air defense batteries!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_shitpassair.wav
+}
+
+
+sound vo_tak_incomingairdef
+{
+ description "<Tak:> Incoming air defense fire!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_incomingairdef.wav
+}
+
+
+sound vo_vansen_evasiveman
+{
+ description "<Vansen (Pilot):> Evasive maneuvers, hold on!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_evasiveman.wav
+}
+
+
+sound vo_vansen_keepdestsoff
+{
+ description "<Vansen (Pilot):> Keep those destroyers offa' me!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_keepdestsoff.wav
+}
+
+
+sound vo_vansen_hangon
+{
+ description "<Vansen (Pilot):> Hang on!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_hangon.wav
+}
+
+
+sound vo_vansen_evasiv2
+{
+ description "<Vansen (Pilot):> Evasive maneuvers."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_evasiv2.wav
+}
+
+
+sound vo_vansen_evasive3
+{
+ description "<Vansen (Pilot):> Evasive action!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_evasive3.wav
+}
+
+
+sound vo_vansen_getbumpy
+{
+ description "<Vansen (Pilot):> This is gonna get bumpy!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_getbumpy.wav
+}
+
+
+sound vo_vansen_holdlunch
+{
+ description "<Vansen (Pilot):> Hold on to your lunch marines!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_holdlunch.wav
+}
+
+
+sound vo_nava_dekyounotmiss
+{
+ description "<Navajas:> Dekard, you're not using your missiles.  You do know to operate that equipment, yes?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/nava_dekyounotmiss.wav
+}
+
+
+sound vo_tak_dekareyourmiss
+{
+ description "<Tak:> Dekard, are your missile targeting systems working?  I don't see you using missiles at all!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_dekareyourmiss.wav
+}
+
+
+sound vo_marks_dekusemiss
+{
+ description "<Markswell:> Dekard, use your guided missiles!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_dekusemiss.wav
+}
+
+
+sound vo_tak_hullbrmain
+{
+ description "<Tak:> We've got a hull breach in main cabin, structure is holding."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_hullbrmain.wav
+}
+
+
+sound vo_tak_hullstrssmax
+{
+ description "<Tak:> Hull stress is approaching maximum."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_hullstrssmax.wav
+}
+
+
+sound vo_tak_powersysst
+{
+ description "<Tak:> Power systems are starting to fluctuate."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_powersysst.wav
+}
+
+
+sound vo_tak_wehavemajdam
+{
+ description "<Tak:> We have major damage in aft starboard."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_wehavemajdam.wav
+}
+
+
+sound vo_tak_damagelevcrty
+{
+ description "<Tak:> Damage levels are reaching critical."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_damagelevcrty.wav
+}
+
+
+sound vo_tak_wecnttakeany
+{
+ description "<Tak:> We can't take any more damage!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_wecnttakeany.wav
+}
+
+
+sound vo_tak_damagelev
+{
+ description "<Tak:> Damage levels are holding."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_damagelev.wav
+}
+
+
+sound vo_minordamtoseconday
+{
+ description "<Tak:> Minor damage to the secondary hull."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/minordamtoseconday.wav
+}
+
+
+sound vo_wegotmajordamsec
+{
+ description "<Tak:> We've got major damage to the secondary hull."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/wegotmajordamsec.wav
+}
+
+
+sound vo_tak_wecantakemuch
+{
+ description "<Tak:> We can't take much more fire."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_wecantakemuch.wav
+}
+
+
+sound vo_tak_onmorebigshot
+{
+ description "<Tak:> One more big shot and we are done for."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_onmorebigshot.wav
+}
+
+
+sound vo_tak_primaryhydarul
+{
+ description "<Tak:> Primary hydraulics system is totally shot."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_primaryhydarul.wav
+}
+
+
+sound vo_marks_eagle23fire
+{
+ description "<Markswell:> Eagle 23, I see an engine fire, confirm?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_eagle23fire.wav
+}
+
+
+sound vo_eagle23_welosealt
+{
+ description "<Pilot (Eagle 23):> We are losing altitude, port engine is gone and starboard is failing."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/eagle23_welosealt.wav
+}
+
+
+sound vo_marks_23isgone
+{
+ description "<Markswell:> Eagle 23 is gone."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_23isgone.wav
+}
+
+
+sound vo_eagle15_wehitgodown
+{
+ description "<Pilot (Eagle 15):> We've been hit and are going down!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/eagle15_wehitgodown.wav
+}
+
+
+sound vo_marks_eagle15hit
+{
+ description "<Markswell:> Eagle 15 is hit."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_eagle15hit.wav
+}
+
+
+sound vo_eagle15_shouting
+{
+ description "<Pilot (Eagle 15):> (Incomprehensible dialog)"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/eagle15_shouting.wav
+}
+
+
+sound vo_marks_eagle15dest
+{
+ description "<Markswell:> Eagle 15 destroyed."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_eagle15dest.wav
+}
+
+
+sound vo_raven8_shitfire
+{
+ description "<Pilot (Raven 8):> Shit!  We've got a fire in our munitions bay, suppression syst...(cut)"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/raven8_shitfire.wav
+}
+
+
+sound vo_markswell_raven8com
+{
+ description "<Markswell:> Raven 8, come in!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/markswell_raven8com.wav
+}
+
+
+sound vo_raven8_die
+{
+ description "<Pilot (Raven 8):> Arrgghh! (cut)"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/raven8_die.wav
+}
+
+
+sound vo_makrs_exploraven8
+{
+ description "<Markswell:> Explosion on Raven 8, going down hard!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/makrs_exploraven8.wav
+}
+
+
+sound vo_vansen_porteng80
+{
+ description "<Vansen (Pilot):> Port engine is at 80%, getting bumpy."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_porteng80.wav
+}
+
+
+sound vo_vansen_latercont
+{
+ description "<Vansen (Pilot):> Lateral control is getting sluggish."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_latercont.wav
+}
+
+
+sound vo_vansen_botheng
+{
+ description "<Vansen (Pilot):> Both engines are down more than 30%"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_botheng.wav
+}
+
+
+sound vo_vansen_shipdamcrit
+{
+ description "<Vansen (Pilot):> Ship damage is getting critical"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_shipdamcrit.wav
+}
+
+
+sound vo_darn_gotalock
+{
+ description "<Darnell:> I got a lock.  Strogg down."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/darn_gotalock.wav
+}
+
+
+sound vo_darn_watchtarg
+{
+ description "<Darnell:> Watch out, Dekard, target headed your way."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/darn_watchtarg.wav
+}
+
+
+sound vo_darn_flydown
+{
+ description "<Darnell:> Flyer down."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/darn_flydown.wav
+}
+
+
+sound vo_darn_destdown
+{
+ description "<Darnell:> Destroyer down."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/darn_destdown.wav
+}
+
+
+sound vo_darn_threemore
+{
+ description "<Darnell:> Three more down."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/darn_threemore.wav
+}
+
+
+sound vo_darn_cannonsuseless
+{
+ description "<Darnell:> Cannons are useless, I’m switching to missiles."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/darn_cannonsuseless.wav
+}
+
+
+sound vo_marks_dekgetbackpos
+{
+ description "<Markswell:> Dekard! Get back to your position, we’re getting hammered!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_dekgetbackpos.wav
+}
+
+
+sound vo_marks_dekweneedyouin
+{
+ description "<Markswell:> Dekard, we need you in position!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_dekweneedyouin.wav
+}
+
+
+sound vo_makrs_getbackpost
+{
+ description "<Markswell:> Get back to your post, Marine!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/makrs_getbackpost.wav
+}
+
+
+sound vo_marks_stopfriend
+{
+ description "<Markswell:> Dekard, stop shooting friendlies!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_stopfriend.wav
+}
+
+
+sound vo_marks_thoseourship
+{
+ description "<Markswell:> Those are our ships, stop shooting!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_thoseourship.wav
+}
+
+
+sound vo_marks_dekdonotdam
+{
+ description "<Markswell:> Dekard, do not damage friendly craft!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_dekdonotdam.wav
+}
+
+
+sound vo_marks_dekwatchfire
+{
+ description "<Markswell:> Dekard, watch your fire!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_dekwatchfire.wav
+}
+
+
+sound vo_marks_takwhatpos
+{
+ description "<Markswell:> Tak, what's our position?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_takwhatpos.wav
+}
+
+
+sound vo_tak_50clickslz
+{
+ description "<Tak:> 50 clicks from LZ."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_50clickslz.wav
+}
+
+
+sound vo_tak_30clickslz
+{
+ description "<Tak:> 30 clicks from LZ."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_30clickslz.wav
+}
+
+
+sound vo_marks_taktellcls
+{
+ description "<Markswell:> Tak, tell me we're getting close!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_taktellcls.wav
+}
+
+
+sound vo_tak_almost10clk
+{
+ description "<Tak:> Almost there, 10 clicks!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_almost10clk.wav
+}
+
+
+sound vo_marks_dekwelldone
+{
+ description "<Markswell:> Dekard, well done!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_dekwelldone.wav
+}
+
+
+sound vo_marks_goodshotdek
+{
+ description "<Markswell:> Good shot Dekard!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_goodshotdek.wav
+}
+
+
+sound vo_marks_niceshootgun
+{
+ description "<Markswell:> Nice shooting gunners!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_niceshootgun.wav
+}
+
+
+sound vo_marks_niceshotdek
+{
+ description "<Markswell:> Nice shot Dekard!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_niceshotdek.wav
+}
+
+
+
+sound vo_nava_firemunit
+{
+ description "<Navajas:> I've got a fire in the munitions bay, auto fire suppression isn't kicking in!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/nava_firemunit.wav
+}
+
+
+sound vo_vansen_cookinghyd
+{
+ description "<Vansen (Pilot):> That fire is cooking the hydraulics system, switching to secondary."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_cookinghyd.wav
+}
+
+
+sound vo_darn_illkeepcov
+{
+ description "<Darnell:> I'll keep us covered, go Dekard."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/darn_illkeepcov.wav
+}
+
+
+sound vo_marks_dekgetofire
+{
+ description "<Markswell:> Dekard, get to fire control and suppress that fire!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_dekgetofire.wav
+}
+
+
+sound vo_nava_firegrow
+{
+ description "<Navajas:> The fire is growing, Dekard."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/nava_firegrow.wav
+}
+
+
+sound vo_marks_dekfirectrln
+{
+ description "<Markswell:> Dekard, get to fire control NOW."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_dekfirectrln.wav
+}
+
+
+sound vo_marks_goodbackbell
+{
+ description "<Markswell:> Good job Dekard, now get back to the belly turret."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_goodbackbell.wav
+}
+
+
+sound vo_mitch_navayouneedmed
+{
+ description "<Mitchell:> Navajas, you need medical?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/mitch_navayouneedmed.wav
+}
+
+
+sound vo_nava_firedidnt
+{
+ description "<Navajas:> No, the fire didn't reach me."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/nava_firedidnt.wav
+}
+
+
+
+sound vo_mitch_whoacargo
+{
+ description "<Mitchell:> Whoa, cargo fire!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/mitch_whoacargo.wav
+}
+
+
+sound vo_tak_holyshittri
+{
+ description "<Tak:> Holy shit, the Trianthinide containers are on fire!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_holyshittri.wav
+}
+
+
+sound vo_marks_takhitfire
+{
+ description "<Markswell:> Tak, hit the fire suppression system!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_takhitfire.wav
+}
+
+
+sound vo_tak_suppsysdead
+{
+ description "<Tak:> Suppression system is dead, damnit, nothing!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_suppsysdead.wav
+}
+
+
+sound vo_marks_takgettac
+{
+ description "<Markswell:> Tak, get back to tactical. Dekard, grab that Strogg cold cannon and put out that cargo!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_takgettac.wav
+}
+
+
+sound vo_marks_darnmovetobelly
+{
+ description "<Markswell:> Darnell, move to the belly turret, we have heavy incoming from below."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_darnmovetobelly.wav
+}
+
+
+sound vo_darn_rogerthtlt
+{
+ description "<Darnell:> Roger that lieutenant."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/darn_rogerthtlt.wav
+}
+
+
+sound vo_marks_dekextingcarg
+{
+ description "<Markswell:> Dekard, extinguish that cargo NOW!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_dekextingcarg.wav
+}
+
+
+sound vo_marks_goodjbdek
+{
+ description "<Markswell:> Good job Dekard."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_goodjbdek.wav
+}
+
+
+sound vo_tak_containhot
+{
+ description "<Tak:> Those containers are still hot, we need to lose the cargo. If the Trianthinide goes up we're all dead!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_containhot.wav
+}
+
+
+sound vo_marks_dekgettoeject
+{
+ description "<Markswell:> Dekard, get to the cargo controls and eject the cargo."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_dekgettoeject.wav
+}
+
+
+sound vo_marks_dekejectvol
+{
+ description "<Markswell:> Dekard, eject the volatile cargo!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_dekejectvol.wav
+}
+
+
+sound vo_marks_getcrgo
+{
+ description "<Markswell:> Get that cargo off this ship marine!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_getcrgo.wav
+}
+
+
+sound vo_vansen_whathelltht
+{
+ description "<Vansen (Pilot):> What the hell was that?!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_whathelltht.wav
+}
+
+
+sound vo_tak_thatwastoo
+{
+ description "<Tak:> That was too close."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/tak_thatwastoo.wav
+}
+
+
+sound vo_marks_dekgettotop
+{
+ description "<Markswell:> Dekard, get to the topside turret."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_dekgettotop.wav
+}
+
+
+sound vo_marks_dektopturr
+{
+ description "<Markswell:> Dekard, man the topshide turret now!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_dektopturr.wav
+}
+
+
+sound vo_marks_movedektopturr
+{
+ description "<Markswell:> Move Dekard, topside turret ASAP!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_movedektopturr.wav
+}
+
+
+
+sound vo_computer_munitjam
+{
+ description "<Computer Voice:> Warning, munitions jam."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/computer_munitjam.wav
+}
+
+
+sound vo_darn_shitgunsdead
+{
+ description "<Darnell:> Shit, my guns are dead, missiles are dead too."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/darn_shitgunsdead.wav
+}
+
+
+sound vo_nava_feedjam
+{
+ description "<Navajas:> I've got a feeder jam back here, I need help clearing the feeders!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/nava_feedjam.wav
+}
+
+
+sound vo_marks_dekhelpnavfe
+{
+ description "<Markswell:> Dekard, help Navajas get those feeders operational!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_dekhelpnavfe.wav
+}
+
+
+sound vo_marks_getfeednow
+{
+ description "<Markswell:> Get those feeders operational NOW!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_getfeednow.wav
+}
+
+
+sound vo_darn_sittduck
+{
+ description "<Darnell:> Come on Dekard, we're sitting ducks here!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/darn_sittduck.wav
+}
+
+
+sound vo_vansen_whatquick
+{
+ description "<Vansen (Pilot):> Whatever your going to do, do it quick."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_whatquick.wav
+}
+
+
+sound vo_nava_detammofeed
+{
+ description "<Navajas:> Dekard, get to the ammo feeder system and wait for my signal."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/nava_detammofeed.wav
+}
+
+
+sound vo_nava_dammwaitsig
+{
+ description "<Navajas:> Damnit Dekard!  I said wait for my signal, now I need to reset this manually."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/nava_dammwaitsig.wav
+}
+
+
+sound vo_nava_okdekon3
+{
+ description "<Navajas:> Ok Dekard, on 3 press the feeder reset, 1, 2, 3.."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/nava_okdekon3.wav
+}
+
+
+sound vo_nava_isaidon3
+{
+ description "<Navajas:> I said on 3 damnit!  Resetting. "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/nava_isaidon3.wav
+}
+
+
+sound vo_nava_lookinggood
+{
+ description "<Navajas:> Looking good..."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/nava_lookinggood.wav
+}
+
+
+sound vo_nava_jamisfree
+{
+ description "<Navajas:> Jam is free, feeders are operational again."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/nava_jamisfree.wav
+}
+
+
+sound vo_darn_firingweback
+{
+ description "<Darnell:> Firing!  We're back up!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/darn_firingweback.wav
+}
+
+
+sound vo_marks_dekmovetopt
+{
+ description "<Markswell:> Dekard, back to the topside turret."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_dekmovetopt.wav
+}
+
+
+sound vo_marks_movedek2
+{
+ description "<Markswell:> Move Dekard!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_movedek2.wav
+}
+
+
+
+sound vo_vansen_shitportract
+{
+ description "<Vansen (Pilot):> Shit!  Port engine has a reaction chamber failure.  I can't reset it from here!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_shitportract.wav
+}
+
+
+sound vo_vansen_shitburnout
+{
+ description "<Vansen (Pilot):> Shit!  Port engine burnout!  I can't reset it from here!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_shitburnout.wav
+}
+
+
+sound vo_marks_dekgettosec
+{
+ description "<Markswell:> Dekard, get to the secondary engine panel and reset the port engine!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_dekgettosec.wav
+}
+
+
+sound vo_vansen_portfail
+{
+ description "<Vansen (Pilot):> Port engine is failing, we're losing altitude!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_portfail.wav
+}
+
+
+sound vo_vansen_welist
+{
+ description "<Vansen (Pilot):> We are listing, I need that engine reset NOW!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_welist.wav
+}
+
+
+sound vo_marks_dekgetengin
+{
+ description "<Markswell:> Dekard, get to the engine reset panel NOW!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_dekgetengin.wav
+}
+
+
+sound vo_vansen_okport
+{
+ description "<Vansen (Pilot):> Ok, port engine is shut down, this is gonna get bumpy."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_okport.wav
+}
+
+
+sound vo_vansen_reactclr
+{
+ description "<Vansen (Pilot):> Reaction chamber is clear, fuel injection has engaged."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_reactclr.wav
+}
+
+
+sound vo_vansen_pressengag
+{
+ description "<Vansen (Pilot):> Press engage and we should be back up."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_pressengag.wav
+}
+
+
+sound vo_marks_dekprsseng
+{
+ description "<Markswell:> Dekard, press engage on that engine panel!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_dekprsseng.wav
+}
+
+
+sound vo_marks_deknow
+{
+ description "<Markswell:> Dekard, now!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_deknow.wav
+}
+
+
+sound vo_vansen_portenginback
+{
+ description "<Vansen (Pilot):> Port engine is back, stabilizing."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_portenginback.wav
+}
+
+
+sound vo_marks_grtworkdek
+{
+ description "<Markswell:> Great work Dekard.  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_grtworkdek.wav
+}
+
+
+
+sound vo_vansen_weapprchlz
+{
+ description "<Vansen (Pilot):> We are approaching the LZ"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_weapprchlz.wav
+}
+
+
+sound vo_marks_everyprep
+{
+ description "<Markswell:> Everybody prep for landing, back to your seats."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_everyprep.wav
+}
+
+
+sound vo_vansen_lz150
+{
+ description "<Vansen (Pilot):> LZ in one-five-zero, on final approach vector."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_lz150.wav
+}
+
+
+sound vo_marks_everybdyback
+{
+ description "<Markswell:> Everybody back to your seats."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_everybdyback.wav
+}
+
+
+sound vo_vansen_gocgunf1lz
+{
+ description "<Vansen (Pilot):> GOC, this is gunship Falcon 1 on final approach to LZ, over."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_gocgunf1lz.wav
+}
+
+
+sound vo_goc_rogfalc1altlz
+{
+ description "<GOC:> Roger Falcon 1, 1st, 2nd and 4th wings have set down at alternate LZs, minimal losses."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/goc_rogfalc1altlz.wav
+}
+
+
+
+sound vo_marks_everybdyout
+{
+ description "<Markswell:> Everybody out!  Double time!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_everybdyout.wav
+}
+
+
+sound vo_vansen_delivpack
+{
+ description "<Vansen (Pilot):> Dropship Falcon 1 has delivered the package and is dusting off."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/vansen_delivpack.wav
+}
+
+
+sound vo_marks_infiltopsid
+{
+ description "<Markswell:> Dekard.  You, Tak, and Darnell infiltrate topside.  See if you can gain access to the facility specs, it’s the only way we’re gonna find Strauss in time.  Navajas, Mitchell, and I have been ordered to meet up with the other extraction teams.  We'll coordinate as soon as you locate the specs."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_infiltopsid.wav
+}
+
+
+sound vo_marks_moveout3
+{
+ description "<Markswell:> Move out!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M03_AirAssault/marks_moveout3.wav
+}

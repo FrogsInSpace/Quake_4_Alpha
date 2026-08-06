@@ -1,0 +1,210 @@
+/*
+===============================================================================
+
+	q4x a sheilded chaingun turret for the beach sequence
+
+===============================================================================
+*/
+
+export turret
+{
+	options -prefix TURRET_ -scale .4 -keep muzzle_flash_big muzzle_flash_small
+
+	anim	models/monsters/turret/animations/TURRET_bigfire.ma		-dest models/monsters/turret/wallTurret_bigfire
+		
+}
+
+entityDef hitscan_turret_beach_chaingun_bullet
+{
+	"inherit"							"hitscan_base"
+	"def_damage"						"damage_turret_beach_chaingun_bullet"
+	
+	"attack_spread_horizontal"			"10"
+	"attack_spread_vertical"			"7"
+	
+	"fx_impact"							"effects/monsters/tank/machinegun_burst.fx"
+	"fx_impact_water"					"effects/ambient/splash_smll.fx"
+	"fx_impact_concrete"				"effects/weapons/machinegun/impact_concrete.fx"
+	"fx_impact_rock"					"effects/weapons/machinegun/impact_concrete.fx"
+	"fx_impact_electronics"				"effects/weapons/machinegun/impact_electronics.fx"
+	"fx_impact_flesh"					"effects/weapons/machinegun/impact_flesh.fx"						
+	"fx_impact_glass"					"effects/weapons/machinegun/impact_glass.fx"
+	"fx_impact_monstermetal"			"effects/weapons/machinegun/impact_monstermetal.fx"
+	"fx_impact_bpglass"					"effects/weapons/machinegun/impact_bpglass.fx"
+	
+	"fx_tracer"							"effects/monsters/grunt/bullet_tracer.fx"
+	"fx_fly"							"effects/monsters/grunt/bullet_tracer.fx"
+	"snd_fly"							"weapon_energy_projectile_loop"
+}
+
+entityDef damage_turret_beach_chaingun_bullet
+{
+	"inherit"							"damage_bullet_base"
+	"push"								"35"
+	"knockback"							"35"
+	"damage"							"32"
+	"gib"								"1"
+
+	"deathPush"							"100"
+	"deathPushMin"						"3000 2000"
+	"deathPushMax"						"5000 3000"
+}
+
+entityDef monster_q4x_beach_turret
+{
+	"inherit"							"monster_turret"
+	"health"							"4000"
+	"model"						"model_monster_q4x_beach_turret"
+	//"def_attack_blaster"				"hitscan_turret_beach_chaingun_bullet"
+	//"attack_blaster_hitscan"			"1"
+	"def_attack_blaster"				"projectile_q4x_beach_blaster"
+	
+	"minShots"							"30"
+	"maxShots"							"30"
+	
+	"dynamicAccuracy"					"1"
+	"accuracyLerpTime"					"2000"
+	"dynamicAccuracyMin"				".75"
+	"dynamicAccuracyMax"				"20"
+	
+	"actionTimer_rangedAttack_rate"		".1"				
+	"action_blasterAttack_Rate"			".1"
+	"attack_blaster_accuracy"			"1.0"
+	"attack_blaster_spread"				".15"
+	"attack_blaster_cone"				"90"
+	"action_blasterAttack_minRange"		"1"
+	"action_blasterAttack_maxRange"		"30000"
+	
+	}
+	
+model	model_monster_q4x_beach_turret
+	
+	{
+	inherit 			model_monster_turret
+	
+		anim range_attack									models/monsters/turret/wallTurret_fire.md5anim
+		{
+		//rate	.6
+		frame 1											ai_disablePain
+		frame 3											ai_attack		blaster				muzzle_flash_big
+		frame 3											fx				fx_blaster_flash	muzzle_flash_big
+		}
+	}
+	
+	
+model model_monster_q4x_beach_turret_main
+
+{
+	inherit				model_monster_turret
+
+	anim range_attack									models/monsters/turret/wallTurret_bigfire.md5anim
+	{
+	//rate	.6
+	frame 1											ai_disablePain
+	
+	frame 1 									sound_weapon		snd_plugin_range_attack_big	
+	frame 25									fx			fx_deathray_charge		muzzle_flash_big
+	frame 26									fx			fx_deathray_charge		muzzle_flash_big
+	
+	frame 97, 99, 101, 103, 105, 107, 109, 111, 113, 115				ai_attack		deathray			muzzle_flash_big	
+	frame 96, 98, 100, 102, 104, 106, 108, 110, 112, 114				ai_attack		deathray			muzzle_flash_big
+	frame 97									ai_attack		deathrayvis			muzzle_flash_big		
+	frame 97, 98, 99, 100, 101							ai_attack		deathrayburn			muzzle_flash_big	
+	frame 65									fx			fx_deathray_flash		muzzle_flash_big
+	
+	frame 70 									ai_lockEnemyOrigin
+	
+	frame 97, 99, 101, 103, 105, 107, 109, 111, 113, 115				ai_attack		deathray			muzzle_flash_big
+	frame 96, 98, 100, 102, 104, 106, 108, 110, 112, 114				ai_attack		deathray			muzzle_flash_big	
+	frame 96		 							ai_attack		deathrayvis			muzzle_flash_big
+	frame 97, 98, 99, 100, 101							ai_attack		deathrayburn			muzzle_flash_big	
+	frame 92									fx			fx_deathray_flash		muzzle_flash_big
+	}
+	
+}
+
+
+entityDef monster_q4x_beach_turret_main
+
+{
+
+"inherit"						"monster_q4x_beach_turret"
+
+"model"							"model_monster_q4x_beach_turret_main"
+
+"fx_deathray_flash"					"effects/monsters/valkaryne/deathray_mflash.fx"
+"fx_deathray_charge"					"effects/monsters/valkaryne/deathray_charge.fx"
+"fx_deathraylow"					"effects/monsters/valkaryne/deathray_mflash.fx"
+
+"def_attack_deathray"				"hitscan_valkaryne_deathray"
+"attack_deathray_hitscan"			"1"
+"attack_deathray_spread"			"10"
+"attack_deathray_count"				"10"
+"attack_deathray_accuracy"			"1"
+"attack_deathray_missFirstShot"			"0"
+"attack_deathray_predict"			"1"
+	
+"def_attack_deathrayvis"			"hitscan_valkaryne_deathrayvis"
+"attack_deathrayvis_hitscan"			"1"
+"attack_deathrayvis_accuracy"			"1"
+"attack_deathrayvis_missFirstShot"			"0"
+"attack_deathrayvis_predict"			"1"
+	
+"def_attack_deathrayburn"			"projectile_deathrayBurn"
+
+"minShots"						"1"
+"maxShots"						"1"
+	
+"dynamicAccuracy"					"0"
+"ignoreplayer"						"1"
+	
+}
+
+entityDef projectile_q4x_beach_blaster
+{
+	"spawnclass"				"idProjectile"
+	"mins"						"-2 -2 -2"
+	"maxs"						"2 2 2"
+	"cone"						"2"
+	"noshadows"					"1"
+																
+	"def_damage"				"damage_blaster"
+								
+	"velocity"					"3000 0 0"
+	"fuse"						"4"
+	"push"						"7500"
+								
+	"detonate_on_fuse"			"1"
+	"detonate_on_death"			"0"
+	"detonate_on_world"			"1"
+	"detonate_on_actor"			"1"
+								
+	"impact_gib"				"1"
+								
+	"decal_bounce"				""
+	"decal_size"				"8"
+								
+	"fx_fly"					"effects/weapons/blaster/q4x_fly.fx"
+	"fx_impact"					"effects/weapons/blaster/impact_default.fx"
+	"fx_impact_water"			"effects/ambient/splash_smll.fx"
+	"fx_impact_flesh"			"effects/weapons/blaster/impact_flesh.fx"
+	"fx_impact_monstermetal"	"effects/weapons/blaster/impact_monstermetal.fx"
+	"fx_impact_electronics"		"effects/weapons/machinegun/impact_electronics.fx"
+	"fx_impact_armor"			"effects/weapons/machinegun/impact_armor.fx"
+	"fx_blaster_flash"			"effects/monsters/tank/machinegun_flash"
+	//"fx_fly"					"effects/ambient/q4x_strogg_tracer.fx"
+
+}
+
+
+entityDef damage_q4x_beach_blaster
+{
+	"inherit"					"damage_bullet"
+	"damage"					"4"
+
+	"fx_wound"					"effects/wounds/energy.fx"
+
+	"deathPush"					"100"
+	"deathPushMin"				"2000 250"
+	"deathPushMax"				"5000 500"
+}

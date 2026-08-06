@@ -1,0 +1,150 @@
+textures/hal9000/grapple
+{
+	//renderbumpflat -size 256 256 models/hal9000/grapple_grate.ASE
+	qer_editorimage textures/hal9000/grapple_d.tga
+
+	diffusemap textures/hal9000/grapple_d.tga
+	specularmap textures/hal9000/grapple_s.tga
+	bumpmap textures/hal9000/grapple_local.tga
+}
+
+
+textures/hal9000/ice_hanging_d
+{
+	twosided
+	noshadows
+	noselfshadow
+	nonsolid
+
+	qer_editorimage textures/hal9000/ice_hanging_d.tga
+
+	specularmap textures/hal9000/ice_hanging_d.tga
+
+	{
+		Program		heathazewithmask.vfp
+		vertexParm		0	time * 0 , time * 0	// texture scrolling
+		vertexParm		1	3				// magnitude of the distortion
+		fragmentProgram	heathazewithmask.vfp
+		fragmentMap		0	_currentRender
+		fragmentMap		1	textures/hal9000/ice_local1	// the normal map for distortion
+		fragmentMap		2	textures/hal9000/ice_hanging_d.tga   // the distortion blend map
+	}
+	{
+		blend add
+		map textures/hal9000/ice_hanging_d.tga
+		//alphatest 0.5
+	}
+
+
+}
+
+gfx/effects/hal9000/cloudsprite
+{
+	qer_editorimage gfx/effects/hal9000/cloudsprite.tga
+	noshadows
+	twosided
+        {
+                
+		blend	add
+		map gfx/effects/hal9000/cloudsprite.tga
+		clamp
+		vertexColor
+        }
+}
+
+gfx/effects/hal9000/droppod_flash
+{
+	qer_editorimage gfx/effects/hal9000/droppod_flash.tga
+	noshadows
+	twosided
+        {
+                
+		blend	add
+		map gfx/effects/hal9000/droppod_flash.tga
+		clamp
+		vertexColor
+             
+        }
+}
+
+gfx/effects/hal9000/droppod_blue
+{
+	qer_editorimage gfx/effects/hal9000/droppod_blue.tga
+	translucent
+	twoSided
+	noShadows
+	{
+		blend add
+		map gfx/effects/hal9000/droppod_blue.tga
+		vertexColor
+		scale -1,1
+	}
+}
+
+textures/hal9000/iceflare
+{
+	noshadows
+	translucent
+	nonsolid
+	deform flare 		16
+	twosided
+	qer_editorimage		textures/editor/flare.tga
+	{
+		if ( parm7 == 0 )
+		blend		add
+		map		_quadratic
+		colored
+		vertexcolor
+		blue 0.4
+		red 0.3
+		green 0.3
+	}
+}
+
+textures/hal9000/ice_s
+{
+	qer_editorimage	        textures/hal9000/ice_s.tga
+	twosided
+	translucent
+	slick
+
+	specularmap textures/hal9000/ice_s.tga
+
+	{
+		blend diffusemap
+		map textures/hal9000/ice_s.tga
+		scale 4, 4
+	}
+	{
+		Program		heatHaze.vfp
+		vertexParm		0	time * 0 , time * 0	// texture scrolling
+		vertexParm		1	3				// magnitude of the distortion
+		fragmentProgram	heatHaze.vfp
+		fragmentMap		0	_currentRender
+		fragmentMap		1	textures/hal9000/ice_local1	// the normal map for distortion
+	}
+}
+
+textures/hal9000/icegibs
+{
+	qer_editorimage	        textures/hal9000/ice_s.tga
+	twosided
+	translucent
+	slick
+
+	specularmap textures/hal9000/ice_s.tga
+
+//	{
+//		Program		heatHaze.vfp
+//		vertexParm		0	time * 0 , time * 0	// texture scrolling
+//		vertexParm		1	3				// magnitude of the distortion
+//		fragmentProgram	heatHaze.vfp
+//		fragmentMap		0	_currentRender
+//		fragmentMap		1	textures/hal9000/ice_local1	// the normal map for distortion
+//	}
+
+	{
+		blend add
+		map textures/hal9000/ice_d.tga
+	}
+}

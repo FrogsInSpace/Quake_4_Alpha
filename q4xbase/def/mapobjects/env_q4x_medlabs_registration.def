@@ -1,0 +1,87 @@
+export q4x_medlabs_registration
+{
+	options -prefix RG_ -scale .3937 -align ALL -keep bind_1 bind_2 bind_3 bind_4 effects effects1 effects2 effects3 -sourcedir models/mapobjects/strogg/medlabs/registration/animation -destdir models/mapobjects/strogg/medlabs/registration
+	mesh registration_loop.ma		-dest q4x_mesh
+	anim registration_loop.ma		-range 1 2	-dest q4x_idle
+	anim q4x_registration.ma		-dest q4x_registration
+	anim registration_loop.ma		-dest registration_loop
+	//anim registration_loop_end.ma				-dest registration_loop_end
+	//anim registration_loop_end.ma		-range 432 433 	-dest registration_loop_end_idle
+	//anim tube_bottom_drop_out.ma		-range 375 410 -dest bottom_drop_out_a
+	//anim tube_bottom_drop_out.ma		-range 415 466 -dest bottom_drop_out_b
+	anim q4x_tube_drop.ma			-range 440 500 -dest q4x_tube_drop
+}
+
+entityDef env_q4x_medlabs_registration
+{
+	"editor_color"										"0 .5 .25"
+	"editor_mins"										"-32 -32 0"
+	"editor_maxs"										"32 32 16"
+
+	"editor_usage"										"Registration Arm for Prison"
+
+	"spawnclass"										"idAnimated"
+
+	"model"												"model_q4x_medlabs_registration"
+	"anim"												"idle"
+	"combatModel"										"1"
+
+	"snd_land"											"med_labs_tube_land"
+	"snd_move1"											"med_labs_scanner_arm_move1"
+	"snd_move2"											"med_labs_scanner_arm_move2"
+	"snd_move3"											"med_labs_scanner_arm_move3"
+	
+	"fx_scan"											"effects/levels/scan_light_med1.fx"
+	
+}
+
+model model_q4x_medlabs_registration
+{
+	mesh												models/mapobjects/strogg/medlabs/registration/q4x_mesh.md5mesh
+
+	anim idle											models/mapobjects/strogg/medlabs/registration/q4x_idle.md5anim
+
+	anim registration_loop								models/mapobjects/strogg/medlabs/registration/registration_loop.md5anim
+	{
+		frame 1,125										sound	snd_move1
+		frame 22,178									sound	snd_move3
+		frame 82,270									sound	snd_move2
+		//frame 124										//call map_medlabs::registrationTacticalThread
+		frame 93										fx fx_scan	effects
+		//frame 93										fx fx_scan	effects1
+		//frame 93										fx fx_scan	effects2
+		//frame 93										fx fx_scan	effects3
+	}
+	
+/*
+	anim registration_loop_end							models/mapobjects/strogg/medlabs/registration/registration_loop_end.md5anim
+	{
+		frame 4											sound	snd_move1
+		frame 44										sound	snd_move2
+		frame 74										sound	generic_large_metal_break
+	}
+
+	anim registration_loop_end_idle						models/mapobjects/strogg/medlabs/registration/registration_loop_end_idle.md5anim
+	{
+	}
+
+*/
+
+	anim registration									models/mapobjects/strogg/medlabs/registration/q4x_registration.md5anim
+	{
+		frame 1,125,294									sound	snd_move1
+		frame 22,178									sound	snd_move3
+		frame 82,270,354								sound	snd_move2
+		frame 384										sound	generic_large_metal_break
+		//frame 124										call map_medlabs::registrationTacticalThread
+		frame 93										fx fx_scan	effects
+		//frame 93										fx fx_scan	effects1
+		//frame 93										fx fx_scan	effects2
+		//frame 93										fx fx_scan	effects3
+	}
+
+	anim tube_drop										models/mapobjects/strogg/medlabs/registration/q4x_tube_drop.md5anim
+	{
+		frame 25										sound snd_land
+	}
+}

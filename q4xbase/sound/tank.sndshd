@@ -1,0 +1,354 @@
+
+
+sound tank_powerup
+{
+	description	"preparing gun"
+
+	minDistance	39
+	maxDistance	1181
+	volumeDb	0
+
+	sound/strogg/tank/tank_prepfire.wav
+}
+
+sound tank_ready_weapon
+{
+	description	"preparing gun"
+
+	minDistance	39
+	maxDistance	1181
+	volumeDb	0
+
+	sound/strogg/tank/ready_weapon.wav
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// TANK MOVEMENT
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+sound tank_servo
+{
+	description	"the squeaky tank gets the...ahh nevermind."
+
+	minDistance	39
+	maxDistance	990
+	volumeDb	-10
+	no_dups
+	
+	sound/strogg/tank/tank_servo1.wav
+	//sound/strogg/tank/tank_servo2.wav
+}
+
+
+sound tank_footsteps
+{
+	description	"various footsteps for tank walking.  These used to be painfully dreadful."
+
+	minDistance	39
+	maxDistance	984
+	volumeDb	-5
+	frequencyshift	0.8000000119,1.2000000477
+	no_dups
+	shakes 0.1
+
+	sound/strogg/tank/tank_step1.wav
+//	sound/strogg/tank/run_02.wav
+//	sound/strogg/tank/run_03.wav
+//	sound/strogg/tank/run_04.wav
+}
+
+
+
+
+sound tank_grenade_prepare
+{
+	description	"preparing the grenade launcher"
+
+	minDistance	39
+	maxDistance	984
+	volumeDb	0
+	no_occlusion
+
+	sound/strogg/tank/tank_prepfire.wav
+}
+
+
+sound tank_swing
+{
+	description	"whiff"
+
+	minDistance	39
+	maxDistance	866
+	volumeDb	10
+
+	//sound/weapons/impact/whooshes_melee/whoosh1.wav
+	//sound/weapons/impact/whooshes_melee/whoosh2.wav
+	//sound/weapons/impact/whooshes_melee/whoosh3.wav
+	//sound/weapons/impact/whooshes_melee/whoosh4.wav
+	sound/strogg/tank/tank_melee1.wav
+	//sound/strogg/tank/growl2.wav
+}
+
+
+sound tank_growl
+{
+	description	"grrrrr"
+
+	minDistance	393
+	maxDistance	1181
+	volumeDb	0
+	no_dups
+
+	sound/strogg/tank/growl1.wav
+	sound/null.wav
+	sound/strogg/tank/growl2.wav
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// TANK WEAPONS
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+sound tank_nailgun_fire
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+	frequencyshift	0.8000000119,1.2000000477
+
+	sound/strogg/tank/tank_nailgunfire.wav
+}
+
+sound tank_machinegun_fire
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+	frequencyshift	0.8000000119,1.2000000477
+
+	sound/strogg/tank/m_gun1.wav
+	sound/strogg/tank/m_gun2.wav
+	sound/strogg/tank/m_gun3.wav
+}
+
+sound tank_missile_loop
+{
+	description	"missile loop"
+
+	minDistance	30
+	maxDistance	350
+	volumeDb	0
+	looping
+
+	sound/strogg/tank/tank_missileloop.wav
+
+}
+
+sound tank_punch
+{
+	description	"pow"
+
+	minDistance	39
+	maxDistance	787
+	volumeDb	-4
+	frequencyshift	0.8000000119,1.2000000477
+
+	sound/weapons/impact/whooshes_melee/melee_hit1.wav
+	sound/weapons/impact/whooshes_melee/melee_hit2.wav
+	sound/weapons/impact/whooshes_melee/melee_hit3.wav
+}
+
+
+sound tank_railgun
+{
+	description	"voip"
+
+	minDistance	196
+	maxDistance	1281
+	volumeDb	1
+	frequencyshift	0.8000000119,1.2000000477
+
+	sound/strogg/tank/tank_railgunfire.wav
+}
+
+sound tank_chargerailgun
+{
+	description	"voip"
+
+	minDistance	196
+	maxDistance	1181
+	volumeDb	-4
+	frequencyshift	0.8000000119,1.2000000477
+
+	sound/strogg/tank/tank_railpowerup.wav
+}
+
+sound tank_grenade_launch
+{
+	description	"test sound for tank idle"
+
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+
+	sound/strogg/tank/tank_missilefire.wav
+}
+
+sound tank_missile_launch
+{
+	description	"test sound for tank idle"
+
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+
+	sound/strogg/tank/tank_missilefire.wav
+}
+
+sound tank_machinegun
+{
+	description	"test sound for tank idle"
+
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+	frequencyshift	0.8000000119,1.2000000477
+
+	sound/strogg/tank/machinegun_01.wav
+	sound/strogg/tank/machinegun_02.wav
+}
+
+sound tank_nailgun_fireseq
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	4
+	//frequencyshift	0.8000000119,1.2000000477
+
+	sound/strogg/tank/tank_nailgunfireseq.wav
+
+}
+
+sound tank_missileexp
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	10
+	frequencyshift	0.7000000119,1.3000000477
+	//shake 0.4
+	
+	sound/strogg/tank/tank_missileexp1.wav
+	sound/strogg/tank/tank_missileexp2.wav
+	
+
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// TANK VOCALIZATIONS
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+sound tank_alert
+{
+	description	"tank sees you"
+
+	minDistance	393
+	maxDistance	1968
+	volumeDb	0
+
+	sound/strogg/tank/alert1.wav
+	sound/strogg/tank/alert2.wav
+}
+
+sound tank_rush
+{
+	description	"tank rushes you"
+
+	minDistance	393
+	maxDistance	1968
+	volumeDb	0
+
+	sound/strogg/tank/rush1.wav
+	sound/strogg/tank/rush2.wav
+}
+
+sound tank_checkfire
+{
+	description	"tank rushes you"
+
+	minDistance	393
+	maxDistance	1968
+	volumeDb	0
+
+	sound/strogg/tank/mandown.wav
+}
+
+sound tank_mandown
+{
+	description	"tank rushes you"
+
+	minDistance	393
+	maxDistance	1968
+	volumeDb	0
+
+	sound/strogg/tank/mandown.wav
+}
+
+sound tank_moveup
+{
+	description	"tank rushes you"
+
+	minDistance	393
+	maxDistance	1968
+	volumeDb	0
+
+	sound/strogg/tank/moveup.wav
+}
+
+
+sound tank_breathe
+{
+	description	"the tank has asthma"
+
+	minDistance	393
+	maxDistance	787
+	volumeDb	-9
+	//no_dups
+
+	sound/strogg/tank/tank_melee1.wav
+	//sound/strogg/tank/breath02.wav
+	//sound/strogg/tank/breath03.wav
+	//sound/strogg/tank/breath04.wav
+	//sound/null.wav
+}
+
+
+
+
+////////////////////////////
+// TANK DEATH, PAIN, BODY
+////////////////////////////
+
+sound tank_pain
+{
+	description	"test sound for tank idle"
+
+	minDistance	393
+	maxDistance	984
+	volumeDb	0
+
+	sound/strogg/tank/pain1.wav
+	sound/strogg/tank/pain2.wav
+	sound/strogg/tank/pain3.wav
+}
+
+sound tank_die
+{
+	description	"death to the tank"
+
+	minDistance	393
+	maxDistance	1377
+	volumeDb	0
+
+	sound/strogg/tank/die1.wav
+	sound/strogg/tank/die2.wav
+}

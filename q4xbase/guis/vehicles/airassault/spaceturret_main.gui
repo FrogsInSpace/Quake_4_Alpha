@@ -1,0 +1,204 @@
+windowDef Desktop
+{
+	rect	0,0,640,480
+	visible	1
+
+	onEvent {
+		set "playerkills::text" "$gui::pkills" ;
+	}
+
+	onNamedEvent ActiveTextOn {
+		set "ActiveText::visible" "1";	
+	}
+
+	onNamedEvent ActiveTextOff {
+		set "ActiveText::visible" "0";	
+	}
+
+	onNamedEvent JammedTextOn {
+		set "JammedText::visible" "1";	
+	}
+
+	onNamedEvent JammedTextOff {
+		set "JammedText::visible" "0";	
+	}
+	
+	onNamedEvent anim_active_guns {
+		resettime "anim_active_guns" "0";
+	}
+
+	onNamedEvent anim_active_rockets {
+		resettime "anim_active_rockets" "0";
+	}
+
+	windowDef active_guns
+	{
+		rect	0,0,640,480
+		visible	1
+		windowDef active_guns_base
+		{
+			rect	0,0,640,480
+			visible	1
+			background	"gfx/guis/vehicle/airassault/spacecannon1_base2"
+			matcolor	1,1,1,1
+		}
+		windowDef active_guns_1
+		{
+			rect	139,145,50,44
+			visible	1
+			forecolor	1,1,1,0.796
+			text	"1."
+			textscale	0.75
+			textalign	2
+		}
+		windowDef active_guns_2
+		{
+			rect	207,145,96,44
+			visible	1
+			forecolor	1,1,1,0.776
+			text	"Guns"
+			textscale	0.75
+		}
+		windowDef active_rockets_1_dim
+		{
+			rect	139,206,50,44
+			visible	1
+			forecolor	1,1,1,0.247
+			text	"2."
+			textscale	0.75
+			textalign	2
+		}
+		windowDef active_rockets_2_dim
+		{
+			rect	207,206,163,44
+			visible	1
+			forecolor	1,1,1,0.247
+			text	"Rockets"
+			textscale	0.75
+		}
+	}
+	windowDef active_rockets
+	{
+		rect	0,0,640,480
+		visible	0
+		windowDef active_rockets_base
+		{
+			rect	0,0,640,480
+			visible	1
+			background	"gfx/guis/vehicle/airassault/spacecannon1_base"
+			matcolor	1,1,1,1
+		}
+		windowDef active_rockets_1
+		{
+			rect	139,206,50,44
+			visible	1
+			forecolor	1,1,1,0.796
+			text	"2."
+			textscale	0.75
+			textalign	2
+		}
+		windowDef active_rockets_2
+		{
+			rect	207,206,163,44
+			visible	1
+			forecolor	1,1,1,0.776
+			text	"Rockets"
+			textscale	0.75
+		}
+		windowDef active_guns_1_dim
+		{
+			rect	139,145,50,44
+			visible	1
+			forecolor	1,1,1,0.247
+			text	"1."
+			textscale	0.75
+			textalign	2
+		}
+		windowDef active_guns_2_dim
+		{
+			rect	207,145,96,44
+			visible	1
+			forecolor	1,1,1,0.247
+			text	"Guns"
+			textscale	0.75
+		}
+	}
+	windowDef squares
+	{
+		rect	166,350,300,50
+		visible	1
+		background	"gfx/guis/common/marine/squares1"
+		matcolor	0.619,0.839,0.486,.1
+	}
+	windowDef TurretText
+	{
+		rect	178,96,130,44
+		visible	1
+		forecolor	1,1,1,0.6
+		text	"Turret"
+		textscale	0.75
+		textalign	2
+	}
+	windowDef StatusText
+	{
+		rect	317,96,130,44
+		visible	1
+		forecolor	1,1,1,0.6
+		text	"Status"
+		textscale	0.75
+	}
+	windowDef ActiveText
+	{
+		rect	0,250,640,45
+		visible	0
+		forecolor	0.839,0.913,0.549,1
+		text	"ACTIVE"
+		textscale	0.75
+		textalign	1
+	}
+	windowDef JammedText
+	{
+		rect	0,250,640,44
+		visible	0
+		forecolor	1,0,0,1
+		text	"JAMMED"
+		textscale	0.75
+		textalign	1
+	}
+	windowDef playerkills
+	{
+		rect	0,305,640,44
+		visible	1
+		forecolor	0.8,0.9,0.8,1
+		text	"0"
+		textscale	0.75
+		textalign	1
+	}
+	windowDef anims
+	{
+		rect	0,0,640,480
+		visible	1
+		windowDef anim_active_guns
+		{
+			visible	0
+			rect	0,0,0,0
+
+			onTime 0 {
+				set "active_rockets::visible" "0";
+				set "active_guns::visible" "1";
+			}
+
+		}
+		windowDef anim_active_rockets
+		{
+			visible	0
+			rect	0,0,0,0
+
+			onTime 0 {
+				set "active_rockets::visible" "1";
+				set "active_guns::visible" "0";
+			}
+
+		}
+	}
+}

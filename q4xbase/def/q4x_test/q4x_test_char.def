@@ -1,0 +1,27 @@
+/*
+===============================================================================
+
+	Q4X Test Character
+
+===============================================================================
+*/
+
+export q4x_test
+{
+	options -game q4xbase/	-scale 0.5
+	mesh	models/q4x_test/q4x_test.ma			-dest models/q4x_test/mesh.md5mesh
+	anim	models/q4x_test/q4x_test.ma			-dest models/q4x_test/idle.md5anim
+}
+
+model model_q4x_test
+{
+	mesh												models/q4x_test/mesh.md5mesh	
+	anim idle											models/q4x_test/idle.md5anim
+}
+
+entityDef q4x_test
+{
+	"inherit"									"actor_default"
+	"spawnclass"								"idAnimated"
+	"model" 									"model_q4x_test"
+}

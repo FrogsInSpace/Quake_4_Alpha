@@ -1,0 +1,517 @@
+
+
+sound retch_powerup
+{
+	description	"preparing gun"
+
+	minDistance	39
+	maxDistance	1181
+	volumeDb	-4
+
+	sound/strogg/retch/retch_powerup.wav
+}
+
+
+
+sound retch_ready_weapon
+{
+	description	"preparing gun"
+
+	minDistance	39
+	maxDistance	1181
+	volumeDb	-4
+
+	sound/strogg/retch/ready_weapon.wav
+}
+
+sound retch_beepsmall
+{
+	description	"retch small beeps"
+
+	minDistance	39
+	maxDistance	984
+	volumeDb	-5
+	frequencyshift	0.5000000119,1.5000000477
+
+
+	sound/strogg/retch/beepsmall1.wav
+	sound/strogg/retch/beepsmall2.wav
+}
+
+sound retch_beeplarge
+{
+	description	"retch small beeps"
+
+	minDistance	39
+	maxDistance	984
+	volumeDb	-5
+	frequencyshift	0.5000000119,1.5000000477
+	//no_dups
+
+	sound/strogg/retch/beeplarge1.wav
+	sound/strogg/retch/beeplarge2.wav
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// retch MOVEMENT
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+sound retch_servo
+{
+	description	"the squeaky retch gets the...ahh nevermind."
+
+	minDistance	39
+	maxDistance	990
+	volumeDb	-10
+	no_dups
+	frequencyshift	0.8000000119,1.2000000477
+	sound/strogg/retch/retch_servo_alt1.wav
+	sound/strogg/retch/retch_servo_alt2.wav
+	sound/strogg/retch/retch_servo_alt3.wav
+	//sound/strogg/retch/retch_servo2b.wav
+	//sound/strogg/retch/retch_servo2.wav
+}
+
+
+sound retch_footsteps
+{
+	description	"various footsteps for retch walking."
+
+	minDistance	39
+	maxDistance	984
+	volumeDb	-8
+	frequencyshift	0.8000000119,1.2000000477
+	no_dups
+
+	sound/strogg/retch/retchstep6.wav
+	//sound/strogg/retch/retchstep2.wav
+	//sound/strogg/retch/retchstep3.wav
+	//sound/strogg/retch/retchstep4.wav
+	//sound/strogg/retch/retchstep5.wav
+}
+
+
+
+
+sound retch_grenade_prepare
+{
+	description	"preparing the grenade launcher"
+
+	minDistance	39
+	maxDistance	984
+	volumeDb	-4
+	no_occlusion
+
+	sound/strogg/retch/retch_prepfire.wav
+}
+
+
+sound retch_swing
+{
+	description	"whiff"
+
+	minDistance	39
+	maxDistance	866
+	volumeDb	0
+
+	//sound/weapons/impact/whooshes_melee/whoosh1.wav
+	//sound/weapons/impact/whooshes_melee/whoosh2.wav
+	//sound/weapons/impact/whooshes_melee/whoosh3.wav
+	//sound/weapons/impact/whooshes_melee/whoosh4.wav
+	sound/strogg/retch/retch_melee1.wav
+	//sound/strogg/retch/growl2.wav
+}
+
+
+sound retch_growl
+{
+	description	"grrrrr"
+
+	minDistance	393
+	maxDistance	1181
+	volumeDb	-4
+	no_dups
+
+	sound/strogg/retch/growl1.wav
+	sound/null.wav
+	sound/strogg/retch/growl2.wav
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// retch WEAPONS
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+sound retch_nailgun_fire
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	-4
+	frequencyshift	0.8000000119,1.2000000477
+
+	sound/strogg/retch/retch_nailgunfire.wav
+}
+
+sound retch_machinegun_fire
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	-4
+	frequencyshift	0.8000000119,1.2000000477
+
+	sound/strogg/retch/m_gun1.wav
+	sound/strogg/retch/m_gun2.wav
+	sound/strogg/retch/m_gun3.wav
+}
+
+sound retch_missile_loop
+{
+	description	"missile loop"
+
+	minDistance	30
+	maxDistance	350
+	volumeDb	-4
+	looping
+
+	sound/strogg/retch/retch_missileloop.wav
+
+}
+
+sound retch_punch
+{
+	description	"pow"
+
+	minDistance	39
+	maxDistance	787
+	volumeDb	-4
+	frequencyshift	0.8000000119,1.2000000477
+
+	sound/weapons/impact/whooshes_melee/melee_hit1.wav
+	sound/weapons/impact/whooshes_melee/melee_hit2.wav
+	sound/weapons/impact/whooshes_melee/melee_hit3.wav
+}
+
+
+sound retch_railgun
+{
+	description	"voip"
+
+	minDistance	196
+	maxDistance	1281
+	volumeDb	-4
+	frequencyshift	0.8000000119,1.2000000477
+
+	sound/strogg/retch/retch_railgunfire.wav
+}
+
+sound retch_chargerailgun
+{
+	description	"voip"
+
+	minDistance	196
+	maxDistance	1181
+	volumeDb	-4
+	frequencyshift	0.8000000119,1.2000000477
+
+	sound/strogg/retch/retch_railpowerup.wav
+}
+
+sound retch_grenade_launch
+{
+	description	"test sound for retch"
+
+	minDistance	196
+	maxDistance	1181
+	volumeDb	-4
+
+	sound/strogg/retch/retch_missilefire.wav
+}
+
+sound retch_missile_launch
+{
+	description	"test sound for retch"
+
+	minDistance	196
+	maxDistance	1181
+	volumeDb	-4
+
+	sound/strogg/retch/retch_missilefire.wav
+}
+
+sound retch_machinegun
+{
+	description	"test sound for retch"
+
+	minDistance	196
+	maxDistance	1181
+	volumeDb	-4
+	frequencyshift	0.8000000119,1.2000000477
+
+	sound/strogg/retch/machinegun_01.wav
+	sound/strogg/retch/machinegun_02.wav
+}
+
+sound retch_nailgun_fireseq
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	-4
+	//frequencyshift	0.8000000119,1.2000000477
+
+	sound/strogg/retch/retch_nailgunfireseq.wav
+
+}
+
+sound retch_missileexp
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	-2
+	frequencyshift	0.7000000119,1.3000000477
+	//shake 0.4
+	
+	sound/strogg/retch/retch_missileexp1.wav
+	sound/strogg/retch/retch_missileexp2.wav
+	
+
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// retch VOCALIZATIONS
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+sound retch_servopain
+{
+	description	"servopain"
+
+	minDistance	393
+	maxDistance	1968
+	volumeDb	0
+
+	sound/strogg/retch/retch_servopain1.wav
+
+}
+
+sound retch_servoattack
+{
+	description	""
+
+	minDistance	393
+	maxDistance	1968
+	volumeDb	0
+
+	sound/strogg/retch/retch_servoattack.wav
+
+}
+
+sound retch_meleeattack
+{
+	description	""
+
+	minDistance	393
+	maxDistance	1968
+	volumeDb	0
+
+	sound/strogg/retch/retch_meleeattack.wav
+
+}
+sound retch_alert
+{
+	description	"retch sees you"
+
+	minDistance	393
+	maxDistance	1968
+	volumeDb	0
+
+	sound/strogg/retch/alert1.wav
+	sound/strogg/retch/alert2.wav
+}
+
+sound retch_rush
+{
+	description	"retch rushes you"
+
+	minDistance	393
+	maxDistance	1968
+	volumeDb	0
+
+	sound/strogg/retch/rush1.wav
+	sound/strogg/retch/rush2.wav
+}
+
+sound retch_checkfire
+{
+	description	"retch rushes you"
+
+	minDistance	393
+	maxDistance	1968
+	volumeDb	0
+
+	sound/strogg/retch/mandown.wav
+}
+
+sound retch_mandown
+{
+	description	"retch rushes you"
+
+	minDistance	393
+	maxDistance	1968
+	volumeDb	0
+
+	sound/strogg/retch/mandown.wav
+}
+
+sound retch_moveup
+{
+	description	"retch rushes you"
+
+	minDistance	393
+	maxDistance	1968
+	volumeDb	0
+
+	sound/strogg/retch/moveup.wav
+}
+
+
+sound retch_breathe
+{
+	description	"the retch has asthma"
+
+	minDistance	393
+	maxDistance	787
+	volumeDb	-9
+	//no_dups
+
+	sound/strogg/retch/retch_melee1.wav
+	//sound/strogg/retch/breath02.wav
+	//sound/strogg/retch/breath03.wav
+	//sound/strogg/retch/breath04.wav
+	//sound/null.wav
+}
+
+sound retch_idle
+{
+	description	""
+
+	minDistance	393
+	maxDistance	787
+	volumeDb	-3
+	looping
+
+	sound/strogg/retch/retch_idle.wav
+	//sound/strogg/retch/breath02.wav
+	//sound/strogg/retch/breath03.wav
+	//sound/strogg/retch/breath04.wav
+	//sound/null.wav
+}
+
+sound retch_walkloop
+{
+	description	""
+
+	minDistance	393
+	maxDistance	787
+	volumeDb	-3
+	//looping
+
+	sound/strogg/retch/retch_walk.wav
+	//sound/strogg/retch/breath02.wav
+	//sound/strogg/retch/breath03.wav
+	//sound/strogg/retch/breath04.wav
+	//sound/null.wav
+}
+sound retch_runloop
+{
+	description	""
+
+	minDistance	393
+	maxDistance	787
+	volumeDb	-3
+	//looping
+
+	sound/strogg/retch/retch_run.wav
+	//sound/strogg/retch/breath02.wav
+	//sound/strogg/retch/breath03.wav
+	//sound/strogg/retch/breath04.wav
+	//sound/null.wav
+}
+////////////////////////////
+// retch DEATH, PAIN, BODY
+////////////////////////////
+
+sound retch_pain
+{
+	description	"test sound for retch idle"
+
+	minDistance	393
+	maxDistance	984
+	volumeDb	5
+
+	sound/strogg/retch/retch_pain1.wav
+	sound/strogg/retch/retch_pain2.wav
+
+}
+
+sound retch_sight
+{
+	description	"test sound for retch idle"
+
+	minDistance	393
+	maxDistance	984
+	volumeDb	0
+	frequencyshift	0.7000000119,1.3000000477
+	sound/strogg/retch/retch_sight.wav
+
+
+}
+
+sound retch_die
+{
+	description	"death to the retch"
+
+	minDistance	393
+	maxDistance	1377
+	volumeDb	0
+
+	sound/strogg/retch/retch_death1.wav
+
+}
+
+sound retch_servomove
+{
+	description	"test sound for retch idle"
+
+	minDistance	393
+	maxDistance	984
+	volumeDb	-4
+	//frequencyshift	0.9
+	sound/strogg/retch/retch_servomove1.wav
+
+
+}
+
+sound retch_fire
+{
+	description	"test sound for retch idle"
+
+	minDistance	393
+	maxDistance	984
+	volumeDb	-4
+	//frequencyshift	0.9
+	sound/strogg/retch/retch_fire2a.wav
+
+
+}
+
+sound retch_firesmall
+{
+	description	"test sound for retch idle"
+
+	minDistance	393
+	maxDistance	984
+	volumeDb	-4
+	//frequencyshift	0.9
+	sound/strogg/retch/retch_fire2b.wav
+
+
+}

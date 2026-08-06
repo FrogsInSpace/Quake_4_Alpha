@@ -1,0 +1,12 @@
+textures/skies/q4x_Canyonken_Sky
+{	//Grey variant of the CanyonFog_Sky
+	noFragment
+	forceOpaque
+	noimpact
+	noshadows
+	{
+		blend			add			// so transparent windows can draw on top of it
+		cameraCubeMap	gfx/env/Canyonken
+		texgen		skybox
+	}
+}

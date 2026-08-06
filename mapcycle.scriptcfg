@@ -1,0 +1,123 @@
+/*
+map cycling script sample - select with g_mapCycle
+
+the script is purged and reloaded at each map restart
+  which happens on map change, but also when hitting GAMEON
+  for persistance, you need to use the {get,set}Persistant functions
+
+files with .scriptcfg extension can be loaded outside of pure paks
+*/
+
+namespace mapcycle {
+
+	void cycle() {
+		// config
+		float cycle_maps = 1;				// 1 = cycle through maps in the current game type, 0 = keep the same map
+		float cycle_gametypes = 0;			// 1 = cycle through game types, 0 = keep the same game type
+
+		// cycle maps and game types
+		float replay_count = sys.getPersistantFloat( "replay_count" );
+		string si_gameType = sys.getcvar( "si_gameType" );
+		string si_map = sys.getcvar( "si_map" );
+
+		sys.println( "cycle: replay_count = " + replay_count );
+		
+		if ( replay_count <= 0 ) {
+			// restart n times before next map
+			replay_count = 2;
+			
+			// add in custom replay counts here for current game type
+			if ( si_gameType == "DM" ) {
+				;
+			} else if ( si_gameType == "Tourney" ) {
+				;
+			} else if ( si_gameType == "TeamDM" ) {
+				;
+			} else if ( si_gameType == "CTF" ) {
+				;
+			} else if ( si_gameType == "Arena CTF" ) {
+				;
+			}
+			
+		}
+		
+		replay_count--;
+		sys.setPersistantArg( "replay_count", replay_count );
+		if ( replay_count <= 0 ) {
+			// restart n times before next map
+			
+			if ( cycle_gametypes > 0 ) {
+			
+				cycle_maps = 1;		// we want to make sure that we transition to a proper map for the new gametype
+				
+				if ( si_gameType == "DM" ) {
+					sys.setcvar( "si_gameType", "Tourney" );
+				} else if ( si_gameType == "Tourney" ) {
+					sys.setcvar( "si_gameType", "TeamDM" );
+				} else if ( si_gameType == "TeamDM" ) {
+					sys.setcvar( "si_gameType", "CTF" );
+				} else if ( si_gameType == "CTF" ) {
+					sys.setcvar( "si_gameType", "Arena CTF" );
+				} else if ( si_gameType == "Arena CTF" ) {
+					sys.setcvar( "si_gameType", "DM" );
+				} else {
+					sys.setcvar( "si_gameType", "DM" );
+				}
+				
+			}
+
+			if ( cycle_maps > 0 ) {
+			
+				if ( si_gameType == "DM" || si_gameType == "TeamDM" ) {
+				
+					if ( si_map == "mp/q4dm1" ) {
+						sys.setcvar( "si_map", "mp/q4dm2" );
+					} else if ( si_map == "mp/q4dm2" ) {
+						sys.setcvar( "si_map", "mp/q4dm3" );
+					} else if ( si_map == "mp/q4dm3" ) {
+						sys.setcvar( "si_map", "mp/q4dm5" );
+					} else if ( si_map == "mp/q4dm5" ) {
+						sys.setcvar( "si_map", "mp/q4dm6" );
+					} else if ( si_map == "mp/q4dm6" ) {
+						sys.setcvar( "si_map", "mp/q4dm7" );
+					} else if ( si_map == "mp/q4dm7" ) {
+						sys.setcvar( "si_map", "mp/q4dm8" );
+					} else if ( si_map == "mp/q4dm8" ) {
+						sys.setcvar( "si_map", "mp/q4dm9" );
+					} else {
+						sys.setcvar( "si_map", "mp/q4dm1" );
+					}
+				
+				} else if ( si_gameType == "Tourney" ) {
+				
+					if ( si_map == "mp/q4dm11v1" ) {
+						sys.setcvar( "si_map", "mp/q4dm9" );
+					} else if ( si_map == "mp/q4dm9" ) {
+						sys.setcvar( "si_map", "mp/q4dm3" );
+					} else if ( si_map == "mp/q4dm3" ) {
+						sys.setcvar( "si_map", "mp/q4ctf5" );
+					} else {
+						sys.setcvar( "si_map", "mp/q4dm11v1" );
+					}
+					
+				} else if ( si_gameType == "CTF" || si_gameType == "Arena CTF" ) {
+
+					if ( si_map == "mp/q4ctf1" ) {
+						sys.setcvar( "si_map", "mp/q4ctf2" );
+					} else if ( si_map == "mp/q4ctf2" ) {
+						sys.setcvar( "si_map", "mp/q4ctf3" );
+					} else if ( si_map == "mp/q4ctf3" ) {
+						sys.setcvar( "si_map", "mp/q4ctf4" );
+					} else if ( si_map == "mp/q4ctf4" ) {
+						sys.setcvar( "si_map", "mp/q4ctf5" );
+					} else {
+						sys.setcvar( "si_map", "mp/q4ctf1" );
+					}
+					
+				}
+			}
+		} else {
+			sys.say( "map cycle: restarting current map " + replay_count + " more time(s)" );
+		}
+	}
+}

@@ -1,0 +1,4216 @@
+//------------------------------------------------------------------------------------
+// Air Assault ver. #34,564
+//
+// (c) Ritual Entertainment 2005
+// Author:  JSchuch
+//------------------------------------------------------------------------------------
+
+namespace map_m03aa
+{
+
+#include "scripts/doom_defs.script"
+
+	float f;				//Generic float used for various things
+	entity e;				//Generic entity used for various things
+	float t;				//Generic float used for various things
+	entity n;				//Generic entity used for various things
+
+	entity starget;				//Global entity for passing targets to the func_vehicle_drivers
+
+	//Conditionals
+	boolean RAMPUP;				//Rear ramp up/down
+	boolean RAMPACTIVE;
+	boolean INTOPGUN;			//Player in the top turret
+	boolean INBOTTOMGUN;			//Player in the bottom turret
+	boolean FRIENDLY_1_KILL;		//Friendly dropship that gets blasted
+	boolean FRIENDLY_1_READYTODIE;
+	boolean FRIENDLY_2_KILL;		//Friendly dropship that gets blasted
+	boolean FRIENDLY_2_READYTODIE;
+	boolean FRIENDLY_3_KILL;		//Friendly dropship that gets blasted
+	boolean FRIENDLY_3_READYTODIE;
+	boolean DRIVER_STOP_FIRING;		//Tells the func_vehicle_driver when to stop shooting at bad guys
+	boolean DRIVER_FIRING;			//Whether or not the driver is already firing at something
+	boolean DRIVER;				//For checking whether its the player or func_vehicle_driver entering turrets
+	boolean GUIARMACTIVE;			//GUI on arms by the ramp
+	boolean INGUIARMAREA;			//GUI on arms by the ramp
+	boolean LIGHTS_ON;
+	boolean REDALERT;
+	boolean EVENT_FIRE_REAR;
+	boolean EVENT_FIRE_CARGO;
+	boolean EVENT_AMMO;
+	boolean EVENT_ENGINE;
+	boolean GUNMOVING;
+
+	//Objective events
+	boolean	FIRE_SUPRESSED;			//Player has/hasn't put out the rear fire
+	boolean STARTED_REAR_FIRE_SEQ;
+	boolean CARGO_DUMPED;			//Player has/hasn't dumped the cargo
+	boolean AMMO_JAM_FIXED;			//Player has helped Navajas with the ammo jam
+	boolean STARTED_AMMO_JAM_SEQ;		//Make the ammo jam only happen once
+	boolean ENGINE_FIRE_OUT;		//Player has put out the engine fire
+	boolean PLAYER_BACK_AT_CHAIR;		//Player has returned to chair at end
+	boolean CARGO_FIRE_BURNING;		//Whether or not the player has put out the cargo fire
+	boolean STARTED_CARGO_FIRE_SEQ;
+	boolean STARTED_ENGINE_FIRE_SEQ;
+	boolean PLAYER_EVENT_IN_PROGRESS;
+	boolean ENGINE_STEP_1;
+	boolean ENGINE_STEP_2;
+	boolean INTROCIN;
+	boolean NAVAJAS_READY_AMMO;
+	boolean NO_EVASIVES;
+
+	//Tracking variables
+	float WAVE = 0;				//Current wave of Strogg ships
+	float STROGG_WAVE_SHIP_COUNTER = 0;	//Tracking spawned and killed Strogg ships
+	float TOTAL_PLAYER_KILLS = 0;
+
+	//Dropship Health Monitoring
+	float DROPSHIP_HEALTH = 25000;		//healh of the dropship
+	float DSHEALTHADD = 0;
+	boolean WARN_SEVENTYFIVE_PERCENT;	//Dropship health reached 75%
+	boolean WARN_FIFTY_PERCENT;		//Dropship health reached 50%
+	boolean WARN_TWENTYFIVE_PERCENT;	//Dropship health reached 25%
+	float GLOBAL_DS_HEALTH_SEVENTYFIVE;
+	float GLOBAL_DS_HEALTH_FIFTY;
+	float GLOBAL_DS_HEALTH_TWENTYFIVE;
+	float GLOBAL_DS_HEALTH_90;
+	float GLOBAL_DS_HEALTH_80;
+	float GLOBAL_DS_HEALTH_70;
+	float GLOBAL_DS_HEALTH_60;
+	float GLOBAL_DS_HEALTH_50;
+	float GLOBAL_DS_HEALTH_40;
+	float GLOBAL_DS_HEALTH_30;
+	float GLOBAL_DS_HEALTH_20;
+	float GLOBAL_DS_HEALTH_10;
+	boolean GUI_90;
+	boolean GUI_80;
+	boolean GUI_70;
+	boolean GUI_60;
+	boolean GUI_50;
+	boolean GUI_40;
+	boolean GUI_30;
+	boolean GUI_20;
+	boolean GUI_10;
+
+	//Gameplay Tweaking Variables
+	float WAVE1_KILLCOUNT = 12;		//How many kills the player must get
+	float WAVE1_PLAYERKILLS = 0;		//How many kills the player has gotten
+	float WAVE2_KILLCOUNT = 14;
+	float WAVE2_PLAYERKILLS = 0;
+	float WAVE3_KILLCOUNT = 12;
+	float WAVE3_PLAYERKILLS = 0;
+	float WAVE4_KILLCOUNT = 12;
+	float WAVE4_PLAYERKILLS = 0;
+	float WAVE5_KILLCOUNT = 16;
+	float WAVE5_PLAYERKILLS = 0;
+
+	//Enemy Ships
+	#define SHIP_1	1	//Fighters
+	#define SHIP_2	2
+	#define SHIP_3	3
+	#define SHIP_4	4
+	#define SHIP_5	5
+	#define SHIP_6	6
+	#define SHIP_7	7
+	#define SHIP_8	8
+	#define SHIP_9	9
+	#define SHIP_10	10
+	#define SHIP_11	11
+	#define SHIP_12	12
+	#define SHIP_13	13	//Bombers
+	#define SHIP_14	14
+	#define SHIP_15	15
+	#define SHIP_16	16
+	#define SHIP_17	17	//New fighter 0_1
+	#define SHIP_18	18	//New fighter 0_2
+	#define SHIP_19	19	//New fighter 90_1
+	#define SHIP_20	20	//New fighter 90_2
+	#define SHIP_21	21	//New fighter 180_1
+	#define SHIP_22	22	//New fighter 180_2
+	#define SHIP_23	23	//New fighter 270_1
+	#define SHIP_24	24	//New fighter 270_2
+	boolean SPLINE_1_COMPLETED;
+	boolean SPLINE_2_COMPLETED;
+	boolean SPLINE_3_COMPLETED;
+	boolean SPLINE_4_COMPLETED;
+	boolean SPLINE_5_COMPLETED;
+	boolean SPLINE_6_COMPLETED;
+	boolean SPLINE_7_COMPLETED;
+	boolean SPLINE_8_COMPLETED;
+	boolean SPLINE_9_COMPLETED;
+	boolean SPLINE_10_COMPLETED;
+	boolean SPLINE_11_COMPLETED;
+	boolean SPLINE_12_COMPLETED;
+	boolean SPLINE_13_COMPLETED;
+	boolean SPLINE_14_COMPLETED;
+	boolean SPLINE_15_COMPLETED;
+	boolean SPLINE_16_COMPLETED;
+	boolean SPLINE_17_COMPLETED;
+	boolean SPLINE_18_COMPLETED;
+	boolean SPLINE_19_COMPLETED;
+	boolean SPLINE_20_COMPLETED;
+	boolean SPLINE_21_COMPLETED;
+	boolean SPLINE_22_COMPLETED;
+	boolean SPLINE_23_COMPLETED;
+	boolean SPLINE_24_COMPLETED;
+
+	//Dialogue callouts
+	boolean WAVE1_CALLOUT_1;
+	boolean WAVE1_CALLOUT_2;
+	boolean WAVE2_CALLOUT_1;
+	boolean WAVE2_CALLOUT_2;
+	boolean WAVE3_CALLOUT_1;
+	boolean WAVE3_CALLOUT_2;
+	boolean WAVE4_CALLOUT_1;
+	boolean WAVE4_CALLOUT_2;
+	boolean WAVE5_CALLOUT_1;
+	boolean WAVE5_CALLOUT_2;
+	boolean WAVE5_CALLOUT_3;
+
+	boolean WAVE4_BOMBER;
+	boolean WAVE5_BOMBER;
+	boolean WAVE4BOMBER_ALIVE;
+	boolean WAVE5BOMBER_ALIVE;
+	boolean	WAVE3_FIGHTER;
+	boolean	WAVE3_FIGHTER2;
+	boolean WAVE3FIGHTER_ALIVE;
+	boolean WAVE3FIGHTER2_ALIVE;
+
+///////////////////////////////////////////////////////////////
+//  Teammates                                                //
+///////////////////////////////////////////////////////////////
+
+void mitchellDead()
+{
+	sys.trigger( $item_objectivefailed_1 );
+}
+
+void takDead()
+{
+	sys.trigger( $item_objectivefailed_1 );
+}
+
+void navajasDead()
+{
+	sys.trigger( $item_objectivefailed_1 );
+}
+
+void darnellDead()
+{
+	sys.trigger( $item_objectivefailed_1 );
+}
+
+///////////////////////////////////////////////////////////////
+//  GUI console                                              //
+///////////////////////////////////////////////////////////////
+void playerGUILights()
+{
+	if( LIGHTS_ON ) {
+		$white_ship_light.Off();
+		$chair_light_static_flares.setColor( 0, 0, 0 );
+		$seat_light_1.Off();
+		$seat_light_2.Off();
+		$seat_light_3.Off();
+		$seat_light_4.Off();
+		$seat_light_5.Off();
+		$ds_redlight_1.Off();
+		$ds_redlight_2.Off();
+		$ds_redlight_rot_flare_1.hide();
+		$ds_redlight_rot_flare_2.hide();
+		$player_console_light.Off();
+		$player_console_static.setColor( 0, 0, 0 );
+		$tak_console_light.Off();
+		$tak_console_static.setColor( 0, 0, 0 );
+		LIGHTS_ON = false;
+	}
+	else {
+		if( REDALERT ) {
+			$chair_light_static_flares.setColor( 0.5, 0.03, 0 );	//red
+		}
+		else {
+			$chair_light_static_flares.setColor( 0.6, 1, 0.9 );	//bluegreen
+		}
+		$seat_light_1.On();
+		$seat_light_2.On();
+		$seat_light_3.On();
+		$seat_light_4.On();
+		$seat_light_5.On();
+		$white_ship_light.On();
+		$ds_redlight_1.On();
+		$ds_redlight_2.On();
+		$ds_redlight_rot_flare_1.show();
+		$ds_redlight_rot_flare_2.show();
+		$player_console_light.On();
+		$player_console_static.setColor( 1, 0.73, 0.34 );
+		$tak_console_light.On();
+		$tak_console_static.setColor( 1, 0.73, 0.34 );
+		LIGHTS_ON = true;
+	}
+}
+
+///////////////////////////////////////////////////////////////
+//  GUI on arm by ramp                                       //
+///////////////////////////////////////////////////////////////
+
+void gui_arm_screen_rotate()
+{
+	$gui_arm_screen_mover.time( 1.5 );
+	$gui_arm_screen_mover.rotateOnce( '0 180 0' );
+	sys.waitFor( $reargui );
+}
+
+void gui_arm_screen_rotate_reverse()
+{
+	$gui_arm_screen_mover.time( 1.5 );
+	$gui_arm_screen_mover.rotateOnce( '0 -180 0' );
+	sys.waitFor( $reargui );
+}
+
+void gui_arm_extend()
+{
+	thread gui_arm_screen_rotate();
+	sys.trigger( $reargui_speaker );
+	$gui_arm_1.time( 1 );
+	$gui_arm_1.accelTime( 0.1 );
+	$gui_arm_1.decelTime( 0.1 );
+	$gui_arm_2.time( 1 );
+	$gui_arm_2.accelTime( 0.1 );
+	$gui_arm_2.decelTime( 0.1 );
+	$gui_arm_1.rotateOnce( '0 90 0' );
+	$gui_arm_2.rotateOnce( '0 0 -180' );
+	sys.waitFor( $gui_arm_1 );
+	sys.waitFor( $gui_arm_2 );
+
+	$gui_arm_2.time( 0.5 );
+	$gui_arm_2.accelTime( 0.1 );
+	$gui_arm_2.decelTime( 0.1 );
+	$gui_arm_2.rotateOnce( '0 0 25' );
+	sys.waitFor( $gui_arm_2 );
+
+	$reargui.setGuiParm( "noninteractive", 0 );
+}
+
+void gui_arm_retract()
+{
+	$reargui.setGuiParm( "noninteractive", 1 );
+
+	thread gui_arm_screen_rotate_reverse();
+	sys.trigger( $reargui_speaker );
+	$gui_arm_2.time( 0.5 );
+	$gui_arm_2.accelTime( 0.1 );
+	$gui_arm_2.decelTime( 0.1 );
+	$gui_arm_2.rotateOnce( '0 0 -25' );
+	sys.waitFor( $gui_arm_2 );
+
+	$gui_arm_1.time( 1 );
+	$gui_arm_1.accelTime( 0.1 );
+	$gui_arm_1.decelTime( 0.1 );
+	$gui_arm_2.time( 1 );
+	$gui_arm_2.accelTime( 0.1 );
+	$gui_arm_2.decelTime( 0.1 );
+	$gui_arm_1.rotateOnce( '0 -90 0' );
+	$gui_arm_2.rotateOnce( '0 0 180' );
+	sys.waitFor( $gui_arm_1 );
+	sys.waitFor( $gui_arm_2 );
+}
+
+///////////////////////////////////////////////////////////////
+//  Player Fell out                                          //
+///////////////////////////////////////////////////////////////
+void playerFalling()
+{
+	$player1.disableWeapon();
+	sys.fadeOut( '1 0 0', 1 );
+	sys.wait( 1.5 );
+	$player1.bind( $drop_ship );
+	sys.trigger( $item_objectivefailed_1 );
+}
+
+///////////////////////////////////////////////////////////////
+//  Dropship health monitoring                               //
+///////////////////////////////////////////////////////////////
+void shipImpactEffectLight()
+{
+	if( WAVE == 1 || WAVE == 2 ) {
+		sys.trigger( $amb_shake_low );
+	}
+	if( WAVE == 3 || WAVE == 4 ) {
+		sys.trigger( $amb_shake_med );
+	}
+	if( WAVE == 5 ) {
+		sys.trigger( $amb_shake_high );
+	}
+
+	sys.waitFrame();
+	sys.trigger( $ship_hit_shake );
+	sys.wait( 1 );
+
+	if( WAVE == 1 || WAVE == 2 ) {
+		sys.trigger( $amb_shake_low );
+	}
+	if( WAVE == 3 || WAVE == 4 ) {
+		sys.trigger( $amb_shake_med );
+	}
+	if( WAVE == 5 ) {
+		sys.trigger( $amb_shake_high );
+	}
+}
+
+void shipImpactEffectHeavy()
+{
+	if( WAVE == 1 || WAVE == 2 ) {
+		sys.trigger( $amb_shake_low );
+	}
+	if( WAVE == 3 || WAVE == 4 ) {
+		sys.trigger( $amb_shake_med );
+	}
+	if( WAVE == 5 ) {
+		sys.trigger( $amb_shake_high );
+	}
+
+	sys.waitFrame();
+	sys.trigger( $ship_hit_shake_heavy );
+	sys.wait( 0.5 );
+	aiScriptedAnim( $bottomgun, "impact_heavy", 4, 0 );
+	aiScriptedAnim( $topgun, "impact_heavy", 4, 0 );
+
+	sys.wait( 1 );
+
+	if( WAVE == 1 || WAVE == 2 ) {
+		sys.trigger( $amb_shake_low );
+	}
+	if( WAVE == 3 || WAVE == 4 ) {
+		sys.trigger( $amb_shake_med );
+	}
+	if( WAVE == 5 ) {
+		sys.trigger( $amb_shake_high );
+	}
+}
+
+void dropshipDead()
+{
+	sys.trigger( $item_objectivefailed_1 );
+}
+
+void dropshiphealthcheck()
+{
+	float h = DROPSHIP_HEALTH;	//current health
+	float p = DROPSHIP_HEALTH;	//previous health
+	float d;			//difference
+
+	$drop_ship.setHealth( DROPSHIP_HEALTH );
+ 
+	while( 1 ) {
+
+		h = $drop_ship.getHealth();
+
+		d = ( p - h );
+
+		if( d >= 1 && d <= 30) {
+			thread shipImpactEffectLight();
+		}
+
+		if( d >= 75 ) {
+			thread shipImpactEffectHeavy();
+		}
+
+		p = h;		
+
+		if( (h + DSHEALTHADD) <= 0 ) {
+			//$topgun.setGuiParm( "shealth", 0 );
+			//$bottomgun.setGuiParm( "shealth", 0 );
+			thread dropshipDead();
+			break;
+		}
+
+		if( h <= GLOBAL_DS_HEALTH_SEVENTYFIVE && !WARN_SEVENTYFIVE_PERCENT ) {
+			WARN_SEVENTYFIVE_PERCENT = true;
+			if( !PLAYER_EVENT_IN_PROGRESS ) {
+				radioChatterPlay( $radiochatter, "vo_minordamtoseconday" );	//%%%%%%%% VO %%%%%%%%%%
+			}
+		}
+
+		if( h <= GLOBAL_DS_HEALTH_FIFTY && !WARN_FIFTY_PERCENT ) {
+			WARN_FIFTY_PERCENT = true;
+			if( !PLAYER_EVENT_IN_PROGRESS ) {
+				radioChatterPlayWait( $radiochatter, "vo_tak_powersysst" );	//%%%%%%%% VO %%%%%%%%%%
+				radioChatterPlay( $radiochatter, "vo_tak_wehavemajdam" );	//%%%%%%%% VO %%%%%%%%%%
+			}
+		}
+
+		if( h <= GLOBAL_DS_HEALTH_TWENTYFIVE && !WARN_TWENTYFIVE_PERCENT ) {
+			WARN_TWENTYFIVE_PERCENT = true;
+			if( !PLAYER_EVENT_IN_PROGRESS ) {
+				radioChatterPlay( $radiochatter, "vo_tak_damagelevcrty" );	//%%%%%%%% VO %%%%%%%%%%
+			}
+		}
+
+		//Update the GUI status
+		if( h <= GLOBAL_DS_HEALTH_80 && !GUI_80 ) {
+			sys.sendNamedEvent( GUI_VEHICLEHUD, "ship_health_01_on" );
+			sys.sendNamedEvent( GUI_PLAYERHUD, "ship_health_01_on" );
+			GUI_80 = true ;
+		}
+		if( h <= GLOBAL_DS_HEALTH_60 && !GUI_60 ) {
+			sys.sendNamedEvent( GUI_VEHICLEHUD, "ship_health_02_on" );
+			sys.sendNamedEvent( GUI_PLAYERHUD, "ship_health_02_on" );
+			GUI_60 = true ;
+		}
+		if( h <= GLOBAL_DS_HEALTH_40 && !GUI_40 ) {
+			sys.sendNamedEvent( GUI_VEHICLEHUD, "ship_health_03_on" );
+			sys.sendNamedEvent( GUI_PLAYERHUD, "ship_health_03_on" );
+			GUI_40 = true ;
+		}
+		if( h <= GLOBAL_DS_HEALTH_20 && !GUI_20 ) {
+			sys.sendNamedEvent( GUI_VEHICLEHUD, "ship_health_04_on" );
+			sys.sendNamedEvent( GUI_PLAYERHUD, "ship_health_04_on" );
+			GUI_20 = true ;
+		}
+		if( h <= GLOBAL_DS_HEALTH_10 && !GUI_10 ) {
+			sys.sendNamedEvent( GUI_VEHICLEHUD, "ship_health_05_on" );
+			sys.sendNamedEvent( GUI_PLAYERHUD, "ship_health_05_on" );
+			GUI_10 = true ;
+		}
+
+		//$topgun.setGuiParm( "shealth", h );
+		//$bottomgun.setGuiParm( "shealth", h );
+
+		sys.wait( 0.1 );
+	}
+}
+
+///////////////////////////////////////////////////////////////
+//  Spawning ships on splines                                //
+///////////////////////////////////////////////////////////////
+void stroggKilledFeedback( entity self, entity killer )
+{
+	float i;
+
+	STROGG_WAVE_SHIP_COUNTER--;
+
+	//sys.println( self.getName() + " " + killer.getName() );
+
+
+	//Wave 1
+	if( killer == $player1 && WAVE == 1 ) {
+		self.setKey( "fx_death", "effects/monsters/flyer_space/q4x_explode_atmos.fx" );
+		WAVE1_PLAYERKILLS++;
+		TOTAL_PLAYER_KILLS++;
+	}
+
+	//Wave 2
+	if( killer == $player1 && WAVE == 2 ) {
+		self.setKey( "fx_death", "effects/monsters/flyer_space/q4x_explode_atmos.fx" );
+		WAVE2_PLAYERKILLS++;
+		TOTAL_PLAYER_KILLS++;
+	}
+
+	//Wave 3
+	if( killer == $player1 && WAVE == 3 ) {
+		self.setKey( "fx_death", "effects/monsters/flyer_space/q4x_explode_atmos.fx" );
+		WAVE3_PLAYERKILLS++;
+		TOTAL_PLAYER_KILLS++;
+	}
+
+	//Wave 4
+	if( killer == $player1 && WAVE == 4 ) {
+		self.setKey( "fx_death", "effects/monsters/flyer_space/q4x_explode_atmos.fx" );
+		WAVE4_PLAYERKILLS++;
+		TOTAL_PLAYER_KILLS++;
+	}
+
+	//Wave 5
+	if( killer == $player1 && WAVE == 5 ) {
+		self.setKey( "fx_death", "effects/monsters/flyer_space/q4x_explode_atmos.fx" );
+		WAVE5_PLAYERKILLS++;
+		TOTAL_PLAYER_KILLS++;
+	}
+
+	if( killer == $topgun_driver || killer == $bottomgun_driver ) {
+		self.setKey( "fx_death", "effects/monsters/flyer_space/q4x_explode_atmos.fx" );
+	}
+
+	//Darnell feedback
+	i = randomRoundFloat(1, 50);
+	if( i == 2 && !PLAYER_EVENT_IN_PROGRESS ) {
+		radioChatterPlay( $radiochatter_pilot, "vo_darn_watchtarg" );		// %%%%%%%%%% VO %%%%%%%%%%		
+	}
+	if( i == 3 && !PLAYER_EVENT_IN_PROGRESS ) {
+		radioChatterPlay( $radiochatter_pilot, "vo_darn_flydown" );		// %%%%%%%%%% VO %%%%%%%%%%		
+	}
+	if( i == 4 && !PLAYER_EVENT_IN_PROGRESS ) {
+		radioChatterPlay( $radiochatter_pilot, "vo_darn_threemore" );		// %%%%%%%%%% VO %%%%%%%%%%		
+	}
+}
+
+void splinePathCompleted( float shipId, boolean completed )
+{
+	//Fighters
+	if(shipId == SHIP_1)
+		SPLINE_1_COMPLETED = completed;
+	if(shipId == SHIP_2)
+		SPLINE_2_COMPLETED = completed;
+	if(shipId == SHIP_3)
+		SPLINE_3_COMPLETED = completed;
+	if(shipId == SHIP_4)
+		SPLINE_4_COMPLETED = completed;
+	if(shipId == SHIP_5)
+		SPLINE_5_COMPLETED = completed;
+	if(shipId == SHIP_6)
+		SPLINE_6_COMPLETED = completed;
+	if(shipId == SHIP_7)
+		SPLINE_7_COMPLETED = completed;
+	if(shipId == SHIP_8)
+		SPLINE_8_COMPLETED = completed;
+	if(shipId == SHIP_9)
+		SPLINE_9_COMPLETED = completed;
+	if(shipId == SHIP_10)
+		SPLINE_10_COMPLETED = completed;
+	if(shipId == SHIP_11)
+		SPLINE_11_COMPLETED = completed;
+	if(shipId == SHIP_12)
+		SPLINE_12_COMPLETED = completed;
+	//Bombers
+	if(shipId == SHIP_13)
+		SPLINE_13_COMPLETED = completed;
+	if(shipId == SHIP_14)
+		SPLINE_14_COMPLETED = completed;
+	if(shipId == SHIP_15)
+		SPLINE_15_COMPLETED = completed;
+	if(shipId == SHIP_16)
+		SPLINE_16_COMPLETED = completed;
+
+	//New fighters
+	if(shipId == SHIP_17)
+		SPLINE_17_COMPLETED = completed;
+	if(shipId == SHIP_18)
+		SPLINE_18_COMPLETED = completed;
+	if(shipId == SHIP_19)
+		SPLINE_19_COMPLETED = completed;
+	if(shipId == SHIP_20)
+		SPLINE_20_COMPLETED = completed;
+	if(shipId == SHIP_21)
+		SPLINE_21_COMPLETED = completed;
+	if(shipId == SHIP_22)
+		SPLINE_22_COMPLETED = completed;
+	if(shipId == SHIP_23)
+		SPLINE_23_COMPLETED = completed;
+	if(shipId == SHIP_24)
+		SPLINE_24_COMPLETED = completed;
+}
+
+void moveShipAlongSpline( entity shipEntity, entity moverEntity, entity splinePath, float shipId, float flytime )
+{
+	string tempShip;
+
+	tempShip = shipEntity.getName();
+
+	splinePathCompleted( shipId, false );
+
+	shipEntity.setScript( "death", "stroggKilledFeedback" );
+
+	STROGG_WAVE_SHIP_COUNTER++;
+
+	shipEntity.bind( moverEntity );
+	sys.waitFrame();
+
+	moverEntity.time( flytime );
+	moverEntity.accelTime( (flytime*0.25) );
+	moverEntity.startSpline( splinePath );
+	sys.waitFor( moverEntity );
+
+	shipEntity = sys.getEntity( tempShip );
+
+	if( isValidEntity( shipEntity ) ) {
+		shipEntity.kill();
+	}
+	sys.wait( 0.1 );
+
+	moverEntity.stopSpline();
+	sys.waitFrame();
+	moverEntity.removeBinds();
+	sys.waitFrame();
+	thread splinePathCompleted( shipId, true );
+}
+
+//Fighters__________________________________________________________________
+void fighter_spawn_1_shipSpawned( entity spawnedstrogg1 )
+{
+	if( SPLINE_1_COMPLETED ) {
+		thread moveShipAlongSpline( spawnedstrogg1, $fighter_spawn_1_mover, $fighter_spline_1, SHIP_1, 13 );
+		sys.trigger( $flyby_high_1 );
+		sys.sendNamedEvent( GUI_VEHICLEHUD, "warning_NE" );
+		sys.sendNamedEvent( GUI_PLAYERHUD, "warning_NE" );
+	}
+}
+void fighter_spawn_2_shipSpawned( entity spawnedstrogg2 )
+{
+	if( SPLINE_2_COMPLETED ) {
+		thread moveShipAlongSpline( spawnedstrogg2, $fighter_spawn_2_mover, $fighter_spline_2, SHIP_2, 15 );
+		sys.trigger( $flyby_high_2 );
+		sys.sendNamedEvent( GUI_VEHICLEHUD, "warning_NE" );
+		sys.sendNamedEvent( GUI_PLAYERHUD, "warning_NE" );
+	}
+}
+void fighter_spawn_3_shipSpawned( entity spawnedstrogg3 )
+{
+	if( SPLINE_3_COMPLETED ) {
+		thread moveShipAlongSpline( spawnedstrogg3, $fighter_spawn_3_mover, $fighter_spline_3, SHIP_3, 14 );
+		sys.trigger( $flyby_high_3 );
+		sys.sendNamedEvent( GUI_VEHICLEHUD, "warning_NE" );
+		sys.sendNamedEvent( GUI_PLAYERHUD, "warning_NE" );
+	}
+}
+void fighter_spawn_4_shipSpawned( entity spawnedstrogg4 )
+{
+	if( SPLINE_4_COMPLETED ) {
+		thread moveShipAlongSpline( spawnedstrogg4, $fighter_spawn_4_mover, $fighter_spline_4, SHIP_4, 15 );
+		if( WAVE == 3 || WAVE == 4 || WAVE == 5 ) {
+			starget = spawnedstrogg4;
+			sys.trigger( $flyby_high_4 );
+			sys.sendNamedEvent( GUI_VEHICLEHUD, "warning_SW" );
+			sys.sendNamedEvent( GUI_PLAYERHUD, "warning_SW" );
+		}
+	}
+}
+void fighter_spawn_5_shipSpawned( entity spawnedstrogg5 )
+{
+	if( SPLINE_5_COMPLETED ) {
+		thread moveShipAlongSpline( spawnedstrogg5, $fighter_spawn_5_mover, $fighter_spline_5, SHIP_5, 13 );
+		sys.trigger( $flyby_high_5 );
+		sys.sendNamedEvent( GUI_VEHICLEHUD, "warning_SW" );
+		sys.sendNamedEvent( GUI_PLAYERHUD, "warning_SW" );
+	}
+}
+void fighter_spawn_6_shipSpawned( entity spawnedstrogg6 )
+{
+	if( SPLINE_6_COMPLETED ) {
+		thread moveShipAlongSpline( spawnedstrogg6, $fighter_spawn_6_mover, $fighter_spline_6, SHIP_6, 13 );
+		sys.trigger( $flyby_high_6 );
+		sys.sendNamedEvent( GUI_VEHICLEHUD, "warning_SW" );
+		sys.sendNamedEvent( GUI_PLAYERHUD, "warning_SW" );
+	}
+}
+void fighter_spawn_7_shipSpawned( entity spawnedstrogg7 )
+{
+	if( SPLINE_7_COMPLETED ) {
+		thread moveShipAlongSpline( spawnedstrogg7, $fighter_spawn_7_mover, $fighter_spline_7, SHIP_7, 14 );
+		if( WAVE == 1 || WAVE == 2 ) {
+			starget = spawnedstrogg7;
+			sys.trigger( $flyby_low_1 );
+			sys.sendNamedEvent( GUI_VEHICLEHUD, "warning_NW" );
+			sys.sendNamedEvent( GUI_PLAYERHUD, "warning_NW" );
+		}
+	}
+}
+void fighter_spawn_8_shipSpawned( entity spawnedstrogg8 )
+{
+	if( SPLINE_8_COMPLETED ) {
+		thread moveShipAlongSpline( spawnedstrogg8, $fighter_spawn_8_mover, $fighter_spline_8, SHIP_8, 13 );
+		sys.trigger( $flyby_low_2 );
+		sys.sendNamedEvent( GUI_VEHICLEHUD, "warning_NW" );
+		sys.sendNamedEvent( GUI_PLAYERHUD, "warning_NW" );
+	}
+}
+void fighter_spawn_9_shipSpawned( entity spawnedstrogg9 )
+{
+	if( SPLINE_9_COMPLETED ) {
+		thread moveShipAlongSpline( spawnedstrogg9, $fighter_spawn_9_mover, $fighter_spline_9, SHIP_9, 15 );
+		sys.trigger( $flyby_low_3 );
+		sys.sendNamedEvent( GUI_VEHICLEHUD, "warning_NW" );
+		sys.sendNamedEvent( GUI_PLAYERHUD, "warning_NW" );
+	}
+}
+void fighter_spawn_10_shipSpawned( entity spawnedstrogg10 )
+{
+	if( SPLINE_10_COMPLETED ) {
+		thread moveShipAlongSpline( spawnedstrogg10, $fighter_spawn_10_mover, $fighter_spline_10, SHIP_10, 13 );
+		sys.trigger( $flyby_low_4 );
+		sys.sendNamedEvent( GUI_VEHICLEHUD, "warning_SE" );
+		sys.sendNamedEvent( GUI_PLAYERHUD, "warning_SE" );
+	}
+}
+void fighter_spawn_11_shipSpawned( entity spawnedstrogg11 )
+{
+	if( SPLINE_11_COMPLETED ) {
+		thread moveShipAlongSpline( spawnedstrogg11, $fighter_spawn_11_mover, $fighter_spline_11, SHIP_11, 14 );
+		sys.trigger( $flyby_low_5 );
+		sys.sendNamedEvent( GUI_VEHICLEHUD, "warning_SE" );
+		sys.sendNamedEvent( GUI_PLAYERHUD, "warning_SE" );
+	}
+}
+void fighter_spawn_12_shipSpawned( entity spawnedstrogg12 )
+{
+	if( SPLINE_12_COMPLETED ) {
+		thread moveShipAlongSpline( spawnedstrogg12, $fighter_spawn_12_mover, $fighter_spline_12, SHIP_12, 14 );
+		sys.trigger( $flyby_low_6 );
+		sys.sendNamedEvent( GUI_VEHICLEHUD, "warning_SE" );
+		sys.sendNamedEvent( GUI_PLAYERHUD, "warning_SE" );
+	}
+}
+//Bombers__________________________________________________________________
+void bomber_spawn_1_shipSpawned( entity spawnedstroggb1 )
+{
+	if( SPLINE_13_COMPLETED ) {
+		thread moveShipAlongSpline( spawnedstroggb1, $bomber_spawn_1_mover, $bomber_spline_1, SHIP_13, 50 );
+		sys.trigger( $flyby_bomber_1 );
+		sys.sendNamedEvent( GUI_VEHICLEHUD, "warning_NE" );
+		sys.sendNamedEvent( GUI_PLAYERHUD, "warning_NE" );
+	}
+}
+void bomber_spawn_2_shipSpawned( entity spawnedstroggb2 )
+{
+	if( SPLINE_14_COMPLETED ) {
+		thread moveShipAlongSpline( spawnedstroggb2, $bomber_spawn_2_mover, $bomber_spline_2, SHIP_14, 50 );
+		sys.trigger( $flyby_bomber_2 );
+		sys.sendNamedEvent( GUI_VEHICLEHUD, "warning_NE" );
+		sys.sendNamedEvent( GUI_PLAYERHUD, "warning_NE" );
+	}
+}
+void bomber_spawn_3_shipSpawned( entity spawnedstroggb3 )
+{
+	if( SPLINE_15_COMPLETED ) {
+		thread moveShipAlongSpline( spawnedstroggb3, $bomber_spawn_3_mover, $bomber_spline_3, SHIP_15, 50 );
+		sys.trigger( $flyby_bomber_3 );
+		sys.sendNamedEvent( GUI_VEHICLEHUD, "warning_NW" );
+		sys.sendNamedEvent( GUI_PLAYERHUD, "warning_NW" );
+	}
+}
+void bomber_spawn_4_shipSpawned( entity spawnedstroggb4 )
+{
+	if( SPLINE_16_COMPLETED ) {
+		thread moveShipAlongSpline( spawnedstroggb4, $bomber_spawn_4_mover, $bomber_spline_4, SHIP_16, 50 );
+		sys.trigger( $flyby_bomber_4 );
+		sys.sendNamedEvent( GUI_VEHICLEHUD, "warning_NW" );
+		sys.sendNamedEvent( GUI_PLAYERHUD, "warning_NW" );
+	}
+}
+//New fighters____________________________________________________________
+void fighter_spawn_0_1_shipSpawned( entity spawnedstrogg01 )
+{
+	if( SPLINE_17_COMPLETED ) {
+		thread moveShipAlongSpline( spawnedstrogg01, $fighter_spawn_0_1_mover, $fighter_spline_0_1, SHIP_17, 12 );
+		sys.trigger( $flyby_high_7 );
+		sys.sendNamedEvent( GUI_VEHICLEHUD, "warning_N" );
+		sys.sendNamedEvent( GUI_PLAYERHUD, "warning_N" );
+	}
+}
+void fighter_spawn_0_2_shipSpawned( entity spawnedstrogg02 )
+{
+	if( SPLINE_18_COMPLETED ) {
+		thread moveShipAlongSpline( spawnedstrogg02, $fighter_spawn_0_2_mover, $fighter_spline_0_2, SHIP_18, 12 );
+		sys.trigger( $flyby_high_8 );
+		sys.sendNamedEvent( GUI_VEHICLEHUD, "warning_N" );
+		sys.sendNamedEvent( GUI_PLAYERHUD, "warning_N" );
+	}
+}
+void fighter_spawn_90_1_shipSpawned( entity spawnedstrogg901 )
+{
+	if( SPLINE_19_COMPLETED ) {
+		thread moveShipAlongSpline( spawnedstrogg901, $fighter_spawn_90_1_mover, $fighter_spline_90_1, SHIP_19, 12 );
+		sys.trigger( $flyby_low_7 );
+		sys.sendNamedEvent( GUI_VEHICLEHUD, "warning_E" );
+		sys.sendNamedEvent( GUI_PLAYERHUD, "warning_E" );
+	}
+}
+void fighter_spawn_90_2_shipSpawned( entity spawnedstrogg902 )
+{
+	if( SPLINE_20_COMPLETED ) {
+		thread moveShipAlongSpline( spawnedstrogg902, $fighter_spawn_90_2_mover, $fighter_spline_90_2, SHIP_20, 12 );
+		sys.trigger( $flyby_low_8 );
+		sys.sendNamedEvent( GUI_VEHICLEHUD, "warning_E" );
+		sys.sendNamedEvent( GUI_PLAYERHUD, "warning_E" );
+	}
+}
+void fighter_spawn_180_1_shipSpawned( entity spawnedstrogg1801 )
+{
+	if( SPLINE_21_COMPLETED ) {
+		thread moveShipAlongSpline( spawnedstrogg1801, $fighter_spawn_180_1_mover, $fighter_spline_180_1, SHIP_21, 12 );
+		sys.trigger( $flyby_low_9 );
+		sys.sendNamedEvent( GUI_VEHICLEHUD, "warning_S" );
+		sys.sendNamedEvent( GUI_PLAYERHUD, "warning_S" );
+	}
+}
+void fighter_spawn_180_2_shipSpawned( entity spawnedstrogg1802 )
+{
+	if( SPLINE_22_COMPLETED ) {
+		thread moveShipAlongSpline( spawnedstrogg1802, $fighter_spawn_180_2_mover, $fighter_spline_180_2, SHIP_22, 12 );
+		sys.trigger( $flyby_low_10 );
+		sys.sendNamedEvent( GUI_VEHICLEHUD, "warning_S" );
+		sys.sendNamedEvent( GUI_PLAYERHUD, "warning_S" );
+	}
+}
+void fighter_spawn_270_1_shipSpawned( entity spawnedstrogg2701 )
+{
+	if( SPLINE_23_COMPLETED ) {
+		thread moveShipAlongSpline( spawnedstrogg2701, $fighter_spawn_270_1_mover, $fighter_spline_270_1, SHIP_23, 12 );
+		sys.trigger( $flyby_high_9 );
+		sys.sendNamedEvent( GUI_VEHICLEHUD, "warning_W" );
+		sys.sendNamedEvent( GUI_PLAYERHUD, "warning_W" );
+	}
+}
+void fighter_spawn_270_2_shipSpawned( entity spawnedstrogg2702 )
+{
+	if( SPLINE_24_COMPLETED ) {
+		thread moveShipAlongSpline( spawnedstrogg2702, $fighter_spawn_270_2_mover, $fighter_spline_270_2, SHIP_24, 12 );
+		sys.trigger( $flyby_high_10 );
+		sys.sendNamedEvent( GUI_VEHICLEHUD, "warning_W" );
+		sys.sendNamedEvent( GUI_PLAYERHUD, "warning_W" );
+	}
+}
+
+///////////////////////////////////////////////////////////////
+//  Skybox Functions                                         //
+///////////////////////////////////////////////////////////////
+void loopSkyboxTerrain()
+{
+	float a = 0;
+
+	while( 1 ) {
+		$terrain_1.time( 30 );
+		$terrain_1.move( 180, 512 );
+		$terrain_2.time( 30 );
+		$terrain_2.move( 180, 512 );
+		sys.waitFor( $terrain_1 );
+		sys.waitFor( $terrain_2 );
+
+		if( a == 1 ) {
+			$skybox_bld_1.hide();
+		}
+		if( a == 2 ) {
+			$skybox_bld_2.hide();
+		}
+		if( a == 3 ) {
+			$skybox_bld_3.hide();
+		}
+		if( a == 4 ) {
+			$skybox_bld_4.hide();
+		}
+
+		$terrain_1.hide();
+		$terrain_1.time( 0.01 );
+		$terrain_1.move( 360, 1024 );
+		sys.waitFor( $terrain_1 );
+		$terrain_1.show();
+
+		a = randomRoundFloat(1, 10);
+		if( a == 1 ) {
+			$skybox_bld_1.show();
+		}
+		if( a == 2 ) {
+			$skybox_bld_2.show();
+		}
+		if( a == 3 ) {
+			$skybox_bld_3.show();
+		}
+		if( a == 4 ) {
+			$skybox_bld_4.show();
+		}
+
+		$terrain_1.time( 30 );
+		$terrain_1.move( 180, 512 );
+		$terrain_2.time( 30 );
+		$terrain_2.move( 180, 512 );
+		sys.waitFor( $terrain_1 );
+		sys.waitFor( $terrain_2 );
+	
+		$terrain_2.hide();
+		$terrain_2.time( 0.01 );
+		$terrain_2.move( 360, 1024 );
+		sys.waitFor( $terrain_2 );
+		$terrain_2.show();
+
+		sys.waitFrame();
+	}
+}
+
+
+
+///////////////////////////////////////////////////////////////
+//  Turret Functions                                         //
+///////////////////////////////////////////////////////////////
+void hideInterior()
+{
+	if( DRIVER ) {
+		return;
+	}
+
+	if( INTOPGUN ) {
+		$ship_top_facade.show();
+	}
+	if( INBOTTOMGUN ) {
+		$ship_bottom_facade.show();
+	}
+
+	if( !EVENT_FIRE_CARGO ) {
+		$mitchell.hide();
+		$wounded.hide();
+	}
+
+	$navajas.hide();
+	$tak.hide();
+	$ship_interior.hide();
+	$ramp.hide();
+	$cargodoor.hide();
+	$rightdoor.hide();
+	$leftdoor.hide();
+	$box1.hide();
+	$box2.hide();
+	$box3.hide();
+	$box4.hide();
+	if( !CARGO_DUMPED ) {
+		$cargo_crate_1.hide();
+		$cargo_crate_2.hide();
+	}
+	$ammocrate.hide();
+	$gui_arm_1.hide();
+	$gui_arm_2.hide();
+	$gui_arm_3.hide();
+	$chair_light_static_flares.hide();
+	$chair_light_wires.hide();
+	$chair_light_statics_off.hide();
+	$seat_light_1.Off();
+	$seat_light_2.Off();
+	$seat_light_3.Off();
+	$seat_light_4.Off();
+	$seat_light_5.Off();
+	$ds_redlight_static_1.hide();
+	$ds_redlight_rot_1.hide();
+	$ds_redlight_1.Off();
+	$ds_redlight_static_2.hide();
+	$ds_redlight_rot_2.hide();
+	$ds_redlight_2.Off();
+	$takgui_1.hide();
+	$takgui_2.hide();
+	$forward_light.Off();
+	$navajas_chair.hide();
+	$tak_chair.hide();
+	$empty_chair_1.hide();
+	$tak_chair_side.hide();
+	$empty_chair_3.hide();
+	$empty_chair_4.hide();
+	$dekard_chair.hide();
+	$navajas_chair_side.hide();
+	$mitchell_chair.hide();
+	$darnell_chair.hide();
+	$reargui.hide();
+	$forwardgui.hide();
+	$forwardgui_amb.hide();
+	$engine_thrust_fx_1.hide();
+	$engine_thrust_fx_2.hide();
+	$ladder.hide();
+	$ammostuff.hide();
+	$nava_gui_1.hide();
+	$nava_gui_2.hide();
+	$nava_gui_arm_1.hide();
+	$nava_gui_arm_2.hide();
+	$nava_gui_arm_3.hide();
+	$nava_gui_arm_4.hide();
+}
+
+void showInterior()
+{
+	if( DRIVER ) {
+		return;
+	}
+
+	$ship_bottom_facade.hide();
+	$ship_top_facade.hide();
+	$ship_interior.show();
+	$ramp.show();
+	$cargodoor.show();
+	$rightdoor.show();
+	$leftdoor.show();
+	if( !EVENT_FIRE_CARGO ) {
+		$mitchell.show();
+		$wounded.show();
+	}
+
+	$navajas.show();
+	$tak.show();
+	$box1.show();
+	$box2.show();
+	$box3.show();
+	$box4.show();
+	if( !CARGO_DUMPED ) {
+		$cargo_crate_1.show();
+		$cargo_crate_2.show();
+	}
+	$ammocrate.show();
+	$gui_arm_1.show();
+	$gui_arm_2.show();
+	$gui_arm_3.show();;
+	$chair_light_static_flares.show();
+	$chair_light_wires.show();
+	$chair_light_statics_off.show();
+	$seat_light_1.On();
+	$seat_light_2.On();
+	$seat_light_3.On();
+	$seat_light_4.On();
+	$seat_light_5.On();
+	$ds_redlight_static_1.show();
+	$ds_redlight_rot_1.show();
+	if( !INTROCIN ) {
+		$ds_redlight_1.On();
+		$ds_redlight_2.On();
+	}
+	$ds_redlight_static_2.show();
+	$ds_redlight_rot_2.show();
+	$takgui_1.show();
+	$takgui_2.show();
+	$forward_light.On();
+	$navajas_chair.show();
+	$tak_chair.show();
+	$empty_chair_1.show();
+	$tak_chair_side.show();
+	$empty_chair_3.show();
+	$empty_chair_4.show();
+	$dekard_chair.show();
+	$navajas_chair_side.show();
+	$mitchell_chair.show();
+	$darnell_chair.show();
+	$reargui.show();
+	$forwardgui.show();
+	$forwardgui_amb.show();
+	$engine_thrust_fx_1.show();
+	$engine_thrust_fx_2.show();
+	$ladder.show();
+	$ammostuff.show();
+	$nava_gui_1.show();
+	$nava_gui_2.show();
+	$nava_gui_arm_1.show();
+	$nava_gui_arm_2.show();
+	$nava_gui_arm_3.show();
+	$nava_gui_arm_4.show();
+}
+
+void shipMovement( entity gun )
+{
+	float a;
+
+	while( 1 ) {
+
+		if( !INBOTTOMGUN && !INTOPGUN ) {
+			break;
+		}
+		$dropship_mover.time( 1.5 );
+		$dropship_mover.accelTime( 0.75 );
+		$dropship_mover.decelTime( 0.75 );
+		$dropship_mover.rotateOnce( '0 0 5' );
+		sys.waitFor( $dropship_mover );
+		if( !INBOTTOMGUN && !INTOPGUN ) {
+			break;
+		}
+		$dropship_mover.time( 1.5 );
+		$dropship_mover.accelTime( 0.75 );
+		$dropship_mover.decelTime( 0.75 );
+		$dropship_mover.rotateOnce( '0 0 -10' );
+		sys.waitFor( $dropship_mover );
+		if( !INBOTTOMGUN && !INTOPGUN ) {
+			break;
+		}
+		$dropship_mover.time( 1.5 );
+		$dropship_mover.accelTime( 0.75 );
+		$dropship_mover.decelTime( 0.75 );
+		$dropship_mover.rotateOnce( '0 0 10' );
+		sys.waitFor( $dropship_mover );
+		if( !INBOTTOMGUN && !INTOPGUN ) {
+			break;
+		}
+		$dropship_mover.time( 1.5 );
+		$dropship_mover.accelTime( 0.75 );
+		$dropship_mover.decelTime( 0.75 );
+		$dropship_mover.rotateOnce( '0 0 -5' );
+		sys.waitFor( $dropship_mover );
+		if( !INBOTTOMGUN && !INTOPGUN ) {
+			break;
+		}
+		$dropship_mover.time( 1.5 );
+		$dropship_mover.accelTime( 0.75 );
+		$dropship_mover.decelTime( 0.75 );
+		$dropship_mover.rotateOnce( '0 0 -5' );
+		sys.waitFor( $dropship_mover );
+		if( !INBOTTOMGUN && !INTOPGUN ) {
+			break;
+		}
+		$dropship_mover.time( 1.5 );
+		$dropship_mover.accelTime( 0.75 );
+		$dropship_mover.decelTime( 0.75 );
+		$dropship_mover.rotateOnce( '0 0 10' );
+		sys.waitFor( $dropship_mover );
+		if( !INBOTTOMGUN && !INTOPGUN ) {
+			break;
+		}
+		$dropship_mover.time( 1.5 );
+		$dropship_mover.accelTime( 0.75 );
+		$dropship_mover.decelTime( 0.75 );
+		$dropship_mover.rotateOnce( '0 0 -10' );
+		sys.waitFor( $dropship_mover );
+		if( !INBOTTOMGUN && !INTOPGUN ) {
+			break;
+		}
+		$dropship_mover.time( 1.5 );
+		$dropship_mover.accelTime( 0.75 );
+		$dropship_mover.decelTime( 0.75 );
+		$dropship_mover.rotateOnce( '0 0 5' );
+		sys.waitFor( $dropship_mover );
+		if( !INBOTTOMGUN && !INTOPGUN ) {
+			break;
+		}
+
+		a = randomRoundFloat( 1, 8 );
+		if( a == 1 && !PLAYER_EVENT_IN_PROGRESS && !NO_EVASIVES ) {				//Hard right tilt
+			gun.lock( 1 );
+			radioChatterPlay( $radiochatter_pilot, "vo_vansen_evasiv2" );		// %%%%%%%%%% VO %%%%%%%%%%
+			$dropship_mover.time( 1 );
+			$dropship_mover.accelTime( 0.3 );
+			$dropship_mover.decelTime( 0.6 );
+			$dropship_mover.rotateOnce( '0 0 45' );
+			sys.waitFor( $dropship_mover );
+			$dropship_mover.time( 1 );
+			$dropship_mover.accelTime( 0.5 );
+			$dropship_mover.decelTime( 0.5 );
+			$dropship_mover.rotateOnce( '0 0 -55' );
+			sys.waitFor( $dropship_mover );
+			$dropship_mover.time( 1 );
+			$dropship_mover.accelTime( 0.5 );
+			$dropship_mover.decelTime( 0.5 );
+			$dropship_mover.rotateOnce( '0 0 10' );
+			sys.waitFor( $dropship_mover );
+			gun.lock( 0 );
+		}		
+
+		if( !INBOTTOMGUN && !INTOPGUN ) {
+			break;
+		}
+
+		if( a == 2 && !PLAYER_EVENT_IN_PROGRESS && !NO_EVASIVES ) {				//Hard left tilt
+			gun.lock( 1 );
+			radioChatterPlay( $radiochatter_pilot, "vo_vansen_evasiveman" );		// %%%%%%%%%% VO %%%%%%%%%%
+			$dropship_mover.time( 1 );
+			$dropship_mover.accelTime( 0.3 );
+			$dropship_mover.decelTime( 0.6 );
+			$dropship_mover.rotateOnce( '0 0 -45' );
+			sys.waitFor( $dropship_mover );
+			$dropship_mover.time( 1 );
+			$dropship_mover.accelTime( 0.5 );
+			$dropship_mover.decelTime( 0.5 );
+			$dropship_mover.rotateOnce( '0 0 55' );
+			sys.waitFor( $dropship_mover );
+			$dropship_mover.time( 1 );
+			$dropship_mover.accelTime( 0.5 );
+			$dropship_mover.decelTime( 0.5 );
+			$dropship_mover.rotateOnce( '0 0 -10' );
+			sys.waitFor( $dropship_mover );
+			gun.lock( 0 );
+		}
+
+		if( !INBOTTOMGUN && !INTOPGUN ) {
+			break;
+		}
+
+		if( a == 3 && !PLAYER_EVENT_IN_PROGRESS && !NO_EVASIVES ) {				//Long, slow tilt right
+			gun.lock( 1 );
+			$dropship_mover.time( 3 );
+			$dropship_mover.accelTime( 1 );
+			$dropship_mover.decelTime( 1.5 );
+			$dropship_mover.rotateOnce( '0 0 25' );
+			sys.waitFor( $dropship_mover );
+			$dropship_mover.time( 3 );
+			$dropship_mover.accelTime( 1 );
+			$dropship_mover.decelTime( 1.5 );
+			$dropship_mover.rotateOnce( '0 0 -25' );
+			sys.waitFor( $dropship_mover );
+			gun.lock( 0 );
+		}
+
+		if( !INBOTTOMGUN && !INTOPGUN ) {
+			break;
+		}
+
+		if( a == 4 && !PLAYER_EVENT_IN_PROGRESS && !NO_EVASIVES ) {				//Long, slow tilt left
+			gun.lock( 1 );
+			$dropship_mover.time( 3 );
+			$dropship_mover.accelTime( 1 );
+			$dropship_mover.decelTime( 1.5 );
+			$dropship_mover.rotateOnce( '0 0 -25' );
+			sys.waitFor( $dropship_mover );
+			$dropship_mover.time( 3 );
+			$dropship_mover.accelTime( 1 );
+			$dropship_mover.decelTime( 1.5 );
+			$dropship_mover.rotateOnce( '0 0 25' );
+			sys.waitFor( $dropship_mover );
+			gun.lock( 0 );
+		}
+
+		if( !INBOTTOMGUN && !INTOPGUN ) {
+			break;
+		}
+
+		if( a == 5 && !PLAYER_EVENT_IN_PROGRESS && !NO_EVASIVES ) {				//Pitch nose down
+			gun.lock( 1 );
+			radioChatterPlay( $radiochatter_pilot, "vo_vansen_evasive3" );		// %%%%%%%%%% VO %%%%%%%%%%
+			$dropship_mover.time( 2 );
+			$dropship_mover.accelTime( 0.5 );
+			$dropship_mover.decelTime( 1.4 );
+			$dropship_mover.rotateOnce( '25 0 0' );
+			sys.waitFor( $dropship_mover );
+			$dropship_mover.time( 2 );
+			$dropship_mover.accelTime( 0.5 );
+			$dropship_mover.decelTime( 1.4 );
+			$dropship_mover.rotateOnce( '-25 0 0' );
+			sys.waitFor( $dropship_mover );
+			gun.lock( 0 );
+		}
+
+		if( !INBOTTOMGUN && !INTOPGUN ) {
+			break;
+		}
+
+		if( a == 6 && !PLAYER_EVENT_IN_PROGRESS && !NO_EVASIVES ) {				//Pitch nose up
+			gun.lock( 1 );
+			radioChatterPlay( $radiochatter_pilot, "vo_vansen_hangon" );		// %%%%%%%%%% VO %%%%%%%%%%
+			$dropship_mover.time( 2 );
+			$dropship_mover.accelTime( 0.5 );
+			$dropship_mover.decelTime( 1.4 );
+			$dropship_mover.rotateOnce( '-25 0 0' );
+			sys.waitFor( $dropship_mover );
+			$dropship_mover.time( 2 );
+			$dropship_mover.accelTime( 0.5 );
+			$dropship_mover.decelTime( 1.4 );
+			$dropship_mover.rotateOnce( '25 0 0' );
+			sys.waitFor( $dropship_mover );
+			gun.lock( 0 );
+		}
+
+		if( !INBOTTOMGUN && !INTOPGUN ) {
+			break;
+		}
+
+		if( a == 7 && !PLAYER_EVENT_IN_PROGRESS && !NO_EVASIVES ) {				//Pitch nose down & tilt left
+			gun.lock( 1 );
+			$dropship_mover.time( 2 );
+			$dropship_mover.accelTime( 0.5 );
+			$dropship_mover.decelTime( 1.4 );
+			$dropship_mover.rotateOnce( '25 0 -15' );
+			sys.waitFor( $dropship_mover );
+			$dropship_mover.time( 2 );
+			$dropship_mover.accelTime( 0.5 );
+			$dropship_mover.decelTime( 1.4 );
+			$dropship_mover.rotateOnce( '-25 0 15' );
+			sys.waitFor( $dropship_mover );
+			gun.lock( 0 );
+		}
+
+		if( !INBOTTOMGUN && !INTOPGUN ) {
+			break;
+		}
+
+		if( a == 8 && !PLAYER_EVENT_IN_PROGRESS && !NO_EVASIVES ) {				//Pitch nose up & tilt right
+			gun.lock( 1 );
+			$dropship_mover.time( 2 );
+			$dropship_mover.accelTime( 0.5 );
+			$dropship_mover.decelTime( 1.4 );
+			$dropship_mover.rotateOnce( '-25 0 15' );
+			sys.waitFor( $dropship_mover );
+			$dropship_mover.time( 2 );
+			$dropship_mover.accelTime( 0.5 );
+			$dropship_mover.decelTime( 1.4 );
+			$dropship_mover.rotateOnce( '25 0 -15' );
+			sys.waitFor( $dropship_mover );
+			gun.lock( 0 );
+		}
+
+		sys.waitFrame();		
+	} 
+}
+
+void topGunEntered()
+{
+	if( DRIVER ) {
+		return;
+	}
+	INTOPGUN = true;
+
+	sys.setcvar( "g_fov", "80" );
+
+	sys.trigger( $comm_chatter );
+
+	$dropship_mover.setAngles( '0 0 0' );
+
+	thread hideInterior();
+	$topgun.lock( 1 );
+	$topgun.disableWeapon();
+	sys.waitFrame();
+	aiScriptedAnim( $topgun, "intro", 4, 0 );
+	sys.wait( 2 );
+	$topgun.enableWeapon();
+	sys.waitFrame();
+	$topgun.lock( 0 );
+	thread shipMovement( $topgun );
+}
+
+void topGunExited()
+{
+	INTOPGUN = false;
+	thread showInterior();
+	sys.setcvar( "g_fov", "90" );
+	sys.waitFrame();
+	$topgun.lock( 1 );
+
+	sys.trigger( $comm_chatter );
+
+	aiScriptedAnimLoop( $topgun, "idle", 0 );
+	sys.wait( 1 );
+	$topgun.lock( 0 );
+}
+
+void bottomGunEntered()
+{
+	if( DRIVER ) {
+		return;
+	}
+	INBOTTOMGUN = true;
+
+	$ship_bottom_fill_light.On();
+	sys.setcvar( "g_fov", "80" );
+
+	$dropship_mover.setAngles( '0 0 0' );
+
+	sys.trigger( $comm_chatter );
+
+	thread hideInterior();
+	$bottomgun.lock( 1 );
+	$bottomgun.disableWeapon();
+	sys.waitFrame();
+	aiScriptedAnim( $bottomgun, "intro", 4, 0 );
+	sys.wait( 2 );
+	$bottomgun.enableWeapon();
+	sys.waitFrame();
+	$bottomgun.lock( 0 );
+	thread shipMovement( $bottomgun );
+}
+
+void bottomGunExited()
+{
+	INBOTTOMGUN = false;
+	thread showInterior();
+	$ship_bottom_fill_light.Off();
+	sys.setcvar( "g_fov", "90" );
+	sys.waitFrame();
+	$bottomgun.lock( 1 );
+
+	sys.trigger( $comm_chatter );
+
+	aiScriptedAnimLoop( $bottomgun, "idle", 0 );
+	sys.wait( 1 );
+	$bottomgun.lock( 0 );
+}
+
+///////////////////////////////////////////////////////////////
+//  Ramp Functions                                           //
+///////////////////////////////////////////////////////////////
+void moveRampDown()
+{
+	RAMPACTIVE = true;
+	sys.trigger( $ramp_open_speaker );
+	sys.trigger( $wind1 );
+	$ramp.time( 5 );
+	$ramp.accelTime( 1 );
+	$ramp.decelTime( 2 );
+	$ramp.rotateOnce( '-40 0 0' );
+	sys.waitFor( $ramp );
+	RAMPUP = false;
+	sys.wait( 0.5 );
+	RAMPACTIVE = false;
+}
+
+void moveRampUp()
+{
+	RAMPACTIVE = true;
+	sys.trigger( $ramp_close_speaker );
+	$ramp.time( 5 );
+	$ramp.accelTime( 1 );
+	$ramp.decelTime( 2 );
+	$ramp.rotateOnce( '40 0 0' );
+	sys.waitFor( $ramp );
+	RAMPUP = true;
+	sys.trigger( $wind1 );
+
+	sys.wait( 0.5 );
+	RAMPACTIVE = false;
+}
+
+void toggleRamp()
+{
+	if( RAMPACTIVE ) {
+		return;
+	}
+
+	if( RAMPUP ) {
+		moveRampDown();
+	}
+
+	else {
+		moveRampUp();
+	}
+}
+
+///////////////////////////////////////////////////////////////
+//  Friendly Ships Functions                                 //
+///////////////////////////////////////////////////////////////
+void loopFriendlyDropshipOne()
+{
+	$friendly_dropship_1_mover.disableSplineAngles();
+
+	while( 1 ) {
+		$friendly_dropship_1_mover.time( 4 );
+		$friendly_dropship_1_mover.startSpline( $friendly_dropship_1_spline );
+		sys.waitFor( $friendly_dropship_1_mover );
+		sys.waitFrame();
+		if( FRIENDLY_1_KILL ) {
+			break;
+		}
+	}
+
+	FRIENDLY_1_READYTODIE = true;
+}
+
+void loopFriendlyDropshipTwo()
+{
+	$friendly_dropship_2_mover.disableSplineAngles();
+
+	while( 1 ) {
+		$friendly_dropship_2_mover.time( 4 );
+		$friendly_dropship_2_mover.startSpline( $friendly_dropship_2_spline );
+		sys.waitFor( $friendly_dropship_2_mover );
+		sys.waitFrame();
+		if( FRIENDLY_2_KILL ) {
+			break;
+		}
+	}
+
+	FRIENDLY_2_READYTODIE = true;
+}
+
+void loopFriendlyDropshipThree()
+{
+	$friendly_dropship_3_mover.disableSplineAngles();
+
+	while( 1 ) {
+		$friendly_dropship_3_mover.time( 4 );
+		$friendly_dropship_3_mover.startSpline( $friendly_dropship_3_spline );
+		sys.waitFor( $friendly_dropship_3_mover );
+		sys.waitFrame();
+		if( FRIENDLY_3_KILL ) {
+			break;
+		}
+	}
+
+	FRIENDLY_3_READYTODIE = true;
+}
+
+void initFriendlies()
+{
+	$friendly_dropship_1.playCycle( ANIMCHANNEL_ALL, "idle_all_closed" );
+	$friendly_dropship_2.playCycle( ANIMCHANNEL_ALL, "idle_all_closed" );
+	$friendly_dropship_3.playCycle( ANIMCHANNEL_ALL, "idle_all_closed" );
+	thread loopFriendlyDropshipOne();
+	thread loopFriendlyDropshipTwo();
+	thread loopFriendlyDropshipThree();
+}
+
+void killFriendlyDropship1()
+{
+	if( FRIENDLY_1_KILL ) {
+		return;
+	}
+	FRIENDLY_1_KILL = true;
+
+	while( !FRIENDLY_1_READYTODIE ) {
+		sys.wait( 0.1 );
+	}
+
+	if( !PLAYER_EVENT_IN_PROGRESS ) {
+		radioChatterPlayWait( $radiochatter, "vo_marks_eagle15hit" );		// %%%%%%%%%% VO %%%%%%%%%%
+	}
+
+	$ds_1_launcher_1.remove();
+	$ds_1_launcher_2.remove();
+
+	if( !PLAYER_EVENT_IN_PROGRESS ) {
+		radioChatterPlay( $radiochatter, "vo_eagle15_wehitgodown" );		// %%%%%%%%%% VO %%%%%%%%%%
+	}
+
+	$friendly_dropship_1_mover.stopSpline();
+	$friendly_dropship_1_death_mover.disableSplineAngles();
+	$friendly_dropship_1_mover.bind( $friendly_dropship_1_death_mover );
+	$friendly_dropship_1_death_mover.time( 8 );
+	$friendly_dropship_1_death_mover.accelTime( 1 );
+	$friendly_dropship_1_death_mover.decelTime( 0 );
+	$friendly_dropship_1_death_mover.startSpline( $friendly_dropship_1_death_spline );
+	$friendly_dropship_1_mover.rotate( '0 0 180' );
+	sys.wait( 6.75 );
+
+	if( !PLAYER_EVENT_IN_PROGRESS ) {
+		//radioChatterPlay( $radiochatter, "vo_eagle15_shouting" );		// %%%%%%%%%% VO %%%%%%%%%%
+		radioChatterPlay( $radiochatter, "vo_w_scream" );		// %%%%%%%%%% VO %%%%%%%%%%
+	}
+
+	sys.waitFor( $friendly_dropship_1_death_mover );
+
+	sys.trigger( $friendly_dropship_1_deathfx_1 );
+	sys.wait( 0.1 );
+	sys.trigger( $friendly_dropship_1_deathfx_2 );
+
+	sys.trigger( $friendly_dropship_1_enginefx_1 );
+	$friendly_dropship_1_clip.remove();
+	$friendly_dropship_1.remove();
+	$friendly_dropship_1_mover.remove();
+	$friendly_dropship_1_death_mover.remove();
+
+	if( !PLAYER_EVENT_IN_PROGRESS ) {
+		radioChatterPlay( $radiochatter, "vo_marks_eagle15dest" );		// %%%%%%%%%% VO %%%%%%%%%%
+	}
+}
+
+void killFriendlyDropship2()
+{
+	if( FRIENDLY_2_KILL ) {
+		return;
+	}
+	FRIENDLY_2_KILL = true;
+
+	while( !FRIENDLY_2_READYTODIE ) {
+		sys.wait( 0.1 );
+	}
+
+	if( !PLAYER_EVENT_IN_PROGRESS ) {
+		radioChatterPlayWait( $radiochatter, "vo_raven8_shitfire" );		// %%%%%%%%%% VO %%%%%%%%%%
+	}
+
+	$ds_2_launcher_1.remove();
+	$ds_2_launcher_2.remove();
+
+	$friendly_dropship_2_mover.stopSpline();
+	$friendly_dropship_2_death_mover.disableSplineAngles();
+	$friendly_dropship_2_death_mover.removeInitialSplineAngles();
+	$friendly_dropship_2_mover.bind( $friendly_dropship_2_death_mover );
+	$friendly_dropship_2_death_mover.time( 8 );
+	$friendly_dropship_2_death_mover.accelTime( 1 );
+	$friendly_dropship_2_death_mover.decelTime( 0 );
+	$friendly_dropship_2_death_mover.startSpline( $friendly_dropship_2_death_spline );
+	$friendly_dropship_2_mover.rotate( '0 0 -90' );
+	sys.wait( 1 );
+
+	if( !PLAYER_EVENT_IN_PROGRESS ) {
+		radioChatterPlay( $radiochatter, "vo_markswell_raven8com" );		// %%%%%%%%%% VO %%%%%%%%%%
+	}
+
+	sys.wait( 2 );
+
+	if( !PLAYER_EVENT_IN_PROGRESS ) {
+		radioChatterPlay( $radiochatter, "vo_raven8_die" );		// %%%%%%%%%% VO %%%%%%%%%%
+	}
+
+	sys.wait( 3 );
+
+	if( !PLAYER_EVENT_IN_PROGRESS ) {
+		radioChatterPlay( $radiochatter, "vo_makrs_exploraven8" );		// %%%%%%%%%% VO %%%%%%%%%%
+	}
+
+	sys.waitFor( $friendly_dropship_2_death_mover );
+
+	sys.trigger( $friendly_dropship_2_deathfx_1 );
+	sys.wait( 0.1 );
+	sys.trigger( $friendly_dropship_2_deathfx_2 );
+
+	sys.trigger( $friendly_dropship_2_smokefx );
+	$friendly_dropship_2_enginefx_1.remove();
+	$friendly_dropship_2_enginefx_2.remove();
+	$friendly_dropship_2_clip.remove();
+	$friendly_dropship_2.remove();
+	$friendly_dropship_2_mover.remove();
+	$friendly_dropship_2_death_mover.remove();
+}
+
+void killFriendlyDropship3()
+{
+	if( FRIENDLY_3_KILL ) {
+		return;
+	}
+	FRIENDLY_3_KILL = true;
+
+	while( !FRIENDLY_3_READYTODIE ) {
+		sys.wait( 0.1 );
+	}
+
+	$ds_3_launcher_1.remove();
+	$ds_3_launcher_2.remove();
+
+	//Kamikaze
+	$kamikaze.removeInitialSplineAngles();
+	$kamikaze.disableSplineAngles();
+	$kamikaze.show();
+	sys.trigger( $kamikaze_smoke_fx );
+	$kamikaze.time( 4 );
+	$kamikaze.accelTime( 1 );
+	$kamikaze.rotateOnce( '1024 0 0' );
+	$kamikaze.startSpline( $kamikaze_spline );
+	sys.waitFor( $kamikaze );
+	$kamikaze_smoke_fx.remove();	
+	$kamikaze.remove();	
+
+	sys.trigger( $friendly_dropship_3_deathfx_1 );
+	sys.wait( 0.1 );
+	sys.trigger( $friendly_dropship_3_deathfx_2 );
+
+	$friendly_dropship_3_clip.remove();
+	$friendly_dropship_3.remove();
+	$friendly_dropship_3_mover.remove();
+
+	if( !PLAYER_EVENT_IN_PROGRESS ) {
+		radioChatterPlay( $radiochatter, "vo_marks_23isgone" );		// %%%%%%%%%% VO %%%%%%%%%%
+	}
+}
+
+///////////////////////////////////////////////////////////////
+//  Player Special Actions                                   //
+///////////////////////////////////////////////////////////////
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//REAR FIRE
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void spreadRearFire()
+{
+	sys.wait( 5 );
+
+	for(t=2;t<=7;t++) {
+		n = sys.getEntity( "rearfire_fx_" + t );
+		sys.wait( 3.5 );
+		sys.trigger( n );
+
+		if( t == 4 ) {
+			radioChatterPlayWait( $radiochatter, "vo_nava_firegrow" );		// %%%%%%%%%% VO %%%%%%%%%%
+		}
+
+		if( t == 6 ) {
+			radioChatterPlayWait( $radiochatter, "vo_marks_dekfirectrln" );		// %%%%%%%%%% VO %%%%%%%%%%
+		}
+
+		if( FIRE_SUPRESSED ) {
+			return;
+		}
+	}
+
+	sys.trigger( $navajas_fire_launcher );
+}
+
+void fireSurpressionRear()
+{
+	if( !EVENT_FIRE_REAR ) {
+		return;
+	}
+
+	for(f=1;f<=6;f++) {
+		e = sys.getEntity( "rear_supression_fx_" + f );
+		sys.trigger( e );
+	}
+
+	FIRE_SUPRESSED = true;
+	$forwardgui.startSoundShader( "fire_suppress_sys", SND_CHANNEL_ANY );
+	radioChatterPlay( $radiochatter, "vo_marks_goodbackbell" );		// %%%%%%%%%% VO %%%%%%%%%%
+
+	DSHEALTHADD+=5000;
+
+	sys.wait( 2 );
+
+	for(f=1;f<=7;f++) {
+		e = sys.getEntity( "rearfire_fx_" + f );
+		e.remove();
+	}
+
+	sys.wait( 2 );
+
+	for(f=1;f<=6;f++) {
+		e = sys.getEntity( "rear_supression_fx_" + f );
+		e.remove();
+	}
+
+	sys.sendNamedEvent( GUI_PLAYERHUD, "ship_target_04_off" );
+
+	sys.trigger( $item_objectivecomplete_2 );
+
+	//sys.music( "m03_slow1" );								// ====######## MUSIC #########====
+	sys.trigger( $musicevent );
+	sys.trigger( $musicslow1 );
+
+	radioChatterPlayWait( $radiochatter, "vo_mitch_navayouneedmed" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlayWait( $radiochatter, "vo_nava_firedidnt" );		// %%%%%%%%%% VO %%%%%%%%%%
+
+	while( !INBOTTOMGUN ) {
+		sys.wait( 0.5 );
+	}
+
+	PLAYER_EVENT_IN_PROGRESS = false;
+	sys.wait( 0.1 );
+	sys.sendNamedEvent( GUI_VEHICLEHUD, "ship_target_04_off" );
+}
+
+void spinNavajasAroundforFire()
+{
+	aiScriptedFaceWait( $navajas, $navajas_turnaround, 0 );
+	$navajas_chair.playCycle( ANIMCHANNEL_ALL, "fire" );
+	aiScriptedAnimLoop( $navajas, "aa_back_chair_fire", 0 );
+}
+
+void causeRearFire()
+{
+	thread spinNavajasAroundforFire();
+
+	while ( !FIRE_SUPRESSED ) {
+		sys.wait( 1 );
+	}
+
+	$navajas_chair.playCycle( ANIMCHANNEL_ALL, "sitting_idle" );
+	aiScriptedAnimLoop( $navajas, "aa_back_chair_idle2", 0 );
+
+	EVENT_FIRE_REAR = false;
+}
+
+void rearFireInit()
+{
+	STARTED_REAR_FIRE_SEQ = true;
+	EVENT_FIRE_REAR = true;
+	PLAYER_EVENT_IN_PROGRESS = true;
+
+	sys.trigger( $rearfire_fx_1 );
+	sys.sendNamedEvent( GUI_VEHICLEHUD, "ship_target_04_on" );
+
+	radioChatterPlayWait( $radiochatter, "vo_nava_firemunit" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlayWait( $radiochatter, "vo_vansen_cookinghyd" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlayWait( $radiochatter, "vo_darn_illkeepcov" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlay( $radiochatter, "vo_marks_dekgetofire" );		// %%%%%%%%%% VO %%%%%%%%%%
+
+	thread causeRearFire();
+	thread spreadRearFire();
+	sys.trigger( $item_objective_2 );
+
+	while( INBOTTOMGUN ) {
+		sys.wait( 0.5 );
+	}
+
+	sys.sendNamedEvent( GUI_PLAYERHUD, "ship_target_04_on" );
+}
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//CARGO DUMP
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void closeCargo()
+{
+	$cargodoor.time( 3 );
+	$cargodoor.accelTime( 1 );
+	$cargodoor.decelTime( 1 );
+	$cargodoor.rotateOnce( '-55 0 0' );
+	sys.waitFor( $cargodoor );
+}
+
+void timeCargoFire()
+{
+	float d;
+
+	for(d=40;d>=0;d--) {
+		sys.wait( 1 );
+		if( CARGO_DUMPED ) {
+			return;
+		}
+	}
+	//Time is up, blow up the cargo, mission failed
+	sys.trigger( $cargo_explode_inside_fx );
+	sys.wait( 1 );
+	sys.trigger( $item_objectivefailed_1 );
+}
+
+void dumpCargoOut()
+{
+	if( !EVENT_FIRE_CARGO ) {
+		return;
+	}
+
+	EVENT_FIRE_CARGO = false;
+
+	DSHEALTHADD+=3000;
+
+	$topgun.lock( 0 );
+	$bottomgun.lock( 1 );
+
+	CARGO_DUMPED = true;
+
+	thread moveRampDown();
+
+	$cargodoor.time( 3 );
+	$cargodoor.accelTime( 1 );
+	$cargodoor.decelTime( 1 );
+	$cargodoor.rotateOnce( '55 0 0' );
+	sys.waitFor( $cargodoor );
+
+	$cargo_crate_1.unbind();
+	$cargo_crate_2.unbind();
+	sys.wait( 0.1 );
+
+	$cargo_crate_2.applyImpulse( $cargo_crate_2, $cargo_crate_2.getWorldOrigin(), '-16500 0 0' );
+	sys.wait( 0.2 );
+	$cargo_crate_1.applyImpulse( $cargo_crate_1, $cargo_crate_1.getWorldOrigin(), '-16500 0 0' );	//22500
+	sys.wait( 1 );
+
+	$cargo_smoke_hurt.remove();
+	sys.trigger( $interior_smoke_fx_1 );
+	sys.trigger( $interior_smoke_fx_2 );
+	sys.trigger( $interior_smoke_fx_3 );
+	sys.trigger( $interior_smoke_fx_4 );
+	sys.trigger( $interior_smoke_fx_5 );
+	sys.trigger( $interior_smoke_fx_6 );
+
+	radioChatterPlay( $radiochatter, "vo_tak_cargoaway" );		// %%%%%%%%%% VO %%%%%%%%%%
+
+	thread closeCargo();
+
+	sys.wait( 2.2 );
+
+	sys.trigger( $cargoexp_fx_1 );
+	$cargo_crate_1.remove();
+	$cargo_smolder_1.remove();
+	sys.wait( 0.3 );
+	sys.trigger( $cargoexp_fx_2 );
+	$cargo_crate_2.remove();
+	$cargo_smolder_2.remove();
+	sys.trigger( $amb_shake_low );
+	sys.waitFrame();
+	sys.trigger( $ship_hit_shake_super );
+	sys.wait( 2 );
+	sys.trigger( $amb_shake_low );
+
+	thread moveRampUp();
+
+	DRIVER = true;
+	sys.waitFrame();
+	$topgun_driver.exitVehicle( 1 );
+	sys.waitFrame();
+	$topgun_driver.remove();
+	sys.waitFrame();
+	aiScriptedAnim( $topgun, "idle", 4, 1 );
+	sys.waitFrame();
+	$bottomgun_driver.enterVehicle( $bottomgun );
+	sys.waitFrame();
+	DRIVER = false;
+
+	radioChatterPlayWait( $radiochatter_pilot, "vo_vansen_whathelltht" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlayWait( $radiochatter, "vo_tak_thatwastoo" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlayWait( $radiochatter, "vo_marks_dekgettotop" );		// %%%%%%%%%% VO %%%%%%%%%%
+
+	sys.trigger( $item_objectivecomplete_3 );
+	sys.sendNamedEvent( GUI_PLAYERHUD, "ship_target_02_off" );
+
+	//sys.music( "m03_medium1" );								// ====######## MUSIC #########====
+	sys.trigger( $musicevent );
+	sys.trigger( $musicmedium1 );
+
+	while( !INTOPGUN ) {
+		if( !INTOPGUN ) {
+			sys.wait( 7 );
+		}
+		if( !INTOPGUN ) {
+			radioChatterPlayWait( $radiochatter, "vo_marks_dektopturr" );		// %%%%%%%%%% VO %%%%%%%%%%
+		}
+		if( !INTOPGUN ) {
+			sys.wait( 7 );
+		}
+		if( !INTOPGUN ) {
+			radioChatterPlayWait( $radiochatter, "vo_marks_movedektopturr" );		// %%%%%%%%%% VO %%%%%%%%%%
+		}
+	}
+
+	$mitchell_helping.remove();
+	$wounded_ground.remove();
+
+	$mitchell_chair.playAnim( ANIMCHANNEL_ALL, "idle_to_sitting" );
+	$empty_chair_4.playAnim( ANIMCHANNEL_ALL, "idle_to_sitting" );
+
+	PLAYER_EVENT_IN_PROGRESS = false;
+	sys.wait( 0.1 );
+	sys.sendNamedEvent( GUI_VEHICLEHUD, "ship_target_02_off" );
+}
+
+void cargoFireOut()
+{
+	//radioChatterPlayWait( $radiochatter, "vo_marks_goodjbdek" );		// %%%%%%%%%% VO %%%%%%%%%%
+
+	$player1.disableWeapon();
+
+	$func_fire_volume_1.remove();
+	$func_fire_volume_2.remove();
+	CARGO_FIRE_BURNING = false;
+
+	radioChatterPlayWait( $radiochatter, "vo_tak_trianthtoohot" );		// %%%%%%%%%% VO %%%%%%%%%%
+
+	dumpCargoOut();
+/*
+	radioChatterPlay( $radiochatter, "vo_marks_dekgettoeject" );		// %%%%%%%%%% VO %%%%%%%%%%
+	thread gui_arm_extend();
+
+	while( !CARGO_DUMPED ) {
+		if( !CARGO_DUMPED ) {
+			sys.wait( 7 );
+		}
+		if( !CARGO_DUMPED ) {
+			radioChatterPlayWait( $radiochatter, "vo_marks_dekejectvol" );		// %%%%%%%%%% VO %%%%%%%%%%
+		}
+		if( !CARGO_DUMPED ) {
+			sys.wait( 7 );
+		}
+		if( !CARGO_DUMPED ) {
+			radioChatterPlayWait( $radiochatter, "vo_marks_getcrgo" );		// %%%%%%%%%% VO %%%%%%%%%%
+		}
+	}
+*/
+}
+
+void causeCargoFire()
+{
+	sys.trigger( $fire_on_1 );
+	sys.trigger( $fire_on_2 );
+	sys.trigger( $func_fire_volume_1 );
+	sys.trigger( $func_fire_volume_2 );
+	$cargo_smolder_1.show();
+	$cargo_smolder_2.show();
+
+	EVENT_FIRE_CARGO = true;
+}
+
+void cargoFireInit()
+{
+	STARTED_CARGO_FIRE_SEQ = true;
+	PLAYER_EVENT_IN_PROGRESS = true;
+
+	$mitchell.hide();
+	$wounded.hide();
+	$mitchell_helping.show();
+	$wounded_ground.show();
+	$mitchell_helping.hideSurface("models/weapons/mp_guns/w_mg_lo"); 
+	$wounded_ground.hideSurface("models/weapons/mp_guns/w_mg_lo");
+
+	$mitchell_helping.setTalkState( TALK_BUSY );
+	$wounded_ground.setTalkState( TALK_BUSY );
+
+	aiScriptedAnimLoop( $mitchell_helping, "medic_treating1", 0 );
+	aiScriptedAnimLoop( $wounded_ground, "ad_wounded_on_knee_loop", 0 );
+
+	$mitchell_chair.playAnim( ANIMCHANNEL_ALL, "sitting_to_idle" );
+	$empty_chair_4.playAnim( ANIMCHANNEL_ALL, "sitting_to_idle" );
+	
+	thread causeCargoFire();
+	sys.sendNamedEvent( GUI_VEHICLEHUD, "ship_target_02_on" );
+
+	radioChatterPlayWait( $radiochatter, "vo_tak_nastyfire" );		// %%%%%%%%%% VO %%%%%%%%%%
+	sys.wait( 1 );
+	radioChatterPlayWait( $radiochatter, "vo_tak_firespread" );		// %%%%%%%%%% VO %%%%%%%%%%
+	sys.wait( 2 );
+	radioChatterPlayWait( $radiochatter, "vo_tak_holyshit2" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlayWait( $radiochatter, "vo_mitch_trianthrupt" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlayWait( $radiochatter, "vo_mitch_damnrazor" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlayWait( $radiochatter, "vo_marks_takhitsupp" );	// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlayWait( $radiochatter, "vo_tak_suppdead" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlay( $radiochatter, "vo_marks_taktact" );		// %%%%%%%%%% VO %%%%%%%%%%
+
+	sys.trigger( $cargo_smoke_hurt );
+
+	EVENT_FIRE_CARGO = true;
+	thread timeCargoFire();
+	sys.trigger( $item_objective_3 );
+
+	while( INBOTTOMGUN ) {
+		sys.wait( 0.5 );
+	}
+
+	sys.sendNamedEvent( GUI_PLAYERHUD, "ship_target_02_on" );
+	$player1.enableWeapon();
+}
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//AMMO JAM
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+void monitorAmmoJam()
+{
+	while( !AMMO_JAM_FIXED ) {
+		sys.wait( 0.5 );
+	}
+
+	$topgun.enableWeapon();
+	$topgun.enableMovement();
+}
+
+void ammoNavajasInstruct()
+{
+	radioChatterPlayWait( $radiochatter, "vo_nava_okdekon3" );		// %%%%%%%%%% VO %%%%%%%%%%
+	sys.wait( 0.1 );
+	NAVAJAS_READY_AMMO = true;
+}
+
+void ammoUnjam()
+{
+	thread gui_arm_retract();
+
+	AMMO_JAM_FIXED = true;
+	EVENT_AMMO = false;
+	$topgun.guiEvent( "JammedTextOff" );
+	$reargui.startSoundShader( "space_cannon_jamcleared", SND_CHANNEL_ANY );
+	DSHEALTHADD+=2000;
+
+	radioChatterPlayWait( $radiochatter, "vo_nava_lookinggood" );		// %%%%%%%%%% VO %%%%%%%%%%
+
+	sys.trigger( $item_objectivecomplete_4 );
+
+	sys.sendNamedEvent( GUI_PLAYERHUD, "ship_target_01_off" );
+
+	//sys.music( "m03_medium1" );								// ====######## MUSIC #########====
+	sys.trigger( $musicevent );
+	sys.trigger( $musicmedium1 );
+
+	sys.wait( 4 );
+	radioChatterPlayWait( $radiochatter, "vo_nava_jamisfree" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlayWait( $radiochatter, "vo_darn_firingweback" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlayWait( $radiochatter, "vo_marks_dekmovetopt" );		// %%%%%%%%%% VO %%%%%%%%%%
+
+	while( !INTOPGUN ) {
+		if( !INTOPGUN ) {
+			sys.wait( 7 );
+		}
+		if( !INTOPGUN ) {
+			radioChatterPlayWait( $radiochatter, "vo_marks_movedek2" );		// %%%%%%%%%% VO %%%%%%%%%%
+		}
+	}
+
+	PLAYER_EVENT_IN_PROGRESS = false;
+	sys.wait( 0.1 );
+	sys.sendNamedEvent( GUI_VEHICLEHUD, "ship_target_01_off" );
+}
+
+void ammoJamInit()
+{
+	STARTED_AMMO_JAM_SEQ = true;
+	EVENT_AMMO = true;
+
+	PLAYER_EVENT_IN_PROGRESS = true;
+
+	$topgun.disableWeapon();
+	$topgun.disableMovement();
+	$topgun.guiEvent( "JammedTextOn" );
+	$topgun.startSoundShader( "space_cannon_jam", SND_CHANNEL_ANY );
+	sys.wait( 1.5 );
+	$topgun.startSoundShader( "vo_computer_munitjam", SND_CHANNEL_ANY );	// %%%%%%%%%% VO %%%%%%%%%%
+	sys.wait( 2 );
+	radioChatterPlayWait( $radiochatter, "vo_darn_shitgunsdead" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlayWait( $radiochatter, "vo_nava_feedjam" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlayWait( $radiochatter, "vo_marks_dekhelpnavfe" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlay( $radiochatter, "vo_darn_sittduck" );		// %%%%%%%%%% VO %%%%%%%%%%
+
+	sys.sendNamedEvent( GUI_VEHICLEHUD, "ship_target_01_on" );
+
+	sys.trigger( $item_objective_4 );
+
+	while( INTOPGUN ) {
+		if( INTOPGUN ) {
+			sys.wait( 3 );
+		}
+		if( INTOPGUN ) {
+			radioChatterPlay( $radiochatter, "vo_marks_getfeednow" );		// %%%%%%%%%% VO %%%%%%%%%%
+		}
+	}
+
+	sys.sendNamedEvent( GUI_PLAYERHUD, "ship_target_01_on" );
+
+	radioChatterPlayWait( $radiochatter_pilot, "vo_vansen_whatquick" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlay( $radiochatter, "vo_nava_detammofeed" );		// %%%%%%%%%% VO %%%%%%%%%%
+	thread gui_arm_extend();
+	thread ammoNavajasInstruct();
+	thread monitorAmmoJam();
+	NAVAJAS_READY_AMMO = false;
+}
+
+void ammoGuiUse()
+{
+	if( !EVENT_AMMO ) {
+		return;
+	}
+
+	if( !NAVAJAS_READY_AMMO ) {
+		$reargui.startSoundShader( "space_cannon_jam", SND_CHANNEL_ANY );
+		radioChatterPlayWait( $radiochatter, "vo_nava_dammwaitsig" );		// %%%%%%%%%% VO %%%%%%%%%%
+		sys.wait( 0.2 );
+		thread ammoNavajasInstruct();
+	}
+	if( NAVAJAS_READY_AMMO ) {
+		thread ammoUnjam();
+	}
+}
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//ENGINE FIRE
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void timeEngineFire()
+{
+	sys.wait( 5 );
+	sys.trigger( $enginesmoke_fx_1 );
+	sys.wait( 7 );
+	sys.trigger( $enginesmoke_fx_2 );
+	sys.wait( 40 );
+
+	if( ENGINE_FIRE_OUT ) {
+		return;
+	}
+
+	sys.trigger( $item_objectivefailed_1 );
+}
+
+void engineFireOut()
+{
+	if( !EVENT_ENGINE ) {
+		return;
+	}
+
+	if( ENGINE_STEP_1 ) {
+		ENGINE_STEP_1 = false;
+		ENGINE_STEP_2 = true;
+
+		sys.trigger( $enginefire_fx_1 );
+		sys.trigger( $enginefire_fx_2 );
+		sys.trigger( $enginefire_fx_3 );
+		$enginesmoke_fx_1.remove();
+		$enginesmoke_fx_2.remove();
+
+		$engine_thrust_fx_1.hide();
+
+		$forwardgui.guiEvent( "enginestep1" );
+		sys.waitFrame();
+		$forwardgui.setGuiParm( "noninteractive", 1 );
+		radioChatterPlayWait( $radiochatter, "vo_vansen_okport" );		// %%%%%%%%%% VO %%%%%%%%%%
+		sys.wait( 2 );
+		radioChatterPlayWait( $radiochatter, "vo_vansen_reactclr" );		// %%%%%%%%%% VO %%%%%%%%%%
+		$forwardgui.guiEvent( "enginestep2" );
+		radioChatterPlay( $radiochatter, "vo_vansen_pressengag" );		// %%%%%%%%%% VO %%%%%%%%%%
+		$forwardgui.setGuiParm( "noninteractive", 0 );
+
+		while( EVENT_ENGINE ) {
+			if( EVENT_ENGINE ) {
+				sys.wait( 5 );
+			}
+			if( EVENT_ENGINE ) {
+				radioChatterPlayWait( $radiochatter, "vo_marks_dekprsseng" );		// %%%%%%%%%% VO %%%%%%%%%%
+			}
+			if( EVENT_ENGINE ) {
+				sys.wait( 3 );
+			}
+			if( EVENT_ENGINE ) {
+				radioChatterPlayWait( $radiochatter, "vo_marks_deknow" );		// %%%%%%%%%% VO %%%%%%%%%%
+			}
+		}
+	}
+
+	if( ENGINE_STEP_2 ) {
+		EVENT_ENGINE = false;
+		ENGINE_FIRE_OUT = true;
+
+		sys.sendNamedEvent( GUI_PLAYERHUD, "ship_target_04_off" );
+
+		$forwardgui.startSoundShader( "dropship_gaineng", SND_CHANNEL_ANY );
+		sys.wait( 1 );
+		$engine_thrust_fx_1.show();
+		sys.waitFrame();
+		$forwardgui.guiEvent( "enginenormal" );
+		sys.waitFrame();
+		radioChatterPlayWait( $radiochatter, "vo_vansen_portenginback" );		// %%%%%%%%%% VO %%%%%%%%%%
+		sys.waitFrame();
+		radioChatterPlayWait( $radiochatter, "vo_marks_grtworkdek" );		// %%%%%%%%%% VO %%%%%%%%%%
+		DSHEALTHADD+=1000;
+		sys.trigger( $item_objectivecomplete_5 );
+		//sys.music( "m03_fast1" );								// ====######## MUSIC #########====
+		sys.trigger( $musicevent );
+		sys.trigger( $musicfast1 );
+
+		while( !INTOPGUN ) {
+			if( !INTOPGUN ) {
+				sys.wait( 7 );
+			}
+			if( !INTOPGUN ) {
+				radioChatterPlayWait( $radiochatter, "vo_marks_dekmovetopt" );		// %%%%%%%%%% VO %%%%%%%%%%
+			}
+		}
+
+		PLAYER_EVENT_IN_PROGRESS = false;
+		sys.wait( 0.1 );
+		sys.sendNamedEvent( GUI_VEHICLEHUD, "ship_target_04_off" );
+	}
+}
+
+void engineFireInit()
+{
+	STARTED_ENGINE_FIRE_SEQ = true;
+	EVENT_ENGINE = true;
+	PLAYER_EVENT_IN_PROGRESS = true;
+
+	sys.trigger( $enginefire_fx_1 );
+	sys.trigger( $enginefire_fx_2 );
+	sys.trigger( $enginefire_fx_3 );
+
+	sys.sendNamedEvent( GUI_VEHICLEHUD, "ship_target_04_on" );
+
+	$topgun.startSoundShader( "dropship_loseeng", SND_CHANNEL_ANY );
+	sys.wait( 1 );
+	radioChatterPlayWait( $radiochatter, "vo_vansen_shitportract" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlayWait( $radiochatter, "vo_marks_dekgettosec" );		// %%%%%%%%%% VO %%%%%%%%%%
+	sys.trigger( $item_objective_5 );
+	radioChatterPlayWait( $radiochatter, "vo_vansen_portfail" );		// %%%%%%%%%% VO %%%%%%%%%%
+
+	thread timeEngineFire();
+
+	while( INTOPGUN ) {
+		if( INTOPGUN ) {
+			sys.wait( 7 );
+		}
+		if( INTOPGUN ) {
+			radioChatterPlayWait( $radiochatter, "vo_marks_dekgetengin" );		// %%%%%%%%%% VO %%%%%%%%%%
+		}
+	}
+
+	sys.sendNamedEvent( GUI_PLAYERHUD, "ship_target_04_on" );
+}
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//PLAYER RETURN TO CHAIR AT END
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void playerBackToChair()
+{
+	PLAYER_BACK_AT_CHAIR = true;
+	sys.sendNamedEvent( GUI_VEHICLEHUD, "ship_target_03_off" );
+	sys.sendNamedEvent( GUI_PLAYERHUD, "ship_target_03_off" );
+}
+
+///////////////////////////////////////////////////////////////
+//  Vehicle Drivers                                          //
+///////////////////////////////////////////////////////////////
+void gunVehicleDriverFire( entity gunner )
+{
+	float a;
+	float b;
+	float c;
+
+	if( DRIVER_FIRING ) {
+		return;
+	}
+
+	DRIVER_FIRING = true;
+
+	a = starget.getHealth();
+	a += randomRoundFloat(350, 500);
+	starget.setHealth( a );
+
+	while( a > 0 ) {
+		sys.wait( 2 );
+		gunner.lookAt( starget );
+		sys.wait( 0.5 );
+
+		c = randomRoundFloat(1, 10);
+		if( c <= 9 ) {
+			gunner.fireWeapon( 0, 0.75 );
+		}
+		else {
+			gunner.fireWeapon( 1, 0.75 );
+		}
+
+		sys.wait( 2 );
+		a = starget.getHealth();
+		if( DRIVER_STOP_FIRING ) {
+			break;
+		}
+	}
+
+	DRIVER_FIRING = false;
+}
+
+
+///////////////////////////////////////////////////////////////
+//  Flak                                                     //
+///////////////////////////////////////////////////////////////
+void flakFire()
+{
+	sys.trigger( $flak_1 );
+	sys.wait( sys.random(2) );
+	sys.trigger( $flak_2 );
+	thread shipImpactEffectLight();
+	sys.wait( sys.random(2) );
+	sys.trigger( $flak_3 );
+	sys.wait( sys.random(2) );
+	sys.trigger( $flak_4 );
+	thread shipImpactEffectLight();
+	sys.wait( sys.random(2) );
+	sys.trigger( $flak_5 );
+	sys.wait( sys.random(2) );
+	sys.trigger( $flak_6 );
+	sys.wait( sys.random(2) );
+	sys.trigger( $flak_7 );
+	sys.wait( sys.random(2) );
+	sys.trigger( $flak_direct );
+	thread shipImpactEffectHeavy();
+	sys.trigger( $flak_8 );
+	sys.wait( sys.random(2) );
+	sys.trigger( $flak_9 );
+	sys.wait( sys.random(2) );
+	sys.trigger( $flak_10 );
+	thread shipImpactEffectLight();
+	sys.wait( sys.random(2) );
+	sys.trigger( $flak_11 );
+	sys.wait( sys.random(2) );
+	sys.trigger( $flak_12 );
+	thread shipImpactEffectLight();
+	sys.wait( sys.random(2) );
+	sys.trigger( $flak_1 );
+	sys.wait( sys.random(2) );
+	sys.trigger( $flak_2 );
+	thread shipImpactEffectLight();
+	sys.wait( sys.random(2) );
+	sys.trigger( $flak_3 );
+	sys.wait( sys.random(2) );
+	sys.trigger( $flak_direct );
+	thread shipImpactEffectHeavy();
+	sys.trigger( $flak_4 );
+}
+
+void flakFireLight()
+{
+	sys.trigger( $flak_1 );
+	sys.wait( sys.random(3) );
+	sys.trigger( $flak_4 );
+	sys.wait( sys.random(6) );
+	sys.trigger( $flak_10 );
+	sys.wait( sys.random(3) );
+	sys.trigger( $flak_3 );
+}
+
+///////////////////////////////////////////////////////////////
+//  Banners                                                  //
+///////////////////////////////////////////////////////////////
+void flapBanners()
+{
+	$banner1.playCycle( ANIMCHANNEL_ALL, "wall01" );
+	sys.wait( 1.4 );
+	$banner2.playCycle( ANIMCHANNEL_ALL, "wall01" );
+	sys.wait( 2.1 );
+	$banner3.playCycle( ANIMCHANNEL_ALL, "wall01" );
+	sys.wait( 1.2 );
+	$banner4.playCycle( ANIMCHANNEL_ALL, "left01" );
+	sys.wait( 2.4 );
+	$banner5.playCycle( ANIMCHANNEL_ALL, "left02" );
+	sys.wait( 1.5 );
+	$banner6.playCycle( ANIMCHANNEL_ALL, "left01" );
+}
+
+///////////////////////////////////////////////////////////////
+//  Biggun shots                                             //
+///////////////////////////////////////////////////////////////
+void biggunShotsFire()
+{
+	sys.trigger( $biggunshot_1 );
+	$biggunshot_mover_1.time( 10 );
+	$biggunshot_mover_1.accelTime( 5 );
+	$biggunshot_mover_1.moveTo( $biggunshot_target_1 );
+	sys.wait( 1.5 );
+
+	if( !PLAYER_EVENT_IN_PROGRESS ) {
+		radioChatterPlay( $radiochatter, "vo_tak_incomingairdef" );		// %%%%%%%%%% VO %%%%%%%%%%
+	}
+
+	sys.trigger( $biggunshot_speaker_1 );
+	sys.waitFor( $biggunshot_mover_1 );
+	sys.trigger( $biggunshot_1 );
+
+	sys.wait( 15 );
+
+	sys.trigger( $biggunshot_2 );
+	$biggunshot_mover_2.time( 10 );
+	$biggunshot_mover_2.accelTime( 5 );
+	$biggunshot_mover_2.moveTo( $biggunshot_target_2 );
+	sys.wait( 1.5 );
+	sys.trigger( $biggunshot_speaker_2 );
+	sys.waitFor( $biggunshot_mover_2 );
+	sys.trigger( $biggunshot_2 );
+}
+
+///////////////////////////////////////////////////////////////
+//  Friendly ship firing                                     //
+///////////////////////////////////////////////////////////////
+
+void toggleFriendlyShipLasers()
+{
+	if( isValidEntity( $friendly_dropship_1 ) ) {
+		sys.trigger( $ds_1_launcher_1 );
+		sys.trigger( $ds_1_launcher_2 );
+	}
+
+	if( isValidEntity( $friendly_dropship_2 ) ) {
+		sys.trigger( $ds_2_launcher_1 );
+		sys.trigger( $ds_2_launcher_2 );
+	}
+
+	if( isValidEntity( $friendly_dropship_3 ) ) {
+		sys.trigger( $ds_3_launcher_1 );
+		sys.trigger( $ds_3_launcher_2 );
+	}
+}
+
+///////////////////////////////////////////////////////////////
+//  Special bombers and FIGHTERS that tail the gunship       //
+///////////////////////////////////////////////////////////////
+void wave3Fighter()
+{
+	WAVE3FIGHTER_ALIVE = true;
+	sys.trigger( $wave3fighter_spawn );
+	sys.waitFrame();
+	$wave3fighter.setKey( "fx_death", "effects/monsters/flyer_space/q4x_explode_atmos.fx" );
+	$wave3fighter_mover.time( 10 );
+	$wave3fighter_mover.decelTime( 2 );
+	$wave3fighter_mover.startSpline( $wave3fighter_spline );
+	sys.waitFor( $wave3fighter_mover );
+
+	while( WAVE3FIGHTER_ALIVE ) {
+		if( WAVE3FIGHTER_ALIVE ) {
+			sys.wait( 6 );
+		}
+		if( WAVE3FIGHTER_ALIVE ) {
+			if( !PLAYER_EVENT_IN_PROGRESS ) {
+				radioChatterPlayWait( $radiochatter, "vo_marks_dekfightt" );		// %%%%%%%%%% VO %%%%%%%%%%
+			}
+		}
+		if( WAVE3FIGHTER_ALIVE ) {
+			sys.wait( 6 );
+		}
+		if( WAVE3FIGHTER_ALIVE ) {
+			if( !PLAYER_EVENT_IN_PROGRESS ) {
+				radioChatterPlayWait( $radiochatter, "vo_marks_takeoutt6" );		// %%%%%%%%%% VO %%%%%%%%%%
+			}
+		}
+	}
+}
+
+void wave3Fighter2()
+{
+	WAVE3FIGHTER2_ALIVE = true;
+	sys.trigger( $wave3fighter_spawn_2 );
+	sys.waitFrame();
+	$wave3fighter_2.setKey( "fx_death", "effects/monsters/flyer_space/q4x_explode_atmos.fx" );
+	$wave3fighter_mover_2.time( 10 );
+	$wave3fighter_mover_2.decelTime( 2 );
+	$wave3fighter_mover_2.startSpline( $wave3fighter_spline_2 );
+	sys.waitFor( $wave3fighter_mover_2 );
+
+	while( WAVE3FIGHTER2_ALIVE ) {
+		if( WAVE3FIGHTER2_ALIVE ) {
+			sys.wait( 6 );
+		}
+		if( WAVE3FIGHTER2_ALIVE ) {
+			if( !PLAYER_EVENT_IN_PROGRESS ) {
+				radioChatterPlayWait( $radiochatter, "vo_marks_dekfightt" );		// %%%%%%%%%% VO %%%%%%%%%%
+			}
+		}
+		if( WAVE3FIGHTER2_ALIVE ) {
+			sys.wait( 6 );
+		}
+		if( WAVE3FIGHTER2_ALIVE ) {
+			if( !PLAYER_EVENT_IN_PROGRESS ) {
+				radioChatterPlayWait( $radiochatter, "vo_marks_takeoutt6" );		// %%%%%%%%%% VO %%%%%%%%%%
+			}
+		}
+	}
+}
+
+void wave4Bomber()
+{
+	WAVE4BOMBER_ALIVE = true;
+	sys.trigger( $wave4bomber_spawn );
+	sys.waitFrame();
+	$wave4bomber.setKey( "fx_death", "effects/monsters/flyer_space/q4x_explode_atmos.fx" );
+	$wave4bomber_mover.time( 20 );
+	$wave4bomber_mover.decelTime( 2 );
+	$wave4bomber_mover.startSpline( $wave4bomber_spline );
+	sys.waitFor( $wave4bomber_mover );
+
+	while( WAVE4BOMBER_ALIVE ) {
+		if( WAVE4BOMBER_ALIVE ) {
+			sys.wait( 6 );
+		}
+		if( WAVE4BOMBER_ALIVE ) {
+			if( !PLAYER_EVENT_IN_PROGRESS ) {
+				radioChatterPlayWait( $radiochatter, "vo_marks_dektakedest" );		// %%%%%%%%%% VO %%%%%%%%%%
+			}
+		}
+		if( WAVE4BOMBER_ALIVE ) {
+			sys.wait( 6 );
+		}
+		if( WAVE4BOMBER_ALIVE ) {
+			if( !PLAYER_EVENT_IN_PROGRESS ) {
+				radioChatterPlayWait( $radiochatter, "vo_marks_takeoutt6" );		// %%%%%%%%%% VO %%%%%%%%%%
+			}
+		}
+	}
+}
+
+void wave5Bomber()
+{
+	WAVE5BOMBER_ALIVE = true;
+	sys.trigger( $wave5bomber_spawn );
+	sys.waitFrame();
+	$wave5bomber.setKey( "fx_death", "effects/monsters/flyer_space/q4x_explode_atmos.fx" );
+	$wave5bomber_mover.time( 20 );
+	$wave5bomber_mover.decelTime( 2 );
+	$wave5bomber_mover.startSpline( $wave5bomber_spline );
+	sys.waitFor( $wave5bomber_mover );
+
+	while( WAVE5BOMBER_ALIVE ) {
+		if( WAVE5BOMBER_ALIVE ) {
+			sys.wait( 6 );
+		}
+		if( WAVE5BOMBER_ALIVE ) {
+			if( !PLAYER_EVENT_IN_PROGRESS ) {
+				radioChatterPlayWait( $radiochatter, "vo_marks_dektakedest" );		// %%%%%%%%%% VO %%%%%%%%%%
+			}
+		}
+		if( WAVE5BOMBER_ALIVE ) {
+			sys.wait( 6 );
+		}
+		if( WAVE5BOMBER_ALIVE ) {
+			if( !PLAYER_EVENT_IN_PROGRESS ) {
+				radioChatterPlayWait( $radiochatter, "vo_marks_takeoutt6" );		// %%%%%%%%%% VO %%%%%%%%%%
+			}
+		}
+	}
+}
+
+void wave3fighterdead()
+{
+	WAVE3FIGHTER_ALIVE = false;
+}
+
+void wave3fighterdead_2()
+{
+	WAVE3FIGHTER2_ALIVE = false;
+}
+
+void wave4bomberdead()
+{
+	WAVE4BOMBER_ALIVE = false;
+}
+
+void wave5bomberdead()
+{
+	WAVE5BOMBER_ALIVE = false;
+}
+
+
+///////////////////////////////////////////////////////////////
+//  Draw player kills on turret hud                          //
+///////////////////////////////////////////////////////////////
+void updatePlayerKills()
+{
+	while( 1 ) {
+		$topgun.setGuiParm( "pkills", TOTAL_PLAYER_KILLS );
+		$bottomgun.setGuiParm( "pkills", TOTAL_PLAYER_KILLS );
+		sys.wait( 1 );
+	}
+}
+
+///////////////////////////////////////////////////////////////
+//  Cinematics                                               //
+///////////////////////////////////////////////////////////////
+void shakeIntroCam()
+{
+	while( INTROCIN ) {
+		$intro_cam_shaker.time( 0.01 );
+		$intro_cam_shaker.move( -1, 0.04 );
+		sys.waitFor( $intro_cam_shaker );
+		$intro_cam_shaker.time( 0.01 );
+		$intro_cam_shaker.move( -2, 0.07 );
+		sys.waitFor( $intro_cam_shaker );
+		$intro_cam_shaker.time( 0.01 );
+		$intro_cam_shaker.move( -1, 0.07 );
+		sys.waitFor( $intro_cam_shaker );
+		$intro_cam_shaker.time( 0.01 );
+		$intro_cam_shaker.move( -2, 0.04 );
+		sys.waitFor( $intro_cam_shaker );
+		sys.waitFrame();
+	}
+}
+
+void moveEndCameraFirst()
+{
+	$end_camera_mover.time( 12 );
+	$end_camera_mover.accelTime( 4 );
+	$end_camera_mover.decelTime( 4 );
+	$end_camera_mover.moveTo( $end_camera_null_1 );
+	sys.waitFor( $end_camera_mover );
+}
+
+void moveEndCameraSecond()
+{
+	$end_camera_mover.time( 15 );
+	$end_camera_mover.accelTime( 2 );
+	$end_camera_mover.decelTime( 4 );
+	$end_camera_mover.moveTo( $end_camera_null_2 );
+	$end_camera_mover.rotateOnce( '0 -80 0' );
+	sys.waitFor( $end_camera_mover );
+}
+
+void introCinEndMoveNavajas()
+{
+	sys.wait( 2 );
+
+	$navajas_chair_side.playAnim( ANIMCHANNEL_ALL, "sitting_to_idle" );
+	aiScriptedAnimWait( $navajas, "aa_chair_exit", 12, 0 );
+	aiScriptedMoveWait( $navajas, $navajas_null_1, 8, 0 );
+	aiScriptedMoveWait( $navajas, $navajas_goback, 16, 0 );
+	aiScriptedMoveWait( $navajas, $navajas_backchair_null, 2, 0 );
+	aiScriptedFaceWait( $navajas, $navajas_sit_face2, 0 );
+	$navajas_chair.playAnim( ANIMCHANNEL_ALL, "idle_to_sitting" );
+	aiScriptedAnimWait( $navajas, "aa_back_chair_enter", 12, 0 );
+	sys.wait( 0.25 );
+	$navajas_chair.playCycle( ANIMCHANNEL_ALL, "sitting_idle" );
+	aiScriptedAnimLoop( $navajas, "aa_back_chair_idle1", 0 );
+
+}
+
+void introCinEndMoveMarkswell()
+{
+	aiScriptedMoveWait( $markswell, $markswell_null_3, 8, 0 );
+	aiScriptedMoveWait( $markswell, $markswell_null_2, 8, 0 );
+	aiScriptedMoveWait( $markswell, $markswell_null_1, 8, 0 );
+	$markswell.remove();
+}
+
+void introCinEndMoveTak()
+{
+	$tak_chair.playAnim( ANIMCHANNEL_ALL, "standing_to_idle" );
+	aiScriptedAnimWait( $tak, "aa_tak_turnaround_end", 12, 0 );
+	sys.wait( 0.1 );
+	$tak_chair.playCycle( ANIMCHANNEL_ALL, "idle" );
+	aiScriptedAnimLoop( $tak, "aa_tak_idle_loop", 0 );
+	$tak.lookAt( $player_console_static );
+}
+
+void introCinStandTak()
+{
+	$tak_chair.playAnim( ANIMCHANNEL_ALL, "idle_to_standing" );
+	aiScriptedAnimWait( $tak, "aa_tak_turnaround_intro", 12, 0 );
+	sys.wait( 0.1 );
+	$tak_chair.playCycle( ANIMCHANNEL_ALL, "standing_idle" );
+	aiScriptedAnimLoop( $tak, "aa_tak_turnaround_loop", 0 );
+	$tak.lookAt( $markswell );
+}
+
+void introCinEndMoveDarnell()
+{
+	$darnell_chair.playAnim( ANIMCHANNEL_ALL, "sitting_to_idle" );
+	aiScriptedAnimWait( $darnell, "aa_chair_exit", 12, 0 );
+	aiScriptedMoveWait( $darnell, $darnell_null_1, 8, 0 );
+	aiScriptedMoveWait( $darnell, $darnell_null_2, 8, 0 );
+	$darnell.hide();
+}
+
+//-------------------------------------------------------------
+
+void moveNavajasBacktoChair()
+{
+	$navajas.show();
+	sys.waitFrame();
+	$navajas_chair.playAnim( ANIMCHANNEL_ALL, "sitting_to_idle" );
+	aiScriptedAnimWait( $navajas, "aa_back_chair_exit", 12, 0 );
+	sys.wait( 0.1 );
+	$navajas_chair.playCycle( ANIMCHANNEL_ALL, "idle" );
+	aiScriptedMoveWait( $navajas, $navajas_goback, 16, 0 );
+	aiScriptedMoveWait( $navajas, $navajas_sit, 4, 0 );
+	aiScriptedFaceWait( $navajas, $navajas_sit_face, 0 );
+	aiScriptedAnim( $navajas, "aa_chair_enter", 12, 0 );
+	$navajas_chair_side.playAnim( ANIMCHANNEL_ALL, "idle_to_sitting" );
+}
+
+void moveDarnellBacktoChair()
+{
+	$darnell.show();
+	sys.waitFrame();
+	aiScriptedMoveWait( $darnell, $darnell_sit, 4, 0 );
+	aiScriptedFaceWait( $darnell, $darnell_sit_face, 0 );
+	aiScriptedAnim( $darnell, "aa_chair_enter", 12, 0 );
+	$darnell_chair.playAnim( ANIMCHANNEL_ALL, "idle_to_sitting" );
+}
+
+void moveTakBacktoChair()
+{
+	$tak.show();
+	sys.waitFrame();
+	$tak_chair.playAnim( ANIMCHANNEL_ALL, "idle_to_standing" );
+	aiScriptedAnimWait( $tak, "aa_tak_turnaround_intro", 12, 0 );
+	sys.wait( 0.1 );
+	aiScriptedMoveWait( $tak, $tak_sit, 4, 0 );
+	aiScriptedFaceWait( $tak, $tak_sit_face, 0 );
+	aiScriptedAnim( $tak, "aa_chair_enter", 12, 0 );
+	$tak_chair_side.playAnim( ANIMCHANNEL_ALL, "idle_to_sitting" );
+	$tak.lookAt( $tak_sitting_lookat_target );
+}
+
+void endofbattle_vo()
+{
+	radioChatterPlayWait( $radiochatter, "vo_vansen_lz150" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlayWait( $radiochatter, "vo_marks_everybdyback" );		// %%%%%%%%%% VO %%%%%%%%%%
+
+	sys.sendNamedEvent( GUI_VEHICLEHUD, "ship_target_03_on" );
+
+	radioChatterPlayWait( $radiochatter, "vo_vansen_gocgunf1lz" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlayWait( $radiochatter, "vo_goc_rogfalc1altlz" );		// %%%%%%%%%% VO %%%%%%%%%%
+}
+
+void introCinGunship()
+{
+	while( INTROCIN ) {
+		$intro_gunship_mover.time( 1.5 );
+		$intro_gunship_mover.accelTime( 0.75 );
+		$intro_gunship_mover.decelTime( 0.75 );
+		$intro_gunship_mover.move( -2, 48 );
+		$intro_gunship_mover.rotateOnce( '0 0 5' );
+		sys.waitFor( $intro_gunship_mover );
+		$intro_gunship_mover.time( 1.5 );
+		$intro_gunship_mover.accelTime( 0.75 );
+		$intro_gunship_mover.decelTime( 0.75 );
+		$intro_gunship_mover.move( -1, 48 );
+		$intro_gunship_mover.rotateOnce( '0 0 -10' );
+		sys.waitFor( $intro_gunship_mover );
+		$intro_gunship_mover.time( 1.5 );
+		$intro_gunship_mover.accelTime( 0.75 );
+		$intro_gunship_mover.decelTime( 0.75 );
+		$intro_gunship_mover.move( -1, 48 );
+		$intro_gunship_mover.rotateOnce( '0 0 10' );
+		sys.waitFor( $intro_gunship_mover );
+		$intro_gunship_mover.time( 1.5 );
+		$intro_gunship_mover.accelTime( 0.75 );
+		$intro_gunship_mover.decelTime( 0.75 );
+		$intro_gunship_mover.move( -2, 48 );
+		$intro_gunship_mover.rotateOnce( '0 0 -5' );
+		sys.waitFor( $intro_gunship_mover );
+		sys.waitFrame();
+	}
+}
+
+///////////////////////////////////////////////////////////////
+//  Initialize                                               //
+///////////////////////////////////////////////////////////////
+void initStuff()
+{
+	//Variables
+	GLOBAL_DS_HEALTH_SEVENTYFIVE = ( DROPSHIP_HEALTH * 0.75 );
+	GLOBAL_DS_HEALTH_FIFTY = ( DROPSHIP_HEALTH * 0.5 );
+	GLOBAL_DS_HEALTH_TWENTYFIVE = ( DROPSHIP_HEALTH * 0.25 );
+	GLOBAL_DS_HEALTH_90 = ( DROPSHIP_HEALTH * 0.9 );
+	GLOBAL_DS_HEALTH_80 = ( DROPSHIP_HEALTH * 0.8 );
+	GLOBAL_DS_HEALTH_70 = ( DROPSHIP_HEALTH * 0.7 );
+	GLOBAL_DS_HEALTH_60 = ( DROPSHIP_HEALTH * 0.6 );
+	GLOBAL_DS_HEALTH_50 = ( DROPSHIP_HEALTH * 0.5 );
+	GLOBAL_DS_HEALTH_40 = ( DROPSHIP_HEALTH * 0.4 );
+	GLOBAL_DS_HEALTH_30 = ( DROPSHIP_HEALTH * 0.3 );
+	GLOBAL_DS_HEALTH_20 = ( DROPSHIP_HEALTH * 0.2 );
+	GLOBAL_DS_HEALTH_10 = ( DROPSHIP_HEALTH * 0.1 );
+	GUI_90 = false;
+	GUI_80 = false;
+	GUI_70 = false;
+	GUI_60 = false;
+	GUI_50 = false;
+	GUI_40 = false;
+	GUI_30 = false;
+	GUI_20 = false;
+	GUI_10 = false;
+	WARN_SEVENTYFIVE_PERCENT = false;
+	WARN_FIFTY_PERCENT = false;
+	WARN_TWENTYFIVE_PERCENT = false;
+	RAMPUP = true;
+	RAMPACTIVE = false;
+	STARTED_REAR_FIRE_SEQ = false;
+	FIRE_SUPRESSED = false;
+	CARGO_DUMPED = false;
+	AMMO_JAM_FIXED = false;
+	STARTED_AMMO_JAM_SEQ = false;
+	ENGINE_FIRE_OUT = false;
+	SPLINE_1_COMPLETED = true;
+	SPLINE_2_COMPLETED = true;
+	SPLINE_3_COMPLETED = true;
+	SPLINE_4_COMPLETED = true;
+	SPLINE_5_COMPLETED = true;
+	SPLINE_6_COMPLETED = true;
+	SPLINE_7_COMPLETED = true;
+	SPLINE_8_COMPLETED = true;
+	SPLINE_9_COMPLETED = true;
+	SPLINE_10_COMPLETED = true;
+	SPLINE_11_COMPLETED = true;
+	SPLINE_12_COMPLETED = true;
+	SPLINE_13_COMPLETED = true;
+	SPLINE_14_COMPLETED = true;
+	SPLINE_15_COMPLETED = true;
+	SPLINE_16_COMPLETED = true;
+	SPLINE_17_COMPLETED = true;
+	SPLINE_18_COMPLETED = true;
+	SPLINE_19_COMPLETED = true;
+	SPLINE_20_COMPLETED = true;
+	SPLINE_21_COMPLETED = true;
+	SPLINE_22_COMPLETED = true;
+	SPLINE_23_COMPLETED = true;
+	SPLINE_24_COMPLETED = true;
+	FRIENDLY_1_KILL = false;
+	FRIENDLY_2_KILL = false;
+	FRIENDLY_3_KILL = false;
+	DRIVER_STOP_FIRING = false;
+	DRIVER_FIRING = false;
+	PLAYER_BACK_AT_CHAIR = false;
+	DRIVER = false;
+	CARGO_FIRE_BURNING = false;
+	GUIARMACTIVE = false;
+	INGUIARMAREA = false;
+	LIGHTS_ON = true;
+	REDALERT = false;
+	EVENT_FIRE_REAR = false;
+	EVENT_FIRE_CARGO = false;
+	EVENT_AMMO = false;
+	EVENT_ENGINE = false;
+	STARTED_CARGO_FIRE_SEQ = false;
+	STARTED_ENGINE_FIRE_SEQ = false;
+	ENGINE_STEP_1 = true;
+	ENGINE_STEP_2 = false;
+	NAVAJAS_READY_AMMO = false;
+	WAVE1_CALLOUT_1 = false;
+	WAVE1_CALLOUT_2 = false;
+	WAVE2_CALLOUT_1 = false;
+	WAVE2_CALLOUT_2 = false;
+	WAVE3_CALLOUT_1 = false;
+	WAVE3_CALLOUT_2 = false;
+	WAVE4_CALLOUT_1 = false;
+	WAVE4_CALLOUT_2 = false;
+	WAVE5_CALLOUT_1 = false;
+	WAVE5_CALLOUT_2 = false;
+	WAVE5_CALLOUT_3 = false;
+	WAVE3_FIGHTER = false;
+	WAVE3_FIGHTER2 = false;
+	WAVE4_BOMBER = false;
+	WAVE5_BOMBER = false;
+
+	PLAYER_EVENT_IN_PROGRESS = true;
+	NO_EVASIVES = true;
+
+	//Characters
+	$markswell.hideSurface("models/weapons/mp_guns/w_mg_lo");
+	$mitchell.hideSurface("models/weapons/mp_guns/w_mg_lo");
+	$navajas.hideSurface("models/weapons/mp_guns/w_mg_lo");
+	$tak.hideSurface("models/weapons/mp_guns/w_mg_lo");
+	$dekard.hideSurface("models/weapons/mp_guns/w_mg_lo");
+	$wounded.hideSurface("models/weapons/mp_guns/w_mg_lo");
+	$darnell.hideSurface("models/weapons/mp_guns/w_mg_lo");
+	
+	aiScriptedAnimLoop( $navajas, "aa_chair_idle3", 0 );
+	aiScriptedAnimLoop( $tak, "aa_tak_idle_loop", 0 );
+	aiScriptedAnimLoop( $mitchell, "aa_chair_idle2", 0 );
+	aiScriptedAnimLoop( $dekard, "aa_chair_idle4", 0 );
+	aiScriptedAnimLoop( $darnell, "aa_chair_idle1", 0 );
+	aiScriptedAnimLoop( $wounded, "aa_chair_idle4", 0 );
+	$wounded.lookAt( $wounded_look );
+	$wounded.setTalkState( TALK_BUSY );
+
+	aiScriptedAnim( $topgun, "idle", 4, 1 );
+	aiScriptedAnim( $bottomgun, "idle", 4, 1 );
+
+	$cargo_crate_1.bind( $drop_ship );
+	$cargo_crate_2.bind( $drop_ship );
+
+	$navajas_chair.playCycle( ANIMCHANNEL_ALL, "idle" );
+	$tak_chair.playCycle( ANIMCHANNEL_ALL, "idle" );
+
+	sys.setcvar( "g_fov", "90" );
+
+	$reargui.setGuiParm( "noninteractive", 1 );
+	sys.sendNamedEvent( GUI_PLAYERHUD, "aa_showShipStatusOn" );
+
+	$player1.disableWeapon();
+}
+
+///////////////////////////////////////////////////////////////
+//  Main                                                     //
+///////////////////////////////////////////////////////////////
+void main()
+{
+	float a;
+
+	sys.fadeOut( '0 0 0', 0 );
+
+	a = thread initStuff();
+	sys.waitForThread( a );
+
+	//sys.music( "m03_intro_cinematic" );								// ====######## MUSIC #########====
+	sys.trigger( $musicintro );
+
+	//These are in the .map for AAS generation only
+	$remove_me_bomber.remove();
+	$remove_me_flyer.remove();
+
+	$player1.disableTarget();
+
+//	$topgun.lock( 0 );
+//	$bottomgun.lock( 0 );
+
+	DRIVER = true;
+	$topgun_driver.enterVehicle( $topgun );
+	sys.waitFrame();
+	DRIVER = false;
+
+	thread loopSkyboxTerrain();
+	thread initFriendlies();
+	thread dropshiphealthcheck();
+
+	sys.trigger( $amb_shake_low );
+
+	//---------------------------- cinematic --------------------------------------------------
+	//------ exterior -------
+	$intro1_cam_1_mover.time( 0.01 );
+	$intro1_cam_1_mover.accelTime( 0 );
+	$intro1_cam_1_mover.decelTime( 0 );
+	$intro1_cam_1_mover.rotateOnce( '-45 0 0' );
+	sys.waitFor( $intro1_cam_1_mover );
+
+	INTROCIN = true;
+	thread hideInterior();
+	thread introCinGunship();
+	sys.wait( 0.1 );
+	sys.trigger( $intro1_cam_1 );
+	sys.fadeIn( '0 0 0', 1 );
+
+	$intro1_cam_1_mover.time( 10 );
+	$intro1_cam_1_mover.accelTime( 2 );
+	$intro1_cam_1_mover.decelTime( 0 );
+	$intro1_cam_1_mover.moveTo( $intro1_cam_1_target_2 );
+	$intro1_cam_1_mover.rotateOnce( '45 -5 0' );
+	sys.waitFor( $intro1_cam_1_mover );
+
+	$intro1_cam_1_mover.time( 3 );
+	$intro1_cam_1_mover.accelTime( 0 );
+	$intro1_cam_1_mover.decelTime( 2.5 );
+	$intro1_cam_1_mover.moveTo( $intro1_cam_1_target_1 );
+	$intro1_cam_1_mover.rotateOnce( '0 -40 0' );
+	sys.waitFor( $intro1_cam_1_mover );
+
+	sys.wait( 2 );
+
+	sys.fadeOut( '0 0 0', 0.25 );
+	sys.wait( 0.3 );
+	thread showInterior();
+	sys.trigger( $intro_engine_thrust_fx_1 );
+	sys.trigger( $intro_engine_thrust_fx_2 );
+	$intro_gunship_top.remove();
+	$intro_gunship_bottom.remove();
+	$markswell.hide();
+
+	//------ interior -------
+	//camera 1, wide shot from rear
+	//camera 2, Navajas
+	//camera 3, Mitchell
+	//camera 4, Darnell
+	//camera 5, Tak
+	//camera 5b, Tak standing close-up
+	//camera 6, Dekard
+
+	thread shakeIntroCam();
+
+	sys.trigger( $intro_cam_1 );
+	sys.fadeIn( '0 0 0', 0.1 );
+	$intro_cam_1_mover.time( 4 );
+	$intro_cam_1_mover.accelTime( 0.5 );
+	$intro_cam_1_mover.decelTime( 0.5 );
+	$intro_cam_1_mover.rotateOnce( '0 -45 0' );
+	sys.waitFor( $intro_cam_1_mover );
+
+	sys.wait( 2 );
+
+	sys.trigger( $intro_cam_2 );
+	$navajas.lookAt( $wounded );
+
+	$musicintro.fadeSound( SND_CHANNEL_ANY, -4, 1 );				// ====######## MUSIC #########====
+
+	aiSpeakWait( $navajas, "lipsync_nava_howhedo" );
+
+	sys.wait( 0.2 );
+	sys.trigger( $intro_cam_3 );
+	$mitchell.lookAt( $wounded );
+	aiSpeakWait( $mitchell, "lipsync_mitch_aswell" );
+	$mitchell.lookAt( $navajas );
+	aiSpeakWait( $mitchell, "lipsync_mitch_gladfalc" );
+
+	sys.wait( 0.2 );
+	sys.trigger( $intro_cam_2 );
+	$navajas.lookAt( $mitchell );
+	$mitchell.lookAt( $darnell );
+	aiSpeakWait( $navajas, "lipsync_nava_considwedid" );
+
+	sys.wait( 0.2 );
+	sys.trigger( $intro_cam_4 );
+	$darnell.lookAt( $navajas );
+	aiSpeakWait( $darnell, "lipsync_darn_townsatk" );
+
+	sys.wait( 0.2 );
+	sys.trigger( $intro_cam_2 );
+	$navajas.lookAt( $darnell );
+	aiSpeak( $navajas, "lipsync_nava_yeahwellwe" );
+	sys.wait( 2 );
+	$navajas.lookAt( $tak );
+	sys.wait( 3.75 );
+
+	aiScriptedMove( $markswell, $markswell_null_1, 8, 0 );
+
+	sys.wait( 0.2 );
+	sys.trigger( $intro_cam_5 );
+	$tak.lookAt( $tak_backwards_look );
+	aiSpeakWait( $tak, "lipsync_tak_sciconftac" );
+
+	$markswell.show();
+
+	$dekard.lookAt( $markswell );
+	$darnell.lookAt( $markswell );
+	$navajas.lookAt( $markswell );
+	$mitchell.lookAt( $markswell );
+
+	sys.wait( 0.2 );
+	sys.trigger( $intro_cam_1 );
+
+	$intro_cam_1_mover.time( 3 );
+	$intro_cam_1_mover.accelTime( 1.5 );
+	$intro_cam_1_mover.decelTime( 1.5 );
+	$intro_cam_1_mover.moveTo( $cam1_markswell_cu );
+
+	thread introCinStandTak();
+	aiScriptedMoveWait( $markswell, $markswell_null_4, 8, 0 );
+	sys.waitFor( $intro_cam_1_mover );
+
+	aiScriptedAnimLoop( $markswell, "weaponless_idle2_loop", 16 );
+
+	sys.waitFrame();
+	$markswell.lookAt( $darnell );
+	aiSpeakWait( $markswell, "lipsync_marks_goodbadworse" );
+	$markswell.lookAt( $dekard );
+	aiSpeakWait( $markswell, "lipsync_marks_goodfirst" );
+
+	sys.wait( 0.2 );
+	sys.trigger( $intro_cam_4 );
+	aiSpeakWait( $darnell, "lipsync_darn_goodhobtakdek" );
+
+	$dekard.lookAt( $darnell );
+	sys.wait( 0.1 );
+	sys.trigger( $intro_cam_6 );
+
+	sys.wait( 1.5 );
+	sys.trigger( $intro_cam_1 );
+	$intro_cam_1_mover.time( 15 );
+	$intro_cam_1_mover.accelTime( 7 );
+	$intro_cam_1_mover.decelTime( 7 );
+	$intro_cam_1_mover.move( EAST, 16 );
+	$intro_cam_1_mover.rotateOnce( '0 -9 0' );
+
+	$markswell.lookAt( $darnell );
+	aiSpeakWait( $markswell, "lipsync_marks_worsenews" );
+
+	sys.wait( 0.2 );
+	sys.trigger( $intro_cam_3 );
+	aiSpeak( $navajas, "lipsync_nava_what2" );
+	sys.wait( 0.1 );
+	aiSpeak( $mitchell, "lipsync_mitch_holyshit" );
+	sys.wait( 0.15 );
+	aiSpeakWait( $darnell, "lipsync_darn_whathellwar" );
+
+	sys.trigger( $intro_cam_1 );
+	$markswell.lookAt( $tak );
+	aiSpeakWait( $tak, "lipsync_tak_straussconv" );
+	aiSpeakWait( $markswell, "lipsync_marks_empeffortf" );
+
+	sys.trigger( $intro_cam_5b );
+	aiSpeakWait( $tak, "lipsync_tak_straussalive" );
+
+	sys.trigger( $intro_cam_1 );
+	$markswell.lookAt( $dekard );
+	aiSpeakWait( $markswell, "lipsync_marks_yeshannib" );
+	$markswell.lookAt( $darnell );
+	aiSpeakWait( $markswell, "lipsync_marks_nowbadnews" );
+	$markswell.lookAt( $dekard );
+	aiSpeakWait( $markswell, "lipsync_marks_theirgoal" );
+
+	sys.wait( 0.2 );
+	sys.trigger( $intro_cam_4 );
+	aiSpeak( $darnell, "lipsync_darnell_wetwomen" );
+	aiSpeakWait( $navajas, "lipsync_nava_anothershit" );
+
+	sys.wait( 0.2 );
+	sys.trigger( $intro_cam_1 );
+	radioChatterPlayWait( $radiochatter, "vo_vansen_ltwing3" );
+	$markswell.lookAt( $darnell );
+	aiSpeakWait( $markswell, "lipsync_marks_iknowshort" );
+	radioChatterPlayWait( $radiochatter, "vo_vansen_wegotincom1" );
+
+	$musicintro.fadeSound( SND_CHANNEL_ANY, 4, 1 );				// ====######## MUSIC #########====
+
+	sys.waitFor( $intro_cam_1_mover );
+
+	REDALERT = true;
+
+	$white_ship_light.Off();
+	$markswell_intro_fill_light.On();
+	$chair_light_static_flares.setColor( 0.5, 0.03, 0 );
+	$seat_light_1.setColor( 0.5, 0.03, 0 );
+	$seat_light_2.setColor( 0.5, 0.03, 0 );
+	$seat_light_3.setColor( 0.5, 0.03, 0 );
+	$seat_light_4.setColor( 0.5, 0.03, 0 );
+	$seat_light_5.setColor( 0.5, 0.03, 0 );
+
+	sys.trigger( $ds_redlight_rot_1 );
+	$ds_redlight_rot_flare_1.show();
+	$ds_redlight_1.On();
+	sys.wait( 0.5 );
+	sys.trigger( $ds_redlight_rot_2 );
+	$ds_redlight_rot_flare_2.show();
+	$ds_redlight_2.On();
+
+	aiSpeakWait( $markswell, "lipsync_marks_everystation" );			// %%%%%%%%%% VO %%%%%%%%%%
+
+	aiScriptedAnimLoop( $navajas, "aa_chair_alert_reaction3", 0 );
+	sys.wait( 0.1 );
+	aiScriptedAnimLoop( $mitchell, "aa_chair_alert_reaction2", 0 );
+	sys.wait( 0.1 );
+	aiScriptedAnimLoop( $dekard, "aa_chair_alert_reaction4", 0 );
+	sys.wait( 0.1 );
+	aiScriptedAnimLoop( $darnell, "aa_chair_alert_reaction1", 0 );
+
+	thread introCinEndMoveNavajas();
+	thread introCinEndMoveMarkswell();
+	thread introCinEndMoveTak();
+	thread introCinEndMoveDarnell();
+
+	$intro_cam_1_mover.time( 3 );
+	$intro_cam_1_mover.accelTime( 0.75 );
+	$intro_cam_1_mover.decelTime( 0.5 );
+	$intro_cam_1_mover.moveTo( $intro_cam_rearpos );
+	$intro_cam_1_mover.rotateOnce( '0 9 0' );
+	sys.waitFor( $intro_cam_1_mover );
+
+	sys.wait( 3 );
+	sys.fadeOut( '0 0 0', 1 );
+	sys.wait( 1 );
+	sys.trigger( $intro_cam_1 );
+	$dekard.remove();
+	sys.wait( 0.5 );
+	$leftdoor.lock( 1 );
+	$rightdoor.lock( 1 );
+	sys.trigger( $engine_thrust_fx_1 );
+	sys.trigger( $engine_thrust_fx_2 );
+	$topgun.show();
+	$bottomgun.show();
+	$markswell_intro_fill_light.remove();
+	INTROCIN = false;
+	//------------------------------- end opening cinematic -------------------------------------
+	//sys.music( "m03_bed" );								// ====######## MUSIC #########====
+	$musicintro.fadeSound( SND_CHANNEL_ANY, -80, 1 );
+	$musicintro.remove();
+	sys.trigger( $musicbed );
+
+	sys.fadeIn( '0 0 0', 2 );
+
+	$dekard_chair.playAnim( ANIMCHANNEL_ALL, "sitting_to_idle" );
+	aiScriptedAnimLoop( $mitchell, "aa_chair_idle2", 0 );
+	$mitchell.lookAt( $wounded );
+
+	sys.wait( 1 );
+
+	sys.trigger( $func_savegame_1 );
+
+	sys.wait( 4 );
+
+	sys.trigger( $item_objective_1 );
+	sys.sendNamedEvent( GUI_VEHICLEHUD, "ship_target_05_on" );
+	sys.sendNamedEvent( GUI_PLAYERHUD, "ship_target_05_on" );
+
+	radioChatterPlayWait( $radiochatter, "vo_marks_dekgbelly" );		// %%%%%%%%%% VO %%%%%%%%%%
+
+	thread updatePlayerKills();
+
+	while( !INBOTTOMGUN ) {
+		if( !INBOTTOMGUN ) {
+			sys.wait( 7 );
+		}
+		if( !INBOTTOMGUN ) {
+			radioChatterPlayWait( $radiochatter, "vo_marks_dekmanbell" );		// %%%%%%%%%% VO %%%%%%%%%%
+		}
+		if( !INBOTTOMGUN ) {
+			sys.wait( 7 );
+		}
+		if( !INBOTTOMGUN ) {
+			radioChatterPlayWait( $radiochatter, "vo_makrs_movedek1" );		// %%%%%%%%%% VO %%%%%%%%%%
+		}
+	}
+
+	sys.sendNamedEvent( GUI_VEHICLEHUD, "ship_target_05_off" );
+	sys.sendNamedEvent( GUI_PLAYERHUD, "ship_target_05_off" );
+
+	$bottomgun.startSoundShader( "vo_computer_targsysonline", SND_CHANNEL_ANY );			// %%%%%%%%%% VO %%%%%%%%%%
+	sys.wait( 5 );
+
+	radioChatterPlayWait( $radiochatter, "vo_marks_okstations" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlayWait( $radiochatter_pilot, "vo_vansen_pilotrog" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlayWait( $radiochatter, "vo_nava_munitonline" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlayWait( $radiochatter, "vo_tak_tactnavradar" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlayWait( $radiochatter, "vo_darn_topsideturr" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlayWait( $radiochatter, "vo_marks_mitchremain" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlayWait( $radiochatter, "vo_mitch_roger1" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlayWait( $radiochatter, "vo_marks_dekfloat" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlayWait( $radiochatter, "vo_marks_takwherearewe" );	// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlayWait( $radiochatter, "vo_tak_we75clk" );		// %%%%%%%%%% VO %%%%%%%%%%
+//	radioChatterPlayWait( $radiochatter, "vo_marks_thirdwingf1" );		// %%%%%%%%%% VO %%%%%%%%%%
+//	radioChatterPlayWait( $radiochatter_pilot, "vo_eagle23_ready" );		// %%%%%%%%%% VO %%%%%%%%%%
+//	radioChatterPlayWait( $radiochatter_pilot, "vo_eagle15_ready" );		// %%%%%%%%%% VO %%%%%%%%%%
+//	radioChatterPlayWait( $radiochatter_pilot, "vo_raven8_combatrdy" );		// %%%%%%%%%% VO %%%%%%%%%%
+	thread flakFire();
+	sys.wait( 2 );
+
+	radioChatterPlayWait( $radiochatter, "vo_tak_strgairbursts" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlay( $radiochatter, "vo_marks_hangon" );		// %%%%%%%%%% VO %%%%%%%%%%
+
+	sys.wait( 16 ) ;
+
+	radioChatterPlayWait( $radiochatter, "vo_tak_hol60inb" );		// %%%%%%%%%% VO %%%%%%%%%%
+	sys.wait( 1 );
+	radioChatterPlay( $radiochatter, "vo_tak_strggflyers12low" );		// %%%%%%%%%% VO %%%%%%%%%%
+
+	PLAYER_EVENT_IN_PROGRESS = false;
+
+	$tak.setTalkState( TALK_NEVER );
+	$mitchell.setTalkState( TALK_NEVER );
+	$navjas.setTalkState( TALK_NEVER );
+
+	//sys.music( "m03_slow1" );								// ====######## MUSIC #########====
+	$musicbed.fadeSound( SND_CHANNEL_ANY, -80, 1 );
+	$musicbed.remove();
+	sys.trigger( $musicslow1 );
+
+	thread toggleFriendlyShipLasers();
+	NO_EVASIVES = false;
+	//________________________________________________________________________________________
+	WAVE = 1;
+	//________________________________________________________________________________________
+	while ( 1 ) {
+
+		if( WAVE1_PLAYERKILLS >= WAVE1_KILLCOUNT ) {
+			break;
+		}
+
+		if( SPLINE_7_COMPLETED ) {
+			sys.trigger( $fighter_spawn_7 );		//NW corner high
+			thread gunVehicleDriverFire( $topgun_driver );
+		}
+
+
+		if( SPLINE_17_COMPLETED )
+			sys.trigger( $fighter_spawn_0_1 );		//Forward Low
+
+		sys.wait( 1 );
+
+		if( SPLINE_18_COMPLETED )
+			sys.trigger( $fighter_spawn_0_2 );		//Forward Low
+
+		sys.wait( 1 );
+
+		if( !WAVE1_CALLOUT_2 && WAVE1_CALLOUT_1 && WAVE1_PLAYERKILLS >= 4 && SPLINE_1_COMPLETED && INBOTTOMGUN && !PLAYER_EVENT_IN_PROGRESS ) {
+			radioChatterPlay( $radiochatter, "vo_tak_contact10oclock" );		// %%%%%%%%%% VO %%%%%%%%%%
+			WAVE1_CALLOUT_2 = true;
+		}
+
+		if( WAVE1_PLAYERKILLS >= WAVE1_KILLCOUNT ) {
+			break;
+		}
+
+		if( SPLINE_1_COMPLETED )
+			sys.trigger( $fighter_spawn_1 );		//NE corner low
+
+		sys.wait( 1 );
+
+		if( SPLINE_2_COMPLETED )
+			sys.trigger( $fighter_spawn_2 );		//NE corner low
+
+		sys.wait( 1 );
+
+		if( !WAVE1_CALLOUT_1 && INBOTTOMGUN && !PLAYER_EVENT_IN_PROGRESS ) {
+			radioChatterPlay( $radiochatter, "vo_tak_flyers9oclock" );		// %%%%%%%%%% VO %%%%%%%%%%
+			WAVE1_CALLOUT_1 = true;
+		}
+
+		if( WAVE1_PLAYERKILLS >= WAVE1_KILLCOUNT ) {
+			break;
+		}
+
+		if( SPLINE_23_COMPLETED )
+			sys.trigger( $fighter_spawn_270_1 );		//Port Low
+
+		sys.wait( 1 );
+
+		if( SPLINE_24_COMPLETED )
+			sys.trigger( $fighter_spawn_270_2 );		//Port Low
+
+		sys.wait( 1 );
+
+		if( WAVE1_PLAYERKILLS >= WAVE1_KILLCOUNT ) {
+			break;
+		}
+
+		if( SPLINE_4_COMPLETED )
+			sys.trigger( $fighter_spawn_4 );		//SW corner low
+
+		sys.wait( 1 );
+
+		if( SPLINE_5_COMPLETED )
+			sys.trigger( $fighter_spawn_5 );		//SW corner low
+
+		sys.wait( 1 );
+
+		if( SPLINE_7_COMPLETED ) {
+			sys.trigger( $fighter_spawn_7 );		//NW corner high
+			thread gunVehicleDriverFire( $topgun_driver );
+		}
+	}
+
+	NO_EVASIVES = true;
+
+	//Wait until all ships have been killed before proceeding
+	while( STROGG_WAVE_SHIP_COUNTER > 0 ) {
+		sys.wait( 1 );
+	}
+	//____________________________________________________________
+
+	thread flakFireLight();
+	sys.trigger( $friendly_dropship_1_enginefx_1 );
+	killFriendlyDropship1();
+
+	//=============================
+	// DAMAGE #1 - Ceiling
+	//=============================
+	$broken_ceiling.hide();
+	$broken_fray_ceiling.show();
+
+	if( !PLAYER_EVENT_IN_PROGRESS ) {
+		radioChatterPlayWait( $radiochatter, "vo_tak_50targ" );		// %%%%%%%%%% VO %%%%%%%%%%
+	}
+
+	if( !PLAYER_EVENT_IN_PROGRESS ) {
+		radioChatterPlay( $radiochatter, "vo_tak_hullbrmain" );		// %%%%%%%%%% VO %%%%%%%%%%
+	}
+
+	sys.trigger( $wind1 );
+
+	DRIVER_STOP_FIRING = true;
+
+	sys.wait( 5 );
+
+	DRIVER_STOP_FIRING = false;
+
+	aiScriptedAnim( $topgun, "idle", 4, 1 );
+
+	//sys.music( "m03_medium1" );								// ====######## MUSIC #########====
+	$musicslow1.fadeSound( SND_CHANNEL_ANY, -80, 1 );
+	$musicslow1.remove();
+	sys.trigger( $musicmedium1 );
+
+	NO_EVASIVES = false;
+	//________________________________________________________________________________________
+	WAVE = 2;
+	//________________________________________________________________________________________
+	while ( 1 ) {
+
+		//+++++++++++++++++++++++++++++++++++++++++
+		//Cargo Fire
+		//+++++++++++++++++++++++++++++++++++++++++
+		if( WAVE2_PLAYERKILLS >= 2 && !STARTED_CARGO_FIRE_SEQ ) {
+			thread cargoFireInit();
+			//sys.music( "m03_event" );								// ====######## MUSIC #########====
+			sys.trigger( $musicmedium1 );
+			sys.trigger( $musicevent );
+			sys.trigger( $interior_smoke_fx_1 );
+			sys.trigger( $interior_smoke_fx_2 );
+			sys.trigger( $interior_smoke_fx_3 );
+			sys.trigger( $interior_smoke_fx_4 );
+			sys.trigger( $interior_smoke_fx_5 );
+			sys.trigger( $interior_smoke_fx_6 );
+		}
+
+		if( WAVE2_PLAYERKILLS >= WAVE2_KILLCOUNT ) {
+			break;
+		}
+
+		if( SPLINE_17_COMPLETED && !CARGO_DUMPED )
+			sys.trigger( $fighter_spawn_0_1 );		//Forward Low
+
+		sys.wait( 1 );
+
+		if( SPLINE_18_COMPLETED && !CARGO_DUMPED )
+			sys.trigger( $fighter_spawn_0_2 );		//Forward Low
+
+		sys.wait( 1 );
+
+		if( SPLINE_1_COMPLETED && !CARGO_DUMPED )
+			sys.trigger( $fighter_spawn_1 );		//NE corner low
+
+		sys.wait( 1 );
+
+		if( !WAVE1_CALLOUT_2 && WAVE2_CALLOUT_1 && WAVE2_PLAYERKILLS >= 9 && SPLINE_21_COMPLETED && CARGO_DUMPED && INTOPGUN && !PLAYER_EVENT_IN_PROGRESS ) {
+			radioChatterPlay( $radiochatter, "vo_tak_flyerson6" );		// %%%%%%%%%% VO %%%%%%%%%%
+			WAVE1_CALLOUT_2 = true;
+		}
+
+		if( SPLINE_21_COMPLETED && CARGO_DUMPED )
+			sys.trigger( $fighter_spawn_180_1 );		//Aft high
+
+		sys.wait( 1 );
+
+		if( SPLINE_22_COMPLETED && CARGO_DUMPED )
+			sys.trigger( $fighter_spawn_180_2 );		//Aft high
+
+		sys.wait( 1 );
+
+		if( SPLINE_19_COMPLETED && CARGO_DUMPED )
+			sys.trigger( $fighter_spawn_90_1 );		//Starboard high
+
+		sys.wait( 1 );
+
+		if( !WAVE2_CALLOUT_1 && INBOTTOMGUN && !PLAYER_EVENT_IN_PROGRESS ) {
+			radioChatterPlay( $radiochatter, "vo_tak_flyers9oclock" );		// %%%%%%%%%% VO %%%%%%%%%%
+			WAVE2_CALLOUT_1 = true;
+		}
+
+		if( SPLINE_23_COMPLETED && !CARGO_DUMPED )
+			sys.trigger( $fighter_spawn_270_1 );		//Port Low
+
+		sys.wait( 1 );
+
+		if( SPLINE_24_COMPLETED && !CARGO_DUMPED )
+			sys.trigger( $fighter_spawn_270_2 );		//Port Low
+
+		sys.wait( 1 );
+
+		if( SPLINE_2_COMPLETED && !CARGO_DUMPED )
+			sys.trigger( $fighter_spawn_2 );		//NE corner low
+
+		sys.wait( 1 );
+
+		if( SPLINE_4_COMPLETED && !CARGO_DUMPED )
+			sys.trigger( $fighter_spawn_4 );		//SW corner low
+
+		sys.wait( 1 );
+
+		if( SPLINE_7_COMPLETED && !CARGO_DUMPED ) {
+			sys.trigger( $fighter_spawn_7 );		//NW corner high
+			thread gunVehicleDriverFire( $topgun_driver );
+		}
+
+		sys.wait( 1 );
+
+		if( SPLINE_5_COMPLETED && !CARGO_DUMPED )
+			sys.trigger( $fighter_spawn_5 );		//SW corner low
+
+		sys.wait( 1 );
+
+		if( SPLINE_3_COMPLETED && !CARGO_DUMPED )
+			sys.trigger( $fighter_spawn_3 );		//NE corner low
+
+		sys.wait( 1 );
+
+		if( SPLINE_6_COMPLETED && !CARGO_DUMPED )
+			sys.trigger( $fighter_spawn_6 );		//SW corner low
+
+		sys.wait( 1 );
+	}
+
+	NO_EVASIVES = true;
+
+	//Wait until all ships have been killed before proceeding
+	while( STROGG_WAVE_SHIP_COUNTER > 0 ) {
+		sys.wait( 1 );
+	}
+	//____________________________________________________________
+
+	sys.trigger( $friendly_dropship_2_enginefx_1 );
+	sys.trigger( $friendly_dropship_2_enginefx_2 );
+	sys.trigger( $friendly_dropship_2_smokefx );
+	killFriendlyDropship2();
+
+	//=============================
+	// DAMAGE #2 - Left Side
+	//=============================
+	$broken_left.hide();
+	$broken_fray_left.show();
+	sys.trigger( $wind2 );
+
+	if( !PLAYER_EVENT_IN_PROGRESS ) {
+		radioChatterPlayWait( $radiochatter, "vo_tak_40targ" );		// %%%%%%%%%% VO %%%%%%%%%%
+	}
+
+	DRIVER_STOP_FIRING = true;
+
+	if( !PLAYER_EVENT_IN_PROGRESS ) {
+		radioChatterPlayWait( $radiochatter, "vo_tak_50clickslz" );		// %%%%%%%%%% VO %%%%%%%%%%
+	}
+
+	sys.wait( 5 );
+
+	sys.trigger( $func_savegame_1 );
+
+	sys.wait( 1 );
+
+	sys.trigger( $amb_shake_low );
+	sys.trigger( $amb_shake_med );
+
+	DRIVER_STOP_FIRING = false;
+
+	NO_EVASIVES = false;
+	//________________________________________________________________________________________
+	WAVE = 3;
+	//________________________________________________________________________________________
+	while ( 1 ) {
+
+		if( WAVE3_PLAYERKILLS >= WAVE3_KILLCOUNT ) {
+			break;
+		}
+
+		if( !WAVE3_CALLOUT_1 && INTOPGUN && !PLAYER_EVENT_IN_PROGRESS ) {
+			radioChatterPlay( $radiochatter, "vo_tak_fly3oclock" );		// %%%%%%%%%% VO %%%%%%%%%%
+			WAVE3_CALLOUT_1 = true;
+		}
+
+		if( !WAVE3_FIGHTER ) {
+			thread wave3Fighter();
+			WAVE3_FIGHTER = true;
+		}
+
+		if( SPLINE_19_COMPLETED )
+			sys.trigger( $fighter_spawn_90_1 );		//Starboard high
+
+		sys.wait( 1 );
+
+		if( SPLINE_20_COMPLETED )
+			sys.trigger( $fighter_spawn_90_2 );		//Starboard high
+
+		sys.wait( 1 );
+
+		if( SPLINE_4_COMPLETED ) {
+			sys.trigger( $fighter_spawn_4 );		//SW corner low
+			thread gunVehicleDriverFire( $bottomgun_driver );
+		}
+
+		sys.wait( 3 );
+
+		if( WAVE3_PLAYERKILLS >= WAVE3_KILLCOUNT ) {
+			break;
+		}
+
+		if( SPLINE_21_COMPLETED )
+			sys.trigger( $fighter_spawn_180_1 );		//Aft high
+
+		sys.wait( 1 );
+
+		if( SPLINE_22_COMPLETED )
+			sys.trigger( $fighter_spawn_180_2 );		//Aft high
+
+		sys.wait( 1 );
+
+		if( SPLINE_10_COMPLETED )
+			sys.trigger( $fighter_spawn_10 );		//SE corner high
+
+		sys.wait( 1 );
+
+		if( !WAVE3_CALLOUT_2 && WAVE3_CALLOUT_1 && WAVE3_PLAYERKILLS >= 4 && SPLINE_8_COMPLETED && INTOPGUN && !PLAYER_EVENT_IN_PROGRESS ) {
+			radioChatterPlay( $radiochatter, "vo_tak_cont8oclock" );		// %%%%%%%%%% VO %%%%%%%%%%
+			WAVE3_CALLOUT_2 = true;
+		}
+
+		if( WAVE3_PLAYERKILLS >= WAVE3_KILLCOUNT ) {
+			break;
+		}
+
+		if( SPLINE_8_COMPLETED )
+			sys.trigger( $fighter_spawn_8 );		//NW corner high
+
+		sys.wait( 1 );
+
+		if( SPLINE_11_COMPLETED )
+			sys.trigger( $fighter_spawn_11 );		//SE corner high
+
+		sys.wait( 1 );
+
+		if( WAVE3_FIGHTER && !WAVE3_FIGHTER2 ) {
+			while( WAVE3FIGHTER_ALIVE ) {
+				sys.wait( 1 );
+			}
+			thread wave3Fighter2();
+			WAVE3_FIGHTER2 = true;
+		}
+	}
+
+	NO_EVASIVES = true;
+
+	if( WAVE3FIGHTER_ALIVE ) {
+		$wave3fighter.kill();
+	}
+	if( WAVE3FIGHTER2_ALIVE ) {
+		$wave3fighter_2.kill();
+	}
+
+	//Wait until all ships have been killed before proceeding
+	while( STROGG_WAVE_SHIP_COUNTER > 0 ) {
+		sys.wait( 1 );
+	}
+	//____________________________________________________________
+
+	thread flakFireLight();
+
+	//=============================
+	// DAMAGE #3 - Floor
+	//=============================
+	$broken_floor.hide();
+	$broken_fray_floor.show();
+	sys.trigger( $wind3 );
+	$floor_hole_fullclip.remove();
+
+	if( !PLAYER_EVENT_IN_PROGRESS ) {
+		radioChatterPlayWait( $radiochatter, "vo_tak_30targ" );		// %%%%%%%%%% VO %%%%%%%%%%
+	}
+
+	DRIVER_STOP_FIRING = true;
+
+	sys.wait( 5 );
+
+	if( !PLAYER_EVENT_IN_PROGRESS ) {
+		radioChatterPlayWait( $radiochatter, "vo_tak_30clickslz" );		// %%%%%%%%%% VO %%%%%%%%%%
+	}
+
+	DRIVER_STOP_FIRING = false;
+
+	//sys.music( "m03_fast1" );								// ====######## MUSIC #########====
+	$musicmedium1.fadeSound( SND_CHANNEL_ANY, -80, 1 );
+	$musicmedium1.remove();
+	sys.trigger( $musicfast1 );
+
+	NO_EVASIVES = false;
+	//________________________________________________________________________________________
+	WAVE = 4;
+	//________________________________________________________________________________________
+	while ( 1 ) {
+
+		if( WAVE4_PLAYERKILLS >= WAVE4_KILLCOUNT ) {
+			break;
+		}
+
+		if( !WAVE4_BOMBER ) {
+			thread wave4Bomber();
+			WAVE4_BOMBER = true;
+			sys.wait( 10 );
+			if( !PLAYER_EVENT_IN_PROGRESS ) {
+				radioChatterPlay( $radiochatter, "vo_vansen_desttail" );		// %%%%%%%%%% VO %%%%%%%%%%
+			}
+		}
+
+		if( SPLINE_4_COMPLETED ) {
+			sys.trigger( $fighter_spawn_4 );		//SW corner low
+			thread gunVehicleDriverFire( $bottomgun_driver );
+		}
+
+		sys.wait( 1 );
+
+		if( SPLINE_13_COMPLETED )
+			sys.trigger( $bomber_spawn_1 );		//NE corner low - Bomber
+
+		sys.wait( 1 );
+
+		if( !WAVE4_CALLOUT_2 && WAVE4_CALLOUT_1 && WAVE4_PLAYERKILLS >= 6 && SPLINE_19_COMPLETED && INTOPGUN && !PLAYER_EVENT_IN_PROGRESS ) {
+			radioChatterPlay( $radiochatter, "vo_tak_fly3oclock" );		// %%%%%%%%%% VO %%%%%%%%%%
+			WAVE4_CALLOUT_2 = true;
+		}
+
+		if( SPLINE_19_COMPLETED )
+			sys.trigger( $fighter_spawn_90_1 );		//Starboard high
+
+		sys.wait( 1 );
+
+		if( SPLINE_20_COMPLETED )
+			sys.trigger( $fighter_spawn_90_2 );		//Starboard high
+
+		sys.wait( 1 );
+
+		if( !WAVE4_CALLOUT_1 && INTOPGUN && !PLAYER_EVENT_IN_PROGRESS ) {
+			radioChatterPlay( $radiochatter, "vo_tak_targs2oclock" );		// %%%%%%%%%% VO %%%%%%%%%%
+			WAVE4_CALLOUT_1 = true;
+		}
+
+		if( SPLINE_10_COMPLETED )
+			sys.trigger( $fighter_spawn_10 );		//SE corner high
+
+		sys.wait( 1 );
+
+		if( SPLINE_11_COMPLETED )
+			sys.trigger( $fighter_spawn_11 );		//SE corner high
+
+		sys.wait( 1 );
+
+		if( SPLINE_15_COMPLETED )
+			sys.trigger( $bomber_spawn_3 );		//NW corner low - Bomber
+
+		sys.wait( 1 );
+
+		if( SPLINE_12_COMPLETED )
+			sys.trigger( $fighter_spawn_12 );		//SE corner high
+
+		sys.wait( 3 );
+
+		if( SPLINE_7_COMPLETED )
+			sys.trigger( $fighter_spawn_7 );		//NW corner high
+
+		sys.wait( 1 );
+
+		if( SPLINE_21_COMPLETED )
+			sys.trigger( $fighter_spawn_180_1 );		//Aft high
+
+		sys.wait( 1 );
+
+		if( SPLINE_22_COMPLETED )
+			sys.trigger( $fighter_spawn_180_2 );		//Aft high
+
+		sys.wait( 1 );
+
+		if( SPLINE_8_COMPLETED )
+			sys.trigger( $fighter_spawn_8 );		//NW corner high
+
+		sys.wait( 1 );
+	}
+
+	NO_EVASIVES = true;
+
+	if( WAVE4BOMBER_ALIVE ) {
+		$wave4bomber.kill();
+	}
+
+	//Wait until all ships have been killed before proceeding
+	while( STROGG_WAVE_SHIP_COUNTER > 0 ) {
+		sys.wait( 1 );
+	}
+	//____________________________________________________________
+
+	thread flakFireLight();
+
+	killFriendlyDropship3();
+
+	//=============================
+	// DAMAGE #4 - Right Side
+	//=============================
+	$broken_right.hide();
+	$broken_fray_right.show();
+
+	if( !PLAYER_EVENT_IN_PROGRESS ) {
+		radioChatterPlayWait( $radiochatter, "vo_tak_15targ" );		// %%%%%%%%%% VO %%%%%%%%%%
+	}
+
+	if( !PLAYER_EVENT_IN_PROGRESS ) {
+		radioChatterPlay( $radiochatter, "vo_tak_wehavemajdam" );		// %%%%%%%%%% VO %%%%%%%%%%
+	}
+
+	DRIVER_STOP_FIRING = true;
+
+	sys.wait( 5 );
+
+	sys.trigger( $func_savegame_1 );
+
+	$amb_shake_med.remove();
+	sys.trigger( $amb_shake_high );
+
+	sys.wait( 3 );
+
+	if( !PLAYER_EVENT_IN_PROGRESS ) {
+		radioChatterPlayWait( $radiochatter, "vo_tak_almost10clk" );		// %%%%%%%%%% VO %%%%%%%%%%
+	}
+
+	DRIVER_STOP_FIRING = false;
+
+	thread biggunShotsFire();
+
+	NO_EVASIVES = false;
+	//________________________________________________________________________________________
+	WAVE = 5;
+	//________________________________________________________________________________________
+	while ( 1 ) {
+
+		//+++++++++++++++++++++++++++++++++++++++++
+		//Engine Fire
+		//+++++++++++++++++++++++++++++++++++++++++
+		if( WAVE5_PLAYERKILLS >= 6 && !STARTED_ENGINE_FIRE_SEQ ) {
+			thread engineFireInit();
+			//sys.music( "m03_event" );								// ====######## MUSIC #########====
+			sys.trigger( $musicfast1 );
+			sys.trigger( $musicevent );
+		}
+
+		if( WAVE5_PLAYERKILLS >= (WAVE5_KILLCOUNT - 5) && !PLAYER_EVENT_IN_PROGRESS ) {
+			radioChatterPlayWait( $radiochatter, "vo_tak_5targ" );		// %%%%%%%%%% VO %%%%%%%%%%
+		}
+
+		if( WAVE5_PLAYERKILLS >= WAVE5_KILLCOUNT ) {
+			break;
+		}
+
+		if( !WAVE5_BOMBER ) {
+			thread wave5Bomber();
+			WAVE5_BOMBER = true;
+			thread flakFireLight();
+			sys.wait( 10 );
+			if( !PLAYER_EVENT_IN_PROGRESS ) {
+				radioChatterPlay( $radiochatter, "vo_vansen_cantshkd" );		// %%%%%%%%%% VO %%%%%%%%%%
+			}
+		}
+
+		if( SPLINE_4_COMPLETED ) {
+			sys.trigger( $fighter_spawn_4 );		//SW corner low
+			thread gunVehicleDriverFire( $bottomgun_driver );
+		}
+
+		sys.wait( 1 );
+
+		if( SPLINE_19_COMPLETED )
+			sys.trigger( $fighter_spawn_90_1 );		//Starboard high
+
+		sys.wait( 1 );
+
+		if( SPLINE_20_COMPLETED )
+			sys.trigger( $fighter_spawn_90_2 );		//Starboard high
+
+		sys.wait( 1 );
+
+		if( !WAVE5_CALLOUT_3 && INTOPGUN && !PLAYER_EVENT_IN_PROGRESS ) {
+			WAVE5_CALLOUT_3 = true;
+			radioChatterPlay( $radiochatter, "vo_tak_dest2oclock" );		// %%%%%%%%%% VO %%%%%%%%%%
+		}
+
+		if( SPLINE_13_COMPLETED )
+			sys.trigger( $bomber_spawn_1 );		//NE corner low - Bomber
+
+		sys.wait( 1 );
+
+		if( SPLINE_7_COMPLETED )
+			sys.trigger( $fighter_spawn_7 );		//NW corner high
+
+		sys.wait( 3 );
+
+		if( SPLINE_16_COMPLETED )
+			sys.trigger( $bomber_spawn_4 );		//NW corner low - Bomber
+
+		sys.wait( 1 );
+
+		if( SPLINE_10_COMPLETED )
+			sys.trigger( $fighter_spawn_10 );		//SE corner high
+
+		sys.wait( 1 );
+
+		if( !WAVE5_CALLOUT_1 && INTOPGUN && !PLAYER_EVENT_IN_PROGRESS ) {
+			radioChatterPlay( $radiochatter, "vo_tak_theyeveryw" );		// %%%%%%%%%% VO %%%%%%%%%%
+			WAVE5_CALLOUT_1 = true;
+		}
+
+		if( SPLINE_8_COMPLETED )
+			sys.trigger( $fighter_spawn_8 );		//NW corner high
+
+		sys.wait( 1 );
+
+		if( SPLINE_14_COMPLETED )
+			sys.trigger( $bomber_spawn_2 );		//NE corner low - Bomber
+
+		sys.wait( 1 );
+
+		if( SPLINE_21_COMPLETED )
+			sys.trigger( $fighter_spawn_180_1 );		//Aft high
+
+		sys.wait( 1 );
+
+		if( !WAVE5_CALLOUT_2 && WAVE5_CALLOUT_1 && WAVE5_PLAYERKILLS >= 3 && SPLINE_22_COMPLETED && INTOPGUN && !PLAYER_EVENT_IN_PROGRESS ) {
+			radioChatterPlay( $radiochatter, "vo_tak_multtargallq" );		// %%%%%%%%%% VO %%%%%%%%%%
+			WAVE5_CALLOUT_2 = true;
+		}
+
+		if( SPLINE_22_COMPLETED )
+			sys.trigger( $fighter_spawn_180_2 );		//Aft high
+
+		sys.wait( 3 );
+
+		if( SPLINE_11_COMPLETED )
+			sys.trigger( $fighter_spawn_11 );		//SE corner high
+
+		sys.wait( 1 );
+
+		if( SPLINE_9_COMPLETED )
+			sys.trigger( $fighter_spawn_9 );		//NW corner high
+
+		sys.wait( 1 );
+
+		if( SPLINE_15_COMPLETED )
+			sys.trigger( $bomber_spawn_3 );		//NW corner low - Bomber
+
+		sys.wait( 1 );
+
+		if( SPLINE_12_COMPLETED )
+			sys.trigger( $fighter_spawn_12 );		//SE corner high
+
+		sys.wait( 1 );
+	}
+
+	NO_EVASIVES = true;
+
+	if( WAVE5BOMBER_ALIVE ) {
+		$wave5bomber.kill();
+	}
+
+	thread moveDarnellBacktoChair();
+
+	//sys.music( "m03_exit_cinematic" );						// ====######## MUSIC #########====
+	$musicfast1.fadeSound( SND_CHANNEL_ANY, -80, 1 );
+	$musicfast1.remove();
+	sys.trigger( $musicexit );
+
+	//Wait until all ships have been killed before proceeding
+	while( STROGG_WAVE_SHIP_COUNTER > 0 ) {
+		sys.wait( 1 );
+	}
+	
+	//____________________________________________________________
+
+	DRIVER_STOP_FIRING = true;
+	PLAYER_EVENT_IN_PROGRESS = true;
+
+	sys.wait( 5 );
+
+	sys.trigger( $playerchairtrigger );
+
+	sys.trigger( $item_objectivecomplete_1 );
+
+	radioChatterPlayWait( $radiochatter, "vo_vansen_weapprchlz" );		// %%%%%%%%%% VO %%%%%%%%%%
+	radioChatterPlayWait( $radiochatter, "vo_marks_everyprep" );		// %%%%%%%%%% VO %%%%%%%%%%
+
+	thread endofbattle_vo();
+
+	REDALERT = false;
+
+	sys.trigger( $ds_redlight_rot_1 );
+	$ds_redlight_rot_flare_1.hide();
+	$ds_redlight_1.Off();
+	sys.trigger( $ds_redlight_rot_2 );
+	$ds_redlight_rot_flare_2.hide();
+	$ds_redlight_2.Off();
+
+	$chair_light_static_flares.setColor( 0.6, 1, 0.9 );
+	$seat_light_1.setColor( 0.6, 1, 0.9 );
+	$seat_light_2.setColor( 0.6, 1, 0.9 );
+	$seat_light_3.setColor( 0.6, 1, 0.9 );
+	$seat_light_4.setColor( 0.6, 1, 0.9 );
+	$seat_light_5.setColor( 0.6, 1, 0.9 );
+
+	$white_ship_light.On();
+
+	thread moveNavajasBacktoChair();
+	thread moveTakBacktoChair();
+
+	while( INTOPGUN ) {
+		sys.wait( 0.1 );
+	}
+
+	sys.sendNamedEvent( GUI_PLAYERHUD, "ship_target_03_on" );
+
+	sys.wait( 5 );
+
+	while( !PLAYER_BACK_AT_CHAIR ) {
+		sys.wait( 0.1 );
+	}
+
+	$player1.bind( $drop_ship );
+
+	sys.fadeOut( '0 0 0', 1 );
+	sys.wait( 1 );
+
+
+	//-------------------------------------- end cinematic ------------------------------------
+	thread flapBanners();
+
+	$sky_camera_mover.time( 0.1 );
+	$sky_camera_mover.moveTo( $sky_2_null );
+	sys.waitFor( $sky_camera_mover );
+
+	sys.trigger( $end_camera );
+
+	thread moveEndCameraFirst();
+
+	$end_dropship.show();
+	$end_dropship.time( 12 );
+	$end_dropship.decelTime( 4 );
+	$end_dropship.startSpline( $end_dropship_spline );
+	sys.wait( 1 );
+
+	sys.fadeIn( '0 0 0', 1 );
+
+	sys.waitFor( $end_dropship );
+
+	sys.wait( 2 );
+
+	$markswell_end.show();
+	aiScriptedMoveWait( $markswell_end, $markswell_end_null_1, 16, 0 );
+	aiScriptedFaceWait( $markswell_end, $end_dropship, 0 );
+
+	sys.trigger( $end_camera_cu );
+	sys.wait( 0.5 );
+	$musicexit.fadeSound( SND_CHANNEL_ANY, -20, 0.5 );			// ====######## MUSIC #########====
+	aiSpeak( $markswell_end, "lipsync_marks_everybdyout" );		// %%%%%%%%%% VO %%%%%%%%%%
+
+	$navajas_end.show();
+	aiScriptedMove( $navajas_end, $navajas_end_null_1, 16, 0 );
+	sys.wait( 1.25 );
+
+	$mitchell_end.show();
+	aiScriptedMove( $mitchell_end, $mitchell_end_null_1, 16, 0 );
+	sys.wait( 1.25 );
+
+	sys.trigger( $end_camera );
+	sys.wait( 0.2 );
+	radioChatterPlay( $radiochatter, "vo_vansen_delivpack" );		// %%%%%%%%%% VO %%%%%%%%%%
+
+	sys.wait( 1 );
+
+	$navajas_end.lookAt( $markswell_end );
+	aiScriptedFace( $navajas_end, $markswell_end, 0 );
+	$mitchell_end.lookAt( $markswell_end );
+	aiScriptedFace( $mitchell_end, $markswell_end, 0 );
+
+	$tak_end.show();
+	aiScriptedMove( $tak_end, $tak_end_null_1, 16, 0 );
+	sys.wait( 1 );
+
+	$darnell_end.show();
+	aiScriptedMove( $darnell_end, $darnell_end_null_1, 16, 0 );
+	sys.wait( 1 );
+
+	$dekard_end.show();
+	aiScriptedMoveWait( $dekard_end, $deckard_end_null_1, 16, 0 );
+
+	$tak_end.lookAt( $markswell_end );
+	aiScriptedFace( $tak_end, $markswell_end, 0 );
+	$darnell_end.lookAt( $markswell_end );
+	aiScriptedFace( $darnell_end, $markswell_end, 0 );
+	$dekard_end.lookAt( $markswell_end );
+	aiScriptedFace( $dekard_end, $markswell_end, 0 );
+
+	sys.wait( 1 );
+	sys.trigger( $end_camera_cu );
+	sys.wait( 0.5 );
+	$markswell_end.lookAt( $dekard_end );
+	aiScriptedFace( $markswell_end, $dekard_end, 0 );
+	aiSpeak( $markswell_end, "lipsync_marks_infiltopsid" );		// %%%%%%%%%% VO %%%%%%%%%%
+	sys.wait( 8 );
+	$markswell_end.lookAt( $navajas_end );
+	aiScriptedFace( $markswell_end, $navajas_end, 0 );
+	sys.wait( 6 );
+	aiSpeakWait( $markswell_end, "lipsync_marks_moveout3" );		// %%%%%%%%%% VO %%%%%%%%%%
+	sys.wait( 0.2 );
+	$musicexit.fadeSound( SND_CHANNEL_ANY, 20, 0.5 );			// ====######## MUSIC #########====
+
+	sys.trigger( $end_camera );
+
+	sys.wait( 1 );
+
+	$tak_end.lookAt( $end_doors );
+	$darnell_end.lookAt( $end_doors );
+	$dekard_end.lookAt( $end_doors );
+
+	aiScriptedMove( $navajas_end, $navajas_end_null_2, 16, 0 );
+	sys.wait( 0.85 );
+	aiScriptedMove( $markswell_end, $markswell_end_null_2, 16, 0 );
+	sys.wait( 0.85 );
+	aiScriptedMove( $mitchell_end, $mitchell_end_null_2, 16, 0 );
+
+	thread moveEndCameraSecond();
+
+	aiScriptedMove( $darnell_end, $darnell_end_null_2, 16, 0 );
+	sys.wait( 0.85 );
+	aiScriptedMove( $dekard_end, $deckard_end_null_2, 16, 0 );
+	sys.wait( 0.85 );
+	aiScriptedMoveWait( $tak_end, $tak_end_null_2a, 16, 0 );
+	aiScriptedFaceWait( $tak_end, $exitdoorgui, 0 );
+	$tak_end.lookAt( $exitdoorgui );
+	aiScriptedAnimWait( $tak_end, "tram1_console_stand_start", 12, 0 );
+	aiScriptedAnimWait( $tak_end, "tram1_console_stand_loop", 0, 0 );
+	aiScriptedAnimWait( $tak_end, "tram1_console_stand_end", 0, 0 );
+	sys.wait( 0.5 );
+	sys.trigger( $end_doors );
+	aiScriptedMoveWait( $tak_end, $tak_end_null_2b, 16, 0 );
+	sys.wait( 1 );
+
+	aiScriptedMove( $darnell_end, $darnell_end_null_3, 16, 0 );
+	sys.wait( 0.5 );
+	aiScriptedMove( $tak_end, $tak_end_null_3, 16, 0 );
+	sys.wait( 0.75 );
+	aiScriptedMoveWait( $dekard_end, $deckard_end_null_3, 16, 0 );
+	sys.fadeOut( '0 0 0', 2 );
+	sys.trigger( $end_doors );
+	sys.wait( 2 );
+	sys.trigger( $end_camera );
+	sys.wait( 0.1 );
+	sys.sendNamedEvent( GUI_PLAYERHUD, "aa_showShipStatusOff" );
+	$player1.enableWeapon();
+	sys.waitFrame();
+	sys.trigger( $endlevel );
+}
+
+//end namespace
+}
+
+
+
+/*
+
+Old, unused stuff that's being taken out for now.  Leaving here in case I need to put it back in.
+
+		//+++++++++++++++++++++++++++++++++++++++++
+		//Rear Fire
+		//+++++++++++++++++++++++++++++++++++++++++
+		if( WAVE2_PLAYERKILLS >= 6 && !STARTED_REAR_FIRE_SEQ ) {
+			thread rearFireInit();
+			//sys.music( "m03_event" );								// ====######## MUSIC #########====
+			sys.trigger( $musicslow1 );
+			sys.trigger( $musicevent );
+		}
+
+
+
+		//+++++++++++++++++++++++++++++++++++++++++
+		//Ammo jam
+		//+++++++++++++++++++++++++++++++++++++++++
+		if( WAVE3_PLAYERKILLS >= 5 && !STARTED_AMMO_JAM_SEQ ) {
+			thread ammoJamInit();
+			//sys.music( "m03_event" );								// ====######## MUSIC #########====
+			sys.trigger( $musicmedium1 );
+			sys.trigger( $musicevent );
+		}
+
+
+*/
+

@@ -1,0 +1,625 @@
+
+
+sound vo_marine1_theyallus
+{
+ description "<Marine 1:> They’re all over us"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine1_theyallus.wav
+}
+
+
+sound vo_marine2_harvinbound
+{
+ description "<Marine 2:> I got harvesters inbound, starboard side"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine2_harvinbound.wav
+}
+
+
+sound vo_marine3_shilddown
+{
+ description "<Marine 3:> Shields are down"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine3_shilddown.wav
+}
+
+
+sound vo_marine4_hann
+{
+ description "<Marine 4:> The Hannibal can't take this kind of punishment"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine4_hann.wav
+}
+
+
+sound vo_marine5_takingap
+{
+ description "<Marine 5:> They're taking us apart"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine5_takingap.wav
+}
+
+
+sound vo_marine6_stroggev
+{
+ description "<Marine 6:> We got Strogg everywhere"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine6_stroggev.wav
+}
+
+
+sound vo_marine1_thekeepcm
+{
+ description "<Marine 1:> They just keep coming"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine1_thekeepcm.wav
+}
+
+
+sound vo_marine2_harvport
+{
+ description "<Marine 2:> Another Harvester, Port side"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine2_harvport.wav
+}
+
+
+sound vo_marine3_keepoff
+{
+ description "<Marine 3:> Keep 'em off us."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine3_keepoff.wav
+}
+
+
+sound vo_marine4_defbatt
+{
+ description "<Marine 4:> Defense Batteries are off line, they're gonna swarm us!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine4_defbatt.wav
+}
+
+
+sound vo_marine5_dropprep
+{
+ description "<Marine 5:> Dropships preparing for lift off"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine5_dropprep.wav
+}
+
+
+sound vo_marine6_waveunder
+{
+ description "<Marine 6:> First wave is away.  Second wave preparing for launch"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine6_waveunder.wav
+}
+
+
+sound vo_marine1_crit
+{
+ description "<Marine 1:> We’re going critical"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine1_crit.wav
+}
+
+
+sound vo_marine2_hullint
+{
+ description "<Marine 2:> Hull integrity failing.  All hands, abandon ship"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine2_hullint.wav
+}
+
+
+sound vo_marine3_aband
+{
+ description "<Marine 3:> Abandon Ship"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine3_aband.wav
+}
+
+
+sound vo_tak_srggetmv
+{
+ description "<Tak:> Sarge, we gotta get moving!  The Hannibal’s about to blow"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/tak_srggetmv.wav
+}
+
+
+sound vo_darn_reactcrit
+{
+ description "<Darnell:> If those reactors go critical; it’s gonna blow a crater in this place a half mile wide."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/darn_reactcrit.wav
+}
+
+
+sound vo_tak_holyshit
+{
+ description "<Tak:> Holy shit!  The hannibal is gone!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/tak_holyshit.wav
+}
+
+
+sound vo_darn_ihopeshipt
+{
+ description "<Darnell:> I hope everybody got out before the ship went up."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/darn_ihopeshipt.wav
+}
+
+
+sound vo_tak_lockclose
+{
+ description "<Tak:> Dekard, the locks are closing, you've got to haul ass!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/tak_lockclose.wav
+}
+
+
+sound vo_tak_getmvdek
+{
+ description "<Tak:> Get moving Dekard!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/tak_getmvdek.wav
+}
+
+
+sound vo_darn_haulassdeklk
+{
+ description "<Darnell:> Haul ass Dekard, the locks are closing!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/darn_haulassdeklk.wav
+}
+
+
+sound vo_darn_gettocryo
+{
+ description "<Darnell:> Get to the Cryogenics facility as fast as possible Dekard!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/darn_gettocryo.wav
+}
+
+
+sound vo_darn_sargeem
+{
+ description "<Darnell:> Sarge, I've got residual EM interference wrecking havoc with my guidance systems.  Me and the rest of Anchor squad are taking the secondary approach vector."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/darn_sargeem.wav
+}
+
+
+sound vo_darn_shitlock
+{
+ description "<Darnell:> Shit, the lock is closed!  Dekard didn't make it!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/darn_shitlock.wav
+}
+
+
+sound vo_tak_youthnklt
+{
+ description "<Tak:> You think the LT was onboard?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/tak_youthnklt.wav
+}
+
+
+sound vo_marks_nosuch
+{
+ description "<Markswell:> No such luck, Tak.  The dropships cleared the Hannibal right before it went critical.  We’re already enroute to Nexus waypoint, but you boys better move, the Strogg are already shutting down the locks.  Good luck,  Falcon Squad."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marks_nosuch.wav
+}
+
+
+sound vo_tak_dekwatchout
+{
+ description "<Tak:> Dekard, watch out ahead, there's a pit you'll need to boost over or go around!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/tak_dekwatchout.wav
+}
+
+
+sound vo_darn_harvest
+{
+ description "<Darnell:> Harvester!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/darn_harvest.wav
+}
+
+
+sound vo_nava_dekshldcom
+{
+ description "<Navajas:> Dekard, I should be coming out right in front of you, follow me!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/nava_dekshldcom.wav
+}
+
+
+sound vo_darn_wealmost
+{
+ description "<Darnell:> We're almost to the Cryogenics facility, ETA three minutes."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/darn_wealmost.wav
+}
+
+
+sound vo_marks_watchfalcon
+{
+ description "<Markswell:> Watch out Falcon, you've got heavy Strogg flyers inbound your position!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marks_watchfalcon.wav
+}
+
+
+sound vo_darn_lookout2
+{
+ description "<Darnell:> Look out!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/darn_lookout2.wav
+}
+
+
+sound vo_nava_lookout2
+{
+ description "<Navajas:> Look out!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/nava_lookout2.wav
+}
+
+
+sound vo_tak_useboost
+{
+ description "<Tak:> Use your boost!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/tak_useboost.wav
+}
+
+
+sound vo_nava_boosting
+{
+ description "<Navajas:> Boosting!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/nava_boosting.wav
+}
+
+
+sound vo_nava_useboost
+{
+ description "<Navajas:> Use your boost!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/nava_useboost.wav
+}
+
+
+sound vo_tak_boosting
+{
+ description "<Tak:> Boosting!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/tak_boosting.wav
+}
+
+
+sound vo_marine1_turbonline
+{
+ description "<Marine 1:> Turbine’s on line"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine1_turbonline.wav
+}
+
+
+sound vo_marine2_lockdead
+{
+ description "<Marine 2:> Lock dead ahead"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine2_lockdead.wav
+}
+
+
+sound vo_marine3_theyallover
+{
+ description "<Marine 3:> They’re all over me here"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine3_theyallover.wav
+}
+
+
+sound vo_marine4_acton
+{
+ description "<Marine 4:> Acton’s down"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine4_acton.wav
+}
+
+
+sound vo_marine5_shitleft
+{
+ description "<Marine 5:> Shit, hard left"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine5_shitleft.wav
+}
+
+
+sound vo_marine6_whathell
+{
+ description "<Marine 6:> What the hell was that"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine6_whathell.wav
+}
+
+
+sound vo_marine1_runnout
+{
+ description "<Marine 1:> We’re running out of time"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine1_runnout.wav
+}
+
+
+sound vo_marine2_lockshut
+{
+ description "<Marine 2:> Lock’s shutting down"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine2_lockshut.wav
+}
+
+
+sound vo_marine3_watchrt
+{
+ description "<Marine 3:> Watch the right"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine3_watchrt.wav
+}
+
+
+sound vo_marine4_pickpace
+{
+ description "<Marine 4:> Pick up the pace, Marines"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine4_pickpace.wav
+}
+
+
+sound vo_marine5_contbrid
+{
+ description "<Marine 5:> I got contact over that ridge"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine5_contbrid.wav
+}
+
+
+sound vo_marine6
+{
+ description "<Marine 6:> Shit, I lost actuator control, I’ve got no control!  I can’t (Static)"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine6.wav
+}
+
+
+sound vo_marine1_turbfail
+{
+ description "<Marine 1:> Turbine’s failing, I’m gonna have to fall back."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine1_turbfail.wav
+}
+
+
+sound vo_marine2_ridgeclr
+{
+ description "<Marine 2:> Ridge is clear"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M07_Race/marine2_ridgeclr.wav
+}
+

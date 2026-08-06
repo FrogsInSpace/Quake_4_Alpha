@@ -1,0 +1,263 @@
+cryo_loop_01
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-4
+
+	sound/ambience/cryo/cryo_loop1.ogg
+}
+
+cryo_loop_02
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-4
+
+	sound/ambience/cryo/cryo_loop2a.wav
+}
+
+cryo_loop_02_verb
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-4
+
+	sound/ambience/cryo/cryo_loop2a_verb.ogg
+}
+
+cryo_loop_03
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-4
+
+	sound/ambience/cryo/cryo_loop3a.wav
+}
+
+cryo_loop_03_verb
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-4
+
+	sound/ambience/cryo/cryo_loop3a_verb.ogg
+}
+
+cryo_loop_04
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-4
+
+	sound/ambience/cryo/cryo_loop4.ogg
+}
+
+cryo_loop_05
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-4
+
+	sound/ambience/cryo/cryo_loop5.wav
+}
+
+cryo_loop_05_verb
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-4
+
+	sound/ambience/cryo/cryo_loop5_verb.ogg
+}
+
+
+
+cryo_loop_05_low
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-4
+
+	sound/ambience/cryo/cryo_loop5a_verb.ogg
+}
+
+cryo_loop_06
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-4
+
+	sound/ambience/cryo/cryo_loop6.ogg
+}
+
+cryo_freeze_01
+{
+	minDistance	128
+	maxDistance	512
+	volumeDb		-4
+
+	sound/ambience/cryo/cryo_freeze1.wav
+}
+
+cryo_freeze_02
+{
+	minDistance	128
+	maxDistance	512
+	volumeDb		-4
+
+	sound/ambience/cryo/cryo_freeze2.wav
+}
+
+cryo_freeze_03
+{
+	minDistance	128
+	maxDistance	512
+	volumeDb		-4
+
+	sound/ambience/cryo/cryo_freeze3.wav
+}
+
+cryo_freeze_04
+{
+	minDistance	128
+	maxDistance	512
+	volumeDb		-4
+
+	sound/ambience/cryo/cryo_freeze4.wav
+}
+
+cryo_industrial_01
+{
+	minDistance	128
+	maxDistance	512
+	volumeDb		-4
+	looping
+	
+	sound/ambience/cryo/cryo_industrial1.ogg
+}
+
+cryo_industrial_02
+{
+	minDistance	128
+	maxDistance	512
+	volumeDb		-4
+	looping
+	
+	sound/ambience/cryo/cryo_lowmachine1.wav
+}
+
+cryo_bubblemachine_01
+{
+	minDistance	128
+	maxDistance	512
+	volumeDb		-4
+	looping
+	
+	sound/ambience/cryo/cryo_bubblemachine1.wav
+}
+
+cryo_bubblemachine_02
+{
+	minDistance	128
+	maxDistance	512
+	volumeDb		-4
+	looping
+	
+	sound/ambience/cryo/cryo_bubblemachine2.wav
+}
+
+cryo_lab_amb_01
+{
+	minDistance	128
+	maxDistance	512
+	volumeDb		-4
+	looping
+	
+	sound/ambience/cryo/cryo_lab1.wav
+}
+
+cryo_cave_amb_01
+{
+	minDistance	128
+	maxDistance	512
+	volumeDb		-4
+	looping
+	
+	sound/ambience/cryo/cryo_caveamb1.ogg
+}
+
+cryo_lockdown_alert_01
+{
+	minDistance	128
+	maxDistance	1512
+	volumeDb		0
+	
+	sound/ambience/cryo/cryo_lockdown_alarm.ogg
+}
+
+
+cryo_teleport_01
+{
+	minDistance	128
+	maxDistance	512
+	volumeDb		-4
+	looping
+	
+	sound/ambience/cryo/cryo_teleport1.ogg
+}
+
+cryo_giant_corridor_machine_01
+{
+	minDistance	128
+	maxDistance	1512
+	volumeDb		0
+	
+	sound/ambience/cryo/cryo_hugemachineamb3.ogg
+}
+
+cryo_giant_machine_amb_01
+{
+	minDistance	128
+	maxDistance	1512
+	volumeDb		0
+	
+	sound/ambience/cryo/cryo_hugemachineamb1.ogg
+}
+
+cryo_giant_machine_amb_02
+{
+	minDistance	128
+	maxDistance	1512
+	volumeDb		0
+	
+	sound/ambience/cryo/cryo_hugemachineamb2.ogg
+}
+
+cryo_hugewallmachine_01
+{
+	minDistance	528
+	maxDistance	2512
+	volumeDb		0
+	
+	sound/ambience/cryo/cryo_hugewallmachine.ogg
+}
+
+
+cryo_valkaryne_descend_01
+{
+	minDistance	1028
+	maxDistance	2512
+	volumeDb		0
+	
+	sound/ambience/cryo/cryo_valk_descend.ogg
+}

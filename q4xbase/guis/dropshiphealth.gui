@@ -1,0 +1,69 @@
+windowDef Desktop
+{
+	rect	0,0,640,480
+	backcolor	0.0470,0.0470,0.0470,1
+	visible	1
+
+	onEvent {
+		set "healthStatus::text" "$gui::shealth" ;
+	}
+
+	windowDef top
+	{
+		rect	1,262,640,219
+		visible	1
+		background	"gfx/guis/common/128_sqsolid"
+		matcolor	0.149,0.156,0.117,1
+		matscalex	-1
+		matscaley	-1
+	}
+	windowDef squares
+	{
+		rect	14,277,118,92
+		visible	1
+		background	"gfx/guis/common/marine/squares1"
+		matcolor	0.619,0.839,0.486,.1
+	}
+	windowDef squares2
+	{
+		rect	115,277,118,92
+		visible	1
+		background	"gfx/guis/common/marine/squares1"
+		matcolor	0.619,0.839,0.486,.1
+	}
+	windowDef topstuff
+	{
+		visible	1
+		rect	0,0,640,222
+		windowDef sline
+		{
+			visible	1
+			rect	0,-167,640,380
+			background	"gfx/guis/common/monitor_line8"
+			matcolor	0.321,0.325,0.243,1
+		}
+	}
+	windowDef healthStatus
+	{
+		rect	11,186,640,268
+		visible	1
+		forecolor	0.964,0.964,0.929,0.749
+		textscale	2
+		font	"fonts/marine"
+		textspacing	1
+		textalignx	-64
+		textaligny	160
+		textalign	1
+		text	"blahblah"
+		noevents	1
+		nocursor	1
+	}
+	windowDef dropshiphealthtxt
+	{
+		rect	32,293,439,100
+		visible	1
+		forecolor	1,1,1,0.603
+		text	"Dropship Health:"
+		textscale	1
+	}
+}

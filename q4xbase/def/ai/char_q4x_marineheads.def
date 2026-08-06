@@ -1,0 +1,56 @@
+/*
+===============================================================================
+
+	Marine Q4X Heads
+	
+	List of the heads so they are easier to find.  Please add the name when adding a new head.
+	
+	Main Characters:
+		char_q4x_marinehead_dekard
+	
+	Generic:
+	Helmets:
+	Dead:
+
+===============================================================================
+*/
+
+export char_q4x_marinehead_dekard
+{
+	options -prefix LPSNC_ -scale .3937 -rename head legs_channel  -keep origin shoulders neckcontrol legs_channel head_channel Lft_EyeBall Rt_EyeBall lbrow1 lbrow2 lbrow3 llolid luplid rbrow1 rbrow2 rlolid ruplid viseme_bone jaw llolip midlolip rlolip lcheek llip llip2 lsmile lsneer luplip luplip2 miduplip rcheek rlip rlip2 rsmile rsneer ruplip ruplip2 -rename chest origin -clearorigin -parent viseme_bone legs_channel -parent ruplip2 viseme_bone -parent rlip2 viseme_bone -parent llip2 viseme_bone -parent luplip2 viseme_bone -parent lsmile viseme_bone -parent rsmile viseme_bone -parent jaw  viseme_bone -parent lcheek viseme_bone -parent rcheek viseme_bone -parent rsneer viseme_bone -parent lsneer viseme_bone -parent miduplip viseme_bone -parent luplip viseme_bone -parent ruplip viseme_bone -parent llip viseme_bone -parent rlip viseme_bone 
+	
+	mesh	models/characters/player_head/animation/head_dekard_phonemes.ma		-dest models/lipsync/marine_head/head_dekard_mesh
+	//anim	models/characters/player_head/animation/head_dekard_idle.ma			-dest models/lipsync/marine_head/head_dekard_idle
+	//anim	models/characters/player_head/animation/head_dekard_phonemes.ma		-dest models/lipsync/marine_head/head_dekard_phonemes
+	//anim	models/characters/player_head/animation/head_dekard_scared.ma		-dest models/lipsync/marine_head/head_dekard_scared
+	//anim	models/characters/player_head/animation/head_dekard_confused.ma		-dest models/lipsync/marine_head/head_dekard_confused
+	//anim	models/characters/player_head/animation/head_dekard_expressions.ma	-dest models/lipsync/marine_head/annosoft_expression
+	//anim	models/characters/player_head/animation/head_dekard_blink.ma		-dest models/lipsync/marine_head/blink
+}
+
+/*
+===============================================================================
+
+	Marine: Kane
+
+===============================================================================
+*/
+	
+model char_q4x_marinehead_dekard
+{
+	inherit					char_marinehead_default
+	mesh					models/lipsync/marine_head/head_dekard_mesh.md5mesh
+}
+
+entityDef char_q4x_marinehead_dekard
+{
+	"inherit"				"char_marinehead_default"
+	"model"					"char_q4x_marinehead_dekard"
+
+}
+
+entityDef char_q4x_marinehead_navajas
+{
+	"inherit"				"char_marinehead_cortez"
+	"skin"					"skins/models/characters/marine_heads/navajashead"
+}

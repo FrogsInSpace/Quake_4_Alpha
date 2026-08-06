@@ -1,0 +1,2528 @@
+//--------------------------------------------------------------------------------------------------------------------
+// Custom anims go here
+//--------------------------------------------------------------------------------------------------------------------
+model model_q4x_mcc_marine
+{
+	inherit					model_char_q4x_marine
+	
+	// custom MCC marine anims go here
+	
+	anim crouch_to_stand_scripted			models/characters/marine/knee_to_idle.md5anim
+	anim stand_to_crouch_scripted			models/characters/marine/drop_to_knee.md5anim
+	
+	anim	looking_down_gui_1				models/characters/marine/looking_down_gui_1.md5anim
+	{
+		frame	1,10,18,29,37				sound	npc_gui_button
+	}
+	anim	looking_down_gui_3						models/characters/marine/looking_down_gui_3.md5anim
+	{
+		frame	88,110,117							sound	npc_gui_button
+	}
+	anim 	weaponless_idle_1					models/characters/marine/weaponless_idle_1.md5anim	
+	
+	/*
+	anim mcc_stabby_stabby	models/characters/marine/mcc_stabby_stabby.md5anim
+	{
+		ai_no_turn
+		ai_look_head_only	
+		frame 28					call	m06b::swekelStabbedFx
+	}
+
+	anim unarmed_mcc_hatch_climb		models/characters/marine/unarmed_mcc_hatch_climb.md5anim
+	{
+		ai_no_look
+		ai_no_turn
+		frame 1						disableClip
+		frame 1						disableGravity
+		frame 145					enableGravity
+		frame 145					enableClip
+	}
+	
+	anim medic_treating					models/characters/marine/medic_treating.md5anim
+	{
+		ai_look_head_only
+	}
+	
+	anim weaponless_point_left			models/characters/marine/weaponless_point_left.md5anim
+	anim weaponless_idle5_start			models/characters/marine/weaponless_idle5_start.md5anim
+	anim weaponless_idle5_loop			models/characters/marine/weaponless_idle5_loop.md5anim
+	anim weaponless_idle5				models/characters/marine/weaponless_idle5_loop.md5anim
+	anim weaponless_idle5_end			models/characters/marine/weaponless_idle5_end.md5anim
+	
+	anim weaponless_point_up			models/characters/marine/weaponless_point_up.md5anim
+	anim weaponless_point_front			models/characters/marine/weaponless_point_front.md5anim
+	anim weaponless_idle2_start			models/characters/marine/weaponless_idle2_start.md5anim
+	anim weaponless_idle2_loop			models/characters/marine/weaponless_idle2_loop.md5anim
+	anim weaponless_idle2				models/characters/marine/weaponless_idle2_loop.md5anim
+	anim weaponless_idle2_end			models/characters/marine/weaponless_idle2_end.md5anim
+	anim weaponless_idle3_start			models/characters/marine/weaponless_idle3_start.md5anim
+	anim weaponless_idle3_loop			models/characters/marine/weaponless_idle3_loop.md5anim
+	anim weaponless_idle3				models/characters/marine/weaponless_idle3_loop.md5anim
+	anim weaponless_idle3_end			models/characters/marine/weaponless_idle3_end.md5anim
+	anim weaponless_idle4_start			models/characters/marine/weaponless_idle4_start.md5anim
+	anim weaponless_idle4_loop			models/characters/marine/weaponless_idle4_loop.md5anim
+	anim weaponless_idle4				models/characters/marine/weaponless_idle4_loop.md5anim
+	anim weaponless_idle4_end			models/characters/marine/weaponless_idle4_end.md5anim
+	anim weaponless_idle6_start			models/characters/marine/weaponless_idle6_start.md5anim
+	anim weaponless_idle6_loop			models/characters/marine/weaponless_idle6_loop.md5anim
+	anim weaponless_idle6				models/characters/marine/weaponless_idle6_loop.md5anim
+	anim weaponless_idle6_end			models/characters/marine/weaponless_idle6_end.md5anim	
+	*/
+}
+
+
+model model_q4x_mcc_marine_fatigues
+{
+	//inherit					model_char_marine_fatigues
+	inherit						mcc1_model_char_marine_fatigues
+	
+	// custom MCC marine fatigues/officer anims go here
+	anim mcc_console_reaction1			models/characters/marine_fatigues_mocap/mcc_console_reaction1.md5anim
+	anim mcc_console_reaction2			models/characters/marine_fatigues_mocap/mcc_console_reaction2.md5anim
+	
+	
+	// MCC2 Briefing	-----------------------------------------------------------------------------------------
+	anim	mcc2_cin_strauss_talks2						models/characters/marine_fatigues_mocap/mcc2_cin_strauss_talks2.md5anim
+	{
+		ai_no_look
+		frame 	1										event disableClip
+	}
+	anim	mcc2_cin_strauss_talks1						models/characters/marine_fatigues_mocap/mcc2_cin_strauss_talks1.md5anim
+	{
+		ai_no_look
+		frame 	1										event disableClip
+	}
+	anim	mcc2_cin_idle_strauss						models/characters/marine_fatigues_mocap/mcc2_cin_idle_strauss.md5anim
+	{
+		ai_no_look
+		frame 	1										event disableClip
+	}
+	anim	mcc2_cin_idle_sledge						models/characters/marine_fatigues_mocap/mcc2_cin_idle_sledge.md5anim
+	{
+		ai_no_look
+		frame 	1										event disableClip
+	}	
+	anim	mcc2_cin_idle_rhodes						models/characters/marine_fatigues_mocap/mcc2_cin_idle_rhodes.md5anim
+	{
+		ai_no_look
+		frame 	1										event disableClip
+	}	
+	anim	mcc2_cin_idle_cortez						models/characters/marine_fatigues_mocap/mcc2_cin_idle_cortez.md5anim
+	{
+		ai_no_look
+		frame 	1										event disableClip
+	}	
+	anim	mcc2_cin_idle_morris						models/characters/marine_fatigues_mocap/mcc2_cin_idle_morris.md5anim
+	{
+		ai_no_look
+		frame 	1										event disableClip
+	}	
+	anim	mcc2_cin_morris_sits						models/characters/marine_fatigues_mocap/mcc2_cin_morris_sits.md5anim
+	{
+		ai_no_look
+		frame 	1										event disableClip
+	}	
+	anim	mcc2_cin_morris_salutes						models/characters/marine_fatigues_mocap/mcc2_cin_morris_salutes.md5anim
+	{
+		ai_no_look
+		frame 	1										event disableClip
+		frame 	1										sound mcc_chair_movement
+	}	
+	anim	mcc2_cin_sledge_salutes						models/characters/marine_fatigues_mocap/mcc2_cin_sledge_salutes.md5anim
+	{
+		ai_no_look
+		frame 	1										event disableClip
+		frame 	1										sound mcc_chair_movement
+	}	
+
+	anim	mcc2_cin_cortez_salutes						models/characters/marine_fatigues_mocap/mcc2_cin_cortez_salutes.md5anim
+	{
+		ai_no_look
+		frame 	1										event disableClip
+		frame 	2										sound mcc_chair_movement
+	}
+	anim	mcc2_cin_strauss_salutes					models/characters/marine_fatigues_mocap/mcc2_cin_strauss_salutes.md5anim
+	{
+		ai_no_look
+		frame 	1										event disableClip
+		frame 	7										sound mcc_chair_movement
+	}	
+	anim	mcc2_cin_rhodes_salutes						models/characters/marine_fatigues_mocap/mcc2_cin_rhodes_salutes.md5anim
+	{
+		ai_no_look
+		frame 	1										event disableClip
+		frame 	12										sound mcc_chair_movement
+	}	
+	anim	mcc2_cin_morris_talks						models/characters/marine_fatigues_mocap/mcc2_cin_morris_talks.md5anim
+	{
+		ai_no_look
+		frame 	1										event disableClip
+	}	
+	anim	mcc2_cin_sledge_responds					models/characters/marine_fatigues_mocap/mcc2_cin_sledge_responds.md5anim
+	{
+		ai_no_look
+		frame 	1										event disableClip
+	}	
+	anim	mcc2_cin_harper_talks						models/characters/marine_fatigues_mocap/mcc2_cin_harper_talks.md5anim
+	{
+		ai_no_look
+		frame 	1										event disableClip
+		frame 	16,37,55,74								sound	npc_steps_default
+	}	
+	anim	mcc2_cin_harper_enters						models/characters/marine_fatigues_mocap/mcc2_cin_harper_enters.md5anim
+	{
+		ai_no_look
+		frame 	1										event disableClip
+		frame 	10,25,40,54								sound	npc_steps_default
+	}	
+	anim	mcc2_cin_sledge_escorts						models/characters/marine_fatigues_mocap/mcc2_cin_sledge_escorts.md5anim
+	{
+		ai_no_look
+		frame 	1										event disableClip
+		frame 	32,48,65,82,101,132,314					sound	npc_steps_default
+	}	
+	anim	mcc2_cin_cortez_stands						models/characters/marine_fatigues_mocap/mcc2_cin_cortez_stands.md5anim
+	{
+		ai_no_look
+		frame 	1										event disableClip
+	}	
+	anim	mcc2_cin_morris_scolds						models/characters/marine_fatigues_mocap/mcc2_cin_morris_scolds.md5anim
+	{
+		ai_no_look
+		frame 	1										event disableClip
+	}
+	anim	mcc2_cin_rhodes_leans						models/characters/marine_fatigues_mocap/mcc2_cin_rhodes_leans.md5anim
+	{
+		ai_no_look
+		frame 	1										event disableClip
+		frame 	49										sound mcc_chair_movement
+	}	
+	anim	mcc2_cin_sledge_sits						models/characters/marine_fatigues_mocap/mcc2_cin_sledge_sits.md5anim
+	{
+		ai_no_look
+		frame 	1										event disableClip
+	}
+	anim	mcc2_cin_sledge_shot15						models/characters/marine_fatigues_mocap/mcc2_cin_sledge_shot15.md5anim
+	{
+		ai_no_look
+		frame 	1										event disableClip
+	}
+	anim	mcc2_cin_cortez_shot12						models/characters/marine_fatigues_mocap/mcc2_cin_cortez_shot12.md5anim
+	{
+		ai_no_look
+		frame 	1										event disableClip
+	}
+	anim	mcc2_cin_sledge_shot22						models/characters/marine_fatigues_mocap/mcc2_cin_sledge_shot22.md5anim
+	{
+		ai_no_look
+		frame 	1										event disableClip
+	}
+	anim	mcc2_cin_rhodes_shot15						models/characters/marine_fatigues_mocap/mcc2_cin_rhodes_shot15.md5anim
+	{
+		ai_no_look
+		frame 	1										event disableClip
+	}
+	anim	mcc2_cin_morris_idle_shot11					models/characters/marine_fatigues_mocap/mcc2_cin_morris_idle_shot11.md5anim
+	{
+		ai_no_look
+		frame 	1										event disableClip
+	}
+}
+
+
+//--------------------------------------------------------------------------------------------------------------------
+// Entity Defs
+//--------------------------------------------------------------------------------------------------------------------
+entityDef char_q4x_mcc_marine_fatigues
+{
+	"inherit1"		"char_marine_fatigues"
+	"inherit2"		"char_q4x_mcc_marine_dialog"
+	"model"			"model_q4x_mcc_marine_fatigues"
+
+	"editor_ignore"	"0"
+	"editor_menu"	"char_npc_q4x_mcc"
+}
+
+
+entityDef char_q4x_mcc_marine_officer
+{
+	"inherit1"		"char_q4x_mcc_marine_fatigues"
+	"inherit2"		"char_q4x_mcc_marine_dialog"
+	"model"			"model_q4x_mcc_marine_officer"
+
+	"editor_menu"	"char_npc_q4x_mcc"
+}
+
+
+entityDef char_q4x_mcc_marine
+{
+	"inherit1"		"char_q4x_marine" 
+	"inherit2"		"char_q4x_mcc_marine_dialog"
+	"model"			"model_q4x_mcc_marine"
+	
+	"editor_menu"	"char_npc_q4x_mcc"
+}
+
+
+entityDef char_q4x_mcc_marine_unarmed
+{
+	"inherit1"		"char_q4x_marine_unarmed" 
+	"inherit2"		"char_q4x_mcc_marine_dialog"
+	"model"			"model_q4x_mcc_marine"
+	
+	"editor_menu"	"char_npc_q4x_mcc"
+}
+
+
+entityDef char_q4x_mcc_marine_tech
+{
+	"inherit1"		"char_q4x_marine_tech" 
+	"inherit2"		"char_q4x_mcc_marine_dialog"
+	"model"			"model_q4x_mcc_marine_tech"
+	
+	"editor_menu"	"char_npc_q4x_mcc"
+}
+
+
+entityDef char_q4x_mcc_marine_tech_unarmed
+{
+	"inherit1"		"char_q4x_marine_tech_unarmed" 
+	"inherit2"		"char_q4x_mcc_marine_dialog"
+	"model"			"model_q4x_mcc_marine_tech"
+	
+	"editor_menu"	"char_npc_q4x_mcc"
+}
+
+
+
+entityDef char_q4x_mcc_marine_medic
+{
+	"inherit1"		"char_q4x_marine_medic" 
+	"inherit2"		"char_q4x_mcc_marine_dialog"
+	"model"			"model_q4x_mcc_marine_medic"
+	
+	"editor_menu"	"char_npc_q4x_mcc"
+}
+
+
+entityDef char_q4x_mcc_kane_strogg
+{
+	"inherit1"  		"mcc_char_kane_strogg"
+	"editor_menu"		"char_npc_q4x_mcc"
+	"npc_name" 			"CPL Kane"
+	"npc_description"	"Rhino Squad"
+	"def_head"			"char_marinehead_kanestrg"
+}
+
+
+entityDef char_q4x_mcc_doctor
+{
+	"inherit1"			"char_doctor"
+	"inherit2"			"char_q4x_mcc_marine_dialog" 
+	"model"				"model_q4x_mcc_doctor"
+
+	"editor_menu"		"char_npc_q4x_mcc"
+}
+
+
+entityDef monster_q4x_mcc_harvester_combat
+{
+	"inherit"					"monster_q4x_harvester_combat"
+}
+
+
+//--------------------------------------------------------------------------------------------------------------------
+// LOTS AND LOTS OF DIALOGUE YAY
+//--------------------------------------------------------------------------------------------------------------------
+entityDef char_q4x_mcc_marine_dialog
+{
+	// CHARACTER: BANKS +USE
+	// CONTEXT:Informative
+	// DIALOG : The Perimeter Defense System is ready.  We’re just doing the last few checks.
+	"lipsync_banks_peridef"        "vo_banks_peridef"
+	
+	
+	// CHARACTER: BANKS +USE
+	// CONTEXT:Informative
+	// DIALOG : If the Nexus Assault is successful, the war will be over before we'll ever need these defense systems.
+	"lipsync_banks_nexass"        "vo_banks_nexass"
+	
+	
+	// CHARACTER: BANKS +USE
+	// CONTEXT:Informative
+	// DIALOG : We only have a couple more tests.  The system should be good to go.
+	"lipsync_banks_coupltarg"        "vo_banks_coupltarg"
+	
+	
+	
+	// CHARACTER: BELICA
+	// CONTEXT:Informative
+	// DIALOG : Here sir, your guns, I also was able to modify your Cold Fire cannon with an extended clip!  Good luck!
+	"lipsync_belica_sirgun"        "vo_belica_sirgun"
+	
+	
+	// CHARACTER: BELICA
+	// CONTEXT:Death Scream
+	// DIALOG : Arrrghhh!
+	"lipsync_belica_die"        "vo_belica_die"
+	
+	
+	
+	// CHARACTER: BENNETTE +USE
+	// CONTEXT:Dismissive
+	// DIALOG : Sergeant?
+	"lipsync_benn_serg"        "vo_benn_serg"
+	
+	
+	// CHARACTER: BENNETTE +USE
+	// CONTEXT:Dismissive
+	// DIALOG : Yes sir?
+	"lipsync_benn_yess"        "vo_benn_yess"
+	
+	
+	// CHARACTER: BENNETTE +USE
+	// CONTEXT:Dismissive
+	// DIALOG : Do you need something sir?
+	"lipsync_benn_youneed"        "vo_benn_youneed"
+
+	
+	
+	// CHARACTER: BERGER +USE
+	// CONTEXT:Informative
+	// DIALOG : I'm sure you've already heard, but without the data your team collected, there would be no Nexus assault
+	"lipsync_bergr_datateam"        "vo_bergr_datateam"
+	
+	
+	// CHARACTER: BERGER +USE
+	// CONTEXT:Informative
+	// DIALOG : It's too much data for us to process by hand, so we have search algorythims looking for key tactical information
+	"lipsync_bergr_prochand"        "vo_bergr_prochand"
+	
+	
+	// CHARACTER: BERGER +USE
+	// CONTEXT:Informative
+	// DIALOG : We will be strudying this find for years to come, even after the war is over.
+	"lipsync_bergr_study"        "vo_bergr_study"
+
+	
+	
+	// CHARACTER: DARNELL
+	// CONTEXT:Yelling
+	// DIALOG : Dekard, over here, this defense turret is ready for you!
+	"lipsync_darn_overdef"        "vo_darn_overdef"
+	
+	
+	// CHARACTER: DARNELL
+	// CONTEXT:Relieved
+	// DIALOG : Holy shit, Dekard, I almost wasted you.  Let's get to the speeder hanger!
+	"lipsync_darn_wasted"        "vo_darn_wasted"
+	
+	
+	// CHARACTER: DARNELL +USE
+	// CONTEXT:Hurried
+	// DIALOG : No time to chat now!
+	"lipsync_darn_notime"        "vo_darn_notime"
+	
+	
+	// CHARACTER: DARNELL +USE
+	// CONTEXT:Hurried
+	// DIALOG : Let's get moving!
+	"lipsync_darn_getmv"        "vo_darn_getmv"
+	
+	
+	// CHARACTER: DARNELL +USE
+	// CONTEXT:Hurried
+	// DIALOG : Come on!
+	"lipsync_darn_comeon5"        "vo_darn_comeon5"
+
+	
+		
+	// CHARACTER: DR COREMAN
+	// CONTEXT:Informative
+	// DIALOG : It would seem the Strogg have perfected their process.
+	"lipsync_core_strggperf"        "vo_core_strggperf"
+	
+	
+	// CHARACTER: DR COREMAN
+	// CONTEXT:Informative
+	// DIALOG : Agreed, I would expect that early Stroggification proved quite unsuccessful.
+	"lipsync_core_earlystrgg"        "vo_core_earlystrgg"
+	
+	
+	// CHARACTER: DR COREMAN
+	// CONTEXT:Questioning
+	// DIALOG : I wonder if they will let us look into that by studying Corporal Kain?
+	"lipsync_core_wonderwill"        "vo_core_wonderwill"
+	
+
+	
+	// CHARACTER: DR LUDWIG
+	// CONTEXT:Amazed
+	// DIALOG : It's really quite amazing that anbody survives the Stroggification procedure
+	"lipsync_luwg_quiteamaz"        "vo_luwg_quiteamaz"
+	
+	
+	// CHARACTER: DR LUDWIG
+	// CONTEXT:Informative
+	// DIALOG : Most likely through rigirious testing on live subjects
+	"lipsync_luwg_rigtest"        "vo_luwg_rigtest"
+	
+	
+	// CHARACTER: DR LUDWIG
+	// CONTEXT:Amazed
+	// DIALOG : How they overcame the body rejecting all the foreign hardware is baffling 
+	"lipsync_luwg_howover"        "vo_luwg_howover"
+
+	
+		
+	// CHARACTER: GRAVES +USE
+	// CONTEXT:Informative
+	// DIALOG : Rhino squad's next up for this briefing room.
+	"lipsync_graves_rhinsq"        "vo_graves_rhinsq"
+	
+	
+	// CHARACTER: GRAVES +USE
+	// CONTEXT:Dismissive
+	// DIALOG : Do you need anything else sir?
+	"lipsync_graves_doyouneed"        "vo_graves_doyouneed"
+	
+	
+	// CHARACTER: GRAVES +USE
+	// CONTEXT:Dismissive
+	// DIALOG : Can I help you?
+	"lipsync_graves_canihelp"        "vo_graves_canihelp"
+	
+	
+	
+	// CHARACTER: HARPER/DAVENPORT
+	// CONTEXT:Military
+	// DIALOG : Falcon squad, I'm here to compliment you on your efforts today, your team has pulled off the impossible by getting Strauss back in one piece, and the Strogg data you collected has become essential to the entire war effort, Strauss...
+	"lipsync_harp_falcsqcom"        "vo_harp_falcsqcom"
+	
+	
+	// CHARACTER: HARPER/DAVENPORT
+	// CONTEXT:Military
+	// DIALOG : Within the hour, we will be launching a major strike against the source of the Strogg communication network, the Core.
+	"lipsync_harp_withinhr"        "vo_harp_withinhr"
+	
+	
+	// CHARACTER: HARPER/DAVENPORT
+	// CONTEXT:Military
+	// DIALOG : Another Rhino squad member, Corporal Kain was pulled from the medlabs just before he was fully converted into a Strogg soldier.  
+	"lipsync_harp_anothrhin"        "vo_harp_anothrhin"
+	
+	
+	// CHARACTER: HARPER/DAVENPORT
+	// CONTEXT:Informative
+	// DIALOG : According to the data you collected, Kain's newly acquired Strogg physiology will allow us to get inside the Core to destroy the Nexus, and possibly the Makron.  Lieutenant...
+	"lipsync_harp_accorddata"        "vo_harp_accorddata"
+	
+	
+	
+	// CHARACTER: HOLDORF +USE
+	// CONTEXT:Inquisitive
+	// DIALOG : I wonder what kind of hardware Corporal Kain's got in his head right now.
+	"lipsync_holdorf_iwondkain"        "vo_holdorf_iwondkain"
+	
+	
+	// CHARACTER: HOLDORF +USE
+	// CONTEXT:Inquisitive
+	// DIALOG : I really wonder how many instructions per second he can perform.
+	"lipsync_holdorf_iwondinst"        "vo_holdorf_iwondinst"
+	
+	
+	// CHARACTER: HOLDORF +USE
+	// CONTEXT:Inquisitive
+	// DIALOG : You think the Strogg are using nanotechnology to enhance the celluar membranes?
+	"lipsync_holdorf_youthinkstrgg"        "vo_holdorf_youthinkstrgg"
+	
+	// CHARACTER: HOLDORF
+	// CONTEXT:Calm
+	// DIALOG : Don't worry, I told Trabbold he would be coming from Rhino Quarters.
+	"lipsync_hold_conv4"        "vo_hold_conv4"
+	
+	// CHARACTER: HOLDORF
+	// CONTEXT:Calm
+	// DIALOG : Yeah, he'll come right past here before the Rhino brief.
+	"lipsync_hold_conv2"        "vo_hold_conv2"
+	
+		
+	// CHARACTER: HUGHES
+	// CONTEXT:Informative
+	// DIALOG : It's possible, we don't have any recon data for that area at all
+	"lipsync_hughes_isposs"        "vo_hughes_isposs"
+	
+	
+	// CHARACTER: HUGHES +USE
+	// CONTEXT:Calm
+	// DIALOG : I'm sorry Sargeant, not right now.
+	"lipsync_hughes_imsorrtn"        "vo_hughes_imsorrtn"
+	
+	
+	// CHARACTER: HUGHES +USE
+	// CONTEXT:Annoyed
+	// DIALOG : Maybe we can chat another time.
+	"lipsync_hughes_maybewec"        "vo_hughes_maybewec"
+	
+	
+	// CHARACTER: HUGHES +USE
+	// CONTEXT:Annoyed
+	// DIALOG : I'm not going to say it again.
+	"lipsync_hughes_notsay"        "vo_hughes_notsay"
+
+	
+		
+	// CHARACTER: INGLIS (RESPONSE)
+	// CONTEXT:Apologetic
+	// DIALOG : Really?  Oh shit..
+	"lipsync_inglis_reallysht"        "vo_inglis_reallysht"
+	
+	
+	// CHARACTER: INGLIS (RESPONSE)
+	// CONTEXT:Questioning
+	// DIALOG : Who's Falcon squad again?
+	"lipsync_inglis_whofalc"        "vo_inglis_whofalc"
+	
+	
+	// CHARACTER: INGLIS +USE
+	// CONTEXT:Arrogant
+	// DIALOG : Hey, why aren't you part of the Nexus assault like the rest of us?
+	"lipsync_inglis_heywhy"        "vo_inglis_heywhy"
+
+	
+			
+	// CHARACTER: LUCH +USE
+	// CONTEXT:Informative
+	// DIALOG : You hear about Corporal Kain?  He's been (beat) Stroggified
+	"lipsync_luch_youhrkain"        "vo_luch_youhrkain"
+	
+	
+	// CHARACTER: LUCH +USE
+	// CONTEXT:Distant
+	// DIALOG : I can't even imagine what that's like
+	"lipsync_luch_canteven"        "vo_luch_canteven"
+	
+	
+	// CHARACTER: LUCH +USE
+	// CONTEXT:Inquisitive
+	// DIALOG : I wonder if they rerouted the neural pathways to account for the icreased neural activity?
+	"lipsync_luch_wonderrer"        "vo_luch_wonderrer"
+
+	// CHARACTER: LUCH
+	// CONTEXT:Questioning
+	// DIALOG : Shouldn't he be coming out of Medical soon?
+	"lipsync_luch_conv1"        "vo_luch_conv1"
+	
+	// CHARACTER: LUCH
+	// CONTEXT:Questioning
+	// DIALOG : Well, as long as Trabbold and Showers don't give him any shit,
+	"lipsync_luch_conv3"        "vo_luch_conv3"
+	
+	// CHARACTER: LUCH
+	// CONTEXT:Excited
+	// DIALOG : Nice!
+	"lipsync_luch_conv5"        "vo_luch_conv5"
+
+	
+		
+	// CHARACTER: MARINE
+	// CONTEXT:Tense
+	// DIALOG : I have no idea, we are totally pinned down and need immediate support!
+	"lipsync_marine_noideawe"        "vo_marine_noideawe"
+	
+	
+	// CHARACTER: MARINE
+	// CONTEXT:Tense
+	// DIALOG : If we move, we die!  Just send some help and tell them to listen for the gunfire!
+	"lipsync_marine_ifwemovedie"        "vo_marine_ifwemovedie"
+
+	
+		
+	// CHARACTER: MARINE 1
+	// CONTEXT:Calm
+	// DIALOG : This is perimeter defense control, I've got waves of Strogg fighters incoming, ready up marines!
+	"lipsync_marine1_thisperdef"        "vo_marine1_thisperdef"
+	
+	
+	// CHARACTER: MARINE 1
+	// CONTEXT:Tense
+	// DIALOG : Harvester is inbound, south turrets incoming!
+	"lipsync_marine1_harvinb"        "vo_marine1_harvinb"
+	
+	
+	// CHARACTER: MARINE 1
+	// CONTEXT:Tense
+	// DIALOG : More Strogg fighters moving in from the east!
+	"lipsync_marine1_morestrgg"        "vo_marine1_morestrgg"
+	
+	
+	// CHARACTER: MARINE 1
+	// CONTEXT:Tense
+	// DIALOG : The Nexus assault drop pods are exiting the ship!
+	"lipsync_marine1_nexdroppod"        "vo_marine1_nexdroppod"
+	
+	
+	// CHARACTER: MARINE 1
+	// CONTEXT:Triumphant
+	// DIALOG : Nexus assault pods are away, good job marines!
+	"lipsync_marine1_nexasspod"        "vo_marine1_nexasspod"
+	
+	
+	// CHARACTER: MARINE 1
+	// CONTEXT:Tense
+	// DIALOG : Nexus assault ground forces are departing the ship, marines, cover those ground forces!
+	"lipsync_marine1_nexgrnd"        "vo_marine1_nexgrnd"
+	
+	
+	// CHARACTER: MARINE 1
+	// CONTEXT:Tense
+	// DIALOG : The ground foces are getting torn to shreads.  Marines, cover those ground forces!
+	"lipsync_marine1_grnsred"        "vo_marine1_grnsred"
+	
+	
+	// CHARACTER: MARINE 1
+	// CONTEXT:Surprised, Tense
+	// DIALOG : Holy shit, we've got a harvester climbing over the ship to get to the Nexus ground assault forces, south turrets be ready!
+	"lipsync_marine1_holdshharv"        "vo_marine1_holdshharv"
+	
+	
+	// CHARACTER: MARINE 1
+	// CONTEXT:Triumphant, then Tense
+	// DIALOG : Nexus ground assault forces are away, we have more incoming Strogg fighters!
+	"lipsync_marine1_nexgaway"        "vo_marine1_nexgaway"
+	
+	
+	// CHARACTER: MARINE 1
+	// CONTEXT:Tense
+	// DIALOG : I got contact!  Watch the Engine Room!
+	"lipsync_marine1_contaceng"        "vo_marine1_contaceng"
+	
+	
+	// CHARACTER: MARINE 1
+	// CONTEXT:Tense
+	// DIALOG : They’re going for the reactor!  Push’em back!
+	"lipsync_marine1_thereact"        "vo_marine1_thereact"
+	
+	
+	// CHARACTER: MARINE 1
+	// CONTEXT:Tense
+	// DIALOG : We got squibs in the main hanger!
+	"lipsync_marine1_wesquib"        "vo_marine1_wesquib"
+	
+	
+	// CHARACTER: MARINE 1
+	// CONTEXT:Tense
+	// DIALOG : I got contact.  Three incoming squadrons, bearing five three nine.  Watch yourselves.
+	"lipsync_marine1_gotcnt3"        "vo_marine1_gotcnt3"
+
+	
+		
+	// CHARACTER: MARINE 2
+	// CONTEXT:Tense
+	// DIALOG : They’re coming from Port!  Hold’em off!
+	"lipsync_marine2_thecomport"        "vo_marine2_thecomport"
+	
+	
+	// CHARACTER: MARINE 2
+	// CONTEXT:Panic
+	// DIALOG : I got three heavy contacts off starboard, they’re… Oh shit. (Static)
+	"lipsync_marine2_heavycont"        "vo_marine2_heavycont"
+	
+	
+	// CHARACTER: MARINE 2
+	// CONTEXT:Tense
+	// DIALOG : They’re all over us!  Fall back.  Fall back!
+	"lipsync_marine2_fallbbb"        "vo_marine2_fallbbb"
+	
+	
+	// CHARACTER: MARINE 2
+	// CONTEXT:Tense
+	// DIALOG : Ah shit!  We’re do they keep coming from?
+	"lipsync_marine2_ahshitwhr"        "vo_marine2_ahshitwhr"
+
+		
+	
+	// CHARACTER: MARINE 3
+	// CONTEXT:Tense
+	// DIALOG : Nexus Assault’s almost prepped get us a little more time!
+	"lipsync_marine3_nexassalms"        "vo_marine3_nexassalms"
+	
+	
+	// CHARACTER: MARINE 3
+	// CONTEXT:Tense
+	// DIALOG : Panther squad, requesting support on deck 12.  We’re being overrun.
+	"lipsync_marine3_panthersq"        "vo_marine3_panthersq"
+
+	
+	
+	// CHARACTER: MARINE 4
+	// CONTEXT:Tense
+	// DIALOG : I’ve got hostile signatures all over!  This is gonna get tough.
+	"lipsync_marine4_ivegothost"        "vo_marine4_ivegothost"
+	
+	
+	// CHARACTER: MARINE 4
+	// CONTEXT:Tense
+	// DIALOG : Deck 3 is lost.  There’s no one left.
+	"lipsync_marine4_deck3lstnoon"        "vo_marine4_deck3lstnoon"
+
+		
+	
+	// CHARACTER: MARINE 5
+	// CONTEXT:Tense
+	// DIALOG : I got three men down on Deck 5.  Requesting medical assistance.
+	"lipsync_marine5_igotthreemen"        "vo_marine5_igotthreemen"
+	
+	
+	// CHARACTER: MARINE 5
+	// CONTEXT:Tense
+	// DIALOG : Where is the Nexus Assault?
+	"lipsync_marine5_wherenexass"        "vo_marine5_wherenexass"
+
+		
+	
+	// CHARACTER: MARINE 6
+	// CONTEXT:Tense
+	// DIALOG : They’re dropping teleporters!  They’re gonna split us open from the inside.
+	"lipsync_marine6_theydroppte"        "vo_marine6_theydroppte"
+	
+	
+	// CHARACTER: MARINE 6
+	// CONTEXT:Tense
+	// DIALOG : That’s a negative, Panther.  They’ve locked down corridor 5.  
+	"lipsync_marine6_thatnegpan"        "vo_marine6_thatnegpan"
+
+		
+	
+	// CHARACTER: MARINE 7
+	// CONTEXT:Panic
+	// DIALOG : They’ve hit the reactor chamber.  We got two… make that three leaks near the aft cargo holds.
+	"lipsync_marine7_thehitreactch"        "vo_marine7_thehitreactch"
+	
+	
+	// CHARACTER: MARINE 7
+	// CONTEXT:Tense
+	// DIALOG : Watch it!  Reactor’s critical!
+	"lipsync_marine7_watchreactcrit"        "vo_marine7_watchreactcrit"
+	
+
+		
+	// CHARACTER: MARINE 8
+	// CONTEXT:Tense
+	// DIALOG : Deck 9 secure.  Moving to (static) What the fu(ck – Static)
+	"lipsync_marine8_deack9sec"        "vo_marine8_deack9sec"
+	
+	
+	// CHARACTER: MARINE 8
+	// CONTEXT:Tense
+	// DIALOG : Tarrant!  Lt. Tarrant!  Answer me damn… Oh geezus! (Screams)
+	"lipsync_marine8_tarrantdmn"        "vo_marine8_tarrantdmn"
+
+		
+	
+	// CHARACTER: MARINE_1
+	// CONTEXT:As delivered
+	// DIALOG : HQ, this Bison commander. Get us some air support right now or we’re all dead men.
+	"lipsync_2_2_10_257_1"        "vo_2_2_10_257_1"
+	
+	
+	// CHARACTER: MARINE_1
+	// CONTEXT:As delivered
+	// DIALOG : Where the hell is that air support?
+	"lipsync_2_2_10_259_1"        "vo_2_2_10_259_1"
+	
+	
+	// CHARACTER: MARINE_1
+	// CONTEXT:As delivered
+	// DIALOG : We aren’t gonna last that long.
+	"lipsync_2_2_10_259_3"        "vo_2_2_10_259_3"
+	
+	
+	// CHARACTER: MARINE_1
+	// CONTEXT:As delivered
+	// DIALOG : Forget the damn computer. Target them visually.
+	"lipsync_2_2_10_263_2"        "vo_2_2_10_263_2"
+
+		
+	
+	// CHARACTER: MARINE_3
+	// CONTEXT:As delivered
+	// DIALOG : My turret’s been hit . . . aaaah, I'm on fire. Heeeelp meeee!
+	"lipsync_2_2_10_254_1"        "vo_2_2_10_254_1"
+	
+	
+	// CHARACTER: MARINE_3
+	// CONTEXT:As delivered
+	// DIALOG : Walker Bison 5 is on fire!  Get Banks out of there!
+	"lipsync_2_2_10_256_1"        "vo_2_2_10_256_1"
+	
+	
+	// CHARACTER: MARINE_3
+	// CONTEXT:As delivered
+	// DIALOG : Badger squad, this is HQ. Set up a defensive position at coordinates 43 by 82. Render assistance to Bison squad.
+	"lipsync_2_2_10_258_1"        "vo_2_2_10_258_1"
+	
+	
+	// CHARACTER: MARINE_3
+	// CONTEXT:As delivered
+	// DIALOG : ETA is 3 minutes.
+	"lipsync_2_2_10_259_2"        "vo_2_2_10_259_2"
+	
+	
+	// CHARACTER: MARINE_3
+	// CONTEXT:As delivered
+	// DIALOG : Strogg flyers approaching at 3 O’clock.
+	"lipsync_2_2_10_261_1"        "vo_2_2_10_261_1"
+	
+	
+	// CHARACTER: MARINE_3
+	// CONTEXT:As delivered
+	// DIALOG : Damn!  They just keep coming.
+	"lipsync_2_2_10_262_1"        "vo_2_2_10_262_1"
+	
+	
+	// CHARACTER: MARINE_3
+	// CONTEXT:As delivered
+	// DIALOG : There’s too many!  There’s just too damn many!
+	"lipsync_2_2_10_262_5"        "vo_2_2_10_262_5"
+	
+
+		
+	// CHARACTER: MARINE_4
+	// CONTEXT:As delivered
+	// DIALOG : Another Strogg transport just landed! Where the hell are they all coming from?
+	"lipsync_2_2_10_260_1"        "vo_2_2_10_260_1"
+	
+	
+	// CHARACTER: MARINE_4
+	// CONTEXT:As delivered
+	// DIALOG : I’m on ’em.
+	"lipsync_2_2_10_261_2"        "vo_2_2_10_261_2"
+	
+	
+	// CHARACTER: MARINE_4
+	// CONTEXT:As delivered
+	// DIALOG : They’re all over the place!  I can’t stop them!
+	"lipsync_2_2_10_262_4"        "vo_2_2_10_262_4"
+	
+
+		
+	// CHARACTER: MARINE_5
+	// CONTEXT:As delivered
+	// DIALOG : I confirm that. Re-transmitting pod flight plan.
+	"lipsync_2_2_20_60_2"        "vo_2_2_20_60_2"
+	
+	
+	// CHARACTER: MARINE_5
+	// CONTEXT:As delivered
+	// DIALOG : First wave has launched. All Pods are in the green.
+	"lipsync_3_1_0_10_1"        "vo_3_1_0_10_1"
+	
+
+		
+	// CHARACTER: MARINE_8
+	// CONTEXT:As delivered
+	// DIALOG : Exterior shields sustaining heavy damage.
+	"lipsync_2_2_10_251_1"        "vo_2_2_10_251_1"
+	
+	
+	// CHARACTER: MARINE_8
+	// CONTEXT:As delivered
+	// DIALOG : Danger! Hull has been breached on decks two and three. (Beat) Danger! Hull has been breached.
+	"lipsync_2_2_10_251_10"        "vo_2_2_10_251_10"
+	
+	
+	// CHARACTER: MARINE_8
+	// CONTEXT:As delivered
+	// DIALOG : Shields are at 86%.
+	"lipsync_2_2_10_251_2"        "vo_2_2_10_251_2"
+	
+	
+	// CHARACTER: MARINE_8
+	// CONTEXT:As delivered
+	// DIALOG : Shields at 72%, rerouting power from propulsion.
+	"lipsync_2_2_10_251_3"        "vo_2_2_10_251_3"
+	
+	
+	// CHARACTER: MARINE_8
+	// CONTEXT:As delivered
+	// DIALOG : Shields currently at 63%
+	"lipsync_2_2_10_251_4"        "vo_2_2_10_251_4"
+	
+	
+	// CHARACTER: MARINE_8
+	// CONTEXT:As delivered
+	// DIALOG : Warning. Exterior shields are at 48%.
+	"lipsync_2_2_10_251_5"        "vo_2_2_10_251_5"
+	
+	
+	// CHARACTER: MARINE_8
+	// CONTEXT:As delivered
+	// DIALOG : Aft shields intermittent. Damage reported on Decks 2 and 3.
+	"lipsync_2_2_10_251_6"        "vo_2_2_10_251_6"
+	
+	
+	// CHARACTER: MARINE_8
+	// CONTEXT:As delivered
+	// DIALOG : Warning. Shields have dropped to 29%.
+	"lipsync_2_2_10_251_7"        "vo_2_2_10_251_7"
+	
+	
+	// CHARACTER: MARINE_8
+	// CONTEXT:As delivered
+	// DIALOG : Danger. Exterior shields are at 13%.
+	"lipsync_2_2_10_251_8"        "vo_2_2_10_251_8"
+	
+	
+	// CHARACTER: MARINE_8
+	// CONTEXT:As delivered
+	// DIALOG : Exterior shields are down. 
+	"lipsync_2_2_10_251_9"        "vo_2_2_10_251_9"
+	
+	
+	// CHARACTER: MARINE_8
+	// CONTEXT:As delivered
+	// DIALOG : Harvesters approaching on the left flank.  We need walkers over there ASAP!
+	"lipsync_2_2_10_255_1"        "vo_2_2_10_255_1"
+	
+	
+	// CHARACTER: MARINE_8
+	// CONTEXT:As delivered
+	// DIALOG : Aaahhhh!  Yeah! Take that you freaking Squibs!
+	"lipsync_2_2_10_262_2"        "vo_2_2_10_262_2"
+	
+	
+	// CHARACTER: MARINE_8
+	// CONTEXT:As delivered
+	// DIALOG : They’re trying to take engineering!
+	"lipsync_2_2_10_262_3"        "vo_2_2_10_262_3"
+	
+	
+	// CHARACTER: MARINE_8
+	// CONTEXT:As delivered
+	// DIALOG : Crap. I can’t get a lock on the flyers. They’re comin’ in too low!
+	"lipsync_2_2_10_263_1"        "vo_2_2_10_263_1"
+	
+
+		
+	// CHARACTER: MARKSWELL
+	// CONTEXT:Military
+	// DIALOG : Command is finalizing our orders as we speak, the long and short of it is that we aren't going in with the Nexus assault.  They've got something else planned for us, Sci-Tech has uncovered something critical inside the Strogg data, and until that information is fully decoded, we are in a holding pattern.  
+	"lipsync_marks_commandfinordlong"        "vo_marks_commandfinordlong"
+	
+	
+	// CHARACTER: MARKSWELL
+	// CONTEXT:Commanding
+	// DIALOG : Dekard, get to sci-tech and see where Tak is with the decryption efforts.  Dismissed.
+	"lipsync_marks_dekgetsci"        "vo_marks_dekgetsci"
+	
+	
+	// CHARACTER: MARKSWELL
+	// CONTEXT:Informative
+	// DIALOG : This was the area we received heavy air defense fire, I'm positive there is a key Strogg position near those mountains
+	"lipsync_marks_thiwasthear"        "vo_marks_thiwasthear"
+	
+	
+	// CHARACTER: MARKSWELL
+	// CONTEXT:Commanding
+	// DIALOG : Dekard, get to a perimeter defense gun, now!
+	"lipsync_marks_dekgettodef"        "vo_marks_dekgettodef"
+	
+	
+	// CHARACTER: MARKSWELL
+	// CONTEXT:Tense
+	// DIALOG : Attention Falcon squad, once those ground forces are away, everybody report to the speeder hanger immediately- we have new orders!
+	"lipsync_marks_attfalcspeed"        "vo_marks_attfalcspeed"
+	
+	
+	// CHARACTER: MARKSWELL
+	// CONTEXT:Commanding
+	// DIALOG : Falcon, get to the speeder hanger, double time it!
+	"lipsync_marks_falcgetto"        "vo_marks_falcgetto"
+	
+	
+	// CHARACTER: MARKSWELL
+	// CONTEXT:Commanding
+	// DIALOG : Dekard, we need you at the speeder hanger now!  Move it marine!
+	"lipsync_marks_dekweneedspeed"        "vo_marks_dekweneedspeed"
+	
+	
+	// CHARACTER: MARKSWELL
+	// CONTEXT:Angry
+	// DIALOG : Dekard, where the hell are you?!
+	"lipsync_marks_dekwherehell"        "vo_marks_dekwherehell"
+	
+	
+	// CHARACTER: MARKSWELL
+	// CONTEXT:Tense, hurried
+	// DIALOG : Dekard, good.  The Nexus assault has lifted off, but we have an enormous problem. Tak...
+	"lipsync_marks_dekgoodnex"        "vo_marks_dekgoodnex"
+	
+	
+	// CHARACTER: MARKSWELL
+	// CONTEXT:Tense, hurried
+	// DIALOG : We've tried to communicate this data to the Nexus assault forces, but the Squib attack has cut off our communication.  So our only chance here is to strike at the Valkaryne where they least expect it.  Inside the Makron Cryogenics facility.
+	"lipsync_marks_wetrycomm"        "vo_marks_wetrycomm"
+	
+	
+	// CHARACTER: MARKSWELL
+	// CONTEXT:Military, hurried
+	// DIALOG : Dekard, time is short - you and these men need to haul ass to the Cryogenics facility, the rest of us are staying behind to scuttle the MCC so the Squibs don't capture it.
+	"lipsync_marks_dektimeshort"        "vo_marks_dektimeshort"
+	
+	
+	// CHARACTER: MARKSWELL
+	// CONTEXT:Military, hurried
+	// DIALOG : You'll only have a few minutes to clear the MCC blast radius.  Go as fast as you can Dekard, get to the Cryogenics facility before the Strogg finish locking down the access lines  The race is on.
+	"lipsync_marks_youonlyfew"        "vo_marks_youonlyfew"
+	
+	
+	// CHARACTER: MARKSWELL
+	// CONTEXT:Commanding
+	// DIALOG : Move out!
+	"lipsync_marks_moveout5"        "vo_marks_moveout5"
+	
+	
+	// CHARACTER: MARKSWELL +USE
+	// CONTEXT:Calm
+	// DIALOG : Dekard, I'm pretty busy at the moment
+	"lipsync_marks_dekprettybsy"        "vo_marks_dekprettybsy"
+	
+	
+	// CHARACTER: MARKSWELL +USE
+	// CONTEXT:Calm
+	// DIALOG : Dekard, didn't I order you to get to Sci-Tech?
+	"lipsync_marks_dekordersci"        "vo_marks_dekordersci"
+	
+	
+	// CHARACTER: MARKSWELL +USE
+	// CONTEXT:Calm
+	// DIALOG : Tak is waiting for you in Sci-tech Dekard, get moving.
+	"lipsync_marks_takwaitfor"        "vo_marks_takwaitfor"
+	
+	
+	// CHARACTER: MARKSWELL +USE
+	// CONTEXT:Commanding
+	// DIALOG : Get moving Dekard, this ship's gonna be totally overrun in minutes!
+	"lipsync_marks_getmovoverr"        "vo_marks_getmovoverr"
+	
+	
+	// CHARACTER: MARKSWELL +USE
+	// CONTEXT:Commanding
+	// DIALOG : Get to your speeder!  We'll be leaving via dropshp, don't worry about us!
+	"lipsync_marks_gettospeed"        "vo_marks_gettospeed"
+	
+	
+	// CHARACTER: MARKSWELL +USE
+	// CONTEXT:Commanding
+	// DIALOG : The Nexus assault is relying on your success, go!
+	"lipsync_marks_nexrely"        "vo_marks_nexrely"
+
+		
+	
+	// CHARACTER: MARTEL +USE
+	// CONTEXT:Annoyed
+	// DIALOG : It's amazing this damn ship has stood up as long as it has.
+	"lipsync_martel_itsamaz"        "vo_martel_itsamaz"
+	
+	
+	// CHARACTER: MARTEL +USE
+	// CONTEXT:Annoyed
+	// DIALOG : I'm stuck here re-routing systems day in and day out
+	"lipsync_martel_stuckrert"        "vo_martel_stuckrert"
+	
+	
+	// CHARACTER: MARTEL +USE
+	// CONTEXT:Annoyed
+	// DIALOG : Maybe one of these days I'll get re-assigned to a modern ship.
+	"lipsync_martel_maybeoneofthese"        "vo_martel_maybeoneofthese"
+	
+	
+	// CHARACTER: MARTEL +USE
+	// CONTEXT:Annoyed
+	// DIALOG : Great!  Now the Strogg are going to help this ship fall apart!
+	"lipsync_martel_greatstrgg"        "vo_martel_greatstrgg"
+	
+	
+	// CHARACTER: MARTEL +USE
+	// CONTEXT:Annoyed
+	// DIALOG : Once those shields go down, this ship doesn't stand a chance.
+	"lipsync_martel_oncethose"        "vo_martel_oncethose"
+	
+	
+	// CHARACTER: MARTEL +USE
+	// CONTEXT:Annoyed
+	// DIALOG : Well, if they are successful, at least we'll get to move to a more moden ship.
+	"lipsync_martel_wellsucc"        "vo_martel_wellsucc"
+	
+
+		
+	// CHARACTER: MASON
+	// CONTEXT:Yelling
+	// DIALOG : Take that shit squib!
+	"lipsync_mason_takethatshit"        "vo_mason_takethatshit"
+	
+	
+	// CHARACTER: MASON
+	// CONTEXT:Yelling
+	// DIALOG : Get your head down!
+	"lipsync_mason_getyrhead"        "vo_mason_getyrhead"
+	
+	
+	// CHARACTER: MASON
+	// CONTEXT:Yelling
+	// DIALOG : They'll flank this position soon!
+	"lipsync_mason_theflank"        "vo_mason_theflank"
+	
+	
+	// CHARACTER: MASON +USE
+	// CONTEXT:Yelling over gunfire
+	// DIALOG : They've taken engineering!
+	"lipsync_mason_theytakeng"        "vo_mason_theytakeng"
+	
+	
+	// CHARACTER: MASON +USE
+	// CONTEXT:Yelling over gunfire
+	// DIALOG : We've got to push back in there!
+	"lipsync_mason_wegottop"        "vo_mason_wegottop"
+	
+	
+	// CHARACTER: MASON +USE
+	// CONTEXT:Yelling over gunfire
+	// DIALOG : Stay down!
+	"lipsync_mason_staydown5"        "vo_mason_staydown5"
+	
+
+		
+	// CHARACTER: MCC ANNOUNCE
+	// CONTEXT:Robotic
+	// DIALOG : Primary reactor operating at seventy-six percent.
+	"lipsync_mcc_primaryreact"        "vo_mcc_primaryreact"
+	
+	
+	// CHARACTER: MCC ANNOUNCE
+	// CONTEXT:Robotic
+	// DIALOG : Perimeter Defense System is back online.  Coil charge at thirty-seven percent.
+	"lipsync_mcc_perimdefon"        "vo_mcc_perimdefon"
+	
+	
+	// CHARACTER: MCC ANNOUNCE
+	// CONTEXT:Robotic
+	// DIALOG : Warning.  Possible containment breach on deck 4.
+	"lipsync_mcc_warnposscont"        "vo_mcc_warnposscont"
+	
+	
+	// CHARACTER: MCC ANNOUNCE
+	// CONTEXT:Robotic
+	// DIALOG : Dropship Intrepid is ready for deployment.
+	"lipsync_mcc_dropintrp"        "vo_mcc_dropintrp"
+	
+	
+	// CHARACTER: MCC ANNOUNCE
+	// CONTEXT:Robotic
+	// DIALOG : Warning.  Power fluctuations detected in auxiliary sensor array.  
+	"lipsync_mcc_warnpower"        "vo_mcc_warnpower"
+	
+	
+	// CHARACTER: MCC ANNOUNCE
+	// CONTEXT:Robotic
+	// DIALOG : Heat shielding on the main port thruster has been repaired.
+	"lipsync_mcc_heatshiedn"        "vo_mcc_heatshiedn"
+	
+	
+	// CHARACTER: MCC ANNOUNCE
+	// CONTEXT:Robotic
+	// DIALOG : Navigation system diagnostic complete, system is functioning within normal parameters.
+	"lipsync_mcc_navsysdia"        "vo_mcc_navsysdia"
+	
+	
+	// CHARACTER: MCC ANNOUNCE
+	// CONTEXT:Robotic
+	// DIALOG : Alert.  Coolant rupture detected on deck 5.  Immediate repair is required.
+	"lipsync_mcc_alertcool"        "vo_mcc_alertcool"
+	
+	
+	// CHARACTER: MCC ANNOUNCE
+	// CONTEXT:Robotic
+	// DIALOG : Warning.  Seismic activity detected.  Waveform is outside acceptable range.
+	"lipsync_mcc_warnseis"        "vo_mcc_warnseis"
+	
+	
+	// CHARACTER: MCC ANNOUNCE
+	// CONTEXT:Robotic
+	// DIALOG : Third and Forth oxygen filters are now online.  Oxygen content increased by three hundred and fifty parts per million.
+	"lipsync_mcc_thirdo2"        "vo_mcc_thirdo2"
+	
+	
+	// CHARACTER: MCC ANNOUNCE
+	// CONTEXT:Robotic
+	// DIALOG : All perimeter defense trained marines, report to a perimeter defense pod immediately.
+	"lipsync_mcc_allperidef"        "vo_mcc_allperidef"
+	
+	
+	// CHARACTER: MCC ANNOUNCE
+	// CONTEXT:Robotic
+	// DIALOG : Warning!  Hull Breach on Decks 5, 7, and 10.
+	"lipsync_mcc_warnhull57"        "vo_mcc_warnhull57"
+	
+	
+	// CHARACTER: MCC ANNOUNCE
+	// CONTEXT:Robotic
+	// DIALOG : Strogg Lifeforms detected in corridor twelve.
+	"lipsync_mcc_strogglife"        "vo_mcc_strogglife"
+	
+	
+	// CHARACTER: MCC ANNOUNCE
+	// CONTEXT:Robotic
+	// DIALOG : Medical attention required on Deck 9.
+	"lipsync_mcc_medicalatt"        "vo_mcc_medicalatt"
+	
+	
+	// CHARACTER: MCC ANNOUNCE
+	// CONTEXT:Robotic
+	// DIALOG : Warning.  Primary reactors exposed.  Radiation leak imminent.
+	"lipsync_mcc_warnprimar"        "vo_mcc_warnprimar"
+	
+	
+	// CHARACTER: MCC ANNOUNCE
+	// CONTEXT:Robotic
+	// DIALOG : Primary Hanger is under attack.
+	"lipsync_mcc_primarhang"        "vo_mcc_primarhang"
+	
+	
+	// CHARACTER: MCC ANNOUNCE
+	// CONTEXT:Robotic
+	// DIALOG : Hull integrity at 68 percent.
+	"lipsync_mcc_hullinteg"        "vo_mcc_hullinteg"
+	
+	
+	// CHARACTER: MCC ANNOUNCE
+	// CONTEXT:Robotic
+	// DIALOG : Primary power systems offline.  Rerouting through secondary lines.
+	"lipsync_mcc_primpowsys"        "vo_mcc_primpowsys"
+	
+	
+	// CHARACTER: MCC ANNOUNCE
+	// CONTEXT:Robotic
+	// DIALOG : Alert!  Primary weapons battery has been destroyed.
+	"lipsync_mcc_alertprimwe"        "vo_mcc_alertprimwe"
+	
+	
+	// CHARACTER: MCC ANNOUNCE
+	// CONTEXT:Robotic
+	// DIALOG : Warning!  Life support systems failing.  
+	"lipsync_mcc_warnlifesupp"        "vo_mcc_warnlifesupp"
+	
+	
+	// CHARACTER: MCC ANNOUNCE
+	// CONTEXT:Robotic
+	// DIALOG : Alert!  Reactor critical.  Primary engines offline.
+	"lipsync_mcc_alertreactcrit"        "vo_mcc_alertreactcrit"
+	
+	
+	// CHARACTER: MCC ANNOUNCE
+	// CONTEXT:Robotic
+	// DIALOG : All speeder units, prepare for departure.
+	"lipsync_mcc_allspeed"        "vo_mcc_allspeed"
+	
+	
+	// CHARACTER: MCC ANNOUNCE
+	// CONTEXT:Robotic
+	// DIALOG : Attention all hands, escape pods and final dropships are leaving in 3 minutes.
+	"lipsync_mcc_attenallhand"        "vo_mcc_attenallhand"
+	
+	
+	// CHARACTER: MCC ANNOUNCE
+	// CONTEXT:Robotic
+	// DIALOG : Hannibal self-destruct sequence activated.  All hands, abandon ship.
+	"lipsync_mcc_hannibself"        "vo_mcc_hannibself"
+	
+	
+	// CHARACTER: MCC ANNOUNCE
+	// CONTEXT:Robotic
+	// DIALOG : Warning.  Auto-destruct sequence committed.
+	"lipsync_mcc_warninauto"        "vo_mcc_warninauto"
+	
+
+		
+	// CHARACTER: MCCAUGHEY (RESPONSE)
+	// CONTEXT:Ridicule
+	// DIALOG : Shut the hell up Inglis, their squad lost 3 members today, these guys have already been on two full ops while you were still dreaming about Earth
+	"lipsync_mccaugh_shutinglis"        "vo_mccaugh_shutinglis"
+	
+	
+	// CHARACTER: MCCAUGHEY (RESPONSE)
+	// CONTEXT:Annoyed
+	// DIALOG : Nevermind.
+	"lipsync_mccaugh_nevermind"        "vo_mccaugh_nevermind"
+	
+	
+	// CHARACTER: MCCAUGHEY +USE
+	// CONTEXT:Friendly
+	// DIALOG : Falcon squad is in all the news this morning.
+	"lipsync_mccaugh_falcsqisinall"        "vo_mccaugh_falcsqisinall"
+	
+
+		
+	// CHARACTER: MCKENZIE +USE
+	// CONTEXT:Friendly
+	// DIALOG : You’re Dekard Chase, aren’t you?
+	"lipsync_mcken_yourdefch"        "vo_mcken_yourdefch"
+	
+	
+	// CHARACTER: MCKENZIE +USE
+	// CONTEXT:Friendly
+	// DIALOG : I heard what you went through to rescue Strauss.  I’ve met the guy.  I’ve gotta say, you’re a bigger man than I am.
+	"lipsync_mcken_ihrdwhat"        "vo_mcken_ihrdwhat"
+	
+	
+	// CHARACTER: MCKENZIE +USE
+	// CONTEXT:Tense
+	// DIALOG : Glad to meet you Sargeant, but I've got to get back to work now.
+	"lipsync_mcken_glattomeet"        "vo_mcken_glattomeet"
+
+	
+		
+	// CHARACTER: MORGAN +USE
+	// CONTEXT:Worried
+	// DIALOG : You know these speeders haven't been field tested yet?
+	"lipsync_morgan_youknowspeed"        "vo_morgan_youknowspeed"
+	
+	
+	// CHARACTER: MORGAN +USE
+	// CONTEXT:Worried
+	// DIALOG : I wouldn't push these things too hard, who knows what can happen.
+	"lipsync_morgan_pushthing"        "vo_morgan_pushthing"
+	
+	
+	// CHARACTER: MORGAN +USE
+	// CONTEXT:Worried
+	// DIALOG : The on-board navigation system is buggy as hell
+	"lipsync_morgan_onbnav"        "vo_morgan_onbnav"
+	
+
+		
+	// CHARACTER: MUSTAINE +USE
+	// CONTEXT:Calm
+	// DIALOG : My Squad leaves for the Nexus in a half-hour.
+	"lipsync_mustaine_leavenex"        "vo_mustaine_leavenex"
+	
+	
+	// CHARACTER: MUSTAINE +USE
+	// CONTEXT:Calm
+	// DIALOG : I can’t wait to end this war.
+	"lipsync_mustaine_icantwait"        "vo_mustaine_icantwait"
+	
+	
+	// CHARACTER: MUSTAINE +USE
+	// CONTEXT:Distant
+	// DIALOG : I lost three squad mates in the Prison Assault.  I’ll make the Strogg the pay.
+	"lipsync_mustaine_ilost3sq"        "vo_mustaine_ilost3sq"
+	
+	// CHARACTER: MUSTAINE 
+	// CONTEXT:Tense
+	// DIALOG : I'm trying to get this door open!  Almost there!
+	"lipsync_must_dooropen"        "vo_must_dooropen"
+	
+	
+	// CHARACTER: MUSTAINE 
+	// CONTEXT:Tense
+	// DIALOG : One more second!
+	"lipsync_must_onemore"        "vo_must_onemore"
+	
+	
+	// CHARACTER: MUSTAINE 
+	// CONTEXT:Tense
+	// DIALOG : Got it!
+	"lipsync_must_gotit"        "vo_must_gotit"
+
+	
+	
+	// CHARACTER: NAVAJAS
+	// CONTEXT:Intent
+	// DIALOG : Hold your fire!
+	"lipsync_nava_holdfire"        "vo_nava_holdfire"
+	
+	
+	// CHARACTER: NAVAJAS +USE
+	// CONTEXT:Hurried
+	// DIALOG : Dekard, lets go!
+	"lipsync_nava_dekletsgo"        "vo_nava_dekletsgo"
+	
+	
+	// CHARACTER: NAVAJAS +USE
+	// CONTEXT:Hurried
+	// DIALOG : We have no time to waste!
+	"lipsync_nava_wehavenotime"        "vo_nava_wehavenotime"
+	
+	
+	// CHARACTER: NAVAJAS +USE
+	// CONTEXT:Sarcastic
+	// DIALOG : The pressures on now, eh Sarge?
+	"lipsync_nava_thepresson"        "vo_nava_thepresson"
+
+		
+	
+	// CHARACTER: NAYMUSHIN +USE
+	// CONTEXT:Shocked
+	// DIALOG : Can't believe their gonna blow this ship. 
+	"lipsync_naymush_cntbelievgonna"        "vo_naymush_cntbelievgonna"
+	
+	
+	// CHARACTER: NAYMUSHIN +USE
+	// CONTEXT:Hurried
+	// DIALOG : We've got to get the hell outta here!
+	"lipsync_naymush_wegottop"        "vo_naymush_wegottop"
+	
+	
+	// CHARACTER: NAYMUSHIN +USE
+	// CONTEXT:Hurried
+	// DIALOG : We really don't want to be here in the next 10 minutes.
+	"lipsync_naymush_wedntwant"        "vo_naymush_wedntwant"
+	
+
+		
+	// CHARACTER: NIX +USE
+	// CONTEXT:Informative
+	// DIALOG : This data your team collected is amazing.
+	"lipsync_nix_datayourteam"        "vo_nix_datayourteam"
+	
+	
+	// CHARACTER: NIX +USE
+	// CONTEXT:Informative
+	// DIALOG : We've been able to access information about this history of the Strogg world that we've never seen before
+	"lipsync_nix_weableacc"        "vo_nix_weableacc"
+	
+	
+	// CHARACTER: NIX +USE
+	// CONTEXT:Informative
+	// DIALOG : It seems that the Strogg were much like us once, until they tried to genetically engineer themselves into perfection.
+	"lipsync_nix_itseemstrgg"        "vo_nix_itseemstrgg"
+	
+	// CHARACTER: NIX +USE
+	// CONTEXT:Questioning
+	// DIALOG : Have you seen my laptop?
+	"lipsync_nix_laptop"        "vo_nix_laptop"
+
+		
+	// CHARACTER: PILOT_1
+	// CONTEXT:As delivered
+	// DIALOG : Paging Private Herman. Paging Private Paul Herman. Please report to General Harper's office.
+	"lipsync_2_2_10_265_1"        "vo_2_2_10_265_1"
+	
+	
+	// CHARACTER: PILOT_1
+	// CONTEXT:As delivered
+	// DIALOG : Evac drills for decks 4 and 5 to commence at oh two hundred hours.
+	"lipsync_2_2_10_270_1"        "vo_2_2_10_270_1"
+	
+	
+	// CHARACTER: PILOT_1
+	// CONTEXT:As delivered
+	// DIALOG : We have Strogg boarding parties on decks 2 and 3!
+	"lipsync_2_2_19_120_1"        "vo_2_2_19_120_1"
+	
+
+		
+	// CHARACTER: PILOT_2
+	// CONTEXT:As delivered
+	// DIALOG : Battle stations. A Strogg force is incoming. Fliers and ground troops are confirmed.
+	"lipsync_2_2_10_210_24"        "vo_2_2_10_210_24"
+	
+	
+	// CHARACTER: PILOT_2
+	// CONTEXT:As delivered
+	// DIALOG : Security, report to deck 2. A Strogg Warrior has been sighted.
+	"lipsync_2_2_10_280_1"        "vo_2_2_10_280_1"
+	
+	
+	// CHARACTER: PILOT_2
+	// CONTEXT:As delivered
+	// DIALOG : Condor squad, report to briefing room 4.
+	"lipsync_2_2_10_290_1"        "vo_2_2_10_290_1"
+	
+	
+	// CHARACTER: PILOT_2
+	// CONTEXT:As delivered
+	// DIALOG : Security, report to hangar, deck 2. Strogg boarding parties have been reported.
+	"lipsync_2_2_19_140_1"        "vo_2_2_19_140_1"
+	
+	
+	// CHARACTER: PILOT_2
+	// CONTEXT:As delivered
+	// DIALOG : Wolf squad, report to engineering and repel boarding parties.
+	"lipsync_2_2_20_10_1"        "vo_2_2_20_10_1"
+	
+
+		
+	// CHARACTER: RENNER
+	// CONTEXT:Military, worried
+	// DIALOG : Your signal isn't clear, we can't determine your position from here, you'll need to get to a better transmisison point!
+	"lipsync_renner_yousigisnt"        "vo_renner_yousigisnt"
+	
+	
+	// CHARACTER: RENNER  
+	// CONTEXT:Military
+	// DIALOG : What is your position?
+	"lipsync_renner_whatpos"        "vo_renner_whatpos"
+	
+	
+	// CHARACTER: RENNER +USE
+	// CONTEXT:Annoyed
+	// DIALOG : Can't you see I'm a bit busy right now?
+	"lipsync_renner_cantyousee"        "vo_renner_cantyousee"
+	
+	
+	// CHARACTER: RENNER +USE
+	// CONTEXT:Annoyed
+	// DIALOG : Sargeant, please...
+	"lipsync_renner_sargpls"        "vo_renner_sargpls"
+	
+	
+	// CHARACTER: RENNER +USE
+	// CONTEXT:Annoyed
+	// DIALOG : I've got nothing else to say to you.
+	"lipsync_renner_ivgotno"        "vo_renner_ivgotno"
+	
+
+		
+	// CHARACTER: RICHARDSON +USE
+	// CONTEXT:Tense
+	// DIALOG : I can't let you in the command center right now, sorry sir.
+	"lipsync_rich_nocmdctr"        "vo_rich_nocmdctr"
+	
+	
+	// CHARACTER: RICHARDSON +USE
+	// CONTEXT:Tense
+	// DIALOG : If the squibs get on board, I'll be ready
+	"lipsync_rich_thesqbredy"        "vo_rich_thesqbredy"
+	
+	
+	// CHARACTER: RICHARDSON +USE
+	// CONTEXT:Tense
+	// DIALOG : Sir, available defense cannons are just down the hallway.
+	"lipsync_rich_siravadef"        "vo_rich_siravadef"
+	
+	// CHARACTER: RICHARDSON
+	// CONTEXT:Informative
+	// DIALOG : Hold on sir, marines on the move.
+	"lipsync_richard_holdon"        "vo_richard_holdon"
+	
+	
+	// CHARACTER: RICHARDSON
+	// CONTEXT:Informative
+	// DIALOG : Ok, go ahead.
+	"lipsync_richard_goahead"        "vo_richard_goahead"
+	
+	
+	// CHARACTER: RICHARDSON +USE
+	// CONTEXT:Informative
+	// DIALOG : We have a lot of marines preping for the Nexus assault
+	"lipsync_richard_use1"        "vo_richard_use1"
+	
+	
+	// CHARACTER: RICHARDSON +USE
+	// CONTEXT:Informative
+	// DIALOG : Operations on deck 4 were shut down entirely for Nexus prep
+	"lipsync_richard_use2"        "vo_richard_use2"
+	
+	
+	// CHARACTER: RICHARDSON +USE
+	// CONTEXT:Informative
+	// DIALOG : Once the Nexus force leaves, we will be running on a skeleton crew.
+	"lipsync_richard_use3"        "vo_richard_use3"
+	
+		
+	
+	// CHARACTER: RUSSELL
+	// CONTEXT:Yelling
+	// DIALOG : Die you piece of shit!
+	"lipsync_russ_dieyoupsh"        "vo_russ_dieyoupsh"
+	
+	
+	// CHARACTER: RUSSELL
+	// CONTEXT:Yelling
+	// DIALOG : You like some of that!?
+	"lipsync_russ_youlikesome"        "vo_russ_youlikesome"
+	
+	
+	// CHARACTER: RUSSELL
+	// CONTEXT:Yelling
+	// DIALOG : We need backup in Sector D four!
+	"lipsync_russ_weneedbacks"        "vo_russ_weneedbacks"
+	
+	
+	// CHARACTER: RUSSELL +USE
+	// CONTEXT:Yelling over gunfire
+	// DIALOG : Damn squbs got the jump on us!
+	"lipsync_russ_damnsqbs"        "vo_russ_damnsqbs"
+	
+	
+	// CHARACTER: RUSSELL +USE
+	// CONTEXT:Yelling over gunfire
+	// DIALOG : Stop yammering and take up a gun!
+	"lipsync_russ_stopyamm"        "vo_russ_stopyamm"
+	
+	
+	// CHARACTER: RUSSELL +USE
+	// CONTEXT:Yelling over gunfire
+	// DIALOG : Put up or shut up Sarge!
+	"lipsync_russ_putupsht"        "vo_russ_putupsht"
+	
+
+		
+	// CHARACTER: SCHUCH +USE
+	// CONTEXT:Informative
+	// DIALOG : The Strogg history is well guarded
+	"lipsync_schuch_strogghist"        "vo_schuch_strogghist"
+	
+	
+	// CHARACTER: SCHUCH +USE
+	// CONTEXT:Informative
+	// DIALOG : Their planet was ravaged by some kind of civil war for decades.
+	"lipsync_schuch_planetravag"        "vo_schuch_planetravag"
+	
+	
+	// CHARACTER: SCHUCH +USE
+	// CONTEXT:Informative
+	// DIALOG : Genetically engineered Strogg versus another group of un-engineered Strogg, must have been a bloodbath
+	"lipsync_schuch_geneteng"        "vo_schuch_geneteng"
+	
+	
+	
+	// CHARACTER: SCOTT +USE
+	// CONTEXT:Informative
+	// DIALOG : Almost everyone’s already headed out for the Nexus Assault.
+	"lipsync_scott_almostev"        "vo_scott_almostev"
+	
+	
+	// CHARACTER: SCOTT +USE
+	// CONTEXT:Distant
+	// DIALOG : I hope this war ends soon.
+	"lipsync_scott_ihopethiswar"        "vo_scott_ihopethiswar"
+	
+	
+	// CHARACTER: SCOTT +USE
+	// CONTEXT:Informative
+	// DIALOG : The Strogg have been tearing us up, Sir.  But if this works, it will all be worth it.
+	"lipsync_scott_stroggtear"        "vo_scott_stroggtear"
+	
+	
+	
+	// CHARACTER: SHOWERS (RESPONSE)
+	// CONTEXT:Arrogant
+	// DIALOG : Yeah, they saved his ass right before being turned into a full on Squib.
+	"lipsync_shower_saveass"        "vo_shower_saveass"
+	
+	
+	// CHARACTER: SHOWERS (RESPONSE)
+	// CONTEXT:Arrogant
+	// DIALOG : No shit, he better no turn his back on me. 
+	"lipsync_shower_notshitturn"        "vo_shower_notshitturn"
+	
+	
+	// CHARACTER: SHOWERS +USE
+	// CONTEXT:Informative
+	// DIALOG : We're waiting for Kain to show up, got a few things to say to that Squib.
+	"lipsync_shower_wewaitkain"        "vo_shower_wewaitkain"
+
+	
+	// CHARACTER: SHOWERS
+	// CONTEXT:Dismissive
+	// DIALOG : Well, that's what Holdorf told me...
+	"lipsync_shower_jacksoin"        "vo_shower_jacksoin"
+	
+	// CHARACTER: SHOWERS
+	// CONTEXT:Calm
+	// DIALOG : Kain will be here, he's gotta come here for the Rhino briefing.  We'll see him.
+	"lipsync_show_kain"        "vo_show_kain"
+
+	
+		
+	// CHARACTER: SMITH +USE
+	// CONTEXT:Tense
+	// DIALOG : Sir, they need you on a perimeter defense cannon!
+	"lipsync_smith_sirperidef"        "vo_smith_sirperidef"
+	
+	
+	// CHARACTER: SMITH +USE
+	// CONTEXT:Tense
+	// DIALOG : The command center is closed access right now
+	"lipsync_smith_comdctr"        "vo_smith_comdctr"
+	
+	
+	// CHARACTER: SMITH +USE
+	// CONTEXT:Tense
+	// DIALOG : Sir!
+	"lipsync_smith_sir5"        "vo_smith_sir5"
+	
+		
+	
+	// CHARACTER: STRAUSS
+	// CONTEXT:Calm
+	// DIALOG : I've been working on the data decryption since my rescue, it took me the better part of a day, but I’ve finished the decryption algorithms.
+	"lipsync_strauss_workingondata"        "vo_strauss_workingondata"
+	
+	
+	// CHARACTER: STRAUSS
+	// CONTEXT:Calm
+	// DIALOG : There is so much data, it could take weeks to fully decode, but, as you can see here, we have every available CPU dedicated to the task.
+	"lipsync_strauss_somuchdat"        "vo_strauss_somuchdat"
+	
+	
+	// CHARACTER: STRAUSS
+	// CONTEXT:Calm
+	// DIALOG : That said, some of the decrypted information has already proven useful in outlining our next major offensive against the Nexus.
+	"lipsync_strauss_thatsaid"        "vo_strauss_thatsaid"
+	
+	
+	// CHARACTER: STRAUSS
+	// CONTEXT:Arrogant
+	// DIALOG : I would like to help the decryption effort, but my skills are required for the upcoming Nexus assault, it cannot succeed without my assistance.
+	"lipsync_strauss_likehelp"        "vo_strauss_likehelp"
+	
+	
+	// CHARACTER: STRAUSS
+	// CONTEXT:Calm
+	// DIALOG : I’ve left the decryption algorithms with Sci-tech. Find your Technician, Tak. He is the only one at Sci-Tech with the intellect to finish the work I’ve begun. Good luck.
+	"lipsync_strauss_leftdecrypt"        "vo_strauss_leftdecrypt"
+	
+	
+	// CHARACTER: STRAUSS +USE
+	// CONTEXT:Informative
+	// DIALOG : I've told command time and time again, it's intellect that will win this war
+	"lipsync_strauss_itoldcmdint"        "vo_strauss_itoldcmdint"
+	
+	
+	// CHARACTER: STRAUSS +USE
+	// CONTEXT:Complementary
+	// DIALOG : You should be commended for your skills Sergeant, had I succumbed to the Strogg, this war would be over
+	"lipsync_strauss_youshouldcmd"        "vo_strauss_youshouldcmd"
+	
+	
+	// CHARACTER: STRAUSS +USE
+	// CONTEXT:Calm
+	// DIALOG : I'm waiting on the rest of Rhino squad for our Nexus briefing, it was good to meet you Sergeant Chase
+	"lipsync_strauss_waitingrh"        "vo_strauss_waitingrh"
+
+		
+	
+	// CHARACTER: TAK
+	// CONTEXT:Prodding
+	// DIALOG : Dekard, I need you in Sci-tech
+	"lipsync_tak_dekinsci"        "vo_tak_dekinsci"
+	
+	
+	// CHARACTER: TAK
+	// CONTEXT:Prodding
+	// DIALOG : Hey Dekard, when you get a chance, stop by Sci-tech
+	"lipsync_tak_heydekwhenyou"        "vo_tak_heydekwhenyou"
+	
+	
+	// CHARACTER: TAK
+	// CONTEXT:Prodding
+	// DIALOG : Dekard, you're going to want to see the data we've uncovered here in Sci-tech
+	"lipsync_tak_dekyougoing"        "vo_tak_dekyougoing"
+	
+	
+	// CHARACTER: TAK
+	// CONTEXT:Informative
+	// DIALOG : Dekard, we've been pouring over the data since Strauss provided the decryption algorithms, and we've come across something really disturbing...
+	"lipsync_tak_dekwepouringover"        "vo_tak_dekwepouringover"
+	
+	
+	// CHARACTER: TAK
+	// CONTEXT:Informative, Intrigued
+	// DIALOG : There are a number of references to the Makron, or Makrons, we aren't sure, but more importantly, there is talk of some kind of Makron Guardian, the Strogg refer to it as the Valkaryne.
+	"lipsync_tak_numrefvalk"        "vo_tak_numrefvalk"
+	
+	
+	// CHARACTER: TAK
+	// CONTEXT:Informative
+	// DIALOG : We're minutes away from fully decoding this sequence, once that is complete we will...
+	"lipsync_tak_wemins"        "vo_tak_wemins"
+	
+	
+	// CHARACTER: TAK
+	// CONTEXT:Surprised
+	// DIALOG : What the hell is going on?!
+	"lipsync_tak_whathellgo"        "vo_tak_whathellgo"
+	
+	
+	// CHARACTER: TAK
+	// CONTEXT:Tense, hurried
+	// DIALOG : We finished decoding the data about the Makron guardian, AKA the Valkaryne?  She is the reason why another Makron appeared so quickly after the first one fell.  Her entire purpose is to awaken a new Makron when one is destroyed.  
+	"lipsync_tak_wefindec"        "vo_tak_wefindec"
+	
+	
+	// CHARACTER: TAK
+	// CONTEXT:Informative, hurried
+	// DIALOG : The Valkaryne acts as a data conduit for a newly awakened Makron.  She filters all the data from the Nexus into a new Makron, making sure the Strogg leadership doesn't skip a beat.  This is even more concerning- since she can filter Nexus information directly, it's possible she doesn't need the Nexus like the other Strogg do.  She can function without it!
+	"lipsync_tak_valkact"        "vo_tak_valkact"
+	
+	
+	// CHARACTER: TAK
+	// CONTEXT:Informative, hurried
+	// DIALOG : The data we found  pointed us to a cryogenic facility where perhaps hundreds of Makrons are stored in stasis, if the Nexus assault is successful - the Valkaryne will just awaken another Makron immediately and we'll be back to square one.
+	"lipsync_tak_datapoint"        "vo_tak_datapoint"
+	
+	
+	// CHARACTER: TAK
+	// CONTEXT:Tense, hurried
+	// DIALOG : Unfortunately, the Strogg have already begun to shut down access lines to the Cryogenics facility, like a preemptive action in case they detect that the Makron is danger.  Locking mechanisms are shutting down as we speak.
+	"lipsync_tak_unfortstrgg"        "vo_tak_unfortstrgg"
+	
+	
+	// CHARACTER: TAK +USE
+	// CONTEXT:Hurried, Tense
+	// DIALOG : Dekard, get to a perimeter defense gun!
+	"lipsync_tak_dekperi"        "vo_tak_dekperi"
+	
+	
+	// CHARACTER: TAK +USE
+	// CONTEXT:Hurried, Tense
+	// DIALOG : I need to stay here and get this data decoded!
+	"lipsync_tak_ineedtostay"        "vo_tak_ineedtostay"
+	
+	
+	// CHARACTER: TAK +USE
+	// CONTEXT:Hurried, Tense
+	// DIALOG : Sorry Dekard, I need to focus on this data!
+	"lipsync_tak_sorrydekn"        "vo_tak_sorrydekn"
+	
+	
+	// CHARACTER: TAK +USE
+	// CONTEXT:Distant
+	// DIALOG : Hundreds of Makrons...We've got to succeed
+	"lipsync_tak_hundredsmak"        "vo_tak_hundredsmak"
+	
+	
+	// CHARACTER: TAK +USE
+	// CONTEXT:Tense
+	// DIALOG : Let's go Dekard.
+	"lipsync_tak_letsgodek"        "vo_tak_letsgodek"
+	
+	
+	// CHARACTER: TAK +USE
+	// CONTEXT:Tense
+	// DIALOG : The route to the Cryogenics facility is closing as we speak, we have to go!
+	"lipsync_tak_routtocryo"        "vo_tak_routtocryo"
+
+		
+	
+	// CHARACTER: TRABBOLD (RESPONSE)
+	// CONTEXT:Calm
+	// DIALOG : I don't trust him, with that much Squib hardware, who knows when he's gonna flip.
+	"lipsync_trab_donttrus"        "vo_trab_donttrus"
+	
+	
+	// CHARACTER: TRABBOLD (RESPONSE)
+	// CONTEXT:Arrogant
+	// DIALOG : Yeah, like "watch your ass"
+	"lipsync_trab_yeahwatchass"        "vo_trab_yeahwatchass"
+	
+	
+	// CHARACTER: TRABBOLD +USE
+	// CONTEXT:Questioning
+	// DIALOG : Did you hear about Kain from Rhino Squad?
+	"lipsync_trab_didkain"        "vo_trab_didkain"
+	
+	// CHARACTER: TRABBOLD
+	// CONTEXT:Angry
+	// DIALOG : I thought you said he'd be coming out from the Rhino quarters?
+	"lipsync_trab_said"        "vo_trab_said"
+	
+	// CHARACTER: TRABBOLD
+	// CONTEXT:Angry
+	// DIALOG : Holdorf!?  That chump doesn't know his ass from a hole in the ground!
+	"lipsync_trab_jackson"        "vo_trab_jackson"
+	
+		
+	
+	// CHARACTER: TURRET GUY
+	// CONTEXT:Death Scream
+	// DIALOG : Arrrghhh!
+	"lipsync_turguy_arrrrg"        "vo_turguy_arrrrg"
+	
+
+		
+	// CHARACTER: WELDON +USE
+	// CONTEXT:Frustrated
+	// DIALOG : These marines have been running in circles for hours.
+	"lipsync_weldon_mainescirc"        "vo_weldon_mainescirc"
+	
+	
+	// CHARACTER: WELDON +USE
+	// CONTEXT:Frustrated
+	// DIALOG : I've tried to tell them, but they keep getting turned around.
+	"lipsync_weldon_triedtell"        "vo_weldon_triedtell"
+	
+	
+	// CHARACTER: WELDON +USE
+	// CONTEXT:Frustrated
+	// DIALOG : This is so frustrating.
+	"lipsync_weldon_frustra"        "vo_weldon_frustra"
+	
+	// CHARACTER: WELDON
+	// CONTEXT:Frustrated
+	// DIALOG : Damn, these marines just circled around again
+	"lipsync_weldon_angry1"        "vo_weldon_angry1"
+	
+	// CHARACTER: WELDON
+	// CONTEXT:Frustrated
+	// DIALOG : I can't, the signal quality isn't good enough to send a digigal update, they're totally lost.
+	"lipsync_weldon_angry3"        "vo_weldon_angry3"
+	
+	
+	
+	// CHARACTER: YOSHIDA +USE
+	// CONTEXT:Angry
+	// DIALOG : I can't believe they're just letting him walk around!
+	"lipsync_yoshi_icanbellett"        "vo_yoshi_icanbellett"
+	
+	
+	// CHARACTER: YOSHIDA +USE
+	// CONTEXT:Angry
+	// DIALOG : I swear, command must be desperate if they're putting Kain back in the field
+	"lipsync_yoshi_swearmust"        "vo_yoshi_swearmust"
+	
+	
+	// CHARACTER: YOSHIDA +USE
+	// CONTEXT:Angry
+	// DIALOG : They better not let him wander the ship without his bodyguard.
+	"lipsync_yoshi_bettrnot"        "vo_yoshi_bettrnot"
+
+
+	
+	// CHARACTER: DOCTOR 0
+	// CONTEXT:Monotone
+	// DIALOG : This Strogg gunner was found dead without any apparent contact wounds
+	"lipsync_doc_0_1"        "vo_doc_0_1"
+	
+	
+	// CHARACTER: DOCTOR 0
+	// CONTEXT:Monotone
+	// DIALOG : Further investigation revealed a severe deterioration  between the biomechanical implants and fused tissue, leading to a severe infection
+	"lipsync_doc_0_2"        "vo_doc_0_2"
+	
+	
+	// CHARACTER: DOCTOR 0
+	// CONTEXT:Monotone
+	// DIALOG : Impossible to tell actual COD without removing the Strogg implants
+	"lipsync_doc_0_3"        "vo_doc_0_3"
+	
+	
+	
+	// CHARACTER: DOCTOR 1
+	// CONTEXT:Calm
+	// DIALOG : There seems to be some concern from command that Kain might turn
+	"lipsync_doc_1"        "vo_doc_1"
+	
+	
+	// CHARACTER: DOCTOR 1
+	// CONTEXT:Prodding
+	// DIALOG : You also said it was impossible for another Markon to lead the Strogg
+	"lipsync_doc_3"        "vo_doc_3"
+	
+	
+	
+	// CHARACTER: DOCTOR 2
+	// CONTEXT:Frustrated
+	// DIALOG : That's totally irrelevant, nobody predicted that, I'm speaking from hard medical evidence
+	"lipsync_doc_4"        "vo_doc_4"
+	
+	// CHARACTER: DOCTOR 2
+	// CONTEXT:Frustrated
+	// DIALOG : That's impossible, the neurocyte isn't active.
+	"lipsync_doc_2"        "vo_doc_2"
+	
+	
+	
+	// CHARACTER: GUARD 1
+	// CONTEXT:Commanding
+	// DIALOG : Hold on sir.
+	"lipsync_guard1_holdon"        "vo_guard1_holdon"
+	
+	
+	// CHARACTER: GUARD 1
+	// CONTEXT:Commanding
+	// DIALOG : Ok, move along.
+	"lipsync_guard1_okmove"        "vo_guard1_okmove"
+	
+	
+	
+	// CHARACTER: GENERAL CLOUD
+	// CONTEXT:Whispered
+	// DIALOG : The assault on the Nexus cannot fail again.
+	"lipsync_cloud_assault"        "vo_cloud_assault"
+	
+	
+	// CHARACTER: GENERAL CLOUD
+	// CONTEXT:Whispered
+	// DIALOG : Our ground presence on Stroggos is extremely limited.
+	"lipsync_cloud_ground"        "vo_cloud_ground"
+	
+	
+	
+	// CHARACTER: MCNUTT
+	// CONTEXT:Calm
+	// DIALOG : Did you update their positioning systems to account for the latest SMC update?
+	"lipsync_mcnutt_angry2"        "vo_mcnutt_angry2"
+	
+	
+	// CHARACTER: MCNUTT
+	// CONTEXT:Informative
+	// DIALOG : Process an update through the analog router, it will take some time, but it should reset their location beacons.
+	"lipsync_mcnutt_angry4"        "vo_mcnutt_angry4"
+	
+	
+	
+	// CHARACTER: FRANKLIN
+	// CONTEXT:Questioning
+	// DIALOG : Who the hell was that?
+	"lipsync_frank_conv1"        "vo_frank_conv1"
+	
+	// CHARACTER: FRANKLIN
+	// CONTEXT:Surprised
+	// DIALOG : Why the hell does he have an armed escort?  There are no squibs on this ship!
+	"lipsync_frank_conv3"        "vo_frank_conv3"
+	
+	// CHARACTER: FRANKLIN
+	// CONTEXT:Realization
+	// DIALOG : Oh yeah, I forgot about that mess.
+	"lipsync_frank_conv5"        "vo_frank_conv5"
+	
+	// CHARACTER: FRANKLIN +USE
+	// CONTEXT:Calm
+	// DIALOG : I'm surprised to see armed guards escorting a general
+	"lipsync_frank_use1"        "vo_frank_use1"
+	
+	// CHARACTER: FRANKLIN +USE
+	// CONTEXT:Calm
+	// DIALOG : Maybe their worried about that freak from Rhino squad.
+	"lipsync_frank_use2"        "vo_frank_use2"
+	
+	// CHARACTER: FRANKLIN +USE
+	// CONTEXT:Calm
+	// DIALOG : I don't know if anybody is excited about having THAT former marine on board.
+	"lipsync_frank_use3"        "vo_frank_use3"
+	
+	
+	
+	// CHARACTER: MUNRO
+	// CONTEXT:Calm
+	// DIALOG : The medical centers on this deck keep the brass jumpy, not all Strogg those docs work on have proven to be dead, remember?
+	"lipsync_munro_conv4"        "vo_munro_conv4"
+	
+	// CHARACTER: MUNRO
+	// CONTEXT:Calm
+	// DIALOG : That was general Cloud, he hasn't been down to this deck since we left Earth.
+	"lipsync_munro_conv2"        "vo_munro_conv2"
+	
+	// CHARACTER: MUNRO +USE
+	// CONTEXT:Calm
+	// DIALOG : It is strange seeing general Cloud down on this deck
+	"lipsync_munro_use1"        "vo_munro_use1"
+	
+	
+	// CHARACTER: MUNRO +USE
+	// CONTEXT:Calm
+	// DIALOG : The upcoming assault has everybody on edge
+	"lipsync_munro_use2"        "vo_munro_use2"
+	
+	
+	// CHARACTER: MUNRO +USE
+	// CONTEXT:Annoyed
+	// DIALOG : I need to get back to work.
+	"lipsync_munro_use3"        "vo_munro_use3"
+	
+	
+	
+	// CHARACTER: FOWLER
+	// CONTEXT:Working
+	// DIALOG : Hang on… I got the same.  Full power, full operations.  Looks like it's ready
+	"lipsync_fowler_hangon"        "vo_fowler_hangon"
+	
+	// CHARACTER: FOWLER
+	// CONTEXT:Calm
+	// DIALOG : Yes.
+	"lipsync_fowler_yes"        "vo_fowler_yes"
+	
+	// CHARACTER: FOWLER
+	// CONTEXT:Calm
+	// DIALOG : Yes.
+	"lipsync_fowler_yes2"        "vo_fowler_yes2"
+	
+	
+	
+	// CHARACTER: EISERLOH
+	// CONTEXT:Working
+	// DIALOG : System is reading on-line.  What do you have on your end?
+	"lipsync_brian_system"        "vo_brian_system"
+	
+	// CHARACTER: EISERLOH
+	// CONTEXT:Frustrated
+	// DIALOG : You check redundant coil switch?  (beat)  well?
+	"lipsync_brian_coil"        "vo_brian_coil"
+	
+	// CHARACTER: EISERLOH
+	// CONTEXT:Frustrated
+	// DIALOG : Are you lying to me?
+	"lipsync_brian_lying"        "vo_brian_lying"
+	
+	// CHARACTER: EISERLOH
+	// CONTEXT:Frustrated
+	// DIALOG : Look, just check it over, and we'll get you out of there.  The system should be fine.
+	"lipsync_brian_look"        "vo_brian_look"
+	
+	// CHARACTER: EISERLOH +USE
+	// CONTEXT:Frustrated
+	// DIALOG : Feel like we've been working on this defense system for days.
+	"lipsync_brian_use1"        "vo_brian_use1"
+	
+	// CHARACTER: EISERLOH +USE
+	// CONTEXT:Frustrated
+	// DIALOG : Fowler's been in that hatch without a break since shift change
+	"lipsync_brian_use2"        "vo_brian_use2"
+	
+	// CHARACTER: EISERLOH +USE
+	// CONTEXT:Frustrated
+	// DIALOG : Hopefully we won't need these guns anytime soon.
+	"lipsync_brian_use3"        "vo_brian_use3"
+	
+	
+	
+	// CHARACTER: GARRETT 
+	// CONTEXT:Informative
+	// DIALOG : Sir, this door is malfunctioning, you'll need to go around.  Sorry.
+	"lipsync_garrett_door"        "vo_garrett_door"
+	
+	
+	// CHARACTER: GARRETT +USE
+	// CONTEXT:Informative
+	// DIALOG : This ship is falling apart around us.
+	"lipsync_garrett_use1"        "vo_garrett_use1"
+	
+	
+	// CHARACTER: GARRETT +USE
+	// CONTEXT:Informative
+	// DIALOG : Can't even keep the messhall open, you should see what the munitions bay looks like
+	"lipsync_garrett_use2"        "vo_garrett_use2"
+	
+	
+	// CHARACTER: GARRETT +USE
+	// CONTEXT:Informative
+	// DIALOG : The landing really jarred a lot of systems, I'll be happy once we are back in space.
+	"lipsync_garrett_use3"        "vo_garrett_use3"
+	
+	
+	
+	// CHARACTER: SLEEPER
+	// CONTEXT:Sleepy, annoyed
+	// DIALOG : ...urgh, leave me alone...
+	"lipsync_sleeper_use1"        "vo_sleeper_use1"
+	
+	
+	// CHARACTER: SLEEPER
+	// CONTEXT:Sleepy, annoyed
+	// DIALOG : ..ugh, damnit, I've been up for 20 hours, let me get some shut eye...
+	"lipsync_sleeper_use2"        "vo_sleeper_use2"
+	
+	
+	// CHARACTER: SLEEPER
+	// CONTEXT:Sleepy, annoyed
+	// DIALOG : ..the presentations for the nexus assault were changed last minute, no sleep trying to fix it in time...
+	"lipsync_sleeper_use3"        "vo_sleeper_use3"
+	
+	
+	// CHARACTER: SLEEPER
+	// CONTEXT:Sleepy, annoyed
+	// DIALOG : ..please, just let me sleep..
+	"lipsync_sleeper_use4"        "vo_sleeper_use4"
+	
+	
+	
+	// CHARACTER: TV
+	// CONTEXT:Newscaster
+	// DIALOG : Earth cleanup efforts in New Berlin have been hindered by unexpected high levels of a previously undiscovered Strogg radiation at all Strogg landing sites.
+	"lipsync_news_earth"        "vo_news_earth"
+	
+	
+	// CHARACTER: TV
+	// CONTEXT:Newscaster
+	// DIALOG : 15 workers have been hospitalized due to radiation related sickness.  Labor groups are confused and angry since each site was proclaimed safe by SMC engineers over 2 months ago
+	"lipsync_news_workers"        "vo_news_workers"
+	
+	
+	// CHARACTER: TV
+	// CONTEXT:Newscaster
+	// DIALOG : SMC engineers on site have reported that the radiation source was Strogg in nature, and had not been a type of Radiation known to SMC engineers before the hospitalizations took place.
+	"lipsync_news_engineers"        "vo_news_engineers"
+	
+	
+	
+	// CHARACTER: TV GUY +USE
+	// CONTEXT:Annoyed
+	// DIALOG : Hey, I'm watching this.
+	"lipsync_tvguy_annoyed1"        "vo_tvguy_annoyed1"
+	
+	
+	// CHARACTER: TV GUY +USE
+	// CONTEXT:Annoyed
+	// DIALOG : Shh...
+	"lipsync_tvguy_annoyed2"        "vo_tvguy_annoyed2"
+	
+	
+	// CHARACTER: TV GUY +USE
+	// CONTEXT:Annoyed
+	// DIALOG : Sir, please.
+	"lipsync_tvguy_annoyed3"        "vo_tvguy_annoyed3"
+	
+	
+	
+	// CHARACTER: RUNNING MARINE
+	// CONTEXT:Military
+	// DIALOG : Go Go Go!
+	"lipsync_runmarine_1"        "vo_runmarine_1"
+	
+	
+	// CHARACTER: RUNNING MARINE
+	// CONTEXT:Military
+	// DIALOG : Move it ladies!
+	"lipsync_runmarine_2"        "vo_runmarine_2"
+	
+	
+	// CHARACTER: RUNNING MARINE
+	// CONTEXT:Military
+	// DIALOG : The Nexus assault won't wait for you!
+	"lipsync_runmarine_3"        "vo_runmarine_3"
+	
+	
+	
+	// CHARACTER: FLANNAGAN
+	// CONTEXT:Tense
+	// DIALOG : If we setup the decryption algorithm on every workstation on the ship, we can process the data in parallel
+	"lipsync_flan_data1"        "vo_flan_data1"
+	
+	
+	// CHARACTER: FLANNAGAN
+	// CONTEXT:Tense
+	// DIALOG : No, too many systems on the ship are locked out from each other, we could get root access to each subsystem and install it from there.
+	"lipsync_flan_data3"        "vo_flan_data3"
+	
+	// CHARACTER: FLANNAGAN +USE
+	// CONTEXT:Informative
+	// DIALOG : There are over four thousand workstations on this ship, all of which could assist in processing this data
+	"lipsync_flan_use1"        "vo_flan_use1"
+	
+	
+	// CHARACTER: FLANNAGAN +USE
+	// CONTEXT:Informative
+	// DIALOG : We have to manually install the decryption algorithm on each workstation, we don't have time for that
+	"lipsync_flan_use2"        "vo_flan_use2"
+	
+	// CHARACTER: FLANNAGAN +USE
+	// CONTEXT:Informative
+	// DIALOG : This wasn't something we anticipated having to deal with, this is an enormous amount of data
+	"lipsync_flan_use3"        "vo_flan_use3"
+	
+	
+	
+	// CHARACTER: KETCHERSIDE
+	// CONTEXT:Tense
+	// DIALOG : Is it possible to do that without modifying every workstation manually?
+	"lipsync_ketch_data2"        "vo_ketch_data2"
+	
+	// CHARACTER: KETCHERSIDE
+	// CONTEXT:Tense
+	// DIALOG : We can't do that while there are any active operations, it would require a total shutdown and restart for all systems
+	"lipsync_ketch_data4"        "vo_ketch_data4"
+	
+	// CHARACTER: KETCHERSIDE +USE
+	// CONTEXT:Informative
+	// DIALOG : Parallel processing would have this data decrypted in just under a day
+	"lipsync_ketch_use1"        "vo_ketch_use1"
+	
+	
+	// CHARACTER: KETCHERSIDE +USE
+	// CONTEXT:Informative
+	// DIALOG : We have every CPU in sci-tech already dedicated to this task
+	"lipsync_ketch_use2"        "vo_ketch_use2"
+	
+	
+	// CHARACTER: KETCHERSIDE +USE
+	// CONTEXT:Informative
+	// DIALOG : The data is processing much faster, but still not quickly enough.
+	"lipsync_ketch_use3"        "vo_ketch_use3"
+	
+}
+
+
+
+//--------------------------------------------------------------------------------------------------------------------
+// copy-paste required for medics, techs, and doctors
+//--------------------------------------------------------------------------------------------------------------------
+model model_q4x_mcc_marine_medic
+{
+	inherit					model_q4x_mcc_marine
+	
+	mesh					models/characters/marine_medic/marine_medic.md5mesh
+	channel torso	( *waist )
+	channel legs	( *origin *hips -*waist )
+	
+	anim	medic_treating_player_start		models/characters/marine/medic_treating_player_start.md5anim
+	{
+		frame	13							attachment_show	medic_vaccinegun
+		rate 1.3
+	}
+	anim	medic_treating_player			models/characters/marine/medic_treating_player.md5anim
+	{
+		frame	1							sound	snd_med_gun_heal
+		rate .5
+	}
+	anim	medic_treating_player_end		models/characters/marine/medic_treating_player_end.md5anim
+	{
+		frame	17							attachment_hide	medic_vaccinegun
+		rate 1.3
+	}
+}
+
+
+model model_q4x_mcc_marine_tech
+{
+	inherit					model_q4x_mcc_marine
+	
+	mesh					models/characters/marine_tech/marine_tech.md5mesh
+	channel torso	( *waist )
+	channel legs	( *origin *hips -*waist )
+	
+	anim	medic_treating_player_start		models/characters/marine/medic_treating_player_start.md5anim
+	{
+		frame	13							attachment_show	tech_tool
+		rate 1.3
+	}
+	anim	medic_treating_player			models/characters/marine/medic_treating_player.md5anim
+	{
+		frame	1							sound	snd_tech_tool_repair
+		rate .5
+	}
+	anim	medic_treating_player_end		models/characters/marine/medic_treating_player_end.md5anim
+	{
+		frame	17							attachment_hide	tech_tool
+		rate 1.3
+	}
+}
+
+
+model model_q4x_mcc_doctor
+{
+	inherit							model_q4x_mcc_marine
+	//inherit							mcc1_model_char_marine // BAD
+	
+	mesh							models/characters/doctor/doctor.md5mesh
+	channel torso	( *waist )
+	channel legs	( *origin *hips -*waist )
+}
+
+
+//--------------------------------------------------------------------------------------------------------------------
+// copy-paste for officer model
+//--------------------------------------------------------------------------------------------------------------------
+model model_q4x_mcc_marine_officer
+{
+	inherit							model_q4x_mcc_marine_fatigues
+	
+	mesh							models/characters/marine_fatigues_mocap/officer_mesh.md5mesh
+
+	channel torso	( *waist )
+	channel legs	( *origin *hips -*waist )
+}
+
+
+//--------------------------------------------------------------------------------------------------------------------
+// Dirty, dirty hack
+//--------------------------------------------------------------------------------------------------------------------
+entityDef projectile_shellshock // I have no idea what half these variables are okay
+{
+	"spawnclass"				"idProjectile"
+	"size"						"7 7 7"
+	//"cone"						"2"
+	//"noshadows"					"1"
+	//"clipmask_largeshot"		"1"
+								
+	"model"						""
+	//"def_damage"				"damage_shellShock"
+	"def_splash_damage"			"damage_shellShock"
+																											
+	"speed"						"900"
+	"fuse"						"6"
+	//"push"					"48000"
+							
+	"detonate_on_fuse"			"1"
+	"detonate_on_death"			"0"
+	"detonate_on_world"			"1"
+	"detonate_on_actor"			"1"
+	"detonate_on_bounce"		"1"
+								
+	"friendly_impact"			"1"
+}
+
+
+entityDef damage_shellShock
+{
+	"inherit"					"damage_monster_base"
+	"knockback"					"0"
+	"damage"					"1"
+	"radius"					"1000"
+	"push"						"10000"
+
+	//"tv_scale"				"0.7" // what?
+	//"tv_time"					"4200"
+
+	// Hearing Loss
+	"hl_volumeDB"				"-25"
+	"hl_fadeOutTime"			".5"
+	"hl_time"					"2.5"
+	"hl_fadeInTime"				"1"
+	"snd_hl"					"player_sounds_ringing2"
+}
+
+
+//--------------------------------------------------------------------------------------------------------------------
+// moveable_explodingbarrel variants since for some reason THEY WON'T FUCKING SAVE IN THE ENTITY PROPERTIES
+//--------------------------------------------------------------------------------------------------------------------
+entityDef moveable_explodingbarrel_q4x_oxygen
+{
+	"inherit"		"moveable_explodingbarrel"
+	"model"			"models/mapobjects/marine/equipment/misc/reuse/oxygen.lwo"
+
+	"editor_mins"				"-8 -8 0"
+	"editor_maxs"				"8 8 48"
+}
+
+entityDef moveable_explodingbarrel_q4x_airtank
+{
+	"inherit"		"moveable_explodingbarrel"
+	"model"			"models/mapobjects/marine/equipment/misc/reuse/airtank.lwo"
+
+	"editor_mins"				"-8 -8 0"
+	"editor_maxs"				"8 8 64"
+}
+
+entityDef moveable_explodingbarrel_q4x_airtank_notop
+{
+	"inherit"		"moveable_explodingbarrel"
+	"model"			"models/mapobjects/marine/equipment/misc/reuse/airtank_no_top.lwo"
+	
+	"editor_mins"				"-8 -8 0"
+	"editor_maxs"				"8 8 64"
+}
+
+entityDef moveable_explodingbarrel_q4x_aircannister
+{
+	"inherit"		"moveable_explodingbarrel"
+	"model"			"models/mapobjects/marine/equipment/misc/reuse/aircannister.lwo"
+
+	"editor_mins"				"-8 -8 0"
+	"editor_maxs"				"8 8 32"
+}

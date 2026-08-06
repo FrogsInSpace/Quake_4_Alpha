@@ -1,0 +1,1515 @@
+#include "scripts/doom_defs.script"
+
+	//boolean CHATTER1;
+	//boolean CHATTER2;
+	//boolean CHATTER3;
+	//boolean CHATTER4;
+	//boolean CHATTER5;
+	//boolean CHATTER6;
+	//boolean CHATTER7;
+	//boolean CHATTER8;
+	//boolean CHATTER9;
+	//boolean CHATTER10;
+	//boolean CHATTER11;
+	//boolean CHATTER12;
+	//boolean CHATTER13;
+
+	float RACE_AREA = 1;
+
+	float AREA1_TOTAL_TIME = 60;
+	float AREA2_TOTAL_TIME = 60;
+	float AREA1_TIME_STARTED;
+	float AREA1_TIME_EXPIRED;
+	float AREA2_TIME_STARTED;
+	float AREA2_TIME_EXPIRED;
+	float area1TimeLeft;
+	
+	
+	/*
+	void miscRadioChatterThread()
+	{
+		float t;
+		float x;
+		while(1)
+			{
+			t = randomRoundFloat( 1, 20 ) + 5;
+			sys.wait( t );
+			x = randomRoundFloat( 1, 15 );
+		
+			if( x == 1 && !CHATTER1 )
+				{
+				radioChatterPlay( $func_radiochatter_1, "vo_8_3_28" );
+				CHATTER1 = true;
+				}
+			if( x == 2 && !CHATTER2 )
+				{
+				radioChatterPlay( $func_radiochatter_1, "vo_8_3_32" );
+				CHATTER2 = true;
+				}
+			if( x == 3 && !CHATTER3 )
+				{
+				radioChatterPlay( $func_radiochatter_1, "vo_8_3_5" );
+				CHATTER3 = true;
+				}
+			if( x == 4 && !CHATTER4 )
+				{
+				radioChatterPlay( $func_radiochatter_1, "vo_8_3_3" );
+				CHATTER4 = true;
+				}
+			if( x == 5 && !CHATTER5 )
+				{
+				radioChatterPlay( $func_radiochatter_1, "vo_8_3_29" );
+				CHATTER5 = true;
+			if( x == 6 && !CHATTER6 )
+				{
+				radioChatterPlay( $func_radiochatter_1, "vo_8_3_25" );
+				CHATTER6 = true;
+				}
+			if( x == 7 && !CHATTER7 )
+				{
+				radioChatterPlay( $func_radiochatter_1, "vo_8_3_21" );
+				CHATTER7 = true;
+				}
+			if( x == 8 && !CHATTER8 )
+				{
+				radioChatterPlay( $func_radiochatter_1, "vo_8_3_18" );
+				CHATTER8 = true;
+				}
+			if( x == 9 && !CHATTER9 )
+				{
+				radioChatterPlay( $func_radiochatter_1, "vo_8_3_15" );
+				CHATTER9 = true;
+				}
+			if( x == 10 && !CHATTER10 )
+				{
+				radioChatterPlay( $func_radiochatter_1, "vo_8_3_12" );
+				CHATTER10 = true;
+				}
+			if( x == 11 && !CHATTER11 )
+				{
+				radioChatterPlay( $func_radiochatter_1, "vo_8_3_8" );
+				CHATTER11 = true;
+				}
+			if( x == 12 && !CHATTER12 )
+				{
+				radioChatterPlay( $func_radiochatter_1, "vo_8_3_39" );
+				CHATTER12 = true;
+				}
+			if( x == 13 && !CHATTER13 )
+				{
+				radioChatterPlay( $func_radiochatter_1, "vo_8_3_31" );
+				CHATTER13 = true;
+				}
+			}
+		}
+			
+	}
+
+	*/
+	
+	void whoLetTheDogsOut( entity fighter , entity projectileOne , entity projectileTwo , float burst )	
+	{
+
+	entity tempTarget = $null_entity;
+	
+	// Master function for firing volleys of missiles at the player.
+	
+	// Declare counter
+	float burstCount = 0;
+	
+	// Check counter against total volleys and valid entity status
+	while( burstCount < burst && isValidEntity( fighter ) )	
+		{
+
+			vector guessLead = $player1.getLinearVelocity();
+			//guessLead_x = guessLead_x * 2;
+			//guessLead_y = guessLead_y * 2;
+			vector playerLeading = $player1.getWorldOrigin() + guessLead;
+		
+	
+			sys.setSpawnArg( "classname", "target_null" );
+			sys.setSpawnArg( "origin", playerLeading );
+			tempTarget = sys.spawn( "target_null" );
+	
+			projectileOne.appendTarget( tempTarget );
+			projectileTwo.appendTarget( tempTarget );
+				
+			// Fire away!
+			sys.trigger( projectileOne );
+			sys.wait( .1 );
+			sys.trigger( projectileTwo );
+			sys.wait( .3 );
+		
+			// Increment burst counter
+			burstCount++;
+		
+			tempTarget.remove();
+		
+			projectileOne.removeTarget( tempTarget );
+			projectileTwo.removeTarget( tempTarget );
+		}	
+	
+		if( !isValidEntity( fighter ) )	
+			{
+				// Quick check for correctly terminating the function
+				//sys.println( "Caught flyer death, ignoring weapons fire call" );
+				tempTarget.remove();	
+			}
+	}
+	
+	void stroggFlyerExplosion( entity flyer , entity explosion )	
+	{
+
+		// Define variables for function
+		entity pilot;
+		vector old;
+		vector new;
+		vector flingPilot;
+	
+		// Calculate velocity vector
+		old = flyer.getWorldOrigin();
+		sys.waitFrame();
+		new = flyer.getWorldOrigin();
+
+		// Nuke flyer and trigger explosion
+		flyer.hide();
+		flingPilot = new - old;
+		sys.trigger( explosion );
+		sys.waitFrame();
+		
+		// Spawn ragdoll pilot and remove flyer
+		sys.setSpawnArg( "classname", "monster_strogg_marine" );
+		sys.setSpawnArg( "origin", explosion.getWorldOrigin() + '0 0 64');
+		pilot = sys.spawn( "monster_strogg_marine" );
+		pilot.kill();
+		flyer.remove();
+		sys.waitFrame();
+
+		// Establish velocity for flinging pilot
+		flingPilot_x = 300*flingPilot_x;
+		flingPilot_y = 300*flingPilot_y;
+		flingPilot_z = 3000;
+		//sys.println( flingPilot );
+	
+		// Make that ragdoll fly!
+		pilot.setLinearVelocity( flingPilot );			
+	}
+	
+	void removeFlyerBits(string flyerNumber)
+	{
+		entity flyerBit = $nullEntity; 
+	
+		flyerBit = sys.getEntity("strafingFlyer_" + flyerNumber);
+		if (flyerBit != $nullEntity)
+			flyerBit.remove();
+		flyerBit = sys.getEntity("strafeBase_" + flyerNumber);
+		if (flyerBit != $nullEntity)
+			flyerBit.remove();
+		flyerBit = sys.getEntity("flyerStrafeExplode_" + flyerNumber);
+		if (flyerBit != $nullEntity)
+			flyerBit.remove();
+		flyerBit = sys.getEntity("strafeRocketA_" + flyerNumber);
+		if (flyerBit != $nullEntity)
+			flyerBit.remove();
+		flyerBit = sys.getEntity("strafeRocketB_" + flyerNumber);
+		if (flyerBit != $nullEntity)
+			flyerBit.remove();
+		flyerBit = sys.getEntity("flyerStrafeBoom_" + flyerNumber);
+		if (flyerBit != $nullEntity)
+			flyerBit.remove();
+		flyerBit = sys.getEntity("flyerDamage_" + flyerNumber);
+		if (flyerBit != $nullEntity)
+			flyerBit.remove();
+		flyerBit = sys.getEntity("strafeLeader_" + flyerNumber);
+		if (flyerBit != $nullEntity)
+			flyerBit.remove();
+	} 
+	
+	void raceProgress0()
+	{
+		$vehicle_speeder_1.guiEvent( "showprogress0" );
+	}
+	
+	void raceProgress10()
+	{
+		$vehicle_speeder_1.guiEvent( "showprogress10" );
+	}
+	
+	void raceProgress20()
+	{
+		$vehicle_speeder_1.guiEvent( "showprogress20" );
+	}
+	
+	void raceProgress30()
+	{
+		$vehicle_speeder_1.guiEvent( "showprogress30" );
+	}
+	
+	void raceProgress40()
+	{
+		$vehicle_speeder_1.guiEvent( "showprogress40" );
+	}
+	
+	void raceProgress50()
+	{
+		$vehicle_speeder_1.guiEvent( "showprogress50" );
+	}
+	
+	void raceProgress60()
+	{
+		$vehicle_speeder_1.guiEvent( "showprogress60" );
+	}
+	
+	void raceProgress70()
+	{
+		$vehicle_speeder_1.guiEvent( "showprogress70" );
+	}
+	
+	void raceProgress80()
+	{
+		$vehicle_speeder_1.guiEvent( "showprogress80" );
+	}
+	
+	void raceProgress90()
+	{
+		$vehicle_speeder_1.guiEvent( "showprogress90" );
+	}
+	
+	void raceProgress100()
+	{
+		$vehicle_speeder_1.guiEvent( "showprogress100" );
+	}
+	
+	void speederInArea1()
+	{
+		RACE_AREA = 1;
+	}
+	
+	void speederInArea2()
+	{
+		RACE_AREA = 2;
+	}
+	void speederInArea3()
+	{
+		RACE_AREA = 3;
+	}
+	
+	void lockdownGate1Close()
+	{
+		$lockdown_gate_R_1L.time( 60 );
+		$lockdown_gate_R_1L.accelTime( 0 );
+		$lockdown_gate_R_1L.decelTime( 0 );
+		$lockdown_gate_R_1R.time( 60 );
+		$lockdown_gate_R_1R.accelTime( 0 );
+		$lockdown_gate_R_1R.decelTime( 0 );
+		$lockdown_gate_R_1L.move(EAST, 448 );
+		$lockdown_gate_R_1R.move(WEST, 448 );
+		sys.waitFor( $lockdown_gate_R_1L );
+		sys.waitFor( $lockdown_gate_R_1R );
+		$lockdown_gate_R_1L.time( 5 );
+		$lockdown_gate_R_1L.accelTime( 0 );
+		$lockdown_gate_R_1L.decelTime( 2 );
+		$lockdown_gate_R_1R.time( 5 );
+		$lockdown_gate_R_1R.accelTime( 0 );
+		$lockdown_gate_R_1R.decelTime( 2 );
+		$lockdown_gate_R_1L.move( EAST, 96 );
+		$lockdown_gate_R_1R.move( WEST, 96 );
+		sys.waitFor( $lockdown_gate_R_1L );
+		sys.waitFor( $lockdown_gate_R_1R );
+		if( RACE_AREA <= 1 )
+			{
+				radioChatterPlay($func_radiochatter_1, "vo_darn_shitlock");
+				sys.trigger( $objectivefailed_area1 );
+			}
+	}
+	
+	void lockdownGate2Down()
+	{
+		$lockdown_gate_R_2.time( 60 + area1TimeLeft );
+		$lockdown_gate_R_2.accelTime( 0 );
+		$lockdown_gate_R_2.decelTime( 0 );
+		$lockdown_gate_R_2.move( DOWN, 416 );
+		sys.waitFor( $lockdown_gate_R_2 );
+		sys.trigger( $func_aas_obstacle_1 );
+		$lockdown_gate_R_2.time( 5 );
+		$lockdown_gate_R_2.accelTime( 0 );
+		$lockdown_gate_R_2.decelTime( 2 );
+		$lockdown_gate_R_2.move( DOWN, 128 );
+		sys.waitFor( $lockdown_gate_R_2 );
+		if( RACE_AREA <= 2 )
+			{
+				radioChatterPlay($func_radiochatter_1, "vo_darn_shitlock");
+				sys.trigger( $objectivefailed_area2 );
+			}
+	}
+	
+	
+	void startTimerArea1()
+	{
+		sys.trigger( $objective_area1 );
+		thread lockdownGate1Close();
+	
+		AREA1_TIME_STARTED = sys.getTime();
+		AREA1_TIME_EXPIRED = AREA1_TIME_STARTED + AREA1_TOTAL_TIME;
+	
+		$vehicle_speeder_1.guiEvent( "showspeedertimer" );
+		$vehicle_speeder_1.guiEvent( "showspeedertimer2" );
+		do
+		{
+			float timeNow = sys.getTime();
+			if( RACE_AREA == 1 )
+			{
+				float timeLeft = AREA1_TIME_EXPIRED - timeNow;
+				float seconds = sys.intVal( timeLeft );
+				float milsecs = sys.intVal( (timeLeft - seconds) * 100.0 );
+				$vehicle_speeder_1.setGuiParm( "currenttime", seconds );
+				$vehicle_speeder_1.guiEvent( "updatetimer" );
+				$vehicle_speeder_1.setGuiParm( "currenttime2", milsecs );
+				$vehicle_speeder_1.guiEvent( "updatetimer2" );
+			}
+	
+			sys.waitFrame();                    
+	
+		} while( timeNow <= AREA1_TIME_EXPIRED ); }
+	
+	void startTimerArea2()
+	{
+		// figure out how much time to carry over from area 1, but 
+		// don't let the area1 time left go negative and screw everything.
+		area1TimeLeft = AREA1_TIME_EXPIRED - sys.getTime();
+		if( area1TimeLeft < 0 )
+		{
+			area1TimeLeft = 0;
+		}
+	
+		AREA2_TIME_STARTED = sys.getTime();
+		AREA2_TIME_EXPIRED = AREA2_TIME_STARTED + AREA2_TOTAL_TIME + area1TimeLeft;
+	
+		$vehicle_speeder_1.guiEvent( "showspeedertimer" );
+		$vehicle_speeder_1.guiEvent( "showspeedertimer2" );
+	
+		do
+		{
+			float timeNow = sys.getTime();
+			if( RACE_AREA == 2 )
+			{
+				float timeLeft = AREA2_TIME_EXPIRED - timeNow;
+				float seconds = sys.intVal( timeLeft );
+				float milsecs = sys.intVal( (timeLeft - seconds) * 100.0 );
+				$vehicle_speeder_1.setGuiParm( "currenttime", seconds );
+				$vehicle_speeder_1.guiEvent( "updatetimer" );
+				$vehicle_speeder_1.setGuiParm( "currenttime2", milsecs );
+				$vehicle_speeder_1.guiEvent( "updatetimer2" );
+			}
+	
+			sys.waitFrame();                    
+	
+		} while( timeNow <= AREA2_TIME_EXPIRED ); }
+	
+
+	
+	void area1Cleared()
+	{
+		sys.trigger( $objectivecomplete_area1 );
+		thread startTimerArea2();
+		thread lockdownGate2Down();
+		sys.wait( 5 );
+		sys.trigger( $objective_area2 );
+	}
+	
+	void area2Cleared()
+	{
+		sys.trigger( $objectivecomplete_area2 );
+		
+	}
+	
+	void flyThrough06()  //first set of flyers through terrain
+	{
+		$flyer_mover_06.time( 10 );
+		sys.trigger( $canyon_fighter_6 );
+		$flyer_mover_06.removeInitialSplineAngles();
+		$flyer_mover_06.enableSplineAngles();
+		$flyer_mover_06.startSpline( $flyer_spline_06 );
+
+		sys.waitFor( $flyer_mover_06 );
+		$flyer_mover_06.remove();
+		$canyon_fighter_6.remove();	
+	}
+	
+	void flyThrough05()  //first set of flyers through terrain
+	{
+		$flyer_mover_05.time( 10 );
+		sys.trigger( $canyon_fighter_5 );
+		$flyer_mover_05.removeInitialSplineAngles();
+		$flyer_mover_05.enableSplineAngles();
+		$flyer_mover_05.startSpline( $flyer_spline_05 );
+
+		sys.waitFor( $flyer_mover_05 );
+		$flyer_mover_05.remove();
+		$canyon_fighter_5.remove();	
+	}
+
+	
+	void RSSpeeder3MoveOut()  //3rd NPC speeder on spline
+	{
+		$RS_speeder_3.time( 7 );
+		$RS_speeder_3.accelTime( 1. );
+		$RS_speeder_3.startSpline( $RS_speeder_3_spline_2 );
+		sys.waitFor( $RS_speeder_3 );
+		//$RS_rider_3.remove();
+		$RS_speeder_3.stopSpline();
+		$RS_speeder_3.setOrigin( '-1728 1576 360' );
+	}
+	
+	void RSSpeeder4MoveOut()  //3rd NPC speeder on spline
+	{
+		$RS_speeder_4.time( 7 );
+		$RS_speeder_4.accelTime( 1. );
+		$RS_speeder_4.startSpline( $RS_speeder_4_spline_2 );
+		sys.waitFor( $RS_speeder_4 );
+		$RS_speeder_4.stopSpline();
+		$RS_speeder_4.setOrigin( '-767.21 6717.56 1217.11' );
+		$RS_rider_4.hide();
+		$RS_speeder_4.hide();
+	}
+	
+	void RSSpeeder5MoveOut()  //3rd NPC speeder on spline
+	{
+		$RS_speeder_5.time( 7 );
+		$RS_speeder_5.accelTime( 1. );
+		$RS_speeder_5.startSpline( $RS_speeder_5_spline_2 );
+		sys.waitFor( $RS_speeder_5 );
+		$RS_speeder_5.stopSpline();
+		$RS_speeder_5.setOrigin( '-765.21 6709.56 1217.11' );
+		$RS_rider_5.hide();
+		$RS_speeder_5.hide();
+	}
+	
+	void darnellRoadRage()  //2nd NPC speeder on spline
+	{
+		$speeder_mover_02.setOrigin( '-7732 -18644 1168' );
+		sys.wait( .1 );
+		$speeder_mover_02.time( 8 );
+		$speeder_mover_02.accelTime( .5 );
+		$speeder_mover_02.startSpline( $darnell_rageSpline );
+		//radioChatterPlayWait ($func_radiochatter_1, "vo_8_2_1");  //this is 5 sec long, terminates with crash
+		sys.waitFor( $speeder_mover_02 );
+		$cine_darnell_speeder.remove();
+		$speeder_mover_02.remove();
+		
+
+	}
+
+	void RSSpeeder1MoveOut()  //2nd NPC speeder on spline
+	{
+		$RS_speeder_1.time( 10 );
+		$RS_speeder_1.accelTime( 1. );
+		$RS_speeder_1.startSpline( $RS_speeder_1_spline_2 );
+		sys.waitFor( $RS_speeder_1 );
+		//$RS_rider_1.remove();
+		$RS_speeder_1.stopSpline();
+		$RS_speeder_1.setOrigin( '726.2 1100.53 487.11' );
+	}
+	
+	void RSSpeeder2MoveOut()  //2nd NPC speeder on spline
+	{
+		$RS_speeder_2.time( 7 );
+		$RS_speeder_2.accelTime( 1. );
+		$RS_speeder_2.startSpline( $RS_speeder_2_spline_2 );
+		sys.waitFor( $RS_speeder_2 );
+		//$RS_rider_2.remove();
+		$RS_speeder_2.stopSpline();
+		$RS_speeder_2.setOrigin( '-2520 1776 312' );
+	}
+	
+	void mccGoesBoom()
+	{
+		radioChatterPlay($func_radiochatter_1, "vo_marine1_crit");
+		sys.wait( 5 );
+		radioChatterPlay($func_radiochatter_1, "vo_marine2_hullint");
+		sys.trigger( $mcc_death_splosion_1 );
+		sys.wait( 2 );
+		sys.trigger( $mcc_death_splosion_2 );
+		$mcc_01.playAnim(ANIMCHANNEL_ALL, "impact");
+		sys.wait( 1 );
+		sys.trigger( $mcc_death_splosion_2 );
+		radioChatterPlay($func_radiochatter_1, "vo_marine3_aband");
+		sys.wait( 2 );
+		sys.trigger( $mcc_death_splosion_3 );
+		sys.wait( .5 );
+		sys.trigger( $mcc_death_splosion_4 );
+		sys.wait( 1.5 );
+		sys.trigger( $mcc_death_splosion_5 );
+		sys.wait( .75 );
+		sys.trigger( $mcc_death_splosion_6 );
+		$harvester_mcc_1.remove();
+		$harvester_mcc_3.remove();
+		$mcc_01.playAnim(ANIMCHANNEL_ALL, "space_explode");
+		$MCC_blast_mover.show();
+		sys.trigger( $MCC_blast_pain );
+		$MCC_blast_mover.time( 8 );
+		$MCC_blast_mover.accelTime( 3 );
+		$MCC_blast_mover.moveTo( $MCC_blast_target );
+		sys.waitFor( $MCC_blast_mover );
+		$MCC_blast_mover.remove();
+		$MCC_blast_pain.remove();
+		$mcc_01.remove();
+		
+	}
+	
+	void start_your_engines()  // force player into vehicle at start of level; start spline
+	{
+		sys.wait( 1. );
+		$player1.enterVehicle( $vehicle_speeder_1 );
+		$vehicle_speeder_1.setOrigin( '4540. -8040. 1164.11' );
+		$vehicle_speeder_1.setAngles( '0 165 0' );
+		//$vehicle_speeder_1.setSpeederBikeBoostEnabled( 0 );
+		//$vehicle_speeder_1.setSpeederBikeMaxGravityDistance( 32, 0 );
+		sys.wait( 0.1 );
+		$vehicle_speeder_1.lock( 1 );
+		$vehicle_speeder_1.guiEvent( "hidespeedertimer2" );
+		thread raceProgress0();
+		sys.music( "m8_chase" );
+		sys.fadeIn( '0 0 0', .5);
+		thread flyThrough06();
+		thread flyThrough05();
+		radioChatterPlay($func_radiochatter_1, "vo_tak_srggetmv");
+		thread RSSpeeder3MoveOut();
+		sys.wait( .2 );
+		thread RSSpeeder4MoveOut();
+		sys.wait( .2 );
+		thread RSSpeeder5MoveOut();
+		sys.wait( 1 );
+		thread darnellRoadRage();
+		radioChatterPlay($func_radiochatter_1, "vo_darn_reactcrit");
+		sys.trigger( $mcc_turretSpawner );
+		thread RSSpeeder1MoveOut();
+		thread RSSpeeder2MoveOut();		
+		sys.wait( 3 );
+
+		sys.wait( 3 );
+		thread mccGoesBoom();
+		
+	}
+
+	void mccStrafeRun1()
+	{
+		$flyer_mover_7.time( 9 );
+		sys.trigger( $canyon_fighter_7 );
+		//$flyer_mover_01.removeInitialSplineAngles();
+		$flyer_mover_7.enableSplineAngles();
+		$flyer_mover_7.startSpline( $flyer_spline_7 );
+
+		sys.waitFor( $flyer_mover_7 );
+		$flyer_mover_7.remove();
+		$canyon_fighter_7.remove();	
+	}
+	
+	void harvesterVSMcc()
+	{
+		$mcc_attacker_1_target.becomeNonSolid();
+		//sys.trigger( $mcc_attacker_1 );
+		sys.waitFrame();
+		$mcc_attacker_1.scriptedMove( $mcc_attacker_1_pos, 64, 1 );
+		sys.println( "harvester moving" );
+		sys.wait( 1 );
+		$mcc_cannon_1.appendTarget( $mcc_attacker_1_target );
+		$mcc_cannon_2.appendTarget( $mcc_attacker_1_target );
+		$mcc_cannon_3.appendTarget( $mcc_attacker_1_target );
+		$mcc_cannon_4.appendTarget( $mcc_attacker_1_target );
+				
+			// Fire away!
+			sys.waitFrame();
+			sys.trigger( $mcc_cannon_1 );
+			sys.wait( .25 );
+			sys.trigger( $mcc_cannon_2 );
+			sys.wait( .25 );
+			sys.trigger( $mcc_cannon_4 );
+			sys.wait( .25 );
+			sys.trigger( $mcc_cannon_3 );
+			sys.wait( .25 );
+			sys.trigger( $mcc_cannon_2 );
+			sys.wait( .25 );
+			sys.trigger( $mcc_cannon_1 );
+			sys.wait( .5 );
+			sys.trigger( $mcc_cannon_3 );
+			sys.wait( .25 );
+			sys.trigger( $mcc_cannon_4 );
+			sys.wait( .25 );
+			sys.trigger( $mcc_cannon_1 );
+			sys.wait( .25 );
+			sys.trigger( $mcc_cannon_2 );
+			sys.wait( .25 );
+			sys.trigger( $mcc_cannon_4 );
+			sys.wait( .25 );
+			sys.trigger( $mcc_cannon_3 );
+			sys.wait( .25 );
+			sys.trigger( $mcc_cannon_2 );
+			sys.wait( .25 );
+			sys.trigger( $mcc_cannon_1 );
+			sys.wait( .5 );
+			sys.trigger( $mcc_cannon_3 );
+			sys.wait( .25 );
+			sys.trigger( $mcc_cannon_4 );
+	}
+	
+	void mccStrafeRun2()
+	{
+		$flyer_mover_8.time( 9 );
+		sys.trigger( $canyon_fighter_8 );
+		//$flyer_mover_01.removeInitialSplineAngles();
+		$flyer_mover_8.enableSplineAngles();
+		$flyer_mover_8.startSpline( $flyer_spline_8 );
+
+		sys.waitFor( $flyer_mover_8 );
+		$flyer_mover_8.remove();
+		$canyon_fighter_8.remove();	
+	}
+	
+	void npcSpeederGo_01()  //1st NPC speeder on spline
+	{
+		
+		$speeder_mover_01.time( 8 );
+		$speeder_mover_01.accelTime( 1 );
+		$speeder_mover_01.decelTime( 2 );
+		$speeder_mover_01.startSpline( $npc_speeder_spline_01 );
+		sys.waitFor( $speeder_mover_01 );
+		aiScriptedAnimLoop( $cine_tak_speeder, "speeder_idle", 16 );
+	}
+	
+	void npcSpeederGo_02()  //2nd NPC speeder on spline
+	{
+		
+		$speeder_mover_02.time( 13 );
+		$speeder_mover_02.accelTime( 1 );
+		$speeder_mover_02.decelTime( 2 );
+		$speeder_mover_02.startSpline( $cine_tak_spline_short );
+		sys.waitFor( $speeder_mover_02 );
+	}
+	
+	void RSSpeeder3Go()
+	{
+		$RS_speeder_3.time( 13 );
+		$RS_speeder_3.accelTime( 1 );
+		$RS_speeder_3.decelTime( 2 );
+		$RS_speeder_3.startSpline( $RS_speeder_1_spline_1 );
+		sys.waitFor( $RS_speeder_3 );
+		$RS_speeder_3.setOrigin( '323.32 -6800.76 1180.92' );
+	}
+	
+	void RSSpeeder4Go()
+	{
+		$RS_speeder_4.time( 10 );
+		$RS_speeder_4.accelTime( 1 );
+		$RS_speeder_4.decelTime( 2 );
+		$RS_speeder_4.startSpline( $RS_speeder_2_spline_1 );
+		sys.waitFor( $RS_speeder_4 );
+		$RS_speeder_4.setOrigin( '2720 -7676 1168' );
+	}
+	
+	void RSSpeeder5Go()
+	{
+		$RS_speeder_5.time( 12 );
+		$RS_speeder_5.accelTime( 1 );
+		$RS_speeder_5.decelTime( 2 );
+		$RS_speeder_5.startSpline( $cine_tak_spline_short );
+		sys.waitFor( $RS_speeder_5 );
+		$RS_speeder_5.setOrigin( '1500 -8236 1184' );
+	}
+	
+	void RSSpeeder1Go()
+	{
+		$RS_speeder_1.time( 14 );
+		$RS_speeder_1.accelTime( 1 );
+		$RS_speeder_1.decelTime( 2 );
+		$RS_speeder_1.startSpline( $RS_speeder_1_spline_1 );
+		sys.waitFor( $RS_speeder_1 );
+	}
+	
+	void RSSpeeder2Go()
+	{
+		$RS_speeder_2.time( 10 );
+		$RS_speeder_2.accelTime( 1 );
+		$RS_speeder_2.decelTime( 2 );
+		$RS_speeder_2.startSpline( $RS_speeder_2_spline_1 );
+		sys.waitFor( $RS_speeder_2 );
+	}
+	
+	void cineDekardSpeederGo()
+	{
+		$cine_speeder_dekard.time( 13 );
+		$cine_speeder_dekard.accelTime( 1 );
+		$cine_speeder_dekard.decelTime( 2 );
+		$cine_speeder_dekard.startSpline( $cine_dekard_spline_short );
+		sys.waitFor( $cine_speeder_dekard );
+	}
+
+	void cineTakExplodes()
+	{
+		sys.trigger( $npc_speeder_exp_01 );
+		$speeder_mover_01.remove();
+	}
+		
+	void bomber1Explosions()
+	{
+		sys.wait( 1.6 );
+		sys.trigger( $mcc_small_splosion_3 );
+		sys.wait( 0.3 );
+		sys.trigger( $mcc_small_splosion_4 );
+		sys.wait( 0.5 );
+		sys.trigger( $mcc_small_splosion_5 );
+	}
+	
+	void bomberRun_mcc()
+	{
+		$bomber_mover_1.time( 4 );
+		sys.trigger( $bomber_1 );
+		$bomber_mover_1.enableSplineAngles();
+		$bomber_mover_1.startSpline( $mccBomber_spline_1 );
+		thread bomber1Explosions();
+		sys.waitFor( $bomber_mover_1 );
+		$bomber_mover_1.remove();
+		$bomber_1.remove();	
+	}
+	
+
+	
+	//******************************************intro cinematic********************************************************
+	
+	void raceIntroCinematic()
+	{
+		sys.fadeOut( '0 0 0', 0);
+		thread mccStrafeRun1();
+		sys.wait( .1 );
+		thread harvesterVSMcc();
+		sys.wait( .2 );
+		sys.trigger( $harvester_mcc_1 );
+		sys.trigger( $harvester_mcc_3 );
+		aiScriptedAnimLoop( $harvester_mcc_1, "taunt", 0 );	
+		aiScriptedAnimLoop( $cine_tak_speeder, "speeder_idle", 0 );
+		aiScriptedAnimLoop( $cine_darnell_speeder, "speeder_idle", 0 );
+		aiScriptedAnimLoop( $cine_dekard_speeder, "speeder_idle", 0 );
+		aiScriptedAnimLoop( $RS_rider_1, "speeder_idle", 0 );
+		aiScriptedAnimLoop( $RS_rider_2, "speeder_idle", 0 );
+		aiScriptedAnimLoop( $RS_rider_3, "speeder_idle", 0 );
+		aiScriptedAnimLoop( $RS_rider_4, "speeder_idle", 0 );
+		aiScriptedAnimLoop( $RS_rider_5, "speeder_idle", 0 );
+		sys.trigger( $cine_overheadCam1 );
+		sys.fadeIn( '0 0 0', .5);
+		radioChatterPlay( $func_radiochatter_1, "vo_marine2_harvinbound" );
+		$cine_overheadCam1_mover.time( 13 );
+		$cine_overheadCam1_mover.accelTime( 1 );
+		$cine_overheadCam1_mover.decelTime( 1 );
+		$cine_overheadCam1_mover.rotateOnce( '30 10 0' );
+		$cine_overheadCam1_mover.moveTo( $cine_overheadCam1_pos1 );
+		
+		sys.wait( 1 );
+		aiScriptedAnimLoop( $harvester_mcc_3, "taunt", 0 );
+		sys.wait( 2.5 );
+		sys.trigger( $mcc_small_splosion_1 );
+		sys.wait( 1.5 );
+		radioChatterPlay( $func_radiochatter_1, "vo_marine3_shilddown" );
+		sys.wait( 2 );
+		radioChatterPlay( $func_radiochatter_1, "vo_marine3_keepoff" );
+		thread RSSpeeder3Go();
+		thread RSSpeeder4Go();
+		thread RSSpeeder5Go();
+		sys.wait( 1. );
+		radioChatterPlay($func_radiochatter_1, "vo_marine5_dropprep");
+		sys.wait( 1. );
+		thread npcSpeederGo_01();
+		thread npcSpeederGo_02();
+		thread cineDekardSpeederGo();
+		sys.wait( 0.7 );
+		thread RSSpeeder1Go();
+		thread RSSpeeder2Go();
+		sys.wait( 3. );
+		sys.trigger( $cine_overheadCam1 );
+		sys.trigger( $cine_overheadCam2 );
+
+		sys.wait( 1.0 );
+		radioChatterPlayWait( $func_radiochatter_1, "vo_marine6_whathell" );
+		//sys.wait( 1.0 );
+
+		sys.trigger( $dropTurret_cinematic_1 );
+		sys.wait ( 0.6 );
+		thread mccStrafeRun2();
+		radioChatterPlay( $func_radiochatter_1, "vo_marine6" );
+		sys.wait( 3. );
+		radioChatterPlay( $func_radiochatter_1, "vo_marine6_waveunder" );
+		sys.wait( .5 );
+		thread bomberRun_mcc();
+		sys.wait( .5 );
+		sys.trigger( $cine_overheadCam2 );
+		sys.trigger( $cine_overheadCam3 );
+		sys.wait( 1 );
+		sys.trigger( $mcc_small_splosion_2 );
+		sys.wait( 1 );
+		sys.fadeOut( '0 0 0', 1 );
+		sys.wait( 1.5 );
+		$cine_dekard_speeder.remove();
+		$cine_speeder_dekard.remove();
+		$dropTurret_cinematic_1.remove();
+		sys.trigger( $cine_overheadCam3 );
+
+		thread start_your_engines();
+		sys.wait( 1 );
+	
+	}
+		
+	void flyThrough01()  //first set of flyers through terrain
+	{
+		$flyer_mover_01.time( 24 );
+		sys.trigger( $canyon_fighter_1 );
+		//$flyer_mover_01.removeInitialSplineAngles();
+		$flyer_mover_01.enableSplineAngles();
+		$flyer_mover_01.startSpline( $flyer_spline_01 );
+
+		sys.waitFor( $flyer_mover_01 );
+		$flyer_mover_01.remove();
+		$canyon_fighter_1.remove();	
+	}
+
+	void bomberExplode_1()
+	{
+		stroggFlyerExplosion( $strafingFlyer_1 , $flyerStrafeExplode_1 );
+	}
+	
+	void beginBomberRun_1()
+	{
+	//	sys.println("void beginBomberRun_1");
+
+
+		setNewTimes($strafeBase_1, 12, 0, 0);
+   		$strafeBase_1.startSpline($bomber_spline_1);
+	
+		sys.wait(2);
+
+		if (!isValidEntity($strafingFlyer_1)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		whoLetTheDogsOut( $strafingFlyer_1, $strafingFlyer_1.getTarget(0), $strafingFlyer_1.getTarget(1), 3 );
+
+		sys.wait(1);
+
+		if (!isValidEntity($strafingFlyer_1)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		whoLetTheDogsOut( $strafingFlyer_1, $strafingFlyer_1.getTarget(0), $strafingFlyer_1.getTarget(1), 1 );
+	
+		sys.wait(1);
+		
+		if (!isValidEntity($strafingFlyer_1)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		whoLetTheDogsOut( $strafingFlyer_1, $strafingFlyer_1.getTarget(0), $strafingFlyer_1.getTarget(1), 1 );
+	
+		sys.wait(1);
+		
+
+		if (!isValidEntity($strafingFlyer_1)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		whoLetTheDogsOut( $strafingFlyer_1, $strafingFlyer_1.getTarget(0), $strafingFlyer_1.getTarget(1), 1 );
+
+		sys.wait(1.75);
+
+		if (!isValidEntity($strafingFlyer_1)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		sys.trigger($strafeSnd_1);
+
+		sys.waitFor( $strafeBase_1 );
+		removeFlyerBits("1");	
+	}
+	
+	
+	void bridge1Battle()
+	{
+		sys.trigger( $gladiator_bridge1 );
+		sys.trigger( $marine1_bridge1 );
+		sys.trigger( $marine2_bridge1 );
+	}
+	
+	void RSSpeeder2F02()  //2nd NPC speeder on spline
+	{
+		
+		$RS_speeder_2.time( 7 );
+		$RS_speeder_2.accelTime( 1. );
+		$RS_speeder_2.startSpline( $RS_speeder_2_spline_3 );
+		sys.waitFor( $RS_speeder_2 );
+		$RS_speeder_2.stopSpline();
+		$RS_speeder_2.remove();
+	}
+	
+	void RSSpeeder1F02()  //2nd NPC speeder on spline
+	{
+		$RS_speeder_1.time( 9 );
+		$RS_speeder_1.accelTime( 1. );
+		$RS_speeder_1.startSpline( $RS_speeder_1_spline_3 );
+		sys.waitFor( $RS_speeder_1 );
+		$RS_speeder_1.stopSpline();
+		$RS_rider_1.remove();
+		$RS_speeder_1.remove();
+	}
+	
+	void speeder3Crash()
+	{
+		$RS_speeder_3.time( 6 );
+		$RS_speeder_3.accelTime( 0 );
+		$RS_speeder_3.startSpline( $RS_speeder_3_spline_3 );
+		sys.waitFor( $RS_speeder_3 );
+		sys.trigger( $RS_speeder_3_exp );
+		$RS_rider_3.kill();
+		$RS_speeder_3.remove();
+	}
+	
+	void speederFlight02()
+	{
+		thread speeder3Crash();
+		thread RSSpeeder2F02();
+		thread RSSpeeder1F02();
+		radioChatterPlayWait( $func_radiochatter_1, "vo_tak_holyshit" );
+		radioChatterPlayWait( $func_radiochatter_1, "vo_darn_ihopeshipt" );
+		sys.wait( 1 );
+		radioChatterPlayWait( $func_radiochatter_1, "vo_tak_youthnklt" );
+		radioChatterPlayWait( $func_radiochatter_1, "vo_marks_nosuch" );
+		thread startTimerArea1();
+		sys.wait( 2 );
+		radioChatterPlay( $func_radiochatter_1, "vo_darn_sargeem" );
+	}
+	
+	void mountainHarvester1Walk()
+	{
+		sys.trigger( $harvester_mtn_1 );
+		aiScriptedAnim( $harvester_mtn_1, "hub1_battle" , 16, 0 );
+
+	}
+	
+	void bomberExplode_2()
+	{
+		stroggFlyerExplosion( $strafingFlyer_2 , $flyerStrafeExplode_2 );
+	}
+	
+	void beginBomberRun_2()
+	{
+		//	sys.println("void beginBomberRun_2");
+
+		sys.wait( 1 );
+	
+		setNewTimes($strafeBase_2, 17, 0, 0);
+   		$strafeBase_2.startSpline($bomber_spline_2);
+	
+		sys.wait(2);
+
+		if (!isValidEntity($strafingFlyer_2)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		whoLetTheDogsOut( $strafingFlyer_2, $strafingFlyer_2.getTarget(0), $strafingFlyer_2.getTarget(1), 3 );
+
+		sys.wait(1);
+
+		if (!isValidEntity($strafingFlyer_2)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		whoLetTheDogsOut( $strafingFlyer_2, $strafingFlyer_2.getTarget(0), $strafingFlyer_2.getTarget(1), 1 );
+	
+		sys.wait(1);
+		
+		if (!isValidEntity($strafingFlyer_2)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		whoLetTheDogsOut( $strafingFlyer_2, $strafingFlyer_2.getTarget(0), $strafingFlyer_2.getTarget(1), 1 );
+	
+		sys.wait(1);
+		
+		if (!isValidEntity($strafingFlyer_2)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		whoLetTheDogsOut( $strafingFlyer_2, $strafingFlyer_2.getTarget(0), $strafingFlyer_2.getTarget(1), 1 );
+	
+		sys.wait(1);
+		
+		if (!isValidEntity($strafingFlyer_2)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		whoLetTheDogsOut( $strafingFlyer_2, $strafingFlyer_2.getTarget(0), $strafingFlyer_2.getTarget(1), 1 );
+	
+		sys.wait(1);
+
+		if (!isValidEntity($strafingFlyer_2)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		whoLetTheDogsOut( $strafingFlyer_2, $strafingFlyer_2.getTarget(0), $strafingFlyer_2.getTarget(1), 1 );
+
+		sys.wait(1.75);
+
+		if (!isValidEntity($strafingFlyer_2)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		sys.trigger($strafeSnd_1);
+
+		sys.waitFor( $strafeBase_2 );
+		removeFlyerBits("1");	
+	}
+	
+	void flyThrough02()  //first set of flyers through terrain
+	{
+		$flyer_mover_02.time( 20 );
+		sys.trigger( $canyon_fighter_2 );
+		//$flyer_mover_02.removeInitialSplineAngles();
+		$flyer_mover_02.enableSplineAngles();
+		$flyer_mover_02.startSpline( $flyer_spline_02 );
+
+		sys.waitFor( $flyer_mover_02 );
+		$flyer_mover_02.remove();
+		$canyon_fighter_2.remove();	
+	}
+	
+	void speeder5Flight03()
+	{
+		$RS_rider_5.show();
+		$RS_speeder_5.show();
+		$RS_speeder_5.time( 13 );
+		$RS_speeder_5.accelTime( 0 );
+		$RS_speeder_5.startSpline( $RS_speeder_5_spline_3 );
+		sys.waitFor( $RS_speeder_5 );
+		$RS_speeder_5.stopSpline();
+		$RS_speeder_5.setOrigin( '10664 9688 -448' );
+		$RS_rider_5.hide();
+		$RS_speeder_5.hide();
+	}
+	
+	void speeder4Crash()
+	{
+		$RS_rider_4.show();
+		$RS_speeder_4.show();
+		$RS_speeder_4.time( 7.5 );
+		$RS_speeder_4.accelTime( 0 );
+		$RS_speeder_4.startSpline( $RS_speeder_4_spline_3 );
+		sys.waitFor( $RS_speeder_4 );
+		sys.trigger( $RS_speeder_4_exp );
+		$RS_rider_4.kill();
+		$RS_speeder_4.remove();
+	}
+	
+	void speederFlight03()
+	{
+		radioChatterPlayWait($func_radiochatter_2, "vo_marine2_lockdead");
+		thread speeder5Flight03();
+		sys.wait( 1 );
+		thread speeder4Crash();
+	}
+	
+	void remove_set_02()  //remove AI behind player
+	{
+		
+		radioChatterPlayWait( $func_radiochatter_1, "vo_tak_dekwatchout" );
+		
+	}
+	
+	void flyThrough03()  //first set of flyers through terrain
+	{
+		$flyer_mover_03.time( 24 );
+		sys.trigger( $canyon_fighter_3 );
+		//$flyer_mover_03.removeInitialSplineAngles();
+		$flyer_mover_03.enableSplineAngles();
+		$flyer_mover_03.startSpline( $flyer_spline_03 );
+
+		sys.waitFor( $flyer_mover_03 );
+		$flyer_mover_03.remove();
+		$canyon_fighter_3.remove();	
+	}
+	
+	void girderCollapse()
+	{
+		
+		
+		$girder_collapse_3.bind( $girder_collapse_4 );
+		$girder_collapse_2.bind( $girder_collapse_3 );
+		$girder_collapse_1.bind( $girder_collapse_2 );
+		
+		$girder_collapse_5.time( 1 );
+		$girder_collapse_5.accelTime( 1 );
+		$girder_collapse_4.time( 1 );
+		$girder_collapse_4.accelTime( 1 );
+		$girder_collapse_5.rotateOnce( '0 0 20' );
+		$girder_collapse_4.rotateOnce( '0 0 -20' );
+		
+		sys.waitFor( $girder_collapse_4 );
+		
+		$girder_collapse_3.unbind();
+		
+		$girder_collapse_3.time( 1 );
+		//$girder_collapse_3.accelTime( 1 );
+		$girder_collapse_3.rotateOnce( '0 0 -17' );
+		
+		sys.waitFor( $girder_collapse_3 );
+		
+		$girder_collapse_fx_1.bind( $girder_collapse_1 );
+		$target_null_41.bind( $girder_collapse_1 );
+		sys.trigger( $girder_collapse_fx_1 );
+		
+		
+		$girder_collapse_3.time( 2 );
+		$girder_collapse_3.decelTime( 1 );
+		$girder_collapse_2.time( 2 );
+		$girder_collapse_2.decelTime( 1 );
+		$girder_collapse_1.time( 2 );
+		$girder_collapse_1.decelTime( 1 );
+		$girder_collapse_3.rotateOnce( '0 0 -35' );
+		$girder_collapse_2.rotateOnce( '0 0 19' );
+		$girder_collapse_1.rotateOnce( '0 0 45' );
+		sys.waitFor( $girder_collapse_1 );
+		sys.wait( 2 );
+		sys.trigger( $girder_collapse_fx_1 );
+		
+		
+	}
+	
+	void bomberExplode_3()
+	{
+		stroggFlyerExplosion( $strafingFlyer_3 , $flyerStrafeExplode_3 );
+	}
+	
+	void beginBomberRun_3()
+	{
+	//	sys.println("void beginBomberRun_3");
+
+
+		setNewTimes($strafeBase_3, 12, 0, 0);
+   		$strafeBase_3.startSpline($bomber_spline_3);
+	
+		sys.wait(2);
+
+		if (!isValidEntity($strafingFlyer_3)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		whoLetTheDogsOut( $strafingFlyer_3, $strafingFlyer_3.getTarget(0), $strafingFlyer_3.getTarget(1), 3 );
+
+		sys.wait(1);
+
+		if (!isValidEntity($strafingFlyer_3)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		whoLetTheDogsOut( $strafingFlyer_3, $strafingFlyer_3.getTarget(0), $strafingFlyer_3.getTarget(1), 1 );
+	
+		sys.wait(1);
+		
+		if (!isValidEntity($strafingFlyer_3)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		whoLetTheDogsOut( $strafingFlyer_3, $strafingFlyer_3.getTarget(0), $strafingFlyer_3.getTarget(1), 1 );
+	
+		sys.wait(1);
+		
+		if (!isValidEntity($strafingFlyer_3)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		whoLetTheDogsOut( $strafingFlyer_3, $strafingFlyer_3.getTarget(0), $strafingFlyer_3.getTarget(1), 1 );
+	
+		sys.wait(1);
+		
+		if (!isValidEntity($strafingFlyer_3)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		whoLetTheDogsOut( $strafingFlyer_3, $strafingFlyer_3.getTarget(0), $strafingFlyer_3.getTarget(1), 1 );
+	
+		sys.wait(1);
+
+		if (!isValidEntity($strafingFlyer_3)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		whoLetTheDogsOut( $strafingFlyer_3, $strafingFlyer_3.getTarget(0), $strafingFlyer_3.getTarget(1), 1 );
+
+		sys.wait(1.75);
+
+		if (!isValidEntity($strafingFlyer_3)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		sys.trigger($strafeSnd_1);
+
+		sys.waitFor( $strafeBase_3 );
+		removeFlyerBits("1");	
+	}
+	
+	void flyThrough04()  //first set of flyers through terrain
+	{
+		$flyer_mover_04.time( 6.8 );
+		sys.trigger( $canyon_fighter_4 );
+		//$flyer_mover_04.removeInitialSplineAngles();
+		$flyer_mover_04.enableSplineAngles();
+		$flyer_mover_04.startSpline( $flyer_spline_04 );
+
+		sys.waitFor( $flyer_mover_04 );
+		$flyer_mover_04.remove();
+		sys.trigger( $canyon_fighter_4_exp );
+		sys.wait( .1 );
+		$canyon_fighter_4.remove();
+		sys.wait( .1 );
+		$bridge_column_breakable01.remove();	
+	}	
+
+	void flyer_4_dead()   //clean up if flyer 4 is killed bfore end of spline
+	{
+		sys.killthread( "flyThrough04" );
+		$flyer_mover_04.remove();
+		$canyon_fighter_4_exp.remove();
+			
+	}
+	
+	void finalHarvesterDown()
+	{
+		//vector harvesterSwapPoint;
+		//vector harvesterSwapDir;
+		
+		sys.trigger( $harvester_final );
+		aiScriptedAnim( $harvester_final, "walk_mountain", 4, 0 );
+		sys.wait( 10 );
+		//harvesterSwapPoint = $harvester_final.getOrigin();
+		//harvesterSwapDir = $harvester_final.getAngles();
+		$harvester_final.remove();
+		sys.trigger( $monster_q4x_harvester_combat_1 );
+		//sys.waitFrame();
+		
+		//$monster_q4x_harvester_combat_1.setOrigin( harvesterSwapPoint );
+		//$monster_q4x_harvester_combat_1.setAngles( harvesterSwapDir );
+	}
+	
+	void bridgeSpeeder1Go()
+	{
+		sys.trigger( $bridge_rider_1 );
+		aiScriptedAnimLoop( $bridge_rider_1, "speeder_idle", 0 );
+		sys.wait( .1 );
+		$bridge_speeder_1.time( 4 );
+		$bridge_speeder_1.accelTime( .2 );
+		$bridge_speeder_1.startSpline( $bridge_speeder_1_spline_1 );
+		sys.waitFor( $bridge_speeder_1 );
+		$bridge_rider_1.remove();
+		$bridge_speeder_1.remove();
+	}
+	
+
+
+	void speeder5Flight04()
+	{
+		$RS_rider_5.show();
+		$RS_speeder_5.show();
+		$RS_speeder_5.time( 9 );
+		$RS_speeder_5.accelTime( 0 );
+		$RS_speeder_5.startSpline( $RS_speeder_5_spline_4 );
+		sys.waitFor( $RS_speeder_5 );
+		$RS_speeder_5.stopSpline();
+		$RS_speeder_5.remove();
+	}
+	
+	void postHarvesterWaves()
+	{
+		sys.wait( 3 );
+		sys.trigger( $turret_drop_spawner );
+	}
+	
+	void checkpoint1Hit()
+	{
+		sys.wait( 3 );
+		sys.trigger( $func_savegame_1 );
+	
+	}
+	
+	void rollerBallOut()
+	{
+		sys.trigger( $roller1 );
+		sys.wait( 0.5 );
+		aiScriptedMoveWait( $roller1, $rollerball1_pos_1, 32, 1 );
+		aiScriptedWait( $roller1 );
+		//$roller1.becomeAggressive( );
+	}
+	
+	void takeSplineUpPipes()
+	{
+		$vehicle_speeder_1.setSpline( $spline_up_pipe );
+		$vehicle_speeder_1.setSpeederBikeSpeed( 400, 3 );
+		$vehicle_speeder_1.setSpeederBikeBoostEnabled( 0 );
+		
+	}
+	
+	void BikeControlToPlayer03()
+	{
+		$vehicle_speeder_1.setSpline( $vehicle_speeder_1 );
+	}
+	
+	void rollerBall2Out()
+	{
+		sys.trigger( $roller2 );
+		sys.wait( 0.5 );
+		aiScriptedMoveWait( $roller2, $rollerball2_pos1, 16, 1 );
+		aiScriptedWait( $roller2 );
+		$roller2.becomeAggressive( );
+				
+	}
+	
+	//moves one flyer sprite across the sky over the trenches
+	void maintainStroggFlyerSprite(entity entMover, entity fxNormal, entity fxDamage, entity entHangar, entity entTgrEnd, vector vDirection)
+	{	
+		sys.wait( sys.random(10) );
+		
+		//will the planes be swervey?
+		float fSwerve = 0;
+		float fWaitTime = 0;
+		float fAmplitude = 0;
+	
+		while(1)	{
+	
+			//place the mover on the "hangar" line, equal in the X but displaced in the Y by +/- ___ units
+	
+			// +/- Y displacement
+			float fDisplacementMax = 2000;
+			float fDelta = 0;
+	
+			//start location for the flyer
+			vector vStart = entHangar.getWorldOrigin();
+			vector vSpeed = '0 0 0';
+			vector vAngs;
+	
+			//flyer speed
+			float fSpeed = 900 + (sys.random(600));
+	
+			//will the plane be swervey?
+			if ( 1 ) {//sys.random(10) < 4)	{
+				fSwerve = sys.random(200) + 100;
+				fAmplitude = sys.random(90) + 30;
+			}
+			else	{
+				fSwerve = 0;
+				fAmplitude = 0;
+			}
+	
+			//stop the flyer-- move him into position after we figure out where he goes.
+			entMover.setLinearVelocity( '0 0 0');
+	
+			//mathery mcmath
+			fDelta = (0 - fDisplacementMax + sys.random( fDisplacementMax * 2));
+			vStart_y += fDelta;
+	
+			//faster planes sit lower in the sky
+			//vStart_z += (fSpeed / 10);
+	
+			//move to position
+			entMover.setWorldOrigin( vStart );
+			//sys.print("starting at: ");
+			//printVector(vStart);
+			sys.waitFrame();
+			
+			//set the direction as speed
+			vSpeed = vDirection * fSpeed;	
+			vSpeed_z = 0;
+	
+			// set initial angle in case this is a non-swerving dude..
+			vAngs = sys.VecToAngles(vSpeed);
+			entMover.setAngles(vAngs);
+		
+			//first loop flies up,
+			//fWaitTime = sys.getTime() + 4 + sys.random(3);
+			fWaitTime = sys.getTime() +  sys.random(2.5);
+		
+			//turn on the regular plane, turn off the alternate
+			fxNormal.start();
+			fxDamage.stop();	
+			
+			//sys.println("Start flight!");
+			while( sys.getTime() < fWaitTime)	{
+				//fly!
+				entMover.setLinearVelocity( vSpeed);
+	
+				//swerve if need be
+				if( fSwerve != 0)	{
+					vSpeed_y = sys.sin( sys.getTime() * fAmplitude ) *  fSwerve;
+	
+					// update facing so effects can draw properly
+					vAngs = sys.VecToAngles(vSpeed);
+					entMover.setAngles(vAngs);
+					//sys.println(" swerve = " + vSpeed_y);
+				}
+	
+				//if somehow the ship has escaped the skybox, break
+				if( entMover.touches( entTgrEnd))	{
+					//sys.println("early end!");
+					break;
+				}
+				//decend on the way out
+				sys.waitFrame();
+			}
+	
+			//second loop, descend.
+			//vSpeed_z *= -1;
+			vSpeed_z = 0;
+	
+			if(sys.random(20) < 2)
+			{
+				//sys.println("Damaged!");
+	
+				//slow down and fly off course, descend faster
+				vSpeed_x *= 0.25;
+				if (vSpeed_y < 10 && vSpeed_y > -10)	{
+					vSpeed_y += ( -800 + sys.random(1600));
+				} else	{
+					vSpeed_y *= 4;
+				}
+				vSpeed_z *= 1.25;
+	
+				//no more swerving
+				fSwerve = 0;
+	
+				//switch to damaged effect, and explode
+				fxNormal.stop();
+				fxDamage.start();
+				$fx_flyer_damage.setWorldOrigin( entMover.getWorldOrigin() );
+				sys.trigger( $fx_flyer_damage);
+			}
+			
+			fWaitTime = sys.getTime() +  5;
+	
+			//after the possible damage time, remove once the ship has left the skybox
+			while( (sys.getTime() < fWaitTime) && ( !entMover.touches( entTgrEnd))  )	{
+				//fly!
+				entMover.setLinearVelocity( vSpeed);
+	
+				//swerve if need be
+				if( fSwerve != 0)	{
+					vSpeed_y = sys.sin( sys.getTime() * fAmplitude ) *  fSwerve;
+					// update facing so effects can draw properly
+					vAngs = sys.VecToAngles(vSpeed);
+					entMover.setAngles(vAngs);
+					//sys.println(" swerve = " + vSpeed_y);
+				}
+	
+				//decend on the way out
+				sys.waitFrame();
+			}
+			
+			//sys.println("End!");
+			//run it back!	
+		}
+	
+		
+	
+	}
+	
+	void main()
+	{
+		
+	$vehicle_speeder_1.guiEvent( "hidespeedertimer" );
+
+			
+	sys.wait( 0.1 );
+	thread raceIntroCinematic();
+	
+	//CHATTER1 = false;
+	//CHATTER2 = false;
+	//CHATTER3 = false;
+	//CHATTER4 = false;
+	//CHATTER5 = false;
+	//CHATTER6 = false;
+	//CHATTER7 = false;
+	//CHATTER8 = false;
+	//CHATTER9 = false;
+	//CHATTER10 = false;
+	//CHATTER11 = false;
+	//CHATTER12 = false;
+	//CHATTER13 = false;
+	
+		//strogg vs marine airpower go!
+	entity entFlyer;
+	float t;
+	
+	//originally, there were six planes per side. Now we're using 2, and that might change too. But the
+	//+6 for the 3rd parameter is because originally the damaged versions of the sprites started at 7.
+
+	for (t = 1; t <= 6; t++)	{
+		thread maintainStroggFlyerSprite( sys.getEntity("mvr_fx_strogg_flyer_" + t), sys.getEntity("fx_air_strogg_fighter_" + t), sys.getEntity("fx_air_strogg_fighter_" + (t + 6) ), $tgt_strogg_flyer_hangar, $tgr_strogg_flyer_end, '-1 0 .1' );
+		thread maintainStroggFlyerSprite( sys.getEntity("mvr_fx_marine_flyer_" + t), sys.getEntity("fx_air_marine_fighter_" + t), sys.getEntity("fx_air_marine_fighter_" + (t + 6) ), $tgt_marine_flyer_hangar, $tgr_marine_flyer_end, '1 0 .1' );
+	}
+	
+	}
+

@@ -1,0 +1,119 @@
+/*
+===============================================================================
+
+	M03_Airassault Marines
+
+===============================================================================
+*/
+
+/*
+-------------------------------------------------------------------------------
+	Models
+-------------------------------------------------------------------------------
+*/
+
+model model_char_q4x_marine_m03
+{
+	inherit					model_char_q4x_marine	
+
+	anim weaponless_idle2_loop		models/characters/marine/weaponless_idle2_loop.md5anim 
+	anim idle_sitting_1			models/characters/marine/idle_sitting_1.md5anim
+	anim tram1_console_stand_start		models/characters/marine/console_stand_start.md5anim
+	anim tram1_console_stand_loop		models/characters/marine/console_stand_loop.md5anim
+	anim tram1_console_stand_end		models/characters/marine/console_stand_end.md5anim
+	anim ad_wounded_on_knee_loop		models/characters/marine/ad_wounded_on_knee_loop.md5anim
+}
+
+model model_char_q4x_marine_medic_m03
+{
+	inherit					model_char_q4x_marine_medic	
+
+	anim idle_sitting_1			models/characters/marine/idle_sitting_1.md5anim 
+	anim medic_treating1			models/characters/marine/medic_treating.md5anim
+}
+
+/*
+-------------------------------------------------------------------------------
+	Entities
+-------------------------------------------------------------------------------
+*/
+
+entityDef char_marine_npc_woundedmarine_m03
+{
+	"inherit1"	"char_q4x_marine"
+	"inherit2"	"persona_razor"
+	"editor_menu"	"char_npc_q4x_m03"
+	"model"		"model_char_q4x_marine_m03"
+	"followRange"	"128 228"
+	"npc_name"	"PFC Ridge"
+	"def_head"	"char_marinehead_gen_white_4"
+}
+
+entityDef char_marine_npc_dekard_m03
+{
+	"inherit1"	"char_q4x_marine"
+//	"inherit2"	"char_npc_darnell_M01_airassault_vo"
+	"editor_menu"	"char_npc_q4x_m03"
+	"model"		"model_char_q4x_marine_m03"
+	"def_persona"	"persona_q4x_dekard_sgt"
+	"followRange"	"128 228"
+}
+
+entityDef char_marine_npc_darnell_m03
+{
+	"inherit1"	"char_q4x_marine"
+	"inherit2"	"char_npc_darnell_M03_airassault_vo"
+	"editor_menu"	"char_npc_q4x_m03"
+	"model"		"model_char_q4x_marine_m03"
+	"def_persona"	"persona_q4x_darnell_pfc"
+	"followRange"	"128 228"
+}
+
+entityDef char_marine_npc_markswell_m03
+{
+	"inherit1"	"char_q4x_marine"
+	"inherit2"	"char_npc_markswell_M03_airassault_vo"
+	"editor_menu"	"char_npc_q4x_m03"
+	"model"		"model_char_q4x_marine_m03"
+	"def_persona"	"persona_q4x_markswell_lt"
+	"followRange"	"128 228"
+}
+
+entityDef char_marine_npc_mitchell_m03
+{
+	"inherit1"	"char_q4x_marine_medic"
+	"inherit2"	"char_npc_mitchell_M03_airassault_vo"
+	"editor_menu"	"char_npc_q4x_m03"
+	"model"		"model_char_q4x_marine_medic_m03"
+	"def_persona"	"persona_q4x_mitchell_pvt"
+	"followRange"	"128 228"
+
+	"lipsync_busy_1"	"vo_mitch_soundsside"
+	"lipsync_busy_2"	"vo_mitch_guessshort"
+}
+
+entityDef char_marine_npc_navajas_m03
+{
+	"inherit1"	"char_q4x_marine"
+	"inherit2"	"char_npc_navajas_M03_airassault_vo"
+	"editor_menu"	"char_npc_q4x_m03"
+	"model"		"model_char_q4x_marine_m03"
+	"def_persona"	"persona_q4x_navajas_pvt"
+	"followRange"	"128 228"
+
+	"lipsync_busy_1"	"vo_nava_getintopos"
+	"lipsync_busy_2"	"vo_nava_weneedpost"
+}
+
+entityDef char_marine_npc_tak_m03
+{
+	"inherit1"	"char_q4x_marine"
+	"inherit2"	"char_npc_tak_M03_airassault_vo"
+	"editor_menu"	"char_npc_q4x_m03"
+	"model"		"model_char_q4x_marine_m03"
+	"def_persona"	"persona_q4x_tak_pvt"
+	"followRange"	"128 228"
+
+	"lipsync_busy_1"	"vo_tak_sarge1"
+	"lipsync_busy_2"	"vo_tak_dektherealot"
+}

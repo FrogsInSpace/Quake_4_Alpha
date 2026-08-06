@@ -1,0 +1,45 @@
+entityDef projectile_scripted_rocket
+{
+	"inherit"					"projectile_rocket"
+	"speed"						"1450"
+	
+}
+
+//M01 Marine fighter projectile
+entityDef projectile_scripted_blaster
+{
+	"inherit"					"projectile_hyperblaster"
+
+	"speed"						"2400"
+}
+
+//M01 Marine fighter fast projectile
+entityDef projectile_scripted_fast_blaster
+{
+	"inherit"					"projectile_hyperblaster"
+
+	"speed"						"4800"
+}
+
+//M01 space rocket with long blue trail
+entityDef projectile_m01_scripted_rocket
+{
+	"inherit"					"projectile_rocket"
+
+	"speed"						"1450"
+	"fuse"						"8"
+	"fx_fly"					"effects/vehicles/spacecannon/rocket_fly.fx"
+}
+
+entityDef projectile_m03_scripted_red_rocket
+{
+	"inherit"					"projectile_rocket"
+
+	"speed"						"2000"
+	"fuse"						"30"
+	"fx_fly"					"effects/levels/airassault/q4x_m03_red_fly.fx"
+	"def_splash_damage"				""
+}
+
+
+

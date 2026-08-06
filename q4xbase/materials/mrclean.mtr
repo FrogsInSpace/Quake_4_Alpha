@@ -1,0 +1,43 @@
+// new materials
+// -Mr.CleaN
+
+guide textures/mrclean/desc_wall_1 generic_shader("mrclean/desc_wall_1")
+guide textures/mrclean/desc_wall_2 generic_shader("mrclean/desc_wall_2")
+guide textures/mrclean/desc_wall_3 generic_shader("mrclean/desc_wall_3")
+guide textures/mrclean/desc_cyltrim_1 generic_shader("mrclean/desc_cyltrim_1")
+guide textures/mrclean/desc_cyltrim_2 generic_shader("mrclean/desc_cyltrim_2")
+
+textures/mrclean/mrc_dplate01
+{
+	qer_editorimage 	textures/mrclean/mrc_dplate.tga
+	diffusemap		textures/mrclean/mrc_dplate_d.tga
+	bumpmap			textures/mrclean/mrc_dplate_n.tga
+	specularmap		textures/mrclean/mrc_dplate_s.tga
+
+}
+
+textures/mrclean/mc_grate01
+{
+ 	noShadows
+	twoSided
+	noimpact
+	qer_editorimage 	textures/mrclean/mc_grate01.tga
+
+	{       
+      	 blend	diffuseMap 
+	 map	textures/mrclean/mc_grate01_d.tga
+	 alphaTest 0.5
+	}
+	specularmap		textures/mrclean/mc_grate01_s.tga
+	bumpmap			textures/mrclean/mc_grate01_n.tga
+
+}
+
+textures/mrclean/mtl_beat
+{
+	qer_editorimage 	textures/mrclean/mtl_beat.tga
+	diffusemap		textures/mrclean/mtl_beat.tga
+	bumpmap			textures/mrclean/mtl_beat_n.tga
+	specularmap		textures/mrclean/mtl_beat_s.tga
+
+}

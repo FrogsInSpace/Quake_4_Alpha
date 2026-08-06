@@ -1,0 +1,22 @@
+//player_head--------------------------------------------------------------------------------------------------
+
+
+
+
+models/characters/marine_heads/dekard
+{
+//	unSmoothedTangents
+	materialType flesh
+	noSelfShadow
+		renderbump  -size 2048 1024 -trace 0.05 -aa 1  models/characters/player_head/dekard_local.tga work/models/characters/player_head/player_head_highpoly.obj
+	
+	materialImage models/characters/player_head/player_head_d.tga
+	
+	
+	diffuseMap 		models/characters/player_head/player_head_d.tga		
+	bumpmap			models/characters/player_head/player_head_local.tga
+	specularmap		models/characters/player_head/player_head_s.tga
+	
+
+}	
+//player_head---------------------------------------------------------------------------------------

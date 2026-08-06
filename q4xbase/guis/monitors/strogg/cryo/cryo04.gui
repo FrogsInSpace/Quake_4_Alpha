@@ -1,0 +1,224 @@
+windowDef Desktop
+{
+	comment	"gui_parm_broken = 1 adds broken glass cracks to the gui, gui_parm_stroyent = 1 adds stroyent junk on the screen"
+	visible	1
+	rect	0,0,640,480
+	backcolor	0,0,0,1
+	definevec4	"white"	1,1,1,1
+	definevec4	"white_0"	1,1,1,0
+	definevec4	"burst"	0.749,0.843,0.866,1
+	windowDef data
+	{
+		rect	14,0,623,480
+		visible	1
+		background	"gfx/guis/common/strogg/data"
+		matcolor	1,1,1,0.0392
+		shear	0, .064
+		matscalex	-1
+	}
+	windowDef bg
+	{
+		rect	0,0,640,480
+		visible	1
+		background	"gfx/guis/maps/cryo/cryo04_bg"
+		matcolor	0.960,0.576,0.0549,0.878*guitable_8_10[time*0.00065]
+	}
+	windowDef scrolltext
+	{
+		rect	506,10,116,78
+		visible	1
+		background	"gfx/guis/common/strogg/scrolltext3"
+		matcolor	0.533,1,1,0.8
+		shear	0,.06
+	}
+	windowDef scrolltext3
+	{
+		rect	24,210,192,208
+		visible	1
+		background	"gfx/guis/common/strogg/scrolltext2fast"
+		matcolor	0,0.501,1,0.8
+		shear	0,.06
+	}
+	windowDef topstuff
+	{
+		visible	1
+		rect	0,0,640,480
+		windowDef sline
+		{
+			visible	1
+			rect	1,-204,640,906
+			background	"gfx/guis/common/monitor_line6"
+			matcolor	0.972,0.741,0.321,0.2
+		}
+		windowDef monitor_mid
+		{
+			visible	1
+			rect	0,-141,640,693
+			background	"gfx/guis/common/monitor_mid"
+			matcolor	0.8,0.913,0.917,0.8*guitable_8_10[time*0.0005]
+		}
+		windowDef topreflect
+		{
+			visible	1
+			rect	-20,23,667,422
+			background	"gfx/guis/common/gradient"
+			matcolor	0.674,0.8,0.635,0.2*guitable_8_10[time*0.002]
+		}
+		windowDef broken_glass_b
+		{
+			visible	"gui::gui_parm_broken"
+			rect	2,5,640,480
+			background	"gfx/guis/common/broken_glass4"
+			matcolor	0,0,0,1
+			matscalex	-1
+		}
+		windowDef broken_glass
+		{
+			visible	"gui::gui_parm_broken"
+			rect	0,0,640,480
+			background	"gfx/guis/common/broken_glass4"
+			matcolor	0.819,0.905,0.921,1
+			matscalex	-1
+		}
+		windowDef monitor_darkedge
+		{
+			visible	1
+			rect	0,0,640,480
+			background	"gfx/guis/common/monitor_darkedge2"
+			matcolor	0,0,0,1
+		}
+	}
+	windowDef Tech1
+	{
+		rect	0,0,638,481
+		visible	1
+		background	"gfx/guis/maps/cryo/cryo04_tech1"
+		matcolor	0,0.623,0.733,1
+	}
+	windowDef notch1
+	{
+		rect	388,338,80,78
+		visible	1
+		background	"gfx/guis/maps/cryo/cryo04_tech2"
+		matcolor	0,0.619,0.729,1
+	}
+	windowDef notch2
+	{
+		rect	435,338,82,78
+		visible	1
+		background	"gfx/guis/maps/cryo/cryo04_tech2"
+		matcolor	0,0.623,0.733,1
+	}
+	windowDef notch3
+	{
+		rect	483,338,82,78
+		visible	1
+		background	"gfx/guis/maps/cryo/cryo04_tech2"
+		matcolor	0,0.623,0.733,1
+	}
+	windowDef numbers
+	{
+		rect	157,63,292,135
+		visible	1
+		forecolor	0,0.686,0.686,0.807
+		text	"1029384  32723624  9472364"
+		textscale	1
+		textalign	1
+		font	"fonts/strogg"
+	}
+	windowDef Anim_notches
+	{
+		rect	-32,-19,39,31
+		visible	1
+
+		onTime 0 {
+			transition "notch1::matcolor" "0,0.61,0.7,0.152" "0.611,1,0.709,.16" "1000" ;
+			transition "notch2::matcolor" "0,0.61,0.7,0.152" "0.611,1,0.709,.16" "750" ;
+			transition "notch3::matcolor" "0,0.61,0.7,0.152" "0.611,1,0.709,.16" "1750" ;
+			transition "notch4::rect" "$notch4::rect" "$d_notch::rect" "1000" ;
+		}
+
+		onTime 1500 {
+			transition "notch2::matcolor" "0.611,1,0.709,.16" "0,0.61,0.7,0.152" "750" ;
+		}
+
+		onTime 2000 {
+			transition "notch1::matcolor" "0.611,1,0.709,.16" "0,0.61,0.7,0.152" "1000" ;
+		}
+
+		onTime 2500 {
+			transition "notch4::rect" "$d_notch::rect" "$notch4::rect" "1000" ;
+		}
+
+		onTime 3000 {
+			transition "notch3::matcolor" "0.611,1,0.709,.16" "0,0.61,0.7,0.152" "1750" ;
+		}
+
+		onTime 5000 {
+			transition "notch5::rect" "$notch5::rect" "$d_notch::rect" "1000" ;
+		}
+
+		onTime 7500 {
+			transition "notch5::rect" "$d_notch::rect" "$notch5::rect" "1000" ;
+		}
+
+		onTime 10000 {
+			resettime "0" ;
+		}
+
+	}
+	windowDef anim_text
+	{
+		rect	3,445,37,32
+		visible	1
+
+		onTime 0 {
+			set "numbers::text" "1029344384  327236224  9472376984" ;
+		}
+
+		onTime 1500 {
+			set "numbers::text" "9238725479  237462438  9472396344" ;
+		}
+
+		onTime 3000 {
+			set "numbers::text" "23r5120472  912832479  45612435453" ;
+		}
+
+		onTime 4500 {
+			set "numbers::text" "08635767823  865334543  234209455235" ;
+		}
+
+		onTime 6000 {
+			resettime "0" ;
+		}
+
+	}
+	windowDef notch4
+	{
+		rect	510,276,64,64
+		visible	1
+		background	"gfx/guis/maps/cryo/cryo04_tech2"
+		matcolor	0.501,1,0,1
+	}
+	windowDef notch5
+	{
+		rect	453,276,64,64
+		visible	1
+		background	"gfx/guis/maps/cryo/cryo04_tech2"
+		matcolor	0.498,1,0,1
+	}
+	windowDef Tech2
+	{
+		rect	552,98,76,84
+		visible	1
+		background	"gfx/guis/maps/cryo/cryo04_tech1"
+		matcolor	0.501,1,0.501,1
+	}
+	windowDef d_notch
+	{
+		rect	497,178,105,105
+		visible	0
+		background	"gfx/guis/maps/cryo/cryo04_tech2"
+		matcolor	0.494,1,0,1
+	}
+}

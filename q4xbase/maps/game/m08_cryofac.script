@@ -1,0 +1,1400 @@
+#include "scripts/doom_defs.script"
+
+
+float fog_on = 0;
+float fog_running = 0;
+float core_monitor_on = 0;
+float core_monitor_first_time = 1;
+float core_monitor2_on = 0;
+float check_point_1_enemy_count = 0;
+float first_lab_enemy_count = 0;
+float frostblasters_on = 1;
+float gen_upper_freeze_on = 1;
+float gen_lower_freeze_on = 1;
+
+
+
+
+
+
+
+void FlashLightsOn()
+{
+	$tak.flashlight( 1 );
+	sys.wait( 1.0 );
+	$navajas.flashlight( 1 );
+	sys.wait( 0.5 );
+//	$markswell.flashlight( 1 );
+//	sys.wait( 1.0 );
+//	$darnell.flashlight( 1 );
+//	sys.wait( 1.0 );
+//	$mitchell.flashlight( 1 );
+}
+
+
+
+
+
+void FlashLightsOff()
+{
+	$tak.flashlight( 0 );
+	sys.wait( 1.0 );
+	$navajas.flashlight( 0 );
+	sys.wait( 0.5 );
+//	$markswell.flashlight( 0 );
+//	sys.wait( 1.0 );
+//	$darnell.flashlight( 0 );
+//	sys.wait( 1.0 );
+//	$mitchell.flashlight( 0 );
+}
+
+
+
+
+
+
+
+
+
+
+void DropRetch1()
+{
+	sys.trigger( $drop_retch_1 );
+	$drop_retch_platform_1.remove();
+}
+
+
+
+
+
+
+
+
+void FrontDoorAlert()
+{
+	sys.trigger( $frontdoor_tactical_blaster_1 );
+	sys.wait( 0.5 );
+	sys.trigger( $frontdoor_tactical_blaster_tether_1 );
+
+	aiSpeakWait( $tak, "lipsync_tak_usecoredis" );
+
+	sys.trigger( $frontdoor_alert_light );
+
+	sys.trigger( $frontdoor_freezeFX_1 );
+	sys.trigger( $frontdoor_freezeFX_2 );
+	sys.trigger( $frontdoor_freezeFX_3 );
+
+	sys.wait( 1.0 );
+
+	sys.trigger( $frontdoor_tactical_blaster_2 );
+	sys.wait( 0.5 );
+	sys.trigger( $frontdoor_tactical_blaster_tether_2 );
+
+//	$door_ice_3a.show();
+//	$door_ice_3b.show();
+}
+
+
+
+
+
+
+
+
+
+void TakOpenDoor( entity cryodoor )
+{
+	string cryodoor_name;
+	entity cryodoor_lock;
+	entity cryodoor_frame;
+	entity cryodoor_FX;
+	entity cryodoor_tak_pos_1;
+	entity cryodoor_panel;
+
+	cryodoor_name      = cryodoor.getName();
+	cryodoor_lock      = sys.getEntity( cryodoor_name + "_lock" );
+	cryodoor_frame     = sys.getEntity( cryodoor_name + "_frame" );
+	cryodoor_FX        = sys.getEntity( cryodoor_name + "_FX" );
+	cryodoor_tak_pos_1 = sys.getEntity( cryodoor_name + "_tak_pos_1" );
+	cryodoor_panel     = sys.getEntity( cryodoor_name + "_panel" );
+
+	sys.println( "cryodoor = " + cryodoor_name );
+
+	aiScriptedMoveWait( $tak, cryodoor_tak_pos_1, 8, 0 );
+	aiScriptedFaceWait( $tak, cryodoor_panel, 0 );
+
+	aiScriptedAnimWait( $tak, "console_stand_start", 0, 0 );
+	aiScriptedAnimWait( $tak, "console_stand_loop", 0, 0 );
+	aiScriptedAnimWait( $tak, "console_stand_end", 0, 0 );
+
+	sys.trigger( cryodoor_FX );
+	sys.trigger( cryodoor_lock );
+	cryodoor_frame.setShaderParm( 7, 1 );
+	sys.trigger( cryodoor );
+}
+
+
+
+
+
+
+
+
+void TakSecondDoor()
+{
+	TakOpenDoor( $cryodoor_2 );
+	aiScriptedMove( $tak, $cryodoor_2_tak_pos_2, 16, 1 );
+	sys.wait( 1.0 );
+	aiScriptedMoveWait( $navajas, $cryodoor_2_navajas_pos_2, 16, 1 );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+void FirstCave1()
+{
+	aiScriptedMove( $navajas, $navajas_pos_4, 16, 0 );
+	sys.wait( 0.5 );
+	aiScriptedMoveWait( $tak, $tak_pos_4, 16, 0 );
+
+//	sys.wait( 3.0 );
+
+	aiScriptedFace( $tak, $player1, 0 );
+	aiScriptedFaceWait( $navajas, $player1, 0 );
+}
+
+
+
+
+void FirstCave2()
+{
+	aiScriptedAnim( $tak, "idle_look_back_lt", 0, 0 );
+	aiSpeakWait( $tak, "lipsync_tak_maynotknw" );
+
+	aiScriptedAnim( $navajas, "idle_look_back_lt", 0, 0 );
+	aiScriptedAnim( $tak, "point_left", 0, 0 );
+	aiSpeakWait( $tak, "lipsync_tak_lookathis" );
+	aiSpeakWait( $navajas, "lipsync_nava_whyisplc" );
+
+	aiScriptedMove( $tak, $tak_pos_6, 16, 1 );
+	sys.wait( 1.0 );
+	aiScriptedMoveWait( $navajas, $navajas_pos_6, 16, 1 );
+
+	aiScriptedAnimWait( $tak, "idle_wrist_gui_start", 0, 0 );
+	aiSpeak( $tak, "lipsync_tak_darncomemrk" );
+	aiScriptedAnimWait( $tak, "idle_wrist_gui_loop", 0, 0 );
+	aiScriptedAnimWait( $tak, "idle_wrist_gui_end", 0, 0 );
+
+	sys.wait( 1.0 );
+
+//	aiScriptedAnim( $navajas, "idle_look_back_lt", 0, 0 );
+
+	aiScriptedFace( $tak, $player1, 0 );
+
+	aiSpeakWait( $tak, "lipsync_tak_lookslikecomm" );
+
+	aiScriptedMove( $tak, $tak_pos_7, 16, 1 );
+	aiScriptedMoveWait( $navajas, $navajas_pos_7, 16, 1 );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+void SecondCave()
+{
+	aiScriptedMove( $navajas, $navajas_pos_10, 16, 0 );
+
+	TakOpenDoor( $cryodoor_3 );
+	aiScriptedMove( $tak, $cryodoor_3_tak_pos_2, 16, 0 );
+	sys.wait( 1.0 );
+	aiScriptedMoveWait( $navajas, $cryodoor_3_navajas_pos_2, 16, 0 );
+
+	aiScriptedMove( $tak, $tak_pos_11, 16, 0 );
+	sys.wait( 1.0 );
+	aiScriptedMoveWait( $navajas, $navajas_pos_11, 16, 0 );
+
+	aiScriptedFace( $tak, $player1, 0 );
+	aiScriptedFaceWait( $navajas, $player1, 0 );
+
+	aiSpeak( $tak, "lipsync_tak_yourealize" );
+
+	aiScriptedAnimWait( $tak, "idle_look_back_lt", 0, 0 );
+
+	aiSpeakWait( $navajas, "lipsync_nava_smrttak" );
+
+	aiSpeakWait( $navajas, "lipsync_nava_usecoredis" );
+
+	aiScriptedMove( $tak, $tak_pos_12, 16, 0 );
+	sys.wait( 1.0 );
+	aiScriptedMoveWait( $navajas, $navajas_pos_12, 16, 0 );
+}
+
+
+
+
+
+
+
+
+void TakTurnOnLights1()
+{
+	aiSpeakWait( $navajas, "lipsync_nava_takhitlite" );
+
+	aiScriptedMove( $navajas, $navajas_pos_2, 16, 0 );
+	aiScriptedMoveWait( $tak, $tak_pos_2, 16, 1 );
+
+	aiScriptedFaceWait( $tak, $lights_console_1, 0 );
+
+	aiScriptedAnimWait( $tak, "console_stand_start", 0, 0 );
+	aiSpeak( $tak, "lipsync_tak_onesecthr" );
+//	aiScriptedAnimWait( $tak, "console_stand_loop", 0, 0 );
+	aiScriptedAnimWait( $tak, "console_stand_end", 0, 0 );
+
+	$room1_lights_off.hide();
+	$room1_lights_on.show();
+
+	sys.trigger( $room1_light_fadein );
+
+	thread FlashLightsOff();
+
+//	aiScriptedAnimWait( $tak, "turn_180", 0, 0 );
+	aiScriptedMoveWait( $tak, $tak_pos_after_lights_1, 16, 0 );
+
+	aiSpeakWait( $tak, "lipsync_tak_wowlkplc" );
+	aiSpeakWait( $tak, "lipsync_tak_lookslike" );
+
+	aiScriptedMoveWait( $navajas, $navajas_pos_3, 16, 0 );
+
+	TakOpenDoor( $cryodoor_1 );
+//	aiScriptedMove( $tak, $cryodoor_1_tak_pos_2, 16, 0 );
+
+//	sys.wait( 3.0 );
+
+	thread FirstCave1();
+}
+
+
+
+
+
+
+void DarnellRadioIntro()
+{
+	radioChatterPlayWait( $func_radiochatter_1, "vo_darn_private" );
+	aiSpeakWait( $tak, "lipsync_tak_darnell" );
+	radioChatterPlayWait( $func_radiochatter_1, "vo_darn_aliveprime" );
+	aiSpeakWait( $navajas, "lipsync_nava_herightsrg" );
+	radioChatterPlayWait( $func_radiochatter_1, "vo_darn_dntwrryct" );
+}
+
+
+
+
+
+
+
+
+void NavajasBlowDoor()
+{
+	thread DarnellRadioIntro();
+
+	aiScriptedMoveWait( $tak, $tak_pos_17, 16, 1 );
+	aiScriptedMoveWait( $navajas, $navajas_pos_17, 16, 0 );
+
+	aiSpeakWait( $navajas, "lipsync_nava_forgettht" );
+
+	sys.trigger( $env_wall_casket_7 );
+	sys.trigger( $new_maiden_1 );
+
+	aiSpeakWait( $navajas, "lipsync_nava_youhrsmthing" );
+
+	aiScriptedAnimWait( $navajas, "stand_to_crouch", 0, 0 );
+	aiSpeak( $navajas, "lipsync_nava_herewegset2" );
+	aiScriptedAnimWait( $navajas, "crouch_cover_idle", 1, 0 );
+	aiScriptedAnimWait( $navajas, "crouch_cover_idle", 1, 0 );
+	aiScriptedAnimWait( $navajas, "crouch_cover_idle", 1, 0 );
+	aiSpeak( $navajas, "lipsync_nava_seconchrg2" );
+	aiScriptedAnimWait( $navajas, "crouch_cover_idle", 1, 0 );
+	aiScriptedAnimWait( $navajas, "crouch_cover_idle", 1, 0 );
+	aiScriptedAnimWait( $navajas, "crouch_cover_idle", 1, 0 );
+	aiSpeak( $navajas, "lipsync_nava_thatsit2" );
+	aiScriptedAnimWait( $navajas, "crouch_to_stand", 0, 0 );
+
+	aiSpeakWait( $tak, "lipsync_tak_evdwn" );
+
+	aiSpeak( $navajas, "lipsync_nava_demvawaychrg2" );
+	aiScriptedMove( $tak, $tak_pos_17a, 16, 1 );
+	aiScriptedMoveWait( $navajas, $navajas_pos_17a, 16, 1 );
+
+	aiSpeak( $navajas, "lipsync_nava_thosechrglive2" );
+
+	aiScriptedFaceWait( $tak, $func_door_15, 1 );
+	aiScriptedFaceWait( $navajas, $func_door_15, 1 );
+
+	aiSpeak( $navajas, "lipsync_nava_detonat2" );
+
+	sys.wait( 2.0 );
+
+	sys.trigger( $door_ice_explosion_3 );
+
+	aiScriptedAnim( $navajas, "pain_concussive2", 0, 1 );
+	aiScriptedAnim( $tak, "pain_concussive5", 0, 1 );
+
+	$door_ice_3a.remove();
+	$door_ice_3b.remove();
+//	$door_ice_damage_3.remove();
+
+	sys.trigger( $frontdoor_tank );
+	sys.trigger( $frontdoor_tank_healthbar );
+
+	sys.wait( 3.0 );
+
+	sys.trigger( $target_lock_1 );
+	sys.trigger( $func_door_15 );
+}
+
+
+
+
+
+
+
+
+
+void TeamToElevator()
+{
+	aiScriptedMoveWait( $tak, $tak_pos_22, 16, 1 );
+	aiScriptedMove( $navajas, $navajas_pos_22, 16, 1 );
+
+	aiScriptedFaceWait( $tak, $tak_elevA_panel, 1 );
+	aiScriptedAnimWait( $tak, "console_stand_start", 0, 0 );
+	aiScriptedAnimWait( $tak, "console_stand_loop", 0, 0 );
+	aiScriptedAnimWait( $tak, "console_stand_end", 0, 0 );
+
+	// Open the gate
+	setNewTimes( $elevGateA_1 , 1 , .5 , .2 );
+	$elevGateA_1.rotateOnce( '-90 0 0' );
+	sys.waitFor( $elevGateA_1 );
+
+	sys.wait( 1.0 );
+
+	aiScriptedMoveWait( $tak, $tak_pos_23, 16, 1 );
+	aiScriptedMoveWait( $navajas, $navajas_pos_23, 16, 1 );
+	sys.wait( 1.0 );
+
+	sys.trigger( $trigger_playerOnElevator );
+	}
+
+
+
+
+
+
+void TeamOnElevator()
+{
+	// Close the gate
+	setNewTimes( $elevGateA_1 , 1 , .5 , .2 );
+	$elevGateA_1.rotateOnce( '90 0 0' );
+	sys.waitFor( $elevGateA_1 );
+
+	sys.trigger( $team_elevator_block );
+
+	$elevAControls.guiEvent( "anim_up" );
+	$elevA.move( DOWN, 1280 );
+	sys.waitFor( $elevA );
+	$elevAControls.guiEvent( "anim_up_reset" );
+	
+	// Open the gate
+	setNewTimes( $elevGateA_1 , 1 , .5 , .2 );
+	$elevGateA_1.rotateOnce( '-90 0 0' );
+	sys.waitFor( $elevGateA_1 );
+
+	sys.trigger( $monster_gunner_3 );
+	sys.trigger( $lab1_grun_01 );
+
+	aiScriptedMove( $tak, $tak_pos_24, 32, 1 );
+	aiScriptedMove( $navajas, $navajas_pos_24, 32, 1 );
+}
+
+
+
+
+
+
+
+
+
+
+void DoorBusters1()
+{
+	sys.trigger( $door_buster_grunt_1 );
+	sys.trigger( $door_buster_gunner_1 );
+
+	sys.wait( 1.0 );
+
+	$door_buster_clip.remove();
+	playAnimWait( $env_q4x_cryodoor_exploding_1, ANIMCHANNEL_ALL, "cryodoorexplode1");
+}
+
+
+
+
+
+
+
+
+void Stalagtite1()
+{
+	$stalagtite_damage_1.remove();
+
+	setNewTimes( $stalagtite_piece1_1, 2 , 1 , 0 );
+
+	sys.trigger( $stalagtite_FX1_1 );
+	$stalagtite_piece1_1.move( DOWN, 512 );
+	sys.waitFor( $stalagtite_piece1_1 );
+
+	if ( isLivingEntity( $frontdoor_tactical_blaster_1 ) )
+		$frontdoor_tactical_blaster_1.kill();
+	if ( isLivingEntity( $frontdoor_tactical_blaster_2 ) )
+		$frontdoor_tactical_blaster_2.kill();
+
+	$stalagtite_blocker_1.remove();
+}
+
+
+
+void Stalagtite_3()
+{
+	$stalagtite_damage_3.remove();
+
+	setNewTimes( $stalagtite_piece1_3, 2 , 1 , 0 );
+
+	sys.trigger( $stalagtite_FX1_3 );
+	$stalagtite_piece1_3.move( DOWN, 512 );
+	sys.waitFor( $stalagtite_piece1_3 );
+}
+
+
+
+
+
+
+
+
+
+void RemoveDoorIce1()
+{
+	$door_ice_damage_1.remove();
+
+	sys.trigger( $door_ice_1_FX_1 );
+
+	$door_ice_1.playAnim( ANIMCHANNEL_ALL, "melt");
+
+	sys.wait( 3.0 );
+
+	sys.trigger( $door_ice_1_FX_2 );
+
+	sys.wait( 3.0 );
+
+	$door_ice_1.playCycle( ANIMCHANNEL_ALL, "endidle");
+
+	aiScriptedMove( $tak, $tak_intropos_4, 32, 1 );
+	aiScriptedMove( $navajas, $navajas_intropos_4, 32, 1 );
+}
+
+
+void RemoveDoorIce2()
+{
+	$door_ice_2a.remove();
+	$door_ice_2b.remove();
+	$door_ice_damage_2.remove();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+void TakForwardPos( entity new_pos )
+	{
+//	sys.println("tak_pos_" + new_pos.getName());
+	aiScriptedMove( $tak, new_pos, 32, 1 );
+	sys.wait( 0.1 );
+	}
+
+
+void NavajasForwardPos( entity new_pos )
+	{
+	sys.wait( 3.0 );
+
+	aiScriptedMove( $navajas, new_pos, 32, 1 );
+	sys.wait( 0.1 );
+	}
+
+
+void DarnellForwardPos( entity new_pos )
+	{
+	aiScriptedMove( $darnell, new_pos, 32, 1 );
+	sys.wait( 0.1 );
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void FrostBlaster( float blaster_no )
+	{
+	entity blaster_west_a;
+	entity blaster_west_b;
+	entity blaster_west_c;
+	entity mover_west_a;
+	entity mover_west_b;
+	entity mover_west_c;
+
+	blaster_west_a = sys.getEntity( "frostblaster_" + blaster_no + "west_a" );
+	blaster_west_b = sys.getEntity( "frostblaster_" + blaster_no + "west_b" );
+	blaster_west_c = sys.getEntity( "frostblaster_" + blaster_no + "west_c" );
+
+	mover_west_a = sys.getEntity( "frostblaster_" + blaster_no + "west_a_mover" );
+	mover_west_b = sys.getEntity( "frostblaster_" + blaster_no + "west_b_mover" );
+	mover_west_c = sys.getEntity( "frostblaster_" + blaster_no + "west_c_mover" );
+
+	while ( frostblasters_on == 1 )
+		{
+		mover_west_b.move( NORTH, 64 );
+		sys.trigger( blaster_west_b );
+
+		sys.wait( 0.5 );
+
+		mover_west_a.move( NORTH, 64 );
+		mover_west_c.move( NORTH, 64 );
+		sys.trigger( blaster_west_a );
+		sys.trigger( blaster_west_c );
+		sys.waitFor( mover_west_c );
+
+		mover_west_b.move( SOUTH, 64 );
+		mover_west_a.move( SOUTH, 64 );
+		mover_west_c.move( SOUTH, 64 );
+		sys.waitFor( mover_west_c );
+
+		sys.wait( 3.0 );
+		}
+	}
+
+
+void FrostBlasters( )
+	{
+	thread FrostBlaster( 1 );
+	sys.wait( 1.0 );
+	thread FrostBlaster( 2 );
+	sys.wait( 1.0 );
+	thread FrostBlaster( 3 );
+	}
+
+
+
+
+
+
+
+
+
+void OpenStartDoor()
+{
+	$func_static_54504.setShaderParm( 7, 1 );
+	$func_door_158.lock( 0 );
+
+	sys.wait( 1.0 );
+
+	sys.trigger( $entrance_strogg_marine_1 );
+	sys.trigger( $entrance_strogg_marine_2 );
+	sys.trigger( $entrance_strogg_grunt_1 );
+}
+
+
+
+void LockCryoDoor( entity locking_trigger )
+{	
+	entity door_locked = sys.getEntity( locking_trigger.getKey("door1_name") );
+	entity frame_locked = sys.getEntity( locking_trigger.getKey("frame_name") );
+
+	sys.wait( 0.1 );
+
+	frame_locked.setShaderParm( 7, 0 );
+	door_locked.lock( 1 );
+
+//	$func_static_54504.setShaderParm( 7, 0 );
+//	$func_door_158.lock( 1 );
+}
+
+
+void UnlockCryoDoor( entity unlocking_trigger )
+{	
+	entity door_unlocked = sys.getEntity( unlocking_trigger.getKey( "door1_name" ) );
+	entity frame_unlocked = sys.getEntity( unlocking_trigger.getKey( "frame_name" ) );
+
+	sys.wait( 0.1 );
+
+	frame_unlocked.setShaderParm( 7, 0 );
+	door_unlocked.lock( 0 );
+
+//	$func_static_54504.setShaderParm( 7, 0 );
+//	$func_door_158.lock( 0 );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void CoreMonitor()
+{
+	aiScriptedMoveWait( $tak, $tak_pos_28, 8, 0 );
+
+	aiScriptedFaceWait( $tak, $valkaryne_console_1, 0 );
+
+	aiScriptedMove( $navajas, $navajas_pos_3, 8, 0 );
+
+	aiScriptedAnimWait( $tak, "console_stand_start", 0, 0 );
+	aiScriptedAnimWait( $tak, "console_stand_loop", 0, 0 );
+	aiScriptedAnimWait( $tak, "console_stand_end", 0, 0 );
+
+	$core_monitor_static.hide();
+	$core_monitor_screen.show();
+
+	radioChatterPlay( $valkaryne_voice, "vo_valk_iseeyou" );
+
+	sys.trigger( $valkaryne_monitor_fadeout );
+
+	sys.wait( 4.0 );
+
+	sys.trigger( $valkaryne_monitor_fadein );
+
+	sys.wait( 5.0 );
+
+	TakOpenDoor( $cryodoor_5 );
+	aiScriptedMove( $tak, $cryodoor_5_tak_pos_2, 16, 0 );
+}
+
+
+
+
+void CoreMonitor2()
+{
+	if ( core_monitor2_on == 0 )
+		{
+		$core_monitor_static2.hide();
+		$core_monitor_screen2.show();
+		core_monitor2_on = 1;
+		sys.wait( 0.1 );
+		}
+	else
+		{
+		$core_monitor_static2.show();
+		$core_monitor_screen2.hide();
+		core_monitor2_on = 0;
+		sys.wait( 0.1 );
+		}
+}
+
+
+
+
+
+
+
+
+
+void FirstFreeze()
+{
+	float i;
+
+	sys.trigger( $darnell );
+	sys.trigger( $redshirt );
+
+	$darnell.setOrigin( $darnell_pos_1.getOrigin() );
+	$redshirt.setOrigin( $redshirt_pos_1.getOrigin() );
+
+	sys.wait( 3.0 );
+
+	sys.trigger( $fog_stream_trigger_1 );
+
+	aiSpeak( $navajas, "lipsync_nava_whathll" );
+
+	sys.wait( 3.0 );
+
+	aiScriptedMoveWait( $tak, $tak_firstfreeze_pos_1, 8, 0 );
+	aiScriptedMoveWait( $navajas, $navajas_firstfreeze_pos_1, 8, 0 );
+
+	aiScriptedFace( $tak, $player1, 0 );
+	aiScriptedFace( $navajas, $player1, 0 );
+
+	sys.trigger( $fog_light_fade_in_1 );
+
+	$fog_lifter_1.move( UP, 128 );
+	sys.waitFor( $fog_lifter_1 );
+
+	for ( i = 0.2; i <= 1.0; i += 0.02 )
+		{
+		$freezer_window_3.setShaderParms( i, i, i, i );
+		sys.wait(0.02);
+		}
+
+	sys.trigger( $firstfreeze_FX );
+
+	aiSpeakWait( $tak, "lipsync_tak_itcryocfrz" );
+
+	sys.trigger( $little_freeze_hurt );
+
+	aiScriptedAnimWait( $tak, "idle_wrist_gui_start", 0, 0 );
+	aiSpeakWait( $tak, "lipsync_tak_ddcc" );
+	aiScriptedAnimWait( $tak, "idle_wrist_gui_loop", 0, 0 );
+	aiScriptedAnimWait( $tak, "idle_wrist_gui_end", 0, 0 );
+
+	aiScriptedMoveWait( $darnell, $darnell_pos_2, 16, 0 );
+	aiScriptedMoveWait( $redshirt, $redshirt_pos_2, 16, 0 );
+
+	aiScriptedFace( $darnell, $player1, 0 );
+	aiScriptedFaceWait( $redshirt, $player1, 0 );
+
+	aiScriptedFace( $tak, $darnell, 0 );
+	aiScriptedFaceWait( $navajas, $darnell, 0 );
+
+	radioChatterPlayWait( $func_radiochatter_1, "vo_darn_whatmattb" );
+
+	aiSpeakWait( $navajas, "lipsync_nava_shoveit" );
+
+	aiScriptedMoveWait( $darnell, $darnell_pos_3, 16, 0 );
+	aiScriptedMoveWait( $redshirt, $redshirt_pos_3, 16, 0 );
+
+	aiScriptedFaceWait( $darnell, $func_static_55887, 1 );
+	aiScriptedFaceWait( $redshirt, $player1, 1 );
+
+	radioChatterPlay( $func_radiochatter_1, "vo_darn_solaterthn" );
+
+	aiScriptedAnimWait( $darnell, "console_stand_start", 0, 0 );
+	aiScriptedAnimWait( $darnell, "console_stand_loop", 0, 0 );
+	aiScriptedAnimWait( $darnell, "console_stand_end", 0, 0 );
+
+	aiScriptedFaceWait( $darnell, $player1, 1 );
+
+	radioChatterPlayWait( $func_radiochatter_1, "vo_darn_therecryoc" );
+
+	sys.trigger( $little_freeze_hurt );
+
+	sys.trigger( $fog_stream_trigger_1 );
+
+	$fog_lifter_1.move( DOWN, 256 );
+	sys.waitFor( $fog_lifter_1 );
+
+	sys.trigger( $firstfreeze_FX );
+
+	for ( i = 1.0; i >= 0.2; i -= 0.02 )
+		{
+		$freezer_window_3.setShaderParms( i, i, i, i );
+		sys.wait(0.02);
+		}
+
+	aiSpeakWait( $navajas, "lipsync_nava_thanksdarn" );
+	radioChatterPlayWait( $func_radiochatter_1, "vo_darn_noprobfiretm" );
+
+	aiScriptedMove( $darnell, $darnell_pos_1, 16, 0 );
+	aiScriptedMoveWait( $redshirt, $redshirt_pos_1, 16, 0 );
+
+	sys.wait( 3.0 );
+
+	aiScriptedMove( $navahas, $cryodoor_6_navajas_pos_1, 16, 0 );
+
+	TakOpenDoor( $cryodoor_6 );
+	aiScriptedMove( $tak, $cryodoor_6_tak_pos_2, 16, 0 );
+	sys.wait( 1.0 );
+	aiScriptedMove( $navahas, $cryodoor_6_navajas_pos_1, 16, 0 );
+
+
+//	sys.trigger( $lab2_trigger_hurt1 );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void TurnOnFreeze()
+{
+	float i;
+
+	sys.trigger( $fog_stream_trigger );
+
+	sys.wait( 1.0 );
+
+	sys.trigger( $fog_light_fade_in );
+
+	sys.trigger( $freezer_sound_1 );
+	sys.trigger( $freezer_sound_2 );
+
+	$fog_lifter.move( UP, 192 );
+	sys.waitFor( $fog_lifter );
+
+	sys.wait( 3.0 );
+
+	for ( i = 0.2; i <= 1.0; i += 0.02 )
+		{
+		$freezer_window_1.setShaderParms( i, i, i, i );
+		$freezer_window_2.setShaderParms( i, i, i, i );
+		sys.wait(0.02);
+		}
+
+	sys.wait( 1.0 );
+
+	sys.trigger( $lab2_trigger_hurt1 );
+
+	sys.trigger( $freezer_sound_3 );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+void TurnOffFreeze()
+{
+	float i;
+
+	sys.trigger( $little_freeze_hurt );
+
+	sys.trigger( $fog_stream_trigger );
+
+	sys.wait( 1.0 );
+
+	sys.trigger( $fog_light_fade_in );
+
+	sys.trigger( $freezer_sound_1 );
+	sys.trigger( $freezer_sound_2 );
+
+	for ( i = 1.0; i > 0.2; i -= 0.02 )
+		{
+		$freezer_window_1.setShaderParms( i, i, i, i );
+		sys.wait(0.02);
+		}
+
+	sys.wait( 3.0 );
+
+	$fog_lifter.move( DOWN, 192 );
+	sys.waitFor( $fog_lifter );
+
+	sys.trigger( $lab2_trigger_hurt1 );
+
+	sys.trigger( $freezer_sound_3 );
+
+	aiScriptedFace( $tak, $player1, 0 );
+	aiScriptedFaceWait( $navajas, $player1, 0 );
+
+	aiSpeakWait( $tak, "lipsync_tak_wowcls" );
+
+	aiSpeakWait( $navajas, "lipsync_nava_sorryserg" );
+
+	sys.trigger( $freezer_doors2_lock );
+	$freezer_doors2_frame.setShaderParm( 7, 1 );
+
+	aiScriptedMoveWait( $tak, $tak_pos_33, 8, 1 );
+	aiScriptedMoveWait( $navajas, $navajas_pos_33, 8, 1 );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+void StartFreezerMaidens()
+{
+	$darnell.setOrigin( $darnell_pos_4.getOrigin() );
+	$redshirt.setOrigin( $redshirt_pos_4.getOrigin() );
+
+	aiScriptedMove( $tak, $tak_pos_32, 8, 0 );
+	aiScriptedMove( $navajas, $navajas_pos_32, 8, 0 );
+
+	aiScriptedMove( $darnell, $darnell_pos_5, 16, 0 );
+	aiScriptedMoveWait( $redshirt, $redshirt_pos_5, 16, 0 );
+
+	aiScriptedMove( $darnell, $darnell_pos_6, 16, 0 );
+	aiScriptedMoveWait( $redshirt, $redshirt_pos_6, 16, 0 );
+
+	aiScriptedFaceWait( $darnell, $player1, 1 );
+
+	aiScriptedMoveWait( $redshirt, $redshirt_pos_7, 16, 1 );
+	sys.trigger( $redshirt_pos_7_tether );
+	aiScriptedMoveWait( $darnell, $darnell_pos_7, 16, 1 );
+	sys.trigger( $darnell_pos_7_tether );
+
+	sys.trigger( $freezeroom_maiden_casket_1 );
+	sys.trigger( $freezeroom_maiden_1 );
+
+	$darnell_door_frame.setShaderParm( 7, 0 );
+	sys.trigger( $darnell_door_lock );	
+
+	sys.wait( 1.0 );
+
+	aiScriptedFaceWait( $darnell, $freezeroom_maiden_1, 1 );
+
+	sys.trigger( $freezeroom_maiden_casket_2 );
+	sys.trigger( $freezeroom_maiden_2 );
+
+	sys.wait( 1.0 );
+
+	aiScriptedFaceWait( $redshirt, $freezeroom_maiden_1, 1 );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+void StartValkaryne()
+{
+	sys.wait( 3.0 );
+
+	TurnOnFreeze();
+
+	radioChatterPlayWait( $func_radiochatter_1, "vo_darn_holyshitcold" );
+	radioChatterPlay( $func_radiochatter_1, "vo_marine1_die" );
+
+	aiScriptedAnimWait( $redshirt, "pain2", 0, 1 );
+	aiScriptedAnimWait( $redshirt, "pain1", 0, 1 );
+	$redshirt.kill();
+
+	sys.trigger( $valkaryne );
+	sys.waitFrame();
+	aiScriptedAnim( $valkaryne, "cr_idle_upside_down", 0, 0 );
+
+	aiScriptedFaceWait( $darnell, $valkaryne, 1 );
+
+	aiSpeak( $tak, "lipsync_tak_itmakguard" );
+
+//	aiScriptedAnim( $valkaryne, "plugin_to_idle", 0, 0 );
+
+	aiSpeak( $tak, "lipsync_tak_darngethell" );
+
+	sys.trigger( $darnell_pos_7_breaktether );
+	aiScriptedMoveWait( $darnell, $darnell_pos_6, 16, 1 );
+
+//	aiSpeakWait( $tak, "lipsync_tak_darnman" );
+
+//	aiScriptedAnimWait( $valkaryne, "run", 0, 0 );
+
+	radioChatterPlayWait( $func_radiochatter_1, "vo_darn_dir" );
+	aiSpeak( $tak, "lipsync_tak_sheflood" );
+
+
+
+	sys.trigger( $music_cryo_cue );
+
+	aiScriptedAnimWait( $darnell, "pain1", 0, 1 );
+	aiScriptedAnimWait( $darnell, "pain3", 0, 1 );
+	$darnell.kill();
+
+//	aiScriptedAnimWait( $valkaryne, "run_right", 0, 0 );
+//	aiScriptedAnimWait( $valkaryne, "run_right", 0, 0 );
+//	aiScriptedAnimWait( $valkaryne, "run", 0, 0 );
+
+//	aiScriptedAnim( $valkaryne, "leap_attack", 0, 0 );
+
+	sys.wait( 2.0 );
+
+	$freezer_window_2.remove();
+	$frost_window_fixed_1.remove();
+	$frost_window_broken_1.show();
+
+//	sys.wait( 3.0 );
+
+	sys.trigger( $little_freeze_hurt );
+
+	aiSpeak( $navajas, "lipsync_nava_weneedloccryo" );
+
+//	aiScriptedAnimWait( $valkaryne, "run_backwards", 0, 0 );
+//	aiScriptedAnimWait( $valkaryne, "run_backwards", 0, 0 );
+
+//	$valkaryne.setOrigin( $valkaryne_pos_1.getOrigin() );
+
+	$func_static_53709.setShaderParm( 7, 1 );
+	sys.trigger( $target_lock_11 );
+
+	aiSpeakWait( $tak, "lipsync_tak_wecantlast" );
+
+	aiSpeakWait( $tak, "lipsync_tak_cantfeelhand" );
+
+	$valkaryne.remove();
+}
+
+
+
+
+
+
+
+
+void TakNavajasJumpDown()
+{
+	$tak.setOrigin( $tak_pos_37.getOrigin() );
+	$navajas.setOrigin( $navajas_pos_37.getOrigin() );
+}
+
+
+
+
+
+
+
+
+void ValkaryneTunnel1()
+{
+	radioChatterPlayWait( $func_radiochatter_1, "vo_marks_falconsqkn" );
+	radioChatterPlayWait( $func_radiochatter_1, "vo_marks_stroggos" );
+}
+
+
+
+void ValkaryneTunnel2()
+{
+	aiSpeakWait( $tak, "lipsync_tak_sargehrvalk" );
+
+	thread FrostBlasters();
+}
+
+
+
+
+
+
+
+
+
+
+void FinalTacticals()
+{
+	sys.trigger( $final_tactical_1 );
+	sys.trigger( $final_tactical_2 );
+	sys.trigger( $final_tactical_3 );
+
+	sys.wait( 5.0 );
+
+	sys.trigger( $final_tactical_4 );
+	sys.trigger( $final_tactical_5 );
+	sys.trigger( $final_tactical_6 );
+
+	setNewTimes( $final_tank_platform, 5, 1, 1 );
+	$final_tank_platform.move( UP, 192 );
+	sys.waitFor( $final_tank_platform );
+}
+
+
+
+
+
+
+
+
+void FinalTank()
+{
+	aiScriptedMove( $tak, $tak_pos_43, 16, 1 );
+	aiScriptedMoveWait( $navajas, $navajas_pos_43, 16, 0 );
+
+	aiScriptedAnimWait( $navajas, "stand_to_crouch", 0, 0 );
+	aiScriptedAnimWait( $navajas, "crouch_cover_idle", 1, 0 );
+
+	sys.wait( 5.0 );
+
+	aiScriptedAnimWait( $navajas, "crouch_to_stand", 0, 0 );
+
+	aiScriptedMove( $tak, $tak_pos_43a, 16, 0 );
+	aiScriptedMoveWait( $navajas, $navajas_pos_43a, 16, 0 );
+
+	aiScriptedFaceWait( $tak, $Valkaryne_door1, 1 );
+	aiScriptedFaceWait( $navajas, $Valkaryne_door1, 1 );
+
+	sys.trigger( $door_ice_explosion_4 );
+
+	aiScriptedAnim( $navajas, "pain_concussive2", 0, 0 );
+	aiScriptedAnim( $tak, "pain_concussive5", 0, 0 );
+
+	aiSpeak( $tak, "lipsync_tak_readingsorts" );
+
+	aiScriptedMoveWait( $tak, $tak_pos_42, 16, 1 );
+	aiScriptedMoveWait( $navajas, $navajas_pos_42, 16, 1 );
+
+//	$valkaryne.setOrigin( $valkaryne_pos_1.getOrigin() );
+
+	$door_ice_4a.remove();
+	$door_ice_4b.remove();
+
+	sys.trigger( $final_tank );
+	sys.trigger( $final_tank_healthbar );
+
+	sys.trigger( $Valkaryne_door1 );
+}
+
+
+
+
+
+
+
+
+
+void FinalValkaryne()
+{
+	aiScriptedMoveWait( $tak, $tak_pos_44, 16, 0 );
+	aiScriptedMoveWait( $navajas, $navajas_pos_44, 16, 0 );
+
+	radioChatterPlay( $valkaryne_voice, "vo_marks_falconsqkn" );
+
+//	setNewTimes( $mover_icecube, 5.0, 1.0 , 1.0 );
+//	$mover_icecube.move( UP, 512 );
+//	sys.waitFor( $mover_icecube );
+
+	radioChatterPlayWait( $valkaryne_voice, "vo_valk_reborn" );
+	radioChatterPlayWait( $valkaryne_voice, "vo_valk_stroggetern" );
+	radioChatterPlay( $valkaryne_voice, "vo_valk_makrons" );
+
+	aiScriptedAnim( $valkaryne_1, "cr_kill_tak", 0, 0 );
+
+	radioChatterPlay( $valkaryne_voice, "vo_valk_immort" );
+
+	aiSpeak( $tak, "lipsync_tak_deathscrm" );
+
+	sys.wait( 2.0 );
+
+	$valkaryne_window_fixed.remove();
+	$valkaryne_window_broken.show();
+
+//	$tak.kill();
+	$tak.becomeRagdoll();
+	sys.waitFrame();
+	$tak.bindToJoint( $valkaryne_1, "r_melee_tip", 1 );
+
+	radioChatterPlay( $valkaryne_voice, "vo_valk_racedies" );
+
+	sys.trigger( $music_cryo_exit );
+
+	$valkaryne_1.remove();
+
+	aiScriptedAnimWait( $navajas, "turn_180", 0, 0 );
+	aiScriptedAnimWait( $navajas, "cr_ladder_descend", 0, 0 );
+
+	$navajas.remove();
+
+//	setNewTimes( $mover_icecube , 5.0, 1.0 , 1.0 );
+//	$mover_icecube.move( DOWN, 1028 );
+//	sys.waitFor( $mover_icecube );
+}
+
+
+
+
+
+
+
+
+
+
+
+void InitCharacters()
+{
+	$tak.setUndying( 1 );
+	$navajas.setUndying( 1 );
+//	$darnell.setUndying( 1 );
+//	$redshirt.setUndying( 1 );
+
+	$redshirt.setHealth( 300 );
+	$darnell.setHealth( 300 );
+
+	setNewTimes( $elevGateA_1 , 1 , .5 , .2 );
+	$elevGateA_1.rotateOnce( '90 0 0' );
+	sys.waitFor( $elevGateA_1 );
+}
+
+
+
+
+
+
+void Intro()
+{
+	sys.trigger( $music_intro );
+
+	aiScriptedMove( $tak, $tak_intropos_1, 8, 0 );
+	aiScriptedMoveWait( $navajas, $navajas_intropos_1, 8, 0 );
+
+	aiScriptedMove( $tak, $tak_intropos_2, 8, 0 );
+	aiScriptedMoveWait( $navajas, $navajas_intropos_2, 8, 0 );
+
+	aiScriptedFace( $tak, $door_ice_1, 1 );
+	aiScriptedFace( $navajas, $door_ice_1, 1 );
+
+	aiSpeakWait( $tak, "lipsync_tak_wedefrt" );
+
+	sys.wait( 1.0 );
+
+	aiSpeakWait( $navajas, "lipsync_nava_dontlot" );
+
+	sys.wait( 1.0 );
+
+	aiSpeak( $tak, "lipsync_tak_heysrg" );
+
+	aiScriptedAnimWait( $tak, "console_stand_start", 0, 0 );
+//	aiScriptedAnimWait( $tak, "console_stand_loop", 0, 0 );
+	aiScriptedAnimWait( $tak, "console_stand_end", 0, 0 );
+
+	sys.wait( 1.0 );
+
+	aiSpeak( $tak, "lipsync_tak_hmmsrgna" );
+
+	aiScriptedMove( $tak, $tak_intropos_3, 8, 0 );
+	aiScriptedMoveWait( $navajas, $navajas_intropos_3, 8, 0 );
+
+	aiScriptedFace( $navajas, $door_ice_1, 1 );
+	aiScriptedFace( $tak, $door_ice_1, 1 );
+}
+
+
+
+
+
+
+void GenWheels()
+{
+	$gen_wheel_1.time( 1.0 );
+	$gen_wheel_1.rotate( '0 0 90' );
+
+	sys.wait( 0.5 );
+
+	$gen_wheel_2.time( 1.0 );
+	$gen_wheel_2.rotate( '0 0 90' );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+void main()
+{
+//	sys.wait( 1.0 );
+
+	thread InitCharacters();
+
+	thread GenWheels();
+
+	sys.trigger( $target_give_1 );
+
+	sys.trigger( $empty_casket_1 );
+	sys.trigger( $empty_casket_2 );
+
+	thread Intro();
+//	$tak.setOrigin( $tak_pos_7.getOrigin() );
+//	$navajas.setOrigin( $navajas_pos_7.getOrigin() );
+//	$tak.setOrigin( $tak_pos_11.getOrigin() );
+//	$navajas.setOrigin( $navajas_pos_11.getOrigin() );
+//	$tak.setOrigin( $tak_pos_21.getOrigin() );
+//	$navajas.setOrigin( $navajas_pos_21.getOrigin() );
+//	$tak.setOrigin( $tak_pos_25.getOrigin() );
+//	$navajas.setOrigin( $navajas_pos_25.getOrigin() );
+//	$tak.setOrigin( $tak_pos_31.getOrigin() );
+//	$navajas.setOrigin( $navajas_pos_31.getOrigin() );
+//	$tak.setOrigin( $tak_pos_32.getOrigin() );
+//	$navajas.setOrigin( $navajas_pos_32.getOrigin() );
+//	$tak.setOrigin( $tak_pos_40.getOrigin() );
+//	$navajas.setOrigin( $navajas_pos_40.getOrigin() );
+
+
+	$freezer_window_1.setShaderParms( 0.2, 0.2, 0.2, 0.2 );
+	$freezer_window_2.setShaderParms( 0.2, 0.2, 0.2, 0.2 );
+	$freezer_window_3.setShaderParms( 0.2, 0.2, 0.2, 0.2 );
+}
+

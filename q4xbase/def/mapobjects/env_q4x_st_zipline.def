@@ -1,0 +1,62 @@
+/***********************************************************************
+Zipline
+***********************************************************************/
+
+export env_q4x_st_zipline
+{
+	options -game /q4xbase -scale .3937 -prefix ZIP_  -align all -sourcedir cinematics/stranarus_trench/intro/zipline/animations -destdir models/mapobjects/stranarustrench/zipline -keep all joint103 joint102 joint101 joint100 joint99 joint98 joint97 joint96 joint95 joint94 joint93 joint92 joint91 joint90 joint89 joint88 joint87 joint86 joint85 joint84 joint83 joint82 joint81 joint80 joint79 joint78 joint77 joint76 joint75 joint74 joint73 joint72 joint71 joint70 joint69 joint68 joint67 joint66 joint65 joint64 joint63 joint62 joint61 joint60 joint59 joint58 joint57 joint56 joint55 joint54 joint53 joint52 joint51 joint50 joint49 joint48 joint47 joint46 joint45 joint44 joint43 joint42 joint41 joint40 joint39 joint38 joint37 joint36 joint35 joint34 joint33 joint32 joint31 joint30 joint29 joint28 joint27 joint26 joint25 joint24 joint23 joint22 joint21 joint20 joint19 joint18 joint17 joint16 joint15 joint14 joint13 joint12 joint11 joint10 joint9 joint8 joint7 joint6 joint5 joint4 joint3 joint2 rope_rotate rope_ctrl base origin
+
+	mesh	st_tak_zipline_zip.ma											-dest mesh
+	anim	st_tak_zipline_zip.ma								-range 1 2		-dest idle
+	anim	st_tak_zipline_zip.ma							-range 1 84		-dest st_tak_zipline_zip_start
+	anim	st_tak_zipline_zip.ma							-range 85 119		-dest st_tak_zipline_zip_loop
+	anim	st_tak_zipline_zip.ma							-range 120 192		-dest st_tak_zipline_zip_end
+	anim	st_tak_zipline_end.ma							-range 202 225		-dest st_tak_zipline_open_loop
+	anim	st_tak_zipline_end.ma							-range 226 250		-dest st_tak_zipline_open_end
+}
+
+model model_env_q4x_st_zipline
+
+{
+	mesh				models/mapobjects/stranarustrench/zipline/mesh.md5mesh
+	anim idle			models/mapobjects/stranarustrench/zipline/idle.md5anim
+	
+/*
+	anim intro		models/mapobjects/stranarustrench/zipline/intro.md5anim
+	{
+	}
+*/
+	anim st_tak_zipline_zip_start		models/mapobjects/stranarustrench/zipline/st_tak_zipline_zip_start.md5anim
+	{
+	}
+
+	anim st_tak_zipline_zip_loop		models/mapobjects/stranarustrench/zipline/st_tak_zipline_zip_loop.md5anim
+	{
+	}
+
+	anim st_tak_zipline_zip_end		models/mapobjects/stranarustrench/zipline/st_tak_zipline_zip_end.md5anim
+	{
+	}
+
+	anim st_tak_zipline_open_loop		models/mapobjects/stranarustrench/zipline/st_tak_zipline_open_loop.md5anim
+	{
+	}
+
+	anim st_tak_zipline_open_end		models/mapobjects/stranarustrench/zipline/st_tak_zipline_open_end.md5anim
+	{
+	}
+
+}
+
+entityDef env_q4x_st_zipline
+{
+	"editor_color"			"0 .5 .25"
+	"editor_mins"			"-32 -32 0"
+	"editor_maxs"			"32 32 16"
+
+	"spawnclass"			"idAnimated"
+
+	"model"					"model_env_q4x_st_zipline"
+	"anim"					"idle"
+	
+}

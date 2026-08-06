@@ -1,0 +1,449 @@
+//----------------------------------------------------------------
+// spikegun.def
+//
+//----------------------------------------------------------------
+
+export spikegun
+{
+	options -prefix SRL_ -scale .4 -keep barrel -sourcedir models/weapons/core_cannon/animations -destdir models/weapons/core_cannon
+
+	addoptions -skipmesh rt_strogg_arm_mesh 
+	addoptions -skipmesh lft_strogg_arm_mesh 
+
+	mesh idle_00.ma			-dest mesh
+	anim idle_00.ma			-dest idle
+	anim charge.ma			-dest charge
+	anim fire_00.ma		-dest fire	
+	anim lower_00.ma			-dest lower
+	anim raise_00.ma			-dest raise
+	anim reload_fast.ma			-dest reload
+	anim reload_fast.ma		-dest reload_empty	-range 1 15
+	anim reload_fast.ma		-dest idle_empty	-range 14 15
+}
+
+export spikegun_strogg
+{
+	options -prefix SRL_ -scale .4 -keep barrel -sourcedir models/weapons/core_cannon/animations -destdir models/weapons/core_cannon
+	addoptions -skipmesh rt_arm_mesh 
+	addoptions -skipmesh lft_arm_mesh 
+	mesh idle_00.ma			-dest mesh_strogg
+}
+
+
+export spikegun
+{
+	options -prefix PLAYER_GN_ -scale .4 -keep muzzle_flash ATTACHER -sourcedir work/models/characters/marine/multiplayer -destdir models/weapons/grenadelauncher/world -rename ATTACHER origin -clearorigin
+	mesh	rocketlauncher_idle.ma			-dest rocketlauncher
+	anim	rocketlauncher_idle.ma			-dest idle
+}
+
+entityDef viewStyle_shouldered_spikegun {
+	"viewoffset"				"-2.6 2.2 2.3"
+	"viewangles"				"5.7 -3.9 -1.2"
+}
+
+entityDef viewStyle_q3_spikegun {
+	"viewoffset"				"-2.6 2.2 2.3"
+	"viewangles"				"5.7 -3.9 -1.2"
+}
+
+//--------------------------------------------------------------------------------------------------------------------
+// Weapon Definition
+//--------------------------------------------------------------------------------------------------------------------
+entityDef weapon_spikegun
+{
+	"editor_menu"				"pickup"
+	"editor_color"				".3 .3 1"
+	"editor_mins"				"-16 -16 0"
+	"editor_maxs"				"16 16 32"
+
+	"editor_usage"				"Spike Gun"
+
+	"spawnclass"				"idItem"
+	"weaponclass"				"WeaponSpikeGun"
+	"size"						"32 32 32"
+	
+  	"model_view"				"weapon_spikegun_view"
+  	"model_view_strogg"			"weapon_spikegun_view_strogg"
+  	"model_world"				"weapon_spikegun_world"
+	"model"						"models/weapons/core_cannon/corecannon_world.ASE"
+	"def_dropItem"				"weapon_spikegun"
+	"mtr_crosshair"				"gfx/guis/crosshairs/crosshair_grenadelauncher"
+
+	"def_mod1"					"wpmod_spikegun_scope"
+
+	"joint_attach"				"GN_ATTACHER"
+	"joint_view_flash"			"barrel"
+	"joint_view_barrel"			"barrel"
+	"joint_world_flash"			"muzzle_flash"
+	
+ 	"fx_normalflash"			"effects/weapons/blaster/muzzleflash.fx"
+
+	// Firing properties
+	"fireRate"					"1.6"
+//	"reloadRate"				".8"
+	"spread"					"0"
+	"dirOffset"					"0 0 .05"
+	
+	"inv_weapon"				"weapon_spikegun"
+	"inv_start_ammo_spikegun"	"10"
+	"inv_item"					"1"
+	"inv_icon"					"gfx/guis/hud/icons/item_corecannon.tga"
+	"inv_name"					"Core Cannon"	
+
+	"weaponname"				"Core Cannon"
+	"def_projectile"			"projectile_spike"
+	"def_altprojectile"			"projectile_spike"	
+	"ammoType"					"ammo_spikegun"
+	"clipSize"					"0"
+	"ammoRequired"				"1"
+	"mtr_icon"					"gfx/guis/hud/icons/gun_grenadelauncher"
+
+	"muzzle_kick_time"			"0.8"
+	"muzzle_kick_maxtime"		"0.8"
+	"muzzle_kick_angles"		"-4 0 0"
+	"muzzle_kick_offset"		"2 0 1"
+
+	"recoilTime"				"100"
+	"recoilAngles"				"-.20 0 0"
+	
+	"mtr_flashShader"			"lights/muzzleflash"
+	"flashColor"				"0.99 0.84 .31"
+	"flashRadius"				"200"
+	"flashPointLight"			"1"
+	"flashTime"					".1"
+	"flashViewOffset"			"15 -5 -5"
+	
+	"mtr_guiLightShader"		"lights/viewWeaponGuiLight"
+
+ 	"fx_muzzleflash"			"effects/weapons/core_cannon/muzzleflash.fx"
+ 	"fx_muzzleflash_world"		"effects/weapons/core_cannon/muzzleflash.fx"
+	"fx_respawn"				"effects/mp/itemrespawn.fx"
+
+	"snd_acquire"				"pickup_weapon"
+
+	"def_viewStyle"				"viewStyle_q3_spikegun"
+	"def_viewStyle1"			"viewStyle_shouldered_spikegun"
+	
+	"weaponAngleOffsetAverages" "10"
+	"weaponAngleOffsetScale" 	".25"
+	"weaponAngleOffsetMax"		"5"
+	"weaponOffsetTime"			"600"
+	"weaponOffsetScale"			"0.002"
+
+	//"launchFromBarrel"			"1"
+	"foreshorten"				".55"
+ 
+	
+	"def_ejectBrass"			"debris_bq4x_casing_spikegun"
+	"joint_view_eject"			"r_thing"
+	"ejectOffset"				"40 -25 -8"
+	
+	"dbTitle"					"Core Cannon"
+	"dbText"					"Description of the core cannon goes here"
+	"dbFilter"					"weapon"
+	
+}
+
+entityDef weapon_spikegun_mp
+{
+	"inherit"					"weapon_spikegun"
+	"clipsize"					"0"
+	"editor_ignore"				"1"
+	
+	"def_projectile"			"projectile_spike_mp"
+	"def_altprojectile"			"projectile_spike_mp"	
+	
+	/*
+	"muzzle_kick_time"			"0"
+	"muzzle_kick_maxtime"			"0"
+	"muzzle_kick_angles"			"0 0 0"
+	"muzzle_kick_offset"			"0 0 0"
+	"recoilTime"				"0"
+	"recoilAngles"				"0 0 0"
+	*/
+}
+
+entityDef moveable_item_spikegun
+{
+	"inherit"					"weapon_spikegun"
+
+	"editor_rotatable"			"1"
+
+	"spawnclass"				"idMoveableItem"
+	"density"					"0.05"
+	"friction"					"0.2"
+	"bouncyness"				"0"
+}
+
+   
+
+//--------------------------------------------------------------------------------------------------------------------
+// Models
+//--------------------------------------------------------------------------------------------------------------------
+
+model weapon_spikegun_view
+{
+	mesh						models/weapons/core_cannon/mesh.md5mesh
+//	skin						skins/weapons/strogg_rocket_launcher/nobounce
+
+	anim idle 					models/weapons/core_cannon/idle.md5anim	
+	{
+	}
+
+	anim fire 					models/weapons/core_cannon/fire.md5anim	
+	{
+		frame 1					sound_weapon	corecannon_core_fire
+		//frame 1				sound_item		player_grenadelauncher_fire_stereo
+		frame 1					fx				effects/weapons/core_cannon/muzzle_fly.fx	barrel
+		frame 1					object_call		EjectBrass
+		frame 3					sound_body	corecannon_core_move		
+	}
+	
+	anim charging				models/weapons/core_cannon/charge.md5anim
+	{
+		frame 1					sound_weapon	corecannon_core_charge
+		frame 1					fx 		effects/weapons/core_cannon/heat.fx		r_vent
+		frame 1					fx				effects/weapons/core_cannon/muzzlecharge_fly.fx	barrel
+	}
+	
+	anim chargedfire 			models/weapons/core_cannon/fire.md5anim	
+	{
+		//frame 1				sound_weapon	player_grenadelauncher_fire
+		frame 1					sound_weapon		corecannon_core_chargedfire
+		//frame 1					fx				effects/weapons/rocketlauncher/vent.fx		l_vent
+		//frame 1					fx				effects/weapons/rocketlauncher/vent.fx		l_vent
+		frame 1					fx				effects/weapons/core_cannon/muzzlecharge_fly.fx	barrel
+		frame 1					object_call		EjectBrass
+	}
+	
+	anim raise 					models/weapons/core_cannon/raise.md5anim	
+	{
+	}
+	
+//	anim reload_empty			models/weapons/core_cannon/reload_empty.md5anim
+//	{
+//		frame 2					sound_body		corecannon_core_load
+//		frame 1					object_call		AddToClip
+//		//frame 1				sound_body2		player_rocketlauncher_servo
+//
+//	}
+	
+	anim putaway				models/weapons/core_cannon/lower.md5anim	
+	{
+		frame 1					sound			weapon_switch
+	}
+	anim reload					models/weapons/core_cannon/reload.md5anim
+	{
+		rate					1.6
+		frame 1					object_call		AddToClip
+		//frame 4					sound_body		corecannon_core_load
+		//frame 1					sound_body2		player_rocketlauncher_servo
+		
+	}	
+}
+
+model weapon_spikegun_view_strogg
+{
+	inherit					weapon_spikegun_view
+	mesh					models/weapons/core_cannon/mesh_strogg.md5mesh
+}
+
+model weapon_spikegun_world 
+{
+	mesh					models/weapons/grenadelauncher/world/grenadelauncher.md5mesh
+	anim idle				models/weapons/grenadelauncher/world/idle.md5anim	
+}
+
+//--------------------------------------------------------------------------------------------------------------------
+// Mods
+//--------------------------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------------------------
+// Projectile
+//--------------------------------------------------------------------------------------------------------------------
+
+entityDef projectile_spike
+{
+	"spawnclass"				"idProjectile"
+	"mins"						"-4 -4 -4"
+	"maxs"						"4 4 4"
+	"cone"						""
+	"noshadows"					"1"
+	"clipmask_largeshot"		"1"
+	
+	"no_contents"				"0"
+	
+	"applyRotation"				"0"
+	
+	"maxPinDistance"			"10"
+								
+	"model"						"models/weapons/core_cannon/w_core_cannon.ASE"
+	//"clipmodel"				"models/weapons/core_cannon/w_core_cannon_clip.ASE"
+	"def_damage"				"damage_spikeDirect"
+	"def_splash_damage"			"damage_spikeSplash"
+																											
+	"speed"						"2300"
+	"impactForce"				"1500"
+
+	"settle_duration"			"0.00"
+	
+	"linear_friction"			"0"
+	"angular_friction"			"0"
+	"contact_friction"			"0"
+	"gravity"					"0.6"
+	"fuse"						"8"
+	"sticky"					"1"
+	"passThroughActors"			"1"
+
+//The spike does not detonates, just disappears.								
+	"detonate_on_fuse"			"0"
+	"detonate_on_death"			"0"
+	"detonate_on_world"			"0"
+	"detonate_on_actor"			"1"
+	"detonate_on_bounce"		"0"
+								
+	"impact_gib"				"0"								
+	"decal_size"				"75"
+
+	"flyEffectAttenuateSpeed"	"100"
+	
+	"airBurst_desc"				"midair_"
+
+	"fx_fly"					"effects/weapons/core_cannon/fly.fx"
+	"fx_detonate"				"effects/weapons/core_cannon/detonate.fx"
+	"fx_impact"					"effects/weapons/grenadelauncher/impact.fx"
+	"fx_impact_water"			"effects/yambient/splash_med.fx"
+	"fx_impact_actor"			"effects/monsters/gib.fx"
+	
+	"net_syncPhysics"			"1"
+}
+
+entityDef projectile_spike_explosive
+{
+	"inherit"			"projectile_spike"
+	"fuse"				"5"
+	"detonate_on_fuse"	"1"
+}
+
+entityDef projectile_spike_mp
+{
+	"inherit"					"projectile_spike"
+	"def_damage"				"damage_spikeDirect_mp"
+	"def_splash_damage"			"damage_spikeSplash_mp"
+	"detonate_on_fuse"			"1"
+	"fx_detonate"				""
+	"fx_detonate_mp"			"effects/weapons/rocketlauncher/detonate_mp.fx"
+}
+
+
+//--------------------------------------------------------------------------------------------------------------------
+// Damage
+//--------------------------------------------------------------------------------------------------------------------
+
+entityDef damage_spikeDirect 
+{
+//	"spawnclass"				"DOTEntity"
+//	"damagePerSecond"			"10"
+//	"lifetime"					"5000"
+	
+	"damage"					"200"
+	"gib"						"0"
+
+	"knockback"					"400"
+	"deathPush"					"200"
+	"deathPushMin"				"3000 2000"
+	"deathPushMax"				"5000 3000"
+	
+	"bloatRadius"				"15.0"
+	"bloatMagnitude"			"2.0"
+	
+	"bleed"						"1"	//Here to trigger the damage effect.
+	"dofximpact"				"1"
+	
+	"mtr_wound"					"textures/decals/hurt02"
+}
+
+entityDef damage_spikeSplash 
+{
+	"damage"					"75"
+	"knockback"					"500"
+	"radius"					"400"
+	//"push"						"5000"
+	"gib"						"1"
+
+	"deathPush"					"300"
+	"deathPushMin"				"3000 2000"
+	"deathPushMax"				"5000 3000"
+}
+
+entityDef damage_spikeDirect_mp
+{
+	"inherit"	"damage_spikeDirect"
+	"damage"	"100"
+}
+
+entityDef damage_spikeSplash_mp
+{
+	"inherit"		"damage_spikeSplash"
+	"knockback"		"85"
+	"damage"		"65"
+	"radius"		"130"
+}
+
+entityDef debris_bq4x_casing_spikegun
+{
+	"model" 					"models/weapons/core_cannon/w_core_cannon_casing.ASE"
+	"clipmodel"					"models/weapons/core_cannon/w_core_cannon_casing_clip.ASE"
+	 
+	"scale"						"1"
+	"scale_reset_duration"		"0.35"
+	
+	"linear_velocity"			"-10 -75 -50"
+	"linear_velocity_range"		"-1.1 -1.15 -1.35"
+	"angular_velocity"			"-1 -1 -1"
+	"angular_velocity_range"	"-1 -1 -1"
+
+
+	"density"					"0.02"
+	"linear_friction"			"0.1"
+	"angular_friction"			"0.1"
+	"friction"					"0.2"
+	"bouncyness"				"0.2"
+	"snd_bounce"				"core_casing"
+}
+
+entityDef wpmod_spikegun_scope
+{
+	"weapon"				"weapon_spikegun"
+	
+	// Scope / Zoom
+	"spreadzoom"				"0"
+	"zoomFov"					"50"
+	"zoomTime"					".1"
+	"zoomHideCrosshair"			"0"
+	"gui_zoom"					"guis/weapons/machinegun_scope.gui"
+	"gui"						"guis/weapons/machinegun_ammo.gui"
+	"gui2"						"guis/weapons/machinegun_inview_scope.gui"	
+	
+	"def_projectile"			"projectile_spike_explosive"
+	"def_altprojectile"			"projectile_spike_explosive"		
+}
+
+entityDef weaponmod_spikegun_scope
+{
+	"editor_color"				".3 .3 1"
+	"editor_mins"				"-16 -16 0"
+	"editor_maxs"				"16 16 32"
+	"editor_menu"				"pickup"
+	"editor_usage"				"Adds a scope that allows zooming"
+
+	"spawnclass"				"idItem"
+	"size"						"32 32 32"
+	"inv_weaponmod"				"wpmod_spikegun_scope"
+	"inv_item"					"1"
+	"model"						"models/items/ammo/ammo_box.lwo"
+}
+
+

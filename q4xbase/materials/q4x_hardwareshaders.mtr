@@ -1,0 +1,14 @@
+
+hs/SpeedBlur
+{
+	translucent
+	sort gui
+	needCurrentRender
+	{
+		glslProgram		glsl/speedblur.glsl
+		shaderParm		textureScale			POTCorrectionX, POTCorrectionY
+		shaderParm		textureHalfScale		POTCorrectionX * 0.5, POTCorrectionY * 0.5
+		shaderTexture	BackgroundImage			_currentRender
+		shaderTexture	Scope					gfx/guis/hud/vehicles/speeder_blur.tga
+	}
+}

@@ -1,0 +1,884 @@
+
+entityDef char_npc_darnell_M02_trian__vo
+{
+ // CHARACTER: DARNELL
+ // CONTEXT:Calm
+ // DIALOG : Lieutenant, Mitchell has stabilized the wounded, we are pushing into the facility
+ "lipsync_darn_ltmitchwnd"        "vo_darn_ltmitchwnd"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Calm
+ // DIALOG : Yes sir.
+ "lipsync_darn_yessir"        "vo_darn_yessir"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Informative
+ // DIALOG : Darnell here, Mitchell and I have located a terminal that Tak needs to ID for data mining, could be paydirt.
+ "lipsync_darn_mitchlocterm"        "vo_darn_mitchlocterm"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Tense
+ // DIALOG : Copy Lieutenant, tell that pair to double time it, we've got some company down here.
+ "lipsync_darn_copylttell"        "vo_darn_copylttell"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Sarcastic
+ // DIALOG : Glad you two could join us!
+ "lipsync_darn_gladjoin"        "vo_darn_gladjoin"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Calm
+ // DIALOG : Calm down Mitch.
+ "lipsync_darn_calmmitch"        "vo_darn_calmmitch"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Yelling
+ // DIALOG : Strogg!  
+ "lipsync_darn_strogg3"        "vo_darn_strogg3"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Sarcastic
+ // DIALOG : Great, make sure and tell that to the Strogg.
+ "lipsync_darn_greatmake"        "vo_darn_greatmake"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Informative
+ // DIALOG : Hmm, this is the only way - Mitchell, help me with the door.
+ "lipsync_darn_hmmonlyway"        "vo_darn_hmmonlyway"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Commanding
+ // DIALOG : Tak, get under this door and see if there is an access panel on the other side.
+ "lipsync_darn_takgetunderths"        "vo_darn_takgetunderths"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Commanding
+ // DIALOG : Tak, get through this door and see if there is an access panel on the other side
+ "lipsync_darn_takgetdoor"        "vo_darn_takgetdoor"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Lifting heavy object
+ // DIALOG : Urrggh!
+ "lipsync_darn_pain"        "vo_darn_pain"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Strained
+ // DIALOG : Dekard, see if you can find something to shove under this door.
+ "lipsync_darn_dekseefind"        "vo_darn_dekseefind"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Strained
+ // DIALOG : Tak, you find anything?!
+ "lipsync_darn_takfindany"        "vo_darn_takfindany"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Strained
+ // DIALOG : Dekard, forget it, get under the door.
+ "lipsync_darn_dekforget"        "vo_darn_dekforget"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Strained
+ // DIALOG : Dekard, go through the door!
+ "lipsync_darn_dekgothru"        "vo_darn_dekgothru"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Strained
+ // DIALOG : Dekard, hurry up!
+ "lipsync_darn_dekhrry"        "vo_darn_dekhrry"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Strained
+ // DIALOG : Come on Dekard, we can't hold this any longer!
+ "lipsync_darn_comondek"        "vo_darn_comondek"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Relief from heavy lift
+ // DIALOG : Ugh!
+ "lipsync_darn_pain2"        "vo_darn_pain2"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Informative
+ // DIALOG : Tak, Dekard, we're meeting back up with Markswell and Navajas, you should keep moving
+ "lipsync_darn_takmeetmarks"        "vo_darn_takmeetmarks"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Sarcastic
+ // DIALOG : It's not that big, the REAL big ones take more than just Dekard here to take down!
+ "lipsync_darn_itnotthatbg"        "vo_darn_itnotthatbg"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Excited
+ // DIALOG : Allright!  Vansen's back, this time with some heavier air support firepower!
+ "lipsync_darn_alrightvans"        "vo_darn_alrightvans"
+
+
+ // CHARACTER: DARNELL +USE
+ // CONTEXT:Joking
+ // DIALOG : Darnell and Dekard, raising hell once again!
+ "lipsync_darn_darndekrais"        "vo_darn_darndekrais"
+
+
+ // CHARACTER: DARNELL +USE
+ // CONTEXT:Joking
+ // DIALOG : The Squibs don't stand a chance!
+ "lipsync_darn_squibsdont"        "vo_darn_squibsdont"
+
+}
+
+entityDef char_npc_dekard_M02_trian__vo
+{
+ // CHARACTER: DEKARD
+ // CONTEXT:Calm
+ // DIALOG : Tak?  I'm in position.  You ready?
+ "lipsync_dek_takinpos"        "vo_dek_takinpos"
+
+
+ // CHARACTER: DEKARD
+ // CONTEXT:Calm
+ // DIALOG : Your guess is as good as mine.
+ "lipsync_dek_yrguess"        "vo_dek_yrguess"
+
+
+ // CHARACTER: DEKARD
+ // CONTEXT:Calm
+ // DIALOG : Repeat last transmission.  Tak?  Tak?
+ "lipsync_dek_rptlattrans"        "vo_dek_rptlattrans"
+}
+
+entityDef char_npc_markswell_M02_trian__vo
+{
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Calm
+ // DIALOG : Hades and Atlas are prepping this facility for some fireworks, let's get in, get our data, and get out.
+ "lipsync_marks_hadesatlas"        "vo_marks_hadesatlas"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Let's move.
+ "lipsync_marks_letsmove2"        "vo_marks_letsmove2"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Keep it tight people.
+ "lipsync_marks_keepittight"        "vo_marks_keepittight"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Military
+ // DIALOG : Apparently not, let's double time it, they're directly ahead.
+ "lipsync_marks_apparentnot"        "vo_marks_apparentnot"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Resolute
+ // DIALOG : We read you Razor 16, Falcon is on the way.
+ "lipsync_marks_wereadrazor"        "vo_marks_wereadrazor"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Inquisitive
+ // DIALOG : How many Razor survivors are there?
+ "lipsync_marks_howmaysurv"        "vo_marks_howmaysurv"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Calm
+ // DIALOG : No word, nothing yet.
+ "lipsync_marks_nowordnoth"        "vo_marks_nowordnoth"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Military
+ // DIALOG : Here's the plan: Navajas, stay here and hold this position with Garrett.  The rest of us will push ahead to the generators and shut them down.
+ "lipsync_marks_hereplannav"        "vo_marks_hereplannav"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Let's go.
+ "lipsync_marks_letsgo3"        "vo_marks_letsgo3"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Calm
+ // DIALOG : Roger that Darnell, try to locate a terminal that Tak can use to data mine.
+ "lipsync_marks_rogerthtterm"        "vo_marks_rogerthtterm"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Shoot the repair bots marines!
+ "lipsync_marks_shootrepbot"        "vo_marks_shootrepbot"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Take out those repair bots!
+ "lipsync_marks_tkoutrep"        "vo_marks_tkoutrep"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Take that thing out!
+ "lipsync_marks_takeout2"        "vo_marks_takeout2"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Tak, get on this control station and keep that overload going.
+ "lipsync_marks_takctrlstat"        "vo_marks_takctrlstat"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Tense
+ // DIALOG : Standby Darnell.
+ "lipsync_marks_standdarn"        "vo_marks_standdarn"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Military
+ // DIALOG : Allright, we're splitting up, Dekard, Tak, locate Darnell and Mitchell, see if the terminal they located will work for data mining.  I'm going back with Navajas to help Razor complete their objective.
+ "lipsync_marks_alsplitting"        "vo_marks_alsplitting"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Informative
+ // DIALOG : Darnell, Tak and Dekard are coming your way.
+ "lipsync_marks_darnloctermd"        "vo_marks_darnloctermd"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Informative
+ // DIALOG : I'm heading back.  Get moving you two.
+ "lipsync_marks_headback"        "vo_marks_headback"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Military
+ // DIALOG : Roger that Tak, standby.
+ "lipsync_marks_rogetakst"        "vo_marks_rogetakst"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Informative
+ // DIALOG : Ok Falcon, GOC has changed our primary objective.  We are to locate that unsecured Nexus access point at all costs, download any critical data we can, and get it back to the brass pronto.
+ "lipsync_marks_okfalcgoc"        "vo_marks_okfalcgoc"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Informative
+ // DIALOG : Dekard, you and your team follow Tak to that access point, we'll catch up ASAP.
+ "lipsync_makrs_dekyouandyour"        "vo_makrs_dekyouandyour"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Calm
+ // DIALOG : Roger that, make it fast, we have a gunship heading our way for evac. Atlas and Hades squads are ready to scrub this facility, you're on a timeline marines
+ "lipsync_marks_rogmakeitfast"        "vo_marks_rogmakeitfast"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Military
+ // DIALOG : Ok gentlemen, lets get moving to the LZ. Atlas and Hades squads are about to nuke this facility off the map, we don't want to be around for it.
+ "lipsync_marks_okgents"        "vo_marks_okgents"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Military
+ // DIALOG : Roger Falcon 1, we are inbound to LZ
+ "lipsync_marks_rogfalc1"        "vo_marks_rogfalc1"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Inquisitive
+ // DIALOG : Did you get the data Tak?
+ "lipsync_marks_didyouget"        "vo_marks_didyouget"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Everybody onboard!
+ "lipsync_marks_everybodyonb"        "vo_marks_everybodyonb"
+
+
+ // CHARACTER: MARKSWELL +USE
+ // CONTEXT:Military
+ // DIALOG : I'd sure like to know how the EMP convoys are proceeding.
+ "lipsync_marks_idlikeemp"        "vo_marks_idlikeemp"
+
+
+ // CHARACTER: MARKSWELL +USE
+ // CONTEXT:Military
+ // DIALOG : I know it’s your first command, Dekard.  Don’t worry, you’re the right man for the job.
+ "lipsync_marks_iknowfirstdek"        "vo_marks_iknowfirstdek"
+
+
+ // CHARACTER: MARKSWELL +USE
+ // CONTEXT:Military
+ // DIALOG : Dekard, stay focused.  We've got a job to do.
+ "lipsync_marks_dekstayfoc"        "vo_marks_dekstayfoc"
+
+
+ // CHARACTER: MARKSWELL +USE
+ // CONTEXT:Military
+ // DIALOG : You heard the man, get moving!
+ "lipsync_marks_youheardm"        "vo_marks_youheardm"
+
+
+ // CHARACTER: MARKSWELL +USE
+ // CONTEXT:Annoyed
+ // DIALOG : Dekard, now is not the time.
+ "lipsync_marks_deknownot"        "vo_marks_deknownot"
+
+
+ // CHARACTER: MARKSWELL +USE
+ // CONTEXT:Annoyed
+ // DIALOG : You have your orders marine!
+ "lipsync_marks_youhaveords"        "vo_marks_youhaveords"
+}
+
+entityDef char_npc_mitchell_M02_trian__vo
+{
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Tense
+ // DIALOG : This terminal better be the one, we need to get the hell outta here.
+ "lipsync_mitch_termbetter"        "vo_mitch_termbetter"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Yelling
+ // DIALOG : There's another one!
+ "lipsync_mitch_thereanother"        "vo_mitch_thereanother"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Lifting heavy object
+ // DIALOG : Urrggh!
+ "lipsync_mitch_pain"        "vo_mitch_pain"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Strained
+ // DIALOG : I can't hold on much longer.
+ "lipsync_mitch_cntholdlng"        "vo_mitch_cntholdlng"
+
+
+ // CHARACTER: MITCHELL
+ // CONTEXT:Relief from heavy lift
+ // DIALOG : Ugh!
+ "lipsync_mitch_pain2"        "vo_mitch_pain2"
+
+}
+
+entityDef char_npc_navajas_M02_trian__vo
+{
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Calm
+ // DIALOG : Understood.
+ "lipsync_nava_understood"        "vo_nava_understood"
+
+
+ // CHARACTER: NAVAJAS +USE
+ // CONTEXT:Annoyed
+ // DIALOG : Do you need something?
+ "lipsync_nava_doyouneed"        "vo_nava_doyouneed"
+
+
+ // CHARACTER: NAVAJAS +USE
+ // CONTEXT:Annoyed / Sarcastic
+ // DIALOG : What seems to be the problem, sir?
+ "lipsync_nava_whatseems"        "vo_nava_whatseems"
+
+
+ // CHARACTER: NAVAJAS +USE
+ // CONTEXT:Annoyed
+ // DIALOG : I suggest paying attention to the Lieutenant.
+ "lipsync_nava_isuggpay"        "vo_nava_isuggpay"
+
+
+ // CHARACTER: NAVAJAS +USE
+ // CONTEXT:Complementary
+ // DIALOG : I will admit, your effort piloting the walker was exemplary.
+ "lipsync_nava_iwilladmit"        "vo_nava_iwilladmit"
+
+
+ // CHARACTER: NAVAJAS +USE
+ // CONTEXT:Annoyed
+ // DIALOG : Shouldn’t you be moving along Sergeant?
+ "lipsync_nava_shouldmv"        "vo_nava_shouldmv"
+
+
+ // CHARACTER: NAVAJAS +USE
+ // CONTEXT:Annoyed
+ // DIALOG : I have my orders.  
+ "lipsync_nava_orders3"        "vo_nava_orders3"
+
+}
+
+entityDef char_npc_razor1_M02_trian__vo
+{
+ // CHARACTER: RAZOR MARINE 1
+ // CONTEXT:Tense
+ // DIALOG : This is Garrett from Razor 16, we're out of ammo and pinned down in a Trianthinide processing chamber.  If anybody can hear this, we need support!
+ "lipsync_razor1_garret"        "vo_razor1_garret"
+
+
+ // CHARACTER: RAZOR MARINE 1
+ // CONTEXT:Fighting yell
+ // DIALOG : Get offa me!
+ "lipsync_razor1_getoff"        "vo_razor1_getoff"
+
+
+ // CHARACTER: RAZOR MARINE 1
+ // CONTEXT:Fighting yell
+ // DIALOG : Arrrghhh!
+ "lipsync_razor1_pain"        "vo_razor1_pain"
+
+
+ // CHARACTER: RAZOR MARINE 1
+ // CONTEXT:Relieved
+ // DIALOG : Damn, are we glad to see you.  I'm Corporal Gray, this is Sergeant Garrett.
+ "lipsync_razor1_damnglad"        "vo_razor1_damnglad"
+
+
+ // CHARACTER: RAZOR MARINE 1
+ // CONTEXT:Informative
+ // DIALOG : There were 4 survivors of the dropship crash, we're the only two left now.  Our objective is to retrieve Trianthinide samples.  
+ "lipsync_razor1_there4surv"        "vo_razor1_there4surv"
+
+
+ // CHARACTER: RAZOR MARINE 1
+ // CONTEXT:Informative
+ // DIALOG : This machine processes raw Trianthinide, but we need to shut down its power generators in order to pull our samples.
+ "lipsync_razor1_machineproc"        "vo_razor1_machineproc"
+
+
+ // CHARACTER: RAZOR MARINE 1
+ // CONTEXT:Informative
+ // DIALOG : We found a Strogg Trianthinide weapon, but couldn't get it functioning in time to help with or assault.  Maybe your tech can get it working.
+ "lipsync_razor1_foundstrg"        "vo_razor1_foundstrg"
+
+
+ // CHARACTER: RAZOR MARINE 1
+ // CONTEXT:Informative
+ // DIALOG : This is where our team was ambushed.
+ "lipsync_razor1_whereteamamb"        "vo_razor1_whereteamamb"
+
+
+ // CHARACTER: RAZOR MARINE 1
+ // CONTEXT:Informative
+ // DIALOG : There's the Trianthinide weapon.
+ "lipsync_razor1_theretrianth"        "vo_razor1_theretrianth"
+
+
+ // CHARACTER: RAZOR MARINE 1
+ // CONTEXT:Informative
+ // DIALOG : The generators are just up that lift.
+ "lipsync_razor1_genjustup"        "vo_razor1_genjustup"
+
+
+ // CHARACTER: RAZOR MARINE 1
+ // CONTEXT:Informative
+ // DIALOG : There's the generator control, let me see what I can do.
+ "lipsync_razor1_genctrl"        "vo_razor1_genctrl"
+
+
+ // CHARACTER: RAZOR MARINE 1
+ // CONTEXT:Informative
+ // DIALOG : Ok, I can't shut them down, but I can overload the generators from here.  Cover me.
+ "lipsync_razor1_okshutdwn"        "vo_razor1_okshutdwn"
+
+
+ // CHARACTER: RAZOR MARINE 1
+ // CONTEXT:Informative
+ // DIALOG : Overload has begun.
+ "lipsync_razor1_overload"        "vo_razor1_overload"
+
+
+ // CHARACTER: RAZOR MARINE 1
+ // CONTEXT:Informative
+ // DIALOG : Generators are at 125%
+ "lipsync_razor1_gen125"        "vo_razor1_gen125"
+
+
+ // CHARACTER: RAZOR MARINE 1
+ // CONTEXT:Informative
+ // DIALOG : Generators are at 150%
+ "lipsync_razor1_gen150"        "vo_razor1_gen150"
+
+
+ // CHARACTER: RAZOR MARINE 1
+ // CONTEXT:Tense
+ // DIALOG : What the hell?  Those repair bots are compensating for the overload.
+ "lipsync_razor1_whathellrep"        "vo_razor1_whathellrep"
+
+
+ // CHARACTER: RAZOR MARINE 1
+ // CONTEXT:Angry
+ // DIALOG : Damn, the power level is dropping!
+ "lipsync_razor1_damnpowdrp"        "vo_razor1_damnpowdrp"
+
+
+ // CHARACTER: RAZOR MARINE 1
+ // CONTEXT:Informative
+ // DIALOG : Ok, good, the power level is rising again.
+ "lipsync_razor1_gdpwrlv"        "vo_razor1_gdpwrlv"
+
+
+ // CHARACTER: RAZOR MARINE 1
+ // CONTEXT:Surprise
+ // DIALOG : What the..?
+ "lipsync_razor1_whathte"        "vo_razor1_whathte"
+
+
+ // CHARACTER: RAZOR MARINE 1
+ // CONTEXT:Death scream
+ // DIALOG : Arrrghhh!
+ "lipsync_razor1_pain2"        "vo_razor1_pain2"
+
+
+ // CHARACTER: RAZOR MARINE 1 +USE
+ // CONTEXT:Military
+ // DIALOG : We need to get to those generators.
+ "lipsync_razor1_weneedget"        "vo_razor1_weneedget"
+}
+
+entityDef char_npc_razor2_M02_trian__vo
+{
+ // CHARACTER: RAZOR MARINE 2
+ // CONTEXT:Fighting yell
+ // DIALOG : I've got em, look out!
+ "lipsync_razor2_ivegotem"        "vo_razor2_ivegotem"
+
+
+ // CHARACTER: RAZOR MARINE 2
+ // CONTEXT:Injured
+ // DIALOG : Arrrghhh!
+ "lipsync_razor2_pain"        "vo_razor2_pain"
+
+
+ // CHARACTER: RAZOR MARINE 2
+ // CONTEXT:Informative
+ // DIALOG : Our squad pushed to the generators but were ambushed.  We fell back to this position.
+ "lipsync_razor2_squadpush"        "vo_razor2_squadpush"
+
+
+ // CHARACTER: RAZOR MARINE 2
+ // CONTEXT:Inquisitive
+ // DIALOG : Hey Lieutenant, any word on the EMP convoys- did they pop the Tetranode?
+ "lipsync_razor2_ltwordemp"        "vo_razor2_ltwordemp"
+
+
+ // CHARACTER: RAZOR MARINE 2 +USE
+ // CONTEXT:Military
+ // DIALOG : Once you disable those generators, our job gets much easier.
+ "lipsync_razor2_oncedis"        "vo_razor2_oncedis"
+
+
+ // CHARACTER: RAZOR MARINE 2 +USE
+ // CONTEXT:Distant
+ // DIALOG : Those damn squibs tried to stamp me out.
+ "lipsync_razor2_dmnquib"        "vo_razor2_dmnquib"
+}
+
+entityDef char_npc_tak_M02_trian__vo
+{
+
+ // CHARACTER: TAK
+ // CONTEXT:Calm
+ // DIALOG : Hold up Dekard, the boys in Atlas squad showed me how to increase effective yield on their grenade launchers, give me yours and I'll do the same.
+ "lipsync_tak_holdupdek"        "vo_tak_holdupdek"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Ok, done - now your grenades will have a larger concussive blast.
+ "lipsync_tak_okdngren"        "vo_tak_okdngren"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Surprise
+ // DIALOG : Holy shit, I thought everybody on that Razor dropship was dead?
+ "lipsync_tak_holshitdead"        "vo_tak_holshitdead"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:
+ // DIALOG : Let me get this door open.
+ "lipsync_tak_letmegetdr"        "vo_tak_letmegetdr"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:
+ // DIALOG : Done
+ "lipsync_tak_done3"        "vo_tak_done3"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Hmm, let me see, getting this to fire should be easy enough.  [beat] Done.
+ "lipsync_tak_hmmletmesee"        "vo_tak_hmmletmesee"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Here Dekard, this looks like it shoots Trianthinide bolts, should do quite a bit of damage.
+ "lipsync_tak_herekedshoots"        "vo_tak_herekedshoots"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Military
+ // DIALOG : Yes sir.
+ "lipsync_tak_yessir2"        "vo_tak_yessir2"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Generators are at 175%
+ "lipsync_tak_genat175"        "vo_tak_genat175"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Generators reaching critical level.
+ "lipsync_tak_genreachcrit"        "vo_tak_genreachcrit"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : That's it, the generators are failing.
+ "lipsync_tak_thatgenfall"        "vo_tak_thatgenfall"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Generator 1 has failed.
+ "lipsync_tak_gen1failred"        "vo_tak_gen1failred"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : …and…Generator 2 has failed.  Razor should be able to finish their objective.
+ "lipsync_tak_andgen2fail"        "vo_tak_andgen2fail"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Wow, this terminal is older than anything I've seen before.  Keep me covered guys, while I try to access this antique
+ "lipsync_tak_wowtermseen"        "vo_tak_wowtermseen"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Yelling
+ // DIALOG : Keep em' off me!
+ "lipsync_tak_keepemoff"        "vo_tak_keepemoff"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Lieutenant, according to the data I'm seeing here, there is a Nexus access point in this facility that doesn't contain any data lockouts of any kind.  If we can locate that access terminal, we will have found a serious hole in the Strogg network.  We could get our hands on info about the Strogg that nobody has seen before.
+ "lipsync_tak_ltaccord"        "vo_tak_ltaccord"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Warning
+ // DIALOG : Whoa, these walls contain raw exposed Trianthinide veins.  We need to watch our fire in here- hitting any of these veins could light up this entire facility.
+ "lipsync_tak_whoawallsraw"        "vo_tak_whoawallsraw"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Warning
+ // DIALOG : Watch your fire!
+ "lipsync_tak_watchfire"        "vo_tak_watchfire"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Angry
+ // DIALOG : Trianthinide is very unstable, check your targets!
+ "lipsync_tak_trianthuns"        "vo_tak_trianthuns"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Calm
+ // DIALOG : Ok…
+ "lipsync_tak_ok3"        "vo_tak_ok3"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Calm
+ // DIALOG : No, I don't see an access panel, this door is controlled remotely.
+ "lipsync_tak_noidntsee"        "vo_tak_noidntsee"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Come on Dekard, the Nexus access point should be close.
+ "lipsync_tak_comnexus"        "vo_tak_comnexus"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Hmm, the Nexus access point is in the adjacent room, but the door is momentary.  Shit, Dekard, I can get the door open from here, but you’re going to have to get in there and access the terminal. I can't get to it from here.
+ "lipsync_tak_hmmnexacc"        "vo_tak_hmmnexacc"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Informative
+ // DIALOG : Look around Dekard, the Nexus access point should be easy to find.
+ "lipsync_tak_lkarounddek"        "vo_tak_lkarounddek"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Calm
+ // DIALOG : Lieutenant, Dekard and I are about to download the data from the Nexus access point
+ "lipsync_tak_ltdeki"        "vo_tak_ltdeki"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Calm
+ // DIALOG : Roger that, Dekard.  
+ "lipsync_tak_rogdek3"        "vo_tak_rogdek3"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Calm
+ // DIALOG : Ok, good, I can see the data you are accessing now, keep navigating.
+ "lipsync_tak_gooddataacc"        "vo_tak_gooddataacc"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Excited
+ // DIALOG : Sweet Mother!  What did you do Dekard?
+ "lipsync_tak_swtmoth"        "vo_tak_swtmoth"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Excited
+ // DIALOG : Keep it up.. You've opened up something..  I'm getting a data stream that's like nothing I've ever seen before.  This is amazing!
+ "lipsync_tak_keepopensome"        "vo_tak_keepopensome"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Panicked
+ // DIALOG : I'm almost done with this download, oh shi(static)..ekard!  Something huge is coming your way!
+ "lipsync_tak_almostdown"        "vo_tak_almostdown"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Panicked
+ // DIALOG : That data has set off a serious alarm (static)..coming your way!  Move out!  Move ou(static)
+ "lipsync_tak_thatdatserious"        "vo_tak_thatdatserious"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Surprised
+ // DIALOG : Holy shit!  Look at the size of that thing?!
+ "lipsync_tak_holysht"        "vo_tak_holysht"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Excited
+ // DIALOG : Yes sir, once we're on the Falcon, I'll start pushing this data to the MCC. I need to spend a little time with the data, but this stuff is gold.
+ "lipsync_tak_yessfalc"        "vo_tak_yessfalc"
+
+
+ // CHARACTER: TAK +USE
+ // CONTEXT:Informative
+ // DIALOG : The Strogg mine and process pure Trianthinide at this facility.
+ "lipsync_tak_strgmine"        "vo_tak_strgmine"
+
+
+ // CHARACTER: TAK +USE
+ // CONTEXT:Informative
+ // DIALOG : Trianthinide is a damn unstable element, like plutonium, they use it as a volatile power source.
+ "lipsync_tak_triandamn"        "vo_tak_triandamn"
+
+
+ // CHARACTER: TAK +USE
+ // CONTEXT:Informative
+ // DIALOG : When this place goes up, it's going to leave a giant crater.
+ "lipsync_tak_whenplcgo"        "vo_tak_whenplcgo"
+
+
+ // CHARACTER: TAK +USE
+ // CONTEXT:Informative
+ // DIALOG : Let's move, Darnell and Mitchell need our help
+ "lipsync_tak_letsmvdrn"        "vo_tak_letsmvdrn"
+
+
+ // CHARACTER: TAK +USE
+ // CONTEXT:Inquisitive
+ // DIALOG : So this is your first command?
+ "lipsync_tak_sothisfirst"        "vo_tak_sothisfirst"
+
+
+ // CHARACTER: TAK +USE
+ // CONTEXT:Informative
+ // DIALOG : Darnell told me about what you guys did back on Earth.  Pretty impressive.
+ "lipsync_tak_darnearth"        "vo_tak_darnearth"
+
+
+ // CHARACTER: TAK +USE
+ // CONTEXT:Excited
+ // DIALOG : We need to find that access point.
+ "lipsync_tak_weneedfing"        "vo_tak_weneedfing"
+
+
+ // CHARACTER: TAK +USE
+ // CONTEXT:Excited
+ // DIALOG : If I can get open access to the Nexus, it could change the tide of this war!
+ "lipsync_tak_ificanget"        "vo_tak_ificanget"
+
+
+ // CHARACTER: TAK +USE
+ // CONTEXT:Informative
+ // DIALOG : If Navajas was here, we could breach this door.
+ "lipsync_tak_ifnavabr"        "vo_tak_ifnavabr"
+
+
+ // CHARACTER: TAK +USE
+ // CONTEXT:Reassuring
+ // DIALOG : Speaking of Navajas, don't mind him, he lost a lot of friends back on Earth.
+ "lipsync_tak_speaknava"        "vo_tak_speaknava"
+
+
+ // CHARACTER: TAK +USE
+ // CONTEXT:Reassuring
+ // DIALOG : Navajas takes a while to warm up to anybody that was part of the Earth defensive.
+ "lipsync_tak_anyboderth"        "vo_tak_anyboderth"
+}
+
+entityDef char_npc_vansen_M02_trian__vo
+{
+
+ // CHARACTER: VANSEN
+ // CONTEXT:Calm
+ // DIALOG : This is gunship Falcon 1 inbound, you marines need a ride?
+ "lipsync_vansen_gunfalc1"        "vo_vansen_gunfalc1"
+}
+

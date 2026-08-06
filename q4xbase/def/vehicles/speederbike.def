@@ -1,0 +1,814 @@
+
+//------------------------------------------------------------------------------
+// speederbike.def
+//
+//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+// SQUIRREL'S NOTES TO SELF
+//
+// g_vehicleDebug = 2 (?) for visual debugging of vehicle parts
+//
+// TEST MAPS
+// Game/m08_race
+// Game/m08_race2
+// Game/m08_race1 (getting cut)
+// Prototype/m08_race2x
+// Prototype/m08_race2xai
+// Prototype/m08_racex
+// Prototype/speeder_mtn (really, really old)
+// Test/raceterrain
+//------------------------------------------------------------------------------
+
+
+export speederbike
+{
+	options -prefix HVTK_ -rotate 90 -keep base r_rear l_rear r_front l_front eye turret mgun1 mgun2 mgun3 muzzle gun_pivot Light1 Light2
+	mesh	work/models/vehicles/marine_hovertank/Animation/HVTK_Idle.ma	-dest models/vehicles/speeder/speeder_base.md5mesh
+	anim	work/models/vehicles/marine_hovertank/Animation/HVTK_Idle.ma	-dest models/vehicles/speeder/idle.md5mesh
+	anim	work/models/vehicles/marine_hovertank/Animation/HVTK_Cannon.ma	-dest models/vehicles/speeder/cannon.md5anim
+}
+
+//------------------------------------------------------------------------------
+//							Vehicle Defintion
+//------------------------------------------------------------------------------
+
+entityDef vehicle_speederbike
+{
+	"editor_color"				"1 .5 0"
+	"editor_mins"				"-8 -8 -8"
+	"editor_maxs"				"8 8 8"
+	"editor_rotatable"			"1"
+	"editor_usage"				"speederbike."
+
+	"spawnclass"				"riVehicleSpeederBike"
+
+	"model"						"vehicle_speederbike"
+	"clipmodel"					"models/vehicles/speeder/speeder_clip.ase"
+
+	"def_position_driver"		"vehicle_speederbike_driver"
+
+	"gui_hud"					"guis/vehicles/speederplayerhud.gui"
+	"gui"						"guis/vehicles/speeder.gui"
+	"hudid"						"1"
+	
+	"health"					"2000"
+	"mass"						"1700"
+	"team"						"0"
+	"density"					".0005"
+	"friction_linear"			"0.6"
+	"friction_contact"			"0.8"
+	"bouncyness"				"0.2"
+	"friction_angular"			"5.0"
+	"nav_active"				"1"
+	
+	"shieldMins"				"-160 -110 -6"
+	"shieldMaxs"				"160 110 64"
+	"shieldSides"				"10"
+	"shieldHealth"				"1000"
+	"shieldRegenDelay"			"6"
+	"shieldRegenTime"			"3"
+
+	"crashSpeedSmall"			"150"
+	"crashSpeedMedium"			"400"
+	"crashSpeedLarge"			"500"
+	"def_crashDamage"			"damage_speederbike_crash"
+
+	"snd_crash_small"			"vehicle_crash_small"
+	"snd_crash_medium"			"vehicle_crash_medium"
+	"snd_crash_large"			"vehicle_crash_large"
+	"snd_cannon_kickback"		"vehicle_speeder_cannon_kickback"	
+	"snd_shieldWarning"			"vehicle_speeder_shield_warning"
+	"snd_shieldRecharge"		"vehicle_speeder_shield_recharge"
+	"snd_boost"					"vehicle_speeder_boost"
+	"snd_boostEnd"				"vehicle_speeder_boost_end"
+		
+	"fx_death"					"effects/vehicles/explosion.fx"
+	"fx_shield"					"effects/vehicles/walker/shield.fx"	
+	"fx_crash"					"effects/vehicles/crash.fx"
+
+	"focusLength_enter"			"100"
+	"touchtriggers"				"1"
+}
+
+//------------------------------------------------------------------------------
+//								Model Definition
+//------------------------------------------------------------------------------
+
+model vehicle_speederbike
+{
+	mesh						"models/vehicles/speeder/old/speeder_base.md5mesh"
+
+	channel legs				( *origin )
+
+	anim idle					"models/vehicles/speeder/old/idle.md5anim"
+	anim cannon					"models/vehicles/speeder/old/cannon.md5anim"
+	{
+		frame	3				sound	snd_cannon_kickback
+	}
+}
+
+//------------------------------------------------------------------------------
+//									Parts
+//------------------------------------------------------------------------------
+
+entityDef vehicle_speederbike_splinetether
+{
+	"spawnclass"				"riVehiclePartSplineTether"
+	"offset"					"0 0 0"
+	"mins"						"-1 -1 -1"
+	"maxs"						"1 1 1"
+	"fx_dust"					"effects/vehicles/speeder/dust.fx"
+
+	"snd_loop"					"vehicle_speeder_hoverpad"
+	"volume"					"-20 -4"
+	"freqShift"					"1 1.2"
+	"fadetime"					"2"	
+}
+
+entityDef vehicle_speederbike_turret_yaw
+{
+	"spawnclass"				"rvVehicleTurret"
+
+	"joint"						"turret"
+	
+	"yaw"						"0"
+	"minyaw"					"-160"
+	"maxyaw"					"160"
+	"yawinvert"					"1"
+	
+	"turnrate"					"340"
+
+	"snd_loop"					"vehicle_speeder_turret_move"
+	"volume"					"-10 8"
+}
+
+entityDef vehicle_speederbike_turret_pitch
+{
+	"spawnclass"				"rvVehicleTurret"
+
+	"joint"						"gun_pivot"
+
+	"pitch"						"1"
+	"minpitch"					"-50"
+	"maxpitch"					"20"
+
+	"snd_loop"					"vehicle_speeder_turret_move"
+	"volume"					"-10 6"
+}
+
+entityDef vehicle_speederbike_weapon_main
+{
+	"spawnclass"				"rvVehicleWeapon"
+
+	"joint"						"muzzle"
+	
+	"firedelay"					"1.2"
+	"def_projectile"			"projectile_speederbike_main"
+	"spread"					".1"
+
+	"launchFromJoint"			"1"
+	
+	"force"						"-150000 -100000 0"
+	
+	"shakeTime"					"500"
+	"shakeMagnitude"			"3"
+	
+	"mtr_flashShader"			"lights/muzzleflash"
+	"flashColor"				"1 0.8 0.4"
+	"flashRadius"				"500"
+	"flashPointLight"			"1"
+	"flashTime"					".1"
+	"flashOffset"				"40 0 0"
+	
+	"anim"						"cannon"
+	"animchannel"				"0"
+	
+	"positions"					"0"
+
+	"fx_muzzleflash"			"effects/vehicles/gev/maingun/muzzleflash.fx"
+	"snd_fire"					"vehicle_speeder_cannon"
+
+	"mtr_crosshair"				"gfx/guis/crosshairs/crosshair_grenadelauncher"
+}
+
+entityDef vehicle_speederbike_weapon_mgun
+{
+	"spawnclass"				"rvVehicleWeapon"
+
+	"joint"						"mgun1"
+	"joint2"					"mgun2"
+	"joint3"					"mgun3"
+	
+	"firedelay"					".07"
+	"def_hitscan"				"hitscan_speederbike_bullet"
+	"spread"					".1"
+
+	"mtr_flashShader"			"lights/muzzleflash"
+	"flashColor"				"1 0.8 0.4"
+	"flashRadius"				"300"
+	"flashPointLight"			"1"
+	"flashTime"					".1"
+	"flashOffset"				"40 0 0"
+	
+	"recoilTime"				"125"
+	"recoilAngles"				"-0.5 0 0.5"
+
+	"positions"					"1"
+
+	"fx_muzzleflash"			"effects/vehicles/gev/machinegun/muzzleflash.fx"
+	"snd_fire"					"vehicle_speeder_machinegun_fire"
+	"mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
+}
+
+entityDef vehicle_speederbike_weapon_rocket
+{
+	"spawnclass"				"rvVehicleWeapon"
+
+	"joint"						"mgun1"
+	"joint2"					"mgun2"
+	"joint3"					"mgun3"
+	
+	"firedelay"					".3"
+	"def_projectile"			"projectile_speederbike_rocket"
+	"spread"					"2"
+	"convergeRate"				".5"
+		
+	"launchFromJoint"			"1"
+	"lockrange"					"10000"
+		
+	"ammopercharge"				"3"
+	"chargetime"				"1"
+
+	"mtr_flashShader"			"lights/muzzleflash"
+	"flashColor"				"1 0.8 0.4"
+	"flashRadius"				"350"
+	"flashPointLight"			"1"
+	"flashTime"					".1"
+	"flashOffset"				"30 0 0"
+
+	"fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
+	"snd_fire"					"vehicle_speeder_rockets"
+}
+
+entityDef vehicle_speederbike_light
+{
+	"spawnclass"				"rvVehicleLight"
+	
+	"mtr_light"					"gfx/lights/vehicle"
+	"color"						"1 1 .9"
+	"radius"					"800"
+	"target"					"2000 0 0"
+	"up"						"0 900 0"
+	"right"						"0 0 1300"
+	"pointLight"				"0"
+	
+	"flaresurface"				"models/vehicles/flare"
+	
+	"snd_on"					"vehicle_speeder_flareon"
+	"snd_off"					"vehicle_speeder_flareoff"
+	
+	"joint"						"Light1"
+}
+
+
+//------------------------------------------------------------------------------
+//								Projectiles
+//------------------------------------------------------------------------------
+
+entityDef projectile_speederbike_main
+{
+	"inherit"					"projectile_blaster"
+
+	"mins"						"-20 -20 -20"
+	"maxs"						"20 20 20"
+	"cone"						"1"
+
+	"velocity"					"10000 0 0"
+	
+	"def_damage"				"damage_speederbike_main"
+	"def_splash_damage"			"damage_speederbike_main_splash"
+	
+	"fx_fly"					"effects/vehicles/gev/maingun/fly.fx"
+	"fx_trail"					""
+	"fx_impact"					"effects/vehicles/gev/maingun/impact.fx"
+	"fx_impact_rock"			"effects/vehicles/gev/maingun/impact_rock.fx"
+	"fx_impact_dirt"			"effects/vehicles/gev/maingun/impact_rock.fx"
+	"fx_impact_sand"			"effects/vehicles/gev/maingun/impact_rock.fx"
+	"fx_impact_gravel"			"effects/vehicles/gev/maingun/impact_rock.fx"
+	"fx_impact_concrete"		"effects/vehicles/gev/maingun/impact_rock.fx"
+	"fx_detonate"				"effects/vehicles/gev/maingun/detonate.fx"
+	
+	"mass"						"10"		
+}
+
+entityDef hitscan_speederbike_bullet
+{
+	"inherit"					"hitscan_bullet"	
+
+	"def_damage"				"damage_speederbike_bullet"
+
+	"push"						"15000"
+
+	"fx_impact"					"effects/vehicles/gev/machinegun/impact_default.fx"
+	"fx_impact_concrete"		"effects/vehicles/gev/machinegun/impact_concrete.fx"
+	"fx_impact_dirt"			"effects/vehicles/gev/machinegun/impact_concrete.fx"
+	"fx_impact_rock"			"effects/vehicles/gev/machinegun/impact_concrete.fx"
+	"fx_impact_sand"			"effects/vehicles/gev/machinegun/impact_concrete.fx"
+	"fx_impact_gravel"			"effects/vehicles/gev/machinegun/impact_concrete.fx"
+	"fx_impact_flesh"			"effects/vehicles/gev/machinegun/impact_flesh.fx"						
+	
+	"fx_tracer"					"effects/vehicles/gev/machinegun/tracer.fx"
+	"tracerchance"				".40"
+}
+
+entityDef projectile_speederbike_rocket
+{
+	"spawnclass"				"idGuidedProjectile"
+	"mins"						"-2 -2 -2"
+	"maxs"						"2 2 2"
+	"cone"						"1"
+	"noshadows"					"1"
+
+	"model"						"models/weapons/nailgun/nail.ase"
+
+	"def_damage"				"damage_walker_rocket"
+	"def_splash_damage"			"damage_walker_rocket_splash"
+											
+	"decal_scale"				"8"											
+	
+	"speed"						"2000"																
+	"mass"						"6"
+	"gravity"					"0"
+	"fuse"						"6"
+								
+	"detonate_on_fuse"			"1"
+	"detonate_on_death"			"0"
+	"detonate_on_world"			"1"
+	"detonate_on_actor"			"1"
+								
+	"impact_gib"				"1"
+								
+	"decal_bounce"				""
+	"decal_size"				"8"
+
+	"fx_trail"					"effects/vehicles/walker/rocket/trail.fx"
+	"fx_fly"					"effects/vehicles/walker/rocket/fly.fx"
+	"fx_detonate"				"effects/vehicles/walker/rocket/detonate.fx"
+
+	"fx_impact"					"effects/vehicles/walker/rocket/impact.fx"
+	"fx_impact_rock"			"effects/vehicles/walker/rocket/impact_rock.fx"
+	"fx_impact_dirt"			"effects/vehicles/walker/rocket/impact_rock.fx"
+	"fx_impact_sand"			"effects/vehicles/walker/rocket/impact_rock.fx"
+	"fx_impact_gravel"			"effects/vehicles/walker/rocket/impact_rock.fx"
+	"fx_impact_concrete"		"effects/vehicles/walker/rocket/impact_rock.fx"
+}
+
+//------------------------------------------------------------------------------
+//								Damage Defs
+//------------------------------------------------------------------------------
+
+entityDef damage_speederbike_main
+{
+	"inherit"					"damage_bullet"
+	"damage"					"300"
+	"push"						"3500"
+	"deathPush"					"6000"
+
+}
+
+entityDef damage_speederbike_main_splash
+{
+	"inherit"					"damage_speederbike_main"
+	
+	"damage"					"400"
+	"radius"					"200"
+	"knockback"					"40"
+	"push"						"3500"
+	"deathPush"					"3500"
+}
+
+entityDef damage_speederbike_bullet
+{
+	"inherit"					"damage_bullet"
+	"damage"					"30"	
+}
+
+entityDef damage_speederbike_crash
+{
+	"inherit"					"damage_bullet"
+	"damage"					"300"
+	"push"						"300000"
+}
+
+entityDef vehicle_speederbike_boost
+{
+	"spawnclass"					"riVehiclePartBoost"
+	"boostEnvelopeAttackSeconds"	"0.5"
+	"boostEnvelopeSustainSeconds"	"1"
+	"boostEnvelopeDecaySeconds"		"1.5"
+	"boostEnvelopeRefreshSeconds"	"6"
+	"boostForwardForceMax"			"10000"
+	"boostFovIncreaseMax"			"20"
+	"snd_boost"						"vehicle_speeder_boost"
+	"snd_boostEnd"					"vehicle_speeder_boost_end"
+
+// Variables for old boost system - obsolete	
+//	"boostForce"				"10000"
+//	"boostLength"				"5.0"
+//	"boostRechargeTime"			"4.0"
+//	"fovIncrease"				"15.0"
+}
+
+entityDef vehicle_speederbike_thruster_forward
+{
+	"spawnclass"				"rvVehicleThruster"
+	"force"						"12000"
+	"forceAxis"					"0"
+	"useCenterMass"				"1"
+	"offset"					"0 0 0"
+	"key"						"forward"
+}
+
+entityDef vehicle_speederbike_thruster_right
+{
+	"spawnclass"				"rvVehicleThruster"
+	"force"						"-15000" // was -8000
+	"forceAxis"					"1"
+	"useCenterMass"				"1"
+	"offset"					"80 0 10" // why are these Z-values high? (applying the force above the COG?)
+	"key"						"right"
+}
+
+entityDef vehicle_speederbike_thruster_right2
+{
+	"spawnclass"				"rvVehicleThruster"
+	"force"						"15000" // was 8000
+	"forceAxis"					"1"
+	"useCenterMass"				"1"
+	"offset"					"-80 0 0" // why are these Z-values high? (applying the force above the COG?)
+	"key"						"right"
+}
+
+entityDef vehicle_speederbike_hoverpad
+{
+	"spawnclass"				"rvVehicleHoverpad"
+	"height"					"64" // length of depth trace (used to look up spring force in table at bottom of file)
+	"dampen"					"100" // units? (was 120)
+	"force"						"200" // multiply this value by the lookup table value for total force for this hoverpad?
+	"forceTable"				"vehicle_speederbike_hover"
+	"forceUpTime"				"2" // seconds to lerp up to full hover forces when getting in vehicle
+	"forceDownTime"				"2" // seconds to lerp down from full hover forces when getting out of vehicle
+	"forceRandom"				"0"
+	"maxRestAngle"				"20" // if the grade is shallower than this, stay at rest / don't drift ?
+	"useCenterMass"				"1"
+
+	"fx_dust"					"effects/vehicles/speeder/dust.fx"
+
+	"snd_loop"					"vehicle_speeder_hoverpad"
+	"volume"					"-20 -4"
+	"freqShift"					"1 1.2"
+	"fadetime"					"2"	
+
+	"thrustForward"				"0"
+	"thrustLeft"				"0"
+}
+
+entityDef vehicle_speederbike_hoverpad_fl
+{
+	"inherit"					"vehicle_speederbike_hoverpad"
+	"offset"					"-48 12 8"
+	"mins"						"-2 -32 -12"
+	"maxs"						"2 32 12"
+	"fx_dust"					""
+}
+
+entityDef vehicle_speederbike_hoverpad_fr
+{
+	"inherit"					"vehicle_speederbike_hoverpad"
+	"offset"					"48 12 8"
+	"mins"						"-2 -32 -12"
+	"maxs"						"2 32 12"
+	"fx_dust"					""
+}
+
+entityDef vehicle_speederbike_hoverpad_bl
+{
+	"inherit"					"vehicle_speederbike_hoverpad"
+	"offset"					"-48 -12 8"
+	"mins"						"-2 -32 -12"
+	"maxs"						"2 32 12"
+	"fx_dust"					""
+}
+
+entityDef vehicle_speederbike_hoverpad_br
+{
+	"inherit"					"vehicle_speederbike_hoverpad"
+	"offset"					"48 -12 8"
+	"mins"						"-2 -32 -12"
+	"maxs"						"2 32 12"
+	"fx_dust"					""
+}
+
+table vehicle_speederbike_hover
+{
+	clamp
+	{
+		/// Range-mapped from trace-depth, from [MaxTraceDepth, 0] to the below range
+//		1.0, 2.0, 4.0, 8.0, 16.0, 20.0, 24.0, 32.0, 64.0, 128.0
+//		1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0
+		1.0, 2.0, 3.0, 4.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0
+	}
+}
+
+
+//------------------------------------------------------------------------------
+//								Positions
+//------------------------------------------------------------------------------
+
+entityDef vehicle_speederbike_driver
+{
+//	"def_part_splinetether"		"vehicle_speederbike_splinetether"
+
+	"def_part_boost"			"vehicle_speederbike_boost"				// scott
+	"def_part_thruster_forward"	"vehicle_speederbike_thruster_forward"	// makes the vehicle move
+	"def_part_thruster_right"	"vehicle_speederbike_thruster_right"	// makes the vehicle move
+	"def_part_thruster_right2"	"vehicle_speederbike_thruster_right2"	// makes the vehicle move
+
+// SQUIRREL: These are the old set of hoverpads (four main pads for suspension and torsion)
+//	"def_part_hover_fr"			"vehicle_speederbike_hoverpad_fr"		// lifts the vehicle up
+//	"def_part_hover_br"			"vehicle_speederbike_hoverpad_br"		// lifts the vehicle up
+//	"def_part_hover_fl"			"vehicle_speederbike_hoverpad_fl"		// lifts the vehicle up
+//	"def_part_hover_bl"			"vehicle_speederbike_hoverpad_bl"		// lifts the vehicle up
+
+// SQUIRREL: New hoverpads - separated for suspension and torsion
+	"def_part_hover_suspensor"			"vehicle_speederbike_hoverpad_suspensor"		// suspension (lifts the vehicle up)
+	"def_part_hover_antisuspensor"		"vehicle_speederbike_hoverpad_antisuspensor"	// antisuspension (pushes the vehicle down from the ceiling)
+	"def_part_hover_springboard"		"vehicle_speederbike_hoverpad_springboard"		// springboard - gives dynamic jumps
+	"def_part_hover_stabilizer_left"	"vehicle_speederbike_hoverpad_stabilizer_left"	// torsion (stabilizes the vehicle)
+	"def_part_hover_stabilizer_right"	"vehicle_speederbike_hoverpad_stabilizer_right"	// torsion (stabilizes the vehicle)
+	"def_part_hover_stabilizer_front"	"vehicle_speederbike_hoverpad_stabilizer_front"	// torsion (stabilizes the vehicle)
+	"def_part_hover_stabilizer_back"	"vehicle_speederbike_hoverpad_stabilizer_back"	// torsion (stabilizes the vehicle)
+	"def_part_hover_bumper_leftfront"	"vehicle_speederbike_hoverpad_bumper_leftfront"		// bumper (prevents interpenetration with walls)
+	"def_part_hover_bumper_rightfront"	"vehicle_speederbike_hoverpad_bumper_rightfront"	// bumper (prevents interpenetration with walls)
+	"def_part_hover_bumper_leftrear"	"vehicle_speederbike_hoverpad_bumper_leftrear"		// bumper (prevents interpenetration with walls)
+	"def_part_hover_bumper_rightrear"	"vehicle_speederbike_hoverpad_bumper_rightrear"		// bumper (prevents interpenetration with walls)
+	"def_part_hover_bumper_front"		"vehicle_speederbike_hoverpad_bumper_front"		// bumper (prevents interpenetration with walls)
+	"def_part_hover_bumper_back"		"vehicle_speederbike_hoverpad_bumper_back"		// bumper (prevents interpenetration with walls)
+
+	"def_part_yaw"				"vehicle_speederbike_turret_yaw"
+	"def_part_pitch"			"vehicle_speederbike_turret_pitch"
+	
+	"def_part_main"				"vehicle_speederbike_weapon_mgun"
+	"def_part_mgun"				"vehicle_speederbike_weapon_main"		
+//	"def_part_rocket"			"vehicle_speederbike_weapon_rocket"
+	
+	"def_part_light"			"vehicle_speederbike_light"
+		
+	"eyeJoint"					"eye"
+	"eyeOffset"					"-1 0 0"
+	
+	"driverJoint"				"origin"
+	"driverVisible"				"0"
+
+	// Global sounds when position is enabled
+	"snd_loop"					"vehicle_speeder_engine_loop"
+	"volume"					"-10 -4"
+	"freqShift"					"1 1.4"
+	"maxSoundSpeed"				"350"	
+}
+
+
+//========================================================================================
+// SQUIRREL - New hoverpads (suspensor + stabilizers)
+//========================================================================================
+entityDef vehicle_speederbike_hoverpad_suspensor
+{
+	"inherit"					"vehicle_speederbike_hoverpad"
+	"offset"					"0 0 8"
+	"mins"						"-2 -99 -39"
+	"maxs"						"2 99 39"
+	"height"					"65" // length of depth trace (used to look up spring force in table at bottom of file)
+	
+	"force"						"500" // multiply this value by the force lookup table value for total force for this hoverpad
+	"forceTable"				"vehicle_speederbike_hover_suspensor_force"
+	"dampen"					"100" // units? (was 120)
+}
+
+
+entityDef vehicle_speederbike_hoverpad_antisuspensor
+{
+	"inherit"					"vehicle_speederbike_hoverpad_suspensor"
+	"offset"					"0 0 8"
+	"snd_loop"					""
+//	"height"					"65" // length of depth trace (used to look up spring force in table at bottom of file)
+	"force"						"-800" // multiply this value by the force lookup table value for total force for this hoverpad
+	"traceRelativeDirection"	"0 0 1" // vector-direction along which to trace 
+	"forceTable"				"vehicle_speederbike_hover_suspensor_force"
+}
+
+
+entityDef vehicle_speederbike_hoverpad_bumper
+{
+	"inherit"					"vehicle_speederbike_hoverpad"
+	"offset"					"0 0 8"
+	"snd_loop"					""
+	"force"						"5000"
+	"forceTable"				"vehicle_speederbike_hover_bumper_force"
+	"dampen"					"100"
+	"height"					"10"
+	"useCenterMass"				"1"
+}
+
+
+entityDef vehicle_speederbike_hoverpad_springboard
+{
+	"inherit"					"vehicle_speederbike_hoverpad_suspensor"
+	"snd_loop"					""
+	"mins"						"-2 -40 -20"
+	"maxs"						"2 80 20"
+	"offset"					"0 0 8"
+
+	"force"						"500"
+	"forceTable"				"vehicle_speederbike_hover_springboard_force"
+	"dampen"					"100"
+}
+
+
+entityDef vehicle_speederbike_hoverpad_stabilizer
+{
+	"inherit"					"vehicle_speederbike_hoverpad_suspensor"
+	"snd_loop"					""
+	"offset"					"0 0 8"
+
+	"force"						"500" // multiply this value by the force lookup table value for total force for this hoverpad
+	"forceTable"				"vehicle_speederbike_hover_stabilizer_force"
+	"dampen"					"100" // units? (was 120)
+//	"traceRelativeDirection"	"0 0 -1" // vector-direction along which to trace 
+	"forceRandom"				"100"
+
+}
+
+
+entityDef vehicle_speederbike_hoverpad_stabilizer_left
+{
+	"inherit"					"vehicle_speederbike_hoverpad_stabilizer"
+	"snd_loop"					""
+	"offset"					"0 30 8"
+	"mins"						"-2 -99 -9"
+	"maxs"						"2 99 9"
+//	"traceRelativeDirection"	"0 1 -1" // vector-direction along which to trace 
+}
+
+
+entityDef vehicle_speederbike_hoverpad_stabilizer_right
+{
+	"inherit"					"vehicle_speederbike_hoverpad_stabilizer_left"
+	"snd_loop"					""
+	"offset"					"0 -30 8"
+//	"traceRelativeDirection"	"0 -1 -1" // vector-direction along which to trace 
+}
+
+
+entityDef vehicle_speederbike_hoverpad_stabilizer_front
+{
+	"inherit"					"vehicle_speederbike_hoverpad_stabilizer"
+	"snd_loop"					""
+	"offset"					"90 0 8"
+	"mins"						"-2 -9 -39"
+	"maxs"						"2 9 39"
+//	"traceRelativeDirection"	"1 0 -1" // vector-direction along which to trace 
+}
+
+
+entityDef vehicle_speederbike_hoverpad_stabilizer_back
+{
+	"inherit"					"vehicle_speederbike_hoverpad_stabilizer_front"
+	"snd_loop"					""
+	"offset"					"-90 0 8"
+//	"traceRelativeDirection"	"-1 0 -1" // vector-direction along which to trace 
+}
+
+
+entityDef vehicle_speederbike_hoverpad_bumper_leftfront
+{
+	"inherit"					"vehicle_speederbike_hoverpad_bumper"
+	"snd_loop"					""
+	"offset"					"50 40 8"
+	"height"					"8"
+	"mins"						"-2 -50 -2"
+	"maxs"						"20 50 2"
+	"traceRelativeDirection"	"0 1 0" // vector-direction along which to trace 
+}
+
+
+entityDef vehicle_speederbike_hoverpad_bumper_rightfront
+{
+	"inherit"					"vehicle_speederbike_hoverpad_bumper_leftfront"
+	"snd_loop"					""
+	"offset"					"50 -40 8"
+	"traceRelativeDirection"	"0 -1 0" // vector-direction along which to trace 
+}
+
+
+entityDef vehicle_speederbike_hoverpad_bumper_leftrear
+{
+	"inherit"					"vehicle_speederbike_hoverpad_bumper_leftfront"
+	"snd_loop"					""
+	"offset"					"-50 40 8"
+}
+
+
+entityDef vehicle_speederbike_hoverpad_bumper_rightrear
+{
+	"inherit"					"vehicle_speederbike_hoverpad_bumper_rightfront"
+	"snd_loop"					""
+	"offset"					"-50 -40 8"
+}
+
+
+entityDef vehicle_speederbike_hoverpad_bumper_front
+{
+	"inherit"					"vehicle_speederbike_hoverpad_bumper_leftfront"
+	"snd_loop"					""
+	"offset"					"100 0 8"
+	"force"						"1000"
+	"height"					"8"
+	"mins"						"-2 -2 -30"
+	"maxs"						"20 2 30"
+	"traceRelativeDirection"	"1 0 0" // vector-direction along which to trace 
+}
+
+
+entityDef vehicle_speederbike_hoverpad_bumper_back
+{
+	"inherit"					"vehicle_speederbike_hoverpad_bumper_front"
+	"snd_loop"					""
+	"offset"					"-100 0 8"
+	"traceRelativeDirection"	"-1 0 0" // vector-direction along which to trace 
+}
+
+
+table vehicle_speederbike_hover_suspensor_force
+{
+	clamp
+	{
+		/// Range-mapped from trace-depth, from [MaxTraceDepth, 0] to the below range
+		0.1, 0.2, 0.4, 0.8, 1.6, 3.2, 6.4, 12.8, 25.6, 0.0
+//		0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0
+//		1, 2, 4, 8, 16, 32, 64, 128, 256, 512
+//		0.05, 0.1, 0.3, 0.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0
+//		0.1, 0.2, 0.3, 0.5, 0.8, 1.0, 1.0, 1.0, 1.0, 1.0
+//		0.01, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0
+//		0.01, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2
+//		0.01, 0.1, 0.2, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0
+//		0.05, 0.2, 0.5, 0.8, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0
+	}
+}
+
+
+table vehicle_speederbike_hover_stabilizer_force
+{
+	clamp
+	{
+		/// Range-mapped from trace-depth, from [MaxTraceDepth, 0] to the below range
+		0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.0
+//		0.01, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0
+//		0.01, 0.1, 0.2, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0
+//		0.1, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2
+//		1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0
+	}
+}
+
+
+
+table vehicle_speederbike_hover_springboard_force
+{
+	clamp
+	{
+		/// Range-mapped from trace-depth, from [MaxTraceDepth, 0] to the below range
+//		0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10.0, 20.0, 40.0, 60.0 // USE THIS FOR A RIDE HEIGHT OF >100
+//		0.0, 0.0, 0.0, 10.0, 20.0, 40.0, 60.0, 60.0, 60.0, 0.0 // USE THIS FOR A RIDE HEIGHT OF <100
+		0.0, 0.0, 3.0, 12.0, 25.0, 40.0, 60.0, 60.0, 60.0, 0.0 // USE THIS FOR A RIDE HEIGHT OF <100
+//		0, 0, 0, 1, 2, 4, 8, 16, 32, 64
+//		1, 2, 4, 8, 16, 32, 64, 128, 256, 512
+//		0.0, 0.0, 0.2, 0.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0
+//		0.05, 0.1, 0.3, 0.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0
+//		0.1, 0.2, 0.3, 0.5, 0.8, 1.0, 1.0, 1.0, 1.0, 1.0
+//		0.01, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0
+//		0.01, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2
+//		0.01, 0.1, 0.2, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0
+//		0.05, 0.2, 0.5, 0.8, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0
+	}
+}
+
+
+table vehicle_speederbike_hover_bumper_force
+{
+	clamp
+	{
+		/// Range-mapped from trace-depth, from [MaxTraceDepth, 0] to the below range
+		0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 3.0
+	}
+}
+

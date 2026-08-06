@@ -1,0 +1,56 @@
+/***********************************************************************
+Prison Darnell lifts grate
+***********************************************************************/
+
+export env_q4x_pr_darnell_grate
+{
+	options -game /q4xbase -scale .3937 -prefix GRATE_ -keep  origin body  -sourcedir models/mapobjects/prison/grate/animations -destdir models/mapobjects/prison/grate
+
+	mesh	pr_darnell_grate.ma				-dest mesh
+	anim	pr_darnell_grate.ma		-range 1 2	-dest pr_idle
+	anim	pr_darnell_grate.ma				-dest pr_darnell_grate
+	anim	pr_darnell_grate.ma		-range 79 80	-dest pr_end_idle
+	anim	st_retch_intro.ma		-range 1 113	-dest st_retch_intro_loop
+	anim	st_retch_intro.ma		-range 114 264	-dest st_retch_intro
+	anim	st_retch_intro.ma		-range 264 265	-dest st_retch_intro_end_idle
+
+
+}
+
+model model_env_q4x_pr_darnell_grate
+
+{
+	mesh				models/mapobjects/prison/grate/mesh.md5mesh
+	anim idle			models/mapobjects/prison/grate/pr_idle.md5anim
+	
+	anim pr_darnell_grate		models/mapobjects/prison/grate/pr_darnell_grate.md5anim
+	{
+	}
+
+	anim end_idle			models/mapobjects/prison/grate/pr_end_idle.md5anim
+	
+	anim st_retch_intro_loop		models/mapobjects/prison/grate/st_retch_intro_loop.md5anim
+	{
+	}
+
+	anim st_retch_intro		models/mapobjects/prison/grate/st_retch_intro.md5anim
+	{
+	}
+
+	anim st_retch_intro_end_idle		models/mapobjects/prison/grate/st_retch_intro_end_idle.md5anim
+	{
+	}
+}
+
+entityDef env_q4x_pr_darnell_grate
+{
+	"editor_color"			"0 .5 .25"
+	"editor_mins"			"-32 -32 0"
+	"editor_maxs"			"32 32 16"
+
+	"spawnclass"			"idAnimated"
+
+	"model"					"model_env_q4x_pr_darnell_grate"
+	"anim"					"idle"
+	
+}

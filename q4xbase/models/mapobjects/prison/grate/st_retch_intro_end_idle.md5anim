@@ -1,0 +1,30 @@
+MD5Version 10
+commandline "anim models/mapobjects/prison/grate/animations/st_retch_intro.ma -dest models/mapobjects/prison/grate/st_retch_intro_end_idle.md5anim -game Quake4 -game /q4xbase -scale .3937 -prefix GRATE_ -keep origin body -range 264 265"
+
+numFrames 2
+numJoints 2
+frameRate 24
+numAnimatedComponents 2
+
+hierarchy {
+	"origin"	-1 0 0	//
+	"body"	0 36 0	// origin ( Tz Qz )
+}
+
+bounds {
+	( -36.0595703125 -132.7899932861 -3.1944503784 ) ( 23.4620857239 -67.9384918213 33.0772857666 )
+	( -36.042049408 -133.0043945313 -3.2034416199 ) ( 23.4621162415 -68.1333236694 33.0721969604 )
+}
+
+baseframe {
+	( 0 0 0 ) ( -0.7071067691 0 0 )
+	( -4.8454055786 16.1078052521 68.3807144165 ) ( 0.9719697237 -0.2347275913 -0.0043439353 )
+}
+
+frame 0 {
+	 68.3807144165 -0.0043439353
+}
+
+frame 1 {
+	 68.585105896 -0.0044943462
+}

@@ -1,0 +1,279 @@
+//Valkaryne face that appears on GUIs as the player makes his way through M09 and M10, added by JohnS
+gfx/guis/maps/cryo/valkimage
+{	
+	noShadows
+	translucent
+	{
+		colored
+		Map gfx/guis/maps/cryo/valkimage.tga
+	}
+}
+
+gfx/guis/maps/cryo/cryo01_bg
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		colored
+		Map gfx/guis/maps/cryo/cryo01_bg.tga
+		//scroll 0, .35 * time
+	}
+}
+
+gfx/guis/maps/cryo/cryo01_center
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/maps/cryo/cryo01_center.tga
+	}
+}
+
+gfx/guis/maps/cryo/cryo01_center2
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/maps/cryo/cryo01_center2.tga
+		clamp
+		rotate 0.25 * time
+	}
+}
+
+//-------------------------------------------
+
+gfx/guis/maps/cryo/cryo02_bg
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		colored
+		Map gfx/guis/maps/cryo/cryo02_bg.tga
+	}
+}
+
+gfx/guis/maps/cryo/cryo02_tech1
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/maps/cryo/cryo02_tech1.tga
+		scroll 0, .35 * time
+	}
+}
+
+
+//-------------------------------------------
+
+gfx/guis/maps/cryo/cryo03_bg
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		colored
+		Map gfx/guis/maps/cryo/cryo03_bg.tga
+	}
+}
+
+gfx/guis/maps/cryo/cryo03_tech1
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/maps/cryo/cryo03_tech1.tga
+	}
+}
+
+//-------------------------------------------
+
+gfx/guis/maps/cryo/cryo04_bg
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		colored
+		Map gfx/guis/maps/cryo/cryo04_bg.tga
+	}
+}
+
+gfx/guis/maps/cryo/cryo04_tech1
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/maps/cryo/cryo04_tech1.tga
+	}
+}
+
+gfx/guis/maps/cryo/cryo04_tech2
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/maps/cryo/cryo04_tech2.tga
+	}
+}
+
+//-------------------------------------------
+
+gfx/guis/maps/cryo/cryo05_bg
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		colored
+		Map gfx/guis/maps/cryo/cryo05_bg.tga
+	}
+}
+
+gfx/guis/maps/cryo/cryo05_tech1
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/maps/cryo/cryo05_tech1.tga
+		scroll 0, .03 * time
+	}
+}
+
+gfx/guis/maps/cryo/cryo05_tech2
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/maps/cryo/cryo05_tech2.tga
+	}
+}
+
+gfx/guis/maps/cryo/cryo_func_coolingbutton_01
+{	
+	noShadows
+	translucent
+	{
+		colored
+		Map gfx/guis/maps/cryo/cryo_func_coolingbutton_01.tga
+	}
+}
+
+gfx/guis/maps/cryo/cryo_func_coolingbutton_02
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		colored
+		Map gfx/guis/maps/cryo/cryo_func_coolingbutton_02.tga
+	}
+}
+
+gfx/guis/maps/cryo/cryo_func_coolingbutton_02a
+{	
+	noShadows
+	translucent
+	{
+		blend gl_src_alpha, gl_one
+		colored
+		Map gfx/guis/maps/cryo/cryo_func_coolingbutton_02.tga
+		red	sintable[time * 0.3] + 0
+	}
+}
+
+gfx/guis/maps/cryo/cryo_func_coolingbutton_03
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		colored
+		Map gfx/guis/maps/cryo/cryo_func_coolingbutton_03.tga
+	}
+}
+
+gfx/guis/maps/cryo/cryo_func_coolingbutton_04
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/maps/cryo/cryo_func_coolingbutton_04.tga
+	}
+}
+
+gfx/guis/maps/cryo/cryo_func_coolingbutton_05
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		colored
+		Map gfx/guis/maps/cryo/cryo_func_coolingbutton_05.tga
+	}
+}
+
+// QUEEN AREA BLAST DOOR CLOSING SHADERS
+
+gfx/guis/maps/descent/blastdoor_base
+{	
+	noShadows
+	translucent
+	{
+		colored
+		Map gfx/guis/maps/descent/blastdoor_base.tga
+	}
+}
+
+gfx/guis/maps/descent/blastdoor_base_alpha
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		colored
+		Map gfx/guis/maps/descent/blastdoor_base.tga
+	}
+}
+
+gfx/guis/maps/descent/blastdoor_door
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		colored
+		Map gfx/guis/maps/descent/blastdoor_door.tga
+	}
+}
+
+gfx/guis/maps/descent/blastdoor_symbol
+{	
+	noShadows
+	translucent
+	{
+		blend gl_src_alpha, gl_one
+		colored
+		Map gfx/guis/maps/descent/blastdoor_symbol.tga
+		red	sintable[time * 2] + 0
+	}
+}

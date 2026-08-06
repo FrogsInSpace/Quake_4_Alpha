@@ -1,0 +1,47 @@
+textures/q4x/rocket_stack_d
+{
+	qer_editorimage textures/q4x/rocket_stack_d.tga
+	diffusemap textures/q4x/rocket_stack_d.tga
+	bumpmap textures/q4x/rocket_stack_local.tga
+	specularmap textures/q4x/rocket_stack_s.tga
+}
+
+textures/q4x/surface_d
+{
+	noSelfShadow
+	noshadows
+
+	qer_editorimage textures/q4x/surface_d.tga
+
+	{
+		blend diffusemap
+		map textures/q4x/surface_d.tga
+	}
+//	{
+//		blend blend
+//		map textures/q4x/surface_dust.tga
+//		translate 0, time * -0.0185
+//	}
+//	{
+//		blend blend
+//		map textures/q4x/surface_blend.tga
+//	}
+}
+
+textures/q4x_sfx/star_glow_d
+{
+	qer_editorimage textures/q4x_sfx/star_glow_d.tga
+	noSelfShadow
+	noshadows
+
+	{
+		blend add
+		map textures/q4x_sfx/star_glow_d.tga
+	}
+	{
+		blend add
+		map textures/q4x_sfx/star_glow_d.tga
+		rgb 0.5
+		rotate time * 0.01
+	}
+}

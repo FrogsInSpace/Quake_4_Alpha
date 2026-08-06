@@ -1,0 +1,73 @@
+/*
+===============================================================================
+
+	Gladiator
+
+===============================================================================
+*/
+
+export gladiator
+{
+
+	options -prefix GLA_ -scale .3937 -align ALL -keep origin lft_up_shock_3 rt_up_shock_3 shield_jt -parent pelvis origin -parent rt_eye_target head_jt -parent lft_eye_target head_jt -parent shield_jt rt_wrist_jt -sourcedir models/monsters/Gladiator/animation -destdir models/monsters/gladiator
+	
+	anim	gla_shield_pain_fire.ma						-dest shield_pain_fire
+	anim	gla_pain_fire.ma						-dest pain_fire
+	anim	mcc_gladiator_pull.ma						-dest mcc_gladiator_pull
+	anim	bio_gladiator_jumpdown.ma					-dest bio_gladiator_jumpdown
+	
+}
+
+/*
+===============================================================================
+
+	Gladiator Model
+
+===============================================================================
+*/
+
+model model_monster_q4x_gladiator
+{	
+	inherit							model_monster_gladiator
+	anim shield_pain_fire			models/monsters/gladiator/shield_pain_fire.md5anim
+	{
+		frame	1					sound_voice			gladiator_onfire
+		frame	51					footstep
+	}
+
+
+	anim pain_fire					models/monsters/gladiator/pain_fire.md5anim
+	{
+		frame	1					sound_voice			gladiator_onfire
+		frame	51					footstep
+	}
+
+	anim mcc_gladiator_pull					models/monsters/gladiator/mcc_gladiator_pull.md5anim
+	{
+		frame	1					sound_voice			snd_pain
+		frame	51					footstep
+	}
+
+	anim bio_gladiator_jumpdown				models/monsters/gladiator/bio_gladiator_jumpdown.md5anim
+	{
+		frame	1					sound_voice			snd_pain
+		frame	8,21					footstep
+	}
+
+
+}
+
+/*
+===============================================================================
+
+	Gladiator Entity Definition
+
+===============================================================================
+*/
+
+entityDef monster_q4x_gladiator 
+{
+	"inherit"							"monster_gladiator"
+
+	"model"								"model_monster_q4x_gladiator"
+}

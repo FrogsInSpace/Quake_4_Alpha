@@ -1,0 +1,76 @@
+/*
+===============================================================================
+
+	Failed Transfer
+
+===============================================================================
+*/
+
+export failed_transfer {
+	options -prefix FT_ -keep Body -scale .3937 -align ALL -keep muzzleflash -parent gun_point_weighting_bone rWrist -parent hip_joint Body -parent waist Body -sourcedir models/monsters/Failed_Transfer/animations -destdir models/monsters/failed_transfer
+	
+
+	anim	onfire.ma				 -dest onfire
+	anim	torso_onfire.ma				 -dest torso_onfire
+}
+
+/*
+===============================================================================
+
+	Failed Transfer Model
+
+===============================================================================
+*/
+
+model model_monster_q4x_failed_transfer
+	
+	{
+	inherit									model_monster_failed_transfer
+
+//Q4X pain fire anim
+
+	anim pain_fire										models/monsters/failed_transfer/onfire.md5anim
+	{
+	}
+
+}
+
+/*
+===============================================================================
+
+	Failed Transfer Full body Entity Def
+
+===============================================================================
+*/
+
+entityDef monster_q4x_failed_transfer
+{
+	"inherit"								"monster_failed_transfer"
+	// --------------------------------- Body ------------------------------------
+	"model"									"model_monster_failed_transfer"
+}
+
+/*
+===============================================================================
+
+	Failed Transfer Torso
+
+===============================================================================
+*/
+
+model model_monster_q4x_failed_transfer_torso
+{
+	inherit							model_monster_failed_transfer_torso
+
+	//Q4X onfire anim
+
+	anim pain_fire										models/monsters/failed_transfer/torso_onfire.md5anim
+	{
+	}
+}
+
+entityDef monster_q4x_failed_transfer_torso
+{
+	"inherit"						"monster_failed_transfer_torso"
+   	"model"							"model_monster_q4x_failed_transfer_torso"
+}

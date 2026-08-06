@@ -1,0 +1,84 @@
+MD5Version 10
+commandline "anim cinematics/stranarus_trench/exploding_tower/animations/idle.ma -dest models/mapobjects/stranarustrench/towerexploding/idle.md5anim -game Quake4 -game /q4xbase -scale 2 -keep origin effects1 effects2 explodingtower3 effects3 effects4 effects5 effects6 explodingtower8 effects7 explodingtower10 effects8 effects9 effects10 effects11 effects12 effects13 explodingtower17 effects14 effects15 explodingtower20 effects16 effects17 effects18 effects19 explodingtower25 effects20 effects21 effects22 explodingtower29"
+
+numFrames 2
+numJoints 30
+frameRate 24
+numAnimatedComponents 0
+
+hierarchy {
+	"origin"	-1 0 0	//
+	"explodingtower10"	0 0 0	// origin
+	"effects7"	1 0 0	// explodingtower10
+	"explodingtower17"	0 0 0	// origin
+	"effects10"	3 0 0	// explodingtower17
+	"effects11"	3 0 0	// explodingtower17
+	"effects12"	3 0 0	// explodingtower17
+	"effects13"	3 0 0	// explodingtower17
+	"effects8"	3 0 0	// explodingtower17
+	"effects9"	3 0 0	// explodingtower17
+	"explodingtower20"	0 0 0	// origin
+	"effects14"	10 0 0	// explodingtower20
+	"effects15"	10 0 0	// explodingtower20
+	"explodingtower25"	0 0 0	// origin
+	"effects16"	13 0 0	// explodingtower25
+	"effects17"	13 0 0	// explodingtower25
+	"effects18"	13 0 0	// explodingtower25
+	"effects19"	13 0 0	// explodingtower25
+	"explodingtower29"	0 0 0	// origin
+	"effects20"	18 0 0	// explodingtower29
+	"effects21"	18 0 0	// explodingtower29
+	"effects22"	18 0 0	// explodingtower29
+	"explodingtower3"	0 0 0	// origin
+	"effects1"	22 0 0	// explodingtower3
+	"effects2"	22 0 0	// explodingtower3
+	"explodingtower8"	0 0 0	// origin
+	"effects3"	25 0 0	// explodingtower8
+	"effects4"	25 0 0	// explodingtower8
+	"effects5"	25 0 0	// explodingtower8
+	"effects6"	25 0 0	// explodingtower8
+}
+
+bounds {
+	( -249.2579650879 -352.0009460449 -0.0000152588 ) ( 240.785736084 195.5376434326 1358.8370361328 )
+	( -249.2579650879 -352.0009460449 -0.0000152588 ) ( 240.785736084 195.5376434326 1358.8370361328 )
+}
+
+baseframe {
+	( 0 0 0 ) ( -0.7071067691 0 0 )
+	( -81.9230270386 1100.5349121094 159.0370635986 ) ( 0 0 0 )
+	( -6.4748687744 -80.4885864258 15.8749542236 ) ( 0 0 0 )
+	( 35.6417808533 766.1678466797 0 ) ( 0 0 0 )
+	( 39.3950920105 -117.954284668 -163.6675262451 ) ( 0 0 0 )
+	( 44.8758583069 -766.1678466797 183.1380310059 ) ( 0 0 0 )
+	( 153.1353607178 -234.5029296875 101.6974334717 ) ( 0 0 0 )
+	( -180.897644043 -165.3128662109 9.5296726227 ) ( 0 0 0 )
+	( -180.897644043 -171.1166992188 33.5815925598 ) ( 0 0 0 )
+	( 17.86378479 -231.1285400391 -15.0020236969 ) ( 0 0 0 )
+	( 136.4307861328 557.3336181641 130.0115814209 ) ( 0 0 0 )
+	( -51.1181564331 0 9.7955780029 ) ( 0 0 0 )
+	( -51.1181564331 548.2547607422 9.7955780029 ) ( 0 0 0 )
+	( -84.146194458 167.2481079102 165.2080230713 ) ( 0 0 0 )
+	( -58.5545196533 356.1375732422 -82.8890533447 ) ( 0 0 0 )
+	( -13.9789810181 475.4976196289 102.32081604 ) ( 0 0 0 )
+	( 61.5942687988 140.5076904297 -9.1167144775 ) ( 0 0 0 )
+	( -58.3358612061 15.5691680908 -133.6945037842 ) ( 0 0 0 )
+	( 54.8812103271 191.1083679199 -85.7810516357 ) ( 0 0 0 )
+	( -1.3756370544 281.4989013672 70.7790298462 ) ( 0 0 0 )
+	( -190.2322998047 330.2968444824 -6.4808197021 ) ( 0 0 0 )
+	( 153.4363861084 316.7835083008 155.9247283936 ) ( 0 0 0 )
+	( 48.8360061646 447.3886413574 -159.5552978516 ) ( 0 0 0 )
+	( -166.5296783447 13.8547363281 78.7868652344 ) ( 0 0 0 )
+	( 169.5441589355 -134.543762207 238.8520202637 ) ( 0 0 0 )
+	( -56.3237800598 753.4154663086 247.754196167 ) ( 0 0 0 )
+	( 116.0730743408 99.8668212891 -58.5986938477 ) ( 0 0 0 )
+	( -55.1746482849 214.8474731445 -137.2850799561 ) ( 0 0 0 )
+	( -34.4729957581 -226.3599243164 -36.7855529785 ) ( 0 0 0 )
+	( -129.4468231201 -313.7879943848 -72.4905395508 ) ( 0 0 0 )
+}
+
+frame 0 {
+}
+
+frame 1 {
+}

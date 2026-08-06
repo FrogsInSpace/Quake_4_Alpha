@@ -1,0 +1,36 @@
+windowDef Desktop
+{
+	rect	0,0,640,480
+	visible	1
+	nocursor	1
+	menugui	0
+	backcolor	0,0,0,0
+
+	onInit {
+		
+	}
+
+	windowDef Artbase
+	{
+		rect	0,0,640,480
+		visible	1
+		background	"gfx/guis/vehicle/airassault/spacecannon3_base"
+		matcolor	1,1,1,1
+	}
+//	windowDef overheat_bar
+	//{
+		//rect	60,102,40 + ((335-40) * "gui::HeatPercentage"),150
+		//visible	1
+		//backcolor	0.545+("gui::HeatPercentage"*0.545),0.545-("gui::HeatPercentage"*.545),0.282-("gui::HeatPercentage"*.282),1
+		//bordersize	2
+		//bordercolor	0.352,0.352,0,1
+	//}
+	windowDef overheat_bar
+	{
+		rect	50,102,40 + ((337-40) * "gui::HeatPercentage"),150
+		visible	1
+		background	"gfx/guis/vehicle/airassault/spacecannon_heatbar_01"
+		matcolor	0.545+("gui::HeatPercentage"*0.545),0.545-("gui::HeatPercentage"*.545),0.282-("gui::HeatPercentage"*.282),1
+
+	}
+}

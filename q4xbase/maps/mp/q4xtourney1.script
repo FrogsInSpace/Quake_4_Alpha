@@ -1,0 +1,142 @@
+//Quake DM2
+//
+//TODO:
+
+
+
+#include "scripts/doom_defs.script"
+
+void loop_crankshaft1()
+{
+	while( 1 )
+	{
+		$crank1.accelTime( 0 );
+		$crank1.time( 1 );
+		$crank1.decelTime( 0 );
+		$crank1.rotateOnce( '0 45 0' );
+		$shaftarm1.accelTime( 0 );
+		$shaftarm1.time( 1 );
+		$shaftarm1.decelTime( 0 );
+		$shaftarm1.rotateOnce( '0 -9.6 0' );
+		$shaft1.accelTime( 0 );
+		$shaft1.time( 1 );
+		$shaft1.decelTime( 0 );
+		$shaft1.moveTo( $shaft_pos_2 );
+		$shaft1.rotateOnce( '0 -9.6 0' );
+		sys.waitFor( $shaft1 );
+		
+		$crank1.accelTime( 0 );
+		$crank1.time( 1 );
+		$crank1.decelTime( 0 );
+		$crank1.rotateOnce( '0 45 0' );
+		$shaftarm1.accelTime( 0 );
+		$shaftarm1.time( 1 );
+		$shaftarm1.decelTime( 0 );
+		$shaftarm1.rotateOnce( '0 -2.3 0' );
+		$shaft1.accelTime( 0 );
+		$shaft1.time( 1 );
+		$shaft1.decelTime( 0 );
+		$shaft1.moveTo( $shaft_pos_3 );
+		$shaft1.rotateOnce( '0 -2.3 0' );
+		sys.waitFor( $shaft1 );
+		
+		$crank1.accelTime( 0 );
+		$crank1.time( 1 );
+		$crank1.decelTime( 0 );
+		$crank1.rotateOnce( '0 45 0' );
+		$shaftarm1.accelTime( 0 );
+		$shaftarm1.time( 1 );
+		$shaftarm1.decelTime( 0 );
+		$shaftarm1.rotateOnce( '0 4.7 0' );
+		$shaft1.accelTime( 0 );
+		$shaft1.time( 1 );
+		$shaft1.decelTime( 0 );
+		$shaft1.moveTo( $shaft_pos_4 );
+		$shaft1.rotateOnce( '0 4.7 0' );
+		sys.waitFor( $shaft1 );
+		
+		$crank1.accelTime( 0 );
+		$crank1.time( 1 );
+		$crank1.decelTime( 0 );
+		$crank1.rotateOnce( '0 45 0' );
+		$shaftarm1.accelTime( 0 );
+		$shaftarm1.time( 1 );
+		$shaftarm1.decelTime( 0 );
+		$shaftarm1.rotateOnce( '0 7.2 0' );
+		$shaft1.accelTime( 0 );
+		$shaft1.time( 1 );
+		$shaft1.decelTime( 0 );
+		$shaft1.moveTo( $shaft_pos_5 );
+		$shaft1.rotateOnce( '0 7.2 0' );
+		sys.waitFor( $shaft1 );
+		
+		$crank1.accelTime( 0 );
+		$crank1.time( 1 );
+		$crank1.decelTime( 0 );
+		$crank1.rotateOnce( '0 45 0' );
+		$shaftarm1.accelTime( 0 );
+		$shaftarm1.time( 1 );
+		$shaftarm1.decelTime( 0 );
+		$shaftarm1.rotateOnce( '0 7.2 0' );
+		$shaft1.accelTime( 0 );
+		$shaft1.time( 1 );
+		$shaft1.decelTime( 0 );
+		$shaft1.moveTo( $shaft_pos_6 );
+		$shaft1.rotateOnce( '0 7.2 0' );
+		sys.waitFor( $shaft1 );
+		
+		$crank1.accelTime( 0 );
+		$crank1.time( 1 );
+		$crank1.decelTime( 0 );
+		$crank1.rotateOnce( '0 45 0' );
+		$shaftarm1.accelTime( 0 );
+		$shaftarm1.time( 1 );
+		$shaftarm1.decelTime( 0 );
+		$shaftarm1.rotateOnce( '0 4.7 0' );
+		$shaft1.accelTime( 0 );
+		$shaft1.time( 1 );
+		$shaft1.decelTime( 0 );
+		$shaft1.moveTo( $shaft_pos_7 );
+		$shaft1.rotateOnce( '0 4.7 0' );
+		sys.waitFor( $shaft1 );
+		
+		$crank1.accelTime( 0 );
+		$crank1.time( 1 );
+		$crank1.decelTime( 0 );
+		$crank1.rotateOnce( '0 45 0' );
+		$shaftarm1.accelTime( 0 );
+		$shaftarm1.time( 1 );
+		$shaftarm1.decelTime( 0 );
+		$shaftarm1.rotateOnce( '0 -2.3 0' );
+		$shaft1.accelTime( 0 );
+		$shaft1.time( 1 );
+		$shaft1.decelTime( 0 );
+		$shaft1.moveTo( $shaft_pos_8 );
+		$shaft1.rotateOnce( '0 -2.3 0' );
+		sys.waitFor( $shaft1 );
+		
+		$crank1.accelTime( 0 );
+		$crank1.time( 1 );
+		$crank1.decelTime( 0 );
+		$crank1.rotateOnce( '0 45 0' );
+		$shaftarm1.accelTime( 0 );
+		$shaftarm1.time( 1 );
+		$shaftarm1.decelTime( 0 );
+		$shaftarm1.rotateOnce( '0 -9.6 0' );
+		$shaft1.accelTime( 0 );
+		$shaft1.time( 1 );
+		$shaft1.decelTime( 0 );
+		$shaft1.moveTo( $shaft_pos_1 );
+		$shaft1.rotateOnce( '0 -9.6 0' );
+		sys.waitFor( $shaft1 );
+	}
+}
+
+
+void main()
+{
+
+	sys.wait( 0.1 );
+	thread loop_crankshaft1();
+
+}

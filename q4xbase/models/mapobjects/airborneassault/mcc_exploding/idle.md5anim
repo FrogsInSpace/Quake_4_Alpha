@@ -1,0 +1,228 @@
+MD5Version 10
+commandline "anim cinematics/air_assault/mcc_exploding/animations/space_explosion.ma -dest models/mapobjects/airborneassault/mcc_exploding/idle.md5anim -game Quake4 -prefix MCCEXP_ -align ALL -keep blast -keep ALL Ship_Base Top_turret_AIM_RShape Top_turret_AIM_R top_turret_AIM_LShape top_turret_AIM_L MCC_Part_3_joint MCC_Part_5_joint MCC_Part_6_joint MCC_Part_7_joint MCC_Part_8_joint F_belly_turret_muzzle_R1 F_belly_turret_muzzle_R2 F_belly_turret_stock_R F_belly_turret_base_R vent_back_R MCC_Part_9_joint MCC_Part_10_joint B_belly_turret_muzzle_R1 B_belly_turret_muzzle_R2 B_belly_turret_stock_R B_belly_turret_base_R MCC_Part_11_joint MCC_Part_12_joint B_belly_turret_muzzle_L1 B_belly_turret_muzzle_L2 B_belly_turret_stock_L B_belly_turret_base_L MCC_Part_14_joint MCC_Part_15_joint MCC_Part_16_joint F_belly_turret_muzzle_L2 F_belly_turret_muzzle_L1 F_belly_turret_stock_L F_belly_turret_base_L vent_back_L MCC_Part_17_joint MCC_Part_18_joint MCC_Part_19_joint MCC_Part_20_joint vent_front_R vent_side_R4 vent_side_R3 vent_side_R2 vent_side_R1 MCC_Part_21_joint vent_front_L vent_side_L4 vent_side_L3 vent_side_L2 vent_side_L1 MCC_Part_22_joint MCC_Part_24_joint MCC_Part_25_joint MCC_Part_26_joint MCC_Part_27_joint MCC_Part_28_joint MCC_Part_29_joint MCC_Part_31_joint engine_top_C2 engine_top_C1 MCC_Part_32_joint MCC_Part_35_joint MCC_Part_36_joint MCC_Part_37_joint MCC_Part_38_joint MCC_Part_39_joint top_turret_muzzle_L2 top_turret_muzzle_L1 top_turret_stock_L_aimConstraint1 top_turret_stock_L top_turret_base_L_aimConstraint1 top_turret_base_L top_turret_muzzle_R1 top_turret_muzzle_R2 top_turret_stock_R_aimConstraint1 top_turret_stock_R top_turret_base_R_aimConstraint1 top_turret_base_R MCC_Part_40_joint engine_bottom_R2 engine_bottom_R1 engine_top_R1 engine_top_R2 engine_bottom_C2 engine_bottom_C1 engine_bottom_L2 engine_bottom_L1 engine_top_L2 engine_top_L1 polySurface163_joint polySurface164_joint breakaway Ship_Body -range 1 2"
+
+numFrames 2
+numJoints 101
+frameRate 24
+numAnimatedComponents 3
+
+hierarchy {
+	"origin"	-1 0 0	//
+	"ALL"	0 0 0	// origin
+	"Ship_Base"	1 0 0	// ALL
+	"Ship_Body"	2 44 0	// Ship_Base ( Tz Qx Qz )
+	"Top_turret_AIM_R"	3 0 0	// Ship_Body
+	"breakaway"	3 0 0	// Ship_Body
+	"MCC_Part_10_joint"	5 0 0	// breakaway
+	"MCC_Part_11_joint"	5 0 0	// breakaway
+	"B_belly_turret_base_R"	7 0 0	// MCC_Part_11_joint
+	"B_belly_turret_stock_R"	8 0 0	// B_belly_turret_base_R
+	"B_belly_turret_muzzle_R1"	9 0 0	// B_belly_turret_stock_R
+	"B_belly_turret_muzzle_R2"	9 0 0	// B_belly_turret_stock_R
+	"MCC_Part_12_joint"	5 0 0	// breakaway
+	"MCC_Part_14_joint"	5 0 0	// breakaway
+	"B_belly_turret_base_L"	13 0 0	// MCC_Part_14_joint
+	"B_belly_turret_stock_L"	14 0 0	// B_belly_turret_base_L
+	"B_belly_turret_muzzle_L1"	15 0 0	// B_belly_turret_stock_L
+	"B_belly_turret_muzzle_L2"	15 0 0	// B_belly_turret_stock_L
+	"MCC_Part_15_joint"	5 0 0	// breakaway
+	"MCC_Part_16_joint"	5 0 0	// breakaway
+	"MCC_Part_17_joint"	5 0 0	// breakaway
+	"F_belly_turret_base_L"	20 0 0	// MCC_Part_17_joint
+	"F_belly_turret_stock_L"	21 0 0	// F_belly_turret_base_L
+	"F_belly_turret_muzzle_L1"	22 0 0	// F_belly_turret_stock_L
+	"F_belly_turret_muzzle_L2"	22 0 0	// F_belly_turret_stock_L
+	"vent_back_L"	20 0 0	// MCC_Part_17_joint
+	"MCC_Part_18_joint"	5 0 0	// breakaway
+	"MCC_Part_19_joint"	5 0 0	// breakaway
+	"MCC_Part_20_joint"	5 0 0	// breakaway
+	"MCC_Part_21_joint"	5 0 0	// breakaway
+	"vent_front_R"	29 0 0	// MCC_Part_21_joint
+	"vent_side_R1"	29 0 0	// MCC_Part_21_joint
+	"vent_side_R2"	29 0 0	// MCC_Part_21_joint
+	"vent_side_R3"	29 0 0	// MCC_Part_21_joint
+	"vent_side_R4"	29 0 0	// MCC_Part_21_joint
+	"MCC_Part_22_joint"	5 0 0	// breakaway
+	"vent_front_L"	35 0 0	// MCC_Part_22_joint
+	"vent_side_L1"	35 0 0	// MCC_Part_22_joint
+	"vent_side_L2"	35 0 0	// MCC_Part_22_joint
+	"vent_side_L3"	35 0 0	// MCC_Part_22_joint
+	"vent_side_L4"	35 0 0	// MCC_Part_22_joint
+	"MCC_Part_24_joint"	5 0 0	// breakaway
+	"MCC_Part_25_joint"	5 0 0	// breakaway
+	"MCC_Part_26_joint"	5 0 0	// breakaway
+	"MCC_Part_27_joint"	5 0 0	// breakaway
+	"MCC_Part_28_joint"	5 0 0	// breakaway
+	"MCC_Part_29_joint"	5 0 0	// breakaway
+	"MCC_Part_31_joint"	5 0 0	// breakaway
+	"MCC_Part_32_joint"	5 0 0	// breakaway
+	"engine_top_C1"	48 0 0	// MCC_Part_32_joint
+	"engine_top_C2"	48 0 0	// MCC_Part_32_joint
+	"MCC_Part_35_joint"	5 0 0	// breakaway
+	"MCC_Part_36_joint"	5 0 0	// breakaway
+	"MCC_Part_37_joint"	5 0 0	// breakaway
+	"MCC_Part_38_joint"	5 0 0	// breakaway
+	"MCC_Part_39_joint"	5 0 0	// breakaway
+	"MCC_Part_3_joint"	5 0 0	// breakaway
+	"MCC_Part_40_joint"	5 0 0	// breakaway
+	"MCC_Part_5_joint"	5 0 0	// breakaway
+	"MCC_Part_6_joint"	5 0 0	// breakaway
+	"MCC_Part_7_joint"	5 0 0	// breakaway
+	"MCC_Part_8_joint"	5 0 0	// breakaway
+	"MCC_Part_9_joint"	5 0 0	// breakaway
+	"F_belly_turret_base_R"	62 0 0	// MCC_Part_9_joint
+	"F_belly_turret_stock_R"	63 0 0	// F_belly_turret_base_R
+	"F_belly_turret_muzzle_R1"	64 0 0	// F_belly_turret_stock_R
+	"F_belly_turret_muzzle_R2"	64 0 0	// F_belly_turret_stock_R
+	"vent_back_R"	62 0 0	// MCC_Part_9_joint
+	"blast"	5 0 0	// breakaway
+	"polySurface163_joint"	5 0 0	// breakaway
+	"polySurface164_joint"	5 0 0	// breakaway
+	"polySurface166_joint"	5 0 0	// breakaway
+	"engine_bottom_R1"	71 0 0	// polySurface166_joint
+	"engine_bottom_R2"	71 0 0	// polySurface166_joint
+	"engine_top_R1"	71 0 0	// polySurface166_joint
+	"engine_top_R2"	71 0 0	// polySurface166_joint
+	"polySurface168_joint"	5 0 0	// breakaway
+	"engine_bottom_C1"	76 0 0	// polySurface168_joint
+	"engine_bottom_C2"	76 0 0	// polySurface168_joint
+	"polySurface169_joint"	5 0 0	// breakaway
+	"engine_bottom_L1"	79 0 0	// polySurface169_joint
+	"engine_bottom_L2"	79 0 0	// polySurface169_joint
+	"engine_top_L1"	79 0 0	// polySurface169_joint
+	"engine_top_L2"	79 0 0	// polySurface169_joint
+	"polySurface171_joint"	5 0 0	// breakaway
+	"top_turret_base_R"	84 0 0	// polySurface171_joint
+	"top_turret_base_R_aimConstraint1"	85 0 0	// top_turret_base_R
+	"top_turret_stock_R"	85 0 0	// top_turret_base_R
+	"top_turret_muzzle_R1"	87 0 0	// top_turret_stock_R
+	"top_turret_muzzle_R2"	87 0 0	// top_turret_stock_R
+	"top_turret_stock_R_aimConstraint1"	87 0 0	// top_turret_stock_R
+	"polySurface175_joint"	5 0 0	// breakaway
+	"top_turret_base_L"	91 0 0	// polySurface175_joint
+	"top_turret_base_L_aimConstraint1"	92 0 0	// top_turret_base_L
+	"top_turret_stock_L"	92 0 0	// top_turret_base_L
+	"top_turret_muzzle_L1"	94 0 0	// top_turret_stock_L
+	"top_turret_muzzle_L2"	94 0 0	// top_turret_stock_L
+	"top_turret_stock_L_aimConstraint1"	94 0 0	// top_turret_stock_L
+	"polySurface176_joint"	5 0 0	// breakaway
+	"polySurface177_joint"	5 0 0	// breakaway
+	"top_turret_AIM_L"	3 0 0	// Ship_Body
+}
+
+bounds {
+	( -1453.4918212891 -2348.4819335938 -7.9539642334 ) ( 3762.8515625 2329.8000488281 1143.8251953125 )
+	( -1461.5266113281 -2348.6994628906 -10.936050415 ) ( 3754.6875 2329.5607910156 1144.8343505859 )
+}
+
+baseframe {
+	( 0 0 0 ) ( -0.5 -0.5 -0.5 )
+	( 0 0 0 ) ( 0 0 0 )
+	( 0 612.2150268555 475.0382080078 ) ( 0 0 0 )
+	( 0 92.1176147461 -507.3742980957 ) ( -0.0005811478 0.0000005055 0.0008698163 )
+	( -3064.7592773438 126.9999923706 924.9310302734 ) ( 0 0.3826834261 -0 )
+	( -0.0000000066 -704.3326416016 24.6932163239 ) ( 0 0 0 )
+	( -1943.7336425781 512.3913574219 -76.4459991455 ) ( -0.0029848036 -0 -0 )
+	( -519.5029907227 252.9429473877 338.254119873 ) ( -0.0029848036 -0 -0 )
+	( -217.0426940918 69.9247817993 -256.3953857422 ) ( 0.0000000002 0.9999955297 -0.0029848036 )
+	( 0.0000253275 -70.7278289795 9.8594808578 ) ( 0 0 0 )
+	( 40.81823349 -6.3631038666 233.6661834717 ) ( 0.0000000001 0.7071067691 0.0000000001 )
+	( -40.5876502991 -6.3631043434 233.6661987305 ) ( 0.0000000001 0.7071067691 0.0000000001 )
+	( -1656.7266845703 472.6021118164 384.1479187012 ) ( -0.0029848036 -0 -0 )
+	( 510.3891296387 252.9429321289 338.254119873 ) ( -0.0029848036 -0 -0 )
+	( 226.1565856934 69.9248046875 -256.3953857422 ) ( 0.0000000001 0.9999955297 -0.0029848036 )
+	( 0.0000240047 -70.7288360596 9.860250473 ) ( 0 0 0 )
+	( 40.8182449341 -6.3631038666 233.6661987305 ) ( 0.0000000001 0.7071067691 0.0000000001 )
+	( -40.5876426697 -6.3631043434 233.6661834717 ) ( 0.0000000001 0.7071067691 0.0000000001 )
+	( 1638.4990234375 472.6021118164 384.1479187012 ) ( -0.0029848036 -0 -0 )
+	( 1925.505859375 512.3912963867 -76.4459991455 ) ( -0.0029848036 -0 -0 )
+	( 1195.3468017578 424.396484375 629.5686035156 ) ( -0.0029848036 -0 -0 )
+	( -33.3259925842 -25.7980232239 -282.9534912109 ) ( 0.0028466578 -0.3007044494 0.0008975478 )
+	( -0.0013507662 -70.7288513184 9.8595046997 ) ( 0 -0.0000004592 -0.0000001506 )
+	( 40.5889358521 -6.3627071381 233.6666870117 ) ( 0 0.7071067691 -0.0000000001 )
+	( -40.8182182312 -6.3627128601 233.6662139893 ) ( 0 0.7071067691 -0.0000000001 )
+	( 639.3333129883 -110.2977371216 -506.0393676758 ) ( 0.0021105751 0.0021105746 0.70710361 )
+	( -480.4890136719 222.7258605957 3255.7229003906 ) ( -0.0029848036 -0 -0 )
+	( 462.2612304688 222.7258453369 3255.7231445313 ) ( -0.0029848036 -0 -0 )
+	( -9.1138925552 185.2039794922 1843.4320068359 ) ( -0.0029848036 -0 -0 )
+	( -499.3143920898 275.7415161133 2312.9265136719 ) ( -0.0029848036 -0 -0 )
+	( 12.5541238785 -205.2041778564 -131.1299438477 ) ( 0.0021105751 0.0021105746 0.70710361 )
+	( -233.6036682129 -176.0625762939 -407.0315856934 ) ( -0.3913796246 0.9149856567 0.0358578674 )
+	( -223.1041259766 -175.6295318604 -334.4894714355 ) ( -0.3913796246 0.9149856567 0.0358578674 )
+	( -211.6374053955 -175.2057342529 -263.4952087402 ) ( -0.3913796246 0.9149856567 0.0358578674 )
+	( -200.8614959717 -174.7802124023 -192.2171325684 ) ( -0.3913796246 0.9149856567 0.0358578674 )
+	( 481.0866699219 275.7415161133 2312.9265136719 ) ( -0.0029848036 -0 -0 )
+	( 5.673895359 -205.2042541504 -131.1292114258 ) ( 0.0021105751 0.0021105746 0.70710361 )
+	( 251.8303985596 -176.0626678467 -407.0326843262 ) ( -0.0358715616 0.0913479477 0.3913555145 )
+	( 241.33253479 -175.6295928955 -334.4889831543 ) ( -0.0358540565 0.091297023 0.3913947344 )
+	( 229.8644561768 -175.2057800293 -263.494720459 ) ( -0.0358457081 0.0912859365 0.3913644552 )
+	( 219.0898132324 -174.7802734375 -192.2159118652 ) ( -0.0358540565 0.091297023 0.3913947344 )
+	( -9.1138916016 530.358215332 -66.2931137085 ) ( -0.0029848036 -0 -0 )
+	( -9.1139087677 185.8421020508 3411.94140625 ) ( -0.0029848036 -0 -0 )
+	( 112.4350967407 420.6071777344 12.2700576782 ) ( -0.0029848036 -0 -0 )
+	( 720.0314941406 603.4085083008 1602.8668212891 ) ( -0.0029848036 -0 -0 )
+	( 419.4745483398 388.8932495117 3259.5803222656 ) ( -0.0029848036 -0 -0 )
+	( 584.396484375 523.4705200195 2319.5146484375 ) ( -0.0029848036 -0 -0 )
+	( 120.3169631958 223.725982666 1293.6219482422 ) ( -0.0029848036 -0 -0 )
+	( -0.000007617 599.2727050781 -1148.7578125 ) ( -0.0029848036 -0 -0 )
+	( 96.0546875 3.6630249023 -133.0649108887 ) ( 0.0021105746 -0.7071036696 0.0021105751 )
+	( -96.0545425415 3.6640305519 -133.0649261475 ) ( 0.0021105746 -0.7071036696 0.0021105751 )
+	( 0.0000000197 1096.1375732422 18.4505062103 ) ( -0.0029848036 -0 -0 )
+	( 0.0000000184 738.4541625977 1328.8497314453 ) ( -0.0029848036 -0 -0 )
+	( -0.0000153129 675.2308349609 2081.2749023438 ) ( -0.0029848036 -0 -0 )
+	( -0.0000457641 635.8380126953 2530.7490234375 ) ( -0.0029848036 -0 -0 )
+	( -0.0000457893 480.4051818848 3246.85546875 ) ( -0.0029848036 -0 -0 )
+	( -120.3169631958 223.725982666 1293.6219482422 ) ( -0.0029848036 -0 -0 )
+	( -0.0000000033 741.615234375 39.5952606201 ) ( -0.0029848036 -0 -0 )
+	( -720.0314331055 603.4085083008 1602.8668212891 ) ( -0.0029848036 -0 -0 )
+	( -584.396484375 523.4705200195 2319.5146484375 ) ( -0.0029848036 -0 -0 )
+	( -419.4745483398 388.8932495117 3259.5803222656 ) ( -0.0029848036 -0 -0 )
+	( -112.4006271362 420.6071777344 12.2700576782 ) ( -0.0029848036 -0 -0 )
+	( -1213.5747070313 424.3964538574 629.5686035156 ) ( -0.0029848036 -0 -0 )
+	( 37.5292739868 -16.7791824341 -283.0075073242 ) ( 0.002846658 0.3007043898 -0.0008975475 )
+	( 0.0000292088 -70.7278060913 9.8594970703 ) ( 0 0 0 )
+	( 40.8181915283 -6.3631224632 233.666229248 ) ( -0.0000000001 0.7071067691 -0.0000000001 )
+	( -40.5875778198 -6.3631095886 233.6661529541 ) ( -0.0000000001 0.7071067691 -0.0000000001 )
+	( -621.1052856445 -110.2984771729 -506.0392456055 ) ( 0.0021105751 0.0021105746 0.70710361 )
+	( 0.0000000023 266.4413146973 2831.1057128906 ) ( 0 0 0 )
+	( -9.1138925552 624.2700805664 -595.8817749023 ) ( 0 0 0 )
+	( 0.0000000044 285.6236877441 686.7055053711 ) ( 0 0 0 )
+	( -1471.3044433594 687.5695800781 -254.7469787598 ) ( 0 0 0 )
+	( 253.1108398438 -205.5667724609 -467.8807678223 ) ( -0 -0.8433915377 -0 )
+	( 79.0007476807 -205.5657653809 -386.6918945313 ) ( -0 -0.8433915377 -0 )
+	( 253.1107788086 170.7861633301 -467.8807678223 ) ( -0 -0.8433915377 -0 )
+	( 79.0006942749 170.787109375 -386.6919250488 ) ( -0 -0.8433915377 -0 )
+	( -224.4633331299 624.2700805664 -769.4131469727 ) ( 0 0 0 )
+	( 320.5179748535 -325.583984375 -444.5518188477 ) ( 0.1878967434 -0.6816852689 0.1878967434 )
+	( 128.4087677002 -325.5831604004 -444.5523071289 ) ( 0.1878967434 -0.6816852689 0.1878967434 )
+	( 1244.5463867188 690.0208129883 -537.3910522461 ) ( 0 0 0 )
+	( 147.7571563721 -208.0177612305 -104.0478439331 ) ( 0 -0.5372967124 0 )
+	( -26.3522853851 -208.0177612305 -185.2364349365 ) ( 0 -0.5372967124 0 )
+	( 147.7570953369 168.3366088867 -104.0478439331 ) ( 0 -0.5372967124 0 )
+	( -26.3522148132 168.3340148926 -185.2364349365 ) ( 0 -0.5372967124 0 )
+	( -1367.9041748047 802.4914550781 -325.9202270508 ) ( 0 0 0 )
+	( -344.7695922852 30.644657135 333.9612731934 ) ( 0.0026282934 0.4739359319 -0.0014146117 )
+	( 0 0 0 ) ( 0 0 0 )
+	( 0.0000065652 -0.0000136238 229.3488922119 ) ( -0.0025630405 0.000158927 -0.0000004074 )
+	( 51.6129722595 26.2703456879 342.2141723633 ) ( 0.4999999106 0.5 0.4999999702 )
+	( -51.612953186 26.2714958191 342.213470459 ) ( 0.4999999106 0.5 0.4999999702 )
+	( 0 0 0 ) ( 0 0 0 )
+	( 1273.1575927734 800.3652954102 469.2083129883 ) ( 0 0 0 )
+	( 439.5162353516 32.7698554993 -461.1672668457 ) ( 0.0029643176 -0.1169601977 0.0003491048 )
+	( 0 0 0 ) ( 0 0 0 )
+	( 0.0000422495 -0.0000188805 229.3493499756 ) ( -0.0042538201 -0.0000000003 0 )
+	( 51.7218437195 26.2712459564 342.1975402832 ) ( 0.5000790954 0.4999209344 0.4999208748 )
+	( -51.5045013428 26.271232605 342.2302246094 ) ( 0.5000790954 0.4999209344 0.4999208748 )
+	( 0 0 0 ) ( 0 0 0 )
+	( 335.7350158691 747.7169189453 -722.9842529297 ) ( 0 0 0 )
+	( -474.2227783203 807.9472045898 823.666809082 ) ( 0 0 0 )
+	( 2035.5130615234 127.0000152588 1384.3001708984 ) ( -0 -0.3825371861 0 )
+}
+
+frame 0 {
+	 -507.3742980957 -0.0005811478 0.0008698163
+}
+
+frame 1 {
+	 -515.0408325195 -0.0011645089 0.0017424147
+}

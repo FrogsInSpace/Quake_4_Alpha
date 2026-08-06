@@ -1,0 +1,116 @@
+/*
+===============================================================================
+
+	Grunt
+
+===============================================================================
+*/
+
+export grunt
+{	
+	options -prefix GNT_ -align ALL -scale .3937 -keep eyes  -keep gun muzzle_flash -parent hips origin  -parent waist hips -sourcedir models/monsters/grunt/animations -destdir models/monsters/grunt
+	
+	anim	onfire.ma	-dest models/monsters/grunt/onfire
+	anim	gravitywell.ma	-dest models/monsters/grunt/gravity_well
+	anim	st_grunt_jump.ma	-dest models/monsters/grunt/st_grunt_jump
+	anim	pr_drag_marine.ma	-dest models/monsters/grunt/pr_drag_marine
+}
+
+/*
+===============================================================================
+
+	Grunt Models
+
+===============================================================================
+*/
+
+model model_monster_q4x_grunt
+{
+	inherit							model_monster_grunt
+
+	//Q4X Onfire anim
+	anim pain_fire					models/monsters/grunt/onfire.md5anim					
+	{
+		frame	1										sound_body			grunt_onfire	
+	}
+	
+	anim pr_drag_marine					models/monsters/grunt/pr_drag_marine.md5anim					
+	{
+	}
+
+	anim st_grunt_jump					models/monsters/grunt/st_grunt_jump.md5anim					
+	{	
+		ai_no_turn
+		frame	1										call				overrideLegs
+		frame	1										sound			snd_jump
+		frame	22										sound		snd_wiff			
+		frame	26										fx					fx_swipe						rt_wrist
+		frame	28										ai_attack_melee		leap
+		frame	8,26,32,38								footstep		
+	}
+}
+
+model model_monster_q4x_grunt_elite
+{
+	inherit 						model_monster_q4x_grunt
+	
+	anim gravity_well				models/monsters/grunt/gravity_well.md5anim
+	{
+		frame 20					object_call Frame_GravityWell
+		frame 20					fx	fx_gravitywell		chest
+	}
+}
+
+/*
+===============================================================================
+
+	Grunt Expansion Attack Definitions
+
+===============================================================================
+*/
+
+entityDef damage_gravwell
+{
+	"damage"					"1"
+	"radius"					"3000"
+	"push"						"-3000"
+	"gib"						"1"
+
+	//"attackerDamageScale"		"0"							// Dont hurt the player who shot it, but still do effects
+	//"attackerPushScale"		"0"						// Dont push the player who shot it
+
+	"pain"						"stream"
+	"cower"						"1"
+}
+
+/*
+===============================================================================
+
+	Grunt Entity Definitions
+
+===============================================================================
+*/
+
+entityDef monster_q4x_grunt
+{
+	"inherit"								"monster_grunt"
+	"model"									"model_monster_q4x_grunt"
+
+}
+
+entityDef monster_q4x_grunt_elite
+{	
+	"inherit"								"monster_grunt"
+	"model"									"model_monster_q4x_grunt_elite"
+	"q4xElite"								"1"
+
+	"health"								"250"
+	
+	"gravityWellTime"						"5"
+	"gravityWellRange"						"250"
+	
+	"def_radius_damage"						"damage_gravwell"	
+
+	"fx_gravitywell"						"effects/weapons/dmg/fly.fx"
+	"skin"									"skins/monsters/q4x_grunt"
+}

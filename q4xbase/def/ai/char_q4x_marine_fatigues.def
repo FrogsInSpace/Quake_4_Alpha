@@ -1,0 +1,32 @@
+/*
+===============================================================================
+
+	Marine Fatigues (char_marine_fatigues)
+
+===============================================================================
+*/
+export char_marine_fatigues
+{
+	options -scale .3937 -prefix PLAYER_ -align ALL -keep SPINNER body shoulders neckcontrol legs_channel head_channel -parent hips body -parent waist SPINNER -parent SPINNER body  -sourcedir wmodels/characters/marine_fatigues/mocap_animations -destdir models/characters/marine_fatigues_mocap
+	addoptions -skipmesh dummy_head_mesh
+
+	anim	mcc_console_reaction1.ma					-dest mcc_console_reaction1
+	anim	mcc_console_reaction2.ma					-dest mcc_console_reaction2
+	
+}
+
+model model_char_q4x_marine_fatigues
+
+{
+
+inherit						model_char_marine_fatigues
+
+anim 	mcc_console_reaction1						models/characters/marine_fatigues_mocap/mcc_console_reaction1.md5anim
+anim 	mcc_console_reaction2						models/characters/marine_fatigues_mocap/mcc_console_reaction2.md5anim
+}
+
+entityDef char_q4x_marine_fatigues
+{
+	"inherit"				"char_marine_fatigues"
+	"model"					"model_char_q4x_marine_fatigues"
+}

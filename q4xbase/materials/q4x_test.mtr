@@ -1,0 +1,30 @@
+table tankTable { { 1, 0 } }
+//q4x_test--------------------------------------------------------------------------------------------------
+
+
+models/q4x_test/q4x_test
+{
+	
+	noselfshadow
+	collision
+	unsmoothedtangents
+	
+	materialImage 	models/monsters/tank/tank_hit.tga
+
+
+	diffuseMap models/monsters/tank/tank_d.tga		
+	bumpmap		models/monsters/tank/tank_local.tga
+	specularmap	models/monsters/tank/tank_s.tga
+
+{ 
+		blend add
+		map models/monsters/tank/tank_glowpass.tga
+		rgb tanktable [ time * 1 ]
+    }
+	
+
+	inlineGuide corpseBurnEffect(models/monsters/tank/tank_tport.tga)
+
+
+}
+//q4x_test---------------------------------------------------------------------------------------

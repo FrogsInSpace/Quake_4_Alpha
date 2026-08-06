@@ -1,0 +1,186 @@
+broken_computer_loop_01
+{
+	minDistance	50
+	maxDistance	412
+	looping
+	volumeDb		-4
+
+	sound/ambience/m06/q4x_computer_broken1.ogg
+}
+
+broken_computer_loop_02
+{
+	minDistance	50
+	maxDistance	412
+	looping
+	volumeDb		-4
+
+	sound/ambience/m06/q4x_computer_broken2.ogg
+}
+
+broken_computer_loop_03
+{
+	minDistance	50
+	maxDistance	412
+	looping
+	volumeDb		-4
+
+	sound/ambience/m06/q4x_computer_broken3.ogg
+}
+
+broken_computer_loop_04
+{
+	minDistance	50
+	maxDistance	412
+	looping
+	volumeDb		-4
+
+	sound/ambience/m06/q4x_computer_broken4.ogg
+}
+
+
+forcefield_01
+{
+	minDistance	50
+	maxDistance	412
+	looping
+	volumeDb		-4
+
+	sound/ambience/m06/forcefield1.ogg
+}
+
+forcefield_01_stop
+{
+	minDistance	50
+	maxDistance	412
+	looping
+	volumeDb		-4
+
+	sound/ambience/m06/forcefield1_powerdown.ogg
+}
+
+forcefield_02
+{
+	minDistance	50
+	maxDistance	412
+	looping
+	volumeDb		-4
+
+	sound/ambience/m06/forcefield2.ogg
+}
+
+goremachine1
+{
+	minDistance	50
+	maxDistance	412
+	looping
+	volumeDb		-4
+
+	sound/ambience/m06/goremachine1a.ogg
+}
+
+goremachine2
+{
+	minDistance	50
+	maxDistance	412
+	looping
+	volumeDb		-4
+
+	sound/ambience/m06/goremachine1b.ogg
+}
+
+gorepipe1
+{
+	minDistance	50
+	maxDistance	412
+	looping
+	volumeDb		-4
+
+	sound/ambience/m06/gorepipe1.ogg
+}
+
+
+gorepipe2
+{
+	minDistance	50
+	maxDistance	412
+	looping
+	volumeDb		-4
+
+	sound/ambience/m06/gorepipe1a.ogg
+}
+
+prison_industrial_01
+{
+	minDistance	428
+	maxDistance	1512
+	looping
+	volumeDb		-4
+
+	sound/ambience/m06/industrial1.ogg
+}
+
+
+prison_industrial_02
+{
+	minDistance	428
+	maxDistance	1512
+	looping
+	volumeDb		-4
+
+	sound/ambience/m06/industrial_amb_lite1.ogg
+}
+
+prison_industrial_03
+{
+	minDistance	428
+	maxDistance	1512
+	looping
+	volumeDb		-4
+
+	sound/ambience/m06/industrial_amb_lite2.ogg
+}
+
+prison_painloop_01
+{
+	minDistance	428
+	maxDistance	1512
+	looping
+	volumeDb		-4
+
+	sound/ambience/m06/painamb_loop2.ogg
+}
+
+prison_painloop_02
+{
+	minDistance	428
+	maxDistance	1512
+	looping
+	volumeDb		-4
+
+	sound/ambience/m06/industrial_painloop1.ogg
+}
+
+prison_pains
+{
+	minDistance	428
+	maxDistance	1512
+	
+	volumeDb		-12
+
+	sound/ambience/m06/prison_pain1.ogg
+	sound/ambience/m06/prison_pain2.ogg
+	sound/ambience/m06/prison_pain3.ogg
+	sound/ambience/m06/prison_pain4.ogg
+	sound/ambience/m06/prison_pain5.ogg
+	sound/ambience/m06/prison_pain6.ogg
+	sound/ambience/m06/prison_pain7.ogg
+	sound/ambience/m06/prison_pain8.ogg
+	sound/ambience/m06/prison_painscream2.ogg
+	sound/ambience/m06/prison_painscream3.ogg
+	sound/ambience/m06/prison_painscream4.ogg
+	sound/ambience/m06/prison_painscream5.ogg
+	sound/ambience/m06/prison_painscream6.ogg
+	
+	
+}

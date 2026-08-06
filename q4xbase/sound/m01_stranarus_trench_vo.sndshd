@@ -1,0 +1,3517 @@
+sound vo_mcc_allop
+{
+ description "<MCC Announce:> All operation Advantage forces are clear."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/mcc_allop.wav
+}
+
+
+sound vo_mitch_heydarn
+{
+ description "<Mitchell:> Hey Darnell, you think those EMP jockeys will actually get the job done?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/mitch_heydarn.wav
+}
+
+
+sound vo_darn_stopworry
+{
+ description "<Darnell:> Stop worryin doc, those Tetranode squads are some of the marine core's finest- the Squibs don't stand a chance."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_stopworry.wav
+}
+
+
+sound vo_nava_yeahone
+{
+ description "<Navajas:> Yeah, one of these days we'll get a nice candy ass assignment like that, instead of all the shit work they keep throwin our way."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_yeahone.wav
+}
+
+
+sound vo_nava_shutupnav
+{
+ description "<Darnell:> Shut up Navajas!  You and sci-tech get your gear ready.  The new Sarge isn’t going to put up with your shit."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_shutupnav.wav
+}
+
+
+sound vo_tak_heycorptak
+{
+ description "<Tak:> Hey Corporal! The name is Tak. And unlike some grunts, Sci-Tech is always ready to go."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_heycorptak.wav
+}
+
+
+sound vo_nava_sodrnspill
+{
+ description "<Navajas:> So Darnell, spill it – what’s the scoop on the new sarge?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_sodrnspill.wav
+}
+
+
+sound vo_darn_yeahknwdek
+{
+ description "<Darnell:> Yea – I know him.  Name’s Dekard.  We were in the same unit during the Earth invasion – man, that was some crazy shit.  Strogg just kept comin’.."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_yeahknwdek.wav
+}
+
+
+sound vo_towns_offdeck
+{
+ description "<Townsend:> Officer on deck!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/towns_offdeck.wav
+}
+
+
+sound vo_marks_ateastman
+{
+ description "<Markswell:> At ease. The man standing beside me is Sergeant Dekard Chase.  Shortly before our deployment from the Patton, he was transferred to this squad.  Darnell and I served with him on Earth – best non-com in the outfit as far as I’m concerned.  I’ll be coordinating operations through him from now on."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_ateastman.wav
+}
+
+
+sound vo_mcc_attentcidcd
+{
+ description "<MCC Announce:> Attention, all operation Citadel squads, Atlas, Hades, and Falcon.  Prep for immediate departure."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/mcc_attentcidcd.wav
+}
+
+
+sound vo_mcc_attallopcitsq
+{
+ description "<MCC Announce:> Attention, all operation Citadel squads, prep for immediate departure."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/mcc_attallopcitsq.wav
+}
+
+
+sound vo_marks_thatsusgent
+{
+ description "<Markswell:> That's us gentlemen, briefing will continue in the air, let's get this show on the road!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_thatsusgent.wav
+}
+
+
+sound vo_marks_falconsqsd
+{
+ description "<Markswell:> Falcon Squad, saddle up!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_falconsqsd.wav
+}
+
+
+sound vo_mitch_dnttellwetk
+{
+ description "<Mitchell:> Don’t tell me we’re already takin’ fire."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/mitch_dnttellwetk.wav
+}
+
+
+sound vo_atkins_rlxman
+{
+ description "<Atkins:> Relax man, Lieutenant Markswell will tell us when we’re getting close."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atkins_rlxman.wav
+}
+
+
+sound vo_vansen_dropflcn
+{
+ description "<Vansen (Pilot):> This is Dropship Falcon en route from the Hannibal heading zero–seven–zero, two minutes to station.  Requesting sit-rep from ground ops."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/vansen_dropflcn.wav
+}
+
+
+sound vo_goc_falconatlaswlk
+{
+ description "<GOC:> Falcon, Atlas walker force is initiating operation CITADEL.  Report minimal resistance on your inbound vector - you are GO for ground assault."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/goc_falconatlaswlk.wav
+}
+
+
+sound vo_vansen_rogerthtp
+{
+ description "<Vansen (Pilot):> Roger that, package is prepped and ready for transfer – eat to drop in one-zero-niner."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/vansen_rogerthtp.wav
+}
+
+
+sound vo_marks_oklisten
+{
+ description "<Markswell:> Ok, listen up!  We've been ordered in with Atlas walker squad and Hades infantry unit to hit one of the Strogg's oldest raw materials processing facilities. Our objective is to gather data from the facility, while Hades and Atlas prep to destroy it.  This facility is heavily guarded."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_oklisten.wav
+}
+
+
+sound vo_vansen_everseat
+{
+ description "<Vansen (Pilot):> Everybody get to their seats, we have incoming!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/vansen_everseat.wav
+}
+
+
+sound vo_atkins_minres
+{
+ description "<Atkins:> This doesn't feel like minimal resistance to me!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atkins_minres.wav
+}
+
+
+sound vo_vansen_gochvyaa
+{
+ description "<Vansen (Pilot):> GOC, receiving heavy AA fire, re-routing approach to LZ."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/vansen_gochvyaa.wav
+}
+
+
+sound vo_goc_conffalc
+{
+ description "<GOC:> Confirm Falcon."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/goc_conffalc.wav
+}
+
+
+sound vo_vansen_wehit
+{
+ description "<Vansen (Pilot):> We're hit!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/vansen_wehit.wav
+}
+
+
+sound vo_towns_arrgg
+{
+ description "<Townsend:> Arrrghhh!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/towns_arrgg.wav
+}
+
+
+sound vo_atkins_ahhelpme
+{
+ description "<Atkins:> Arrgghhh!  Help me!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atkins_ahhelpme.wav
+}
+
+
+sound vo_atkins_icanthold
+{
+ description "<Atkins:> I can't hold on!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atkins_icanthold.wav
+}
+
+
+sound vo_atkins_die
+{
+ description "<Atkins:> Arrrghh!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atkins_die.wav
+}
+
+
+sound vo_darn_holdonman
+{
+ description "<Darnell:> Hold on man, grab on!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_holdonman.wav
+}
+
+
+sound vo_mitch_grabhand
+{
+ description "<Mitchell:> Grab my hand!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/mitch_grabhand.wav
+}
+
+
+sound vo_darn_shit
+{
+ description "<Darnell:> Shit!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_shit.wav
+}
+
+
+sound vo_vansen_gochithard
+{
+ description "<Vansen (Pilot):> GOC, we've been hit hard, trying to stabilize.."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/vansen_gochithard.wav
+}
+
+
+sound vo_marks_evholdvans
+{
+ description "<Markswell:> Everybody hold on!  Vansen, we lost two marines and the starboard hull is compromised."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_evholdvans.wav
+}
+
+
+sound vo_vansen_rgrltst20
+{
+ description "<Vansen (Pilot):> Roger lieutenant, starboard engine is at 20 percent, we've got no rear landing struts, and we are losing altitude fast."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/vansen_rgrltst20.wav
+}
+
+
+sound vo_marks_understdt
+{
+ description "<Markswell:> Understood.  Tak, prepare a step-out line, we're taking the hard way out."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_understdt.wav
+}
+
+
+sound vo_tak_yessir1
+{
+ description "<Tak:> Yes sir!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_yessir1.wav
+}
+
+
+sound vo_marks_everbdyup
+{
+ description "<Markswell:> Everybody up!  Grab your gear!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_everbdyup.wav
+}
+
+
+sound vo_vansen_falconweimm
+{
+ description "<Vansen (Pilot):> Falcon, we are imminent to new LZ, short 1.5 klicks of planned LZ.  You guys need to get out quick, we are still under fire and I can't hold this position for long."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/vansen_falconweimm.wav
+}
+
+
+sound vo_tak_linesec
+{
+ description "<Tak:> Line secure!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_linesec.wav
+}
+
+
+sound vo_mitch_ltshldjam
+{
+ description "<Mitchell:> Lieutenant!  The shoulder harnesses are jammed."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/mitch_ltshldjam.wav
+}
+
+
+sound vo_marks_takcutem
+{
+ description "<Markswell:> Tak, cut them out of there!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_takcutem.wav
+}
+
+
+sound vo_vansen_stablelz
+{
+ description "<Vansen (Pilot):> Falcon, we are stable at new LZ, everybody out!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/vansen_stablelz.wav
+}
+
+
+sound vo_marks_hrdlady
+{
+ description "<Markswell:> You heard the lady, move!  Go Go Go!  Hit the ground and get moving!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_hrdlady.wav
+}
+
+
+sound vo_nava_seegrn
+{
+ description "<Navajas:> See you on the ground!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_seegrn.wav
+}
+
+
+sound vo_tak_okmitchout
+{
+ description "<Tak:> Ok Mitchell, you're out!  Go!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_okmitchout.wav
+}
+
+
+sound vo_tak_outsecsarge
+{
+ description "<Tak:> I'll have you out in a second sarge."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_outsecsarge.wav
+}
+
+
+sound vo_vansen_cntholdpos
+{
+ description "<Vansen (Pilot):> I can't hold this position much longer."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/vansen_cntholdpos.wav
+}
+
+
+sound vo_tak_almostth
+{
+ description "<Tak:> Almost there."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_almostth.wav
+}
+
+
+sound vo_vansen_stbeng10
+{
+ description "<Vansen (Pilot):> Starboard engine at 10 percent"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/vansen_stbeng10.wav
+}
+
+
+sound vo_vansen_weouttime
+{
+ description "<Vansen (Pilot):> We're out of time marines!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/vansen_weouttime.wav
+}
+
+
+sound vo_tak_gotitdek
+{
+ description "<Tak:> Got it!  Dekard, let's go!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_gotitdek.wav
+}
+
+
+sound vo_vansen_dropshphot
+{
+ description "<Vansen (Pilot):> Dropship Falcon clearing hot zone."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/vansen_dropshphot.wav
+}
+
+
+
+sound vo_darn_dekoverhr
+{
+ description "<Darnell:> Dekard!  Over here!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_dekoverhr.wav
+}
+
+
+sound vo_darn_dekhere
+{
+ description "<Darnell:> Dekard!  Here!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_dekhere.wav
+}
+
+
+sound vo_tak_dek1
+{
+ description "<Tak:> Dekard!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_dek1.wav
+}
+
+
+sound vo_tak_dekthiswy
+{
+ description "<Tak:> Dekard, This way!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_dekthiswy.wav
+}
+
+
+sound vo_darn_welandmss
+{
+ description "<Darnell:> We landed in a real mess huh?  The rest of the squad moved ahead to provide support for Hades and Atlas squads, they're getting torn to shreds by these Strogg turrets."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_welandmss.wav
+}
+
+
+sound vo_darn_wenedgetmv
+{
+ description "<Darnell:> We need to get moving, stay low and take cover when those Strogg turrets take aim."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_wenedgetmv.wav
+}
+
+
+sound vo_darn_letsgo
+{
+ description "<Darnell:> Let's go!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_letsgo.wav
+}
+
+
+sound vo_marks_darndektakg
+{
+ description "<Markswell:> Darnell, Dekard, Tak, get the hell up here.  We're pinned down!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_darndektakg.wav
+}
+
+
+sound vo_marks_ddtgetup
+{
+ description "<Markswell:> Dekard, Darnell, get Tak up here, we need a tech here immediately!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_ddtgetup.wav
+}
+
+
+sound vo_marks_marineswher
+{
+ description "<Markswell:> Marines, where are you?! Regroup at my position!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_marineswher.wav
+}
+
+
+sound vo_marks_whatsholdup
+{
+ description "<Markswell:> What's the hold up marines!?  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_whatsholdup.wav
+}
+
+
+sound vo_darn_theywait
+{
+ description "<Darnell +use:> They’re waiting on us, Dekard."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_theywait.wav
+}
+
+
+sound vo_darn_therest
+{
+ description "<Darnell +use:> The rest of the Squad is pinned down ahead, we need to move!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_therest.wav
+}
+
+
+sound vo_darn_thisreminsthat
+{
+ description "<Darnell +use:> This reminds of that shit-storm we made it through back on Earth, eh Dekard?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_thisreminsthat.wav
+}
+
+
+sound vo_tak_quiteop
+{
+ description "<Tak +use:> Quite an operation for your first command eh Sarge?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_quiteop.wav
+}
+
+
+sound vo_tak_marksregrp
+{
+ description "<Tak +use:> Markswell wants us to regroup. "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_marksregrp.wav
+}
+
+
+sound vo_tak_dntrecallsci
+{
+ description "<Tak +use:> I don't recall the Sci-Tech job description including anything like this…"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_dntrecallsci.wav
+}
+
+
+sound vo_darn_holdon
+{
+ description "<Darnell:> Hold on, we need to stay back until those fire positions are off of us."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_holdon.wav
+}
+
+
+sound vo_darn_marinegtdwn
+{
+ description "<Darnell:> Marine!  Get down!  You're in their line of fire!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_marinegtdwn.wav
+}
+
+
+sound vo_darn_okgtrdymv
+{
+ description "<Darnell:> Ok, get ready to move."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_okgtrdymv.wav
+}
+
+
+sound vo_darn_gogogo
+{
+ description "<Darnell:> Go Go Go!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_gogogo.wav
+}
+
+
+sound vo_darn_gonow1
+{
+ description "<Darnell:> Go!  Now!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_gonow1.wav
+}
+
+
+sound vo_darn_okltsgo1
+{
+ description "<Darnell:> Ok, let's go!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_okltsgo1.wav
+}
+
+
+sound vo_tak_strg1
+{
+ description "<Tak:> Strogg!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_strg1.wav
+}
+
+
+sound vo_tak_openfr1
+{
+ description "<Tak:> Open Fire!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_openfr1.wav
+}
+
+
+sound vo_tak_lookout1
+{
+ description "<Tak:> Look out!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_lookout1.wav
+}
+
+
+sound vo_darn_strg1
+{
+ description "<Darnell:> Strogg!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_strg1.wav
+}
+
+
+sound vo_darn_openfr1
+{
+ description "<Darnell:> Open Fire!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_openfr1.wav
+}
+
+
+sound vo_darn_dekexposcvr
+{
+ description "<Darnell:> Dekard!  You're exposed, get to cover!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_dekexposcvr.wav
+}
+
+
+sound vo_tak_deklkout1
+{
+ description "<Tak:> Dekard! Look out!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_deklkout1.wav
+}
+
+
+sound vo_atlas1_kimballk
+{
+ description "<Atlas marine 1:> This is Kimball from Atlas squad, we're gettin' killed by these Strogg turrets, we need support at all forward positions!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atlas1_kimballk.wav
+}
+
+
+sound vo_atlas2_mvmvmvm
+{
+ description "<Atlas marine 2:> Move Move Move!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atlas2_mvmvmvm.wav
+}
+
+
+sound vo_atlas2_getwalkpos
+{
+ description "<Atlas marine 2:> Get those walkers into position!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atlas2_getwalkpos.wav
+}
+
+
+sound vo_atlas2_takecvr
+{
+ description "<Atlas marine 2:> Take cover!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atlas2_takecvr.wav
+}
+
+
+sound vo_atlas2_walk4dest
+{
+ description "<Atlas marine 2:> Walker 4 Is destroyed!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atlas2_walk4dest.wav
+}
+
+
+sound vo_atlas2_enemyfr
+{
+ description "<Atlas marine 2:> Enemy fire!  Take cover!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atlas2_enemyfr.wav
+}
+
+
+sound vo_atlas1_walker4815
+{
+ description "<Atlas marine 1:> Walker 4, 8 and 15, flank those mounted positions!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atlas1_walker4815.wav
+}
+
+
+sound vo_atlas2_rogwlk2
+{
+ description "<Atlas marine 2:> Roger, walker group 2 starting flanking maneuver."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atlas2_rogwlk2.wav
+}
+
+
+sound vo_atlas2_wlk4wtch
+{
+ description "<Atlas marine 2:> Walker 4, watch those  turrets!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atlas2_wlk4wtch.wav
+}
+
+
+sound vo_hades1_takthtfck
+{
+ description "<Hades marine 1:> Take that you fuckin' squibs!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/hades1_takthtfck.wav
+}
+
+
+sound vo_hades1_incoming
+{
+ description "<Hades marine 1:> Incoming fire!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/hades1_incoming.wav
+}
+
+
+sound vo_hades1_suppfire
+{
+ description "<Hades marine 1:> Suppressing fire!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/hades1_suppfire.wav
+}
+
+
+sound vo_hades1_getdwnmr
+{
+ description "<Hades marine 1:> Get down marine!  You're in their line of fire!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/hades1_getdwnmr.wav
+}
+
+
+sound vo_hades2_die
+{
+ description "<Hades marine 2:> Arrghh!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/hades2_die.wav
+}
+
+
+sound vo_atlas1_walk815dis
+{
+ description "<Atlas marine 1:> Walker 8 and 15 are disabled in the east supply tunnel, drivers are injured and need backup!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atlas1_walk815dis.wav
+}
+
+
+sound vo_hades1_whrhellair
+{
+ description "<Hades marine 1:> Where the hell is our air support?!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/hades1_whrhellair.wav
+}
+
+
+sound vo_pilot_razor16
+{
+ description "<Pilot:> This is Razor 16, we've been hit and are going down."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/pilot_razor16.wav
+}
+
+
+sound vo_atlas2_airsupp
+{
+ description "<Atlas marine 2:> Our air support just went down, GOC please advise!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atlas2_airsupp.wav
+}
+
+
+sound vo_goc_garble
+{
+ description "<GOC:> Come in Atlas squad, do you read me over."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/goc_garble.wav
+}
+
+
+sound vo_atlas2_gocplsrpt
+{
+ description "<Atlas marine 2:> GOC, please repeat last transmission."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atlas2_gocplsrpt.wav
+}
+
+
+sound vo_tak_kpmov2
+{
+ description "<Tak:> Keep moving, we're almost there!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_kpmov2.wav
+}
+
+
+sound vo_tak_almsthr2
+{
+ description "<Tak:> Almost there."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_almsthr2.wav
+}
+
+
+sound vo_tak_tkcov2
+{
+ description "<Tak:> Take cover!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_tkcov2.wav
+}
+
+
+sound vo_tak_strgturrs2
+{
+ description "<Tak:> The Strogg turrets are on us, get down!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_strgturrs2.wav
+}
+
+
+sound vo_darn_keepmov
+{
+ description "<Darnell:> Keep movin'"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_keepmov.wav
+}
+
+
+sound vo_darn_sqddedah
+{
+ description "<Darnell:> The squad is dead ahead"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_sqddedah.wav
+}
+
+
+sound vo_darn_tkcov
+{
+ description "<Darnell:> Take cover!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_tkcov.wav
+}
+
+
+sound vo_darn_strggturrdwn
+{
+ description "<Darnell:> The Strogg turrets are on us, get down!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_strggturrdwn.wav
+}
+
+
+sound vo_hades2_heyfalc
+{
+ description "<Hades Marine 2:> Hey Falcon, rest of your squad is over there."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/hades2_heyfalc.wav
+}
+
+
+sound vo_hades2_weneedsupp2
+{
+ description "<Hades Marine 2 +use:> We needed more support for this attack."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/hades2_weneedsupp2.wav
+}
+
+
+sound vo_hades2_cmdsenden
+{
+ description "<Hades Marine 2 +use:> Command didn't send enough troops."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/hades2_cmdsenden.wav
+}
+
+
+sound vo_hades2_whyisthisant
+{
+ description "<Hades Marine 2 +use:> Why is this antique facility so heavily guarded anyhow?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/hades2_whyisthisant.wav
+}
+
+
+sound vo_atlas3_whatsee
+{
+ description "<Atlas Marine 3:> What do you see?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atlas3_whatsee.wav
+}
+
+
+sound vo_atlas4_wemightmakethe
+{
+ description "<Atlas Marine 4:> We might be able to make it up this way, there are only …"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atlas4_wemightmakethe.wav
+}
+
+
+sound vo_atlas4_die
+{
+ description "<Atlas Marine 4:> Arrrghh!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atlas4_die.wav
+}
+
+
+sound vo_atlas3_shitmedic
+{
+ description "<Atlas Marine 3:> Shit!  Medic!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atlas3_shitmedic.wav
+}
+
+
+sound vo_mitch_therenothing2
+{
+ description "<Mitchell:> There's nothing I can do for him."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/mitch_therenothing2.wav
+}
+
+
+sound vo_atlas5_groan1
+{
+ description "<Atlas Marine 5:> (groans in pain variation)"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atlas5_groan1.wav
+}
+
+
+sound vo_atlas5_groan2
+{
+ description "<Atlas Marine 5:> (groans in pain variation)"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atlas5_groan2.wav
+}
+
+
+sound vo_atlas5_ohgodpain
+{
+ description "<Atlas Marine 5:> Oh god, it hurts…"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atlas5_ohgodpain.wav
+}
+
+
+sound vo_mitch_mostmed
+{
+ description "<Mitchell +use:> Most of my medical equipment blew out when our dropship was hit."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/mitch_mostmed.wav
+}
+
+
+sound vo_mitch_ivedoneall
+{
+ description "<Mitchell +use:> I've done all I can for these guys without my equipment."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/mitch_ivedoneall.wav
+}
+
+
+sound vo_mitch_keepeyeatlas
+{
+ description "<Mitchell +use:> Keep an eye out for the Atlas or Hades medics."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/mitch_keepeyeatlas.wav
+}
+
+
+sound vo_marks_dekoverhr
+{
+ description "<Markswell:> Dekard, over here!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_dekoverhr.wav
+}
+
+
+sound vo_marks_twowalkfl
+{
+ description "<Markswell:> Two walkers tried to flank the turrets through the supply tunnels, but they were ambushed.  The walkers are intact, but damaged.  Dekard, Navajas, Tak breach those tunnels and repair those Walkers.  It’s the only way we’re gonna get past these turrets."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_twowalkfl.wav
+}
+
+
+sound vo_marks_twowalkfl_alt
+{
+ description "<Markswell:> Walkers tried to flank the turrets through the supply tunnels, but they were ambushed.  One walker is left and intact, but damaged.  Dekard, Navajas, Tak breach those tunnels and repair that Walker.  It’s the only way we’re gonna get past these turrets."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_twowalkfl_alt.wav
+}
+
+
+sound vo_marks_forwent
+{
+ description "<Markswell +use:> The forward entrance to the facility is too heavily defended, we can’t get any closer.  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_forwent.wav
+}
+
+
+sound vo_marks_getmov
+{
+ description "<Markswell +use:> Get moving marine!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_getmov.wav
+}
+
+
+sound vo_marks_deknottell
+{
+ description "<Markswell +use:> Dekard, I'm not going to tell you again."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_deknottell.wav
+}
+
+
+sound vo_darn_webefine
+{
+ description "<Darnell +use:> Well be fine, Dekard.  The lieutenant and I can hold our own."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_webefine.wav
+}
+
+
+sound vo_darn_getgoforev
+{
+ description "<Darnell +use:> Get going Dekard, we can't stay here forever."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_getgoforev.wav
+}
+
+
+sound vo_tak_letsgetwlk
+{
+ description "<Tak +use:> Let's get to those walkers."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_letsgetwlk.wav
+}
+
+
+sound vo_tak_letsget1walk
+{
+ description "<Tak +use:> Let's get to that walker."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_letsget1walk.wav
+}
+
+
+sound vo_tak_ihopethosewl
+{
+ description "<Tak +use:> I hope those walkers aren't too beat up"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_ihopethosewl.wav
+}
+
+
+sound vo_tak_ihopethat
+{
+ description "<Tak +use:> I hope that walker isn't too beat up"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_ihopethat.wav
+}
+
+
+sound vo_tak_weneedmvsrg
+{
+ description "<Tak +use:> We need to keep moving Sarge."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_weneedmvsrg.wav
+}
+
+
+sound vo_nava_formintro
+{
+ description "<Navajas +use:> Formal introductions can wait Sergeant, needless to say, I'm your demolitions expert."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_formintro.wav
+}
+
+
+sound vo_nava_letschatob
+{
+ description "<Navajas +use:> Let's chat after we've accomplished our objective."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_letschatob.wav
+}
+
+
+sound vo_nava_timeisshort
+{
+ description "<Navajas +use:> Time is short Sergeant, you do your job, I'll do mine."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_timeisshort.wav
+}
+
+
+sound vo_nava_obvioyouhr
+{
+ description "<Navajas +use:> Obviously you didn't hear the lieutenant."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_obvioyouhr.wav
+}
+
+
+sound vo_nava_blsenoughchrg
+{
+ description "<Navajas:> Blast door.  I don’t have enough charges to get through."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_blsenoughchrg.wav
+}
+
+
+sound vo_tak_alwaysblow
+{
+ description "<Tak:> Always trying to blow something up eh Navajas?  I'll get it open."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_alwaysblow.wav
+}
+
+
+sound vo_tak_gimmeasec
+{
+ description "<Tak:> Gimme a second."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_gimmeasec.wav
+}
+
+
+sound vo_tak_therewego
+{
+ description "<Tak:> There we go.  See no need for…"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_therewego.wav
+}
+
+
+sound vo_tak_whoa
+{
+ description "<Tak:> Whoa!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_whoa.wav
+}
+
+
+sound vo_tak_whewcls
+{
+ description "<Tak:> Whew, that was close!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_whewcls.wav
+}
+
+
+sound vo_nava_strgg1
+{
+ description "<Navajas:> Strogg!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_strgg1.wav
+}
+
+
+sound vo_tak_whattht
+{
+ description "<Tak:> What's that?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_whattht.wav
+}
+
+
+sound vo_tak_strggweapnseen
+{
+ description "<Tak:> This is a Strogg weapon I've never seen before, some kind of cold fire cannon. Here Sarge, I'm sure you can make better use of this than I can."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_strggweapnseen.wav
+}
+
+
+sound vo_nava_damnyoutakec
+{
+ description "<Navajas:> Damn.  You take care of this one too, Tak?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_damnyoutakec.wav
+}
+
+
+sound vo_tak_notfrmhr
+{
+ description "<Tak:> Not from here.  This terminal is shot."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_notfrmhr.wav
+}
+
+
+sound vo_nava_thenwedoitmy
+{
+ description "<Navajas:> Then we do it my way.  Give me a minute and I’ll make us an entrance.  Watch my back."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_thenwedoitmy.wav
+}
+
+
+sound vo_nava_herewegset
+{
+ description "<Navajas:> Here we go.  Setting the first charge."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_herewegset.wav
+}
+
+
+sound vo_nava_seconchrg
+{
+ description "<Navajas:> Second charge in place.  One more."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_seconchrg.wav
+}
+
+
+sound vo_nava_thatsit
+{
+ description "<Navajas:> That’s it.  Everybody back.  Clear.  Clear."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_thatsit.wav
+}
+
+
+sound vo_nava_demvawaychrg
+{
+ description "<Navajas:> Dekard, move away from the charges!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_demvawaychrg.wav
+}
+
+
+sound vo_nava_thosechrglive
+{
+ description "<Navajas:> Those charges are live, get back!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_thosechrglive.wav
+}
+
+
+sound vo_nava_detonat
+{
+ description "<Navajas:> Detonating!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_detonat.wav
+}
+
+
+sound vo_tak_letmegetbr
+{
+ description "<Tak:> Let me get this bridge up."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_letmegetbr.wav
+}
+
+
+sound vo_tak_almskeepoff
+{
+ description "<Tak:> Almost got it.  Keep em off me!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_almskeepoff.wav
+}
+
+
+sound vo_nava_wegotcom
+{
+ description "<Navajas:> We've got company!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_wegotcom.wav
+}
+
+
+sound vo_tak_navaclrdeb
+{
+ description "<Tak:> Navajas, can you clear this debris?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_navaclrdeb.wav
+}
+
+
+sound vo_nava_nounless
+{
+ description "<Navajas:> Not unless you want this entire area to cave in."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_nounless.wav
+}
+
+
+sound vo_nava_supplyahd
+{
+ description "<Navajas:> The supply tunnels should be ahead."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_supplyahd.wav
+}
+
+
+sound vo_tak_getttherdiff
+{
+ description "<Tak:> Getting there’s going to be difficult. Strogg resistance is intense."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_getttherdiff.wav
+}
+
+
+sound vo_nava_sndslkstrogg
+{
+ description "<Navajas:> Sounds like a Strogg problem, not mine."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_sndslkstrogg.wav
+}
+
+
+sound vo_tak_thatcoldfire
+{
+ description "<Tak:> Dekard, that cold fire Strogg weapon should be able to tame this fire."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_thatcoldfire.wav
+}
+
+
+sound vo_tak_dekclrfirecld
+{
+ description "<Tak:> Dekard, you can clear this fire with that Strogg cold fire weapon."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_dekclrfirecld.wav
+}
+
+
+sound vo_tak_goodjbdek
+{
+ description "<Tak:> Good job Dekard!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_goodjbdek.wav
+}
+
+
+sound vo_nava_razor16surv
+{
+ description "<Navajas:> This must be Razor 16, no survivors."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_razor16surv.wav
+}
+
+
+sound vo_tak_ltrazor16
+{
+ description "<Tak:> Lieutenant, we've located the Razor 16 dropship, no survivors."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_ltrazor16.wav
+}
+
+
+sound vo_marks_rogertht2
+{
+ description "<Markswell:> Roger that."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_rogertht2.wav
+}
+
+
+
+sound vo_atlas6_youfalcsq
+{
+ description "<Atlas Marine 6:> You’re Falcon squad- good. The entire walker unit was wiped out. Our last two walkers are on the other side of this tunnel, but some spider legged Strogg piece of shit is tearing them apart."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atlas6_youfalcsq.wav
+}
+
+
+sound vo_atlas6_goodentire
+{
+ description "<Atlas Marine 6:> You’re Falcon squad- good.  The entire walker unit was wiped out. Our last walker is on the other side of this tunnel, but some spider legged Strogg piece of shit is tearing it apart."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atlas6_goodentire.wav
+}
+
+
+sound vo_atlas6_die
+{
+ description "<Atlas Marine 6:> Arrrghh!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atlas6_die.wav
+}
+
+
+sound vo_tak_whthelltht
+{
+ description "<Tak:> What the hell is that thing?!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_whthelltht.wav
+}
+
+
+sound vo_nava_killit
+{
+ description "<Navajas:> Kill it!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_killit.wav
+}
+
+
+
+sound vo_tak_thertheyr
+{
+ description "<Tak:> There they are."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_thertheyr.wav
+}
+
+
+sound vo_tak_thereitis
+{
+ description "<Tak:> There it is."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_thereitis.wav
+}
+
+
+sound vo_tak_theybothdest
+{
+ description "<Navajas:> They're both nearly destroyed."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_theybothdest.wav
+}
+
+
+sound vo_tak_itdest
+{
+ description "<Navajas:> It's nearly destroyed."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_itdest.wav
+}
+
+
+sound vo_tak_nahweapgonline
+{
+ description "<Tak:> Nah, the weapon and guidance systems are still on line on this one.  The actuators are shot, though, and this thing’s not going anywhere until the drive pistons are getting power.  It’ll shoot, but it won’t walk.  I’ll Take care of that last part; you guys keep the Strogg of me."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_nahweapgonline.wav
+}
+
+
+sound vo_tak_nahweapgon2
+{
+ description "<Tak:> Nah, the weapon and guidance systems are still on line.  The actuators are shot, though, and this thing’s not going anywhere until the drive pistons are getting power.  It’ll shoot, but it won’t walk.  I’ll Take care of that last part; you guys keep the Strogg of me."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_nahweapgon2.wav
+}
+
+
+sound vo_nava_itlooklkatlas
+{
+ description "<Navajas:> It looks like Atlas almost breached this door, a couple of charges should finish the job."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_itlooklkatlas.wav
+}
+
+
+sound vo_nava_takoncerep
+{
+ description "<Navajas:> Tak, once the walker is repaired, I'll blow the door."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_takoncerep.wav
+}
+
+
+sound vo_tak_gotit1
+{
+ description "<Tak:> Got it."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_gotit1.wav
+}
+
+
+sound vo_nava_firstchrg
+{
+ description "<Navajas:> First charge in place."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_firstchrg.wav
+}
+
+
+sound vo_nava_secondchrg
+{
+ description "<Navajas:> Second charge up."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_secondchrg.wav
+}
+
+
+sound vo_nava_thatitdr
+{
+ description "<Navajas:> That’s it.  Door is ready!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_thatitdr.wav
+}
+
+
+sound vo_nava_dekmvawaychrgs
+{
+ description "<Navajas:> Dekard, move away from the charges!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_dekmvawaychrgs.wav
+}
+
+
+sound vo_nava_thosechrglv
+{
+ description "<Navajas:> Those charges are live, get back!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_thosechrglv.wav
+}
+
+
+sound vo_nava_detonating
+{
+ description "<Navajas:> Detonating!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_detonating.wav
+}
+
+
+sound vo_nava_strgincom1
+{
+ description "<Navajas:> Strogg incoming!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_strgincom1.wav
+}
+
+
+sound vo_tak_dekgetwlk
+{
+ description "<Tak:> Dekard!  Get in the walker, the weapons are working!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_dekgetwlk.wav
+}
+
+
+sound vo_tak_okactuator
+{
+ description "<Tak:> Okay, I got the actuator patched.  I’m routing power to the drive pistons now."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_okactuator.wav
+}
+
+
+sound vo_tak_pwr25
+{
+ description "<Tak:> Power at twenty-five percent."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_pwr25.wav
+}
+
+
+sound vo_tak_pwr50
+{
+ description "<Tak:> We’re at fifty percent."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_pwr50.wav
+}
+
+
+sound vo_tak_pwr75
+{
+ description "<Tak:> Almost there, seventy-five percent."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_pwr75.wav
+}
+
+
+sound vo_tak_drivepist
+{
+ description "<Tak:> Drive pistons are active.  I just need to realign the hydraulic governor and –"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_drivepist.wav
+}
+
+
+sound vo_marks_underhvyfr
+{
+ description "<Markswell:> We’re under heavy fire.  We need assistance, how close are you?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_underhvyfr.wav
+}
+
+
+sound vo_tak_walknrlyfun
+{
+ description "<Tak:> Walker’s nearly functional, Sir.  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_walknrlyfun.wav
+}
+
+
+sound vo_tak_walknumonefun
+{
+ description "<Tak:> Walker number one nearly functional, Sir."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_walknumonefun.wav
+}
+
+
+sound vo_marks_geitfin
+{
+ description "<Markswell:> Get it finished and get back here!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_geitfin.wav
+}
+
+
+sound vo_tak_rogerthat
+{
+ description "<Tak:> Roger that."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_rogerthat.wav
+}
+
+
+sound vo_tak_dekgoodtogo
+{
+ description "<Tak:> Dekard, you’re good to go.  Navajas and I will meet back with Falcon Squad.  Take the Walker through the supply tunnel and meet us back outside.  Be careful- this thing’s patched up, but it won’t take much of a beating."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_dekgoodtogo.wav
+}
+
+
+sound vo_tak_goodholdwlk
+{
+ description "<Tak:> You’re good to go, Dekard.  Hold on, let me see if I can get this other walker up quickly."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_goodholdwlk.wav
+}
+
+
+sound vo_tak_thiswlkbetter
+{
+ description "<Tak:> This walker is in much better shape!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_thiswlkbetter.wav
+}
+
+
+sound vo_tak_keepoff2
+{
+ description "<Tak:> Keep them off me!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_keepoff2.wav
+}
+
+
+sound vo_tak_babyalive
+{
+ description "<Tak:> This baby is alive again!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_babyalive.wav
+}
+
+
+sound vo_tak_okdekpoint
+{
+ description "<Tak:> Ok Dekard, lets go, you take point!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_okdekpoint.wav
+}
+
+
+sound vo_tak_ltsgo2
+{
+ description "<Tak:> Let's go!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_ltsgo2.wav
+}
+
+
+sound vo_nava_blowdoor2
+{
+ description "<Navajas:> Blowing the door!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_blowdoor2.wav
+}
+
+
+sound vo_nava_ltdektak
+{
+ description "<Navajas:> Lieutenant, Dekard and Tak are inbound with walker support, I'm coming back around on foot."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nava_ltdektak.wav
+}
+
+
+sound vo_marks_rogdbl
+{
+ description "<Markswell:> Roger, double time it Navajas."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_rogdbl.wav
+}
+
+
+sound vo_marks_dektkoutturr
+{
+ description "<Markswell:> Dekard, take out those turrets!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_dektkoutturr.wav
+}
+
+
+sound vo_marks_dektaktake
+{
+ description "<Markswell:> Dekard, Tak, take out those turrets!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_dektaktake.wav
+}
+
+
+sound vo_tak_turrdis
+{
+ description "<Tak:> Turret disabled!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_turrdis.wav
+}
+
+
+sound vo_tak_igotone2
+{
+ description "<Tak:> I got one!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_igotone2.wav
+}
+
+
+sound vo_tak_turrdown
+{
+ description "<Tak:> Turrets are down!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_turrdown.wav
+}
+
+
+sound vo_marks_rogthat2
+{
+ description "<Markswell:> Roger that."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_rogthat2.wav
+}
+
+
+sound vo_marks_okmarup
+{
+ description "<Markswell:> Ok marines, up and over!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_okmarup.wav
+}
+
+
+sound vo_marks_goodjbtakdek
+{
+ description "<Markswell:> Good job Tak, Dekard.  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_goodjbtakdek.wav
+}
+
+
+sound vo_marks_goodjobdek
+{
+ description "<Markswell:> Good job Dekard!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_goodjobdek.wav
+}
+
+
+sound vo_marks_allableatlas
+{
+ description "<Markswell:> All able bodied Atlas and Hades squad members have moved into the facility via the tunnels your team cleared.  Dekard, Tak, Navajas, you're with me.  Darnell, stay behind and cover Mitchell until the wounded are stabilized."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_allableatlas.wav
+}
+
+
+sound vo_darn_yessir2
+{
+ description "<Darnell:> Yes sir."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/darn_yessir2.wav
+}
+
+
+sound vo_marks_onmemove
+{
+ description "<Markswell:> On me, Move out!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_onmemove.wav
+}
+
+
+sound vo_marks_moveout2
+{
+ description "<Markswell:> Move out!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/marks_moveout2.wav
+}
+
+sound vo_dar_tre_stayback
+{
+ description "<Darnell:> Stay back!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_stayback.wav
+}
+
+
+sound vo_dar_tre_hold
+{
+ description "<Darnell:> Hold on!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_hold.wav
+}
+
+
+sound vo_dar_tre_whatdoing
+{
+ description "<Darnell:> Dekard, what are you doing?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_whatdoing.wav
+}
+
+
+sound vo_dar_tre_go
+{
+ description "<Darnell:> Go!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_go.wav
+}
+
+
+sound vo_dar_tre_move
+{
+ description "<Darnell:> Move!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_move.wav
+}
+
+
+sound vo_tak_tre_moving
+{
+ description "<Tak:> Moving"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_tre_moving.wav
+}
+
+
+sound vo_dar_tre_moving
+{
+ description "<Darnell:> Moving"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_moving.wav
+}
+
+
+sound vo_tak_tre_moving2
+{
+ description "<Tak:> I'm moving"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_tre_moving2.wav
+}
+
+
+sound vo_dar_tre_moving2
+{
+ description "<Darnell:> I'm moving"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_moving2.wav
+}
+
+
+sound vo_dar_tre_reloading
+{
+ description "<Darnell:> They're reloading, go!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_reloading.wav
+}
+
+
+sound vo_dar_tre_takecover
+{
+ description "<Darnell:> Take cover!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_takecover.wav
+}
+
+
+sound vo_dar_tre_getcover
+{
+ description "<Darnell:> Get to cover!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_getcover.wav
+}
+
+
+sound vo_tak_tre_dekardgo
+{
+ description "<Tak:> Dekards goin for it! "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_tre_dekardgo.wav
+}
+
+
+sound vo_tak_tre_rightbehind
+{
+ description "<Tak:> Right behind you Dekard!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_tre_rightbehind.wav
+}
+
+
+sound vo_dar_tre_atlasflank
+{
+ description "<Darnell:> Atlas is moving to flank! "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_atlasflank.wav
+}
+
+
+sound vo_tak_tre_goatlas
+{
+ description "<Tak:> Go Atlas!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_tre_goatlas.wav
+}
+
+
+sound vo_dar_tre_moveup
+{
+ description "<Darnell:> Move up marines!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_moveup.wav
+}
+
+
+sound vo_dar_tre_stop
+{
+ description "<Darnell:> Everybody stop!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_stop.wav
+}
+
+
+sound vo_dar_tre_getdown
+{
+ description "<Darnell:> Dekard!  Get down!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_getdown.wav
+}
+
+
+sound vo_tak_tre_stop
+{
+ description "<Tak:> Dekard!  Stop!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_tre_stop.wav
+}
+
+
+sound vo_dar_tre_harvester
+{
+ description "<Darnell:> Harvester!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_harvester.wav
+}
+
+
+sound vo_dar_tre_getharvest
+{
+ description "<Darnell:> Get Down!  Harvester!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_getharvest.wav
+}
+
+
+sound vo_tak_tre_shitwalker
+{
+ description "<Tak:> Shit!  That walker is blocking our path!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_tre_shitwalker.wav
+}
+
+
+sound vo_dar_tre_coverwalk
+{
+ description "<Darnell:> Dekard, keep us covered while we move this walker!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_coverwalk.wav
+}
+
+
+sound vo_tak_tre_needocver
+{
+ description "<Tak:> Dekard, we need cover!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_tre_needocver.wav
+}
+
+
+sound vo_dar_tre_123move
+{
+ description "<Darnell:> On three, one, two THREE. "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_123move.wav
+}
+
+
+sound vo_tak_tre_urgmove
+{
+ description "<Tak:> URGGHH"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_tre_urgmove.wav
+}
+
+
+sound vo_dar_tre_urgmove
+{
+ description "<Darnell:> URGHHH"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_urgmove.wav
+}
+
+
+sound vo_dar_tre_got_it_go
+{
+ description "<Darnell:> Got it!  Let's go!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_got_it_go.wav
+}
+
+
+sound vo_dar_tre_letsmove
+{
+ description "<Darnell:> Got it, Let's move!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_letsmove.wav
+}
+
+
+sound vo_dar_tre_comeon
+{
+ description "<Darnell:> Dekard, come on, let's go!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_comeon.wav
+}
+
+
+sound vo_atlas_harvester
+{
+ description "<Atlas marine 2:> This is Atlas 42, Harvester is down."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atlas_harvester.wav
+}
+
+
+sound vo_atlas_atlas42
+{
+ description "<Atlas marine 1:> Atlas squad is down to 5 active walkers!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atlas_atlas42.wav
+}
+
+
+sound vo_atlas_5walkers
+{
+ description "<Atlas marine 1:> Atlas squad is down to 1 active walker!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atlas_5walkers.wav
+}
+
+
+sound vo_atlas_1walker
+{
+ description "<Atlas marine 1:> Atlas squad has been decimated"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atlas_1walker.wav
+}
+
+
+sound vo_atlas_disabled
+{
+ description "<Atlas marine 1:> All Atlas walkers have been disabled!  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/atlas_disabled.wav
+}
+
+
+sound vo_dar_harvestleg
+{
+ description "<Darnell:> We need to move this harvester leg!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_harvestleg.wav
+}
+
+
+sound vo_tak_tre_legstuck
+{
+ description "<Tak:> Damn, it's stuck in the ground, lift it up!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_tre_legstuck.wav
+}
+
+
+sound vo_dar_tre_behindyou
+{
+ description "<Darnell:> Dekard, behind you, keep us covered!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_behindyou.wav
+}
+
+
+sound vo_dar_tre_again123move
+{
+ description "<Darnell:> Again, on three, one, two, three!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_again123move.wav
+}
+
+
+sound vo_tak_tre_urgmove2
+{
+ description "<Darnell:> URGGHH"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_tre_urgmove2.wav
+}
+
+
+sound vo_dar_tre_urgmove2
+{
+ description "<Tak:> URGHHH"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_urgmove2.wav
+}
+
+
+sound vo_dar_tre_letsgo
+{
+ description "<Darnell:> Let's go!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_letsgo.wav
+}
+
+
+sound vo_dar_tre_stroggturrets
+{
+ description "<Darnell:> This channel is directly in line with the Strogg turrets."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_stroggturrets.wav
+}
+
+
+sound vo_dar_tre_shreds
+{
+ description "<Darnell:> They'll tear us to shreds unless we move while they reload."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_shreds.wav
+}
+
+
+sound vo_dar_tre_movereload
+{
+ description "<Darnell:> We need to move while they are reloading!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/dar_tre_movereload.wav
+}
+
+
+sound vo_tak_tre_legmoved
+{
+ description "<Tak:> Leg is moved!  Let's go!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_tre_legmoved.wav
+}
+
+
+sound vo_tak_tre_secdoor
+{
+ description "<Tak:> This security door can't be opened from here."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_tre_secdoor.wav
+}
+
+
+sound vo_tak_tre_accesspanel
+{
+ description "<Tak:> Access panel has to be nearby"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_tre_accesspanel.wav
+}
+
+
+sound vo_tak_tre_lockedout
+{
+ description "<Tak:> This is the right panel for that door, but it's been locked out from that security room."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_tre_lockedout.wav
+}
+
+
+sound vo_tak_tre_hallwayfire
+{
+ description "<Tak:> I've opened the door leading to the security room, but the hallway is on fire."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_tre_hallwayfire.wav
+}
+
+
+sound vo_tak_tre_stroggweapon
+{
+ description "<Tak:> You should be able to get through there with that Strogg freezing weapon."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_tre_stroggweapon.wav
+}
+
+
+sound vo_tak_tre_stroggweapon2
+{
+ description "<Tak:> You should be able to get through there with your cold cannon."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_tre_stroggweapon2.wav
+}
+
+
+sound vo_tak_tre_bypassremind
+{
+ description "<Tak:> Dekard, I can't get that door open until you bypass the lockouts."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_tre_bypassremind.wav
+}
+
+
+sound vo_nav_tre_stay
+{
+ description "<Navajas:> I'll stay here and keep Tak covered."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/nav_tre_stay.wav
+}
+
+
+sound vo_tak_tre_holdup
+{
+ description "<Tak:> Dekard, what's the hold up!  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_tre_holdup.wav
+}
+
+
+sound vo_tak_tre_bypassremind2
+{
+ description "<Tak:> Dekard, come on!  Bypass that security lockout so we can proceed!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_tre_bypassremind2.wav
+}
+
+
+sound vo_tak_tre_thatdidit
+{
+ description "<Tak:> Ok, that did it, I can get this door open now."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_tre_thatdidit.wav
+}
+
+
+sound vo_tak_tre_getback
+{
+ description "<Tak:> Dekard, We'll open the door once you get back here."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_tre_getback.wav
+}
+
+
+sound vo_tak_tre_waiting
+{
+ description "<Tak:> Sarge, we are waiting on you to get back before proceeding!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_tre_waiting.wav
+}
+
+
+sound vo_tak_tre_opening
+{
+ description "<Tak:> Ok, opening the door!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/tak_tre_opening.wav
+}
+
+
+sound vo_mark_tre_getout
+{
+ description "<Markswell:> Dekard, get out of that walker!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/mark_tre_getout.wav
+}
+
+
+sound vo_mark_tre_fallin
+{
+ description "<Markswell:> Dekard, fall in."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M01_Trench/mark_tre_fallin.wav
+}
+

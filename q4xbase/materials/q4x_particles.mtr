@@ -1,0 +1,194 @@
+gfx/effects/q4x/fireburst
+{
+	noShadows
+	nonSolid
+	translucent
+	twosided
+        {
+		blend	add
+		map 	gfx/effects/q4x/fireburst.tga
+		vertexColor
+        }
+}
+
+gfx/effects/smoke/basic
+{
+	noShadows
+	nonSolid
+	translucent
+	twosided
+        {
+		blend	add
+		map 	gfx/effects/smoke/basic.tga
+		vertexColor
+        }
+}
+
+gfx/effects/q4x/goobgun_burn
+{
+	noShadows
+	nonSolid
+	translucent
+	twosided
+//        {
+//		blend	add
+//		map 	gfx/effects/q4x/fireburst.tga
+//		vertexColor
+//      }
+	{
+		videoMap loop 		textures/q4x_cryo/fireball01.roq
+		blend add
+		vertexColor
+	}
+}
+
+gfx/effects/q4x/fire/fire01
+{
+	noShadows
+	nonSolid
+	translucent
+	twosided
+        {
+		blend	add
+		map 	gfx/effects/q4x/fire/fire01.tga
+		vertexColor
+		}
+
+}
+
+gfx/effects/q4x/fire/fire02
+{
+	noShadows
+	nonSolid
+	translucent
+	twosided
+        {
+		blend	add
+		map 	gfx/effects/q4x/fire/fire02.tga
+		vertexColor
+		}
+
+}
+
+gfx/effects/q4x/fireburst
+{
+	noShadows
+	nonSolid
+	translucent
+	twosided
+        {
+		blend	add
+		map 	gfx/effects/q4x/fireburst.tga
+		vertexColor		
+        }
+}
+
+gfx/effects/q4x/electricity/elec01
+{
+	noShadows
+	nonSolid
+	translucent
+	twosided
+        {
+		blend	add
+		map 	gfx/effects/q4x/electricity/elec01.tga
+		vertexColor
+		}
+
+}
+
+gfx/effects/q4x/fire/globfireglow
+{
+	noShadows
+	nonSolid
+	translucent
+	twosided
+        {
+		blend	add
+		map 	gfx/effects/q4x/fire/globfireglow.tga
+		vertexColor
+		rgb     (1 * random [.05 * time ]) +5
+		}
+
+}
+
+gfx/effects/q4x/models/airturret_gadd1
+
+{
+	
+	noShadows
+	nonSolid
+	translucent
+	twoSided
+	{
+		blend add
+		map 	gfx/effects/q4x/models/airturret_gadd01.tga
+		//vertexColor
+		rgb (0.15 * sintable [.5 * time ]) +1
+	}
+	{
+		maskColor
+		map makealpha(gfx/effects/q4x/models/airturret_gadd01f.tga)
+	}
+
+	{
+		blend	GL_DST_ALPHA, GL_ONE
+	 	maskAlpha
+		map gfx/effects/q4x/models/airturret_gadd01a.tga
+		scroll time * -.05, time * 0
+	}	
+	{
+		maskColor
+		map makealpha(gfx/effects/q4x/models/airturret_flashmask.tga)
+		scroll time * -.25, time * -.25
+	}	
+	{
+		blend	GL_DST_ALPHA, GL_ONE
+	 	maskAlpha
+		map gfx/effects/q4x/models/airturret_gadd01b.tga
+		
+	}	
+	
+
+}
+
+gfx/effects/q4x/models/airturret_gadd2
+{
+	
+	noShadows
+	nonSolid
+	translucent
+	twoSided
+	{
+		blend add
+		map 	gfx/effects/q4x/models/airturret_gadd02.tga
+		rotate time * -.05
+		//vertexColor
+	}
+	{
+		blend add
+		map 	gfx/effects/q4x/models/airturret_gadd02a.tga
+		rotate time * -.2
+		//vertexColor
+	}	
+
+}
+
+gfx/effects/q4x/models/airturret_gadd3
+{
+	
+	noShadows
+	nonSolid
+	translucent
+	twoSided
+	{
+		blend add
+		map 	gfx/effects/q4x/models/airturret_gadd03.tga
+		rotate (1 * random [.002 * time ])
+		rgb (0.15 * sintable [.5 * time ]) +1
+		//vertexColor
+		
+		
+	}	
+
+}

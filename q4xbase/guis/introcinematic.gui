@@ -1,0 +1,178 @@
+windowDef Desktop
+{
+	rect	0,0,640,480
+
+	onNamedEvent show_text01 {
+		resettime "show_text01_anim" "0" ;
+	}
+
+	onNamedEvent show_text02 {
+		resettime "show_text02_anim" "0" ;
+	}
+
+	onNamedEvent show_text03 {
+		resettime "show_text03_anim" "0" ;
+	}
+
+	onNamedEvent show_text04 {
+		resettime "show_text04_anim" "0" ;
+	}
+
+	onNamedEvent show_text05 {
+		resettime "show_text05_anim" "0" ;
+	}
+
+	onNamedEvent show_text06 {
+		resettime "show_text06_anim" "0" ;
+	}
+
+	windowDef text01
+	{
+		rect	10,430,410,40
+		visible	0
+		forecolor	1,1,1,1
+		text	"PLANET_STROGGOS, MARINE_COMMAND_CENTER-USS_HANNIBAL ZERO_HOUR, OPERATION_ADVANTAGE_(TETRANODE OFFENSIVE)"
+		textscale	0.25
+	}
+	windowDef text02
+	{
+		rect	0,270,640,40
+		visible	0
+		forecolor	1,1,1,1
+		text	"An_id_software_game"
+		textscale	0.5
+		textalign	1
+	}
+	windowDef text03
+	{
+		rect	0,270,640,39
+		visible	0
+		forecolor	1,1,1,1
+		text	"Developed_by_Ritual_Entertainment"
+		textscale	0.5
+		textalign	1
+	}
+	windowDef text04
+	{
+		rect	0,270,640,39
+		visible	0
+		forecolor	1,1,1,1
+		text	"Published_by_Activision"
+		textscale	0.5
+		textalign	1
+	}
+	windowDef text05
+	{
+		rect	0,270,640,39
+		visible	0
+		forecolor	1,1,1,1
+		text	"QUAKE4"
+		textscale	0.5
+		textalign	1
+	}
+	windowDef text06
+	{
+		rect	0,270,640,39
+		visible	0
+		forecolor	1,1,1,1
+		text	"THE_AWAKENING"
+		textscale	0.5
+		textalign	1
+	}
+	windowDef show_text01_anim
+	{
+		rect	1,32,1,1
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "text01::visible" "1";	
+			transition "text01::forecolor" "0,0,0,0" "1,1,1,1" "2000" ;
+		}
+
+		onTime 4000 {
+			transition "text01::forecolor" "1,1,1,1" "0,0,0,0" "2000" ;
+		}
+
+	}
+	windowDef show_text02_anim
+	{
+		rect	1,32,1,1
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "text02::visible" "1";	
+			transition "text02::forecolor" "0,0,0,0" "1,1,1,1" "2000" ;
+		}
+
+		onTime 4000 {
+			transition "text02::forecolor" "1,1,1,1" "0,0,0,0" "2000" ;
+		}
+
+	}
+	windowDef show_text03_anim
+	{
+		rect	1,32,1,1
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "text03::visible" "1";	
+			transition "text03::forecolor" "0,0,0,0" "1,1,1,1" "2000" ;
+		}
+
+		onTime 4000 {
+			transition "text03::forecolor" "1,1,1,1" "0,0,0,0" "2000" ;
+		}
+
+	}
+	windowDef show_text04_anim
+	{
+		rect	1,32,1,1
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "text04::visible" "1";	
+			transition "text04::forecolor" "0,0,0,0" "1,1,1,1" "2000" ;
+		}
+
+		onTime 4000 {
+			transition "text04::forecolor" "1,1,1,1" "0,0,0,0" "2000" ;
+		}
+
+	}
+	windowDef show_text05_anim
+	{
+		rect	1,32,1,1
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "text05::visible" "1";	
+			transition "text05::forecolor" "0,0,0,0" "1,1,1,1" "2000" ;
+		}
+
+		onTime 4000 {
+			transition "text05::forecolor" "1,1,1,1" "0,0,0,0" "2000" ;
+		}
+
+	}
+	windowDef show_text06_anim
+	{
+		rect	1,32,1,1
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "text06::visible" "1";	
+			transition "text06::forecolor" "0,0,0,0" "1,1,1,1" "2000" ;
+		}
+
+		onTime 4000 {
+			transition "text06::forecolor" "1,1,1,1" "0,0,0,0" "2000" ;
+		}
+
+	}
+}

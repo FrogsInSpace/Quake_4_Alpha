@@ -1,0 +1,198 @@
+lights/aqua2
+{			//used by John in m10
+	{
+		map	gfx/lights/aqua2.tga
+		zeroClamp
+		colored
+	}
+}
+
+lights/q4x_mesh
+{
+	lightFalloffImage	makeIntensity( gfx/lights/q4x_mesh.tga )
+
+	{
+		map gfx/lights/q4x_mesh.tga
+		colored
+		zeroClamp
+	}
+}
+
+lights/c2_ceiling_2x
+{
+	lightFalloffImage	makeIntensity( gfx/lights/c2_ceiling_2.tga )
+
+	{
+		map gfx/lights/c2_ceiling_2.tga
+		colored
+		zeroClamp
+	}
+}
+
+lights/p_light1x
+{
+	lightFalloffImage	makeIntensity( gfx/lights/p_light1.tga )
+
+	{
+		map gfx/lights/p_light1.tga
+		colored
+		zeroClamp
+	}
+}
+
+lights/p_light1xb
+{
+	lightFalloffImage	makeIntensity( gfx/lights/p_light1b.tga )
+
+	{
+		map gfx/lights/p_light1b.tga
+		colored
+		zeroClamp
+	}
+}
+
+lights/p_light1_doublex
+{
+	lightFalloffImage	makeIntensity( gfx/lights/p_light1_double.tga )
+
+	{
+		map gfx/lights/p_light1_double.tga
+		colored
+		zeroClamp
+	}
+}
+
+lights/prisonbeam
+{
+	lightFalloffImage	makeIntensity( gfx/lights/p_beamlight.tga )
+
+	{
+		map gfx/lights/p_beamlight.tga
+		colored
+		zeroClamp
+	}
+}
+
+textures/q4x_lights/rect_light8_red
+{
+	qer_editorimage textures/common_lights/rect_light8_d.tga
+
+	bumpmap addnormals ( textures/common_lights/rect_light8_local.tga, heightmap ( textures/common_lights/rect_light8_h.tga, 1 ) )
+	diffusemap	textures/common_lights/rect_light8_d.tga
+	specularmap	textures/common_lights/rect_light8_s.tga
+	{
+		if (parm4 == 0)
+		blend		add
+		map		textures/common_lights/rect_light8_g.tga
+		red		0.95 
+		green		0.15  
+		blue		0.15
+	}
+
+}
+
+textures/q4x_lights/rect_light8_blue
+{
+	qer_editorimage textures/common_lights/rect_light8_d.tga
+
+	bumpmap addnormals ( textures/common_lights/rect_light8_local.tga, heightmap ( textures/common_lights/rect_light8_h.tga, 1 ) )
+	diffusemap	textures/common_lights/rect_light8_d.tga
+	specularmap	textures/common_lights/rect_light8_s.tga
+	{
+		if (parm4 == 0)
+		blend		add
+		map		textures/common_lights/rect_light8_g.tga
+		red		0.50 
+		green		0.50  
+		blue		0.90
+	}
+
+}
+
+textures/common_lights/light1_1_waste_orange_to_red
+// CHECK
+{
+	qer_EditorImage	textures/common_lights/light1_1_d.tga
+	bumpMap			textures/common_lights/light1_1_local.tga
+	diffuseMap		textures/common_lights/light1_1_d.tga
+	specularMap		textures/common_lights/light1_1_s.tga
+	{
+		if		(parm4 == 0)
+		blend		add
+		map		textures/common_lights/light1_1_add.tga
+		red		0.64
+		green		0.40
+		blue		0.15
+	}
+	
+	{	if		(parm4 && time - parm4 < 2.5 )
+		blend		add
+		map		textures/common_lights/light1_1_add.tga
+		red		waste_lighttex_1_1_orange_to_red_r[(time-parm4)*2]
+		green		waste_lighttex_1_1_orange_to_red_g[(time-parm4)*2]
+		blue		waste_lighttex_1_1_orange_to_red_b[(time-parm4)*2]
+	}
+	
+	{
+		if		(parm4 && time - parm4 >= 0.5)
+		map		textures/common_lights/light1_1_add.tga
+		red		0.52*waste_bb_pulse[(time-parm4-0.5)*0.5]
+		green		0
+		blue		0
+		zeroClamp
+	}
+
+// CHECK
+}
+
+guide textures/common_lights/rect_light4 generic_glow_noheight_mi ("common_lights/rect_light4", "common_lights/rect_light4_g"  )
+
+
+///  Added by Steve H  /////////////////////////////////////////////////////////////////////
+
+lights/grate_coarse01_1_lit
+{
+	lightFalloffImage	makeIntensity( gfx/lights/grate_coarse01_1_lit.tga )
+
+	{
+		map gfx/lights/grate_coarse01_1_lit.tga
+		colored
+		zeroClamp
+	}
+}
+
+lights/grate_coarse02_1_lit
+{
+	lightFalloffImage	makeIntensity( gfx/lights/grate_coarse02_1_lit.tga )
+
+	{
+		map gfx/lights/grate_coarse02_1_lit.tga
+		colored
+		zeroClamp
+	}
+}
+
+lights/ceiling01_1_lit
+{
+	lightFalloffImage	makeIntensity( gfx/lights/ceiling01_1_lit.tga )
+
+	{
+		map gfx/lights/ceiling01_1_lit.tga
+		colored
+		zeroClamp
+	}
+}
+
+
+//scrolling trench cloud overlay--------------------------
+
+lights/groundoverlay_trench
+{	
+	lightFalloffImage	_white
+	{
+		forceHighQuality
+		map		gfx/lights/clouds_1.tga
+		translate	(time * 0.5 * parm5), (time * -1 * parm5)
+		colored
+	}
+}

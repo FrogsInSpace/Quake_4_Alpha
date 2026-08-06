@@ -1,0 +1,1139 @@
+table walkway_pulse    { {.9, .8, .7, .6, .7, .8, .8, 1} }
+
+
+//prison cellblock sign
+
+textures/prison/strogg_cellblock_sign
+{	
+	qer_editorimage		gfx/guis/common/strogg/cellblockbg
+	noShadows
+	translucent
+	{
+		Map gfx/guis/common/strogg/cellblockbg.tga
+		red	guitable_random2  [ time * 1 ]
+		green	guitable_random2  [ time * 1 ]
+		blue	guitable_random2  [ time * 1 ]
+		alpha	parm3
+	}
+
+	{
+		blend add
+		Map gfx/guis/common/monitor_line3.tga
+		scroll 0, -.2 * time
+		colored
+	}
+
+	{
+		blend blend
+		Map gfx/guis/common/screen_dirt1.tga
+		red .5
+		green .2
+		blue 0
+		alpha 1
+	}
+}
+
+//
+
+
+guide textures/prison/Prison_ceilingtile generic_shader("prison/Prison_ceilingtile")
+guide textures/prison/Prison_floorflat_02 generic_shader("prison/Prison_floorflat_02")
+guide textures/prison/Prison_floorflat_04 generic_shader("prison/Prison_floorflat_04")
+guide textures/prison/Prison_wallflat_00 generic_shader("prison/Prison_wallflat_00")
+guide textures/prison/Prison_wallflat_02 generic_shader_mi("prison/Prison_wallflat_02")
+guide textures/prison/Prison_wallflat_02c generic_shader_mi("prison/Prison_wallflat_02c")
+guide textures/prison/Prison_wallflat_03 generic_shader_mi("prison/Prison_wallflat_03")
+guide textures/prison/Prison_wallflat_03trim generic_shader("prison/Prison_wallflat_03trim")
+guide textures/prison/Prison_wallflat_04 generic_shader_mi("prison/Prison_wallflat_04")
+guide textures/prison/Prison_wallflat_05 generic_shader_mi("prison/Prison_wallflat_05")
+guide textures/prison/Prison_wallflat_05b generic_shader("prison/Prison_wallflat_05b")
+guide textures/prison/Prison_wallflat_06 generic_shader_mi("prison/Prison_wallflat_06")
+guide textures/prison/Prison_wallflat_06b generic_shader_mi("prison/Prison_wallflat_06b")
+guide textures/prison/Prison_wallflat_06Trim generic_shader("prison/Prison_wallflat_06Trim")
+guide textures/prison/Prison_wallflat_b generic_shader_mi("prison/Prison_wallflat_b")
+guide textures/prison/Prison_wallflat_b2 generic_shader_mi("prison/Prison_wallflat_b2")
+guide textures/prison/prisonnew_ceiling1 generic_shader("prison/prisonnew_ceiling1")
+guide textures/prison/prisonnew_floor_trim1_2 generic_shader("prison/prisonnew_floor_trim1_2")
+guide textures/prison/prisonnew_floor_trim1_1 generic_shader("prison/prisonnew_floor_trim1_1")
+guide textures/prison/prisonnew_trim2 generic_shader("prison/prisonnew_trim2")
+guide textures/prison/prisonnew_trim2b generic_shader("prison/prisonnew_trim2b")
+guide textures/prison/prisonnew_trim1 generic_shader("prison/prisonnew_trim1")
+guide textures/prison/prisonnew_t13_trim_1 generic_shader("prison/prisonnew_t13_trim_1")
+guide textures/prison/prisonnew_t13_trim_2 generic_shader("prison/prisonnew_t13_trim_2")
+guide textures/prison/prisonnew_t13_trim_3 generic_shader("prison/prisonnew_t13_trim_3")
+guide textures/prison/prisonnew_t13_trim_4 generic_shader("prison/prisonnew_t13_trim_4")
+guide textures/prison/prisonnew_tunceiltop generic_shader("prison/prisonnew_tunceiltop")
+guide textures/prison/prisonnew_tn_walltrim_02 generic_shader_mi("prison/prisonnew_tn_walltrim_02")
+guide textures/prison/prisonnew_t12_floor_1 generic_shader_mi("prison/prisonnew_t12_floor_1")
+guide textures/prison/prisonnew_t13_ceiling_1 generic_shader_mi("prison/prisonnew_t13_ceiling_1")
+guide textures/prison/prisonnew_t1_wall1 generic_shader_mi("prison/prisonnew_t1_wall1")
+//The next section is for the rusty variants
+
+
+textures/prison/Prison_floorflat_02rust
+{
+	qer_editorimage textures/prison/Prison_floorflat_02rust_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_floorflat_02_local.tga, heightmap ( textures/prison/Prison_floorflat_02rust_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_floorflat_02rust_d.tga
+	specularmap	textures/prison/Prison_floorflat_02rust_s.tga
+
+}
+
+textures/prison/Prison_floorflat_04rust
+{
+	qer_editorimage textures/prison/Prison_floorflat_04rust_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_floorflat_04_local.tga, heightmap ( textures/prison/Prison_floorflat_04rust_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_floorflat_04rust_d.tga
+	specularmap	textures/prison/Prison_floorflat_04rust_s.tga
+
+}
+
+textures/prison/Prison_wallflat_00rust
+{
+	qer_editorimage textures/prison/Prison_wallflat_00rust_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_00_local.tga, heightmap ( textures/prison/Prison_wallflat_00rust_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_00rust_d.tga
+	specularmap	textures/prison/Prison_wallflat_00rust_s.tga
+
+}
+
+
+textures/prison/Prison_wallflat_02rust
+{
+	qer_editorimage textures/prison/Prison_wallflat_02rust_d.tga
+	
+	materialImage	textures/prison/Prison_wallflat_02rust_hit
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_02_local.tga, heightmap ( textures/prison/Prison_wallflat_02rust_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_02rust_d.tga
+	specularmap	textures/prison/Prison_wallflat_02rust_s.tga
+
+}
+
+
+textures/prison/Prison_wallflat_02Crust
+{
+	qer_editorimage textures/prison/Prison_wallflat_02Crust_d.tga
+
+	materialImage	textures/prison/Prison_wallflat_02Crust_hit
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_02C_local.tga, heightmap ( textures/prison/Prison_wallflat_02Crust_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_02Crust_d.tga
+	specularmap	textures/prison/Prison_wallflat_02Crust_s.tga
+
+}
+
+textures/prison/Prison_wallflat_03rust
+{
+	qer_editorimage textures/prison/Prison_wallflat_03rust_d.tga
+
+	materialImage	textures/prison/Prison_wallflat_03rust_hit
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_03_local.tga, heightmap ( textures/prison/Prison_wallflat_03rust_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_03rust_d.tga
+	specularmap	textures/prison/Prison_wallflat_03rust_s.tga
+
+}
+
+textures/prison/Prison_wallflat_03Trimrust
+{
+	qer_editorimage textures/prison/Prison_wallflat_03Trimrust_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_03Trim_local.tga, heightmap ( textures/prison/Prison_wallflat_03Trimrust_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_03Trimrust_d.tga
+	specularmap	textures/prison/Prison_wallflat_03Trimrust_s.tga
+
+}
+
+
+textures/prison/Prison_wallflat_04rust
+{
+	qer_editorimage textures/prison/Prison_wallflat_04rust_d.tga
+
+	materialImage	textures/prison/Prison_wallflat_04rust_hit
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_04_local.tga, heightmap ( textures/prison/Prison_wallflat_04rust_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_04rust_d.tga
+	specularmap	textures/prison/Prison_wallflat_04rust_s.tga
+
+}
+
+textures/prison/Prison_wallflat_05rust
+{
+	qer_editorimage textures/prison/Prison_wallflat_05rust_d.tga
+
+	materialImage	textures/prison/Prison_wallflat_05rust_hit
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_05_local.tga, heightmap ( textures/prison/Prison_wallflat_05rust_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_05rust_d.tga
+	specularmap	textures/prison/Prison_wallflat_05rust_s.tga
+
+}
+
+textures/prison/Prison_wallflat_06brust
+{
+	qer_editorimage textures/prison/Prison_wallflat_06brust_d.tga
+
+	materialImage	textures/prison/Prison_wallflat_06brust_hit
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_06b_local.tga, heightmap ( textures/prison/Prison_wallflat_06brust_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_06brust_d.tga
+	specularmap	textures/prison/Prison_wallflat_06brust_s.tga
+
+}
+
+textures/prison/Prison_wallflat_06rust
+{
+	qer_editorimage textures/prison/Prison_wallflat_06rust_d.tga
+
+	materialImage	textures/prison/Prison_wallflat_06rust_hit
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_06_local.tga, heightmap ( textures/prison/Prison_wallflat_06rust_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_06rust_d.tga
+	specularmap	textures/prison/Prison_wallflat_06rust_s.tga
+
+}
+
+textures/prison/Prison_wallflat_B2rust
+{
+	qer_editorimage textures/prison/Prison_wallflat_B2rust_d.tga
+
+	materialImage	textures/prison/Prison_wallflat_B2rust_hit
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_B2_local.tga, heightmap ( textures/prison/Prison_wallflat_B2rust_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_B2rust_d.tga
+	specularmap	textures/prison/Prison_wallflat_B2rust_s.tga
+
+}
+
+
+textures/prison/Prison_wallflat_Brust
+{
+	qer_editorimage textures/prison/Prison_wallflat_Brust_d.tga
+
+	materialImage	textures/prison/Prison_wallflat_Brust_hit
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_B_local.tga, heightmap ( textures/prison/Prison_wallflat_Brust_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_Brust_d.tga
+	specularmap	textures/prison/Prison_wallflat_Brust_s.tga
+
+}
+
+
+
+
+//The next section is for the variants with red striping
+
+
+textures/prison/Prison_wallflat_00RED
+{
+	qer_editorimage textures/prison/Prison_wallflat_00RED_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_00_local.tga, heightmap ( textures/prison/Prison_wallflat_00RED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_00RED_d.tga
+	specularmap	textures/prison/Prison_wallflat_00RED_s.tga
+
+}
+
+textures/prison/Prison_wallflat_02RED
+{
+	qer_editorimage textures/prison/Prison_wallflat_02RED_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_02_local.tga, heightmap ( textures/prison/Prison_wallflat_02RED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_02RED_d.tga
+	specularmap	textures/prison/Prison_wallflat_02RED_s.tga
+
+}
+
+textures/prison/Prison_wallflat_03RED
+{
+	qer_editorimage textures/prison/Prison_wallflat_03RED_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_03_local.tga, heightmap ( textures/prison/Prison_wallflat_03RED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_03RED_d.tga
+	specularmap	textures/prison/Prison_wallflat_03RED_s.tga
+
+}
+
+textures/prison/Prison_wallflat_03trimRED
+{
+	qer_editorimage textures/prison/Prison_wallflat_03trimRED_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_03trim_local.tga, heightmap ( textures/prison/Prison_wallflat_03trimRED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_03trimRED_d.tga
+	specularmap	textures/prison/Prison_wallflat_03trimRED_s.tga
+
+}
+
+textures/prison/Prison_wallflat_04RED
+{
+	qer_editorimage textures/prison/Prison_wallflat_04RED_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_04_local.tga, heightmap ( textures/prison/Prison_wallflat_04RED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_04RED_d.tga
+	specularmap	textures/prison/Prison_wallflat_04RED_s.tga
+
+}
+
+textures/prison/Prison_wallflat_05RED
+{
+	qer_editorimage textures/prison/Prison_wallflat_05RED_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_05_local.tga, heightmap ( textures/prison/Prison_wallflat_05RED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_05RED_d.tga
+	specularmap	textures/prison/Prison_wallflat_05RED_s.tga
+
+}
+
+textures/prison/Prison_wallflat_06RED
+{
+	qer_editorimage textures/prison/Prison_wallflat_06RED_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_06_local.tga, heightmap ( textures/prison/Prison_wallflat_06RED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_06RED_d.tga
+	specularmap	textures/prison/Prison_wallflat_06RED_s.tga
+
+}
+
+textures/prison/Prison_wallflat_BRED
+{
+	qer_editorimage textures/prison/Prison_wallflat_BRED_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_B_local.tga, heightmap ( textures/prison/Prison_wallflat_BRED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_BRED_d.tga
+	specularmap	textures/prison/Prison_wallflat_BRED_s.tga
+
+}
+
+textures/prison/Prison_wallflat_B2RED
+{
+	qer_editorimage textures/prison/Prison_wallflat_B2RED_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_B2_local.tga, heightmap ( textures/prison/Prison_wallflat_B2RED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_B2RED_d.tga
+	specularmap	textures/prison/Prison_wallflat_B2RED_s.tga
+
+}
+
+
+
+
+//The next section is for the variants with blue striping
+
+
+textures/prison/Prison_wallflat_00BLUE
+{
+	qer_editorimage textures/prison/Prison_wallflat_00BLUE_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_00_local.tga, heightmap ( textures/prison/Prison_wallflat_00RED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_00BLUE_d.tga
+	specularmap	textures/prison/Prison_wallflat_00BLUE_s.tga
+
+}
+
+textures/prison/Prison_wallflat_02BLUE
+{
+	qer_editorimage textures/prison/Prison_wallflat_02BLUE_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_02_local.tga, heightmap ( textures/prison/Prison_wallflat_02RED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_02BLUE_d.tga
+	specularmap	textures/prison/Prison_wallflat_02BLUE_s.tga
+
+}
+
+textures/prison/Prison_wallflat_02CBLUE
+{
+	qer_editorimage textures/prison/Prison_wallflat_02CBLUE_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_02C_local.tga, heightmap ( textures/prison/Prison_wallflat_02CRED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_02CBLUE_d.tga
+	specularmap	textures/prison/Prison_wallflat_02CBLUE_s.tga
+
+}
+
+textures/prison/Prison_wallflat_03BLUE
+{
+	qer_editorimage textures/prison/Prison_wallflat_03BLUE_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_03_local.tga, heightmap ( textures/prison/Prison_wallflat_03RED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_03BLUE_d.tga
+	specularmap	textures/prison/Prison_wallflat_03BLUE_s.tga
+
+}
+
+textures/prison/Prison_wallflat_03trimBLUE
+{
+	qer_editorimage textures/prison/Prison_wallflat_03trimBLUE_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_03trim_local.tga, heightmap ( textures/prison/Prison_wallflat_03trimRED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_03trimBLUE_d.tga
+	specularmap	textures/prison/Prison_wallflat_03trimBLUE_s.tga
+
+}
+
+textures/prison/Prison_wallflat_04BLUE
+{
+	qer_editorimage textures/prison/Prison_wallflat_04BLUE_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_04_local.tga, heightmap ( textures/prison/Prison_wallflat_04RED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_04BLUE_d.tga
+	specularmap	textures/prison/Prison_wallflat_04BLUE_s.tga
+
+}
+
+textures/prison/Prison_wallflat_05BLUE
+{
+	qer_editorimage textures/prison/Prison_wallflat_05BLUE_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_05_local.tga, heightmap ( textures/prison/Prison_wallflat_05RED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_05BLUE_d.tga
+	specularmap	textures/prison/Prison_wallflat_05BLUE_s.tga
+
+}
+
+textures/prison/Prison_wallflat_06BLUE
+{
+	qer_editorimage textures/prison/Prison_wallflat_06BLUE_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_06_local.tga, heightmap ( textures/prison/Prison_wallflat_06RED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_06BLUE_d.tga
+	specularmap	textures/prison/Prison_wallflat_06BLUE_s.tga
+
+}
+
+textures/prison/Prison_wallflat_BBLUE
+{
+	qer_editorimage textures/prison/Prison_wallflat_BBLUE_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_B_local.tga, heightmap ( textures/prison/Prison_wallflat_BRED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_BBLUE_d.tga
+	specularmap	textures/prison/Prison_wallflat_BBLUE_s.tga
+
+}
+
+textures/prison/Prison_wallflat_B2BLUE
+{
+	qer_editorimage textures/prison/Prison_wallflat_B2BLUE_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_B2_local.tga, heightmap ( textures/prison/Prison_wallflat_B2RED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_B2BLUE_d.tga
+	specularmap	textures/prison/Prison_wallflat_B2BLUE_s.tga
+
+}
+
+
+
+
+
+//The next section is for the variants with green striping
+
+
+textures/prison/Prison_wallflat_00GREEN
+{
+	qer_editorimage textures/prison/Prison_wallflat_00GREEN_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_00_local.tga, heightmap ( textures/prison/Prison_wallflat_00RED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_00GREEN_d.tga
+	specularmap	textures/prison/Prison_wallflat_00GREEN_s.tga
+
+}
+
+textures/prison/Prison_wallflat_02GREEN
+{
+	qer_editorimage textures/prison/Prison_wallflat_02GREEN_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_02_local.tga, heightmap ( textures/prison/Prison_wallflat_02RED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_02GREEN_d.tga
+	specularmap	textures/prison/Prison_wallflat_02GREEN_s.tga
+
+}
+
+textures/prison/Prison_wallflat_02CGREEN
+{
+	qer_editorimage textures/prison/Prison_wallflat_02CGREEN_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_02C_local.tga, heightmap ( textures/prison/Prison_wallflat_02CRED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_02CGREEN_d.tga
+	specularmap	textures/prison/Prison_wallflat_02CGREEN_s.tga
+
+}
+
+textures/prison/Prison_wallflat_03GREEN
+{
+	qer_editorimage textures/prison/Prison_wallflat_03GREEN_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_03_local.tga, heightmap ( textures/prison/Prison_wallflat_03RED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_03GREEN_d.tga
+	specularmap	textures/prison/Prison_wallflat_03GREEN_s.tga
+
+}
+
+textures/prison/Prison_wallflat_03trimGREEN
+{
+	qer_editorimage textures/prison/Prison_wallflat_03trimGREEN_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_03trim_local.tga, heightmap ( textures/prison/Prison_wallflat_03trimRED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_03trimGREEN_d.tga
+	specularmap	textures/prison/Prison_wallflat_03trimGREEN_s.tga
+
+}
+
+textures/prison/Prison_wallflat_04GREEN
+{
+	qer_editorimage textures/prison/Prison_wallflat_04GREEN_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_04_local.tga, heightmap ( textures/prison/Prison_wallflat_04RED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_04GREEN_d.tga
+	specularmap	textures/prison/Prison_wallflat_04GREEN_s.tga
+
+}
+
+textures/prison/Prison_wallflat_05GREEN
+{
+	qer_editorimage textures/prison/Prison_wallflat_05GREEN_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_05_local.tga, heightmap ( textures/prison/Prison_wallflat_05RED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_05GREEN_d.tga
+	specularmap	textures/prison/Prison_wallflat_05GREEN_s.tga
+
+}
+
+textures/prison/Prison_wallflat_06GREEN
+{
+	qer_editorimage textures/prison/Prison_wallflat_06GREEN_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_06_local.tga, heightmap ( textures/prison/Prison_wallflat_06RED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_06GREEN_d.tga
+	specularmap	textures/prison/Prison_wallflat_06GREEN_s.tga
+
+}
+
+textures/prison/Prison_wallflat_BGREEN
+{
+	qer_editorimage textures/prison/Prison_wallflat_BGREEN_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_B_local.tga, heightmap ( textures/prison/Prison_wallflat_BRED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_BGREEN_d.tga
+	specularmap	textures/prison/Prison_wallflat_BGREEN_s.tga
+
+}
+
+textures/prison/Prison_wallflat_B2GREEN
+{
+	qer_editorimage textures/prison/Prison_wallflat_B2GREEN_d.tga
+
+	bumpmap addnormals ( textures/prison/Prison_wallflat_B2_local.tga, heightmap ( textures/prison/Prison_wallflat_B2RED_h.tga, 1 ) )
+	diffusemap	textures/prison/Prison_wallflat_B2GREEN_d.tga
+	specularmap	textures/prison/Prison_wallflat_B2GREEN_s.tga
+
+}
+
+guide textures/prison/prison_beam2 generic_shader("prison/prison_beam2")
+guide textures/prison/prison_beam1 generic_shader("prison/prison_beam1")
+guide textures/prison/prison_wallflat_02d generic_shader("prison/prison_wallflat_02d")
+guide textures/prison/prison_trim generic_shader("prison/prison_trim")
+guide textures/prison/prison_ribbed_piece generic_shader("prison/prison_ribbed_piece")
+guide textures/prison/prison_trim1 generic_shader("prison/prison_trim1")
+guide textures/prison/prison_wall_trim1 generic_shader("prison/prison_wall_trim1")
+guide textures/prison/prison_trim2 generic_shader("prison/prison_trim2")
+guide textures/prison/prison_tech_panel1 generic_shader_mi("prison/prison_tech_panel1")
+guide textures/prison/prison_tech_panel2a generic_shader_mi("prison/prison_tech_panel2a")
+guide textures/prison/prison_tech_panel2b generic_shader_mi("prison/prison_tech_panel2b")
+guide textures/prison/prison_4floor_2 generic_shader("prison/prison_4floor_2")
+guide textures/prison/prison_4floor_1 generic_shader("prison/prison_4floor_1")
+guide textures/prison/prison_wallswatch generic_shader("prison/prison_wallswatch")
+guide textures/prison/prison_noslip1 generic_shader("prison/prison_noslip1")
+guide textures/prison/prison_floorvar1 generic_shader("prison/prison_floorvar1")
+guide textures/prison/prison_floorvar2 generic_shader("prison/prison_floorvar2")
+guide textures/prison/c2_ceiling_2 generic_shader_mi("prison/c2_ceiling_2")
+guide textures/prison/c_ceiling_2 generic_shader_mi("prison/c_ceiling_2")
+guide textures/prison/prison_pipe1a generic_shader("prison/prison_pipe1a")
+guide textures/prison/prison_pipe1b generic_shader("prison/prison_pipe1b")
+guide textures/prison/prison_segwire generic_shader_mi("prison/prison_segwire")
+guide textures/prison/prison_ribbed_pieceb generic_shader("prison/prison_ribbed_pieceb")
+textures/prison/prison_segwire2
+{
+	qer_editorimage textures/prison/prison_segwire2_d.tga
+
+	bumpmap addnormals ( textures/prison/prison_segwire_local.tga, heightmap ( textures/prison/prison_segwire2_h.tga, 1 ) )
+	diffusemap	textures/prison/prison_segwire2_d.tga
+	specularmap	textures/prison/prison_segwire2_s.tga
+
+}
+
+textures/prison/c2_ceiling_2_alpha
+
+{
+	qer_editorimage textures/prison/c2_ceiling_2_d.tga
+	
+	noshadows
+
+
+
+	bumpmap addnormals ( textures/prison/c2_ceiling_2_local.tga, heightmap ( textures/prison/c2_ceiling_2_h.tga, 1 ) )
+	specularmap	textures/prison/c2_ceiling_2_s.tga
+
+	{       
+      	 blend	diffusemap 
+	 map	textures/prison/c2_ceiling_2_d.tga
+	 alphaTest .5
+	}
+}
+
+
+guide textures/prison/prisonpanel32t generic_shader_mi("prison/prisonpanel32t")
+guide textures/prison/prisonpanel64t generic_shader_mi("prison/prisonpanel64t")
+guide textures/prison/prisonpanel64_32t generic_shader_mi("prison/prisonpanel64_32t")
+guide textures/prison/prisonfloor1t generic_shader("prison/prisonfloor1t")
+guide textures/prison/warningstrip32t generic_shader("prison/warningstrip32t")
+guide textures/prison/greyswatch64t generic_shader("prison/greyswatch64t")
+
+textures/prison/prisonfloor1t_alpha
+{
+	qer_editorimage textures/prison/prisonfloor1t_d.tga
+	
+	noshadows
+
+	bumpmap addnormals ( textures/prison/prisonfloor1t_local.tga, heightmap ( textures/prison/prisonfloor1t_h.tga, 1 ) )
+	specularmap	textures/prison/prisonfloor1t_s.tga
+
+	{       
+      	 blend	diffusemap 
+	 map	textures/prison/prisonfloor1t_d.tga
+	 alphaTest .5
+	}
+}
+
+
+
+
+textures/prison/prisonbeam1t_alpha
+
+{
+	qer_editorimage textures/prison/prisonbeam1t_d.tga
+	
+	noshadows
+
+	bumpmap addnormals ( textures/prison/prisonbeam1t_local.tga, heightmap ( textures/prison/prisonbeam1t_h.tga, 1 ) )
+	specularmap	textures/prison/prisonbeam1t_s.tga
+
+	{       
+      	 blend	diffusemap 
+	 map	textures/prison/prisonbeam1t_d.tga
+	 alphaTest .5
+	}
+}
+
+textures/prison/prisonbeam32t_alpha
+
+{
+	qer_editorimage textures/prison/prisonbeam32t_d.tga
+	
+	noshadows
+
+
+
+	bumpmap addnormals ( textures/prison/prisonbeam32t_local.tga, heightmap ( textures/prison/prisonbeam32t_h.tga, 1 ) )
+	specularmap	textures/prison/prisonbeam32t_s.tga
+
+	{       
+      	 blend	diffusemap 
+	 map	textures/prison/prisonbeam32t_d.tga
+	 alphaTest .5
+	}
+}
+
+
+textures/prison/prisonbeam32t_alpha_2sides
+
+{
+	qer_editorimage textures/prison/prisonbeam32t_d.tga
+	twosided	
+	noshadows
+
+	bumpmap addnormals ( textures/prison/prisonbeam32t_local.tga, heightmap ( textures/prison/prisonbeam32t_h.tga, 1 ) )
+	specularmap	textures/prison/prisonbeam32t_s.tga
+
+	{       
+      	 blend	diffusemap 
+	 map	textures/prison/prisonbeam32t_d.tga
+	 alphaTest .5
+	}
+}
+
+
+
+textures/prison/prisonpipecapt_alpha
+
+{
+	qer_editorimage textures/prison/prisonpipecapt_d.tga
+	noShadows
+	materialImage textures/prison/prisonpipecapt_hit	
+
+	bumpMap addnormals ( textures/prison/prisonpipecapt_local.tga, heightmap ( textures/prison/prisonpipecapt_h.tga, 1 ) )
+	specularmap	textures/prison/prisonpipecapt_s.tga
+
+	{       
+     blend	diffusemap 
+	 map	textures/prison/prisonpipecapt_d.tga
+	 alphaTest .5
+	}
+}
+
+guide textures/prison/P_wall_1 generic_shader("prison/p_wall_1")
+guide textures/prison/Prison_wallflat_B64 generic_shader_mi("prison/Prison_wallflat_B64")
+guide textures/prison/Prison_wallflat_Bpanel generic_shader("prison/Prison_wallflat_Bpanel")
+guide textures/prison/Prison_wallflat_Bpanel2 generic_shader("prison/Prison_wallflat_Bpanel2")
+guide textures/prison/Prison_wallflat_Bpanel2b generic_shader_mi("prison/Prison_wallflat_Bpanel2b")
+guide textures/prison/P_wall_2 generic_shader("prison/p_wall_2")
+guide textures/prison/P_vwalltrim_3 generic_shader("prison/p_vwalltrim_3")
+guide textures/prison/P_vwalltrim_1 generic_shader("prison/p_vwalltrim_1")
+guide textures/prison/P_vwalltrim_2 generic_shader("prison/p_vwalltrim_2")
+guide textures/prison/P_walltrim_1 generic_shader("prison/p_vwalltrim_1")
+guide textures/prison/P1_wall_1 generic_shader_mi("prison/p1_wall_1")
+guide textures/prison/P_floor_1 generic_Localvariant("prison/p_wall_1", "prison/p_floor_1")
+guide textures/prison/P1_wall_2 generic_shader_mi("prison/p1_wall_2")
+guide textures/prison/P1_walltrim1 generic_shader("prison/p1_walltrim1")
+
+
+textures/prison/p1_walltrim2
+{
+	qer_editorimage textures/prison/p1_walltrim2_d.tga
+	diffusemap 	textures/prison/p1_walltrim2_d.tga
+	bumpmap addnormals ( textures/prison/p1_walltrim2_local.tga, heightmap ( textures/prison/p1_walltrim1_h.tga, 1 ) )
+	specularmap	textures/prison/p1_walltrim2_s.tga
+}
+
+guide textures/prison/P2_wall_1 generic_shader("prison/p2_wall_1")
+guide textures/prison/P2_wall_2 generic_shader_mi("prison/p2_wall_2")
+guide textures/prison/P2_wall_3 generic_shader_mi("prison/p2_wall_3")
+guide textures/prison/P3_wall_1 generic_shader_mi("prison/p3_wall_1")
+guide textures/prison/P3_wall_2 generic_shader_mi("prison/p3_wall_2")
+guide textures/prison/P3_wall_3 generic_shader_mi("prison/p3_wall_3")
+guide textures/prison/P3_vwalltrim_1 generic_shader_mi("prison/p3_vwalltrim_1")
+guide textures/prison/P3_walltrim_1 generic_shader_mi("prison/p3_walltrim_1")
+
+textures/prison/prison_fencelink1t
+{
+	qer_editorimage textures/prison/prison_fencelink1t_d.tga
+	
+	noshadows
+	twosided
+
+//	bumpmap addnormals ( textures/prison/prison_fencelink1t_local.tga, heightmap ( textures/prison/prison_fencelink1t_h.tga, 1 ) )
+//	specularmap	textures/prison/prison_fencelink1t_s.tga
+
+	{       
+
+     	 blend bumpmap
+	 map	textures/prison/prison_fencelink1t_local.tga
+	 scale 6, 6 
+	}
+
+	{       
+     	 blend specularmap
+	 map	textures/prison/prison_fencelink1t_s.tga
+	 scale 6, 6 
+	}
+	{       
+
+     	 blend	diffusemap 
+	 map	textures/prison/prison_fencelink1t_d.tga
+	 alphaTest .5
+	 scale 6, 6 
+	}
+}
+
+
+guide textures/prison/prison_beamfront generic_shader_mi("prison/prison_beamfront")
+guide textures/prison/prison_beamside generic_shader_mi("prison/prison_beamside")
+guide textures/prison/prison_steptop16 generic_shader("prison/prison_steptop16")
+guide textures/prison/prison_steptop32 generic_shader("prison/prison_steptop32")
+guide textures/prison/prison_floorbreak generic_shader("prison/prison_floorbreak")
+guide textures/prison/prison_floorbridge generic_shader("prison/prison_floorbridge")
+guide textures/prison/prison_techbox1 generic_shader_mi("prison/prison_techbox1")
+guide textures/prison/prison_techbox2 generic_shader_mi("prison/prison_techbox2")
+guide textures/prison/prison_stepfront generic_shader("prison/prison_stepfront")
+
+
+// took this out of a generic template so I could change the editor image to something easier to align in the editor - Jersey
+
+
+textures/prison/p4_beam
+
+{
+	qer_editorimage textures/prison/p4_beam_local.tga
+
+
+	bumpmap addnormals ( textures/prison/p4_beam_local.tga, heightmap ( textures/prison/p4_beam_h.tga, 1 ) )
+	diffusemap	textures/prison/p4_beam_d.tga
+	specularmap	textures/prison/p4_beam_s.tga
+
+}
+
+
+guide textures/prison/p4_beam_1 generic_shader("prison/p4_beam_1")
+guide textures/prison/p4_beam_2 generic_shader("prison/p4_beam_2")
+guide textures/prison/p4_beam_3 generic_shader("prison/p4_beam_3")
+guide textures/prison/p4_beam_4 generic_shader("prison/p4_beam_4")
+guide textures/prison/p4_beam_5 generic_shader("prison/p4_beam_5")
+guide textures/prison/p4_ceiling_1 generic_shader("prison/p4_ceiling_1")
+guide textures/prison/p4_ceiling_2 generic_shader("prison/p4_ceiling_2")
+guide textures/prison/p4_ceiling_3 generic_shader_mi("prison/p4_ceiling_3")
+guide textures/prison/p4_floor_1 generic_shader("prison/p4_floor_1")
+guide textures/prison/p4_floor_2 generic_shader("prison/p4_floor_2")
+guide textures/prison/p4_floor_3 generic_shader("prison/p4_floor_3")
+guide textures/prison/p4_floor_4 generic_shader("prison/p4_floor_4")
+guide textures/prison/p4_floor_5 generic_shader("prison/p4_floor_5")
+guide textures/prison/p4_wall_1 generic_shader_mi("prison/p4_wall_1")
+guide textures/prison/p4_wall_2 generic_shader_mi("prison/p4_wall_2")
+guide textures/prison/p4_wall_3 generic_shader_mi("prison/p4_wall_3")
+guide textures/prison/p4_wall_4 generic_shader_mi("prison/p4_wall_4")
+guide textures/prison/p4_wall_5 generic_shader_mi("prison/p4_wall_5")
+guide textures/prison/p4_wall_5a generic_shader_mi("prison/p4_wall_5a")
+guide textures/prison/p4_wall_6 generic_shader("prison/p4_wall_6")
+guide textures/prison/p4_wall_7 generic_shader("prison/p4_wall_7")
+guide textures/prison/p4_wall_8 generic_shader_mi("prison/p4_wall_8")
+guide textures/prison/p4_wall_9 generic_shader("prison/p4_wall_9")
+guide textures/prison/p4_light generic_glow("prison/p4_light", "prison/p4_light_g")
+
+
+textures/prison/p4_light_snd
+
+{
+	qer_editorimage textures/prison/p4_light_d.tga
+
+	bumpmap addnormals ( textures/prison/p4_light_local.tga, heightmap ( textures/prison/p4_light_h.tga, 1 ) )
+	diffusemap	textures/prison/p4_light_d.tga
+	specularmap	textures/prison/p4_light_s.tga
+	
+	{
+		blend GL_ONE, GL_ONE
+		map    textures/prison/p4_light_g.tga
+		
+		red		Parm0 
+		green		Parm1  
+		blue		Parm2  
+	
+	
+	}
+
+}
+
+textures/prison/p4_beam_3_ut
+{
+	qer_editorimage textures/prison/p4_beam_3_d.tga
+	unSmoothedTangents
+	
+	bumpmap addnormals ( textures/prison/p4_beam_3_local.tga, heightmap ( textures/prison/p4_beam_3_h.tga, 1 ) )
+	diffusemap	textures/prison/p4_beam_3_d.tga
+	specularmap	textures/prison/p4_beam_3_s.tga
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+textures/prison/pglass
+{
+	translucent
+	twoSided
+	noshadows
+//	sort close		
+	qer_editorimage		textures/prison/pglass_d.tga
+
+	bumpmap heightmap ( textures/prison/pglass_h.tga, 7 )
+	specularmap	 textures/prison/pglass_s.tga
+
+	{
+	 	uncompressed
+		blend blend
+		map textures/prison/pglass_d.tga
+	}
+
+	{
+		blend add
+		cubeMap		gfx/env/prisonorange
+		texgen		reflect
+	}	
+
+}
+
+textures/prison/pglass_pipes
+{
+	translucent
+	twoSided
+	noshadows
+//	sort close		
+	qer_editorimage		textures/prison/pglass_d.tga
+
+	bumpmap heightmap ( textures/prison/pglass_h.tga, 7 )
+	specularmap	 textures/prison/pglass_s.tga
+
+	{
+	 	uncompressed
+		blend blend
+		map textures/prison/pglass_d.tga
+	}
+
+	{
+		blend add
+		cubeMap		gfx/env/prisonpipes
+		texgen		reflect
+	}	
+
+}
+
+textures/prison/pglass_lower
+{
+	translucent
+	twoSided
+	noshadows
+//	sort close		
+	qer_editorimage		textures/prison/pglass_d.tga
+
+	bumpmap heightmap ( textures/prison/pglass_h.tga, 7 )
+	specularmap	 textures/prison/pglass_s.tga
+
+	{
+	 	uncompressed
+		blend blend
+		map textures/prison/pglass_d.tga
+	}
+
+	{
+		blend add
+		cubeMap		gfx/env/prisonglass
+		texgen		reflect
+	}	
+}
+
+
+textures/prison/pglass_upper
+{
+	translucent
+	twoSided
+	noshadows
+//	sort close		
+	qer_editorimage		textures/prison/pglass_d.tga
+
+	bumpmap heightmap ( textures/prison/pglass_h.tga, 7 )
+	specularmap	 textures/prison/pglass_s.tga
+
+	{
+	 	uncompressed
+		blend blend
+		map textures/prison/pglass_d.tga
+	}
+
+	{
+		blend add
+		cubeMap		gfx/env/prisonglass2
+		texgen		reflect
+	}	
+}
+
+textures/prison/pglass_triangle
+{
+	translucent
+	twoSided
+	noshadows
+//	sort close		
+	qer_editorimage		textures/prison/pglass_d.tga
+
+	bumpmap heightmap ( textures/prison/pglass_h.tga, 7 )
+	specularmap	 textures/prison/pglass_s.tga
+
+	{
+	 	uncompressed
+		blend blend
+		map textures/prison/pglass_d.tga
+	}
+
+	{
+		blend add
+		cubeMap		gfx/env/prisontriangle
+		texgen		reflect
+	}	
+}
+
+guide textures/prison/floor_piece_1 generic_shader("prison/floor_piece_1")
+guide textures/prison/door_piece_2 generic_shader_mi("prison/door_piece_2")
+guide textures/prison/chic_light generic_glow_mi("prison/chic_light", "prison/chic_light_g")
+
+
+
+textures/prison/prisoner_flare
+
+// large orange flare
+{
+
+	noshadows
+	translucent
+	nonsolid
+	deform	flare 		10
+
+
+
+	{
+
+		blend add
+		map _quadratic
+		
+		
+		red        1 
+		green     .67
+		blue	    .04
+		alpha	    .3
+
+
+	
+
+
+	
+		vertexcolor
+	}
+
+}
+
+
+textures/prison/prison_flare_combine
+
+// large orange flare
+{
+
+	noshadows
+	translucent
+	nonsolid
+	deform	flare 		10
+
+
+
+	{
+
+		blend add
+		map _quadratic
+		
+		red        parm0 
+		green      parm1 
+		blue	     parm2 
+		alpha	     parm3 
+
+
+		colored
+		vertexcolor
+	}
+
+}
+
+
+
+
+
+
+guide textures/prison/floor_06a generic_alpha_noshadows("common_floors/floor_06a")
+
+//roger's parallax testing shit---------------------------------------------------
+
+textures/prison/roger_prison_floorflat_04_parallax
+{
+	metal
+	
+	inlineGuide parallax_bump( textures/prison/prison_floorflat_04 )
+}
+
+textures/prison/roger_prisonnew_t13_ceiling_1_parallax
+{
+	metal
+	
+	inlineGuide parallax_bump( textures/prison/prisonnew_t13_ceiling_1 )
+}
+
+textures/prison/roger_prison_4floor_2_parallax
+{
+	metal
+	
+	inlineGuide parallax_bump( textures/prison/prison_4floor_2 )
+}
+
+textures/prison/roger_p4_beam_1_parallax
+{
+	metal
+	
+	inlineGuide parallax_bump( textures/prison/p4_beam_1 )
+}
+
+textures/prison/roger_p4_beam_2_parallax
+{
+	metal
+	
+	inlineGuide parallax_bump( textures/prison/p4_beam_2 )
+}
+
+textures/prison/roger_p4_ceiling_3_parallax
+{
+	metal
+	
+	inlineGuide parallax_bump( textures/prison/p4_ceiling_3 )
+}
+
+textures/prison/roger_p4_floor_2_parallax
+{
+	metal
+	
+	inlineGuide parallax_bump( textures/prison/p4_floor_2 )
+}
+
+textures/prison/roger_p4_wall_2_parallax
+{
+	metal
+	
+	inlineGuide parallax_bump( textures/prison/p4_wall_2 )
+}
+
+textures/prison/roger_p4_wall_3_parallax
+{
+	metal
+	
+	inlineGuide parallax_bump( textures/prison/p4_wall_3 )
+}
+
+//--------------------------------------------------------------------------------
+
+
+//-Added from common_floors by Andrew
+guide textures/prison/floor1_1a generic_shader("prison/floor1_1a")
+guide textures/prison/floor1_2 generic_shader("prison/floor1_2")
+guide textures/prison/floor1_2a generic_shader("prison/floor1_2a")
+
+
+//-Added from common_trims by Andrew
+guide textures/prison/trim1_1 generic_shader("prison/trim1_1")
+guide textures/prison/trim1_3 generic_shader("prison/trim1_3")
+guide textures/prison/trim1_5 generic_shader("prison/trim1_5")
+
+//-Added from common_walls by Andrew
+guide textures/prison/ba_wall1_1 generic_shader("prison/ba_wall1_1")
+guide textures/prison/ba_wall1_2 generic_shader("prison/ba_wall1_2")
+guide textures/prison/miscpanel2_2 generic_shader("prison/miscpanel2_2")
+guide textures/prison/wall2_4 generic_shader("prison/wall2_4")
+guide textures/prison/wall3_1 generic_shader("prison/wall3_1")
+
+
+

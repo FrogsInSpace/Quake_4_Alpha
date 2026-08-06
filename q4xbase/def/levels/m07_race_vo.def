@@ -1,0 +1,342 @@
+
+entityDef char_npc_darnell_M07_Race_vo
+{
+ // CHARACTER: DARNELL
+ // CONTEXT:Tense
+ // DIALOG : If those reactors go critical; it’s gonna blow a crater in this place a half mile wide.
+ "lipsync_darn_reactcrit"        "vo_darn_reactcrit"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Tense
+ // DIALOG : I hope everybody got out before the ship went up.
+ "lipsync_darn_ihopeshipt"        "vo_darn_ihopeshipt"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Tense
+ // DIALOG : Haul ass Dekard, the locks are closing!
+ "lipsync_darn_haulassdeklk"        "vo_darn_haulassdeklk"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Tense
+ // DIALOG : Get to the Cryogenics facility as fast as possible Dekard!
+ "lipsync_darn_gettocryo"        "vo_darn_gettocryo"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Tense
+ // DIALOG : Sarge, I've got residual EM interference wrecking havoc with my guidance systems.  Me and the rest of Anchor squad are taking the secondary approach vector.
+ "lipsync_darn_sargeem"        "vo_darn_sargeem"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Tense
+ // DIALOG : Shit, the lock is closed!  Dekard didn't make it!
+ "lipsync_darn_shitlock"        "vo_darn_shitlock"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Warning
+ // DIALOG : Harvester!
+ "lipsync_darn_harvest"        "vo_darn_harvest"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Tense
+ // DIALOG : We're almost to the Cryogenics facility, ETA three minutes.
+ "lipsync_darn_wealmost"        "vo_darn_wealmost"
+
+
+ // CHARACTER: DARNELL
+ // CONTEXT:Warning
+ // DIALOG : Look out!
+ "lipsync_darn_lookout2"        "vo_darn_lookout2"
+}
+
+entityDef char_npc_marine1_M07_Race_vo
+{
+
+ // CHARACTER: MARINE 1
+ // CONTEXT:Tense
+ // DIALOG : They’re all over us
+ "lipsync_marine1_theyallus"        "vo_marine1_theyallus"
+
+
+ // CHARACTER: MARINE 1
+ // CONTEXT:Tense
+ // DIALOG : They just keep coming
+ "lipsync_marine1_thekeepcm"        "vo_marine1_thekeepcm"
+
+
+ // CHARACTER: MARINE 1
+ // CONTEXT:Tense
+ // DIALOG : We’re going critical
+ "lipsync_marine1_crit"        "vo_marine1_crit"
+
+
+ // CHARACTER: MARINE 1
+ // CONTEXT:Tense
+ // DIALOG : Turbine’s on line
+ "lipsync_marine1_turbonline"        "vo_marine1_turbonline"
+
+
+ // CHARACTER: MARINE 1
+ // CONTEXT:Tense
+ // DIALOG : We’re running out of time
+ "lipsync_marine1_runnout"        "vo_marine1_runnout"
+
+
+ // CHARACTER: MARINE 1
+ // CONTEXT:Tense
+ // DIALOG : Turbine’s failing, I’m gonna have to fall back.
+ "lipsync_marine1_turbfail"        "vo_marine1_turbfail"
+}
+
+entityDef char_npc_marine2_M07_Race_vo
+{
+
+ // CHARACTER: MARINE 2
+ // CONTEXT:Tense
+ // DIALOG : I got harvesters inbound, starboard side
+ "lipsync_marine2_harvinbound"        "vo_marine2_harvinbound"
+
+
+ // CHARACTER: MARINE 2
+ // CONTEXT:Tense
+ // DIALOG : Another Harvester, Port side
+ "lipsync_marine2_harvport"        "vo_marine2_harvport"
+
+
+ // CHARACTER: MARINE 2
+ // CONTEXT:Tense
+ // DIALOG : Hull integrity failing.  All hands, abandon ship
+ "lipsync_marine2_hullint"        "vo_marine2_hullint"
+
+
+ // CHARACTER: MARINE 2
+ // CONTEXT:Tense
+ // DIALOG : Lock dead ahead
+ "lipsync_marine2_lockdead"        "vo_marine2_lockdead"
+
+
+ // CHARACTER: MARINE 2
+ // CONTEXT:Tense
+ // DIALOG : Lock’s shutting down
+ "lipsync_marine2_lockshut"        "vo_marine2_lockshut"
+
+
+ // CHARACTER: MARINE 2
+ // CONTEXT:Tense
+ // DIALOG : Ridge is clear
+ "lipsync_marine2_ridgeclr"        "vo_marine2_ridgeclr"
+}
+
+entityDef char_npc_marine3_M07_Race_vo
+{
+
+ // CHARACTER: MARINE 3
+ // CONTEXT:Tense
+ // DIALOG : Shields are down
+ "lipsync_marine3_shilddown"        "vo_marine3_shilddown"
+
+
+ // CHARACTER: MARINE 3
+ // CONTEXT:Tense
+ // DIALOG : Keep 'em off us.
+ "lipsync_marine3_keepoff"        "vo_marine3_keepoff"
+
+
+ // CHARACTER: MARINE 3
+ // CONTEXT:Tense
+ // DIALOG : Abandon Ship
+ "lipsync_marine3_aband"        "vo_marine3_aband"
+
+
+ // CHARACTER: MARINE 3
+ // CONTEXT:Tense
+ // DIALOG : They’re all over me here
+ "lipsync_marine3_theyallover"        "vo_marine3_theyallover"
+
+
+ // CHARACTER: MARINE 3
+ // CONTEXT:Tense
+ // DIALOG : Watch the right
+ "lipsync_marine3_watchrt"        "vo_marine3_watchrt"
+}
+
+entityDef char_npc_marine4_M07_Race_vo
+{
+
+ // CHARACTER: MARINE 4
+ // CONTEXT:Tense
+ // DIALOG : The Hannibal can't take this kind of punishment
+ "lipsync_marine4_hann"        "vo_marine4_hann"
+
+
+ // CHARACTER: MARINE 4
+ // CONTEXT:Tense
+ // DIALOG : Defense Batteries are off line, they're gonna swarm us!
+ "lipsync_marine4_defbatt"        "vo_marine4_defbatt"
+
+
+ // CHARACTER: MARINE 4
+ // CONTEXT:Tense
+ // DIALOG : Acton’s down
+ "lipsync_marine4_acton"        "vo_marine4_acton"
+
+
+ // CHARACTER: MARINE 4
+ // CONTEXT:Tense
+ // DIALOG : Pick up the pace, Marines
+ "lipsync_marine4_pickpace"        "vo_marine4_pickpace"
+}
+
+entityDef char_npc_marine5_M07_Race_vo
+{
+
+ // CHARACTER: MARINE 5
+ // CONTEXT:Tense
+ // DIALOG : They're taking us apart
+ "lipsync_marine5_takingap"        "vo_marine5_takingap"
+
+
+ // CHARACTER: MARINE 5
+ // CONTEXT:Tense
+ // DIALOG : Dropships preparing for lift off
+ "lipsync_marine5_dropprep"        "vo_marine5_dropprep"
+
+
+ // CHARACTER: MARINE 5
+ // CONTEXT:Tense
+ // DIALOG : Shit, hard left
+ "lipsync_marine5_shitleft"        "vo_marine5_shitleft"
+
+
+ // CHARACTER: MARINE 5
+ // CONTEXT:Tense
+ // DIALOG : I got contact over that ridge
+ "lipsync_marine5_contbrid"        "vo_marine5_contbrid"
+}
+
+entityDef char_npc_marine6_M07_Race_vo
+{
+
+ // CHARACTER: MARINE 6
+ // CONTEXT:Tense
+ // DIALOG : We got Strogg everywhere
+ "lipsync_marine6_stroggev"        "vo_marine6_stroggev"
+
+
+ // CHARACTER: MARINE 6
+ // CONTEXT:Tense
+ // DIALOG : First wave is away.  Second wave preparing for launch
+ "lipsync_marine6_waveunder"        "vo_marine6_waveunder"
+
+
+ // CHARACTER: MARINE 6
+ // CONTEXT:Tense
+ // DIALOG : What the hell was that
+ "lipsync_marine6_whathell"        "vo_marine6_whathell"
+
+
+ // CHARACTER: MARINE 6
+ // CONTEXT:Tense
+ // DIALOG : Shit, I lost actuator control, I’ve got no control!  I can’t (Static)
+ "lipsync_marine6"        "vo_marine6"
+
+}
+
+entityDef char_npc_markswell_M07_Race_vo
+{
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Tense
+ // DIALOG : No such luck, Tak.  The dropships cleared the Hannibal right before it went critical.  We’re already enroute to Nexus waypoint, but you boys better move, the Strogg are already shutting down the locks.  Good luck,  Falcon Squad.
+ "lipsync_marks_nosuch"        "vo_marks_nosuch"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Warning
+ // DIALOG : Watch out Falcon, you've got heavy Strogg flyers inbound your position!
+ "lipsync_marks_watchfalcon"        "vo_marks_watchfalcon"
+}
+
+entityDef char_npc_navajas_M07_Race_vo
+{
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Tense
+ // DIALOG : Dekard, I should be coming out right in front of you, follow me!
+ "lipsync_nava_dekshldcom"        "vo_nava_dekshldcom"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Warning
+ // DIALOG : Look out!
+ "lipsync_nava_lookout2"        "vo_nava_lookout2"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Yelling
+ // DIALOG : Boosting!
+ "lipsync_nava_boosting"        "vo_nava_boosting"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Tense
+ // DIALOG : Use your boost!
+ "lipsync_nava_useboost"        "vo_nava_useboost"
+}
+
+entityDef char_npc_tak_M07_Race_vo
+{
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : Sarge, we gotta get moving!  The Hannibal’s about to blow
+ "lipsync_tak_srggetmv"        "vo_tak_srggetmv"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : Holy shit!  The hannibal is gone!
+ "lipsync_tak_holyshit"        "vo_tak_holyshit"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : Dekard, the locks are closing, you've got to haul ass!
+ "lipsync_tak_lockclose"        "vo_tak_lockclose"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : Get moving Dekard!
+ "lipsync_tak_getmvdek"        "vo_tak_getmvdek"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : You think the LT was onboard?
+ "lipsync_tak_youthnklt"        "vo_tak_youthnklt"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : Dekard, watch out ahead, there's a pit you'll need to boost over or go around!
+ "lipsync_tak_dekwatchout"        "vo_tak_dekwatchout"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Tense
+ // DIALOG : Use your boost!
+ "lipsync_tak_useboost"        "vo_tak_useboost"
+
+
+ // CHARACTER: TAK
+ // CONTEXT:Yelling
+ // DIALOG : Boosting!
+ "lipsync_tak_boosting"        "vo_tak_boosting"
+}
+

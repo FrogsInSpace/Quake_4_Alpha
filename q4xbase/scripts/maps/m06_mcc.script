@@ -1,0 +1,1207 @@
+//---------------------------------------------------------------------------------------
+// m06_mcc.script for use with m06_mcc.map
+//
+// (C) Ritual Entertainment 2005
+//---------------------------------------------------------------------------------------
+
+#include "scripts/doom_defs.script"
+
+namespace m06
+{
+	// FOR THE LOVE OF GOD AND ALL THAT IS HOLY SET TO 0 FOR SHIP (or just cut entirely)
+	float CUT_THE_CRAP = 0; 
+	float SKIP_SAVEGAMES = 0;
+	// NOW BACK TO YOUR REGULARLY SCHEDULED PROGRAMMING
+	
+	float ALLOW_ONCLICK_CONVERSATION = 1;
+	float NUM_RUNNING_MARINES = 0;
+	float hadTrabConv = 0;
+	float hadShowConv = 0;
+	float hadEthanConv = 0;
+	float hadScottConv = 0;
+	
+	void setupLockedDoors();
+	void mcc2Briefing();
+			
+	// turret sequence added functions
+	void hallwayPA2();
+	
+	
+	//--------------------------------------------------------------------------
+	// FUNCTION DEFINITONS
+	// (here there be code)
+	//--------------------------------------------------------------------------
+	void landingSequence()
+	{
+		$mcc.playCycle( ANIMCHANNEL_ALL, "door_open_idle" );
+		sys.setCamera( $func_cameraview_intro_mcc );
+		sys.fadeIn( '0 0 0', 2 );
+		sys.wait( 5 );
+		sys.fadeOut( '0 0 0', 2 );
+		sys.wait( 2 );
+		
+		sys.fadeIn( '0 0 0', 2 );
+		sys.setCamera( $introcamera_1 );
+
+		//sys.wait(5);
+		$darnell_intro.setMoveSpeed( AIMOVESPEED_WALK );
+		$mitchell_intro.setMoveSpeed( AIMOVESPEED_WALK );
+		$navajas_intro.setMoveSpeed( AIMOVESPEED_WALK );
+		$tak_intro.setMoveSpeed( AIMOVESPEED_WALK );
+		$dekard_intro.setMoveSpeed( AIMOVESPEED_WALK );
+		
+		$env_dropship_1.playAnim( ANIMCHANNEL_ALL, "intro_idle" );
+// 		$func_door_249.open();
+// 		$func_door_250.open();
+		
+		aiScriptedMove( $darnell_intro, $introwalk_2, 32, 0 );	
+		aiScriptedMove( $mitchell_intro, $introwalk_1, 32, 0 );
+		aiScriptedMove( $navajas_intro, $introwalk_3, 32, 0 );
+		aiScriptedMove( $tak_intro, $introwalk_4, 32, 0 );
+		aiScriptedMove( $dekard_intro, $introwalk_5, 32, 0 );
+		sys.wait( 3 );
+		
+		sys.setCamera( $introcamera_2 );
+		sys.wait( 2 );
+			
+		sys.fadeOut( '0 0 0', 2 );
+		sys.wait( 2 );
+		
+		$darnell_intro.remove();
+		$mitchell_intro.remove();
+		$navajas_intro.remove();
+		$tak_intro.remove();
+		$dekard_intro.remove();
+		
+		thread mcc2Briefing();
+	}
+	
+	
+	/*------------------------------------------------------------------------------------------------------
+	
+		MCC_2 CINEMATIC
+	
+	------------------------------------------------------------------------------------------------------*/
+	void cin1Smoke()
+	{
+		sys.trigger($low_vent_steam_7);
+		sys.trigger($low_vent_steam_8);
+		sys.trigger($low_vent_steam_9);
+		sys.trigger($low_vent_steam_10);	
+	}
+	void chairs2Idle()
+	{
+		$mcc2CortezChair.playAnim(ANIMCHANNEL_ALL, "mcc2_idle2");
+		$mcc2MorrisChair.playAnim(ANIMCHANNEL_ALL, "mcc2_idle1");
+		$mcc2KaneChair.playAnim(ANIMCHANNEL_ALL, "mcc2_idle6");
+		$mcc2RhodesChair.playAnim(ANIMCHANNEL_ALL, "mcc2_idle3");
+		$mcc2SledgeChair.playAnim(ANIMCHANNEL_ALL, "mcc2_idle4");
+		$mcc2StraussChair.playAnim(ANIMCHANNEL_ALL, "mcc2_idle5");
+	}
+	void showChairs2()
+	{
+		$mcc2CortezChair.show();
+		$mcc2MorrisChair.show();
+		$mcc2KaneChair.show();
+		$mcc2StraussChair.show();
+		$mcc2RhodesChair.show();
+		$mcc2SledgeChair.show();
+	}
+	void cortezIdle()
+	{
+		aiScriptedAnimLoop( $cin_mcc2_cortez, "mcc2_cin_idle_cortez", 0 );		
+		$mcc2CortezChair.playAnim(ANIMCHANNEL_ALL, "mcc2_idle2");		
+	}
+	void rhodesIdle()
+	{
+		aiScriptedAnimLoop( $cin_mcc2_rhodes, "mcc2_cin_idle_rhodes", 0 );		
+		$mcc2RhodesChair.playAnim(ANIMCHANNEL_ALL, "mcc2_idle3");					
+	}
+	void marines2Idle()
+	{
+		aiScriptedAnimLoop( $cin_mcc2_rhodes, "mcc2_cin_idle_rhodes", 0 );		
+		aiScriptedAnimLoop( $cin_mcc2_cortez, "mcc2_cin_idle_cortez", 0 );		
+		aiScriptedAnimLoop( $cin_mcc2_strauss, "mcc2_cin_idle_strauss", 0 );
+		
+		aiScriptedAnimLoop( $cin_mcc2_morris, "mcc2_cin_idle_morris", 0 );
+		aiScriptedAnimLoop( $cin_mcc2_sledge, "mcc2_cin_idle_sledge", 0 );
+		aiScriptedAnim( $cin_mcc2_harper, "mcc2_cin_harper_talks", 4, 0 );
+	}
+	void rhodesLeans()
+	{
+		aiScriptedAnim($cin_mcc2_rhodes, "mcc2_cin_rhodes_leans", 0, 0);
+		$mcc2RhodesChair.playAnim(ANIMCHANNEL_ALL, "mcc2_rhodes_leans");
+	}
+	
+	/*--------------------------------------------------------------
+		cinematic SETUP AND TEARDOWN
+	--------------------------------------------------------------*/
+	void removeMarines2()
+	{
+		$cin_mcc2_strauss.remove();
+		$cin_mcc2_rhodes.remove();
+		$cin_mcc2_cortez.remove();
+		
+		$cin_mcc2_morris.remove();
+		$cin_mcc2_harper.remove();
+		$cin_mcc2_sledge.remove();
+	}
+	void postBriefingMarines2()
+	{
+		sys.trigger($STRAUSS2);
+		$STRAUSS2.setTalkState(TALK_OK);
+		$STRAUSS2.lookAt( $func_static_15625 );
+		
+		thread chairs2Idle();
+	}
+	void postBriefingTarrant()
+	{
+		$tarrant.show();
+		$tarrant.setMoveSpeed( AIMOVESPEED_WALK );
+		aiScriptedMoveWait( $tarrant, $tar_tarrant_moveto, 4, 0 );
+		$tarrant.lookAt( $player1 );
+		//sys.println( "TARRANT SPEAKS" );
+		$tarrant.setTalkState( TALK_OK );
+		aiSpeakWait( $tarrant, "lipsync_1" );
+	}	
+	void briefingFinished2()
+	{
+		sys.trigger($briefingLightOn);
+		
+		sys.trigger( $item_objective_1 ); // trigger objective
+		sys.trigger( $target_objectivebeacon_1 ); // trigger arrow to sci-tech room
+		
+		// trigger marines to spawn in.
+		thread postBriefingMarines2();
+	
+		// move the player to the briefing room.
+		$player1.setWorldOrigin( $mcc1_briefingOver.getWorldOrigin());
+	
+		thread removeMarines2();
+		
+		sys.wait(2);
+		
+		if ( !SKIP_SAVEGAMES )
+		{
+			sys.trigger( $func_savegame_1 );
+		}
+		
+		thread hallwayPA2();
+	}
+	void briefingFinishedMusic()
+	{
+		sys.trigger( $musicSubtle );
+		$musicSubtle.fadeSound( SND_CHANNEL_ANY, 0, 5 );
+		$musicZak.fadeSound( SND_CHANNEL_ANY, -80, 2 );
+		sys.wait( 2 );
+		$musicZak.remove();
+	}
+	void mcc2Briefing()
+	{
+		thread cin1Smoke(); //off
+		thread showChairs2();
+		thread chairs2Idle();
+		thread marines2Idle();
+	
+		$env_tactical_station_2.playAnim(ANIMCHANNEL_ALL, "off");
+	
+		sys.trigger($corey_light_3674); // no idea
+		sys.trigger($corey_light_3675);	
+
+		if ( !CUT_THE_CRAP )
+		{
+			sys.fadeIn('0 0 0', 2);		
+			// CINEMATIC HERE
+			sys.setCamera( $introcam_strauss_3 );
+			aiSpeakWait( $cin_mcc2_harper, "lipsync_harp_falcsqcom" );
+			
+			sys.setCamera( $introcam_strauss_1 );
+			//aiScriptedAnim( $cin_mcc2_strauss, "mcc2_cin_strauss_talks2", 4, 0 );
+			aiSpeakWait( $cin_mcc2_strauss, "lipsync_strauss_workingondata" );
+			aiSpeakWait( $cin_mcc2_strauss, "lipsync_strauss_somuchdat" );
+			aiSpeakWait( $cin_mcc2_strauss, "lipsync_strauss_thatsaid" );
+			
+			
+			sys.setCamera( $introcam_strauss_3 );
+			aiSpeakWait( $cin_mcc2_harper, "lipsync_harp_withinhr" );
+			aiSpeakWait( $cin_mcc2_harper, "lipsync_harp_anothrhin" );
+			aiSpeakWait( $cin_mcc2_harper, "lipsync_harp_accorddata" );
+			
+			aiSpeakWait( $cin_mcc2_sledge, "lipsync_marks_commandfinordlong" );
+			
+			sys.setCamera( $introcam_strauss_2 );
+			//aiScriptedAnim( $cin_mcc2_strauss, "mcc2_cin_strauss_talks2", 4, 0 );
+			aiSpeakWait( $cin_mcc2_strauss, "lipsync_strauss_likehelp" );
+			aiSpeakWait( $cin_mcc2_strauss, "lipsync_strauss_leftdecrypt" );
+			
+			sys.setCamera( $introcam_strauss_4 );
+			//aiScriptedAnim( $cin_mcc2_strauss, "mcc2_cin_strauss_talks2", 4, 0 );
+			aiSpeakWait( $cin_mcc2_sledge, "lipsync_marks_dekgetsci" );
+			
+			sys.fadeOut( '0 0 0', 2 );
+			sys.wait(2);
+			sys.firstPerson();
+			$player1.setViewAngles ( '0 0 0' );
+		}
+		thread briefingFinishedMusic();
+		thread briefingFinished2();
+ 		sys.fadeIn( '0 0 0', 2 );	
+		thread cin1Smoke(); //on
+	}
+	
+	/*------------------------------------------------------------------------------------------------------
+	
+		MCC_2 CINEMATIC END
+	
+	------------------------------------------------------------------------------------------------------*/	
+	
+		
+	//--------------------------------------------------------------------------
+	// Locks all doors that get unlocked at a later time
+	//--------------------------------------------------------------------------
+	void setupLockedDoors()
+	{
+		$func_door_247.lock( 1 ); // back door to briefing room
+	}
+
+	
+	//--------------------------------------------------------------------------
+	// random PA stuff
+	//--------------------------------------------------------------------------
+	void hallwayPA2()
+	{
+		while(1)
+		{
+			sys.wait( 10 + sys.random(5) );
+			sys.trigger($hallway2_pa_1);		
+			sys.wait( 60 + sys.random(30) );
+			sys.trigger($hallway2_pa_2);
+			sys.wait( 60 + sys.random(30) );
+			sys.trigger($hallway2_pa_3);
+			sys.wait( 60 + sys.random(30) );
+			sys.trigger($hallway2_pa_4);
+			sys.wait( 60 + sys.random(30) );
+		}
+	}
+
+	
+	//--------------------------------------------------------------------------
+	// some rhino squad guys enter
+	//--------------------------------------------------------------------------
+	void cortezEnters()
+	{
+		$CORTEZ2.setMoveSpeed( AIMOVESPEED_WALK );
+		aiScriptedMoveWait( $CORTEZ2, $tar_cortez_spot, 4, 0 );
+		aiScriptedFaceWait( $CORTEZ2, $env_tactical_station_2, 0 );
+		aiScriptedAnimWait( $CORTEZ2, "weaponless_idle3_start", 4, 0 );
+		aiScriptedAnimLoop( $CORTEZ2, "weaponless_idle3_loop", 4 );
+	}
+	
+	void morrisEnters()
+	{
+		$MORRIS2.setMoveSpeed( AIMOVESPEED_WALK );
+		aiScriptedMoveWait( $MORRIS2, $tar_morris_spot, 4, 0 );
+		aiScriptedFaceWait( $MORRIS2, $func_static_15617, 0 );
+		$MORRIS2.lookAt( $func_static_15625 );
+		aiScriptedAnimWait( $MORRIS2, "weaponless_idle2_start", 4, 0 );
+		aiScriptedAnimLoop( $MORRIS2, "weaponless_idle2_loop", 4 );
+
+	}
+	
+	void rhinoEnters()
+	{
+		thread cortezEnters();
+		thread morrisEnters();
+	}
+	
+	//--------------------------------------------------------------------------
+	// briefing room guards
+	//--------------------------------------------------------------------------
+	void gravesAttention()
+	{
+		aiScriptedAnimWait( $GRAVES, "relax_idle_start", 4, 0 );
+		aiScriptedAnimWait( $GRAVES, "at_attention_start", 4, 0 );
+		aiScriptedAnimLoop( $GRAVES, "at_attention_idle", 0 );
+		$GRAVES.setTalkState(TALK_OK);	
+		sys.wait( 20 + sys.random(5) );			
+		aiScriptedAnimWait( $GRAVES, "at_attention_end", 4, 0 );		
+		aiScriptedAnimLoop( $GRAVES, "relax_idle", 0 );	
+	}
+	void bennetteAttention()
+	{
+		aiScriptedAnimWait( $BENNETTE, "relax_idle_start", 4, 0 );
+		aiScriptedAnimWait( $BENNETTE, "at_attention_start", 4, 0 );
+		$BENNETTE.setTalkState(TALK_OK);	
+		aiScriptedAnimLoop( $BENNETTE, "at_attention_idle", 0 );
+		sys.wait( 20 + sys.random(5) );			
+		aiScriptedAnimWait( $BENNETTE, "at_attention_end", 4, 0 );		
+		aiScriptedAnimLoop( $BENNETTE, "relax_idle", 0 );		
+	
+	}
+	void mccAttention()
+	{
+		thread bennetteAttention();
+		thread gravesAttention();	
+	}
+	void loopBennette()
+	{
+		aiScriptedAnimWait( $BENNETTE, "at_attention_end", 4, 0 );
+		aiScriptedAnimLoop( $BENNETTE, "relax_idle", 0 );
+	}
+	void loopGraves()
+	{
+		aiScriptedAnimWait( $GRAVES, "at_attention_end", 4, 0 );
+		aiScriptedAnimLoop( $GRAVES, "relax_idle", 0 );
+		sys.wait( 20 + sys.random(5) );		
+		aiScriptedAnimWait( $GRAVES, "idle_checks_time", 4, 0 );
+		aiScriptedAnimLoop( $GRAVES, "relax_idle", 0 );		
+	}
+	void mccRelax()
+	{
+		thread loopGraves();
+		sys.wait( .5 + sys.random(.25) );		
+		thread loopBennette();	
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// ancillary convs
+	//--------------------------------------------------------------------------
+	void trabboldConv()
+	{
+		if ( !hadTrabConv )
+		{
+			if ( ALLOW_ONCLICK_CONVERSATION )
+			{
+				ALLOW_ONCLICK_CONVERSATION = 0;
+				hadTrabConv = 1;
+				
+				aiSpeakWait( $TRABBOLD, "lipsync_trab_didkain" );
+				$SHOWERS.lookAt( $TRABBOLD );
+				aiSpeakWait( $SHOWERS, "lipsync_shower_saveass" );
+				$TRABBOLD.lookAt( $SHOWERS );
+				aiSpeakWait( $TRABBOLD, "lipsync_trab_donttrus" );
+		
+				$TRABBOLD.lookAt( $player1 );
+				$SHOWERS.lookAt( $player1 );
+				ALLOW_ONCLICK_CONVERSATION = 1;
+				sys.wait( 3 );
+		
+				$TRABBOLD.lookAt( $null_entity );
+				$SHOWERS.lookAt( $null_entity );
+			}
+		}
+	}
+	
+	void showersConv()
+	{
+		if ( !hadShowConv ) 
+		{
+			if ( ALLOW_ONCLICK_CONVERSATION )
+			{
+				ALLOW_ONCLICK_CONVERSATION = 0;
+				hadShowConv = 1;
+				
+				aiSpeakWait( $SHOWERS, "lipsync_shower_wewaitkain" );
+				$TRABBOLD.lookAt( $SHOWERS );
+				aiSpeakWait( $TRABBOLD, "lipsync_trab_yeahwatchass" );
+				$SHOWERS.lookAt( $TRABBOLD );
+				aiSpeakWait( $SHOWERS, "lipsync_shower_notshitturn" );
+				
+				$TRABBOLD.lookAt( $player1 );
+				$SHOWERS.lookAt( $player1 );
+				ALLOW_ONCLICK_CONVERSATION = 1;
+				sys.wait( 3 );
+				$TRABBOLD.lookAt( $null_entity );
+				$SHOWERS.lookAt( $null_entity );
+			}
+		}
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// Marines a'talkin
+	//--------------------------------------------------------------------------
+	void trabShowAncillary()
+	{
+		ALLOW_ONCLICK_CONVERSATION = 0;
+		$TRABBOLD.lookAt( $SHOWERS );
+		aiSpeakWait( $TRABBOLD, "lipsync_trab_said" );
+		$SHOWERS.lookAt( $TRABBOLD );
+		aiSpeakWait( $SHOWERS, "lipsync_shower_jacksoin" );
+		aiSpeakWait( $TRABBOLD, "lipsync_trab_jackson" );
+		aiSpeakWait( $SHOWERS, "lipsync_show_kain" );
+		ALLOW_ONCLICK_CONVERSATION = 1;
+		
+		$TRABBOLD.lookAt( $null_entity );
+		$SHOWERS.lookAt( $null_entity );
+	}
+	
+	
+	void luchHoldorfAncillary()
+	{
+		$LUCH.lookAt( $HOLDORF );
+		aiSpeakWait( $LUCH, "lipsync_luch_conv1" );
+		$HOLDORF.lookAt( $LUCH );
+		aiSpeakWait( $HOLDORF, "lipsync_hold_conv2" );
+		aiSpeakWait( $LUCH, "lipsync_luch_conv3" );
+		aiSpeakWait( $HOLDORF, "lipsync_hold_conv4" );
+		aiSpeakWait( $LUCH, "lipsync_luch_conv5" );
+		
+		$HOLDORF.lookAt( $null_entity );
+		$LUCH.lookAt( $null_entity );
+		
+		$LUCH.setTalkState( TALK_OK );
+		$HOLDORF.setTalkState( TALK_OK );
+	}
+
+	void doctor1Ancillary()
+	{
+		aiSpeakWait( $DR_HINZMAN, "lipsync_doc_0_1" );
+		sys.wait( 1 );
+		aiSpeakWait( $DR_HINZMAN, "lipsync_doc_0_2" );
+		sys.wait( 2 );
+		aiSpeakWait( $DR_HINZMAN, "lipsync_doc_0_3" );
+	}
+	
+	//--------------------------------------------------------------------------
+	// Meeting kane cinematic
+	//--------------------------------------------------------------------------
+	void yoshSpeak()
+	{
+		sys.wait(1);
+		aiSpeakWait( $YOSHIDA2, "lipsync_1" );	
+	}
+	void spawnYoshida()
+	{
+		$yoshidaHelmet.show();
+		aiScriptedAnim( $YOSHIDA2, "af_pose", 4, 0 );	
+		$yoshidaHelmet.bindToJoint($YOSHIDA2, "l_wrist", 1);	
+		$YOSHIDA2.hideSurface("models/weapons/mp_guns/w_mg_lo");
+	}
+	void yoshidaMad()
+	{
+		$YOSHIDA2.lookAt( $null_entity );	
+		sys.wait( 20 + sys.random(5) );		
+		aiScriptedMoveWait( $YOSHIDA2, $yoshidaStop_1, 48, 1 );	
+		aiScriptedAnimWait( $YOSHIDA2, "weaponless_idle5_start", 4, 1 );	
+		aiScriptedAnimLoop( $YOSHIDA2, "weaponless_idle5_loop", 0 );
+	}
+	void spawnKane()
+	{
+		$kane.setMoveSpeed( AIMOVESPEED_WALK );
+		$startSLEDGE2.setMoveSpeed( AIMOVESPEED_WALK );
+		$dekard_kane_cine.lookAt( $YOSHIDA2 );
+		
+		aiScriptedMove( $kane, $kaneStop, 48, 0 );
+		sys.setCamera( $func_cameraview_kane_1 );
+		sys.fadeIn( '0 0 0', 2 );
+		sys.wait(.5);
+		aiScriptedMove( $startSLEDGE2, $sledgeStop, 48, 0 );
+		aiScriptedMove( $dekard_kane_cine, $dekardStop, 8, 0 );
+		
+		$YOSHIDA2.lookAt( $kane );	
+		$YOSHIDA2.setMoveSpeed ( AIMOVESPEED_WALK );	
+		thread yoshSpeak();
+		aiScriptedMoveWait( $YOSHIDA2, $yoshidaStop, 48, 1 );
+		
+		sys.wait(2);
+		$YOSHIDA2.lookAt( $dekard_kane_cine );
+		sys.setCamera( $func_cameraview_kane_2 );
+		aiSpeakWait( $dekard_kane_cine, "lipsync1" );
+		aiSpeakWait( $YOSHIDA2, "lipsync_2" );
+		aiSpeakWait( $dekard_kane_cine, "lipsync2" );
+		aiSpeakWait( $dekard_kane_cine, "lipsync3" );
+		
+		$med_door_west.lock( 1 );
+		$player1.setOrigin( $dekardStop.getOrigin() );
+		$dekard_kane_cine.remove();
+		$kane.remove();
+		$startSLEDGE2.remove();
+		sys.firstPerson();
+		$YOSHIDA2.setTalkState( TALK_OK );
+		$player1.setViewAngles ( '0 315 0' );
+		thread yoshidaMad();
+		$func_door_154.lock( 1 );
+	}
+
+	
+	//--------------------------------------------------------------------------
+	// lolz secondary conversation (1)
+	//--------------------------------------------------------------------------
+	void allynWells()
+	{
+		aiSpeakWait( $DR_ALLYN2, "lipsync_doc_1" );
+		aiSpeakWait( $DR_WELLS2, "lipsync_doc_2" );
+		aiSpeakWait( $DR_ALLYN2, "lipsync_doc_3" );
+		aiSpeakWait( $DR_WELLS2, "lipsync_doc_4" );
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// lolz secondary conversation (2)
+	//--------------------------------------------------------------------------
+	void spawnLudwig()
+	{
+		while(1)
+		{
+			aiScriptedAnimWait( $DR_LUDWIG, "weaponless_idle6_start", 8, 0 );	
+			aiScriptedAnimWait( $DR_LUDWIG, "weaponless_idle6_loop", 8, 0 );	
+			aiScriptedAnimLoop( $DR_LUDWIG, "weaponless_idle6_loop", 0 );	
+			sys.wait( 10 + sys.random(5) );		
+			aiScriptedAnimWait( $DR_LUDWIG, "weaponless_idle6_end", 8, 0 );	
+			aiScriptedAnimWait( $DR_LUDWIG, "weaponless_idle_1", 8, 0 );	
+			aiScriptedAnimLoop( $DR_LUDWIG, "weaponless_idle_1", 0 );			
+			sys.wait( 10 + sys.random(5) );		
+		}
+	}
+
+	void spawnCoreman()
+	{
+		$drCoremanBoard.show();
+		aiScriptedAnim( $DR_COREMAN, "af_pose", 4, 0 );	
+		$drCoremanBoard.bindToJoint($DR_COREMAN, "l_wrist", 1);	
+		aiScriptedAnimLoop( $DR_COREMAN, "looking_down_gui_3", 0 );
+	}
+	
+	void CoremanLudwig()
+	{
+		sys.println("m06::CoremanLudwig()");
+		aiSpeakWait( $DR_LUDWIG, "lipsync_luwg_quiteamaz" );
+		$DR_COREMAN.lookAt( $DR_LUDWIG );	
+		aiSpeakWait( $DR_COREMAN, "lipsync_core_strggperf" );
+		$DR_LUDWIG.lookAt( $DR_COREMAN );
+		aiSpeakWait( $DR_LUDWIG, "lipsync_luwg_rigtest" );
+		$DR_COREMAN.lookAt( $null_entity );	
+		aiSpeakWait( $DR_COREMAN, "lipsync_core_earlystrgg" );
+		$DR_LUDWIG.lookAt( $null_entity );
+		aiSpeakWait( $DR_LUDWIG, "lipsync_luwg_howover" );	
+		aiSpeakWait( $DR_COREMAN, "lipsync_core_wonderwill" );
+	}
+
+	
+	//--------------------------------------------------------------------------
+	// lolz general cloud walking by VIP what omg
+	//--------------------------------------------------------------------------
+	void generalCloudDlg()
+	{
+		sys.wait( 3 );
+		aiSpeakWait( $general, "lipsync_cloud_ground" );		
+		sys.wait( 1.5 );
+		aiSpeak( $general, "lipsync_cloud_assault" );
+	}
+	
+	void generalCloud()
+	{
+		$marineBlocker1.setMoveSpeed( AIMOVESPEED_WALK );
+		$marineBlocker2.setMoveSpeed( AIMOVESPEED_WALK );
+		$general.setMoveSpeed( AIMOVESPEED_WALK );
+		$general_convoy1.setMoveSpeed( AIMOVESPEED_WALK );
+		$general_convoy2.setMoveSpeed( AIMOVESPEED_WALK );
+		
+		aiScriptedMove( $marineBlocker2, $medhall_blocker2stop, 4, 1 );
+		aiScriptedMove( $general, $tar_general_goto, 4, 0 );	
+		aiScriptedMove( $general_convoy1, $tar_general_convoy1_goto, 4, 0 );
+		aiScriptedMove( $general_convoy2, $tar_general_convoy2_goto, 4, 0 );
+		thread generalCloudDlg();
+		sys.wait( .5 );
+		aiSpeak( $marineBlocker2, "lipsync_guard1_holdon" );
+		sys.wait( 2 );
+		aiScriptedAnim( $marineBlocker1, "idle_look_back_lt", 4, 0 );
+		
+		aiScriptedWait( $general );
+		
+		aiSpeak( $marineBlocker2, "lipsync_guard1_okmove" );
+		
+		$general.remove();
+		$general_convoy1.remove();
+		$general_convoy2.remove();
+		$medhall_playerclip.hide();
+		
+		aiScriptedMove( $marineBlocker1, $medhall_blocker1stop_1, 4, 1 );
+		sys.wait( .5 );
+		aiScriptedMoveWait( $marineBlocker2, $medhall_blocker2stop_1, 4, 1 );
+		aiScriptedFaceWait( $marineBlocker2, $medhall_blocker2stop, 1 );
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// lolz secondary conversation IN THE COMMAND CENTER
+	//--------------------------------------------------------------------------
+	void markswellChatter()
+	{
+		$markswell.setTalkState( TALK_WAIT );
+		$RED_SHIRT_13.setTalkState( TALK_WAIT );
+		
+		$markswell.lookAt( $func_static_17176 );
+		aiSpeakWait( $markswell, "lipsync_marks_thiwasthear" );
+		aiSpeakWait( $RED_SHIRT_13, "lipsync_hughes_isposs" );
+		$markswell.lookAt( $null_entity );
+		
+		$markswell.setTalkState( TALK_OK );
+		$RED_SHIRT_13.setTalkState( TALK_OK );
+	}
+	
+	void rennerChatter()
+	{
+		$OFFICER_4.setTalkState( TALK_WAIT );
+		aiSpeakWait( $OFFICER_4, "lipsync_renner_whatpos" );
+		//radioChatterPlayWait( $func_radiochatter_0, "vo_marine_noideawe" );
+		sys.trigger( $talkRichards_1 );
+		sys.wait( 3.5 );
+		aiSpeakWait( $OFFICER_4, "lipsync_renner_yousigisnt" );
+		//radioChatterPlayWait( $func_radiochatter_0, "vo_marine_ifwemovedie" );
+		sys.trigger( $talkRichards_2 );
+		$OFFICER_4.setTalkState( TALK_OK );
+	}
+	
+	void weldonChatter()
+	{
+		$OFFICER_2.setTalkState( TALK_WAIT ); // WELDON
+		$OFFICER_3.setTalkState( TALK_WAIT ); // MCNUTT
+		
+		aiSpeakWait( $OFFICER_2, "lipsync_weldon_angry1" );
+		$OFFICER_3.lookAt( $OFFICER_2 );
+		aiSpeakWait( $OFFICER_3, "lipsync_mcnutt_angry2" );
+		aiSpeakWait( $OFFICER_2, "lipsync_weldon_angry3" );
+		aiSpeakWait( $OFFICER_3, "lipsync_mcnutt_angry4" );
+		$OFFICER_3.lookAt( $null_entity );
+		
+		$OFFICER_2.setTalkState( TALK_OK ); // WELDON
+		$OFFICER_3.setTalkState( TALK_BUSY );
+	}
+	
+	void officerChatter()
+	{
+		sys.wait( 2 );
+		thread markswellChatter();
+		sys.wait( 10 );
+		thread rennerChatter();
+		sys.wait( 14 );
+		thread weldonChatter();
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// HOLY SHIT RUN RUN RUN GO GO GO GO
+	//--------------------------------------------------------------------------
+	void removeMe( entity ent )
+	{
+		ent.remove();
+		NUM_RUNNING_MARINES--;
+	}
+	
+	void generiMarineSpawned( entity ent )
+	{
+		NUM_RUNNING_MARINES++;
+		ent.setTalkState( TALK_NEVER );
+		aiScriptedMove( ent, $tar_marines_run_here_a, 48, 1 );
+		//sys.wait( 5 );
+		//ent.remove();
+	}
+	
+	
+	void runningMarines()
+	{
+		aiSpeak( $RED_SHIRT_3, "lipsync_richard_holdon" );
+		sys.trigger( $runningmarine_1 );
+		thread generiMarineSpawned( $runningmarine_1 );
+		sys.wait( .5 );
+		sys.trigger( $runningmarine_2 );
+		thread generiMarineSpawned( $runningmarine_2 );
+		sys.wait( .5 );
+		sys.trigger( $runningmarine_3 );
+		thread generiMarineSpawned( $runningmarine_3 );
+		aiSpeak( $runningmarine_3, "lipsync_runmarine_3" );
+		sys.wait( .5 );
+		sys.trigger( $runningmarine_4 );
+		thread generiMarineSpawned( $runningmarine_4 );
+		
+		while ( NUM_RUNNING_MARINES >= 4 )
+		{
+			sys.waitFrame();
+		}
+
+		sys.trigger( $runningmarine_5 );
+		thread generiMarineSpawned( $runningmarine_5 );
+		
+		while ( NUM_RUNNING_MARINES >= 4 )
+		{
+			sys.waitFrame();
+		}
+		
+		sys.trigger( $runningmarine_6 );
+		thread generiMarineSpawned( $runningmarine_6 );
+		aiSpeak( $runningmarine_6, "lipsync_runmarine_1" );
+		while ( NUM_RUNNING_MARINES >= 4 )
+		{
+			sys.waitFrame();
+		}
+		
+		sys.trigger( $runningmarine_7 );
+		thread generiMarineSpawned( $runningmarine_7 );
+		
+		while ( NUM_RUNNING_MARINES >= 4 )
+		{
+			sys.waitFrame();
+		}
+		
+		sys.trigger( $runningmarine_8 );
+		thread generiMarineSpawned( $runningmarine_8 );
+		aiSpeak( $runningmarine_8, "lipsync_runmarine_2" );
+		while ( NUM_RUNNING_MARINES >= 4 )
+		{
+			sys.waitFrame();
+		}
+		
+		sys.trigger( $runningmarine_9 );
+		thread generiMarineSpawned( $runningmarine_9 );
+		
+		while ( NUM_RUNNING_MARINES >= 4 )
+		{
+			sys.waitFrame();
+		}
+		
+		sys.trigger( $runningmarine_10 );
+		thread generiMarineSpawned( $runningmarine_10 );
+		
+		while ( NUM_RUNNING_MARINES >= 4 )
+		{
+			sys.waitFrame();
+		}
+		
+		sys.trigger( $runningmarine_11 );
+		thread generiMarineSpawned( $runningmarine_11 );
+		
+		while ( NUM_RUNNING_MARINES >= 4 )
+		{
+			sys.waitFrame();
+		}
+		
+		sys.trigger( $runningmarine_12 );
+		thread generiMarineSpawned( $runningmarine_12 );
+		
+		while ( NUM_RUNNING_MARINES >= 4 )
+		{
+			sys.waitFrame();
+		}
+		
+		sys.trigger( $runningmarine_13 );
+		thread generiMarineSpawned( $runningmarine_13 );
+		
+		while ( NUM_RUNNING_MARINES >= 4 )
+		{
+			sys.waitFrame();
+		}
+		
+		sys.trigger( $runningmarine_14 );
+		thread generiMarineSpawned( $runningmarine_14 );
+		
+		while ( NUM_RUNNING_MARINES >= 4 )
+		{
+			sys.waitFrame();
+		}
+		
+		sys.trigger( $runningmarine_15 );
+		thread generiMarineSpawned( $runningmarine_15 );
+		
+		while ( NUM_RUNNING_MARINES > 0 )
+		{
+			sys.waitFrame();
+		}
+		
+		$trigger_multiple_3.remove();
+		$commhall_playerclip.hide();
+		
+		$RED_SHIRT_3.setMoveSpeed( AIMOVESPEED_WALK );
+		aiSpeak( $RED_SHIRT_3, "lipsync_richard_goahead" );
+		
+		aiScriptedAnimWait( $RED_SHIRT_3, "weaponless_idle3_end", 4, 0 );
+		aiScriptedMoveWait( $RED_SHIRT_3, $bloomStop, 8, 0 );
+		aiScriptedFaceWait( $RED_SHIRT_3, $func_static_15088, 0 );
+		aiScriptedAnimWait( $RED_SHIRT_3, "weaponless_idle6_start", 4, 0 );
+		aiScriptedAnimLoop( $RED_SHIRT_3, "weaponless_idle6_loop", 4 );
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// ancillary convs (post command center)
+	//--------------------------------------------------------------------------
+	void inglisConv()
+	{
+		if ( !hadScottConv )
+		{
+			if ( ALLOW_ONCLICK_CONVERSATION )
+			{
+				ALLOW_ONCLICK_CONVERSATION = 0;
+				hadScottConv = 1;
+				
+				$INGLIS.lookAt( $player1 );
+				aiSpeakWait( $INGLIS, "lipsync_inglis_heywhy" );
+				$MCCAUGHEY.lookAt( $INGLIS );
+				aiSpeakWait( $MCCAUGHEY, "lipsync_mccaugh_shutinglis" );
+				$INGLIS.lookAt( $MCCAUGHEY );
+				aiSpeakWait( $INGLIS, "lipsync_inglis_reallysht" );
+				
+				$INGLIS.lookAt( $player1 );
+				$MCCAUGHEY.lookAt( $player1 );
+				ALLOW_ONCLICK_CONVERSATION = 1;
+				sys.wait( 3 );
+				$INGLIS.lookAt( $null_entity );
+				$MCCAUGHEY.lookAt( $null_entity );
+			}
+		}
+	}
+	
+	void ethanConv()
+	{
+		if ( !hadEthanConv )
+		{
+			if ( ALLOW_ONCLICK_CONVERSATION )
+			{
+				ALLOW_ONCLICK_CONVERSATION = 0;
+				hadEthanConv = 1;
+						
+				aiSpeakWait( $MCCAUGHEY, "lipsync_mccaugh_falcsqisinall" );
+				$INGLIS.lookAt( $MCCAUGHEY );
+				aiSpeakWait( $INGLIS, "lipsync_inglis_whofalc" );
+				$MCCAUGHEY.lookAt( $INGLIS );
+				aiSpeakWait( $MCCAUGHEY, "lipsync_mccaugh_nevermind" );
+				
+				$INGLIS.lookAt( $player1 );
+				$MCCAUGHEY.lookAt( $player1 );
+				ALLOW_ONCLICK_CONVERSATION = 1;
+				sys.wait( 3 );
+				$INGLIS.lookAt( $null_entity );
+				$MCCAUGHEY.lookAt( $null_entity );
+			}
+		}
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// More ancillary shit prior to the mess hall
+	//--------------------------------------------------------------------------
+	void frankMunro()
+	{
+		$FRANKLIN.setTalkState( TALK_WAIT );
+		$MUNRO.setTalkState( TALK_WAIT );
+		$FRANKLIN.lookAt( $MUNRO );
+		aiSpeakWait( $FRANKLIN, "lipsync_frank_conv1" );
+		aiSpeakWait( $MUNRO, "lipsync_munro_conv2" );
+		aiSpeakWait( $FRANKLIN, "lipsync_frank_conv3" );
+		aiSpeakWait( $MUNRO, "lipsync_munro_conv4" );
+		aiSpeakWait( $FRANKLIN, "lipsync_frank_conv5" );
+		$FRANKLIN.lookAt( $null_entity );
+		$FRANKLIN.setTalkState( TALK_OK );
+		$MUNRO.setTalkState( TALK_OK );
+	}
+	
+	void squirrelTalks()
+	{
+		$RED_SHIRT_19.setTalkState( TALK_WAIT );
+		aiSpeakWait( $RED_SHIRT_19, "lipsync_brian_system" );
+		aiSpeakWait( $RED_SHIRT_20, "lipsync_fowler_hangon" );
+		aiSpeakWait( $RED_SHIRT_19, "lipsync_brian_coil" );
+		sys.wait( 1 );
+		aiSpeakWait( $RED_SHIRT_20, "lipsync_fowler_yes" );
+		aiSpeakWait( $RED_SHIRT_19, "lipsync_brian_lying" );
+		sys.wait( 2 );
+		aiSpeakWait( $RED_SHIRT_20, "lipsync_fowler_yes2" );
+		aiSpeakWait( $RED_SHIRT_19, "lipsync_brian_look" );
+		$RED_SHIRT_19.setTalkState( TALK_OK );
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// lolz blocking mess hall door
+	//--------------------------------------------------------------------------
+	void goAroundMess()
+	{
+		aiSpeakWait( $RED_SHIRT_18, "lipsync_garrett_door" );
+	}
+	
+	void newslady()
+	{
+		sys.trigger( $newsLady1 );
+		sys.wait( 9 );
+		sys.trigger( $newsLady2 );
+		sys.wait( 15 );
+		sys.trigger( $newsLady3 );
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// Setting up anims for idle chars
+	//--------------------------------------------------------------------------
+	void spawnRs1() // guy in med halls walking to random gui
+	{
+		$RED_SHIRT_1.setTalkState( TALK_OK );
+		$RED_SHIRT_1.setMoveSpeed( AIMOVESPEED_WALK );
+		aiScriptedMoveWait( $RED_SHIRT_1, $medhall_stop, 4, 0 );
+		$RED_SHIRT_1.lookAt( $func_static_15848 ); 
+		aiScriptedAnimWait( $RED_SHIRT_1, "weaponless_idle3_start", 4, 0 );
+		aiScriptedAnimLoop( $RED_SHIRT_1, "weaponless_idle3_loop", 4 );
+	}
+
+	void spawnSteinberg()
+	{
+		//$STEINBERG.setTalkState ( TALK_WAIT );
+	
+		while(1)
+		{
+			aiScriptedAnimWait($STEINBERG, "sitting_working_consoles_1", 4, 1);		
+			aiScriptedAnimWait($STEINBERG, "sitting_working_consoles_1", 4, 1);		
+			aiScriptedAnimWait($STEINBERG, "sitting_working_consoles_1", 4, 1);		
+			aiScriptedAnimWait($STEINBERG, "sitting_working_consoles_1", 4, 1);		
+			aiScriptedAnimWait($STEINBERG, "sitting_working_consoles_1", 4, 1);			
+			aiScriptedAnimWait($STEINBERG, "sitting_working_consoles_2", 4, 1);			
+			aiScriptedAnimWait($STEINBERG, "sitting_working_consoles_2", 4, 1);			
+			aiScriptedAnimWait($STEINBERG, "sitting_working_consoles_1", 4, 1);		
+			aiScriptedAnimWait($STEINBERG, "sitting_working_consoles_1", 4, 1);								
+		}
+	}
+	
+	void spawnRs2() // guy in engine room walking to console
+	{
+		$redShirt2Board_1.show();
+		aiScriptedAnim( $RED_SHIRT_2_2, "af_pose", 4, 0 );	
+		$redShirt2Board_1.bindToJoint($RED_SHIRT_2_2, "l_wrist", 1);	
+		
+		$RED_SHIRT_2_2.setMoveSpeed( AIMOVESPEED_WALK );
+		aiScriptedMoveWait( $RED_SHIRT_2_2, $williamsStop_1, 4, 0 );
+		aiScriptedFaceWait( $RED_SHIRT_2_2, $williamsStopFace, 0 );
+
+		while(1)
+		{
+			aiScriptedAnimWait( $RED_SHIRT_2_2, "looking_down_gui_1", 4, 0 );
+			aiScriptedAnimWait( $RED_SHIRT_2_2, "looking_down_gui_1", 4, 0 );
+			aiScriptedAnimWait( $RED_SHIRT_2_2, "looking_down_gui_3", 4, 0 );
+			aiScriptedAnimWait( $RED_SHIRT_2_2, "looking_down_gui_1", 4, 0 );
+			aiScriptedAnimWait( $RED_SHIRT_2_2, "looking_down_gui_1", 4, 0 );
+			aiScriptedAnimWait( $RED_SHIRT_2_2, "looking_down_gui_2", 4, 0 );
+		}
+	}
+	
+	void spawnRs3() // guy walking to elevator
+	{
+		aiScriptedAnimLoop( $RED_SHIRT_3, "weaponless_idle3_loop", 4 );
+		$RED_SHIRT_3.setTalkState( TALK_OK );
+	}
+	
+	void spawnMilkenDearth() // two guys right outside briefing room
+	{
+	//	$milkenBoard.show();
+		aiScriptedAnim( $SHOWERS, "af_pose", 4, 0 );	
+	//	$milkenBoard.bindToJoint($SHOWERS, "l_wrist", 1);	
+		aiScriptedAnimLoop( $SHOWERS, "weaponless_idle_1", 0 );
+		$SHOWERS.setTalkState( TALK_OK );
+		$TRABBOLD.setTalkState( TALK_OK );
+	}
+	
+	void spawnPatricks() // sitting hallway before pod control room
+	{
+		$PATRICKS.lookAt( $func_static_15061 );
+		$PATRICKS.setTalkState( TALK_OK );
+	}
+	
+	void spawnAndrews() // sitting with patricks
+	{
+		aiScriptedAnimLoop( $ANDREWS, "sitting_working_consoles_1", 0 );
+		$ANDREWS.setTalkState( TALK_OK );
+	}
+	
+		
+	void guard1() // outside scitech hallway
+	{
+		$randomGuard1.setTalkState( TALK_OK );
+		while(1)
+		{
+			aiScriptedAnimLoop( $randomGuard1, "relax_idle", 0 );
+			sys.wait( 20 + sys.random(5) );		
+			aiScriptedAnimWait( $randomGuard1, "idle_checks_time", 4, 0 );
+	
+			aiScriptedAnimLoop( $randomGuard1, "relax_idle", 0 );
+			sys.wait( 20 + sys.random(5) );		
+			aiScriptedAnimWait( $randomGuard1, "weapon_check_3", 4, 0 );
+		}
+	}
+	
+	void spawnInglis()
+	{
+		$INGLIS.setTalkState( TALK_OK );
+		$MCCAUGHEY.setTalkState( TALK_OK );
+		aiScriptedAnimLoop( $INGLIS, "weaponless_idle4_loop", 4 );
+	}
+
+	void spawnRs7()
+	{
+		$RED_SHIRT_7.setTalkState( TALK_OK );
+		while(1)
+		{
+			aiScriptedAnimWait($RED_SHIRT_7, "weaponless_idle4_start", 4, 1);	
+			$RED_SHIRT_7.lookAt($func_static_15035);
+			aiScriptedAnimLoop( $RED_SHIRT_7, "weaponless_idle4_loop", 0 );
+			sys.wait( 20 + sys.random(5) );	
+			aiScriptedAnimWait($RED_SHIRT_7, "weaponless_idle4_end", 4, 1);					
+			aiScriptedAnimWait($RED_SHIRT_7, "weaponless_idle3_start", 4, 1);	
+			$RED_SHIRT_7.lookAt($func_static_15032);
+			aiScriptedAnimLoop( $RED_SHIRT_7, "weaponless_idle3_loop", 0 );
+			sys.wait( 20 + sys.random(5) );	
+			aiScriptedAnimWait($RED_SHIRT_7, "weaponless_idle3_end", 4, 1);					
+		}
+	}
+	
+	void spawnRs17()
+	{
+		//$RED_SHIRT_17.setTalkState( TALK_WAIT );	
+
+		$shirt17Mug.show();
+		aiScriptedAnim( $RED_SHIRT_17, "idle_drinking_1", 4, 0 );	
+		$shirt17Mug.bindToJoint($RED_SHIRT_17, "l_wrist", 1);	
+		aiScriptedAnimLoop( $RED_SHIRT_17, "idle_drinking_1", 0 );
+	}
+	
+	void spawnOfficer2()
+	{
+		$officer2Board.show();
+		aiScriptedAnim( $OFFICER_2, "af_pose", 4, 0 );	
+		$officer2Board.bindToJoint($OFFICER_2, "l_wrist", 1);	
+		//$OFFICER_2.setTalkState(TALK_WAIT);
+		$OFFICER_2.setTalkState( TALK_OK );
+		while(1)
+		{
+			aiScriptedAnimWait( $OFFICER_2, "looking_down_gui_1", 0, 0 );
+			aiScriptedAnimWait( $OFFICER_2, "looking_down_gui_1", 0, 0 );
+			aiScriptedAnimWait( $OFFICER_2, "looking_down_gui_3", 0, 0 );
+			aiScriptedAnimWait( $OFFICER_2, "looking_down_gui_1", 0, 0 );
+			aiScriptedAnimWait( $OFFICER_2, "looking_down_gui_1", 0, 0 );
+			aiScriptedAnimWait( $OFFICER_2, "looking_down_gui_2", 0, 0 );
+		}
+	}
+	
+	void spawnOfficer3()
+	{
+		//$OFFICER_3.setTalkState(TALK_WAIT);		
+		while(1)
+		{
+			aiScriptedAnimWait( $OFFICER_3, "sarge_briefing_3", 4, 0 );
+			aiScriptedAnimWait( $OFFICER_3, "sarge_briefing_3", 4, 0 );
+			aiScriptedAnimWait( $OFFICER_3, "sarge_briefing_5", 4, 0 );
+			aiScriptedAnimWait( $OFFICER_3, "sarge_briefing_3", 4, 0 );		
+		}
+	}
+	
+	void spawnOfficer4()
+	{
+		//$OFFICER_4.setTalkState(TALK_WAIT);		
+		$OFFICER_4.setTalkState( TALK_OK );
+		aiScriptedAnimLoop ( $OFFICER_4, "sitting_working_consoles_3", 0 );
+	}
+	
+	void spawnRs6()
+	{
+		$RED_SHIRT_6.setTalkState( TALK_OK );
+		
+		while(1)
+		{
+			aiScriptedAnimWait( $RED_SHIRT_6, "sitting_working_consoles_1", 4, 0 );
+			aiScriptedAnimWait( $RED_SHIRT_6, "sitting_working_consoles_3", 4, 0 );
+			aiScriptedAnimWait( $RED_SHIRT_6, "sitting_working_consoles_3", 4, 0 );
+			aiScriptedAnimWait( $RED_SHIRT_6, "sitting_working_consoles_2", 4, 0 );		
+		}
+	}
+	
+	void spawnRs13()
+	{
+		$RED_SHIRT_13.hideSurface("models/weapons/mp_guns/w_mg_lo");
+		while(1)
+		{
+			aiScriptedAnimWait($RED_SHIRT_13, "weaponless_idle6_start", 4, 1);	
+			aiScriptedAnimLoop( $RED_SHIRT_13, "weaponless_idle6_loop", 0 );
+			sys.wait( 20 + sys.random(5) );		
+			aiScriptedAnimWait($RED_SHIRT_13, "weaponless_idle6_end", 4, 1);					
+			aiScriptedAnimWait($RED_SHIRT_13, "weaponless_idle4_start", 4, 1);	
+			aiScriptedAnimLoop( $RED_SHIRT_13, "weaponless_idle4_loop", 0 );
+			sys.wait( 20 + sys.random(5) );		
+			aiScriptedAnimWait($RED_SHIRT_13, "weaponless_idle4_end", 4, 1);					
+		}
+	}
+	
+	void spawnRs18()
+	{
+		$rs18Board.show();
+		aiScriptedAnim( $RED_SHIRT_18, "af_pose", 4, 0 );
+		$rs18Board.bindToJoint( $RED_SHIRT_18, "l_wrist", 1 );
+		
+		aiScriptedAnimLoop( $RED_SHIRT_18, "onbackworking_Zack_work", 4 );
+		$RED_SHIRT_18.setTalkState( TALK_OK );
+	}
+
+	void spawnWells2()
+	{
+		$drWells2Board.show();
+		aiScriptedAnim( $DR_WELLS2, "af_pose", 4, 0 );	
+		$drWells2Board.bindToJoint($DR_WELLS2, "l_wrist", 1);
+		aiScriptedAnimLoop( $DR_WELLS2, "looking_down_gui_1", 0 );
+	}
+	
+	void spawnHinzman()
+	{
+		$drHinzmanBoard.show();
+		$DR_HINZMAN.becomeNonSolid();	
+		aiScriptedAnim( $DR_HINZMAN, "af_pose", 4, 0 );	
+		$drHinzmanBoard.bindToJoint($DR_HINZMAN, "l_wrist", 1);	
+		aiScriptedAnimLoop( $DR_HINZMAN, "looking_down_gui_1", 0 );
+	}
+	
+	void spawnWings()
+	{
+		$WINGS.disableBlinking();
+		$WINGS.disableEyeFocus();
+	
+		$WINGS.setTalkState( TALK_OK );	
+	
+		aiScriptedAnimLoop( $WINGS, "sit_sleeping", 0 );
+		playHeadAnimLoop ( $WINGS, "sleep" );
+	}
+	
+	void spawnRs19()
+	{
+		$rs19Board.show();
+		$RED_SHIRT_19.setTalkState( TALK_OK );
+		aiScriptedAnim( $RED_SHIRT_19, "af_pose", 4, 0 );	
+		$rs19Board.bindToJoint($RED_SHIRT_19, "l_wrist", 1);	
+		aiScriptedAnimLoop( $RED_SHIRT_19, "looking_down_gui_1", 0 );
+		$RED_SHIRT_19.setTalkState( TALK_OK );
+	}
+	
+	void spawnMunro()
+	{
+		aiScriptedAnimLoop( $MUNRO, "sarge_briefing_5", 4 );
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// In the beginning...
+	//--------------------------------------------------------------------------
+	void main()
+	{
+		$player1.setHealth( 100 ); // give the player what he needs
+		$player1.refillAmmo();
+
+		// remove the players weapon 
+		$player1.disableWeapon();
+		
+		/////////////////////
+		// Q4X addition /////
+		/////////////////////		
+		thread landingSequence();
+		
+		sys.trigger($musicZak);
+		$musicZak.fadeSound( SND_CHANNEL_ANY, -80, .1 );
+		sys.wait(.1);
+		$musicZak.fadeSound( SND_CHANNEL_ANY, -6, 2 );
+	}
+
+} // end namespace

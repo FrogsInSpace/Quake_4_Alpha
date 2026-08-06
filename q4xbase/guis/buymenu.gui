@@ -1,0 +1,1311 @@
+windowDef Desktop
+{
+	rect	0,0,640,480
+	visible	1
+	menugui	1
+	definevec4	"white_8"	1,1,1,0.8
+	definevec4	"green"	0.2,1,0.2,0.8
+	definevec4	"red"	0.8,0,0,0.8
+	definevec4	"disabled"	0.9,0.25,0.25,0.8
+
+	onNamedEvent redraw {
+		if ( "gui::canbuy_assaultrifle" == 0 ) {	
+			set "buy_assaultrifle::forecolor" "$desktop::disabled" ;
+		} else {
+			set "buy_assaultrifle::forecolor" "$desktop::white_8" ;
+		}
+		if ( "gui::canbuy_shotgun" == 0 ) {	
+			set "buy_shotgun::forecolor" "$desktop::disabled" ;
+		} else {
+			set "buy_shotgun::forecolor" "$desktop::white_8" ;
+		}
+		if ( "gui::canbuy_hyperblaster" == 0 ) {	
+			set "buy_hyperblaster::forecolor" "$desktop::disabled" ;
+		} else {
+			set "buy_hyperblaster::forecolor" "$desktop::white_8" ;
+		}
+		if ( "gui::canbuy_nailgun" == 0 ) {	
+			set "buy_nailgun::forecolor" "$desktop::disabled" ;
+		} else {
+			set "buy_nailgun::forecolor" "$desktop::white_8" ;
+		}
+		if ( "gui::canbuy_lightninggun" == 0 ) {	
+			set "buy_lightninggun::forecolor" "$desktop::disabled" ;
+		} else {
+			set "buy_lightninggun::forecolor" "$desktop::white_8" ;
+		}
+		if ( "gui::canbuy_railgun" == 0 ) {	
+			set "buy_railgun::forecolor" "$desktop::disabled" ;
+		} else {
+			set "buy_railgun::forecolor" "$desktop::white_8" ;
+		}
+		if ( "gui::canbuy_corecannon" == 0 ) {	
+			set "buy_corecannon::forecolor" "$desktop::disabled" ;
+		} else {
+			set "buy_corecannon::forecolor" "$desktop::white_8" ;
+		}
+		if ( "gui::canbuy_grenadelauncher" == 0 ) {	
+			set "buy_grenadelauncher::forecolor" "$desktop::disabled" ;
+		} else {
+			set "buy_grenadelauncher::forecolor" "$desktop::white_8" ;
+		}
+		if ( "gui::canbuy_firecannon" == 0 ) {	
+			set "buy_firecannon::forecolor" "$desktop::disabled" ;
+		} else {
+			set "buy_firecannon::forecolor" "$desktop::white_8" ;
+		}
+		if ( "gui::canbuy_rocketlauncher" == 0 ) {	
+			set "buy_rocketlauncher::forecolor" "$desktop::disabled" ;
+		} else {
+			set "buy_rocketlauncher::forecolor" "$desktop::white_8" ;
+		}
+		
+		if ( "gui::canbuy_dmg" == 0 ) {	
+			set "buy_dmg::forecolor" "$desktop::disabled" ;
+		} else {
+			set "buy_dmg::forecolor" "$desktop::white_8" ;
+		}			
+		if ( "gui::canbuy_aiguardian" == 0 ) {	
+			set "buy_aiguardian::forecolor" "$desktop::disabled" ;
+		} else {
+			set "buy_aiguardian::forecolor" "$desktop::white_8" ;
+		}			
+		if ( "gui::canbuy_special1" == 0 ) {	
+			set "buy_special1::forecolor" "$desktop::disabled" ;
+		} else {
+			set "buy_special1::forecolor" "$desktop::white_8" ;
+		}				
+		if ( "gui::canbuy_special2" == 0 ) {	
+			set "buy_special2::forecolor" "$desktop::disabled" ;
+		} else {
+			set "buy_special2::forecolor" "$desktop::white_8" ;
+		}			
+		if ( "gui::canbuy_shotgunmod" == 0 ) {	
+			set "buy_shotgunmod::forecolor" "$desktop::disabled" ;
+		} else {
+			set "buy_shotgunmod::forecolor" "$desktop::white_8" ;
+		}			
+		if ( "gui::canbuy_hyperblastermod" == 0 ) {	
+			set "buy_hyperblastermod::forecolor" "$desktop::disabled" ;
+		} else {
+			set "buy_hyperblastermod::forecolor" "$desktop::white_8" ;
+		}			
+		if ( "gui::canbuy_nailgunmod" == 0 ) {	
+			set "buy_nailgunmod::forecolor" "$desktop::disabled" ;
+		} else {
+			set "buy_nailgunmod::forecolor" "$desktop::white_8" ;
+		}
+		if ( "gui::canbuy_lightininggunmod" == 0 ) {	
+			set "buy_lightininggunmod::forecolor" "$desktop::disabled" ;
+		} else {
+			set "buy_lightininggunmod::forecolor" "$desktop::white_8" ;
+		}
+		if ( "gui::canbuy_railgunmod" == 0 ) {	
+			set "buy_railgunmod::forecolor" "$desktop::disabled" ;
+		} else {
+			set "buy_railgunmod::forecolor" "$desktop::white_8" ;
+		}
+		if ( "gui::canbuy_grenadelaunchermod" == 0 ) {	
+			set "buy_grenadelaunchermod::forecolor" "$desktop::disabled" ;
+		} else {
+			set "buy_grenadelaunchermod::forecolor" "$desktop::white_8" ;
+		}		
+		if ( "gui::canbuy_rocketlaunchermod" == 0 ) {	
+			set "buy_rocketlaunchermod::forecolor" "$desktop::disabled" ;
+		} else {
+			set "buy_rocketlaunchermod::forecolor" "$desktop::white_8" ;
+		}
+		if ( "gui::canbuy_lightarmor" == 0 ) {	
+			set "buy_lightarmor::forecolor" "$desktop::disabled" ;
+		} else {
+			set "buy_lightarmor::forecolor" "$desktop::white_8" ;
+		}
+		if ( "gui::canbuy_heavyarmor" == 0 ) {	
+			set "buy_heavyarmor::forecolor" "$desktop::disabled" ;
+		} else {
+			set "buy_heavyarmor::forecolor" "$desktop::white_8" ;
+		}
+		if ( "gui::canbuy_ammorefill" == 0 ) {	
+			set "buy_ammorefill::forecolor" "$desktop::disabled" ;
+		} else {
+			set "buy_ammorefill::forecolor" "$desktop::white_8" ;
+		}
+	}
+
+	onESC {
+		set "cmd" "close" ;
+	}
+
+	windowDef bk_grnd
+	{
+		rect	10,9,620,461
+		visible	1
+		backcolor	0,0.498,0.247,0.333
+		windowDef buy_dmg
+		{
+			rect	20,229,230,30
+			visible	1
+			forecolor	1,1,1,1
+			text	"5000c  Dark Matter Gun"
+			font	"fonts/lowpixel"
+			textscale	0.3
+			textstyle	1
+			nowrap	1
+
+			onActivate {
+				if ( "gui::canbuy_dmg" == 0 ) {	
+					set "buy_dmg::forecolor" "$desktop::disabled" ;
+				} else {
+					set "buy_dmg::forecolor" "$desktop::white_8" ;
+				}
+			}
+
+			onMouseEnter {	
+				if ( "gui::canbuy_dmg" == 1 ) {
+					transition "buy_dmg::forecolor" "$desktop::white_8" "$desktop::green" "0" ; 
+				}
+			}
+
+			onMouseExit {
+				if ( "gui::canbuy_dmg" == 1 ) {
+					transition "buy_dmg::forecolor"  "$desktop::green" "$desktop::white_8" "200" ; 
+				}
+			}
+
+			onAction {
+				if ( "gui::canbuy_dmg" == 1 ) {
+					transition "buy_dmg::textscale" "0.35" "0.3" "300" ;
+					transition "field_credits::forecolor"  "$desktop::red" "$desktop::white_8" "1500" ; 
+					consoleCMD "sq_buy weapon_dmg" ;
+					namedevent "desktop::redraw"			
+				}
+			}
+
+		}
+	}
+	windowDef buy_shotgun
+	{
+		rect	30,60,230,30
+		visible	1
+		forecolor	1,1,1,1
+		text	"500c   Shotgun"
+		font	"fonts/lowpixel"
+		textscale	0.3
+		textstyle	1
+		nowrap	1
+
+		onActivate {
+			if ( "gui::canbuy_shotgun" == 0 ) {	
+				set "buy_shotgun::forecolor" "$desktop::disabled" ;
+			} else {
+				set "buy_shotgun::forecolor" "$desktop::white_8" ;
+			}
+		}
+
+		onMouseEnter {	
+			if ( "gui::canbuy_shotgun" == 1 ) {
+				transition "buy_shotgun::forecolor" "$desktop::white_8" "$desktop::green" "0" ; 
+			}
+		}
+
+		onMouseExit {
+			if ( "gui::canbuy_shotgun" == 1 ) {
+				transition "buy_shotgun::forecolor"  "$desktop::green" "$desktop::white_8" "200" ; 
+			}
+		}
+
+		onAction {
+			if ( "gui::canbuy_shotgun" == 1 ) {
+				transition "buy_shotgun::textscale" "0.35" "0.3" "300" ;
+				transition "field_credits::forecolor"  "$desktop::red" "$desktop::white_8" "1500" ; 
+				consoleCMD "sq_buy weapon_shotgun" ;
+				namedevent "desktop::redraw"
+			}
+		}
+
+	}
+	windowDef buy_hyperblaster
+	{
+		rect	30,79,230,30
+		visible	1
+		forecolor	1,1,1,1
+		text	"700c   Hyperblaster"
+		font	"fonts/lowpixel"
+		textscale	0.3
+		textstyle	1
+		nowrap	1
+
+		onActivate {
+			if ( "gui::canbuy_hyperblaster" == 0 ) {	
+				set "buy_hyperblaster::forecolor" "$desktop::disabled" ;
+			} else {
+				set "buy_hyperblaster::forecolor" "$desktop::white_8" ;
+			}
+		}
+
+		onMouseEnter {	
+			if ( "gui::canbuy_hyperblaster" == 1 ) {
+				transition "buy_hyperblaster::forecolor" "$desktop::white_8" "$desktop::green" "0" ; 
+			}
+		}
+
+		onMouseExit {
+			if ( "gui::canbuy_hyperblaster" == 1 ) {
+				transition "buy_hyperblaster::forecolor"  "$desktop::green" "$desktop::white_8" "200" ; 
+			}
+		}
+
+		onAction {
+			if ( "gui::canbuy_hyperblaster" == 1 ) {
+				transition "buy_hyperblaster::textscale" "0.35" "0.3" "300" ;
+				transition "field_credits::forecolor"  "$desktop::red" "$desktop::white_8" "1500" ; 
+				consoleCMD "sq_buy weapon_hyperblaster" ;
+				namedevent "desktop::redraw"
+			}
+		}
+
+	}
+	windowDef buy_nailgun
+	{
+		rect	30,100,230,30
+		visible	1
+		forecolor	1,1,1,1
+		text	"900c   Nailgun"
+		font	"fonts/lowpixel"
+		textscale	0.3
+		textstyle	1
+		nowrap	1
+
+		onActivate {
+			if ( "gui::canbuy_nailgun" == 0 ) {	
+				set "buy_nailgun::forecolor" "$desktop::disabled" ;
+			} else {
+				set "buy_nailgun::forecolor" "$desktop::white_8" ;
+			}
+		}
+
+		onMouseEnter {	
+			if ( "gui::canbuy_nailgun" == 1 ) {	
+				transition "buy_nailgun::forecolor" "$desktop::white_8" "$desktop::green" "0" ; 
+			}
+		}
+
+		onMouseExit {
+			if ( "gui::canbuy_nailgun" == 1 ) {	
+				transition "buy_nailgun::forecolor"  "$desktop::green" "$desktop::white_8" "200" ; 
+			}
+		}
+
+		onAction {
+			if ( "gui::canbuy_nailgun" == 1 ) {	
+				transition "buy_nailgun::textscale" "0.35" "0.3" "300" ;
+				transition "field_credits::forecolor"  "$desktop::red" "$desktop::white_8" "1500" ; 
+				consoleCMD "sq_buy weapon_nailgun" ;
+				namedevent "desktop::redraw"
+			}
+		}
+
+	}
+	windowDef buy_lightninggun
+	{
+		rect	30,180,230,30
+		visible	1
+		forecolor	1,1,1,1
+		text	"1500c  Lightining Gun"
+		font	"fonts/lowpixel"
+		textscale	0.3
+		textstyle	1
+		nowrap	1
+
+		onActivate {
+			if ( "gui::canbuy_lightninggun" == 0 ) {	
+				set "buy_lightninggun::forecolor" "$desktop::disabled" ;
+			} else {
+				set "buy_lightninggun::forecolor" "$desktop::white_8" ;
+			}
+		}
+
+		onMouseEnter {
+			if ( "gui::canbuy_lightninggun" == 1 ) {	
+				transition "buy_lightninggun::forecolor" "$desktop::white_8" "$desktop::green" "0" ; 
+			}
+		}
+
+		onMouseExit {
+			if ( "gui::canbuy_lightninggun" == 1 ) {
+				transition "buy_lightninggun::forecolor"  "$desktop::green" "$desktop::white_8" "200" ; 
+			}
+		}
+
+		onAction {
+			if ( "gui::canbuy_lightninggun" == 1 ) {
+				transition "buy_lightninggun::textscale" "0.35" "0.3" "300" ;
+				transition "field_credits::forecolor"  "$desktop::red" "$desktop::white_8" "1500" ; 
+				consoleCMD "sq_buy weapon_lightninggun" ;
+				namedevent "desktop::redraw"		
+			}
+		}
+
+	}
+	windowDef buy_railgun
+	{
+		rect	30,220,230,30
+		visible	1
+		forecolor	1,1,1,1
+		text	"3000c  Railgun"
+		font	"fonts/lowpixel"
+		textscale	0.3
+		textstyle	1
+		nowrap	1
+
+		onActivate {
+			if ( "gui::canbuy_railgun" == 0 ) {	
+				set "buy_railgun::forecolor" "$desktop::disabled" ;
+			} else {
+				set "buy_railgun::forecolor" "$desktop::white_8" ;
+			}
+		}
+
+		onMouseEnter {	
+			if ( "gui::canbuy_railgun" == 1 ) {	
+				transition "buy_railgun::forecolor" "$desktop::white_8" "$desktop::green" "0" ; 
+			}
+		}
+
+		onMouseExit {
+			if ( "gui::canbuy_railgun" == 1 ) {	
+				transition "buy_railgun::forecolor"  "$desktop::green" "$desktop::white_8" "200" ; 
+			}
+		}
+
+		onAction {
+			if ( "gui::canbuy_railgun" == 1 ) {	
+				transition "buy_railgun::textscale" "0.35" "0.3" "300" ;
+				transition "field_credits::forecolor"  "$desktop::red" "$desktop::white_8" "1500" ; 
+				consoleCMD "sq_buy weapon_railgun" ;
+				namedevent "desktop::redraw"		
+			}
+		}
+
+	}
+	windowDef buy_corecannon
+	{
+		rect	30,140,230,30
+		visible	1
+		forecolor	1,1,1,1
+		text	"1300c  Core Cannon"
+		font	"fonts/lowpixel"
+		textscale	0.3
+		textstyle	1
+		nowrap	1
+
+		onActivate {
+			if ( "gui::canbuy_corecannon" == 0 ) {	
+				set "buy_corecannon::forecolor" "$desktop::disabled" ;
+			} else {
+				set "buy_corecannon::forecolor" "$desktop::white_8" ;
+			}
+		}
+
+		onMouseEnter {	
+			if ( "gui::canbuy_corecannon" == 1 ) {	
+				transition "buy_corecannon::forecolor" "$desktop::white_8" "$desktop::green" "0" ; 
+			}
+		}
+
+		onMouseExit {
+			if ( "gui::canbuy_corecannon" == 1 ) {	
+				transition "buy_corecannon::forecolor"  "$desktop::green" "$desktop::white_8" "200" ; 
+			}
+		}
+
+		onAction {
+			if ( "gui::canbuy_corecannon" == 1 ) {		
+				transition "buy_corecannon::textscale" "0.35" "0.3" "300" ;
+				transition "field_credits::forecolor"  "$desktop::red" "$desktop::white_8" "1500" ; 
+				consoleCMD "sq_buy weapon_spikegun" ;
+				namedevent "desktop::redraw"	
+			}
+		}
+
+	}
+	windowDef buy_grenadelauncher
+	{
+		rect	30,120,230,30
+		visible	1
+		forecolor	1,1,1,1
+		text	"1000c  Grenade Launcher"
+		font	"fonts/lowpixel"
+		textscale	0.3
+		textstyle	1
+		nowrap	1
+
+		onActivate {
+			if ( "gui::canbuy_grenadelauncher" == 0 ) {	
+				set "buy_grenadelauncher::forecolor" "$desktop::disabled" ;
+			} else {
+				set "buy_grenadelauncher::forecolor" "$desktop::white_8" ;
+			}
+		}
+
+		onMouseEnter {	
+			if ( "gui::canbuy_grenadelauncher" == 1 ) {	
+				transition "buy_grenadelauncher::forecolor" "$desktop::white_8" "$desktop::green" "0" ; 
+			}
+		}
+
+		onMouseExit {
+			if ( "gui::canbuy_grenadelauncher" == 1 ) {	
+				transition "buy_grenadelauncher::forecolor"  "$desktop::green" "$desktop::white_8" "200" ; 
+			}
+		}
+
+		onAction {
+			if ( "gui::canbuy_grenadelauncher" == 1 ) {	
+				transition "buy_grenadelauncher::textscale" "0.35" "0.3" "300" ;
+				transition "field_credits::forecolor"  "$desktop::red" "$desktop::white_8" "1500" ; 
+				consoleCMD "sq_buy weapon_grenadelauncher" ;
+				namedevent "desktop::redraw"			
+			}
+		}
+
+	}
+	windowDef buy_firecannon
+	{
+		rect	30,160,230,30
+		visible	1
+		forecolor	1,1,1,1
+		text	"1300c  Fire Cannon"
+		font	"fonts/lowpixel"
+		textscale	0.3
+		textstyle	1
+		nowrap	1
+
+		onActivate {
+			if ( "gui::canbuy_firecannon" == 0 ) {	
+				set "buy_firecannon::forecolor" "$desktop::disabled" ;
+			} else {
+				set "buy_firecannon::forecolor" "$desktop::white_8" ;
+			}
+		}
+
+		onMouseEnter {
+			if ( "gui::canbuy_firecannon" == 1 ) {		
+				transition "buy_firecannon::forecolor" "$desktop::white_8" "$desktop::green" "0" ; 
+			}
+		}
+
+		onMouseExit {
+			if ( "gui::canbuy_firecannon" == 1 ) {		
+				transition "buy_firecannon::forecolor"  "$desktop::green" "$desktop::white_8" "200" ; 
+			}
+		}
+
+		onAction {
+			if ( "gui::canbuy_firecannon" == 1 ) {		
+				transition "buy_firecannon::textscale" "0.35" "0.3" "300" ;
+				transition "field_credits::forecolor"  "$desktop::red" "$desktop::white_8" "1500" ; 
+				consoleCMD "sq_buy weapon_goobgun" ;
+				namedevent "desktop::redraw"			
+			}
+		}
+
+	}
+	windowDef buy_rocketlauncher
+	{
+		rect	30,200,230,30
+		visible	1
+		forecolor	1,1,1,1
+		text	"2000c  Rocket Launcher"
+		font	"fonts/lowpixel"
+		textscale	0.3
+		textstyle	1
+		nowrap	1
+
+		onActivate {
+			if ( "gui::canbuy_rocketlauncher" == 0 ) {	
+				set "buy_rocketlauncher::forecolor" "$desktop::disabled" ;
+			} else {
+				set "buy_rocketlauncher::forecolor" "$desktop::white_8" ;
+			}
+		}
+
+		onMouseEnter {	
+			if ( "gui::canbuy_rocketlauncher" == 1 ) {
+				transition "buy_rocketlauncher::forecolor" "$desktop::white_8" "$desktop::green" "0" ; 
+			}
+		}
+
+		onMouseExit {
+			if ( "gui::canbuy_rocketlauncher" == 1 ) {
+				transition "buy_rocketlauncher::forecolor"  "$desktop::green" "$desktop::white_8" "200" ; 
+			}
+		}
+
+		onAction {
+			if ( "gui::canbuy_rocketlauncher" == 1 ) {
+				transition "buy_rocketlauncher::textscale" "0.35" "0.3" "300" ;
+				transition "field_credits::forecolor"  "$desktop::red" "$desktop::white_8" "1500" ; 
+				consoleCMD "sq_buy weapon_rocketlauncher" ;
+				namedevent "desktop::redraw"			
+			}
+		}
+
+	}
+	windowDef text_credits
+	{
+		rect	10,420,170,46
+		visible	1
+		forecolor	1,1,1,1
+		text	"Credits:"
+		font	"fonts/lowpixel"
+		textstyle	1
+		textscale	0.8
+	}
+	windowDef field_credits
+	{
+		rect	180,420,303,46
+		visible	1
+		forecolor	1,1,1,1
+		text	"gui::field_credits"
+		font	"fonts/lowpixel"
+		textstyle	1
+		textscale	0.8
+	}
+	windowDef buy_special0
+	{
+		rect	310,330,310,20
+		visible	1
+		forecolor	1,1,1,1
+		text	"10000c  Ammo Regeneration"
+		font	"fonts/lowpixel"
+		textscale	0.27
+		textstyle	1
+
+		onActivate {
+			if ( "gui::canbuy_special0" == 0 ) {	
+				set "buy_special0::forecolor" "$desktop::disabled" ;
+			} else {
+				set "buy_special0::forecolor" "$desktop::white_8" ;
+			}
+		}
+
+		onMouseEnter {	
+			if ( "gui::canbuy_special0" == 1 ) {
+				transition "buy_special0::forecolor" "$desktop::white_8" "$desktop::green" "0" ; 
+			}
+		}
+
+		onMouseExit {
+			if ( "gui::canbuy_special0" == 1 ) {
+				transition "buy_special0::forecolor"  "$desktop::green" "$desktop::white_8" "200" ; 
+			}
+		}
+
+		onAction {
+			if ( "gui::canbuy_special0" == 1 ) {
+				transition "buy_special0::textscale" "0.35" "0.3" "300" ;
+				transition "field_credits::forecolor"  "$desktop::red" "$desktop::white_8" "1500" ; 
+				consoleCMD "sq_buy ammo_regen" ;
+				namedevent "desktop::redraw"
+			}
+		}
+
+	}
+	windowDef buy_special1
+	{
+		rect	310,350,310,20
+		visible	1
+		forecolor	1,1,1,1
+		text	"12500c  Health Regeneration"
+		font	"fonts/lowpixel"
+		textscale	0.27
+		textstyle	1
+
+		onActivate {
+			if ( "gui::canbuy_special1" == 0 ) {	
+				set "buy_special1::forecolor" "$desktop::disabled" ;
+			} else {
+				set "buy_special1::forecolor" "$desktop::white_8" ;
+			}
+		}
+
+		onMouseEnter {	
+			if ( "gui::canbuy_special1" == 1 ) {
+				transition "buy_special1::forecolor" "$desktop::white_8" "$desktop::green" "0" ; 
+			}
+		}
+
+		onMouseExit {
+			if ( "gui::canbuy_special1" == 1 ) {
+				transition "buy_special1::forecolor"  "$desktop::green" "$desktop::white_8" "200" ; 
+			}
+		}
+
+		onAction {
+			if ( "gui::canbuy_special1" == 1 ) {
+				transition "buy_special1::textscale" "0.35" "0.3" "300" ;
+				transition "field_credits::forecolor"  "$desktop::red" "$desktop::white_8" "1500" ; 
+				consoleCMD "sq_buy health_regen" ;
+				namedevent "desktop::redraw"
+			}
+		}
+
+	}
+	windowDef buy_special2
+	{
+		rect	310,370,310,20
+		visible	1
+		forecolor	1,1,1,1
+		text	"15000c  Damage Boost"
+		font	"fonts/lowpixel"
+		textscale	0.27
+		textstyle	1
+
+		onActivate {
+			if ( "gui::canbuy_special2" == 0 ) {	
+				set "buy_special2::forecolor" "$desktop::disabled" ;
+			} else {
+				set "buy_special2::forecolor" "$desktop::white_8" ;
+			}
+		}
+
+		onMouseEnter {	
+			if ( "gui::canbuy_special2" == 1 ) {
+				transition "buy_special2::forecolor" "$desktop::white_8" "$desktop::green" "0" ; 
+			}
+		}
+
+		onMouseExit {
+			if ( "gui::canbuy_special2" == 1 ) {
+				transition "buy_special2::forecolor"  "$desktop::green" "$desktop::white_8" "200" ; 
+			}
+		}
+
+		onAction {
+			if ( "gui::canbuy_special2" == 1 ) {
+				transition "buy_special2::textscale" "0.35" "0.3" "300" ;
+				transition "field_credits::forecolor"  "$desktop::red" "$desktop::white_8" "1500" ; 
+				consoleCMD "sq_buy damage_boost" ;
+				namedevent "desktop::redraw"
+			}
+		}
+
+	}
+	windowDef Title_Weapons
+	{
+		rect	20,20,160,40
+		visible	1
+		forecolor	1,1,1,1
+		text	"Weapons"
+		font	"fonts/lowpixel"
+		textscale	0.65
+	}
+	windowDef Title_Mods
+	{
+		rect	290,20,240,40
+		visible	1
+		forecolor	1,1,1,1
+		text	"Weapon Mods"
+		font	"fonts/lowpixel"
+		textscale	0.65
+	}
+	windowDef Title_TeamHelpers
+	{
+		rect	300,290,100,40
+		visible	1
+		forecolor	1,1,1,1
+		text	Team
+		font	"fonts/lowpixel"
+		textscale	0.65
+	}
+	windowDef buy_shotgunmod
+	{
+		rect	300,60,310,30
+		visible	1
+		forecolor	1,1,1,1
+		text	"2000c   Extended Ammo"
+		font	"fonts/lowpixel"
+		textscale	0.3
+		textstyle	1
+
+		onActivate {
+			if ( "gui::canbuy_shotgunmod" == 0 ) {	
+				set "buy_shotgunmod::forecolor" "$desktop::disabled" ;
+			} else {
+				set "buy_shotgunmod::forecolor" "$desktop::white_8" ;
+			}
+		}
+
+		onMouseEnter {	
+			if ( "gui::canbuy_shotgunmod" == 1 ) {
+				transition "buy_shotgunmod::forecolor" "$desktop::white_8" "$desktop::green" "0" ; 
+			}
+		}
+
+		onMouseExit {
+			if ( "gui::canbuy_shotgunmod" == 1 ) {
+				transition "buy_shotgunmod::forecolor"  "$desktop::green" "$desktop::white_8" "200" ; 
+			}
+		}
+
+		onAction {
+			if ( "gui::canbuy_shotgunmod" == 1 ) {
+				transition "buy_shotgunmod::textscale" "0.35" "0.3" "300" ;
+				transition "field_credits::forecolor"  "$desktop::red" "$desktop::white_8" "1500" ; 
+				consoleCMD "sq_buy wpmod_shotgun_ammo" ;
+				namedevent "desktop::redraw"
+			}
+		}
+
+	}
+	windowDef buy_hyperblastermod
+	{
+		rect	300,80,310,30
+		visible	1
+		forecolor	1,1,1,1
+		text	"8000c   Bounce Modification"
+		font	"fonts/lowpixel"
+		textscale	0.3
+		textstyle	1
+
+		onActivate {
+			if ( "gui::canbuy_hyperblastermod" == 0 ) {	
+				set "buy_hyperblastermod::forecolor" "$desktop::disabled" ;
+			} else {
+				set "buy_hyperblastermod::forecolor" "$desktop::white_8" ;
+			}
+		}
+
+		onMouseEnter {	
+			if ( "gui::canbuy_hyperblastermod" == 1 ) {
+				transition "buy_hyperblastermod::forecolor" "$desktop::white_8" "$desktop::green" "0" ; 
+			}
+		}
+
+		onMouseExit {
+			if ( "gui::canbuy_hyperblastermod" == 1 ) {
+				transition "buy_hyperblastermod::forecolor"  "$desktop::green" "$desktop::white_8" "200" ; 
+			}
+		}
+
+		onAction {
+			if ( "gui::canbuy_hyperblastermod" == 1 ) {
+				transition "buy_hyperblastermod::textscale" "0.35" "0.3" "300" ;
+				transition "field_credits::forecolor"  "$desktop::red" "$desktop::white_8" "1500" ; 
+				consoleCMD "sq_buy wpmod_hyperblaster_bounce1" ;
+				namedevent "desktop::redraw"
+			}
+		}
+
+	}
+	windowDef buy_nailgunmod
+	{
+		rect	300,101,310,30
+		visible	1
+		forecolor	1,1,1,1
+		text	"5000c   Rate of Fire Modification"
+		font	"fonts/lowpixel"
+		textscale	0.3
+		textstyle	1
+
+		onActivate {
+			if ( "gui::canbuy_nailgunmod" == 0 ) {	
+				set "buy_nailgunmod::forecolor" "$desktop::disabled" ;
+			} else {
+				set "buy_nailgunmod::forecolor" "$desktop::white_8" ;
+			}
+		}
+
+		onMouseEnter {	
+			if ( "gui::canbuy_nailgunmod" == 1 ) {
+				transition "buy_nailgunmod::forecolor" "$desktop::white_8" "$desktop::green" "0" ; 
+			}
+		}
+
+		onMouseExit {
+			if ( "gui::canbuy_nailgunmod" == 1 ) {
+				transition "buy_nailgunmod::forecolor"  "$desktop::green" "$desktop::white_8" "200" ; 
+			}
+		}
+
+		onAction {
+			if ( "gui::canbuy_nailgunmod" == 1 ) {
+				transition "buy_nailgunmod::textscale" "0.35" "0.3" "300" ;
+				transition "field_credits::forecolor"  "$desktop::red" "$desktop::white_8" "1500" ; 
+				consoleCMD "sq_buy wpmod_nailgun_rof" ;
+				namedevent "desktop::redraw"
+			}
+		}
+
+	}
+	windowDef buy_lightininggunmod
+	{
+		rect	300,181,310,30
+		visible	1
+		forecolor	1,1,1,1
+		text	"6000c   Chained Lightning"
+		font	"fonts/lowpixel"
+		textscale	0.3
+		textstyle	1
+
+		onActivate {
+			if ( "gui::canbuy_lightininggunmod" == 0 ) {	
+				set "buy_lightininggunmod::forecolor" "$desktop::disabled" ;
+			} else {
+				set "buy_lightininggunmod::forecolor" "$desktop::white_8" ;
+			}
+		}
+
+		onMouseEnter {	
+			if ( "gui::canbuy_lightininggunmod" == 1 ) {
+				transition "buy_lightininggunmod::forecolor" "$desktop::white_8" "$desktop::green" "0" ; 
+			}
+		}
+
+		onMouseExit {
+			if ( "gui::canbuy_lightininggunmod" == 1 ) {
+				transition "buy_lightininggunmod::forecolor"  "$desktop::green" "$desktop::white_8" "200" ; 
+			}
+		}
+
+		onAction {
+			if ( "gui::canbuy_lightininggunmod" == 1 ) {
+				transition "buy_lightininggunmod::textscale" "0.35" "0.3" "300" ;
+				transition "field_credits::forecolor"  "$desktop::red" "$desktop::white_8" "1500" ; 
+				consoleCMD "sq_buy wpmod_lightninggun_chain" ;
+				namedevent "desktop::redraw"
+			}
+		}
+
+	}
+	windowDef buy_railgunmod
+	{
+		rect	300,221,310,30
+		visible	1
+		forecolor	1,1,1,1
+		text	"2500c   Penetration Modification"
+		font	"fonts/lowpixel"
+		textscale	0.3
+		textstyle	1
+
+		onActivate {
+			if ( "gui::canbuy_railgunmod" == 0 ) {	
+				set "buy_railgunmod::forecolor" "$desktop::disabled" ;
+			} else {
+				set "buy_railgunmod::forecolor" "$desktop::white_8" ;
+			}
+		}
+
+		onMouseEnter {	
+			if ( "gui::canbuy_railgunmod" == 1 ) {
+				transition "buy_railgunmod::forecolor" "$desktop::white_8" "$desktop::green" "0" ; 
+			}
+		}
+
+		onMouseExit {
+			if ( "gui::canbuy_railgunmod" == 1 ) {
+				transition "buy_railgunmod::forecolor"  "$desktop::green" "$desktop::white_8" "200" ; 
+			}
+		}
+
+		onAction {
+			if ( "gui::canbuy_railgunmod" == 1 ) {
+				transition "buy_railgunmod::textscale" "0.35" "0.3" "300" ;
+				transition "field_credits::forecolor"  "$desktop::red" "$desktop::white_8" "1500" ; 
+				consoleCMD "sq_buy wpmod_railgun_penetrate" ;
+				namedevent "desktop::redraw"
+			}
+		}
+
+	}
+	windowDef buy_grenadelaunchermod
+	{
+		rect	300,121,310,30
+		visible	1
+		forecolor	1,1,1,1
+		text	"7000c   Concussion Blast"
+		font	"fonts/lowpixel"
+		textscale	0.3
+		textstyle	1
+
+		onActivate {
+			if ( "gui::canbuy_grenadelaunchermod" == 0 ) {	
+				set "buy_grenadelaunchermod::forecolor" "$desktop::disabled" ;
+			} else {
+				set "buy_grenadelaunchermod::forecolor" "$desktop::white_8" ;
+			}
+		}
+
+		onMouseEnter {	
+			if ( "gui::canbuy_grenadelaunchermod" == 1 ) {
+				transition "buy_grenadelaunchermod::forecolor" "$desktop::white_8" "$desktop::green" "0" ; 
+			}
+		}
+
+		onMouseExit {
+			if ( "gui::canbuy_grenadelaunchermod" == 1 ) {
+				transition "buy_grenadelaunchermod::forecolor"  "$desktop::green" "$desktop::white_8" "200" ; 
+			}
+		}
+
+		onAction {
+			if ( "gui::canbuy_grenadelaunchermod" == 1 ) {
+				transition "buy_grenadelaunchermod::textscale" "0.35" "0.3" "300" ;
+				transition "field_credits::forecolor"  "$desktop::red" "$desktop::white_8" "1500" ; 
+				consoleCMD "sq_buy wpmod_grenade_concussion_blast" ;
+				namedevent "desktop::redraw"
+			}
+		}
+
+	}
+	windowDef buy_rocketlaunchermod
+	{
+		rect	300,201,310,30
+		visible	1
+		forecolor	1,1,1,1
+		text	"12000c  Burst Fire Modification"
+		font	"fonts/lowpixel"
+		textscale	0.3
+		textstyle	1
+
+		onActivate {
+			if ( "gui::canbuy_rocketlaunchermod" == 0 ) {	
+				set "buy_rocketlaunchermod::forecolor" "$desktop::disabled" ;
+			} else {
+				set "buy_rocketlaunchermod::forecolor" "$desktop::white_8" ;
+			}
+		}
+
+		onMouseEnter {	
+			if ( "gui::canbuy_rocketlaunchermod" == 1 ) {
+				transition "buy_rocketlaunchermod::forecolor" "$desktop::white_8" "$desktop::green" "0" ; 
+			}
+		}
+
+		onMouseExit {
+			if ( "gui::canbuy_rocketlaunchermod" == 1 ) {
+				transition "buy_rocketlaunchermod::forecolor"  "$desktop::green" "$desktop::white_8" "200" ; 
+			}
+		}
+
+		onAction {
+			if ( "gui::canbuy_rocketlaunchermod" == 1 ) {
+				transition "buy_rocketlaunchermod::textscale" "0.35" "0.3" "300" ;
+				transition "field_credits::forecolor"  "$desktop::red" "$desktop::white_8" "1500" ; 
+				consoleCMD "sq_buy wpmod_rocketlauncher_burst" ;
+				namedevent "desktop::redraw"
+			}
+		}
+
+	}
+	windowDef close_button
+	{
+		rect	560,440,50,20
+		visible	1
+		forecolor	1,1,1,1
+		text	"Close"
+		font	"fonts/lowpixel"
+		textscale	0.3
+		bordersize	1
+		bordercolor	1,1,1,1
+
+		onAction {
+			set "cmd" "close" ;
+		}
+
+	}
+	windowDef Title_ArmorAmmo
+	{
+		rect	30,290,240,40
+		visible	1
+		forecolor	1,1,1,1
+		text	"Armor / Ammo"
+		font	"fonts/lowpixel"
+		textscale	0.65
+	}
+	windowDef buy_lightarmor
+	{
+		rect	40,330,220,30
+		visible	1
+		forecolor	1,1,1,1
+		text	"300c   Light Armor"
+		font	"fonts/lowpixel"
+		textscale	0.3
+		textstyle	1
+		nowrap	1
+
+		onActivate {
+			if ( "gui::canbuy_lightarmor" == 0 ) {	
+				set "buy_lightarmor::forecolor" "$desktop::disabled" ;
+			} else {
+				set "buy_lightarmor::forecolor" "$desktop::white_8" ;
+			}
+		}
+
+		onMouseEnter {	
+			if ( "gui::canbuy_lightarmor" == 1 ) {
+				transition "buy_lightarmor::forecolor" "$desktop::white_8" "$desktop::green" "0" ; 
+			}
+		}
+
+		onMouseExit {
+			if ( "gui::canbuy_lightarmor" == 1 ) {
+				transition "buy_lightarmor::forecolor"  "$desktop::green" "$desktop::white_8" "200" ; 
+			}
+		}
+
+		onAction {
+			if ( "gui::canbuy_lightarmor" == 1 ) {
+				transition "buy_lightarmor::textscale" "0.35" "0.3" "300" ;
+				transition "field_credits::forecolor"  "$desktop::red" "$desktop::white_8" "1500" ; 
+				consoleCMD "sq_buy item_armor_small" ;
+				namedevent "desktop::redraw"
+			}
+		}
+
+	}
+	windowDef buy_heavyarmor
+	{
+		rect	40,350,220,30
+		visible	1
+		forecolor	1,1,1,1
+		text	"700c   Heavy Armor"
+		font	"fonts/lowpixel"
+		textscale	0.3
+		textstyle	1
+		nowrap	1
+
+		onActivate {
+			if ( "gui::canbuy_heavyarmor" == 0 ) {	
+				set "buy_heavyarmor::forecolor" "$desktop::disabled" ;
+			} else {
+				set "buy_heavyarmor::forecolor" "$desktop::white_8" ;
+			}
+		}
+
+		onMouseEnter {	
+			if ( "gui::canbuy_heavyarmor" == 1 ) {
+				transition "buy_heavyarmor::forecolor" "$desktop::white_8" "$desktop::green" "0" ; 
+			}
+		}
+
+		onMouseExit {
+			if ( "gui::canbuy_heavyarmor" == 1 ) {
+				transition "buy_heavyarmor::forecolor"  "$desktop::green" "$desktop::white_8" "200" ; 
+			}
+		}
+
+		onAction {
+			if ( "gui::canbuy_heavyarmor" == 1 ) {
+				transition "buy_heavyarmor::textscale" "0.35" "0.3" "300" ;
+				transition "field_credits::forecolor"  "$desktop::red" "$desktop::white_8" "1500" ; 
+				consoleCMD "sq_buy item_armor_large" ;
+				namedevent "desktop::redraw"
+			}
+		}
+
+	}
+	windowDef buy_ammorefill
+	{
+		rect	40,370,220,30
+		visible	1
+		forecolor	1,1,1,1
+		text	"500c   Ammo Refill"
+		font	"fonts/lowpixel"
+		textscale	0.3
+		textstyle	1
+		nowrap	1
+
+		onActivate {
+			if ( "gui::canbuy_ammorefill" == 0 ) {	
+				set "buy_ammorefill::forecolor" "$desktop::disabled" ;
+			} else {
+				set "buy_ammorefill::forecolor" "$desktop::white_8" ;
+			}
+		}
+
+		onMouseEnter {	
+			if ( "gui::canbuy_ammorefill" == 1 ) {
+				transition "buy_ammorefill::forecolor" "$desktop::white_8" "$desktop::green" "0" ; 
+			}
+		}
+
+		onMouseExit {
+			if ( "gui::canbuy_ammorefill" == 1 ) {
+				transition "buy_ammorefill::forecolor"  "$desktop::green" "$desktop::white_8" "200" ; 
+			}
+		}
+
+		onAction {
+			if ( "gui::canbuy_ammorefill" == 1 ) {
+				transition "buy_ammorefill::textscale" "0.35" "0.3" "300" ;
+				transition "field_credits::forecolor"  "$desktop::red" "$desktop::white_8" "1500" ; 
+				consoleCMD "sq_buy ammorefill" ;
+				namedevent "desktop::redraw"
+			}
+		}
+
+	}
+	windowDef buy_corecannonmod
+	{
+		rect	300,141,310,30
+		visible	1
+		forecolor	1,1,1,1
+		text	"1800c    Exploding Core Modification"
+		font	"fonts/lowpixel"
+		textscale	0.3
+		textstyle	1
+
+		onActivate {
+			if ( "gui::canbuy_corecannonmod" == 0 ) {	
+				set "buy_corecannonmod::forecolor" "$desktop::disabled" ;
+			} else {
+				set "buy_corecannonmod::forecolor" "$desktop::white_8" ;
+			}
+		}
+
+		onMouseEnter {	
+			if ( "gui::canbuy_corecannonmod" == 1 ) {
+				transition "buy_corecannonmod::forecolor" "$desktop::white_8" "$desktop::green" "0" ; 
+			}
+		}
+
+		onMouseExit {
+			if ( "gui::canbuy_corecannonmod" == 1 ) {
+				transition "buy_corecannonmod::forecolor"  "$desktop::green" "$desktop::white_8" "200" ; 
+			}
+		}
+
+		onAction {
+			if ( "gui::canbuy_corecannonmod" == 1 ) {
+				transition "buy_corecannonmod::textscale" "0.35" "0.3" "300" ;
+				transition "field_credits::forecolor"  "$desktop::red" "$desktop::white_8" "1500" ; 
+				consoleCMD "sq_buy wpmod_spikegun_scope" ;
+				namedevent "desktop::redraw"
+			}
+		}
+
+	}
+	windowDef buy_firecannonmod
+	{
+		rect	300,161,310,30
+		visible	1
+		forecolor	1,1,1,1
+		text	"6500c   Burst Effect"
+		font	"fonts/lowpixel"
+		textscale	0.3
+		textstyle	1
+
+		onActivate {
+			if ( "gui::canbuy_firecannonmod" == 0 ) {	
+				set "buy_firecannonmod::forecolor" "$desktop::disabled" ;
+			} else {
+				set "buy_firecannonmod::forecolor" "$desktop::white_8" ;
+			}
+		}
+
+		onMouseEnter {	
+			if ( "gui::canbuy_firecannonmod" == 1 ) {
+				transition "buy_firecannonmod::forecolor" "$desktop::white_8" "$desktop::green" "0" ; 
+			}
+		}
+
+		onMouseExit {
+			if ( "gui::canbuy_firecannonmod" == 1 ) {
+				transition "buy_firecannonmod::forecolor"  "$desktop::green" "$desktop::white_8" "200" ; 
+			}
+		}
+
+		onAction {
+			if ( "gui::canbuy_firecannonmod" == 1 ) {
+				transition "buy_firecannonmod::textscale" "0.35" "0.3" "300" ;
+				transition "field_credits::forecolor"  "$desktop::red" "$desktop::white_8" "1500" ; 
+				consoleCMD "sq_buy wpmod_goobgun_flamethrower" ;
+				namedevent "desktop::redraw"
+			}
+		}
+
+	}
+	windowDef buy_special3
+	{
+		rect	310,390,310,20
+		visible	1
+		forecolor	1,1,1,1
+		text	"3000c    Flag Carrier Armor Regen"
+		font	"fonts/lowpixel"
+		textscale	0.27
+		textstyle	1
+
+		onActivate {
+			if ( "gui::canbuy_special3" == 0 ) {	
+				set "buy_special3::forecolor" "$desktop::disabled" ;
+			} else {
+				set "buy_special3::forecolor" "$desktop::white_8" ;
+			}
+		}
+
+		onMouseEnter {	
+			if ( "gui::canbuy_special3" == 1 ) {
+				transition "buy_special3::forecolor" "$desktop::white_8" "$desktop::green" "0" ; 
+			}
+		}
+
+		onMouseExit {
+			if ( "gui::canbuy_special3" == 1 ) {
+				transition "buy_special3::forecolor"  "$desktop::green" "$desktop::white_8" "200" ; 
+			}
+		}
+
+		onAction {
+			if ( "gui::canbuy_special3" == 1 ) {
+				transition "buy_special3::textscale" "0.35" "0.3" "300" ;
+				transition "field_credits::forecolor"  "$desktop::red" "$desktop::white_8" "1500" ; 
+				consoleCMD "sq_buy fc_armor_regen" ;
+				namedevent "desktop::redraw"
+			}
+		}
+
+	}
+	windowDef buy_freezegun
+	{
+		rect	30,255,230,30
+		visible	1
+		forecolor	1,1,1,1
+		text	"500c   Freeze Gun"
+		font	"fonts/lowpixel"
+		textscale	0.3
+		textstyle	1
+		nowrap	1
+
+		onActivate {
+			if ( "gui::canbuy_freezegun" == 0 ) {	
+				set "buy_freezegun::forecolor" "$desktop::disabled" ;
+			} else {
+				set "buy_freezegun::forecolor" "$desktop::white_8" ;
+			}
+		}
+
+		onMouseEnter {	
+			if ( "gui::canbuy_freezegun" == 1 ) {
+				transition "buy_freezegun::forecolor" "$desktop::white_8" "$desktop::green" "0" ; 
+			}
+		}
+
+		onMouseExit {
+			if ( "gui::canbuy_freezegun" == 1 ) {
+				transition "buy_freezegun::forecolor"  "$desktop::green" "$desktop::white_8" "200" ; 
+			}
+		}
+
+		onAction {
+			if ( "gui::canbuy_freezegun" == 1 ) {
+				transition "buy_freezegun::textscale" "0.35" "0.3" "300" ;
+				transition "field_credits::forecolor"  "$desktop::red" "$desktop::white_8" "1500" ; 
+				consoleCMD "sq_buy weapon_freezegun" ;
+				namedevent "desktop::redraw"
+			}
+		}
+
+	}
+}

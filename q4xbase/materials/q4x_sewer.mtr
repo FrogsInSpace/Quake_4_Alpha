@@ -1,0 +1,7 @@
+guide textures/sewers/sw_floor_7 generic_shader("sewers/sw_floor_7")
+guide textures/sewers/sw_trim_1a generic_shader("sewers/sw_trim_1a")
+guide textures/sewers/sw_trim_7 generic_shader("sewers/sw_trim_7")
+guide textures/sewers/sw_wall_27 generic_shader("sewers/sw_wall_27")
+guide textures/sewers/sw_wall_30 generic_shader("sewers/sw_wall_30")
+guide textures/sewers/sw_wall_32 generic_shader("sewers/sw_wall_32")
+guide textures/sewers/sw_wall_33 generic_shader("sewers/sw_wall_33")

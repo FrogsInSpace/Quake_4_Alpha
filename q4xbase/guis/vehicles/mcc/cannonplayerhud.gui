@@ -1,0 +1,60 @@
+windowDef Desktop
+{
+	rect	0,0,640,480
+	nocursor	1
+	menugui	0
+
+	onEvent {
+		set "mcchealthstatus::text" "$gui::mcchealth" ;
+	}
+
+	windowDef mccstatus
+	{
+		rect	469,64,171,97
+		visible	1
+		windowDef ammo_backbar
+		{
+			rect	25,16,136,70
+			visible	1
+			background	"gfx/guis/hud/backbar"
+			matcolor	0,0,0,0.5
+			shear	0,-.22
+		}
+		windowDef ammo_valbar
+		{
+			rect	25,16,136,70
+			visible	1
+			background	"gfx/guis/hud/valbar"
+			matcolor	0.701,0.815,0.431,0.2
+			shear	0,-.22
+		}
+		windowDef uss
+		{
+			rect	41,9,52,20
+			visible	1
+			forecolor	1,1,1,0.741
+			text	"U.S.S."
+			textscale	0.25
+			font	"fonts/marine"
+		}
+		windowDef hannibal
+		{
+			rect	89,9,72,20
+			visible	1
+			forecolor	1,1,1,0.737
+			text	"Hannibal"
+			textscale	0.25
+			font	"fonts/marine"
+		}
+		windowDef mcchealthstatus
+		{
+			rect	15,36,101,40
+			visible	1
+			forecolor	0.945,0.941,0.788,0.733
+			text	"2000"
+			textscale	0.5
+			font	"fonts/marine"
+			textalign	2
+		}
+	}
+}

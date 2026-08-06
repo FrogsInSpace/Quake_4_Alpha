@@ -1,0 +1,10 @@
+guide textures/tram/tr_alpha_railing_01 generic_shader2sidedalpha("tram/tr_alpha_railing_01")
+guide textures/tram/tr_alpha_railing_01end generic_shader2sidedalpha("tram/tr_alpha_railing_01end")
+guide textures/tram/tr_rail_dusty generic_Localvariant("tram/tr_rail","tram/tr_rail_dusty")
+guide textures/tram/tr_pipe_outside_04 generic_shader("tram/tr_pipe_outside_04")
+guide textures/tram/tr_ladder_01dusty generic_alpha("tram/tr_ladder_01dusty")
+guide textures/tram/tr_pipe_outside_03 generic_shader("tram/tr_pipe_outside_03")
+guide textures/tram/tr_support_04dusty generic_Localvariant("tram/tr_support_04", "tram/tr_support_04dusty" )
+guide textures/tram/tr_vent_outside_02 generic_shader("tram/tr_vent_outside_02")
+
+

@@ -1,0 +1,127 @@
+windowDef Desktop
+{
+	comment	"gui_parm_broken = 1 adds broken glass cracks to the gui, gui_parm_stroyent = 1 adds stroyent junk on the screen"
+	visible	1
+	rect	0,0,640,480
+	backcolor	0,0,0,1
+	definevec4	"white"	1,1,1,1
+	definevec4	"white_0"	1,1,1,0
+	definevec4	"burst"	0.749,0.843,0.866,1
+	windowDef Scrolling1
+	{
+		rect	0,0,640,480
+		visible	1
+		background	"gfx/guis/maps/cryo/cryo02_tech1"
+		matcolor	0,0.368,0.368,1
+	}
+	windowDef Scrolling2
+	{
+		rect	1,-254,640,976
+		visible	1
+		background	"gfx/guis/maps/cryo/cryo02_tech1"
+		matcolor	0,0.203,0.541,1
+	}
+	windowDef data
+	{
+		rect	14,0,623,480
+		visible	1
+		background	"gfx/guis/common/strogg/data"
+		matcolor	1,1,1,0.0392
+		shear	0, .064
+		matscalex	-1
+	}
+	windowDef bg
+	{
+		rect	0,0,640,480
+		visible	1
+		background	"gfx/guis/maps/cryo/cryo02_bg"
+		matcolor	0.960,0.576,0.0549,0.878*guitable_8_10[time*0.00065]
+	}
+	windowDef scrolltext
+	{
+		rect	10,234,203,193
+		visible	1
+		background	"gfx/guis/common/strogg/scrolltext3"
+		matcolor	0.533,1,1,0.8
+		shear	0,.06
+	}
+	windowDef scrolltext3
+	{
+		rect	321,2,242,475
+		visible	1
+		background	"gfx/guis/common/strogg/scrolltext2fast"
+		matcolor	0,0.501,1,0.8
+		shear	0,.06
+	}
+	windowDef nonscrolltext4
+	{
+		rect	529,210,77,121
+		visible	1
+		background	"gfx/guis/common/strogg/nonscrolltext1"
+		matcolor	0,1,1,0.8
+		shear	0,.06
+	}
+	windowDef topstuff
+	{
+		visible	1
+		rect	0,0,640,480
+		windowDef sline
+		{
+			visible	1
+			rect	1,-204,640,906
+			background	"gfx/guis/common/monitor_line6"
+			matcolor	0.972,0.741,0.321,0.2
+		}
+		windowDef monitor_mid
+		{
+			visible	1
+			rect	0,-141,640,693
+			background	"gfx/guis/common/monitor_mid"
+			matcolor	0.8,0.913,0.917,0.8*guitable_8_10[time*0.0005]
+		}
+		windowDef topreflect
+		{
+			visible	1
+			rect	-10,-23,667,422
+			background	"gfx/guis/common/gradient"
+			matcolor	0.674,0.8,0.635,0.2*guitable_8_10[time*0.002]
+		}
+		windowDef broken_glass_b
+		{
+			visible	"gui::gui_parm_broken"
+			rect	2,5,640,480
+			background	"gfx/guis/common/broken_glass4"
+			matcolor	0,0,0,1
+			matscalex	-1
+		}
+		windowDef broken_glass
+		{
+			visible	"gui::gui_parm_broken"
+			rect	0,0,640,480
+			background	"gfx/guis/common/broken_glass4"
+			matcolor	0.819,0.905,0.921,1
+			matscalex	-1
+		}
+		windowDef monitor_darkedge
+		{
+			visible	1
+			rect	0,0,640,480
+			background	"gfx/guis/common/monitor_darkedge2"
+			matcolor	0,0,0,1
+		}
+	}
+	windowDef Rotate1
+	{
+		rect	244,243,52,54
+		visible	1
+		background	"gfx/guis/maps/cryo/cryo01_center2"
+		matcolor	0.870,0.909,0.384,1
+	}
+	windowDef Rotate2
+	{
+		rect	244,363,52,54
+		visible	1
+		background	"gfx/guis/maps/cryo/cryo01_center2"
+		matcolor	0.870,0.909,0.384,1
+	}
+}

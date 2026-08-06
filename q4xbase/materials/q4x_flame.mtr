@@ -1,0 +1,47 @@
+//flame goob gun--------------------------------------------------------------------------------------------------
+models/weapons/goob_gun/flame_gun
+{
+
+	unsmoothedtangents
+
+	diffusemap 			models/weapons/goob_gun/flame_gun_d.tga
+    	bumpmap				models/weapons/goob_gun/flame_gun_local.tga
+	specularmap 			models/weapons/goob_gun/flame_gun_s.tga
+
+
+}
+
+models/weapons/goob_gun/flame_goob
+{
+
+	
+
+	diffusemap 			models/weapons/goob_gun/flame_goob_d.tga
+	specularmap 			models/weapons/goob_gun/flame_goob_s.tga
+
+
+}
+
+models/weapons/goob_gun/flame_glass
+{
+
+	materialType glass
+	translucent
+
+	diffusemap 			models/weapons/goob_gun/flame_glass_d.tga
+	specularmap 			models/weapons/goob_gun/flame_glass_s.tga
+
+
+}
+
+models/weapons/goob_gun/flame_canister
+{
+
+	unsmoothedtangents
+
+	diffusemap 			models/weapons/goob_gun/flame_canister_d.tga
+	//specularmap 			models/weapons/goob_gun/flame_canister_s.tga
+	bumpmap				models/weapons/goob_gun/flame_canister_local.tga
+
+
+}

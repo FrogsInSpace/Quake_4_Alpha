@@ -1,0 +1,286 @@
+sound space_battle_ambient
+{
+	minDistance	118
+	maxDistance	1771
+	volumeDb	0
+	soundClass	1
+	looping
+
+	sound/vehicles/dropship/space_battle_ambient.ogg
+	shakeData 0 urvmpklpkqpohrpsopsqwyxvzwuunorpssuxqsvswyutpssurkwqrtwttrxwqsnjnmmspqvumntynlrknqvglqlmtlmpnlklopsrrpohorqrtturoqsmnklqmqjlnpntvlspmqtqsrjouuwppkmmnlqnqjlommolfjnkkppksllonknlipmjopopkqtijimnmjnrrpmprloupqqmtqnjooorulnnrmlmmmrlplppplrsprpmopllkmmjqlloompmklmipjmmllmomohmsmqklrjoknnlmrnkmoqqsvrpoknqvpospoprqpommrnrtpljjjqi
+}
+sound space_battle_turret
+{
+	minDistance	118
+	maxDistance	1771
+	volumeDb	0
+	soundClass	1
+	looping
+
+	sound/ambience/m01/space_battle_loop_active.ogg
+	shakeData 0 urvmpklpkqpohrpsopsqwyxvzwuunorpssuxqsvswyutpssurkwqrtwttrxwqsnjnmmspqvumntynlrknqvglqlmtlmpnlklopsrrpohorqrtturoqsmnklqmqjlnpntvlspmqtqsrjouuwppkmmnlqnqjlommolfjnkkppksllonknlipmjopopkqtijimnmjnrrpmprloupqqmtqnjooorulnnrmlmmmrlplppplrsprpmopllkmmjqlloompmklmipjmmllmomohmsmqklrjoknnlmrnkmoqqsvrpoknqvpospoprqpommrnrtpljjjqi
+}
+
+sound space_explosion_dropship
+{
+	minDistance	1018
+	maxDistance	1771
+	volumeDb	0
+	sound/vehicles/dropship/space_explo_ship.ogg
+	shakeData 0 zzzyxyzyyzxxwvonjmmnkjkjiheddcccccbbbaabbaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+}
+
+sound m01_huge_exp_shake
+{
+	minDistance	40
+	maxDistance	3000
+	volumeDb	5
+	sound/vehicles/dropship/space_explo_ship.ogg
+	shakeData 0 swozyuuystxzztxrupnlkieghcccbbbaaaaaaaaaa
+}
+
+sound q4x_comm_chatter
+{
+	minDistance	400
+	maxDistance	3000
+	volumeDb	-20
+	looping
+
+	sound/ambience/m01/comm_chatter.ogg
+
+}
+
+sound q4x_incoming_alarm
+{
+	minDistance	400
+	maxDistance	3000
+	volumeDb	0
+
+	sound/ambience/m01/incoming_alarm.ogg
+
+}
+
+
+sound q4x_mcc_explode
+{
+	minDistance	400
+	maxDistance	3000
+	volumeDb	0
+
+	sound/ambience/m01/mcc_explode.ogg
+}
+
+sound q4x_mcc_laser_fire
+{
+	minDistance	400
+	maxDistance	3000
+	volumeDb	0
+
+	sound/ambience/m01/mcc_laser_fire.ogg
+}
+
+sound q4x_flyer_missilefire1
+{
+	minDistance	20000
+	maxDistance	50000
+	volumeDb	-2
+
+	sound/ambience/m01/flyer_missilefire1.ogg
+}
+
+
+
+sound mcc_turretexplo
+{
+	minDistance	400
+	maxDistance	3000
+	volumeDb	0
+	shakeData 0 zzzyxyzyyzxxwv
+	sound/ambience/m01/mcc_turretexplo.ogg
+	
+}
+
+sound flak_barrage
+{
+	minDistance	1181
+	maxDistance	1574
+	volumeDb	0
+	
+	sound/ambience/flak/flak_volleys.ogg
+}
+
+sound fire_suppress_sys
+{
+	minDistance	1181
+	maxDistance	1574
+	volumeDb	0
+	
+	sound/ambience/m03/fire_suppress_sys.ogg
+}
+
+
+sound cargodoors_open
+{
+	minDistance	1181
+	maxDistance	1574
+	volumeDb	0
+	
+	sound/ambience/m03/cargodoors_open
+}
+
+sound cargodoors_close
+{
+	minDistance	1181
+	maxDistance	1574
+	volumeDb	0
+	
+	sound/ambience/m03/cargodoors_close
+}
+
+sound harness_open
+{
+	minDistance	1181
+	maxDistance	1574
+	volumeDb	0
+	
+	sound/ambience/m03/harness_open.ogg
+}
+
+sound wind_high1
+{
+	minDistance	40
+	maxDistance	140
+	volumeDb	0
+	looping
+	sound/ambience/m03/wind_high1.ogg
+}
+
+
+sound wind_high2
+{
+	minDistance	40
+	maxDistance	140
+	volumeDb	0
+	looping
+	sound/ambience/m03/wind_high2.ogg
+}
+
+
+sound wind_high3
+{
+	minDistance	40
+	maxDistance	140
+	volumeDb	0
+	looping
+	sound/ambience/m03/wind_high3.ogg
+}
+
+
+sound dropship_interior
+{
+	minDistance	80
+	maxDistance	240
+	volumeDb	-6
+	looping
+	sound/ambience/m03/dropship_interior.ogg
+}
+
+sound sound dropship_evasive
+{
+	minDistance	80
+	maxDistance	240
+	volumeDb	-3
+
+	sound/ambience/m03/dropship_evasive1.ogg
+	sound/ambience/m03/dropship_evasive2.ogg
+}
+
+sound dropship_loseeng
+{
+	minDistance	80
+	maxDistance	240
+	volumeDb	-3
+
+	sound/ambience/m03/dropship_loseeng.ogg
+}
+
+sound dropship_gaineng
+{
+	minDistance	80
+	maxDistance	240
+	volumeDb	-3
+
+	sound/ambience/m03/dropship_gaineng.ogg
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//SHAKES/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+sound smallshakes
+{
+	minDistance	400
+	maxDistance	3000
+	volumeDb	-8
+	shakeData 0 zzzyxyzyyzxxwv
+	sound/ambience/m01/mcc_impact_1.ogg
+	sound/ambience/m01/mcc_impact_2.ogg	
+}
+
+sound mcc_impact_1
+{
+	minDistance	400
+	maxDistance	3000
+	volumeDb	0
+	shakeData 0 zzzyxyzyyzxxwv
+	sound/ambience/m01/mcc_impact_1.ogg
+	sound/ambience/m01/mcc_impact_2.ogg	
+}
+
+sound mcc_impact_2
+{
+	minDistance	400
+	maxDistance	3000
+	volumeDb	0
+	shakeData 0 zzzyxyzyyzxxwv
+	sound/ambience/m01/mcc_impact_2.ogg
+}
+
+sound mcc_introcin_impact
+{
+	minDistance	400
+	maxDistance	3000
+	volumeDb	0
+
+	sound/ambience/m01/mcc_introcin_impact.ogg
+}
+
+sound strogg_missile_miss1
+{
+	minDistance	400
+	maxDistance	3000
+	volumeDb	0
+
+	sound/ambience/m01/strogg_missile_miss1.ogg
+}
+
+sound biggun_miss
+{
+	minDistance	400
+	maxDistance	3000
+	volumeDb	0
+
+	sound/ambience/m01/biggun_miss.ogg
+}
+
+sound biggun_hit
+{
+	minDistance	400
+	maxDistance	3000
+	volumeDb	0
+
+	sound/ambience/m01/biggun_hit.ogg
+}
+
+
+

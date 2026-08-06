@@ -1,0 +1,96 @@
+/*
+===============================================================================
+
+	q4x RocketTurret Entity Definition
+
+===============================================================================
+*/
+
+entityDef monster_q4x_turret_rocket {
+	"inherit"							"monster_turret"
+	
+	"attack_blaster_spread"						"30"
+	
+	"def_attack_blaster"						"projectile_turret_rocket"
+	"fx_blaster_flash"						"effects/levels/tram/turretflash.fx"
+
+	"minShots"							"1"
+	"maxShots"							"2"
+	"actionTimer_rangedAttack_rate"					"2"				
+	"action_blasterAttack_Rate"					"2"
+	
+	"action_blasterAttack_minRange"			"1"
+	"action_blasterAttack_maxRange"			"60000"
+}
+
+entityDef monster_q4x_space_cannon {
+	"inherit"							"monster_turret"
+	
+	"attack_blaster_spread"						"30"
+	
+	"def_attack_blaster"						"projectile_space_cannon_rocket"
+	"fx_blaster_flash"						"effects/levels/tram/turretflash.fx"
+
+	"minShots"							"1"
+	"maxShots"							"2"
+	"actionTimer_rangedAttack_rate"					"0.3"				
+	"action_blasterAttack_Rate"					"0.3"
+	
+	"action_blasterAttack_minRange"			"1"
+	"action_blasterAttack_maxRange"			"60000"
+}
+
+entityDef projectile_space_cannon_rocket
+{
+	"inherit"					"projectile_rocket"
+	//"spawnclass"				"riProjectileSpaceRocket"
+	"fuse"						"10"
+
+	"mins"						"0 0 0"
+	"maxs"						"0 0 0"
+	"cone"						"0.1"
+
+	"fx_fly"					"effects/vehicles/spacecannon/rocket_fly.fx"
+
+	"velocity"					"2000 0 0"
+	"speed"						"2000"
+	"gravity"					"0"
+	
+	"def_damage"				"damage_space_cannon"
+	"def_splash_damage"			"damage_space_cannon_splash"
+
+	"fx_impact"					"effects/weapons/machinegun/impact_default.fx"
+	"fx_impact_water"			"effects/ambient/splash_smll.fx"
+	"fx_impact_concrete"		"effects/weapons/machinegun/impact_concrete.fx"
+	"fx_impact_electronics"		"effects/weapons/machinegun/impact_electronics.fx"
+	"fx_impact_flesh"			"effects/weapons/machinegun/impact_flesh.fx"
+	"fx_impact_glass"			"effects/weapons/machinegun/impact_glass.fx"
+
+	"push"						"75000"
+
+	"mass"						"1"
+}
+
+//------------------------------------------------------------------------------
+//								Damage Defs
+//------------------------------------------------------------------------------
+
+entityDef damage_space_cannon
+{
+	"inherit"				"damage_bullet"
+	"damage"				"250"
+	"gib"					"0"
+}
+
+entityDef damage_space_cannon_splash
+{
+	"damage"							"200"
+	"radius"							"1000"
+	"knockback"							"80"
+	"push"								"80"
+	"gib"								"1"
+
+	"deathPush"							"100"
+	"deathPushMin"							"3000 2000"
+	"deathPushMax"							"5000 3000"
+}

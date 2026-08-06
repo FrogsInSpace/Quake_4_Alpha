@@ -1,0 +1,190 @@
+//added by John, 8-2-05
+models/mapobjects/q4x/cryo_cave01/rock2ice
+{
+           noSelfShadow
+           materialType glass
+	{
+		blend 		bumpmap
+		map			textures/rock/sharprock_local.tga
+	}
+	{
+		blend 		diffusemap
+		map			textures/rock/sharprock01_brown_d.tga
+		inverseVertexColor
+	}
+	{
+		blend 		bumpmap
+		map			models/mapobjects/q4x/cryo_cave01/cryo_cave01_local.tga
+	}
+	{
+		blend 		diffusemap
+		map			models/mapobjects/q4x/cryo_cave01/cryo_cave01_d.tga
+		VertexColor
+	}
+	{
+		blend		gl_dst_color, gl_one
+		texgen		reflect
+		cubeMap gfx/env/marhelmet
+	}
+
+}
+
+//models/mapobjects/strogg/machines/elevators_and_lifts/lift_7_28  (skin variant) -------------------------------------------
+
+models/mapobjects/q4x/cryo_elevator/platform
+{
+      	noselfShadow
+	unsmoothedtangents
+	materialImage 		models/mapobjects/q4x/cryo_elevator/platform_hit.tga
+
+	bumpmap		addnormals (models/mapobjects/q4x/cryo_elevator/platform_local.tga, heightmap (models/mapobjects/q4x/cryo_elevator/platform_h.tga, 2))
+	diffusemap		models/mapobjects/q4x/cryo_elevator/platform_d.tga
+	specularmap		models/mapobjects/q4x/cryo_elevator/platform_s.tga
+
+}
+
+models/mapobjects/q4x/cryo_elevator/monitor
+{
+      	noselfShadow
+	unsmoothedtangents
+	materialImage 		models/mapobjects/q4x/cryo_elevator/monitor_hit.tga
+
+	bumpmap		addnormals (models/mapobjects/q4x/cryo_elevator/monitor_local.tga, heightmap (models/mapobjects/q4x/cryo_elevator/monitor_h.tga, 2))
+	diffusemap		models/mapobjects/q4x/cryo_elevator/monitor_d.tga
+	specularmap		models/mapobjects/q4x/cryo_elevator/monitor_s.tga
+
+}
+
+models/mapobjects/q4x/cryo_elevator/rear_rail
+{
+      	noselfShadow
+	unsmoothedtangents
+	materialImage 		models/mapobjects/q4x/cryo_elevator/rear_rail_hit.tga
+
+	bumpmap		addnormals (models/mapobjects/q4x/cryo_elevator/rear_rail_local.tga, heightmap (models/mapobjects/q4x/cryo_elevator/rear_rail_h.tga, 2))
+	diffusemap		models/mapobjects/q4x/cryo_elevator/rear_rail_d.tga
+	specularmap		models/mapobjects/q4x/cryo_elevator/rear_rail_s.tga
+
+}
+
+models/mapobjects/q4x/cryo_elevator/console
+{
+      	noselfShadow
+	unsmoothedtangents
+	materialImage 		models/mapobjects/q4x/cryo_elevator/console_hit.tga
+
+	bumpmap		addnormals (models/mapobjects/q4x/cryo_elevator/console_local.tga, heightmap (models/mapobjects/q4x/cryo_elevator/console_h.tga, 2))
+	diffusemap		models/mapobjects/q4x/cryo_elevator/console_d.tga
+	specularmap		models/mapobjects/q4x/cryo_elevator/console_s.tga
+
+}
+
+//models/mapobjects/strogg/console/genericdata_bank1  (skin variant) -------------------------------------------
+
+models/mapobjects/q4x/cryo_monitors/data_bank1
+{
+      	noselfShadow
+	unsmoothedtangents
+	materialImage 		models/mapobjects/q4x/cryo_monitors/data_bank1_hit.tga
+
+	bumpmap		addnormals (models/mapobjects/q4x/cryo_monitors/data_bank1_local.tga, heightmap (models/mapobjects/q4x/cryo_monitors/data_bank1_h.tga, 2))
+	diffusemap		models/mapobjects/q4x/cryo_monitors/data_bank1_d.tga
+	specularmap		models/mapobjects/q4x/cryo_monitors/data_bank1_s.tga
+
+}
+
+models/mapobjects/strogg/terminal/shaft_machines/1_middle_clean
+{
+      	noselfShadow
+//	materialImage models/mapobjects/strogg/terminal/shaft_machines/1_middle_hit
+	
+	bumpmap		addnormals (models/mapobjects/strogg/terminal/shaft_machines/1_middle_sah_local.tga, heightmap (models/mapobjects/strogg/terminal/shaft_machines/1_middle_sah_h.tga, 2))
+	diffusemap	models/mapobjects/strogg/terminal/shaft_machines/1_middle_sah_d.tga
+	specularmap	models/mapobjects/strogg/terminal/shaft_machines/1_middle_sah_s.tga
+}
+
+models/mapobjects/q4x/machines/shaft_machines/1_bottom_clean
+{
+      	noselfShadow
+	materialImage models/mapobjects/q4x/machines/shaft_machines/1_bottom_hit
+	
+	bumpmap		addnormals (models/mapobjects/q4x/machines/shaft_machines/1_bottom_local.tga, heightmap (models/mapobjects/q4x/machines/shaft_machines/1_bottom_h.tga, 2))
+	diffusemap	models/mapobjects/q4x/machines/shaft_machines/1_bottom_d.tga
+	specularmap	models/mapobjects/q4x/machines/shaft_machines/1_bottom_s.tga
+}
+
+models/mapobjects/strogg/structural/pillars/prison1_clean
+{
+      	noselfShadow
+		
+	bumpmap		addnormals (models/mapobjects/strogg/structural/pillars/prison1_sah_local.tga, heightmap (models/mapobjects/strogg/structural/pillars/prison1_sah_h.tga, 2))
+	diffusemap	models/mapobjects/strogg/structural/pillars/prison1_sah_d.tga
+	specularmap	models/mapobjects/strogg/structural/pillars/prison1_sah_s.tga
+}
+
+models/mapobjects/strogg/console/q4x_generic/data_bank3
+{
+      	noselfShadow
+		
+	bumpmap		addnormals (models/mapobjects/strogg/console/q4x_generic/data_bank3_local.tga, heightmap (models/mapobjects/strogg/console/q4x_generic/data_bank3_h.tga, 2))
+	diffusemap	models/mapobjects/strogg/console/q4x_generic/data_bank3_d.tga
+	specularmap	models/mapobjects/strogg/console/q4x_generic/data_bank3_s.tga
+}
+
+models/mapobjects/strogg/console/q4x_generic/data_bank2
+{
+      	noselfShadow
+		
+	bumpmap		addnormals (models/mapobjects/strogg/console/q4x_generic/data_bank2_local.tga, heightmap (models/mapobjects/strogg/console/q4x_generic/data_bank2_h.tga, 2))
+	diffusemap	models/mapobjects/strogg/console/q4x_generic/data_bank2_d.tga
+	specularmap	models/mapobjects/strogg/console/q4x_generic/data_bank2_s.tga
+}
+//	cryoarm----------------------------------------------------------------------------
+
+models/mapobjects/q4x/cryo_cryoarms/cryoarm_arm
+{	
+	noselfShadow
+//	unsmoothedtangents
+	
+	diffusemap	models/mapobjects/q4x/cryo_cryoarms/cryoarm_arm_d.tga
+	specularmap	models/mapobjects/q4x/cryo_cryoarms/cryoarm_arm_s.tga
+	bumpmap		models/mapobjects/q4x/cryo_cryoarms/cryoarm_arm_local.tga
+	{ 
+		blend add
+		map models/mapobjects/q4x/cryo_cryoarms/cryoarm_arm_glowpass.tga
+		rgb grunttable [ time * 1.3 ]
+	}
+	}
+	
+models/mapobjects/q4x/cryo_cryoarms/cryoarm_endings
+	{
+	noselfShadow
+//	unsmoothedtangents
+	
+	diffusemap	models/mapobjects/q4x/cryo_cryoarms/cryoarm_endings_d.tga
+	specularmap	models/mapobjects/q4x/cryo_cryoarms/cryoarm_endings_s.tga
+	bumpmap		models/mapobjects/q4x/cryo_cryoarms/cryoarm_endings_local.tga
+	{ 
+		blend add
+		map models/mapobjects/q4x/cryo_cryoarms/cryoarm_endings_glowpass.tga
+		rgb grunttable [ time * 1.3 ]
+	}
+	}
+	
+models/mapobjects/q4x/cryo_cryoarms/cryoarm_base
+	{
+	noselfShadow
+//	unsmoothedtangents
+	
+	diffusemap	models/mapobjects/q4x/cryo_cryoarms/cryoarm_base_d.tga
+	specularmap	models/mapobjects/q4x/cryo_cryoarms/cryoarm_base_s.tga
+	bumpmap		models/mapobjects/q4x/cryo_cryoarms/cryoarm_base_local.tga
+	{ 
+		blend add
+		map models/mapobjects/q4x/cryo_cryoarms/cryoarm_base_glowpass.tga
+		rgb grunttable [ time * 1.3 ]
+		}
+	
+	
+		
+		}

@@ -1,0 +1,213 @@
+/*
+===============================================================================
+
+	Tactical Transfer
+
+===============================================================================
+*/
+
+export tactical
+{
+	options -scale .3937 -prefix PLAYER_ -align ALL -keep l_elbo_tweak r_elbo_tweak body shoulders neckcontrol legs_channel head_channel SG_muzzle_flash MG_muzzle_flash HB_muzzle_flash -parent SG_stock r_wrist -parent MG_stock_joint r_wrist -parent HB_base r_wrist -parent hips body -parent waist SPINNER -parent SPINNER body -sourcedir work/models/monsters/Tactical_transfer/nick_animations/ -destdir models/monsters/tactical
+
+	anim	pain_fire.ma	-dest models/characters/marine/onfire
+	anim	offhandgrenade.ma	-dest models/characters/marine/offhandgrenade
+}
+
+
+/*
+===============================================================================
+
+	Model Definitions
+
+===============================================================================
+*/
+
+model model_monster_q4x_tactical
+{
+	inherit							model_monster_tactical
+	
+	// Note that this does not copy over the new q4x marine anims like they should.
+	// If something's missing just copy it here since you can't do multiple inheritance
+	// 	inside model definitions
+	
+	anim pain_fire								models/characters/marine/pain_fire.md5anim
+	{
+		rate 0.8
+		frame 1									speak_random	lipsync_pain
+	}
+	
+	anim bio_catscan_loop							models/characters/marine/bio_catscan_loop.md5anim
+	{
+	}
+	
+	anim bio_catscan_getup							models/characters/marine/bio_catscan_getup.md5anim
+	{
+	}
+	
+}
+
+model model_monster_q4x_tactical_elite
+{
+	inherit							model_monster_q4x_tactical
+
+	anim throw_grenade				models/characters/marine/offhandgrenade.md5anim
+	{
+		//rate .35
+		frame 32					ai_attack	grenade		l_wrist			
+	}
+}
+
+/*
+===============================================================================
+
+	Expansion Attacks
+
+===============================================================================
+*/
+
+entityDef projectile_q4x_tactical_grenade
+{
+	"inherit"					"projectile_gunner_grenade"
+}
+
+/*
+===============================================================================
+
+	Base Expansion Tactical Transfer Entity Definitions
+
+===============================================================================
+*/
+
+entityDef monster_q4x_tactical_extras
+{
+	"editor_ignore"							"1"
+	
+	"model"									"model_monster_q4x_tactical"
+	"skin"									"skins/monsters/q4x_tactical"
+}
+
+entityDef monster_q4x_tactical_elite_extras
+{
+	"editor_ignore"							"1"
+	
+	"model"									"model_monster_q4x_tactical_elite"	
+	"health"								"300"
+	
+	"grenadechance"							"0.25"
+	"grenadedelay"							"5000"
+
+	"def_attack_grenade"					"projectile_q4x_tactical_grenade"
+	"attack_grenade_accuracy"				"3"
+}
+
+/*
+===============================================================================
+
+	Shotgun Tactical Transfer
+
+===============================================================================
+*/
+
+entityDef monster_q4x_tactical
+{
+	"inherit1"								"monster_q4x_tactical_extras"
+	"inherit2"								"monster_tactical"
+	"editor_ignore"							"0"
+}
+
+entityDef monster_q4x_tactical_elite
+{
+	"inherit1"								"monster_q4x_tactical_elite_extras"
+	"inherit2"								"monster_tactical"
+	"editor_ignore"							"0"
+}
+
+/*
+===============================================================================
+
+	Machinegun Tactical Transfer
+
+===============================================================================
+*/
+
+entityDef monster_q4x_tactical_mgun
+{
+	"inherit1"								"monster_q4x_tactical_extras"
+	"inherit2"								"monster_tactical_mgun"
+	"editor_ignore"							"0"
+}
+
+entityDef monster_q4x_tactical_mgun_elite
+{
+	"inherit1"								"monster_q4x_tactical_elite_extras"
+	"inherit2"								"monster_tactical_mgun"
+	"editor_ignore"							"0"
+}
+
+/*
+===============================================================================
+
+	Hyperblaster Tactical Transfer
+
+===============================================================================
+*/
+
+entityDef monster_q4x_tactical_blaster
+{
+	"inherit1"								"monster_q4x_tactical_extras"
+	"inherit2"								"monster_tactical_blaster"
+	"editor_ignore"							"0"
+}
+
+entityDef monster_q4x_tactical_blaster_elite
+{
+	"inherit1"								"monster_q4x_tactical_elite_extras"
+	"inherit2"								"monster_tactical_blaster"
+	"editor_ignore"							"0"
+}
+
+
+/*
+===============================================================================
+
+	Railgun Tactical Transfer
+
+===============================================================================
+*/
+
+entityDef monster_q4x_tactical_railgun
+{
+	"inherit1"								"monster_q4x_tactical_extras"
+	"inherit2"								"monster_tactical_railgun"
+	"editor_ignore"							"0"
+}
+
+entityDef monster_q4x_tactical_railgun_elite
+{
+	"inherit1"								"monster_q4x_tactical_elite_extras"
+	"inherit2"								"monster_tactical_railgun"
+	"editor_ignore"							"0"
+}
+
+/*
+===============================================================================
+
+	Unarmed Tactical Transfer
+
+===============================================================================
+*/
+
+entityDef monster_q4x_tactical_unarmed
+{
+	"inherit1"							"monster_q4x_tactical_extras"
+	"inherit2"							"monster_tactical_unarmed"
+	"editor_ignore"						"0"
+}
+
+entityDef monster_q4x_tactical_unarmed_elite /// weaponless but throws grenades? maybe?
+{
+	"inherit1"							"monster_q4x_tactical_elite_extras"
+	"inherit2"							"monster_tactical_unarmed"
+	"editor_ignore"						"0"
+}

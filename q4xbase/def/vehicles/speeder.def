@@ -1,0 +1,509 @@
+//------------------------------------------------------------------------------
+// gev.def
+//
+// Copyright 2002-2004 Raven Software
+//------------------------------------------------------------------------------
+
+export speeder
+ {
+	options -game q4xbase -prefix SPEED_ -align ALL -keep Eyes -parent Eyes Body -keep mid_headlight -parent mid_headlight Body -keep SteeringWheel -parent SteeringWheel Body -keep ALL -keep BackEnd Lrearaxlebot Lrearwheelbot Lrearaxletop Lrearwheeltop Lrearwheelin Rrearaxlebot Rrearwheelbot Rrearaxletop Rrearwheeltop Rrearwheelin FrontEnd Lfrontaxlebot Lfrontwheelbot Lfrontaxletop Lfrontwheeltop Lfrontwheelin Rfrontaxlebot Rfrontwheelbot Rfrontaxletop Rfrontwheeltop Rfrontwheelin Lmidaxlebot Lmidwheelbot Lmidaxletop Lmidwheeltop Lmidwheelin Lmidwheelout Rmidaxlebot Rmidwheelbot Rmidaxletop Rmidwheeltop Rmidwheelin Rmidwheelout 
+	mesh	models/vehicles/speeder/animations/idle.ma 	-dest models/vehicles/speeder/speeder_base
+ 	anim	models/vehicles/speeder/animations/idle.ma	-dest models/vehicles/speeder/idle
+	anim	models/vehicles/speeder/animations/cannon.ma	-dest models/vehicles/speeder/cannon
+}
+
+//------------------------------------------------------------------------------
+//							Vehicle Defintion
+//------------------------------------------------------------------------------
+
+entityDef vehicle_speeder
+{
+	"editor_color"				"1 .5 0"
+	"editor_mins"				"-8 -8 -8"
+	"editor_maxs"				"8 8 8"
+	"editor_ragdoll"			"1"
+	"editor_rotatable"			"1"
+	"editor_usage"				"Speeder."
+
+	"spawnclass"				"rvVehicleRigid"
+
+	"model"						"vehicle_speeder"
+	"clipmodel"					"models/vehicles/speeder/speeder_clip.ase"
+
+	"def_position_driver"		"vehicle_speeder_driver"
+
+	"gui_hud"					"guis/vehicles/gev_hud.gui"
+	"gui"						"guis/vehicles/speeder.gui"
+	"hudid"						"1"
+	
+	"health"					"1000"
+	"mass"						"2500"
+	"team"						"0"
+	"density"					".0005"
+	"friction_linear"			"1"
+	"friction_contact"			".1"
+	"bouncyness"				".5"
+	"nav_active"				"1"
+	
+	"shieldMins"				"-160 -110 -6"
+	"shieldMaxs"				"160 110 64"
+	"shieldSides"				"10"
+	"shieldHealth"				"10reload0"
+	"shieldRegenDelay"			"6"
+	"shieldRegenTime"			"3"
+
+	"crashSpeedSmall"			"150"
+	"crashSpeedMedium"			"400"
+	"crashSpeedLarge"			"500"
+	"def_crashDamage"			"damage_speeder_crash"
+
+	"snd_crash_small"			"vehicle_crash_small"
+	"snd_crash_medium"			"vehicle_crash_medium"
+	"snd_crash_large"			"vehicle_crash_large"
+	"snd_cannon_kickback"		"vehicle_speeder_cannon_kickback"	
+	"snd_shieldWarning"			"vehicle_speeder_shield_warning"
+	"snd_shieldRecharge"		"vehicle_speeder_shield_recharge"
+		
+	"fx_death"					"effects/vehicles/explosion.fx"
+	"fx_shield"					"effects/vehicles/walker/shield.fx"	
+	"fx_crash"					"effects/vehicles/crash.fx"
+
+	"focusLength_enter"			"100"
+}
+
+//------------------------------------------------------------------------------
+//								Positions
+//------------------------------------------------------------------------------
+
+entityDef vehicle_speeder_driver
+{
+	"def_part_hover_fl"			"vehicle_speeder_hoverpad_fl"
+	"def_part_hover_bl"			"vehicle_speeder_hoverpad_bl"
+	"def_part_hover_fr"			"vehicle_speeder_hoverpad_fr"
+	"def_part_hover_br"			"vehicle_speeder_hoverpad_br"
+				
+	"def_part_yaw"				"vehicle_speeder_turret_yaw"
+	"def_part_pitch"			"vehicle_speeder_turret_pitch"
+	
+	"def_part_main"				"vehicle_speeder_weapon_main"
+	"def_part_mgun"				"vehicle_speeder_weapon_mgun"		
+//	"def_part_rocket"			"vehicle_speeder_weapon_rocket"
+	
+	"def_part_light"			"vehicle_speeder_light"
+		
+	"eyeJoint"					"eye"
+	"eyeOffset"					"-1 0 0"
+	
+	"driverJoint"				"origin"
+	"driverVisible"				"0"
+
+	// Global sounds when position is enabled
+	"snd_loop"					"vehicle_speeder_engine_loop"
+	"volume"					"-8 5.5"
+	"freqShift"					"1 1.4"
+	"maxSoundSpeed"				"600"	
+}
+
+//------------------------------------------------------------------------------
+//								Model Defintion
+//------------------------------------------------------------------------------
+
+model vehicle_speeder
+{
+	mesh						models/vehicles/speeder/speeder_base.md5mesh
+
+	channel legs				( *origin )
+
+	anim idle					models/vehicles/speeder/idle.md5anim
+	anim af_pose					models/vehicles/speeder/idle.md5anim
+	anim cannon					models/vehicles/speeder/cannon.md5anim
+	{
+		frame	3				sound	snd_cannon_kickback
+	}
+}
+
+//------------------------------------------------------------------------------
+//									Parts
+//------------------------------------------------------------------------------
+
+entityDef vehicle_speeder_hoverpad
+{
+	"spawnclass"				"rvVehicleHoverpad"
+
+	"height"					"25"
+	"dampen"					"100"
+
+	"force"						"5000"
+	"forceTable"				"vehicle_speeder_hover"
+	"forceUpTime"				"2"
+	"forceDownTime"				"2"	
+	"forceRandom"				"10"
+	
+	"maxRestAngle"				"5"
+
+	"fx_dust"					"effects/vehicles/gev/dust.fx"
+	"fx_dust_concrete"			"effects/vehicles/gev/dust_concrete.fx"
+	"fx_dust_rock"				"effects/vehicles/gev/dust_rock.fx"	
+
+	"snd_loop"					"vehicle_speeder_hoverpad"
+	"volume"					"-20 -4"
+	"freqShift"					"1 1.2"
+	"fadetime"					"2"	
+
+	"mins"						"0 -.5 -.5"
+	"maxs"						"1 .5 .5"
+	
+	"thrustForward"				"200"
+	"thrustLeft"				"250"
+}
+
+entityDef vehicle_speeder_hoverpad_fl
+{
+	"inherit"					"vehicle_speeder_hoverpad"
+	"offset"					"100 100 16"
+	"force"						"100"
+	"mins"						"0 -100 -60"
+	"maxs"						"1 20 20"
+}
+
+entityDef vehicle_speeder_hoverpad_fr
+{
+	"inherit"					"vehicle_speeder_hoverpad"
+	"offset"					"100 -100 16"
+	"force"						"100"
+
+	"mins"						"0 -100 -20"
+	"maxs"						"1 20 60"
+}
+
+entityDef vehicle_speeder_hoverpad_bl
+{
+	"inherit"					"vehicle_speeder_hoverpad"
+	"offset"					"-100 100 16"
+	"force"						"100"
+	"mins"						"0 -20 -60"
+	"maxs"						"1 100 20"
+}
+
+entityDef vehicle_speeder_hoverpad_br
+{
+	"inherit"					"vehicle_speeder_hoverpad"
+	"offset"					"-100 -100 16"
+	"force"						"100"
+	"mins"						"0 -20 -20"
+	"maxs"						"1 100 60"	
+}
+
+entityDef vehicle_speeder_turret_yaw
+{
+	"spawnclass"				"rvVehicleTurret"
+
+	"joint"						"turret"
+	
+	"yaw"						"0"
+	"minyaw"					"-160"
+	"maxyaw"					"160"
+	"yawinvert"					"1"
+	
+	"turnrate"					"280"
+
+	"snd_loop"					"vehicle_speeder_turret_move"
+	"volume"					"-10 8"
+}
+
+entityDef vehicle_speeder_turret_pitch
+{
+	"spawnclass"				"rvVehicleTurret"
+
+	"joint"						"gun_pivot"
+
+	"pitch"						"1"
+	"minpitch"					"-50"
+	"maxpitch"					"20"
+
+	"snd_loop"					"vehicle_speeder_turret_move"
+	"volume"					"-10 6"
+}
+
+entityDef vehicle_speeder_weapon_main
+{
+	"spawnclass"				"rvVehicleWeapon"
+
+	"joint"						"muzzle"
+	
+	"firedelay"					"1.2"
+	"def_projectile"			"projectile_speeder_main"
+	"spread"					".1"
+
+	"launchFromJoint"			"1"
+	
+	"force"						"-150000 -100000 0"
+	
+	"shakeTime"					"500"
+	"shakeMagnitude"			"3"
+	
+	"mtr_flashShader"			"lights/muzzleflash"
+	"flashColor"				"1 0.8 0.4"
+	"flashRadius"				"500"
+	"flashPointLight"			"1"
+	"flashTime"					".1"
+	"flashOffset"				"40 0 0"
+	
+	"anim"						"cannon"
+	"animchannel"				"0"
+	
+	"positions"					"0"
+
+	"fx_muzzleflash"			"effects/vehicles/gev/maingun/muzzleflash.fx"
+	"snd_fire"					"vehicle_speeder_cannon"
+
+	"mtr_crosshair"				"gfx/guis/crosshairs/vehicle_cannon"
+}
+
+entityDef vehicle_speeder_weapon_mgun
+{
+	"spawnclass"				"rvVehicleWeapon"
+
+	"joint"						"mgun1"
+	"joint2"					"mgun2"
+	"joint3"					"mgun3"
+	
+	"firedelay"					".07"
+	"def_hitscan"				"hitscan_speeder_bullet"
+	"spread"					".1"
+
+	"mtr_flashShader"			"lights/muzzleflash"
+	"flashColor"				"1 0.8 0.4"
+	"flashRadius"				"300"
+	"flashPointLight"			"1"
+	"flashTime"					".1"
+	"flashOffset"				"40 0 0"
+	
+	"recoilTime"				"125"
+	"recoilAngles"				"-0.5 0 0.5"
+
+	"positions"					"1"
+
+	"fx_muzzleflash"			"effects/vehicles/gev/machinegun/muzzleflash.fx"
+	"snd_fire"					"vehicle_speeder_machinegun_fire"
+	"mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
+}
+
+entityDef vehicle_speeder_weapon_rocket
+{
+	"spawnclass"				"rvVehicleWeapon"
+
+	"joint"						"mgun1"
+	"joint2"					"mgun2"
+	"joint3"					"mgun3"
+	
+	"firedelay"					".3"
+	"def_projectile"			"projectile_speeder_rocket"
+	"spread"					"2"
+	"convergeRate"				".5"
+		
+	"launchFromJoint"			"1"
+	"lockrange"					"10000"
+		
+	"ammopercharge"				"3"
+	"chargetime"				"1"
+
+	"mtr_flashShader"			"lights/muzzleflash"
+	"flashColor"				"1 0.8 0.4"
+	"flashRadius"				"350"
+	"flashPointLight"			"1"
+	"flashTime"					".1"
+	"flashOffset"				"30 0 0"
+
+	"fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
+	"snd_fire"					"vehicle_speeder_rockets"
+}
+
+entityDef vehicle_speeder_light
+{
+	"spawnclass"				"rvVehicleLight"
+	
+	"mtr_light"					"gfx/lights/vehicle"
+	"color"						"1 1 .9"
+	"radius"					"800"
+	"target"					"2000 0 0"
+	"up"						"0 900 0"
+	"right"						"0 0 1300"
+	"pointLight"				"0"
+	
+	"flaresurface"				"models/vehicles/flare"
+	
+	"snd_on"					"vehicle_speeder_flareon"
+	"snd_off"					"vehicle_speeder_flareoff"
+	
+	"joint"						"Light1"
+}
+
+
+entityDef vehicle_speeder_thruster_forward
+{
+	"spawnclass"				"rvVehicleThruster"
+	"force"						"50000"
+	"forceAxis"					"0"
+	"useCenterMass"				"1"
+	"offset"					"0 0 -10" // -100 0 25"
+	"key"						"forward"
+}
+
+entityDef vehicle_speeder_thruster_right
+{
+	"spawnclass"				"rvVehicleThruster"
+	"force"						"-7000"
+	"forceAxis"					"1"
+	"useCenterMass"				"1"
+	"offset"					"300 0 0"
+	"key"						"right"
+}
+
+entityDef vehicle_speeder_thruster_right2
+{
+	"spawnclass"				"rvVehicleThruster"
+	"force"						"7000"
+	"forceAxis"					"1"
+	"useCenterMass"				"1"
+	"offset"					"-300 0 0"
+	"key"						"right"
+}
+
+//------------------------------------------------------------------------------
+//								Projectiles
+//------------------------------------------------------------------------------
+
+entityDef projectile_speeder_main
+{
+	"inherit"					"projectile_blaster"
+
+	"mins"						"-20 -20 -20"
+	"maxs"						"20 20 20"
+	"cone"						"1"
+
+	"velocity"					"10000 0 0"
+	
+	"def_damage"				"damage_speeder_main"
+	"def_splash_damage"			"damage_speeder_main_splash"
+	
+	"fx_fly"					"effects/vehicles/gev/maingun/fly.fx"
+	"fx_trail"					""
+	"fx_impact"					"effects/vehicles/gev/maingun/impact.fx"
+	"fx_impact_rock"			"effects/vehicles/gev/maingun/impact_rock.fx"
+	"fx_impact_dirt"			"effects/vehicles/gev/maingun/impact_rock.fx"
+	"fx_impact_sand"			"effects/vehicles/gev/maingun/impact_rock.fx"
+	"fx_impact_gravel"			"effects/vehicles/gev/maingun/impact_rock.fx"
+	"fx_impact_concrete"		"effects/vehicles/gev/maingun/impact_rock.fx"
+	"fx_detonate"				"effects/vehicles/gev/maingun/detonate.fx"
+	
+	"mass"						"10"		
+}
+
+entityDef hitscan_speeder_bullet
+{
+	"inherit"					"hitscan_bullet"	
+
+	"def_damage"				"damage_speeder_bullet"
+
+	"push"						"15000"
+
+	"fx_impact"					"effects/vehicles/gev/machinegun/impact_default.fx"
+	"fx_impact_concrete"		"effects/vehicles/gev/machinegun/impact_concrete.fx"
+	"fx_impact_dirt"			"effects/vehicles/gev/machinegun/impact_concrete.fx"
+	"fx_impact_rock"			"effects/vehicles/gev/machinegun/impact_concrete.fx"
+	"fx_impact_sand"			"effects/vehicles/gev/machinegun/impact_concrete.fx"
+	"fx_impact_gravel"			"effects/vehicles/gev/machinegun/impact_concrete.fx"
+	"fx_impact_flesh"			"effects/vehicles/gev/machinegun/impact_flesh.fx"						
+	
+	"fx_tracer"					"effects/vehicles/gev/machinegun/tracer.fx"
+	"tracerchance"				".40"
+}
+
+entityDef projectile_speeder_rocket
+{
+	"spawnclass"				"idGuidedProjectile"
+	"mins"						"-2 -2 -2"
+	"maxs"						"2 2 2"
+	"cone"						"1"
+	"noshadows"					"1"
+
+	"model"						"models/weapons/nailgun/nail.ase"
+
+	"def_damage"				"damage_walker_rocket"
+	"def_splash_damage"			"damage_walker_rocket_splash"
+											
+	"decal_scale"				"8"											
+	
+	"speed"						"2000"																
+	"mass"						"6"
+	"gravity"					"0"
+	"fuse"						"6"
+								
+	"detonate_on_fuse"			"1"
+	"detonate_on_death"			"0"
+	"detonate_on_world"			"1"
+	"detonate_on_actor"			"1"
+								
+	"impact_gib"				"1"
+								
+	"decal_bounce"				""
+	"decal_size"				"8"
+
+	"fx_trail"					"effects/vehicles/walker/rocket/trail.fx"
+	"fx_fly"					"effects/vehicles/walker/rocket/fly.fx"
+	"fx_detonate"				"effects/vehicles/walker/rocket/detonate.fx"
+
+	"fx_impact"					"effects/vehicles/walker/rocket/impact.fx"
+	"fx_impact_rock"			"effects/vehicles/walker/rocket/impact_rock.fx"
+	"fx_impact_dirt"			"effects/vehicles/walker/rocket/impact_rock.fx"
+	"fx_impact_sand"			"effects/vehicles/walker/rocket/impact_rock.fx"
+	"fx_impact_gravel"			"effects/vehicles/walker/rocket/impact_rock.fx"
+	"fx_impact_concrete"		"effects/vehicles/walker/rocket/impact_rock.fx"
+}
+
+//------------------------------------------------------------------------------
+//								Damage Defs
+//------------------------------------------------------------------------------
+
+entityDef damage_speeder_main
+{
+	"inherit"					"damage_bullet"
+	"damage"					"300"
+	"push"						"3500"
+	"deathPush"					"6000"
+
+}
+
+entityDef damage_speeder_main_splash
+{
+	"inherit"					"damage_speeder_main"
+	
+	"damage"					"400"
+	"radius"					"200"
+	"knockback"					"40"
+	"push"						"3500"
+	"deathPush"					"3500"
+}
+
+entityDef damage_speeder_bullet
+{
+	"inherit"					"damage_bullet"
+	"damage"					"30"	
+}
+
+entityDef damage_speeder_crash
+{
+	"inherit"					"damage_bullet"
+	"damage"					"300"
+	"push"						"300000"
+}
+
+table vehicle_speeder_hover
+{
+	clamp
+	{
+		0.0, 1.0, 1.5, 2.0, 3.0, 5.0, 8.0, 12.0, 18.0, 27.0
+	}
+}
+

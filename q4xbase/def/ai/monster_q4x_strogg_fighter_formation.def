@@ -1,0 +1,288 @@
+
+/*
+Strogg Fighter Formation
+*/
+
+
+export q4x_strogg_fighter_formation
+{
+	options -prefix SFF_ -scale .1 -parent root origin -keep origin root j01 j02 j03 j04 j05 j01_dummy j02_dummy j03_dummy j04_dummy j05_dummy -sourcedir models/monsters/strogg_fighter_formation/animations -destdir models/monsters/strogg_fighter_formation
+	mesh idle.ma			-dest mesh
+	anim idle.ma			-dest idle
+}
+	
+model model_monster_q4x_strogg_fighter_formation
+{
+	mesh						models/monsters/strogg_fighter_formation/mesh.md5mesh
+	anim idle 					models/monsters/strogg_fighter_formation/idle.md5anim
+}
+
+entityDef monster_q4x_strogg_fighter_formation
+{
+
+	"spawnclass"				"rvMonsterStroggFlyer"
+	"inherit"					"actor_default"
+
+	"editor_color"			"1 0.5 0"
+	"editor_mins"			"-32 -32 0"
+	"editor_maxs"			"32 32 64"
+
+	"awareRange"				"0.1"
+	"model"						"model_monster_q4x_strogg_fighter_formation"
+	"health"					"10000"
+	"turn_rate"				"1"
+	"flying"					"1"
+	
+	"attackRange"				"0 1"
+	"no_sight"					"1"
+	"attackSightDelay"			"1000"
+	
+	
+	
+	"def_attach1"				"q4x_strogg_formation_fighter1"
+	"def_attach2"				"q4x_strogg_formation_fighter2"
+	"def_attach3"				"q4x_strogg_formation_fighter3"
+	"def_attach4"				"q4x_strogg_formation_fighter4"
+	"def_attach5"				"q4x_strogg_formation_fighter5"
+	
+	//"def_attach6"				"q4x_strogg_formation_fighter_view1"
+	//"def_attach7"				"q4x_strogg_formation_fighter_view2"
+	//"def_attach8"				"q4x_strogg_formation_fighter_view3"
+	//"def_attach9"				"q4x_strogg_formation_fighter_view4"
+	//"def_attach10"			"q4x_strogg_formation_fighter_view5"
+}
+
+model model_monster_q4x_strogg_formation_fighter
+{
+	mesh										models/monsters/strogg_fighter/mesh.md5mesh	
+	anim idle									models/monsters/strogg_fighter/idle.md5anim
+	{
+	ai_no_look
+	}
+
+}
+
+
+//Assploders---------------------------------------------------------------------------------
+
+entityDef q4x_strogg_formation_fighter1
+{
+	"inherit"				"monster_q4x_strogg_fighter_space"
+	"health"				"100"
+	"joint"					"j01"
+	"turn_rate"				"1"
+	"attackRange"				"0 1"
+	"no_sight"				"1"
+	"attackSightDelay"			"1000"
+	
+	"fx_death"				"effects/explosions/air/formation_explode.fx"
+	
+	"def_attach1"			"q4x_strogg_formation_fighter_exp"
+}
+
+
+entityDef q4x_strogg_formation_fighter2
+{
+	"inherit"					"q4x_strogg_formation_fighter1"
+	"joint"						"j02"
+}
+
+entityDef q4x_strogg_formation_fighter3
+{
+	"inherit"					"q4x_strogg_formation_fighter1"
+	"joint"						"j03"
+}
+
+entityDef q4x_strogg_formation_fighter4
+{
+	"inherit"					"q4x_strogg_formation_fighter1"
+	"joint"						"j04"
+}
+
+entityDef q4x_strogg_formation_fighter5
+{
+	"inherit"					"q4x_strogg_formation_fighter1"
+	"joint"						"j05"
+}
+
+
+entityDef q4x_strogg_formation_fighter_exp
+{
+	"clipmodel"				"models/monsters/strogg_fighter_formation/strogg_fighter_formation_clip.ASE"
+	"health"				"1"
+	"joint"					"origin"
+	
+	
+	
+	"spawnclass"				"idMoveable"
+
+
+	"density"					"0.02"
+	"friction"					"0.2"
+	"bouncyness"				"0.4"
+
+	//"axis_fx_loop"				"-2"
+	
+//	"health"					"50"
+
+	"model"						"models\mapobjects\strogg\barrels\medium1_low.lwo"
+	
+	
+	"def_stage1"				"moveable_q4x_stage_burn"
+	"def_stage2"				"moveable_q4x_stage_ignite"
+	"def_stage3"				"moveable_q4x_stage_launch"
+	"def_stage4"				"moveable_q4x_stage_explode"
+
+}
+
+
+
+//new explode-------------------------------------------------------------------------
+
+entityDef moveable_q4x_stage_ignite 
+{
+	"fx_loop"					"effects/moveables/barrel/ignite.fx"
+	"dir_fx_loop"				"0 0 1"
+	"end_health"				"1"
+	"end_time_min"				".5"									// Duration the stage is active for
+	"end_time_max"				".75"
+}
+
+entityDef moveable_q4x_stage_burn 
+{
+	"fx_impact"					"effects/moveables/barrel/burn.fx"		// Plays effect at impact
+	"end_time"					".25"
+}
+
+entityDef moveable_q4x_stage_launch 
+{
+	// Effects
+	"fx_explode"				"effects/moveables/barrel/launch.fx"
+
+	"fx_loop"				"effects/moveables/barrel/fly.fx"
+	"dir_fx_loop"				"0 0 1"
+									
+
+	// Radius damage
+	"def_splash_damage"			"damage_explosion_push"
+	
+	// Swap out skin for a damaged skin
+	"skin"						"skins/mapobjects/strogg/barrels/medium1_a_burt"
+
+
+	// End conditions
+	"end_time_min"				".5"									// Duration the stage is active for
+	"end_time_max"				".75"
+}
+
+entityDef moveable_q4x_stage_explode 
+{
+
+
+	"fx_explode"				"effects/explosions/air/formation_explode.fx"	// on off effect to play
+	"def_splash_damage"			"damage_q4x_HugeExplosion"					// Splash damage
+	"remove"					"1"										// Remove entity on this stage
+	"triggerTargets"			"1"
+}
+
+entityDef damage_q4x_HugeExplosion
+{
+	"damage"						"50"
+	"radius"						"256"
+	"push"							"40000"
+	"deathPush"							"150"
+	"deathPushMin"							"3000 2000"
+	"deathPushMax"							"5000 3000"
+}
+
+/*
+entityDef debris_q4x_mf_wing
+{
+	"model" 					"models/vehicles/strogg_flyer/debris/sf_wing2.lwo"
+	"density"					"-1"
+	"friction"					"0"
+	"bouncyness"				"0"
+	"trailAttenuateSpeed"		"200"
+
+	//"fx_trail"					"effects/fire/spot_32_trail_roller.fx"
+	"snd_bounce"				"effects_gib_bounce"
+
+}
+
+entityDef debris_q4x_mf_barrel
+{
+	"model" 					"models/vehicles/strogg_flyer/debris/sf_wing2.lwo"
+	"density"					"-1"
+	"friction"					"0"
+	"bouncyness"				"0"
+	"trailAttenuateSpeed"		"200"
+
+	//"fx_trail"					"effects/fire/spot_32_trail_roller.fx"
+	"snd_bounce"				"effects_gib_bounce"
+
+}
+*/
+
+
+
+
+entityDef monster_q4x_strogg_fighter_formation_2
+{
+
+	"spawnclass"				"rvMonsterStroggFlyer"
+	"inherit"					"actor_default"
+
+	"editor_color"			"1 0.5 0"
+	"editor_mins"			"-32 -32 0"
+	"editor_maxs"			"32 32 64"
+
+	"awareRange"				"0.1"
+	"model"						"model_monster_q4x_strogg_fighter_formation"
+	"health"					"10000"
+	"turn_rate"				"1"
+	"flying"					"1"
+	
+	"attackRange"				"0 1"
+	"no_sight"					"1"
+	"attackSightDelay"			"1000"
+	
+	
+	
+
+	"def_attach2"				"q4x_strogg_formation_fighter2"
+
+	"def_attach4"				"q4x_strogg_formation_fighter4"
+
+	
+
+}
+
+entityDef monster_q4x_strogg_fighter_formation_3
+{
+
+	"spawnclass"				"rvMonsterStroggFlyer"
+	"inherit"					"actor_default"
+
+	"editor_color"			"1 0.5 0"
+	"editor_mins"			"-32 -32 0"
+	"editor_maxs"			"32 32 64"
+
+	"awareRange"				"0.1"
+	"model"						"model_monster_q4x_strogg_fighter_formation"
+	"health"					"10000"
+	"turn_rate"				"1"
+	"flying"					"1"
+	
+	"attackRange"				"0 1"
+	"no_sight"					"1"
+	"attackSightDelay"			"1000"
+	
+	
+	
+	"def_attach1"				"q4x_strogg_formation_fighter1"
+
+	"def_attach3"				"q4x_strogg_formation_fighter3"
+
+	"def_attach5"				"q4x_strogg_formation_fighter5"
+
+}

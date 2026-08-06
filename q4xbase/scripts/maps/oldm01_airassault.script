@@ -1,0 +1,5685 @@
+//------------------------------------------------------------------------------------
+// M01_airassault.script
+//
+// (c) Ritual Entertainment 2005
+// Author:  JSchuch
+//------------------------------------------------------------------------------------
+
+namespace map_m01
+{
+
+#include "scripts/doom_defs.script"
+
+	// ### DEBUG SKIP ###
+	//Set equal to 1 to skip ahead to atmosphere entry
+	float SKIP_TO_ATMOS = 0;
+
+	boolean INTRO;
+
+	float SEGMENT = 1;			//which segment the player is in
+						//segment 1 in space
+						//segment 2 in atmosphere
+
+	float SUBSEGMENT = 11;			//11=Round 1 Wave 1
+						//12=Round 1 Wave 2
+						//13=Round 1 Wave 3
+						//21=Round 2 Wave 1
+						//31=Round 3 Wave 1 ... etc
+
+
+	float DROPSHIP_HEALTH = 15000;		//healh of the dropship
+	float MCC1_HEALTH = 25000;
+	float MCC2_HEALTH = 25000;
+	float ROUND1_WAVE1_KILLCOUNT = 10;	//How many kills the player must get
+	float ROUND1_WAVE1_PLAYERKILLS = 0;	//How many kills the player has gotten
+	float ROUND1_WAVE2_KILLCOUNT = 10;
+	float ROUND1_WAVE2_PLAYERKILLS = 0;
+	float ROUND1_WAVE3_KILLCOUNT = 10;
+	float ROUND1_WAVE3_PLAYERKILLS = 0;
+	float ROUND2_WAVE1_KILLCOUNT = 2;
+	float ROUND2_WAVE1_PLAYERKILLS = 0;
+	float ROUND2_WAVE2_KILLCOUNT = 4;
+	float ROUND2_WAVE2_PLAYERKILLS = 0;
+	float ROUND3_WAVE1_KILLCOUNT = 10;
+	float ROUND3_WAVE1_PLAYERKILLS = 0;
+	float ROUND3_WAVE2_KILLCOUNT = 10;
+	float ROUND3_WAVE2_PLAYERKILLS = 0;
+	float ROUND3_WAVE3_KILLCOUNT = 10;
+	float ROUND3_WAVE3_PLAYERKILLS = 0;
+	float ROUND4_WAVE1_KILLCOUNT = 10;
+	float ROUND4_WAVE1_PLAYERKILLS = 0;
+	float ROUND5_WAVE1_KILLCOUNT = 10;
+	float ROUND5_WAVE1_PLAYERKILLS = 0;
+	float ROUND6_WAVE1_KILLCOUNT = 20;
+	float ROUND6_WAVE1_PLAYERKILLS = 0;
+	float ROUND7_WAVE1_KILLCOUNT = 20;
+	float ROUND7_WAVE1_PLAYERKILLS = 0;
+	float STROGG_WAVE_SHIP_COUNTER = 0;	//For tracking when all spawned ships have been killed
+	boolean WARN_SEVENTYFIVE_PERCENT;	//Dropship health reached 75%
+	boolean WARN_FIFTY_PERCENT;		//Dropship health reached 50%
+	boolean WARN_TWENTYFIVE_PERCENT;	//Dropship health reached 25%
+	float GLOBAL_DS_HEALTH_SEVENTYFIVE;
+	float GLOBAL_DS_HEALTH_FIFTY;
+	float GLOBAL_DS_HEALTH_TWENTYFIVE;
+	float GLOBAL_DS_HEALTH_90;
+	float GLOBAL_DS_HEALTH_80;
+	float GLOBAL_DS_HEALTH_70;
+	float GLOBAL_DS_HEALTH_60;
+	float GLOBAL_DS_HEALTH_50;
+	float GLOBAL_DS_HEALTH_40;
+	float GLOBAL_DS_HEALTH_30;
+	float GLOBAL_DS_HEALTH_20;
+	float GLOBAL_DS_HEALTH_10;
+	boolean GUI_90;
+	boolean GUI_80;
+	boolean GUI_70;
+	boolean GUI_60;
+	boolean GUI_50;
+	boolean GUI_40;
+	boolean GUI_30;
+	boolean GUI_20;
+	boolean GUI_10;
+	boolean WARN_MCC1_SEVENTYFIVE_PERCENT;
+	boolean WARN_MCC1_FIFTY_PERCENT;
+	boolean WARN_MCC1_TWENTYFIVE_PERCENT;
+	boolean WARN_MCC2_FIFTY_PERCENT;
+	boolean WARN_MCC2_FOURTY_PERCENT;
+	boolean WARN_MCC2_THIRTY_PERCENT;
+	boolean WARN_MCC2_TWENTY_PERCENT;
+	float GLOBAL_MCC_HEALTH_SEVENTYFIVE;
+	float GLOBAL_MCC_HEALTH_FIFTY;
+	float GLOBAL_MCC_HEALTH_TWENTYFIVE;
+	float GLOBAL_MCC2_HEALTH_FIFTY;
+	float GLOBAL_MCC2_HEALTH_FOURTY;
+	float GLOBAL_MCC2_HEALTH_THIRTY;
+	float GLOBAL_MCC2_HEALTH_TWENTY;
+
+	#define SHIP_BOMBER_1 51
+	#define SHIP_BOMBER_2 52
+	#define SHIP_BOMBER_3 53
+	#define SHIP_BOMBER_4 54
+	#define SHIP_BOMBER_5 55
+	#define SHIP_BOMBER_6 56
+	#define SHIP_BOMBER_7 57
+	#define SHIP_BOMBER_8 58
+	#define SHIP_BOMBER_9 59
+	#define SHIP_BOMBER_10 60
+	#define SHIP_BOMBER_11 61
+	boolean SPLINE_BOMBER_1_COMPLETED;
+	boolean SPLINE_BOMBER_2_COMPLETED;
+	boolean SPLINE_BOMBER_3_COMPLETED;
+	boolean SPLINE_BOMBER_4_COMPLETED;
+	boolean SPLINE_BOMBER_5_COMPLETED;
+	boolean SPLINE_BOMBER_6_COMPLETED;
+	boolean SPLINE_BOMBER_7_COMPLETED;
+	boolean SPLINE_BOMBER_8_COMPLETED;
+	boolean SPLINE_BOMBER_9_COMPLETED;
+	boolean SPLINE_BOMBER_10_COMPLETED;
+	boolean SPLINE_BOMBER_11_COMPLETED;
+	#define SHIP_1A 1	//fighter left
+	#define SHIP_1B 2	//fighter left
+	#define SHIP_1C 3	//fighter left
+	#define SHIP_1D 4	//fighter left
+	#define SHIP_1E 5	//fighter right
+	#define SHIP_1F 6	//fighter right
+	#define SHIP_1G 7	//fighter right
+	#define SHIP_1H 8	//fighter right
+	#define SHIP_1I 9	//rotj fighter
+	#define SHIP_1J 10	//rotj fighter
+	#define SHIP_1K 11	//rotj fighter
+	#define SHIP_1L 12	//rotj fighter
+	boolean SPLINE_ONE_A_COMPLETED;
+	boolean SPLINE_ONE_B_COMPLETED;
+	boolean SPLINE_ONE_C_COMPLETED;
+	boolean SPLINE_ONE_D_COMPLETED;
+	boolean SPLINE_ONE_E_COMPLETED;	
+	boolean SPLINE_ONE_F_COMPLETED;	
+	boolean SPLINE_ONE_G_COMPLETED;	
+	boolean SPLINE_ONE_H_COMPLETED;	
+	boolean SPLINE_ONE_I_COMPLETED;	
+	boolean SPLINE_ONE_J_COMPLETED;	
+	boolean SPLINE_ONE_K_COMPLETED;	
+	boolean SPLINE_ONE_L_COMPLETED;
+	#define SHIP_2A 13	//fighter left
+	#define SHIP_2B 14	//fighter left
+	#define SHIP_2C 15	//fighter left
+	#define SHIP_2D 16	//fighter left
+	#define SHIP_2E 17	//fighter right
+	#define SHIP_2F 18	//fighter right
+	#define SHIP_2G 19	//fighter right
+	#define SHIP_2H 20	//fighter right
+	#define SHIP_2I 21
+	#define SHIP_2J 22
+	#define SHIP_2K 23
+	#define SHIP_2L 24
+	#define SHIP_2M 25
+	#define SHIP_2N 26
+	#define SHIP_2P 27
+	#define SHIP_2Q 28
+	#define SHIP_2R 29
+	#define SHIP_2S 30
+	#define SHIP_2T 31
+	#define SHIP_2U 32
+	boolean SPLINE_TWO_A_COMPLETED;
+	boolean SPLINE_TWO_B_COMPLETED;
+	boolean SPLINE_TWO_C_COMPLETED;
+	boolean SPLINE_TWO_D_COMPLETED;
+	boolean SPLINE_TWO_E_COMPLETED;	
+	boolean SPLINE_TWO_F_COMPLETED;	
+	boolean SPLINE_TWO_G_COMPLETED;	
+	boolean SPLINE_TWO_H_COMPLETED;	
+	boolean SPLINE_TWO_I_COMPLETED;	
+	boolean SPLINE_TWO_J_COMPLETED;	
+	boolean SPLINE_TWO_K_COMPLETED;	
+	boolean SPLINE_TWO_L_COMPLETED;	
+	boolean SPLINE_TWO_M_COMPLETED;	
+	boolean SPLINE_TWO_N_COMPLETED;		//atmosphere
+	boolean SPLINE_TWO_P_COMPLETED;	
+	boolean SPLINE_TWO_Q_COMPLETED;	
+	boolean SPLINE_TWO_R_COMPLETED;	
+	boolean SPLINE_TWO_S_COMPLETED;	
+	boolean SPLINE_TWO_T_COMPLETED;	
+	boolean SPLINE_TWO_U_COMPLETED;	
+	boolean PLAYERONTURRET;
+	boolean PLAYER_ENTERED_BALLTURRET;
+	boolean PLAYER_IN_CHAIR;
+	boolean WARN_PLAYER_1;			//Tracking player getting off forward cannon during space segments
+	boolean TELEPORTER_REAR_ACTIVE;
+	float SKYBOXMOVETIME = 20;	//these are so I can reset the skybox position very quickly between segments
+	float SKYBOXACCELTIME = 4;
+	float SKYBOXDECELTIME = 4;
+	float MCC1_STATE = 1;			//Which position MCC1 is in, 1 = above and to the right, 2 = above, 3 = below
+	float MCC2_STATE = 1;			//Which position MCC2 is in, 1 = above and to the right, 2 = above, 3 = below
+	boolean MCC1_STATE1_COMPLETE;
+	boolean MCC1_STATE2_COMPLETE;
+	boolean MCC1_STATE3_COMPLETE;
+	boolean MCC2_STATE1_COMPLETE;
+	boolean MCC2_STATE2_COMPLETE;
+	boolean MCC2_STATE3_COMPLETE;
+	boolean HELPED_TAK;
+	boolean ATMOS_CIN;
+	float SHAKE_INTENSITY = 1;		//How strong and how often to do ambient screen shakes
+	boolean TAK_WANDER;
+	boolean ROCKET_TRAINED;
+	boolean BLASTER_TRAINED;
+	boolean PLAYER_NEAR_TAK;
+	boolean IN_TRAINING;
+	float INVADER_COUNT = 0;
+	boolean DS_ONE_LOOP;
+	boolean DS_TWO_LOOP;
+
+//PROTOTYPES, in order they occur (roughly)
+void seg1_moveShipAlongSpline(entity shipEntity, entity moverEntity, entity splinePath, float shipId, float flytime);
+void seg1_splinePathCompleted(float shipId, boolean completed);
+void seg2_moveShipAlongSpline(entity shipEntity, entity moverEntity, entity splinePath, float shipId, float flytime);
+void seg2_splinePathCompleted(float shipId, boolean completed);
+void stroggKilledFeedback( entity self, entity killer );
+void m01_completeObjective( float m );
+void m01_giveObjective( float n );
+void skybox_movement();
+void movePlanetCloser();
+void startMap();
+void dropshiphealthcheck();
+void debris();
+void debris2();
+void debris3();
+void debris4();
+void startredlightrotate();
+void player_standing_around();
+void monitorSod();
+void playerEnteredForwardTurret();
+void playerExitedForwardTurret();
+void returnToTurretDialogue();
+void ambientShaking();
+void move_upper_mcc();
+void start_dropships();
+void startDropship2();
+void loopMcc2Spline_above();
+void loopMcc2Spline_below();
+void loopMcc2Spline();
+void loopMccSpline_above();
+void loopMccSpline_below();
+void loopMccSpline();
+void seg1_spawn_rotj_1_shipSpawned( entity spawnedrotja );
+void seg1_spawn_rotj_2_shipSpawned( entity spawnedrotjb );
+void seg1_spawn_rotj_3_shipSpawned( entity spawnedrotjc );
+void seg1_spawn_rotj_4_shipSpawned( entity spawnedrotjd );
+void chaseShips1();
+void seg1_chase_1_stopFiring();
+void haulass1();
+void fireRocketClusters();
+void tiltRight();
+void tiltLeft();
+void chaseShips2();
+void seg1_chase_2_stopFiring();
+void haulass2();
+void fireRocketClusters2();
+void fireRocketClusters3();
+void fireOtherBG();
+void mccSpecial();
+void outOfControlStrogg();
+void chaseShips3();
+void seg2_chase_2_stopFiring();
+void chaseShips4();
+void seg2_chase_1_stopFiring();
+void fireOtherBG2();
+void toggleCloudEffects();
+void moveSkyCameraToAtmosphere();
+void drop_rear_teleporter();
+void invasion_dmg_fx();
+void monitorTeleHealth();
+void spinRearTeleBall();
+void seg3_chase_3_stopFiring();
+void seg3_chase_2_stopFiring();
+void seg3_chase_1_stopFiring();
+void chaseShips5();
+void atmos_biggunshots();
+void doShipDamage1();
+void doShipDamage2();
+void doShipDamage3();
+void introCinematic();
+void mitchellHelpTownsend();
+void takDoneFixing();
+void takFixStuff();
+void mcc1Dead();
+void mcc2Dead();
+void missionFailed();
+void atmosphereCannonTilting();
+void moveTaktoConsole();
+void putDarnellInPortCannon();
+void putNavajasInSBCannon();
+void moveTownsendtoConsole();
+void moveMarkswellUpLadder();
+void moveMitchelltoConsole();
+void spinLeft();
+void spinRight();
+void vo_teammatesRound1Wave1();
+void vo_teammatesRound1Wave2();
+void vo_teammatesRound1Wave3();
+void vo_teammatesRound2Wave1();
+void vo_teammatesRound2Wave2();
+void vo_teammatesRound3Wave1();
+void vo_teammatesRound3Wave2();
+void vo_teammatesRound3Wave3();
+void vo_teammatesRound4Wave1();
+void vo_teammatesRound5Wave1();
+void vo_teammatesRound6Wave1();
+void mccHealthRegen();
+void invaderSpawned();
+void invaderKilled();
+void remindPlayerBallTurret();
+void remindPlayerStrapIn();
+
+//Development only!  GUI in forward turret that adds 1000 health to the dropship.
+void devGiveDropshipHealth()
+{
+	float n;
+	float p;
+
+	p = $drop_ship.getHealth();
+	n = ( p + 1000 );
+	$drop_ship.setHealth( n );
+}
+
+//////////////////////////////////////////////////////////////
+                                                             //
+///////////////////////////////////////////////////////////////
+//
+///////////////////////////////////////////////////////////////
+//  Skybox Movement                                          //
+///////////////////////////////////////////////////////////////
+
+void skybox_movement()
+{
+	while( 1 ) {
+		//cycle 1
+		$org_skycam_1.time( SKYBOXMOVETIME );
+		$stars.time( SKYBOXMOVETIME );
+		$org_skycam_1.accelTime( SKYBOXACCELTIME );
+		$org_skycam_1.decelTime( SKYBOXDECELTIME );
+		$stars.accelTime( SKYBOXACCELTIME );
+		$stars.decelTime( SKYBOXDECELTIME );
+		$org_skycam_1.move( 270, 256 );
+		$stars.rotateOnce( '7 -5 -7' );
+		sys.waitFor( $org_skycam_1 );
+		sys.waitFrame();
+
+		$org_skycam_1.time( SKYBOXMOVETIME );
+		$stars.time( SKYBOXMOVETIME );
+		$org_skycam_1.accelTime( SKYBOXACCELTIME );
+		$org_skycam_1.decelTime( SKYBOXDECELTIME );
+		$stars.accelTime( SKYBOXACCELTIME );
+		$stars.decelTime( SKYBOXDECELTIME );
+		$org_skycam_1.move( -1, 256 );
+		$stars.rotateOnce( '-7 5 7' );
+		sys.waitFor( $org_skycam_1 );
+		sys.waitFrame();
+
+		$org_skycam_1.time( SKYBOXMOVETIME );
+		$stars.time( SKYBOXMOVETIME );
+		$org_skycam_1.accelTime( SKYBOXACCELTIME );
+		$org_skycam_1.decelTime( SKYBOXDECELTIME );
+		$stars.accelTime( SKYBOXACCELTIME );
+		$stars.decelTime( SKYBOXDECELTIME );
+		$org_skycam_1.move( 90, 256 );
+		$stars.rotateOnce( '7 -5 -7' );
+		sys.waitFor( $org_skycam_1 );
+		sys.waitFrame();
+
+		$org_skycam_1.time( SKYBOXMOVETIME );
+		$stars.time( SKYBOXMOVETIME );
+		$org_skycam_1.accelTime( SKYBOXACCELTIME );
+		$org_skycam_1.decelTime( SKYBOXDECELTIME );
+		$stars.accelTime( SKYBOXACCELTIME );
+		$stars.decelTime( SKYBOXDECELTIME );
+		$org_skycam_1.move( -2, 256 );
+		$stars.rotateOnce( '-7 5 7' );
+		sys.waitFor( $org_skycam_1 );
+		sys.waitFrame();
+
+		//cycle 2
+		$org_skycam_1.time( SKYBOXMOVETIME );
+		$stars.time( SKYBOXMOVETIME );
+		$org_skycam_1.accelTime( SKYBOXACCELTIME );
+		$org_skycam_1.decelTime( SKYBOXDECELTIME );
+		$stars.accelTime( SKYBOXACCELTIME );
+		$stars.decelTime( SKYBOXDECELTIME );
+		$org_skycam_1.move( 90, 256 );
+		$stars.rotateOnce( '7 -5 -7' );
+		sys.waitFor( $org_skycam_1 );
+		sys.waitFrame();
+
+		$org_skycam_1.time( SKYBOXMOVETIME );
+		$stars.time( SKYBOXMOVETIME );
+		$org_skycam_1.accelTime( SKYBOXACCELTIME );
+		$org_skycam_1.decelTime( SKYBOXDECELTIME );
+		$stars.accelTime( SKYBOXACCELTIME );
+		$stars.decelTime( SKYBOXDECELTIME );
+		$org_skycam_1.move( -2, 256 );
+		$stars.rotateOnce( '-7 5 7' );
+		sys.waitFor( $org_skycam_1 );
+		sys.waitFrame();
+
+		$org_skycam_1.time( SKYBOXMOVETIME );
+		$stars.time( SKYBOXMOVETIME );
+		$org_skycam_1.accelTime( SKYBOXACCELTIME );
+		$org_skycam_1.decelTime( SKYBOXDECELTIME );
+		$stars.accelTime( SKYBOXACCELTIME );
+		$stars.decelTime( SKYBOXDECELTIME );
+		$org_skycam_1.move( 270, 256 );
+		$stars.rotateOnce( '7 -5 -7' );
+		sys.waitFor( $org_skycam_1 );
+		sys.waitFrame();
+
+		$org_skycam_1.time( SKYBOXMOVETIME );
+		$stars.time( SKYBOXMOVETIME );
+		$org_skycam_1.accelTime( SKYBOXACCELTIME );
+		$org_skycam_1.decelTime( SKYBOXDECELTIME );
+		$stars.accelTime( SKYBOXACCELTIME );
+		$stars.decelTime( SKYBOXDECELTIME );
+		$org_skycam_1.move( -1, 256 );
+		$stars.rotateOnce( '-7 5 7' );
+		sys.waitFor( $org_skycam_1 );
+		sys.waitFrame();
+	}
+}
+
+void movePlanetCloser()
+{
+	$skycamera_main_org.time( 600 );
+	$skycamera_main_org.move( 360, 1024 );
+	sys.waitFor( $skycamera_main_org );
+}
+
+///////////////////////////////////////////////////////////////
+                                                             //
+///////////////////////////////////////////////////////////////
+//
+///////////////////////////////////////////////////////////////
+//  Objectives                                               //
+///////////////////////////////////////////////////////////////
+
+void m01_giveObjective( float n )
+{
+	entity p;
+
+	p = sys.getEntity( "item_objective_" + n );
+	sys.trigger( p );
+}
+
+void m01_completeObjective( float m )
+{
+	entity q;
+
+	q = sys.getEntity( "item_objectivecomplete_" + m );
+	sys.trigger( q );
+}
+
+//Called each time a Strogg Flyer or Bomber on a spline is killed
+void stroggKilledFeedback( entity self, entity killer )
+{
+	STROGG_WAVE_SHIP_COUNTER--;
+
+	//Round 1 Wave 1-3
+	if( killer == $player1 && SUBSEGMENT == 11 ) {
+		ROUND1_WAVE1_PLAYERKILLS++;
+	}
+	if( killer == $player1 && SUBSEGMENT == 12 ) {
+		ROUND1_WAVE2_PLAYERKILLS++;
+	}
+	if( killer == $player1 && SUBSEGMENT == 13 ) {
+		ROUND1_WAVE3_PLAYERKILLS++;
+	}
+
+	//Round 1 Wave 1-2
+	if( killer == $player1 && SUBSEGMENT == 21 ) {
+		ROUND2_WAVE1_PLAYERKILLS++;
+	}
+	if( killer == $player1 && SUBSEGMENT == 22 ) {
+		ROUND2_WAVE2_PLAYERKILLS++;
+	}
+
+	//Round 3 Wave 1-3
+	if( killer == $player1 && SUBSEGMENT == 31 ) {
+		ROUND3_WAVE1_PLAYERKILLS++;
+	}
+	if( killer == $player1 && SUBSEGMENT == 32 ) {
+		ROUND3_WAVE2_PLAYERKILLS++;
+	}
+	if( killer == $player1 && SUBSEGMENT == 33 ) {
+		ROUND3_WAVE3_PLAYERKILLS++;
+	}
+
+	//Round 4 Wave 1
+	if( killer == $player1 && SUBSEGMENT == 41 ) {
+		ROUND4_WAVE1_PLAYERKILLS++;
+	}
+
+	//Round 5 Wave 1
+	if( killer == $player1 && SUBSEGMENT == 51 ) {
+		ROUND5_WAVE1_PLAYERKILLS++;
+	}
+
+	//Round 6 Wave 1
+	if( killer == $player1 && SUBSEGMENT == 61 ) {
+		ROUND6_WAVE1_PLAYERKILLS++;
+	}
+
+	//Round 7 Wave 1
+	if( killer == $player1 && SUBSEGMENT == 71 ) {
+		ROUND7_WAVE1_PLAYERKILLS++;
+	}
+}
+
+///////////////////////////////////////////////////////////////
+                                                             //
+///////////////////////////////////////////////////////////////
+//
+///////////////////////////////////////////////////////////////
+//  Spawning ships on splines                                //
+//  Used by first, second and thrid segments                 //
+///////////////////////////////////////////////////////////////
+
+void seg1_splinePathCompleted(float shipId, boolean completed)
+{
+	//Fighters
+	if(shipId == SHIP_1A)
+		SPLINE_ONE_A_COMPLETED = completed;
+
+	if(shipId == SHIP_1B)
+		SPLINE_ONE_B_COMPLETED = completed;
+
+	if(shipId == SHIP_1C)
+		SPLINE_ONE_C_COMPLETED = completed;
+
+	if(shipId == SHIP_1D)
+		SPLINE_ONE_D_COMPLETED = completed;
+
+	if(shipId == SHIP_1E)
+		SPLINE_ONE_E_COMPLETED = completed;
+
+	if(shipId == SHIP_1F)
+		SPLINE_ONE_F_COMPLETED = completed;
+
+	if(shipId == SHIP_1G)
+		SPLINE_ONE_G_COMPLETED = completed;
+
+	if(shipId == SHIP_1H)
+		SPLINE_ONE_H_COMPLETED = completed;
+
+	//Bombers
+	if(shipId == SHIP_BOMBER_1)
+		SPLINE_BOMBER_1_COMPLETED = completed;
+
+	if(shipId == SHIP_BOMBER_2)
+		SPLINE_BOMBER_2_COMPLETED = completed;
+
+	if(shipId == SHIP_BOMBER_3)
+		SPLINE_BOMBER_3_COMPLETED = completed;
+
+	if(shipId == SHIP_BOMBER_4)
+		SPLINE_BOMBER_4_COMPLETED = completed;
+
+	if(shipId == SHIP_BOMBER_5)
+		SPLINE_BOMBER_5_COMPLETED = completed;
+
+	if(shipId == SHIP_BOMBER_6)
+		SPLINE_BOMBER_6_COMPLETED = completed;
+
+	if(shipId == SHIP_BOMBER_7)
+		SPLINE_BOMBER_7_COMPLETED = completed;
+
+	if(shipId == SHIP_BOMBER_8)
+		SPLINE_BOMBER_8_COMPLETED = completed;
+
+	if(shipId == SHIP_BOMBER_9)
+		SPLINE_BOMBER_9_COMPLETED = completed;
+
+	if(shipId == SHIP_BOMBER_10)
+		SPLINE_BOMBER_10_COMPLETED = completed;
+
+	if(shipId == SHIP_BOMBER_11)
+		SPLINE_BOMBER_11_COMPLETED = completed;
+}
+
+void seg1_moveShipAlongSpline(entity shipEntity, entity moverEntity, entity splinePath, float shipId, float flytime)
+{
+	float p;
+
+	p = ( flytime * 0.5 );
+
+	shipEntity.setScript( "death", "map_m01::stroggKilledFeedback" );
+
+	STROGG_WAVE_SHIP_COUNTER++;
+
+	seg1_splinePathCompleted(shipId, false);
+
+	sys.wait( 0.1 );
+
+	shipEntity.bind( moverEntity );			//Attach the spawned Strogg ship to the func_mover
+
+	sys.wait( 0.1 );
+
+	moverEntity.time( flytime );
+	moverEntity.accelTime( p );
+	moverEntity.startSpline( splinePath );		//Start the mover along the spline
+//	sys.wait( (flytime + 0.5) );
+	sys.waitFor( moverEntity );
+
+	if( isValidEntity( shipEntity ) )
+		shipEntity.kill();			//Kill the spawned ship if it wasn't killed by the player or teammates
+	sys.wait( 1 );					//Wait a moment for the .kill to work (don't know why, but we have to do this)
+
+	moverEntity.removeBinds();			//Clear any binds to this mover
+
+	sys.wait( 0.1 );
+	
+	moverEntity.stopSpline();			//Tell the mover to not be associated with the spline
+
+	sys.wait( 0.1 );
+
+	seg1_splinePathCompleted(shipId, true);		//Set our variable back to one so we can spawn another ship
+}
+
+//Bombers___________________________________________________________________
+void bomber_1_shipSpawned( entity bomber1 )
+{
+	if( SPLINE_BOMBER_1_COMPLETED ) {
+		thread seg1_moveShipAlongSpline(bomber1, $bomber_1_mover, $bomber_1_spline, SHIP_BOMBER_1, 25 );
+	}
+}
+
+void bomber_2_shipSpawned( entity bomber2 )
+{
+	if( SPLINE_BOMBER_2_COMPLETED ) {
+		thread seg1_moveShipAlongSpline(bomber2, $bomber_2_mover, $bomber_2_spline, SHIP_BOMBER_2, 25 );
+	}
+}
+
+void bomber_3_shipSpawned( entity bomber3 )
+{
+	if( SPLINE_BOMBER_3_COMPLETED ) {
+		thread seg1_moveShipAlongSpline(bomber3, $bomber_3_mover, $bomber_3_spline, SHIP_BOMBER_3, 25 );
+	}
+}
+
+void bomber_4_shipSpawned( entity bomber4 )
+{
+	if( SPLINE_BOMBER_4_COMPLETED ) {
+		thread seg1_moveShipAlongSpline(bomber4, $bomber_4_mover, $bomber_4_spline, SHIP_BOMBER_4, 25 );
+	}
+}
+
+void bomber_5_shipSpawned( entity bomber5 )
+{
+	if( SPLINE_BOMBER_5_COMPLETED ) {
+		thread seg1_moveShipAlongSpline(bomber5, $bomber_5_mover, $bomber_5_spline, SHIP_BOMBER_5, 25 );
+	}
+}
+
+void bomber_6_shipSpawned( entity bomber6 )
+{
+	if( SPLINE_BOMBER_6_COMPLETED ) {
+		thread seg1_moveShipAlongSpline(bomber6, $bomber_6_mover, $bomber_6_spline, SHIP_BOMBER_6, 25 );
+	}
+}
+
+void bomber_7_shipSpawned( entity bomber7 )
+{
+	if( SPLINE_BOMBER_7_COMPLETED ) {
+		thread seg1_moveShipAlongSpline(bomber7, $bomber_7_mover, $bomber_7_spline, SHIP_BOMBER_7, 25 );
+	}
+}
+
+void bomber_8_shipSpawned( entity bomber8 )
+{
+	if( SPLINE_BOMBER_8_COMPLETED ) {
+		thread seg1_moveShipAlongSpline(bomber8, $bomber_8_mover, $bomber_8_spline, SHIP_BOMBER_8, 25 );
+	}
+}
+
+void bomber_9_shipSpawned( entity bomber9 )
+{
+	if( SPLINE_BOMBER_9_COMPLETED ) {
+		thread seg1_moveShipAlongSpline(bomber9, $bomber_9_mover, $bomber_9_spline, SHIP_BOMBER_9, 32 );
+	}
+}
+
+void bomber_10_shipSpawned( entity bomber10 )
+{
+	if( SPLINE_BOMBER_10_COMPLETED ) {
+		thread seg1_moveShipAlongSpline(bomber10, $bomber_10_mover, $bomber_10_spline, SHIP_BOMBER_10, 32 );
+	}
+}
+
+void bomber_11_shipSpawned( entity bomber11 )
+{
+	if( SPLINE_BOMBER_11_COMPLETED ) {
+		thread seg1_moveShipAlongSpline(bomber11, $bomber_11_mover, $bomber_11_spline, SHIP_BOMBER_11, 32 );
+	}
+}
+
+//Fighters__________________________________________________________________
+//Called by the func_spawn '$seg1_spawn_1a'
+void seg1_spawn_1a_shipSpawned( entity spawnedstrogg1a )
+{
+	if( SPLINE_ONE_A_COMPLETED ) {
+		thread seg1_moveShipAlongSpline(spawnedstrogg1a, $seg1_spawn_1a_mover, $seg1_spline_1a, SHIP_1A, 14 );
+	}
+}
+
+//Called by the func_spawn '$seg1_spawn_1b'
+void seg1_spawn_1b_shipSpawned( entity spawnedstrogg1b )
+{
+	if( SPLINE_ONE_B_COMPLETED ) {
+		thread seg1_moveShipAlongSpline(spawnedstrogg1b, $seg1_spawn_1b_mover, $seg1_spline_1b, SHIP_1B, 12 );		
+	}
+}
+	
+//Called by the func_spawn '$seg1_spawn_1c'
+void seg1_spawn_1c_shipSpawned( entity spawnedstrogg1c )
+{
+	if( SPLINE_ONE_C_COMPLETED ) {
+		thread seg1_moveShipAlongSpline(spawnedstrogg1c, $seg1_spawn_1c_mover, $seg1_spline_1c, SHIP_1C, 10 );		
+	}
+}
+
+//Called by the func_spawn '$seg1_spawn_1d'
+void seg1_spawn_1d_shipSpawned( entity spawnedstrogg1d )
+{
+	if( SPLINE_ONE_D_COMPLETED ) {
+		thread seg1_moveShipAlongSpline(spawnedstrogg1d, $seg1_spawn_1d_mover, $seg1_spline_1d, SHIP_1D, 13 );		
+	}
+}
+
+//Called by the func_spawn '$seg1_spawn_1e'
+void seg1_spawn_1e_shipSpawned( entity spawnedstrogg1e )
+{
+	if( SPLINE_ONE_E_COMPLETED ) {
+		thread seg1_moveShipAlongSpline(spawnedstrogg1e, $seg1_spawn_1e_mover, $seg1_spline_1e, SHIP_1E, 14 );		
+	}
+}
+
+//Called by the func_spawn '$seg1_spawn_1f'
+void seg1_spawn_1f_shipSpawned( entity spawnedstrogg1f )
+{
+	if( SPLINE_ONE_F_COMPLETED ) {
+		thread seg1_moveShipAlongSpline(spawnedstrogg1f, $seg1_spawn_1f_mover, $seg1_spline_1f, SHIP_1F, 15 );		
+	}
+}
+
+//Called by the func_spawn '$seg1_spawn_1g'
+void seg1_spawn_1g_shipSpawned( entity spawnedstrogg1g )
+{
+	if( SPLINE_ONE_G_COMPLETED ) {
+		thread seg1_moveShipAlongSpline(spawnedstrogg1g, $seg1_spawn_1g_mover, $seg1_spline_1g, SHIP_1G, 10 );		
+	}
+}
+
+//Called by the func_spawn '$seg1_spawn_1h'
+void seg1_spawn_1h_shipSpawned( entity spawnedstrogg1h )
+{
+	if( SPLINE_ONE_H_COMPLETED ) {
+		thread seg1_moveShipAlongSpline(spawnedstrogg1h, $seg1_spawn_1h_mover, $seg1_spline_1h, SHIP_1H, 12 );		
+	}
+}
+//-----------------------------------------------------------------------------------------------------------------------
+
+void seg2_splinePathCompleted(float shipId, boolean completed )
+{
+	//Segment 2
+	if(shipId == SHIP_2A)
+		SPLINE_TWO_A_COMPLETED = completed;
+
+	if(shipId == SHIP_2B)
+		SPLINE_TWO_B_COMPLETED = completed;
+
+	if(shipId == SHIP_2C)
+		SPLINE_TWO_C_COMPLETED = completed;
+
+	if(shipId == SHIP_2D)
+		SPLINE_TWO_D_COMPLETED = completed;
+
+	if(shipId == SHIP_2E)
+		SPLINE_TWO_E_COMPLETED = completed;
+
+	if(shipId == SHIP_2F)
+		SPLINE_TWO_F_COMPLETED = completed;
+
+	if(shipId == SHIP_2G)
+		SPLINE_TWO_G_COMPLETED = completed;
+
+	if(shipId == SHIP_2H)
+		SPLINE_TWO_H_COMPLETED = completed;
+
+	if(shipId == SHIP_2I)
+		SPLINE_TWO_I_COMPLETED = completed;
+
+	if(shipId == SHIP_2J)
+		SPLINE_TWO_J_COMPLETED = completed;
+
+	if(shipId == SHIP_2K)
+		SPLINE_TWO_K_COMPLETED = completed;
+
+	if(shipId == SHIP_2L)
+		SPLINE_TWO_L_COMPLETED = completed;
+
+	if(shipId == SHIP_2M)
+		SPLINE_TWO_M_COMPLETED = completed;
+
+	if(shipId == SHIP_2N)
+		SPLINE_TWO_N_COMPLETED = completed;
+
+	if(shipId == SHIP_2P)
+		SPLINE_TWO_P_COMPLETED = completed;
+
+	if(shipId == SHIP_2Q)
+		SPLINE_TWO_Q_COMPLETED = completed;
+
+	if(shipId == SHIP_2R)
+		SPLINE_TWO_R_COMPLETED = completed;
+
+	if(shipId == SHIP_2S)
+		SPLINE_TWO_S_COMPLETED = completed;
+
+	if(shipId == SHIP_2T)
+		SPLINE_TWO_T_COMPLETED = completed;
+
+	if(shipId == SHIP_2U)
+		SPLINE_TWO_U_COMPLETED = completed;
+}
+
+void seg2_moveShipAlongSpline(entity shipEntity, entity moverEntity, entity splinePath, float shipId, float flytime)
+{
+	float p;
+
+	p = ( flytime * 0.5 );
+
+	shipEntity.setScript( "death", "map_m01::stroggKilledFeedback" );
+
+	STROGG_WAVE_SHIP_COUNTER++;
+
+	seg2_splinePathCompleted(shipId, false);
+
+	sys.wait( 0.1 );
+
+	shipEntity.bind( moverEntity );			//Attach the spawned Strogg ship to the func_mover
+
+	sys.wait( 0.1 );
+
+	moverEntity.time( flytime );
+	moverEntity.accelTime( p );
+	moverEntity.startSpline( splinePath );		//Start the mover along the spline
+	sys.wait( (flytime + 0.5) );
+
+	if( isValidEntity( shipEntity ) )
+		shipEntity.kill();				//Kill the spawned ship if it wasn't killed by the player or teammates
+	sys.wait( 1 );					//Wait a moment for the .kill to work (don't know why, but we have to do this)
+
+	moverEntity.removeBinds();			//Clear any binds to this mover
+
+	sys.wait( 0.1 );
+	
+	moverEntity.stopSpline();			//Tell the mover to not be associated with the spline
+
+	sys.wait( 0.1 );
+
+	seg2_splinePathCompleted(shipId, true);		//Set our variable back to one so we can spawn another ship
+}
+
+//Called by the func_spawn '$seg2_spawn_1a'
+void seg2_spawn_1a_shipSpawned( entity spawnedstrogg2a )
+{
+	if( SPLINE_TWO_A_COMPLETED ) {
+		thread seg2_moveShipAlongSpline(spawnedstrogg2a, $seg2_spawn_1a_mover, $seg2_spline_1a, SHIP_2A, 12 );		
+	}
+}
+
+//Called by the func_spawn '$seg2_spawn_1b'
+void seg2_spawn_1b_shipSpawned( entity spawnedstrogg2b )
+{
+	if( SPLINE_TWO_B_COMPLETED ) {
+		thread seg2_moveShipAlongSpline(spawnedstrogg2b, $seg2_spawn_1b_mover, $seg2_spline_1b, SHIP_2B, 10 );		
+	}
+}
+	
+//Called by the func_spawn '$seg2_spawn_1c'
+void seg2_spawn_1c_shipSpawned( entity spawnedstrogg2c )
+{
+	if( SPLINE_TWO_C_COMPLETED ) {
+		thread seg2_moveShipAlongSpline(spawnedstrogg2c, $seg2_spawn_1c_mover, $seg2_spline_1c, SHIP_2C, 13 );		
+	}
+}
+
+//Called by the func_spawn '$seg2_spawn_1d'
+void seg2_spawn_1d_shipSpawned( entity spawnedstrogg2d )
+{
+	if( SPLINE_TWO_D_COMPLETED ) {
+		thread seg2_moveShipAlongSpline(spawnedstrogg2d, $seg2_spawn_1d_mover, $seg2_spline_1d, SHIP_2D, 11 );		
+	}
+}
+
+//Called by the func_spawn '$seg2_spawn_1e'
+void seg2_spawn_1e_shipSpawned( entity spawnedstrogg2e )
+{
+	if( SPLINE_TWO_E_COMPLETED ) {
+		thread seg2_moveShipAlongSpline(spawnedstrogg2e, $seg2_spawn_1e_mover, $seg2_spline_1e, SHIP_2E, 12 );		
+	}
+}
+
+//Called by the func_spawn '$seg2_spawn_1f'
+void seg2_spawn_1f_shipSpawned( entity spawnedstrogg2f )
+{
+	if( SPLINE_TWO_F_COMPLETED ) {
+		thread seg2_moveShipAlongSpline(spawnedstrogg2f, $seg2_spawn_1f_mover, $seg2_spline_1f, SHIP_2F, 10 );		
+	}
+}
+
+//Called by the func_spawn '$seg2_spawn_1g'
+void seg2_spawn_1g_shipSpawned( entity spawnedstrogg2g )
+{
+	if( SPLINE_TWO_G_COMPLETED ) {
+		thread seg2_moveShipAlongSpline(spawnedstrogg2g, $seg2_spawn_1g_mover, $seg2_spline_1g, SHIP_2G, 12 );		
+	}
+}
+
+//Called by the func_spawn '$seg2_spawn_1h'
+void seg2_spawn_1h_shipSpawned( entity spawnedstrogg2h )
+{
+	if( SPLINE_TWO_H_COMPLETED ) {
+		thread seg2_moveShipAlongSpline(spawnedstrogg2h, $seg2_spawn_1h_mover, $seg2_spline_1h, SHIP_2H, 10 );		
+	}
+}
+
+//Called by the func_spawn '$seg2_spawn_1i'
+void seg2_spawn_1i_shipSpawned( entity spawnedstrogg2i )
+{
+	if( SPLINE_TWO_I_COMPLETED ) {
+		thread seg2_moveShipAlongSpline(spawnedstrogg2i, $seg2_spawn_1i_mover, $seg2_spline_1i, SHIP_2I, 12 );		
+	}
+}
+
+//Called by the func_spawn '$seg2_spawn_1j'
+void seg2_spawn_1j_shipSpawned( entity spawnedstrogg2j )
+{
+	if( SPLINE_TWO_J_COMPLETED ) {
+		thread seg2_moveShipAlongSpline(spawnedstrogg2j, $seg2_spawn_1j_mover, $seg2_spline_1j, SHIP_2J, 11 );		
+	}
+}
+
+//Called by the func_spawn '$seg2_spawn_1k'
+void seg2_spawn_1k_shipSpawned( entity spawnedstrogg2k )
+{
+	if( SPLINE_TWO_K_COMPLETED ) {
+		thread seg2_moveShipAlongSpline(spawnedstrogg2k, $seg2_spawn_1k_mover, $seg2_spline_1k, SHIP_2K, 8 );		
+	}
+}
+
+//Called by the func_spawn '$seg2_spawn_1l'
+void seg2_spawn_1l_shipSpawned( entity spawnedstrogg2l )
+{
+	if( SPLINE_TWO_L_COMPLETED ) {
+		thread seg2_moveShipAlongSpline(spawnedstrogg2l, $seg2_spawn_1l_mover, $seg2_spline_1l, SHIP_2L, 25 );		
+	}
+}
+
+//Called by the func_spawn '$seg2_spawn_1m'
+void seg2_spawn_1m_shipSpawned( entity spawnedstrogg2m )
+{
+	if( SPLINE_TWO_M_COMPLETED ) {
+		thread seg2_moveShipAlongSpline(spawnedstrogg2m, $seg2_spawn_1m_mover, $seg2_spline_1m, SHIP_2M, 25 );		
+	}
+}
+
+//Called by the func_spawn '$seg2_spawn_1n'
+void seg2_spawn_1n_shipSpawned( entity spawnedstrogg2n )
+{
+	if( SPLINE_TWO_N_COMPLETED ) {
+		thread seg2_moveShipAlongSpline(spawnedstrogg2n, $seg2_spawn_1n_mover, $seg2_spline_1n, SHIP_2N, 20 );		
+	}
+}
+
+//Called by the func_spawn '$seg2_spawn_1p'
+void seg2_spawn_1p_shipSpawned( entity spawnedstrogg2p )
+{
+	if( SPLINE_TWO_P_COMPLETED ) {
+		thread seg2_moveShipAlongSpline(spawnedstrogg2p, $seg2_spawn_1p_mover, $seg2_spline_1p, SHIP_2P, 25 );		
+	}
+}
+
+//Called by the func_spawn '$seg2_spawn_1q'
+void seg2_spawn_1q_shipSpawned( entity spawnedstrogg2q )
+{
+	if( SPLINE_TWO_Q_COMPLETED ) {
+		thread seg2_moveShipAlongSpline(spawnedstrogg2q, $seg2_spawn_1q_mover, $seg2_spline_1q, SHIP_2Q, 20 );		
+	}
+}
+
+//Called by the func_spawn '$seg2_spawn_1r'
+void seg2_spawn_1r_shipSpawned( entity spawnedstrogg2r )
+{
+	if( SPLINE_TWO_R_COMPLETED ) {
+		thread seg2_moveShipAlongSpline(spawnedstrogg2r, $seg2_spawn_1r_mover, $seg2_spline_1r, SHIP_2R, 16 );		
+	}
+}
+
+//Called by the func_spawn '$seg2_spawn_1s'
+void seg2_spawn_1s_shipSpawned( entity spawnedstrogg2s )
+{
+	if( SPLINE_TWO_S_COMPLETED ) {
+		thread seg2_moveShipAlongSpline(spawnedstrogg2s, $seg2_spawn_1s_mover, $seg2_spline_1s, SHIP_2S, 18 );		
+	}
+}
+
+//Called by the func_spawn '$seg2_spawn_1t'
+void seg2_spawn_1t_shipSpawned( entity spawnedstrogg2t )
+{
+	if( SPLINE_TWO_T_COMPLETED ) {
+		thread seg2_moveShipAlongSpline(spawnedstrogg2t, $seg2_spawn_1t_mover, $seg2_spline_1t, SHIP_2T, 20 );		
+	}
+}
+
+//Called by the func_spawn '$seg2_spawn_1u'
+void seg2_spawn_1u_shipSpawned( entity spawnedstrogg2u )
+{
+	if( SPLINE_TWO_U_COMPLETED ) {
+		thread seg2_moveShipAlongSpline(spawnedstrogg2u, $seg2_spawn_1u_mover, $seg2_spline_1u, SHIP_2U, 23 );		
+	}
+}
+//-----------------------------------------------------------------------------------------------------------------------
+
+///////////////////////////////////////////////////////////////
+                                                             //
+///////////////////////////////////////////////////////////////
+//
+///////////////////////////////////////////////////////////////
+//  Dropship and/or MCC destroyed                            //
+//  Calls a trigger_changelevel                              //
+///////////////////////////////////////////////////////////////
+
+void missionFailed()
+{
+	//this calls a target_endlevel .. maybe a better way to do this?
+	sys.trigger( $missionfailed );
+}
+
+//This is called by dropshiphealthcheck() if the health of the dropship hits zero
+void dropshipDead()
+{
+	//trigger a massive explosion FX in the ship
+	sys.trigger( $dropship_explode_fx );
+	sys.trigger( $dropship_explode_fx_1 );
+	$player1.exitVehicle( 0 );
+	sys.trigger( $playerkiller );
+}
+
+void mcc1Dead()
+{
+	vector v;
+
+	sys.killthread( "loopMccSpline" );
+	sys.killthread( "loopMccSpline_above" );
+	sys.killthread( "loopMccSpline_below" );
+	$mcc1.stopSpline();
+
+	v = $mcc1.getOrigin();
+	$mcc_asplode.setOrigin( v );
+	$mcc1.hide();
+	$mcc_asplode.show();
+	$mcc_asplode.playAnim( ANIMCHANNEL_ALL, "space_explode" );
+	sys.wait( 10 );
+	missionFailed();
+}
+
+void mcc2Dead()
+{
+	vector v;
+
+	sys.killthread( "loopMcc2Spline" );
+	sys.killthread( "loopMcc2Spline_above" );
+	sys.killthread( "loopMcc2Spline_below" );
+	$mcc2.stopSpline();
+
+	v = $mcc2.getOrigin();
+	$mcc_asplode.setOrigin( v );
+	$mcc2.hide();
+	$mcc_asplode.show();
+	$mcc_asplode.playAnim( ANIMCHANNEL_ALL, "space_explode" );
+	sys.wait( 10 );
+	missionFailed();
+}
+
+///////////////////////////////////////////////////////////////
+                                                             //
+///////////////////////////////////////////////////////////////
+//
+///////////////////////////////////////////////////////////////
+//  Landing sequence                                         //
+///////////////////////////////////////////////////////////////
+
+//This is post-landing & disembark cutscene at the very end
+void seg4_dropshipFlyAway()
+{
+
+	$seg4_end_dropship_mover.speed( 9999 );
+	$seg4_end_dropship_mover.rotateOnce( '0 90 0' );
+	sys.waitFor( $seg4_end_dropship_mover );
+
+	$seg4_end_dropship_mover.show();
+
+	$seg4_end_dropship_mover.speed( 1024 );
+	$seg4_end_dropship_mover.accelTime( 10 );
+	$seg4_end_dropship_mover.startSpline( $end_dropshipmover_spline );
+	sys.waitFor( $seg4_end_dropship_mover );
+}
+
+void endingCinematic()
+{
+	//stop the cloud func_fx going in seg3
+	sys.trigger( $cloudfx_1 );
+	sys.trigger( $cloudfx_2 );
+	sys.trigger( $cloudfx_3 );
+	sys.trigger( $cloudfx_4 );
+	sys.trigger( $cloudfx_5 );
+	sys.trigger( $cloudfx_6 );
+	sys.trigger( $cloudfx_7 );
+	sys.trigger( $cloudfx_8 );
+	sys.trigger( $cloudfx_9 );
+	sys.trigger( $cloudfx_10 );
+	sys.trigger( $cloudfx_11 );
+	sys.trigger( $cloudfx_12 );
+	sys.trigger( $cloudfx_13 );
+	sys.trigger( $cloudfx_14 );
+
+	sys.trigger( $seg4_ambient_1 );
+	sys.trigger( $seg4_ambient_2 );
+
+	$org_skycam_1.time( 0.1 );
+	$org_skycam_1.moveTo( $skycam_seg4 );
+	sys.waitFor( $org_skycam_1 );
+
+	$end_cin_marine_1.show();
+	$end_cin_marine_2.show();
+	$end_cin_marine_4.show();
+	$end_cin_marine_5.show();
+	$end_cin_marine_6.show();
+	$env_q4x_dropship_landing_1.show();
+
+	sys.trigger( $end_cin_camera );
+
+	$env_q4x_dropship_landing_1.playAnim( ANIMCHANNEL_ALL, "landing" );
+	aiScriptedAnim( $end_cin_marine_1, "marine_01_landing", 0, 0 );
+	aiScriptedAnim( $end_cin_marine_2, "marine_02_landing", 0, 0 );
+	aiScriptedAnim( $end_cin_marine_4, "marine_04_landing", 0, 0 );
+	aiScriptedAnim( $end_cin_marine_5, "marine_05_landing", 0, 0 );
+	aiScriptedAnim( $end_cin_marine_6, "marine_06_landing", 0, 0 );
+
+	sys.wait( 0.5 );
+
+	sys.fadeIn( '0 0 0', 0.25);
+
+	sys.wait( 1 );
+
+	radioChatterPlay( $radiochatter, "vo_1_28_1" );	//"<markswell:> <Over Radio> Gentlemen, your mission is to shut down this Strogg power facility..."
+
+	sys.wait( 10 );
+
+	sys.trigger( $end_cin_camera2 );
+
+	sys.wait( 5 );
+
+	sys.trigger( $end_cin_camera );
+
+	sys.wait( 10 );
+
+	sys.fadeOut( '0 0 0', 0.25);
+	sys.wait( 1 );
+
+	thread seg4_dropshipFlyAway();		//use this or the anim?
+
+	$end_cin_marine_1.remove();
+	$end_cin_marine_2.remove();
+	$end_cin_marine_4.remove();
+	$end_cin_marine_5.remove();
+	$end_cin_marine_6.remove();
+	$env_q4x_dropship_landing_1.remove();
+
+	sys.trigger( $end_cin_camera );
+
+	sys.trigger( $end_tak );
+	sys.trigger( $end_darnell );
+//	sys.trigger( $seg4_marine_3 );
+	sys.trigger( $end_navajas );
+	sys.trigger( $end_mitchell );
+
+	sys.wait( 1 );
+
+	$ballturret.lock( 0 );
+	sys.waitFrame();
+	$player1.exitVehicle( 0 );
+	sys.waitFrame();
+	sys.trigger( $bottom_turret_exit_trigger );
+	$player1.setHealth( 100 );
+
+	sys.fadeIn( '0 0 0', 0.25);
+	sys.wait( 2 );
+
+	$player1.enableTarget();
+
+	// ** VO **
+	radioChatterPlayWait( $radiochatter, "vo_1_29_1" );	//"<markswell:> <Over Radio> Dekard, you and Tak take this entrance.  Team two, you're going in the south.  "
+
+	aiScriptedMove( $end_mitchell, $mitchell_ending_spot, 16, 1 );
+	sys.wait( 1 );
+	aiScriptedMove( $end_navajas, $navajas_ending_spot, 16, 1 );
+	sys.wait( 1 );
+	aiScriptedMove( $end_darnell, $darnell_ending_spot, 16, 1 );
+}
+
+///////////////////////////////////////////////////////////////
+                                                             //
+///////////////////////////////////////////////////////////////
+//
+///////////////////////////////////////////////////////////////
+//  Primary functions                                        //
+///////////////////////////////////////////////////////////////
+
+//Called by a trigger_relay targeted by the console gui in the back of the dropship by the chairs
+void playerUsedTakGui()
+{
+	HELPED_TAK = true;
+	$help_tak_console_normal.show();
+	$help_tak_console_use.hide();
+}
+
+//Called from a trigger_once inside the doorway to the ball turret hatch room
+void playerEnteredBallTurret()
+{
+	PLAYER_ENTERED_BALLTURRET = true;
+}
+
+//Called from startMap()
+void atmos_biggunshots()
+{
+	sys.wait( 8 );
+	sys.trigger( $seg3_biggunshot_1 );
+	$seg3_biggunshot_mover_1.time( 10 );
+	$seg3_biggunshot_mover_1.accelTime( 5 );
+	$seg3_biggunshot_mover_1.moveTo( $seg3_biggunshot_target_1 );
+
+	sys.wait( 4 );
+	sys.trigger( $bgmiss_1 );
+	
+	sys.waitFor( $seg3_biggunshot_mover_1 );
+	$seg3_biggunshot_1.hide();	
+	$seg3_biggunshot_1.remove();
+	$seg3_biggunshot_mover_1.remove();
+
+	sys.wait( 20 );
+
+	sys.trigger( $seg3_biggunshot_2 );
+	$seg3_biggunshot_mover_2.time( 10 );
+	$seg3_biggunshot_mover_2.accelTime( 5 );
+	$seg3_biggunshot_mover_2.moveTo( $seg3_biggunshot_target_2 );
+
+	sys.wait( 4 );
+	sys.trigger( $bgmiss_1 );
+
+	sys.waitFor( $seg3_biggunshot_mover_2 );
+	$seg3_biggunshot_2.hide();	
+	$seg3_biggunshot_2.remove();
+	$seg3_biggunshot_mover_2.remove();
+
+	sys.wait( 10 );
+
+	sys.trigger( $seg3_biggunshot_3 );
+	$seg3_biggunshot_mover_3.time( 10 );
+	$seg3_biggunshot_mover_3.accelTime( 5 );
+	$seg3_biggunshot_mover_3.moveTo( $seg3_biggunshot_target_3 );
+
+	sys.wait( 4 );
+	sys.trigger( $bgmiss_1 );
+
+	sys.waitFor( $seg3_biggunshot_mover_1 );
+	$seg3_biggunshot_3.hide();	
+	$seg3_biggunshot_3.remove();
+	$seg3_biggunshot_mover_3.remove();
+}
+
+//Called from startMap()
+void chaseShips5()
+{
+	sys.trigger( $chase_flyby_right );
+
+	sys.trigger( $seg3_chase_1_marine_fx );
+	sys.trigger( $seg3_chase_1_flyerai );
+	$seg3_chase_1_strogg.removeInitialSplineAngles();
+	$seg3_chase_1_strogg.time( 10 );
+	$seg3_chase_1_strogg.startSpline( $seg3_chase_1_spline );
+	sys.wait( 0.5 );
+	$seg3_chase_1_marine.show();
+	$seg3_chase_1_marine.removeInitialSplineAngles();
+	sys.trigger( $seg3_chase_1_marine_gun );
+	$seg3_chase_1_marine.time( 10 );
+	$seg3_chase_1_marine.startSpline( $seg3_chase_1_spline );
+	sys.wait( 10 );
+	$seg3_chase_1_strogg.remove();
+	if( isValidEntity( $seg3_chase_1_marine_gun ) ) {
+		$seg3_chase_1_marine_gun.remove();
+	}
+ 	$seg3_chase_1_marine.remove();
+	$seg3_chase_1_marine_fx.remove();
+
+	sys.wait( 5 );
+
+	sys.trigger( $chase_flyby_left );
+
+	sys.trigger( $seg3_chase_2_marine_fx );
+	sys.trigger( $seg3_chase_2_flyerai );
+	$seg3_chase_2_strogg.removeInitialSplineAngles();
+	$seg3_chase_2_strogg.time( 10 );
+	$seg3_chase_2_strogg.startSpline( $seg3_chase_2_spline );
+	sys.wait( 0.5 );
+	$seg3_chase_2_marine.show();
+	$seg3_chase_2_marine.removeInitialSplineAngles();
+	sys.trigger( $seg3_chase_2_marine_gun );
+	$seg3_chase_2_marine.time( 10 );
+	$seg3_chase_2_marine.startSpline( $seg3_chase_2_spline );
+	sys.wait( 10 );
+	$seg3_chase_2_strogg.remove();
+	if( isValidEntity( $seg3_chase_2_marine_gun ) ) {
+		$seg3_chase_2_marine_gun.remove();
+	}
+ 	$seg3_chase_2_marine.remove();
+	$seg3_chase_2_marine_fx.remove();
+
+	sys.wait( 5 );
+
+	sys.trigger( $seg3_chase_3_marine_fx );
+	sys.trigger( $seg3_chase_3_flyerai );
+	$seg3_chase_3_strogg.removeInitialSplineAngles();
+	$seg3_chase_3_strogg.time( 10 );
+	$seg3_chase_3_strogg.startSpline( $seg3_chase_3_spline );
+	sys.wait( 0.5 );
+	$seg3_chase_3_marine.show();
+	$seg3_chase_3_marine.removeInitialSplineAngles();
+	sys.trigger( $seg3_chase_3_marine_gun );
+	$seg3_chase_3_marine.time( 10 );
+	$seg3_chase_3_marine.startSpline( $seg3_chase_3_spline );
+	sys.wait( 10 );
+	$seg3_chase_3_strogg.remove();
+	if( isValidEntity( $seg3_chase_3_marine_gun ) ) {
+		$seg3_chase_3_marine_gun.remove();
+	}
+ 	$seg3_chase_3_marine.remove();
+	$seg3_chase_3_marine_fx.remove();
+}
+
+//Called on death of Strogg Flyer in chaseships5
+void seg3_chase_1_stopFiring()
+{
+	if( isValidEntity( $seg3_chase_1_marine_gun ) ) {
+		$seg3_chase_1_marine_gun.remove();
+	}
+}
+
+//Called on death of Strogg Flyer in chaseships5
+void seg3_chase_2_stopFiring()
+{
+	if( isValidEntity( $seg3_chase_2_marine_gun ) ) {
+		$seg3_chase_2_marine_gun.remove();
+	}
+}
+
+//Called on death of Strogg Flyer in chaseships5
+void seg3_chase_3_stopFiring()
+{
+	if( isValidEntity( $seg3_chase_3_marine_gun ) ) {
+		$seg3_chase_3_marine_gun.remove();
+	}
+}
+
+//Called from startMap()
+void spinRearTeleBall()
+{
+	while( TELEPORTER_REAR_ACTIVE ) {
+		$rear_tele_ball.time( 1 );
+		$rear_tele_ball.rotateOnce( '0 180 0' );
+		sys.waitFor( $rear_tele_ball );
+		sys.waitFrame();
+	}
+}
+
+//Called from startMap(), this checks the health of the teleporter and shuts off the spawner when its destroyed
+void monitorTeleHealth()
+{
+	float r;
+
+	thread spinRearTeleBall();
+
+	while( TELEPORTER_REAR_ACTIVE ) {
+		r = $rear_tele_ball.getHealth();
+		if( r <= 1 && TELEPORTER_REAR_ACTIVE ) {
+			TELEPORTER_REAR_ACTIVE = false;
+			$rear_tele_broken.show();
+			$rear_tele_ball.remove();
+			sys.trigger( $rear_tele_broken_fx );
+			sys.trigger( $rear_tele_break_fx );
+			sys.trigger( $func_fx_9 ); 
+			sys.wait( 0.2 );
+			sys.trigger( $func_fx_9 );
+			sys.wait( 0.1 );
+			sys.trigger( $func_fx_9 );
+			$reartelelight.remove();
+			$seg3_reartele_attacktarget.remove();
+		}
+		sys.wait( 1 );
+	}	
+}
+
+//Called from startMap()
+void invasion_dmg_fx()
+{
+	sys.wait( 10 );
+	sys.trigger( $seg3_inv_fx_1 );
+	sys.wait( 6 );
+	sys.trigger( $seg3_inv_fx_2 );
+	sys.wait( 10 );
+	sys.trigger( $seg3_inv_fx_3 );
+}
+
+//Called from startMap()
+void drop_rear_teleporter()
+{
+	$seg3_rear_telestatic.show();
+	sys.trigger( $reartelelight );
+
+	$seg3_tele_rear.time( 0.5 );
+	$seg3_tele_rear.accelTime( 0.1 );
+	$seg3_tele_rear.decelTime( 0 );
+	$seg3_tele_rear.move( DOWN, 164 );
+	sys.waitFor( $seg3_tele_rear );
+
+	$seg3_tele_rear.time( 0.1 );
+	$seg3_tele_rear.accelTime( 0.05 );
+	$seg3_tele_rear.decelTime( 0.05 );
+	$seg3_tele_rear.rotateOnce( '-10 0 0' );
+	sys.waitFor( $seg3_tele_rear );
+	sys.trigger( $func_fx_9 );
+	sys.trigger( $seg3_rear_droptele_obst );
+
+	sys.trigger( $seg3_wind_2 );
+	sys.trigger( $seg3_reartele_attacktarget );
+}
+
+//Moves the skyportal camera from the space skybox to the atmosphere skybox
+void moveSkyCameraToAtmosphere()
+{
+	sys.killthread( "skybox_movement" );
+	sys.waitFrame();
+
+	$org_skycam_1.time( 0.1 );
+	$org_skycam_1.moveTo( $seg3_skycamera_home );
+	sys.waitFor( $org_skycam_1 );
+	$org_skycam_1.setAngles( '0 0 0' );
+}
+
+//Triggers all the func_fx that emit atmosphere cloud particles
+void toggleCloudEffects()
+{
+	sys.trigger( $cloudfx_1 );
+	sys.trigger( $cloudfx_2 );
+	sys.trigger( $cloudfx_3 );
+	sys.trigger( $cloudfx_4 );
+	sys.trigger( $cloudfx_5 );
+	sys.trigger( $cloudfx_6 );
+	sys.trigger( $cloudfx_7 );
+	sys.trigger( $cloudfx_8 );
+	sys.trigger( $cloudfx_9 );
+	sys.trigger( $cloudfx_10 );
+	sys.trigger( $cloudfx_11 );
+	sys.trigger( $cloudfx_12 );
+	sys.trigger( $cloudfx_13 );
+	sys.trigger( $cloudfx_14 );
+}
+
+//Called by startMap(), another close Big Gun shot
+void fireOtherBG2()
+{
+	sys.wait( 5 );
+	$bgshot4fx.bind( $bgshot4 );
+	sys.trigger( $bgshot4fx );
+	$bgshot4.time( 10 );
+	$bgshot4.accelTime( 5 );
+	$bgshot4.moveTo( $biggun_target_4 );
+
+	sys.wait( 4 );
+	sys.trigger( $bgmiss_1 );
+
+	sys.waitFor( $bgshot4 );
+	$bgshot4.remove();
+}
+
+//Called by the Strogg Flyer in chaseships4 on death
+void seg2_chase_1_stopFiring()
+{
+	if( isValidEntity( $seg2_chase_1_marine_gun ) ) {
+		$seg2_chase_1_marine_gun.remove();
+	}
+}
+
+//Called by startMap(), another Marine chasing a Strogg Flyer
+void chaseShips4()
+{
+	sys.wait( 2 );
+
+	sys.trigger( $chase_flyby_right );
+
+	sys.trigger( $seg2_chase_1_marine_fx );
+	sys.trigger( $seg2_chase_1_flyerai );
+	$seg2_chase_1_strogg.removeInitialSplineAngles();
+	$seg2_chase_1_strogg.time( 20 );
+	$seg2_chase_1_strogg.startSpline( $seg2_chase_1_spline );
+	sys.wait( 1 );
+	$seg2_chase_1_marine.show();
+	$seg2_chase_1_marine.removeInitialSplineAngles();
+	sys.trigger( $seg2_chase_1_marine_gun );
+	$seg2_chase_1_marine.time( 20 );
+	$seg2_chase_1_marine.startSpline( $seg2_chase_1_spline );
+	sys.wait( 20 );
+	$seg2_chase_1_strogg.remove();
+	if( isValidEntity( $seg2_chase_1_marine_gun ) ) {
+		$seg2_chase_1_marine_gun.remove();
+	}
+ 	$seg2_chase_1_marine.remove();
+	$seg2_chase_1_marine_fx.remove();
+}
+
+//Called by the Strogg Flyer in chaseships3 on death
+void seg2_chase_2_stopFiring()
+{
+	if( isValidEntity( $seg2_chase_2_marine_gun ) ) {
+		$seg2_chase_2_marine_gun.remove();
+	}
+}
+
+//Called by startMap(), another Marine chasing a Strogg Flyer
+void chaseShips3()
+{
+	sys.wait( 2 );
+
+	sys.trigger( $chase_flyby_left );
+
+	sys.trigger( $seg2_chase_2_marine_fx );
+	sys.trigger( $seg2_chase_2_flyerai );
+	$seg2_chase_2_strogg.removeInitialSplineAngles();
+	$seg2_chase_2_strogg.time( 20 );
+	$seg2_chase_2_strogg.startSpline( $seg2_chase_2_spline );
+	sys.wait( 1 );
+	$seg2_chase_2_marine.show();
+	$seg2_chase_2_marine.removeInitialSplineAngles();
+	sys.trigger( $seg2_chase_2_marine_gun );
+	$seg2_chase_2_marine.time( 20 );
+	$seg2_chase_2_marine.startSpline( $seg2_chase_2_spline );
+	sys.wait( 20 );
+	$seg2_chase_2_strogg.remove();
+	if( isValidEntity( $seg2_chase_2_marine_gun ) ) {
+		$seg2_chase_2_marine_gun.remove();
+	}
+ 	$seg2_chase_2_marine.remove();
+	$seg2_chase_2_marine_fx.remove();
+}
+
+
+//Formerly known as the kamikaze pilot who took out the starboard cannon in previous version of Air Assault
+void outOfControlStrogg()
+{
+	sys.wait( 5 );
+	$seg2_kami_mover.removeInitialSplineAngles();
+	$seg2_kami_mover.disableSplineAngles();
+	$seg2_kami_mover.show();
+	sys.trigger( $seg2_kami_fx );
+	$seg2_kami_mover.time( 8 );
+	$seg2_kami_mover.accelTime( 6 );
+	$seg2_kami_mover.rotateOnce( '1024 0 0' );
+	$seg2_kami_mover.startSpline( $seg2_kami_spline );
+	sys.waitFor( $seg2_kami_mover );
+	$seg2_kami_fx.remove();	
+	$seg2_kami_mover.remove();	
+}
+
+//Called by startMap(), toggles on and off the MCC's nose guns a few times for effect
+void mccSpecial()
+{
+	//on
+	sys.trigger( $mcc1_specialattack );
+	sys.trigger( $mcc2_specialattack );
+
+	sys.wait( 8 );
+
+	//off
+	sys.trigger( $mcc1_specialattack );
+	sys.trigger( $mcc2_specialattack );
+
+	sys.wait( 8 );
+
+	//on
+	sys.trigger( $mcc1_specialattack );
+	sys.trigger( $mcc2_specialattack );
+
+	sys.wait( 8 );
+
+	//off
+	sys.trigger( $mcc1_specialattack );
+	sys.trigger( $mcc2_specialattack );
+
+	sys.wait( 8 );
+
+	//on
+	sys.trigger( $mcc1_specialattack );
+	sys.trigger( $mcc2_specialattack );
+
+	sys.wait( 8 );
+
+	//off
+	sys.trigger( $mcc1_specialattack );
+	sys.trigger( $mcc2_specialattack );
+}
+
+//Called by startMap(), the first of a bunch of Big Gun shots that whiz by
+void fireOtherBG()
+{
+	sys.wait( 5 );
+	$bgshot3fx.bind( $bgshot3 );
+	sys.trigger( $bgshot3fx );
+	$bgshot3.time( 10 );
+	$bgshot3.accelTime( 5 );
+	$bgshot3.moveTo( $biggun_target_3 );
+
+	sys.wait( 4 );
+	sys.trigger( $bgmiss_1 );
+
+	sys.waitFor( $bgshot3 );
+	$bgshot3.hide();
+	$bgshot3.remove();
+}
+
+//Called by startMap(), this is a pack of rockets that just misses the dropship
+void fireRocketClusters3()
+{
+	//Also going to turn on and off the MCC special gun thingies
+	sys.wait( 5 );
+	sys.trigger( $mcc1_specialattack );
+	sys.trigger( $mcc2_specialattack );
+	sys.wait( 5 );
+	sys.trigger( $seg1_bighit_rocket_fx_10 );
+	sys.trigger( $seg1_bighit_rocket_fx_11 );
+	sys.trigger( $seg1_bighit_rocket_fx_12 );
+	$seg1_bighit_rocket_10.show();
+	$seg1_bighit_rocket_11.show();
+	$seg1_bighit_rocket_12.show();
+	$seg1_bighit_rocket_11.time( 15 );
+	$seg1_bighit_rocket_11.accelTime( 8 );
+	$seg1_bighit_rocket_11.moveTo( $seg1_bighit_rocket_target_3 );
+
+	sys.wait( 12 );
+	radioChatterPlay( $radiochatter, "vo_1_13_1" );		//"<markswell:> <Over Radio> Incoming Missiles.  Evasive Action.  Evasive Action!"
+	thread tiltLeft();
+
+	sys.waitFor( $seg1_bighit_rocket_11 );
+
+	sys.trigger( $mcc1_specialattack );
+	sys.trigger( $mcc2_specialattack );
+
+	$seg1_bighit_rocket_10.remove();
+	$seg1_bighit_rocket_11.remove();
+	$seg1_bighit_rocket_12.remove();
+	$seg1_bighit_rocket_fx_10.remove();
+	$seg1_bighit_rocket_fx_11.remove();
+	$seg1_bighit_rocket_fx_12.remove();
+}
+
+//Called by startMap(), this is a pack of rockets that just misses the dropship
+void fireRocketClusters2()
+{
+	//Also going to turn on and off the MCC special gun thingies
+	sys.wait( 5 );
+	sys.trigger( $mcc1_specialattack );
+	sys.trigger( $mcc2_specialattack );
+	sys.wait( 5 );
+	sys.trigger( $seg1_bighit_rocket_fx_7 );
+	sys.trigger( $seg1_bighit_rocket_fx_8 );
+	sys.trigger( $seg1_bighit_rocket_fx_9 );
+	sys.trigger( $bighit_rocket_spk_2 );
+	sys.trigger( $seg1_bighit_rocket_shake_3 );
+	$seg1_bighit_rocket_7.show();
+	$seg1_bighit_rocket_8.show();
+	$seg1_bighit_rocket_9.show();
+	$seg1_bighit_rocket_8.time( 15 );
+	$seg1_bighit_rocket_8.accelTime( 8 );
+	$seg1_bighit_rocket_8.moveTo( $seg1_bighit_rocket_target_2 );
+
+	sys.wait( 11.75 );
+	radioChatterPlay( $radiochatter, "vo_1_13_1" );		//"<markswell:> <Over Radio> Incoming Missiles.  Evasive Action.  Evasive Action!"
+	thread spinLeft();
+
+	sys.waitFor( $seg1_bighit_rocket_8 );
+
+	sys.trigger( $mcc1_specialattack );
+	sys.trigger( $mcc2_specialattack );
+
+	$bighit_rocket_spk_2.remove();
+	$seg1_bighit_rocket_shake_3.remove();
+	$seg1_bighit_rocket_7.remove();
+	$seg1_bighit_rocket_8.remove();
+	$seg1_bighit_rocket_9.remove();
+	$seg1_bighit_rocket_fx_7.remove();
+	$seg1_bighit_rocket_fx_8.remove();
+	$seg1_bighit_rocket_fx_9.remove();
+}
+
+//Called by startMap(), this is a rogue Strogg Flyer that zips around much faster than the regular spawned guys
+void haulass2()
+{
+	sys.wait( 10 );
+	sys.trigger( $seg1_haulass_ai_2 );
+	$seg1_haulass_mover_2.time( 12 );
+	$seg1_haulass_mover_2.startSpline( $seg1_haulass_spline_2 );
+	sys.waitFor( $seg1_haulass_mover_2 );
+
+	if( isValidEntity( $seg1_haulass_ai_2 ) )
+		$seg1_haulass_ai_2.kill();
+
+	$seg1_haulass_mover_2.remove();
+}
+
+//Called by the chase ship Strogg Flyer's death
+void seg1_chase_2_stopFiring()
+{
+	if( isValidEntity( $seg1_chase_2_marine_gun ) ) {
+		$seg1_chase_2H_marine_gun.remove();
+	}
+}
+
+//Called by startMap(), this is a Marine fighter chasing a Strogg Flyer
+void chaseShips2()
+{
+	sys.trigger( $chase_flyby_left );
+
+	sys.trigger( $seg1_chase_2_marine_fx );
+	sys.trigger( $seg1_chase_2_flyerai );
+	$seg1_chase_2_strogg.removeInitialSplineAngles();
+	$seg1_chase_2_strogg.time( 20 );
+	$seg1_chase_2_strogg.startSpline( $seg1_chase_2_spline );
+	sys.wait( 1 );
+	$seg1_chase_2_marine.show();
+	$seg1_chase_2_marine.removeInitialSplineAngles();
+	sys.trigger( $seg1_chase_2_marine_gun );
+	$seg1_chase_2_marine.time( 20 );
+	$seg1_chase_2_marine.startSpline( $seg1_chase_2_spline );
+	sys.wait( 20 );
+	$seg1_chase_2_strogg.remove();
+	if( isValidEntity( $seg1_chase_2_marine_gun ) ) {
+		$seg1_chase_2_marine_gun.remove();
+	}
+ 	$seg1_chase_2_marine.remove();
+	$seg1_chase_2_marine_fx.remove();
+}
+
+void spinLeft()
+{
+	$seg1_spacecannon_1.lock( 1 );
+	$spacecannon_mover.time( 4 );
+	$spacecannon_mover.accelTime( 2 );
+	$spacecannon_mover.decelTime( 0.75 );
+	$spacecannon_mover.rotateOnce( '0 0 -360' );
+	sys.waitFor( $spacecannon_mover );
+	$seg1_spacecannon_1.lock( 0 );
+}
+
+void spinRight()
+{
+	$seg1_spacecannon_1.lock( 1 );
+	$spacecannon_mover.time( 4 );
+	$spacecannon_mover.accelTime( 2 );
+	$spacecannon_mover.decelTime( 0.75 );
+	$spacecannon_mover.rotateOnce( '0 0 360' );
+	sys.waitFor( $spacecannon_mover );
+	$seg1_spacecannon_1.lock( 0 );
+}
+
+//Called by the fireRocketClusters functions, this tilts the space cannon right simulating banking of the dropship
+void tiltRight()
+{
+	$seg1_spacecannon_1.lock( 1 );
+	//tilt to the right
+	$spacecannon_mover.time( 1 );
+	$spacecannon_mover.accelTime( 0.3 );
+	$spacecannon_mover.decelTime( 0.6 );
+	$spacecannon_mover.rotateOnce( '0 0 25' );
+	sys.waitFor( $spacecannon_mover );
+	sys.waitFrame();
+	//tilt back to center
+	$spacecannon_mover.time( 1 );
+	$spacecannon_mover.accelTime( 0.4 );
+	$spacecannon_mover.decelTime( 0.4 );
+	$spacecannon_mover.rotateOnce( '0 0 -25' );
+	sys.waitFor( $spacecannon_mover );
+	$seg1_spacecannon_1.lock( 0 );
+}
+
+//Called by the fireRocketClusters functions, this tilts the space cannon left simulating banking of the dropship
+void tiltLeft()
+{
+	$seg1_spacecannon_1.lock( 1 );
+	//tilt to the left
+	$spacecannon_mover.time( 1 );
+	$spacecannon_mover.accelTime( 0.3 );
+	$spacecannon_mover.decelTime( 0.6 );
+	$spacecannon_mover.rotateOnce( '0 0 -25' );
+	sys.waitFor( $spacecannon_mover );
+	sys.waitFrame();
+	//tilt back to center
+	$spacecannon_mover.time( 1 );
+	$spacecannon_mover.accelTime( 0.4 );
+	$spacecannon_mover.decelTime( 0.4 );
+	$spacecannon_mover.rotateOnce( '0 0 25' );
+	sys.waitFor( $spacecannon_mover );
+	$seg1_spacecannon_1.lock( 0 );
+}
+
+void tiltLeftStay()
+{
+	//tilt to the left
+	$spacecannon_mover.time( 2 );
+	$spacecannon_mover.accelTime( 1 );
+	$spacecannon_mover.decelTime( 1 );
+	$spacecannon_mover.rotateOnce( '0 0 -25' );
+	sys.waitFor( $spacecannon_mover );
+}
+
+void tiltRightStay()
+{
+	//tilt to the right
+	$spacecannon_mover.time( 2 );
+	$spacecannon_mover.accelTime( 1 );
+	$spacecannon_mover.decelTime( 1 );
+	$spacecannon_mover.rotateOnce( '0 0 25' );
+	sys.waitFor( $spacecannon_mover );
+}
+
+//Called by startMap(), this is a pack of rockets that just misses the dropship
+void fireRocketClusters()
+{
+	//Also going to turn on and off the MCC special gun thingies
+	sys.wait( 5 );
+	sys.trigger( $mcc1_specialattack );
+	sys.trigger( $mcc2_specialattack );
+	sys.wait( 5 );
+	sys.trigger( $seg1_bighit_rocket_fx_4 );
+	sys.trigger( $seg1_bighit_rocket_fx_5 );
+	sys.trigger( $seg1_bighit_rocket_fx_6 );
+	sys.trigger( $bighit_rocket_spk_1 );
+	sys.trigger( $seg1_bighit_rocket_shake_2 );
+	$seg1_bighit_rocket_4.show();
+	$seg1_bighit_rocket_5.show();
+	$seg1_bighit_rocket_6.show();
+	$seg1_bighit_rocket_5.time( 15 );
+	$seg1_bighit_rocket_5.accelTime( 8 );
+	$seg1_bighit_rocket_5.moveTo( $seg1_bighit_rocket_target_1 );
+
+	sys.wait( 11.75 );
+	radioChatterPlay( $radiochatter, "vo_1_13_1" );		//"<markswell:> <Over Radio> Incoming Missiles.  Evasive Action.  Evasive Action!"
+	thread spinRight();
+
+	sys.waitFor( $seg1_bighit_rocket_5 );
+
+	sys.trigger( $mcc1_specialattack );
+	sys.trigger( $mcc2_specialattack );
+
+	$bighit_rocket_spk_1.remove();
+	$seg1_bighit_rocket_shake_2.remove();
+	$seg1_bighit_rocket_4.remove();
+	$seg1_bighit_rocket_5.remove();
+	$seg1_bighit_rocket_6.remove();
+	$seg1_bighit_rocket_fx_4.remove();
+	$seg1_bighit_rocket_fx_5.remove();
+	$seg1_bighit_rocket_fx_6.remove();
+}
+
+//Called by startMap(), this is a rogue Strogg Flyer that zips around much faster than the regular spawned guys
+void haulass1()
+{
+	sys.wait( 10 );
+	sys.trigger( $seg1_haulass_ai_1 );
+	$seg1_haulass_mover_1.time( 12 );
+	$seg1_haulass_mover_1.startSpline( $seg1_haulass_spline_1 );
+	sys.waitFor( $seg1_haulass_mover_1 );
+
+	if( isValidEntity( $seg1_haulass_ai_1 ) )
+		$seg1_haulass_ai_1.kill();
+
+	$seg1_haulass_mover_1.remove();
+}
+
+//Called by the chase ship Strogg Flyer's death
+void seg1_chase_1_stopFiring()
+{
+	if( isValidEntity( $seg1_chase_1_marine_gun ) ) {
+		$seg1_chase_1_marine_gun.remove();
+	}
+}
+
+//Called by startMap(), this is a Marine fighter chasing a Strogg Flyer
+void chaseShips1()
+{
+	sys.trigger( $chase_flyby_right );
+
+	sys.trigger( $seg1_chase_1_marine_fx );
+	sys.trigger( $seg1_chase_1_flyerai );
+	$seg1_chase_1_strogg.removeInitialSplineAngles();
+	$seg1_chase_1_strogg.time( 20 );
+	$seg1_chase_1_strogg.startSpline( $seg1_chase_1_spline );
+	sys.wait( 1 );
+	$seg1_chase_1_marine.show();
+	$seg1_chase_1_marine.removeInitialSplineAngles();
+	sys.trigger( $seg1_chase_1_marine_gun );
+	$seg1_chase_1_marine.time( 20 );
+	$seg1_chase_1_marine.startSpline( $seg1_chase_1_spline );
+	sys.wait( 20 );
+	$seg1_chase_1_strogg.remove();
+	if( isValidEntity( $seg1_chase_1_marine_gun ) ) {
+		$seg1_chase_1_marine_gun.remove();
+	}
+ 	$seg1_chase_1_marine.remove();
+	$seg1_chase_1_marine_fx.remove();
+}
+
+//Called by func_spawners, first four ships that only spawn once right at the beginning of the sequence
+void seg1_spawn_rotj_1_shipSpawned( entity spawnedrotja )
+{
+	thread seg1_moveShipAlongSpline(spawnedrotja, $seg1_spawn_rotj_1_mover, $seg1_spline_rotj_1, SHIP_1I, 10 );
+}
+
+void seg1_spawn_rotj_2_shipSpawned( entity spawnedrotjb )
+{
+	thread seg1_moveShipAlongSpline(spawnedrotjb, $seg1_spawn_rotj_2_mover, $seg1_spline_rotj_2, SHIP_1J, 10 );
+}
+
+void seg1_spawn_rotj_3_shipSpawned( entity spawnedrotjc )
+{
+	thread seg1_moveShipAlongSpline(spawnedrotjc, $seg1_spawn_rotj_3_mover, $seg1_spline_rotj_3, SHIP_1K, 10 );
+}
+
+void seg1_spawn_rotj_4_shipSpawned( entity spawnedrotjd )
+{
+	thread seg1_moveShipAlongSpline(spawnedrotjd, $seg1_spawn_rotj_4_mover, $seg1_spline_rotj_4, SHIP_1L, 10 );
+}
+
+//Called from loopMcc2Spline(), this adds a bit of pitching to MCC2 as it moves along its spline in the atmosphere
+void mcc2AtmosPitch()
+{
+	$mcc2_pitch_mover.time( 9 );
+	$mcc2_pitch_mover.accelTime( 4 );
+	$mcc2_pitch_mover.decelTime( 4 );
+	$mcc2_pitch_mover.rotateOnce( '0 0 25' );
+	sys.waitFor( $mcc2_pitch_mover );
+	$mcc2_pitch_mover.time( 9 );
+	$mcc2_pitch_mover.accelTime( 4 );
+	$mcc2_pitch_mover.decelTime( 4 );
+	$mcc2_pitch_mover.rotateOnce( '0 0 -25' );
+	sys.waitFor( $mcc2_pitch_mover );
+}
+
+//Called from loopMcc1Spline(), this adds a bit of pitching to MCC1 as it moves along its spline in the atmosphere
+void mcc1AtmosPitch()
+{
+	$mcc1_pitch_mover.time( 9 );
+	$mcc1_pitch_mover.accelTime( 4 );
+	$mcc1_pitch_mover.decelTime( 4 );
+	$mcc1_pitch_mover.rotateOnce( '0 0 25' );
+	sys.waitFor( $mcc1_pitch_mover );
+	$mcc1_pitch_mover.time( 9 );
+	$mcc1_pitch_mover.accelTime( 4 );
+	$mcc1_pitch_mover.decelTime( 4 );
+	$mcc1_pitch_mover.rotateOnce( '0 0 -25' );
+	sys.waitFor( $mcc1_pitch_mover );
+}
+
+//Called from startMap()
+void loopMcc2Spline()
+{
+	$mcc2.disableSplineAngles();
+
+	while( 1 ) {
+		if( MCC2_STATE != 1 && MCC2_STATE != 99 ) {
+			MCC2_STATE1_COMPLETE = true;
+			break;
+		}
+
+		if( MCC2_STATE == 99 ) {
+			$mcc2.bind( $mcc2_pitch_mover );
+			thread mcc2AtmosPitch();	
+			$mcc2.time( 20 );
+			$mcc2.startSpline( $mcc2_splinepath_atmos );
+			sys.waitFor( $mcc2 );
+			sys.waitFrame();
+		}
+
+		else {
+			$mcc2.time( 20 );
+			$mcc2.startSpline( $mcc2_splinepath );
+			sys.waitFor( $mcc2 );
+			sys.waitFrame();
+		}
+	}
+}
+
+//Called from startMap(), this puts MCC2 on its spline above the player, close up
+void loopMcc2Spline_above()
+{
+	while( 1 ) {
+		if( MCC2_STATE != 2 ) {
+			MCC2_STATE2_COMPLETE = true;
+			break;
+		}
+
+		else {
+			$mcc2.time( 20 );
+			$mcc2.startSpline( $mcc2_splinepath_above );
+			sys.waitFor( $mcc2 );
+			sys.waitFrame();
+		}
+	}
+}
+
+//Called from startMap(), this puts MCC2 on its spline below the player, close up
+void loopMcc2Spline_below()
+{
+	while( 1 ) {
+		if( MCC2_STATE != 3 ) {
+			MCC2_STATE3_COMPLETE = true;
+			break;
+		}
+
+		else {
+			$mcc2.time( 20 );
+			$mcc2.startSpline( $mcc2_splinepath_below );
+			sys.waitFor( $mcc2 );
+			sys.waitFrame();
+		}
+	}
+}
+
+//Called from startMap(), this puts MCC1 on its spline above and to the right of the player
+void loopMccSpline()
+{
+	$mcc1.disableSplineAngles();
+
+	while( 1 ) {
+		if( MCC1_STATE != 1 && MCC1_STATE != 99 ) {
+			MCC1_STATE1_COMPLETE = true;
+			break;
+		}
+
+		if( MCC1_STATE == 99 ) {
+			$mcc1.bind( $mcc1_pitch_mover );
+			thread mcc1AtmosPitch();	
+			$mcc1.time( 20 );
+			$mcc1.startSpline( $mcc1_splinepath_atmos );
+			sys.waitFor( $mcc1 );
+			sys.waitFrame();
+		}
+
+		else {
+			$mcc1.time( 20 );
+			$mcc1.startSpline( $mcc1_splinepath );
+			sys.waitFor( $mcc1 );
+			sys.waitFrame();
+		}
+	}
+}
+
+//Called from startMap(), this puts MCC1 on its spline above the player, close up
+void loopMccSpline_above()
+{
+	while( 1 ) {
+		if( MCC1_STATE != 2 ) {
+			MCC1_STATE2_COMPLETE = true;
+			break;
+		}
+
+		else {
+			$mcc1.time( 20 );
+			$mcc1.startSpline( $mcc1_splinepath_above );
+			sys.waitFor( $mcc1 );
+			sys.waitFrame();
+		}
+	}
+}
+
+//Called from startMap(), this puts MCC1 on its spline below the player, close up
+void loopMccSpline_below()
+{
+	while( 1 ) {
+		if( MCC1_STATE != 3 ) {
+			MCC1_STATE3_COMPLETE = true;
+			break;
+		}
+
+		else {
+			$mcc1.time( 20 );
+			$mcc1.startSpline( $mcc1_splinepath_below );
+			sys.waitFor( $mcc1 );
+			sys.waitFrame();
+		}
+	}
+}
+
+//Called from start_dropships()
+void startDropship2()
+{
+	$seg1_dropship_mover_2.disableSplineAngles();
+
+	//This one is up and to the left of the player's ship
+	while( DS_TWO_LOOP ) {
+		$seg1_dropship_mover_2.time( 40 );
+		$seg1_dropship_mover_2.startSpline( $seg1_ds_spline_2 );
+		sys.waitFor( $seg1_dropship_mover_2 );
+	}
+}
+
+//Called from startMap(), this starts the two other dropships going along their paths of doom
+void start_dropships()
+{
+	$seg1_dropship_mover_1.disableSplineAngles();
+	thread startDropship2();
+
+	//This one is up and to the right of the player's ship
+	while( DS_ONE_LOOP ) {
+		$seg1_dropship_mover_1.time( 40 );
+		$seg1_dropship_mover_1.startSpline( $seg1_ds_spline_1 );
+		sys.waitFor( $seg1_dropship_mover_1 );
+	}
+}
+
+void dsOneExplode()
+{
+	sys.trigger( $seg1_ds1_exp );
+	$seg1_dropship_mover_1.hide();
+	$monster_q4x_invisible_attacktarget_1.remove();
+}
+
+void dsTwoExplode()
+{
+	sys.trigger( $seg1_ds2_exp );
+	$seg1_dropship_mover_2.hide();
+	$monster_q4x_invisible_attacktarget_2.remove();
+}
+
+//Called from startMap(), this moves the MCC from right above the dropship
+void move_upper_mcc()
+{
+	$bigship.time( 2 );
+	$bigship.accelTime( 0 );
+	$bigship.decelTime( 1 );
+	$bigship.move( UP, 64 );
+	sys.waitFor( $bigship );
+
+	$bigship.time( 5 );
+	$bigship.accelTime( 3 );
+	$bigship.decelTime( 0 );
+	$bigship.move( WEST, 3600 );
+	sys.waitFor( $bigship );
+	$bigship.remove();
+}
+
+//Called from startMap(), this triggers a func_fx with screen shake in it
+void ambientShaking()
+{
+	while( SHAKE_INTENSITY == 1 ) {
+		sys.wait( (sys.random(20) + 10) );
+		sys.trigger( $ambient_screenshakes_1 );
+	}
+
+	while( SHAKE_INTENSITY == 2 ) {
+		sys.wait( (sys.random(15) + 10) );
+		sys.trigger( $ambient_screenshakes_2 );
+	}
+
+	while( SHAKE_INTENSITY == 3 ) {
+		sys.wait( (sys.random(10) + 10) );
+		sys.trigger( $ambient_screenshakes_3 );
+	}
+}
+
+//Called from playerExitedForwardTurret(), this is to play VO ordering the player to get back on the cannon
+void returnToTurretDialogue()
+{
+	while( !PLAYERONTURRET ) {
+		radioChatterPlayWait( $radiochatter, "vo_1_6_1" );	//"<markswell:> <Over Radio> Dekard! Get back to your position, we're getting hammered."
+		sys.wait( 10 );
+		if( !PLAYERONTURRET ) {
+			radioChatterPlayWait( $radiochatter, "vo_1_6_3" );	//"<markswell:> <Over Radio> Get back to your post, Marine!"
+		}
+		sys.wait( 10 );
+	}
+}
+
+//Called each time the player enters the forward space cannon
+void playerEnteredForwardTurret()
+{
+	if( !PLAYERONTURRET ) {
+		PLAYERONTURRET = true;
+	}
+
+	if( HELPED_TAK ) {
+		$dead_marine.remove();
+		$bodybad.show();
+		thread moveMitchelltoConsole();
+	}
+}
+
+//Called each time the player exits the forward space cannon
+void playerExitedForwardTurret()
+{
+	PLAYERONTURRET = false;
+
+	if( WARN_PLAYER_1 ) {
+		thread returnToTurretDialogue();
+	}
+
+}
+
+//This is in case the player does get on the turret after the ship of death is inbound
+void monitorSod()
+{
+	while( !PLAYERONTURRET ) {
+		sys.wait( 0.1 );
+	}
+
+	$shipofdeath.kill();
+	sys.killthread( "player_standing_around" );
+}
+
+//Called from startMap, this is a way to make the player fail if he just stands around doing nothing at the beginning of the level
+void player_standing_around()
+{
+	sys.wait( 25 );
+
+	if( !PLAYERONTURRET ) {
+		// ** VO **
+		sys.wait( 1 );
+		radioChatterPlayWait( $radiochatter, "vo_1_6_2" );	//"<markswell:> <Over Radio> Dekard, we need you on those guns."
+	}
+
+	sys.wait( 10 );
+
+	if( !PLAYERONTURRET ) {
+		// ** VO **
+		sys.wait( 1 );
+		radioChatterPlayWait( $radiochatter, "vo_1_6_2" );	//"<markswell:> <Over Radio> Dekard, we need you on those guns."
+	}
+
+	sys.wait( 20 );
+
+	if( !PLAYERONTURRET ) {
+		thread monitorSod();
+
+		$shipofdeath.bind( $sod_mover );
+		$shipofdeath.activate( $player1 );
+		$sod_mover.speed( 1440 );
+		$sod_mover.startSpline( $sod_spline );
+		sys.waitFor( $sod_mover );
+
+		$shipofdeath.unbind();
+		$shipofdeath.remove();
+		$sod_mover.remove();
+	
+		dropshipDead();
+	}
+}
+
+//Spinning "red alert" lights in rear of dropship
+void startredlightrotate()
+{
+	$seg3_rotate_red_1.setColor( 1, 0, 0 );
+	$seg3_rotate_red_2.setColor( 1, 0, 0 );
+	$ds_redlight_5.fadeInLight( 0.5 );
+	$ds_redlight_6.fadeInLight( 0.5 );
+	$seg3_rotate_red_1_flare.show();
+	$seg3_rotate_red_2_flare.show();
+	sys.trigger( $seg3_rotate_red_1 );
+	sys.trigger( $seg3_rotate_red_2 );
+}
+
+//Called from startMap(), the following four functions loop the rock debris toward the player
+void debris()
+{
+	while( SEGMENT == 1 ) {
+		$debris_1.speed( 1500 );
+		$debris_1.moveTo( $org_debris_2 );
+		sys.waitFor( $debris_1 );
+
+		$debris_1.hide();
+		$debris_1.speed( 9999 );
+		$debris_1.moveTo( $org_debris_3 );
+		sys.waitFor( $debris_1 );
+
+		$debris_1.show();
+		$debris_1.speed( 1500 );
+		$debris_1.moveTo( $org_debris_1 );
+		sys.waitFor( $debris_1 );
+	}
+}
+
+void debris2()
+{
+	while( SEGMENT == 1 ) {
+		$debris_2.show();
+		$debris_2.speed( 1500 );
+		$debris_2.moveTo( $org_debris_1 );
+		sys.waitFor( $debris_2 );
+
+		$debris_2.speed( 1500 );
+		$debris_2.moveTo( $org_debris_2 );
+		sys.waitFor( $debris_2 );
+
+		$debris_2.hide();
+		$debris_2.speed( 9999 );
+		$debris_2.moveTo( $org_debris_3 );
+		sys.waitFor( $debris_2 );
+	}
+}
+
+void debris3()
+{
+	while( SEGMENT == 1 ) {
+		$debris_3.speed( 1500 );
+		$debris_3.moveTo( $org_debris_2 );
+		sys.waitFor( $debris_3 );
+
+		$debris_3.hide();
+		$debris_3.speed( 9999 );
+		$debris_3.moveTo( $org_debris_3 );
+		sys.waitFor( $debris_3 );
+
+		$debris_3.show();
+		$debris_3.speed( 1500 );
+		$debris_3.moveTo( $org_debris_1 );
+		sys.waitFor( $debris_3 );
+	}
+}
+
+void debris4()
+{
+	while( SEGMENT == 1 ) {
+		$debris_4.show();
+		$debris_4.speed( 1500 );
+		$debris_4.moveTo( $org_debris_1 );
+		sys.waitFor( $debris_4 );
+
+		$debris_4.speed( 1500 );
+		$debris_4.moveTo( $org_debris_2 );
+		sys.waitFor( $debris_4 );
+
+		$debris_4.hide();
+		$debris_4.speed( 9999 );
+		$debris_4.moveTo( $org_debris_3 );
+		sys.waitFor( $debris_4 );
+	}
+}
+
+//Called from startMap(), this slowly regenerates the MCCs health
+void mccHealthRegen()
+{
+	float a;
+	float c;
+
+	while( 1 ) {
+		a = $mcc1.getHealth();
+		c = ( a + 10 );
+		$mcc1.setHealth( c );
+		
+		a = $mcc2.getHealth();
+		c = ( a + 10 );
+		$mcc2.setHealth( c );
+
+		sys.wait( 2 );
+	}
+}
+
+//Called from startMap(), this monitors the healh of the fullclip func_mover hull around the dropship
+void dropshiphealthcheck()
+{
+	float h;
+ 
+	while( 1 ) {
+
+		h = $drop_ship.getHealth();
+
+		if( h <= 0 ) {
+			$seg1_spacecannon_1_env.setGuiParm( "shealth", 0 );
+			dropshipDead();
+		}
+
+		if( h <= GLOBAL_DS_HEALTH_SEVENTYFIVE && !WARN_SEVENTYFIVE_PERCENT ) {
+			radioChatterPlay( $radiochatter, "vo_1_6_5" );	//"<tak:> <Over Radio> Shields are down to seventy-five percent."
+			WARN_SEVENTYFIVE_PERCENT = true;
+		}
+
+		if( h <= GLOBAL_DS_HEALTH_FIFTY && !WARN_FIFTY_PERCENT ) {
+			radioChatterPlay( $radiochatter, "vo_1_6_6" );	//"<tak:> <Over Radio> Warning.  Shields are down to fifty percent.  Hull integrity is at risk."
+			WARN_FIFTY_PERCENT = true;
+		}
+
+		if( h <= GLOBAL_DS_HEALTH_TWENTYFIVE && !WARN_TWENTYFIVE_PERCENT ) {
+			radioChatterPlay( $radiochatter, "vo_1_6_7" );	//"<tak:> <Over Radio> Shields Critical!  We're at twenty-five percent.  Another big hit and we're risking a hull breach."
+			WARN_TWENTYFIVE_PERCENT = true;
+		}
+
+		//Update the GUI status
+		if( h <= GLOBAL_DS_HEALTH_90 && !GUI_90 ) {
+			$seg1_spacecannon_1_env.guiEvent( "ninetypercent" );
+			GUI_90 = true ;
+		}
+		if( h <= GLOBAL_DS_HEALTH_80 && !GUI_80 ) {
+			$seg1_spacecannon_1_env.guiEvent( "eightypercent" );
+			GUI_80 = true ;
+		}
+		if( h <= GLOBAL_DS_HEALTH_70 && !GUI_70 ) {
+			$seg1_spacecannon_1_env.guiEvent( "seventypercent" );
+			GUI_70 = true ;
+		}
+		if( h <= GLOBAL_DS_HEALTH_60 && !GUI_60 ) {
+			$seg1_spacecannon_1_env.guiEvent( "sixtypercent" );
+			GUI_60 = true ;
+		}
+		if( h <= GLOBAL_DS_HEALTH_50 && !GUI_50 ) {
+			$seg1_spacecannon_1_env.guiEvent( "fiftypercent" );
+			GUI_50 = true ;
+		}
+		if( h <= GLOBAL_DS_HEALTH_40 && !GUI_40 ) {
+			$seg1_spacecannon_1_env.guiEvent( "fourtypercent" );
+			GUI_40 = true ;
+		}
+		if( h <= GLOBAL_DS_HEALTH_30 && !GUI_30 ) {
+			$seg1_spacecannon_1_env.guiEvent( "thirtypercent" );
+			GUI_30 = true ;
+		}
+		if( h <= GLOBAL_DS_HEALTH_20 && !GUI_20 ) {
+			$seg1_spacecannon_1_env.guiEvent( "twentypercent" );
+			GUI_20 = true ;
+		}
+		if( h <= GLOBAL_DS_HEALTH_10 && !GUI_10 ) {
+			$seg1_spacecannon_1_env.guiEvent( "tenpercent" );
+			GUI_10 = true ;
+		}
+
+
+		$seg1_spacecannon_1_env.setGuiParm( "shealth", h );
+
+		sys.wait( 0.1 );
+	}
+}
+
+//Called from startMap()
+void mcc1HealthCheck()
+{
+	float h;
+
+	while( 1 ) {
+
+		h = $mcc1.getHealth();
+		if( h <= 0 ) {
+			radioChatterPlayWait( $radiochatter, "vo_1_6_12" );	//"<tak:> <Over Radio> The Hannibal!  It's gone!"
+			radioChatterPlay( $radiochatter, "vo_1_6_13" );	//"<markswell:> <Over Radio> This operation is over."
+			mcc1Dead();
+			break;
+		}
+
+		if( h <= GLOBAL_MCC_HEALTH_SEVENTYFIVE && !WARN_MCC1_SEVENTYFIVE_PERCENT ) {
+			radioChatterPlay( $radiochatter, "vo_1_6_9" );	//"<tak:> <Over Radio> Hannibal shields at seventy-five percent."
+			sys.trigger( $mcc1_dmg_fx_1 );
+			WARN_MCC1_SEVENTYFIVE_PERCENT = true;
+		}
+		if( h <= GLOBAL_MCC_HEALTH_FIFTY && !WARN_MCC1_FIFTY_PERCENT ) {
+			radioChatterPlay( $radiochatter, "vo_1_6_10" );	//"<tak:> <Over Radio> Warning.  Hannibal shields are down to fifty percent.  They can't take much more."
+			sys.trigger( $mcc1_dmg_fx_2 );
+			WARN_MCC1_FIFTY_PERCENT = true;
+		}
+		if( h <= GLOBAL_MCC_HEALTH_TWENTYFIVE && !WARN_MCC1_TWENTYFIVE_PERCENT ) {
+			radioChatterPlay( $radiochatter, "vo_1_6_11" );	//"<tak:> <Over Radio> Hannibal is critical!  Shields less than twenty-five percent.  Hull integrity is down to eighty.  They're getting ripped apart."
+			sys.trigger( $mcc1_dmg_fx_3 );
+			WARN_MCC1_TWENTYFIVE_PERCENT = true;
+		}
+
+		sys.wait( 0.1 );
+	}
+}
+
+//Called from startMap()
+void mcc2HealthCheck()
+{
+	float h;
+
+	while( 1 ) {
+
+		h = $mcc2.getHealth();
+		if( h <= 0 ) {
+			radioChatterPlayWait( $radiochatter, "vo_1_6_18" );	//"<tak:> <Over Radio> We've lost the Alexander!"
+			radioChatterPlay( $radiochatter, "vo_1_6_19" );	//"<markswell:> <Over Radio> It's all over for us."
+			mcc2Dead();
+			break;
+		}
+
+		if( h <= GLOBAL_MCC_HEALTH_FIFTY && !WARN_MCC2_FIFTY_PERCENT ) {
+			radioChatterPlay( $radiochatter, "vo_1_6_14" );	//"<tak:> <Over Radio> Warning, Alexander's shields are already at fifty percent."
+			sys.trigger( $mcc2_dmg_fx_2 );
+			WARN_MCC2_FIFTY_PERCENT = true;
+		}
+		if( h <= GLOBAL_MCC_HEALTH_SEVENTYFIVE && !WARN_MCC2_FOURTY_PERCENT ) {
+			radioChatterPlay( $radiochatter, "vo_1_6_15" );	//"<tak:> <Over Radio> Alexander's shields reading forty percent."
+			sys.trigger( $mcc2_dmg_fx_1 );
+			WARN_MCC2_FOURTY_PERCENT = true;
+		}
+		if( h <= GLOBAL_MCC_HEALTH_TWENTYFIVE && !WARN_MCC2_THIRTY_PERCENT ) {
+			radioChatterPlay( $radiochatter, "vo_1_6_16" );	//"<tak:> <Over Radio> Alert! Alexander's shields at thirty percent.  They're not going to last forever."
+			sys.trigger( $mcc2_dmg_fx_3 );
+			WARN_MCC2_THIRTY_PERCENT = true;
+		}
+		if( h <= GLOBAL_MCC_HEALTH_TWENTYFIVE && !WARN_MCC2_TWENTY_PERCENT ) {
+			radioChatterPlay( $radiochatter, "vo_1_6_17" );	//"<tak:> <Over Radio> Alexander is critical.  Shields are less than twenty percent.  They can't take much more."
+			sys.trigger( $mcc2_dmg_fx_3 );
+			WARN_MCC2_TWENTY_PERCENT = true;
+		}
+
+		sys.wait( 0.1 );
+	}
+}
+
+//Called from startMap(), this toggles the func_fx on and off for the MCC blaster guns
+void toggleMccGuns()
+{
+	sys.trigger( $mcc1_guns_a );
+	sys.trigger( $mcc1_guns_b );
+	sys.trigger( $mcc1_guns_c );
+	sys.trigger( $mcc2_guns_a );
+	sys.trigger( $mcc2_guns_b );
+	sys.trigger( $mcc2_guns_c );
+}
+
+//This is called from a trigger_once near the player's dropship chair
+void playerAtChair()
+{
+	PLAYER_IN_CHAIR = true;
+}
+
+//Called from startMap(), this is happens at the end of Round 3 Wave 2 when the rocket cluster hits the ship
+void doShipDamage1()
+{
+	//Hall damage forward and starboard side
+	$ship_cutout_1.time( 0.1 );		//Drop the func_mover ceiling piece to the floor
+	$ship_cutout_1.move( DOWN, 128 );
+	sys.waitFor( $ship_cutout_1 );		//func_fx sparks and steam up above hallway near forward turret door
+	sys.trigger( $invb_sparks_1 );		//func_fx sparks and steam up above hallway near forward turret door
+	sys.trigger( $invb_sparks_2 );		//func_fx sparks and steam up above hallway near forward turret door
+	sys.trigger( $invb_sparks_3 );		//func_fx sparks and steam up above hallway near forward turret door
+	sys.trigger( $invb_sparks_4 );		//func_fx sparks and steam up above hallway near forward turret door
+	sys.trigger( $flame );			//func_fx flame jet in hall
+	sys.trigger( $flame_hurt );		//trigger_hurt in hall covering flame fx
+	sys.trigger( $sb_hall_steam_1 );	//func_fx steam above computer console
+	sys.trigger( $seg2_fixit_steam_8 );	//func_fx steam in the middle by the ladder
+	$sb_good_4.hide();			//func_static wall panel
+	$sb_broken_4.show();			//func_static broken pipes and wall panel
+	$decal_floor_4.show();			//func_static scortch mark decal
+	$decal_floor_5.show();			//func_static scortch mark decal
+	$hall_console_good_3.hide();		//func_static console model
+	$hall_console_bad_3.show();		//func_static console model
+	$sb_status_gui_good_1.hide();		//func_static monitor on wall
+	$sb_status_gui_bad_1.show();		//func_static monitor on wall
+	$sb_console_good_light.Off();		//light in front of computer console
+	$sb_console_bad_light.On();		//light in front of computer console
+	$forward_turret_gui_good.hide();	//func_static monitor on wall
+	$forward_turret_gui_bad.show();		//func_static monitor on wall
+	$sb_pillar_1b.hide();			//func_static ceiling beam
+	$sb_pillar_1c.show();			//func_static ceiling beam damaged
+	$sb_pillar_1.hide();			//func_static wall support
+	$sb_bad_pillar_1.show();		//func_static broken wall support
+	$sb_broken_2.hide();			//func_static ceiling beam
+	$sb_broken_3.show();			//func_static ceiling beam damaged
+	$sb_gui_good.hide();			//func_static SB GUI display above door
+	$sb_gui_bad.show();			//func_static SB GUI static display above door
+	$sb_door.setColor( 0, 0, 0 );
+	$sb_hall_light.Off();			//starboard door light
+	$sb_light.Off();			//starboard door light
+	$forward_door.setColor( 0, 0, 0 );
+	$forward_hall_light.Off();
+	$forward_light.Off();
+
+	//"Redshirt" Townsend's death stuff
+	sys.trigger( $port_ceiling_fx_2 );	//func_fx on ceiling between port door and back of ship
+	$ceilingpanel_1.hide();			//func_static ceiling panel between port door and back of ship
+	$ceilingpanel_3.show();			//func_static pipes, wires, and fallen ceiling panel between port door and back of ship
+	$hall_console_good_1.hide();		//func_static console between port door and back of ship
+	$hall_console_bad_1.show();		//func_static broken console between port door and back of ship
+	$redshirt_console_light_good.Off();	//light in front of console between port door and back of ship
+	$redshirt_console_light_bad.On();	//blinking light in front of console between port door and back of ship
+	$decal_floor_7.show();			//func_static blood decal
+	$decal_floor_2.show();			//func_static blood decal
+	$crash_cart.show();			//func_static medical crash cart
+	$dead_marine.show();			//ragdoll dead guy
+	$item_health_small_1.show();		//health pickup by dead guy
+	$item_health_small_2.show();		//health pickup by dead guy
+}
+
+void doShipDamage2()
+{
+	sys.trigger( $port_ceiling_fx_1 );	//func_fx on ceiling just outside port door
+	sys.trigger( $seg3_fixit_steam_2 );	//func_fx behind console between port and forward doors
+	sys.trigger( $port_gui_sparks_1 );	//func_fx in corner of port turret sign
+
+	$port_door.setColor( 1, 0, 0 );
+	$port_light.Off();			//light inside port door
+	$port_light_flicker.On();		//flickering light inside port door
+	$port_hall_light.Off();			//light outside port door
+	$port_hall_light_flicker.On();		//flickering light outside port door
+	$port_console_good_light.Off();		//light in front of console between port and forward doors
+	$port_console_bad_light.On();		//blinking light in front of console between port and forward doors
+	$hall_console_good_2.hide();		//func_static console between port and forward doors
+	$hall_console_bad_2.show();		//func_static broken console between port and forward doors
+	$port_good_pillars_1.hide();		//func_static wall pillars by port door
+	$port_bad_pillars_1.show();		//func_static broken wall pillars on floor by port door
+	$port_good_1.hide();			//func_static small ceiling panel in front of port door
+	$port_broken_1.show();			//func_static pipes, wires, and fallen ceiling panel by port door
+	$port_gui_good.hide();			//func_static sign above port door
+	$port_gui_broken_1.show();		//func_static broken sign hanging next to port door
+	$decal_floor_6.show();			//func_static scortch mark decal
+	$ladder_good.hide();			//func_static ladder
+	$ladder_bad.show();			//func_static broken ladder on floor
+	sys.trigger( $ladder_aas_obst );
+}
+
+void doShipDamage3()
+{
+	sys.trigger( $panel_wall_1_fx_1 );	//func_fx in wall above console between SB door and back of ship
+	sys.trigger( $panel_wall_1_fx_2 );	//func_fx at base of broken console between SB door and back of ship
+	sys.trigger( $back_mon_sparks );	//func_fx above monitors on the ceiling near lockers
+	sys.trigger( $seg2_fixit_steam_10 );	//func_fx above lockers
+
+	$hall_console_good_4.hide();		//func_static console between SB door and back of ship
+	$hall_console_bad_4.show();		//func_static broken console between SB door and back of ship
+	$decal_floor_3.show();			//func_static scortch mark decal
+	$panel_wall_1.hide();			//func_static wall panel between SB door and back of ship
+	$panel_wall_1b.show();			//func_static open wall panel between SB door and back of ship
+	$seg3upperlight_a.setColor( 0.35, 0, 0 );
+	$seg3upperlight_b.setColor( 0.35, 0, 0 );
+	$seg3upperlight_c.setColor( 0.35, 0, 0 );
+	$upper_door_port.setColor( 1, 0, 0 );
+	$upper_door_forward.setColor( 1, 0, 0 );
+	$upper_door_sb.setColor( 1, 0, 0 );
+	$back_mon_1_good.hide();		//func_static monitors on the ceiling near lockers
+	$back_mon_1_bad.show();
+	$back_mon_2_good.hide();
+	$back_mon_2_bad.show();
+	$back_mon_3_good.hide();
+	$back_mon_3_bad.show();
+	$back_mon_4_good.hide();
+	$back_mon_4_bad.show();
+	$locker_standing_1.hide();		//func_static lockers that tip over
+	$locker_standing_2.hide();
+	$locker_fallen_1.show();
+	$locker_fallen_2.show();
+	$rear_door_light.Off();
+	$rear_door_light_flicker.On();
+	$rear_door.setColor( 1, 0, 0 );
+	$decal_floor_1.show();
+}
+
+void playerNearTak()
+{
+	PLAYER_NEAR_TAK = true;
+}
+
+//Called from startMap(), this puts Tak in the hole in the floor for the cannon damage sequence
+void takFixStuff()
+{
+	sys.trigger( $takhatch_aas_obst );
+
+	$tak_floor_panel_pipes.show();
+	sys.trigger( $tak_floor_fx_1 );
+
+	$tak_floor_panel.time( 1 );
+	$tak_floor_panel.accelTime( 0.1 );
+	$tak_floor_panel.decelTime( 0.25 );
+	$tak_floor_panel.rotateOnce( '-100 0 0' );
+	sys.waitFor( $tak_floor_panel );
+
+	aiScriptedMoveWait( $tak, $tak_floor_panel_spot, 2, 1 );
+	aiScriptedFaceWait( $tak, $tak_floor_panel_lookat, 1 );
+	aiScriptedAnimLoop( $tak, "working_wall_panel_3", 12 );
+}
+
+//Called from startMap()
+void takDoneFixing()
+{
+	sys.wait( 5 );
+	$tak_floor_fx_1.remove();
+
+	aiScriptedAnimLoop( $tak, "weaponless_idle", 12 );
+	sys.wait( 2 );
+	aiScriptedMoveWait( $tak, $intro_cut_mitchell_spot_1, 16, 1 );
+	aiScriptedMoveWait( $tak, $tak_spot_1, 24, 1 );
+	aiScriptedAnimLoop( $tak, "dropship_console_idle", 12 );
+
+	$tak_floor_panel.time( 1 );
+	$tak_floor_panel.accelTime( 0.25 );
+	$tak_floor_panel.decelTime( 0.1 );
+	$tak_floor_panel.rotateOnce( '100 0 0' );
+	sys.waitFor( $tak_floor_panel );
+
+	$tak_floor_panel_pipes.hide();
+	$takhatch_aas_obst.remove();
+}
+
+//Called from startMap(), this moves Mitchell over to the ragdoll dead guy
+void mitchellHelpTownsend()
+{
+	$townsend.remove();
+	aiScriptedMoveWait( $mitchell, $mitchell_help_spot, 2, 1 );
+	aiScriptedFaceWait( $mitchell, $mitchell_help_lookat_spot, 1 );
+	aiScriptedAnimLoop( $mitchell, "medic_treating", 12 );
+}
+
+void atmosphereCannonTilting()
+{
+	while( SEGMENT == 3 ) {
+		$lower_cannon_mover.time( 1 );
+		$lower_cannon_mover.accelTime( 0.5 );
+		$lower_cannon_mover.decelTime( 0.5 );
+		$lower_cannon_mover.rotateOnce( '0 0 10' );
+		sys.waitFor( $lower_cannon_mover );
+		$lower_cannon_mover.time( 1.5 );
+		$lower_cannon_mover.accelTime( 0.75 );
+		$lower_cannon_mover.decelTime( 0.75 );
+		$lower_cannon_mover.rotateOnce( '0 0 -10' );
+		sys.waitFor( $lower_cannon_mover );
+		$lower_cannon_mover.time( 1.5 );
+		$lower_cannon_mover.accelTime( 0.75 );
+		$lower_cannon_mover.decelTime( 0.75 );
+		$lower_cannon_mover.rotateOnce( '0 0 -10' );
+		sys.waitFor( $lower_cannon_mover );
+		$lower_cannon_mover.time( 1 );
+		$lower_cannon_mover.accelTime( 0.5 );
+		$lower_cannon_mover.decelTime( 0.5 );
+		$lower_cannon_mover.rotateOnce( '0 0 10' );
+		sys.waitFor( $lower_cannon_mover );
+	}
+}
+
+//Called from q4x_airassault_space_cannon.def
+void spaceCannonRocketFired()
+{
+	if( !ROCKET_TRAINED && IN_TRAINING ) {
+		ROCKET_TRAINED = true;
+	}
+}
+
+//Called from q4x_airassault_space_cannon.def
+void spaceCannonBlasterFired()
+{
+	if( !BLASTER_TRAINED && ROCKET_TRAINED ) {
+		BLASTER_TRAINED = true;
+	}
+}
+
+void secretPanelOpen()
+{
+	$sec_panel_1.time( 2 );
+	$sec_panel_1.accelTime( 0.5 );
+	$sec_panel_1.decelTime( 0.5 );
+	$sec_panel_1.rotateOnce( '0 0 -178' );
+	sys.waitFor( $sec_panel_1 );
+}
+
+void invaderSpawned()
+{
+	INVADER_COUNT++;
+}
+
+void invaderKilled()
+{
+	INVADER_COUNT--;
+}
+
+void remindPlayerBallTurret()
+{
+	while( !PLAYER_ENTERED_BALLTURRET ) {
+		sys.wait( 10 );
+		if( PLAYER_ENTERED_BALLTURRET ) {
+			break;
+		}
+		radioChatterPlayWait( $radiochatter, "vo_1_25_1" );	//"<markswell:> <Over Radio> Get into position, Sergeant."
+		sys.wait( 10 );
+		if( PLAYER_ENTERED_BALLTURRET ) {
+			break;
+		}
+		radioChatterPlayWait( $radiochatter, "vo_1_25_2" );	//"<markswell:> <Over Radio> Cannon's down below, Dekard, man your position."
+		sys.wait( 10 );
+		if( PLAYER_ENTERED_BALLTURRET ) {
+			break;
+		}
+		radioChatterPlayWait( $radiochatter, "vo_1_25_3" );	//"<markswell:> <Over Radio> Man the belly cannon, Dekard.  The Hannibal needs us."
+	}
+}
+
+void remindPlayerStrapIn()
+{
+	while( !PLAYER_IN_CHAIR ) {
+		sys.println( "Get in the chair." );
+		sys.wait( 10 );
+	}
+
+}
+
+void putDarnellBackInPort()
+{
+	$port_gunner.hide();
+	$portdoor.lock( 0 );
+	aiScriptedMoveWait( $darnell, $port_cannon_null, 16, 1 );
+	aiScriptedFace( $darnell, $seg2_badmon_3, 1 );
+}
+
+///////////////////////////////////////////////////////////////
+                                                             //
+///////////////////////////////////////////////////////////////
+//
+///////////////////////////////////////////////////////////////
+//  Intro cinematic                                          //
+///////////////////////////////////////////////////////////////
+
+//Called from the char_ in the intro MCC room's script_init
+void introCinematicOfficer1()
+{
+	while( INTRO )
+	{
+		aiScriptedAnimWait( $OFFICER_1, "sitting_working_consoles_1", 0, 0 );
+		aiScriptedAnimWait( $OFFICER_1, "sitting_working_consoles_3", 0, 0 );
+		aiScriptedAnimWait( $OFFICER_1, "sitting_working_consoles_2", 0, 0 );		
+		aiScriptedAnimWait( $OFFICER_1, "sitting_working_consoles_3", 0, 0 );				
+		aiScriptedAnimWait( $OFFICER_1, "sitting_working_consoles_1", 0, 0 );
+		aiScriptedAnimWait( $OFFICER_1, "sitting_working_consoles_1", 0, 0 );
+	}
+}
+
+//Called from the char_ in the intro MCC room's script_init
+void introCinematicOfficer2()
+{
+	while( INTRO )
+	{
+		aiScriptedAnimWait( $OFFICER_2, "looking_down_gui_1", 0, 0 );
+		aiScriptedAnimWait( $OFFICER_2, "looking_down_gui_1", 0, 0 );
+		aiScriptedAnimWait( $OFFICER_2, "looking_down_gui_3", 0, 0 );
+		aiScriptedAnimWait( $OFFICER_2, "looking_down_gui_1", 0, 0 );
+		aiScriptedAnimWait( $OFFICER_2, "looking_down_gui_1", 0, 0 );
+		aiScriptedAnimWait( $OFFICER_2, "looking_down_gui_2", 0, 0 );
+	}
+}
+
+//Called from the char_ in the intro MCC room's script_init
+void introCinematicOfficer3()
+{
+	while( INTRO )
+	{
+		$OFFICER_3.lookAt( $func_static_14909 );
+		aiScriptedAnimWait( $OFFICER_3, "sarge_briefing_3", 4, 0 );
+		$OFFICER_3.lookAt( $func_static_15010 );		
+		aiScriptedAnimWait( $OFFICER_3, "sarge_briefing_3", 4, 0 );
+		$OFFICER_3.lookAt( $null_entity );		
+		aiScriptedAnimWait( $OFFICER_3, "sarge_briefing_5", 4, 0 );
+		$OFFICER_3.lookAt( $func_static_15010 );		
+		aiScriptedAnimWait( $OFFICER_3, "sarge_briefing_3", 4, 0 );		
+	}
+}
+
+//Called from the char_ in the intro MCC room's script_init
+void introCinematicOfficer4()
+{
+	aiScriptedAnimLoop ( $OFFICER_4, "sitting_working_consoles_3", 0 );
+}
+
+//Called from introCinematic()
+void intro_move_markswell()
+{
+	aiScriptedAnimWait( $markswell, "markswell_ladder_descend", 0, 0 );
+	aiScriptedFaceWait( $markswell, $player1, 1 );
+	aiScriptedMoveWait( $markswell, $intro_cut_markswell_spot_1, 2, 1 );
+	aiScriptedFaceWait( $markswell, $player1, 1 );
+	aiScriptedAnimLoop( $markswell, "unarmed_idle", 12 );
+}
+
+//Called from introCinematic()
+void intro_move_mitchell()
+{
+	aiScriptedMoveWait( $mitchell, $mitchell_getoutofchair_spot, 8, 1 );
+	aiScriptedMoveWait( $mitchell, $intro_cut_mitchell_spot_1, 2, 1 );
+	aiScriptedFaceWait( $mitchell, $markswell, 1 );
+}
+
+//Called from introCinematic()
+void intro_move_navajas()
+{
+	aiScriptedMoveWait( $navajas, $navajas_getoutofchair_spot, 16, 1 );
+	aiScriptedMoveWait( $navajas, $intro_cut_navajas_spot_1, 2, 1 );
+	aiScriptedFaceWait( $navajas, $markswell, 1 );
+}
+
+//Called from introCinematic()
+void intro_move_darnell()
+{
+	aiScriptedMoveWait( $darnell, $darnell_getoutofchair_spot, 16, 1 );
+	aiScriptedMoveWait( $darnell, $intro_cut_darnell_spot_1, 2, 1 );
+	aiScriptedFaceWait( $darnell, $markswell, 1 );
+}
+
+//Called from introCinematic()
+void intro_move_townsend()
+{
+	aiScriptedMoveWait( $townsend, $townsend_getoutofchair_spot, 16, 1 );
+	aiScriptedMoveWait( $townsend, $intro_cut_townsend_spot_1, 2, 1 );
+	aiScriptedFaceWait( $townsend, $markswell, 1 );
+}
+
+//Called from introCinematic()
+void intro_move_tak()
+{
+	aiScriptedMoveWait( $tak, $tak_getoutofchair_spot, 16, 1 );
+	aiScriptedMoveWait( $tak, $intro_cut_tak_spot_1, 2, 1 );
+	aiScriptedFaceWait( $tak, $markswell, 1 );
+}
+
+//Called from startMap()
+void introCinematic()
+{
+	$seg1_cin_player.hideSurface("models/weapons/mp_guns/w_mg_lo");
+
+	// _____ SPACE, DESTROYER FLYBY ______
+	sys.trigger( $intro_space_camera_1 );
+	sys.waitFrame();
+	sys.fadeIn( '0 0 0', 1 );
+	$intro_space_camera_mover_1.time( 15 );
+	$intro_space_camera_mover_1.accelTime( 0 );
+	$intro_space_camera_mover_1.decelTime( 0 );
+	$intro_space_camera_mover_1.moveTo( $intro_space_camera_null_1 );
+	$intro_space_camera_mover_1.rotateOnce( '0 30 0' );
+	sys.waitFor( $intro_space_camera_mover_1 );
+	// __________________________________
+
+	// _____ INSIDE MCC CONTROL ROOM ______
+	sys.trigger( $intro_control_room_camera_1 );
+	$intro_control_room_cammover_1.time( 5 );
+	$intro_control_room_cammover_1.accelTime( 2 );
+	$intro_control_room_cammover_1.decelTime( 2 );
+	$intro_control_room_cammover_1.moveTo( $intro_control_room_null_1 );
+	sys.waitFor( $intro_control_room_cammover_1 );
+
+	sys.wait( 2 );
+
+	sys.trigger( $intro_control_room_camera_2 );
+	sys.wait( 0.1 );
+	aiSpeakWait( $davenport, "lipsync_1_0_1" );		//"Rhino squad is on the ground, once they take out the Strogg Air Defense Cannons, we’ll move to phase 2."
+
+	sys.trigger( $intro_control_room_camera_1 );
+	sys.waitFrame();
+	aiScriptedAnim( $davenport, "weaponless_point_down", 12, 1 );
+	aiSpeakWait( $davenport, "lipsync_1_0_2" );		//"Move the Dreadnaughts forward, and tell them to prep their shields.  We'll be in range of the Big Guns soon."
+
+	sys.trigger( $intro_control_room_camera_4 );
+	sys.wait( 0.1 );
+	aiSpeakWait( $marek, "lipsync_1_0_3" );			//"What about the MCCs?"
+
+	sys.trigger( $intro_control_room_camera_2 );
+	sys.wait( 0.1 );
+	aiSpeak( $davenport, "lipsync_1_0_4" );			//"The Hannibal is already in position, the Alexander is on its flank.  We’ve got two wings of gunships flying escort."
+	sys.wait( 3 );
+
+	sys.trigger( $intro_control_room_camera_5 );
+	sys.waitFrame();
+	$intro_control_room_camera_5_mover.time( 3 );
+	$intro_control_room_camera_5_mover.accelTime( 1 );
+	$intro_control_room_camera_5_mover.decelTime( 1 );
+	$intro_control_room_camera_5_mover.moveTo( $intro_control_room_camera_5_target );
+	sys.waitFor( $intro_control_room_camera_5_mover );
+
+	sys.trigger( $intro_control_room_camera_2 );
+	sys.wait( 0.1 );
+	aiSpeak( $davenport, "lipsync_1_0_5" );			//"Ares squad has point."
+	aiScriptedAnim( $davenport, "weaponless_point_down", 12, 1 );
+	sys.wait( 2 );
+
+	sys.trigger( $intro_control_room_camera_3 );
+	sys.waitFrame();
+	$intro_control_room_cammover_2.time( 4 );
+	$intro_control_room_cammover_2.accelTime( 1 );
+	$intro_control_room_cammover_2.decelTime( 0 );
+	$intro_control_room_cammover_2.moveTo( $intro_control_room_null_2 );
+	sys.waitFor( $intro_control_room_cammover_2 );
+	sys.wait( 0.5 );
+	// __________________________________
+
+	$intro_mcc.remove();
+	$intro_dropship_1.remove();
+	$destroyer.remove();
+	$intro_dropship.show();
+	$patton.hide();
+	$ares.show();
+
+	// _____ SPACE, DROPSHIP FLYBY ______
+	sys.trigger( $intro_space_camera_2 );
+	$intro_space_camera_mover_2.time( 8 );
+	$intro_space_camera_mover_2.accelTime( 0 );
+	$intro_space_camera_mover_2.decelTime( 0 );
+	$intro_space_camera_mover_2.moveTo( $intro_space_camera_null_2 );
+	sys.waitFor( $intro_space_camera_mover_2 );
+	// __________________________________
+
+	//Clean up intro stuff
+	$intro_space_sun.Off();
+	$intro_dropship.remove();
+	$marek.remove();
+	$davenport.remove();
+	$OFFICER_1.remove();
+	$OFFICER_2.remove();
+	$OFFICER_3.remove();
+	$OFFICER_4.remove();
+
+	$seg1_cin_player.show();
+	aiScriptedAnimLoop( $seg1_cin_player, "idle_sitting_1", 1 );
+	$darnell.show();
+	aiScriptedAnimLoop( $darnell, "idle_sitting_1", 1 );
+	$mitchell.show();
+	$navajas.show();
+	aiScriptedAnimLoop( $navajas, "idle_sitting_1", 1 );
+	$tak.show();
+	aiScriptedAnimLoop( $tak, "idle_sitting_1", 1 );
+	$townsend.show();
+	aiScriptedAnimLoop( $townsend, "idle_sitting_1", 1 );
+
+	sys.trigger( $intro_cin_cam_1 );
+
+	sys.trigger( $comchat );
+	$comchat.fadeSound( SND_CHANNEL_ANY, -5, 0.25 );
+
+	aiScriptedAnimWait( $mitchell, "weapon_check_2", 12, 1 );
+	aiScriptedAnimLoop( $mitchell, "idle_sitting_1", 12 );
+	sys.wait( 1 );
+	$darnell.lookAt( $mitchell );
+	aiSpeakWait( $darnell, "lipsync_1_1_1" );		//You gotta cool off man
+	$mitchell.lookAt( $darnell );
+	aiSpeakWait( $mitchell, "lipsync_1_1_2" );		//Sorry Darnell
+	aiSpeakWait( $mitchell, "lipsync_1_1_3" );		//First time in combat
+
+	sys.trigger( $intro_cin_cam_2 );
+	aiSpeakWait( $darnell, "lipsync_1_1_4" );		//Yeah I got that
+
+	sys.trigger( $intro_cin_cam_4 );
+	$mitchell.lookAt( $intro_cut_mitchell_lookup );
+	sys.trigger( $intro_cut_explosion_1 );
+	sys.wait( 3 );
+	$intro_cin_cam_4_mover.time( 0.025 );
+	$intro_cin_cam_4_mover.move( UP, 4 );
+	sys.waitFor( $intro_cin_cam_4_mover );
+	$wallmon_1_good.hide();
+	$wallmon_1_bad.show();
+	$wallmon_2_good.hide();
+	$wallmon_2_bad.show();
+	$intro_cin_cam_4_mover.time( 0.025 );
+	$intro_cin_cam_4_mover.move( DOWN, 4 );
+	sys.waitFor( $intro_cin_cam_4_mover );
+	sys.trigger( $seat_light );
+	sys.wait( 0.1 );
+	$intro_cin_cam_4_mover.time( 0.025 );
+	$intro_cin_cam_4_mover.move( DOWN, 4 );
+	sys.waitFor( $intro_cin_cam_4_mover );
+	sys.trigger( $seat_light );
+	$intro_cin_cam_4_mover.time( 0.025 );
+	$intro_cin_cam_4_mover.move( UP, 4 );
+	sys.waitFor( $intro_cin_cam_4_mover );
+	sys.wait( 0.1 );
+	sys.trigger( $seat_light );
+	sys.wait( 0.1 );
+	sys.trigger( $seat_light );
+	sys.wait( 1 );
+	$wallmon_1_bad.hide();
+	$wallmon_1_good.show();
+	$wallmon_2_bad.hide();
+	$wallmon_2_good.show();
+	aiSpeakWait( $mitchell, "lipsync_1_1_5" );		//How close do you think that was?
+	$mitchell.lookAt( $darnell );
+
+	sys.trigger( $intro_cin_cam_2 );
+	aiSpeakWait( $darnell, "lipsync_1_1_6" );		//You don't want to know what I think
+
+	sys.trigger( $intro_cin_cam_6 );
+	aiSpeakWait( $mitchell, "lipsync_1_1_7" );		//Say Darnell ...
+	aiSpeakWait( $darnell, "lipsync_1_1_8" );		//What?
+	$mitchell.lookAt( $player1 );
+	sys.wait( 1 );
+	$darnell.lookAt( $player1 );
+	sys.wait( 0.5 );
+
+	sys.trigger( $intro_cin_cam_3 );
+	aiSpeakWait( $darnell, "lipsync_1_1_9" );		//The Sarge?
+	aiSpeakWait( $mitchell, "lipsync_1_1_10" );		//Yeah
+	$darnell.lookAt( $mitchell );
+	$mitchell.lookAt( $darnell );
+	sys.wait( 0.5 );
+	aiSpeakWait( $darnell, "lipsync_1_1_11" );		//Don't sweat the Sarge, grunt.
+	$darnell.lookAt( $player1 );
+
+	//move Lt Markswell to troops
+	$markswell.show();
+	thread intro_move_markswell();
+	sys.wait( 0.5 );
+	sys.trigger( $intro_cin_cam_5 );
+	aiSpeakWait( $navajas, "lipsync_1_2_1" );		 //Officer on deck
+	sys.trigger( $ladder_aas_obst );
+	$townsend.lookAt( $markswell );
+	$tak.lookAt( $markswell );
+	$navajas.lookAt( $markswell );
+	$darnell.lookAt( $markswell );
+	$mitchell.lookAt( $markswell );
+	sys.wait( 3 );
+	sys.trigger( $intro_cin_cam_8 );
+	sys.wait( 1.5 );
+	//Move Mitchell to his first spot
+	thread intro_move_mitchell();
+	sys.wait( 0.4 );
+
+	//Move Darnell to his first spot
+	thread intro_move_darnell();
+	sys.wait( 0.4 );
+
+	//Move Townsend to his first spot
+	thread intro_move_townsend();
+	sys.wait( 0.4 );
+
+	//Move Navajas to his first spot
+	thread intro_move_navajas();
+	sys.wait( 0.4 );
+
+	//Move Tak to his first spot
+	thread intro_move_tak();
+	sys.wait( 3 );
+	sys.trigger( $intro_cin_cam_7 );
+	$markswell.lookAt( $darnell );
+	aiSpeakWait( $markswell, "lipsync_1_3_1" );		//Gentlemen, the war's underway ...
+	$markswell.lookAt( $player1 );
+	sys.trigger( $intro_cin_cam_8 );
+	sys.wait( 1 );
+	$markswell.lookAt( $ladder_good );
+	thread moveMarkswellUpLadder();
+	sys.wait( 0.25 );
+	thread moveTaktoConsole();
+	sys.wait( 0.25 );
+	thread moveMitchelltoConsole();
+	sys.wait( 0.25 );
+	thread putDarnellInPortCannon();
+	sys.wait( 0.25 );
+	thread putNavajasInSBCannon();
+	sys.wait( 0.25 );
+	thread moveTownsendtoConsole();
+	sys.wait( 5 );
+	sys.trigger( $intro_cin_cam_9 );
+	sys.wait( 2 );
+	$intro_cin_cam_9_mover.time( 3 );
+	$intro_cin_cam_9_mover.accelTime( 1 );
+	$intro_cin_cam_9_mover.decelTime( 2 );
+	$intro_cin_cam_9_mover.rotateOnce( '0 -180 0' );
+	sys.waitFor( $intro_cin_cam_9_mover );
+	$seg1_cin_player.remove();
+	sys.trigger( $intro_cin_cam_9 );
+	$player1.unbind();
+}
+
+//called from startMap(), tak will wander back and forth between consoles
+void moveTaktoConsole()
+{
+	$tak.hideSurface("models/weapons/mp_guns/w_mg_lo");
+
+	$tak.lookAt( $tak_console_lookat );
+	aiScriptedMoveWait( $tak, $tak_spot_1, 12, 1 );
+	aiScriptedFaceWait( $tak, $tak_console_lookat, 1 );
+	aiScriptedAnimLoop( $tak, "weaponless_idle4_loop", 12 );
+
+	while( TAK_WANDER ) {
+		sys.wait( ( sys.random( 30 ) + 15 ) );
+		$tak.lookAt( $tak_console_lookat_2 );
+		aiScriptedMoveWait( $tak, $tak_spot_2, 12, 1 );
+		aiScriptedFaceWait( $tak, $tak_console_lookat_2, 1 );
+		aiScriptedAnimLoop( $tak, "weaponless_idle3_loop", 12 );
+
+		sys.wait( ( sys.random( 20 ) + 15 ) );
+		$tak.lookAt( $tak_console_lookat );
+		aiScriptedMoveWait( $tak, $tak_spot_1, 12, 1 );
+		aiScriptedFaceWait( $tak, $tak_console_lookat, 1 );
+		aiScriptedAnimLoop( $tak, "weaponless_idle2_loop", 12 );
+	}
+}
+
+//called from startMap()
+void moveMitchelltoConsole()
+{
+	$mitchell.lookAt( $mitchell_console_lookat );
+	aiScriptedMoveWait( $mitchell, $mitchell_spot_1, 8, 1 );
+	aiScriptedFaceWait( $mitchell, $mitchell_console_lookat, 1 );
+	$mitchell.hideSurface("models/weapons/mp_guns/w_mg_lo");
+	aiScriptedAnimLoop( $mitchell, "dropship_console_idle", 12 );
+}
+
+//called from startMap()
+void putDarnellInPortCannon()
+{
+	aiScriptedMoveWait( $darnell, $port_cannon_null, 8, 1 );
+	$darnell.hide();
+	sys.trigger( $port_gunner );
+}
+
+//called from startMap()
+void putNavajasInSBCannon()
+{
+	aiScriptedMoveWait( $navajas, $sb_cannon_null, 8, 1 );
+	$navajas.hide();
+	sys.trigger( $sb_gunner );
+}
+
+//called from startMap()
+void moveTownsendtoConsole()
+{
+	$townsend.lookAt( $townsend_console_lookat );
+	aiScriptedMoveWait( $townsend, $townsend_spot_1, 8, 1 );
+	aiScriptedFaceWait( $townsend, $townsend_console_lookat, 1 );
+	aiScriptedAnimLoop( $townsend, "dropship_console_idle", 12 );
+}
+
+//called from startMap()
+void moveMarkswellUpLadder()
+{
+	$markswell.lookAt( $func_static_53794 );
+	aiScriptedMoveWait( $markswell, $markswell_ladder_climb, 1, 1 );
+	aiScriptedAnimWait( $markswell, "markswell_ladder_climb", 0, 0 );
+	sys.waitFrame();
+	$markswell.remove();
+}
+
+
+///////////////////////////////////////////////////////////////
+                                                             //
+///////////////////////////////////////////////////////////////
+//
+///////////////////////////////////////////////////////////////
+//  Misc moving teammates around stuff                       //
+///////////////////////////////////////////////////////////////
+
+void shakeAtmosCinDropship()
+{
+	while( ATMOS_CIN ) {
+		$atmos_cin_dropship_mover.time( 0.01 );
+		$atmos_cin_dropship_mover.move( UP, 4 );
+		sys.waitFor( $atmos_cin_dropship_mover );
+		$atmos_cin_dropship_mover.time( 0.01 );
+		$atmos_cin_dropship_mover.move( DOWN, 4 );
+		sys.waitFor( $atmos_cin_dropship_mover );
+	}
+}
+
+void moveTakBackToChair()
+{
+	$tak.lookAt( $navajas_backtochair_spot );
+	aiScriptedMoveWait( $tak, $tak_backtochair_spot, 8, 1 );
+	aiScriptedFaceWait( $tak, $navajas_backtochair_spot, 1 );
+	aiScriptedAnimLoop( $tak, "unarmed_idle", 12 );
+	$tak.lookAt( $player1 );
+}
+
+void moveNavajasBackToChair()
+{
+	$seg1_spacecannon_3_env.playCycle( ANIMCHANNEL_ALL, "idle" );
+	$sb_gunner.hide();
+	$navajas.show();
+	aiScriptedMoveWait( $navajas, $navajas_backtochair_spot, 8, 1 );
+	aiScriptedFaceWait( $navajas, $tak_backtochair_spot, 1 );
+	aiScriptedAnimLoop( $navajas, "unarmed_idle", 12 );
+	$navajas.lookAt( $player1 );
+}
+
+void moveDarnellBackToChair()
+{
+	$seg1_spacecannon_1_env.playCycle( ANIMCHANNEL_ALL, "idle" );
+	$port_gunner.hide();
+	$darnell.show();
+	aiScriptedMoveWait( $darnell, $darnell_backtochair_spot, 8, 1 );
+	aiScriptedFaceWait( $darnell, $intro_cut_navajas_spot_1, 1 );
+	aiScriptedAnimLoop( $darnell, "unarmed_idle", 12 );
+	$darnell.lookAt( $player1 );
+}
+
+void moveMitchellBackToChair()
+{
+	$mitchell.lookAt( $intro_cin_endpoint );
+	aiScriptedMoveWait( $mitchell, $mitchell_backtochair_spot, 8, 1 );
+	aiScriptedFaceWait( $mitchell, $intro_cin_endpoint, 1 );
+	aiScriptedAnimLoop( $mitchell, "unarmed_idle", 12 );
+	$mitchell.lookAt( $player1 );
+}
+
+void cleanupAtmosCin()
+{
+	$atmos_cin_dropship.remove();
+	$atmos_cin_strogg.remove();
+	$atmos_cin_clouds_1.remove();
+	$atmos_cin_clouds_2.remove();
+	$atmos_cin_clouds_3.remove();
+	$atmos_cin_clouds_4.remove();
+	$atmos_cin_clouds_5.remove();
+	$atmos_cin_clouds_6.remove();
+	$atmos_cin_clouds_7.remove();
+	$atmos_cin_clouds_8.remove();
+	$atmos_cin_clouds_9.remove();
+	$atmos_cin_clouds_10.remove();
+	$atmos_cin_dropship_mover.remove();
+	$atmos_cin_sun_1.Off();
+	$atmos_cin_sun_2.Off();
+}
+
+void moveDarnelltoAttack()
+{
+	aiScriptedMoveWait( $darnell, $darnell_getoutofchair_spot, 16, 1 );
+	aiScriptedMoveWait( $darnell, $darnell_invasion_spot_1, 32, 1 );
+	aiScriptedFaceWait( $darnell, $target_null_54, 1 );
+	$darnell.becomeAggressive();
+}
+
+void moveTaktoAttack()
+{
+	aiScriptedMoveWait( $tak, $tak_getoutofchair_spot, 16, 1 );
+	aiScriptedMoveWait( $tak, $tak_invasion_spot_1, 32, 1 );
+	aiScriptedFaceWait( $tak, $target_null_54, 1 );
+	$tak.becomeAggressive();
+}
+
+void navajasGetsHit()
+{
+	aiScriptedMoveWait( $navajas, $navajas_wounded_spot, 16, 1 );
+	aiScriptedFaceWait( $navajas, $tak_console_lookat_2, 1 );
+	aiScriptedAnimLoop( $navajas, "dropship_hurt", 12 );
+
+	$mitchell.lookAt( $navajas );
+	aiScriptedMoveWait( $mitchell, $mitchell_getoutofchair_spot, 8, 1 );
+	aiScriptedMoveWait( $mitchell, $mitchell_help_navasjas_spot, 4, 1 );
+	aiScriptedFaceWait( $mitchell, $navajas, 1 );
+	aiScriptedAnimLoop( $mitchell, "medic_treating", 12 );
+}
+
+///////////////////////////////////////////////////////////////
+                                                             //
+///////////////////////////////////////////////////////////////
+//
+///////////////////////////////////////////////////////////////
+//  Misc callouts by teammates during fighting               //
+///////////////////////////////////////////////////////////////
+//Called from startMap(), these play some teammate dialogue while the player is blasting away
+
+void vo_teammatesDefensiveArray()
+{
+	sys.wait( 1 );
+	radioChatterPlayWait( $radiochatter, "vo_1_5_4" );		//"<darnell:> I got one."
+	sys.wait( sys.random(2) );
+	radioChatterPlayWait( $radiochatter, "vo_1_5_5" );		//"<darnell:> Satellite down."
+	sys.wait( sys.random(2) );
+	radioChatterPlayWait( $radiochatter, "vo_1_5_6" );		//"<darnell:> Grid's down on the port side."
+	sys.wait( sys.random(2) );
+	radioChatterPlayWait( $radiochatter, "vo_1_5_7" );		//"<navajas:> There's one."
+	sys.wait( sys.random(2) );
+	radioChatterPlayWait( $radiochatter, "vo_1_5_8" );		//"<navajas:> Missed one.  Dekard you're gonna have to take it."
+	sys.wait( sys.random(2) );
+	radioChatterPlayWait( $radiochatter, "vo_1_5_9" );		//"<navajas:> Grid's down on Starboard side."
+}
+
+void vo_teammatesRound1Wave1()
+{
+	sys.wait( 7 );
+	if( ROUND1_WAVE1_PLAYERKILLS < ROUND1_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_7_2" );		//"<darnell:> <Over Radio> Strogg down."
+	}
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE1_PLAYERKILLS < ROUND1_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_7_3" );		//"<darnell:> <Over Radio> Got one."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE1_PLAYERKILLS < ROUND1_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_7_4" );		//"<darnell:> <Over Radio> There's another one."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE1_PLAYERKILLS < ROUND1_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_7_5" );		//"<darnell:> <Over Radio> Missed one. Take'em out Dekard."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE1_PLAYERKILLS < ROUND1_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_7_6" );		//"<darnell:> <Over Radio> One headed your way, Dekard."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE1_PLAYERKILLS < ROUND1_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_7_7" );		//"<darnell:> <Over Radio> I lost visual.  That one's yours, Dekard."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE1_PLAYERKILLS < ROUND1_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_7_8" );		//"<navajas:> <Over Radio> Two down, starboard side."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE1_PLAYERKILLS < ROUND1_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_7_9" );		//"<navajas:> <Over Radio> They're trying to flank."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE1_PLAYERKILLS < ROUND1_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_7_10" );		//"<navajas:> <Over Radio> One down."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE1_PLAYERKILLS < ROUND1_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_7_11" );		//"<navajas:> <Over Radio> Dammit.  He just blew by.  See if you can track him, Dekard."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE1_PLAYERKILLS < ROUND1_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_7_12" );		//"<navajas:> <Over Radio> I can't get a tone.  Anything you can do, Dekard?"
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE1_PLAYERKILLS < ROUND1_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_7_13" );		//"<navajas:> <Over Radio> There's too many.  Dekard, I need some assistance, vector three nine five."
+	}
+
+	if( ROUND1_WAVE1_PLAYERKILLS < ROUND1_WAVE1_KILLCOUNT ) {
+		vo_teammatesRound1Wave1();
+	}
+}
+
+void vo_teammatesRound1Wave2()
+{
+	sys.wait( 3 );
+	if( ROUND1_WAVE2_PLAYERKILLS < ROUND1_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_8_3" );		//"<darnell:> <Over Radio> I got a lock.  Strogg down."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE2_PLAYERKILLS < ROUND1_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_8_4" );		//"<darnell:> <Over Radio> They're splitting formation.  Watch the rear."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE2_PLAYERKILLS < ROUND1_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_8_5" );		//"<darnell:> <Over Radio> Three more in bound, Port side."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE2_PLAYERKILLS < ROUND1_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_8_6" );		//"<darnell:> <Over Radio> I just lost two.  You got'em, Dekard?"
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE2_PLAYERKILLS < ROUND1_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_8_7" );		//"<darnell:> <Over Radio> Watch out, Dekard, one headed your way."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE2_PLAYERKILLS < ROUND1_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_8_8" );		//"<darnell:> <Over Radio> I lost visual on at least three.  You got contact, Dekard?"
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE2_PLAYERKILLS < ROUND1_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_8_9" );		//"<navajas:> <Over Radio> I got a visual on the second wave."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE2_PLAYERKILLS < ROUND1_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_8_10" );		//"<navajas:> <Over Radio> Two more down."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE2_PLAYERKILLS < ROUND1_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_8_11" );		//"<navajas:> <Over Radio> They're regrouping, Starboard side."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE2_PLAYERKILLS < ROUND1_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_8_12" );		//"<navajas:> <Over Radio> Dammit, lost one.  See if you can finish him off, Dekard."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE2_PLAYERKILLS < ROUND1_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_8_13" );		//"<navajas:> <Over Radio> Where'd that wave come from?  Dekard, get ready, they're headed right for you."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE2_PLAYERKILLS < ROUND1_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_8_14" );		//"<navajas:> <Over Radio> Dekard, I missed another one, he's switching attack vectors now.  I hope you have better luck."
+	}
+
+	if( ROUND1_WAVE2_PLAYERKILLS < ROUND1_WAVE2_KILLCOUNT ) {
+		vo_teammatesRound1Wave2();
+	}
+}
+
+void vo_teammatesRound1Wave3()
+{
+	sys.wait( 3 );
+	if( ROUND1_WAVE3_PLAYERKILLS < ROUND1_WAVE3_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_9_3" );		//"<darnell:> <Over Radio> Roger that.  I got visual."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE3_PLAYERKILLS < ROUND1_WAVE3_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_9_4" );		//"<darnell:> <Over Radio> Flyer down."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE3_PLAYERKILLS < ROUND1_WAVE3_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_9_5" );		//"<darnell:> <Over Radio> Damn, they're fast."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE3_PLAYERKILLS < ROUND1_WAVE3_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_9_6" );		//"<darnell:> <Over Radio> Two more down."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE3_PLAYERKILLS < ROUND1_WAVE3_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_9_7" );		//"<darnell:> <Over Radio> Dekard, I got a cannon jam.  It's gonna take a second to clear it.  Keep your eyes open for me."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE3_PLAYERKILLS < ROUND1_WAVE3_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_9_8" );		//"<darnell:> <Over Radio> I lost two.  Watch for it, Dekard."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE3_PLAYERKILLS < ROUND1_WAVE3_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_9_9" );		//"<navajas:> <Over Radio> I got contact."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE3_PLAYERKILLS < ROUND1_WAVE3_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_9_10" );		//"<navajas:> <Over Radio> Three more down."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE3_PLAYERKILLS < ROUND1_WAVE3_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_9_11" );		//"<navajas:> <Over Radio> They just keep coming."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE3_PLAYERKILLS < ROUND1_WAVE3_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_9_12" );		//"<navajas:> <Over Radio> Dekard, I'm tracking one headed right for you."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE3_PLAYERKILLS < ROUND1_WAVE3_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_9_13" );		//"<navajas:> <Over Radio> I can't believe I missed that one.  "
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND1_WAVE3_PLAYERKILLS < ROUND1_WAVE3_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_9_14" );		//"<navajas:> <Over Radio> Two more for you, Dekard."
+	}
+
+	if( ROUND1_WAVE3_PLAYERKILLS < ROUND1_WAVE3_KILLCOUNT ) {
+		vo_teammatesRound1Wave3();
+	}
+}
+
+void vo_teammatesRound2Wave1()
+{
+	sys.wait( 3 );
+	if( ROUND2_WAVE1_PLAYERKILLS < ROUND2_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_10_3" );		//"<darnell:> <Over Radio> I got a visual."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND2_WAVE1_PLAYERKILLS < ROUND2_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_10_4" );		//"<darnell:> <Over Radio> Cannons are useless, I'm switching to missiles."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND2_WAVE1_PLAYERKILLS < ROUND2_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_10_5" );		//"<darnell:> <Over Radio> Dekard, I can't get a tone."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND2_WAVE1_PLAYERKILLS < ROUND2_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_10_6" );		//"<darnell:> <Over Radio> That one's all yours, Dekard."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND2_WAVE1_PLAYERKILLS < ROUND2_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_10_7" );		//"<navajas:> <Over Radio> Incoming Destroyer."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND2_WAVE1_PLAYERKILLS < ROUND2_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_10_8" );		//"<navajas:> <Over Radio> It's all over the Hannibal."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND2_WAVE1_PLAYERKILLS < ROUND2_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_10_9" );		//"<navajas:> <Over Radio> Dekard, I got one on the Starboard flank, you'll have to take the one ahead."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND2_WAVE1_PLAYERKILLS < ROUND2_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_10_10" );		//"<navajas:> <Over Radio> Shit, it's still flying.  Dekard, you got one inbound."
+	}
+
+	if( ROUND2_WAVE1_PLAYERKILLS < ROUND2_WAVE1_KILLCOUNT ) {
+		vo_teammatesRound2Wave1();
+	}
+}
+
+void vo_teammatesRound2Wave2()
+{
+	sys.wait( 3 );
+	if( ROUND2_WAVE2_PLAYERKILLS < ROUND2_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_11_3" );		//"<darnell:> <Over Radio> Two more, port side."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND2_WAVE2_PLAYERKILLS < ROUND2_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_11_4" );		//"<darnell:> <Over Radio> Destroyer's down."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND2_WAVE2_PLAYERKILLS < ROUND2_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_11_5" );		//"<darnell:> <Over Radio> It's no good.  Dekard, you got a shot?"
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND2_WAVE2_PLAYERKILLS < ROUND2_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_11_6" );		//"<darnell:> <Over Radio> Dammit.  He just slid out of range, that one's yours Dekard."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND2_WAVE2_PLAYERKILLS < ROUND2_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_11_7" );		//"<navajas:> <Over Radio> Destroyer confirmed.  It's switching approach vector."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND2_WAVE2_PLAYERKILLS < ROUND2_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_11_8" );		//"<navajas:> <Over Radio> Got one."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND2_WAVE2_PLAYERKILLS < ROUND2_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_11_9" );		//"<navajas:> <Over Radio> One's headed your way, Dekard."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND2_WAVE2_PLAYERKILLS < ROUND2_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_11_10" );		//"<navajas:> <Over Radio> Dekard, Destroyer inbound, it's all yours."
+	}
+
+	if( ROUND2_WAVE2_PLAYERKILLS < ROUND2_WAVE2_KILLCOUNT ) {
+		vo_teammatesRound2Wave2();
+	}
+}
+
+void vo_teammatesRound3Wave1()
+{
+	sys.wait( 3 );
+	if( ROUND3_WAVE1_PLAYERKILLS < ROUND3_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_12_3" );		//"<darnell:> <Over Radio> Contact.  Strogg flyer."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND3_WAVE1_PLAYERKILLS < ROUND3_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_12_4" );		//"<darnell:> <Over Radio> Flyer down."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND3_WAVE1_PLAYERKILLS < ROUND3_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_12_5" );		//"<darnell:> <Over Radio> Missed one.  It's headed your way, Dekard."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND3_WAVE1_PLAYERKILLS < ROUND3_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_12_6" );		//"<darnell:> <Over Radio> Destroyer! Straight ahead.  It's all you, Dekard."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND3_WAVE1_PLAYERKILLS < ROUND3_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_12_7" );		//"<navajas:> <Over Radio> I got a visual.  Two Strogg flyers."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND3_WAVE1_PLAYERKILLS < ROUND3_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_12_8" );		//"<navajas:> <Over Radio> Strogg down."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND3_WAVE1_PLAYERKILLS < ROUND3_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_12_9" );		//"<navajas:> <Over Radio> The escorts are breaking off.  Dekard, one's headed your way."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND3_WAVE1_PLAYERKILLS < ROUND3_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_12_10" );		//"<navajas:> <Over Radio> Damn, I lost'em.  Dekard, see if you can reacquire those flyers."
+	}
+
+	if( ROUND3_WAVE1_PLAYERKILLS < ROUND3_WAVE1_KILLCOUNT ) {
+		vo_teammatesRound3Wave1();
+	}
+}
+
+void vo_teammatesRound3Wave2()
+{
+	sys.wait( 3 );
+	if( ROUND3_WAVE2_PLAYERKILLS < ROUND3_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_15_2" );		//"<darnell:> <Over Radio> I got tone.  Destroyer down."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND3_WAVE2_PLAYERKILLS < ROUND3_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_15_3" );		//"<darnell:> <Over Radio> I got inbound flyers.  Switching to cannons."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND3_WAVE2_PLAYERKILLS < ROUND3_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_15_4" );		//"<darnell:> <Over Radio> I got two, but a third just flew by.  Think you can take'em, Dekard?"
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND3_WAVE2_PLAYERKILLS < ROUND3_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_15_5" );		//"<darnell:> <Over Radio> One more headed right for you, Dekard."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND3_WAVE2_PLAYERKILLS < ROUND3_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_15_6" );		//"<navajas:> <Over Radio> I got contact."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND3_WAVE2_PLAYERKILLS < ROUND3_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_15_7" );		//"<navajas:> <Over Radio> Damn, those flyers are fast."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND3_WAVE2_PLAYERKILLS < ROUND3_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_15_8" );		//"<navajas:> <Over Radio> Dekard, Destroyer's on the Hannibal."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND3_WAVE2_PLAYERKILLS < ROUND3_WAVE2_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_15_9" );		//"<navajas:> <Over Radio> You got an inbound, Dekard."
+	}
+
+	if( ROUND3_WAVE2_PLAYERKILLS < ROUND3_WAVE2_KILLCOUNT ) {
+		vo_teammatesRound3Wave2();
+	}
+}
+
+
+void vo_teammatesRound3Wave3()
+{
+	sys.wait( 3 );
+	if( ROUND3_WAVE3_PLAYERKILLS < ROUND3_WAVE3_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_17_2" );		//"<darnell:> <Over Radio> I got a visual, strogg flyer."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND3_WAVE3_PLAYERKILLS < ROUND3_WAVE3_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_17_3" );		//"<darnell:> <Over Radio> Destroyer's on the Alexander."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND3_WAVE3_PLAYERKILLS < ROUND3_WAVE3_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_17_4" );		//"<darnell:> <Over Radio> Dekard, they're coming at you."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND3_WAVE3_PLAYERKILLS < ROUND3_WAVE3_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_17_5" );		//"<darnell:> <Over Radio> Two more inbound, you should have visual, Dekard."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND3_WAVE3_PLAYERKILLS < ROUND3_WAVE3_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_17_6" );		//"<navajas:> <Over Radio> Two more flyers coming in, Starboard side."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND3_WAVE3_PLAYERKILLS < ROUND3_WAVE3_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_17_7" );		//"<navajas:> <Over Radio> One more down."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND3_WAVE3_PLAYERKILLS < ROUND3_WAVE3_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_17_8" );		//"<navajas:> <Over Radio> Inbound destroyer, I can't get a lock."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND3_WAVE3_PLAYERKILLS < ROUND3_WAVE3_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_17_9" );		//"<navajas:> <Over Radio> Watch it!  Another flyer moving straight across."
+	}
+
+	if( ROUND3_WAVE3_PLAYERKILLS < ROUND3_WAVE3_KILLCOUNT ) {
+		vo_teammatesRound3Wave3();
+	}
+}
+
+void vo_teammatesRound4Wave1()
+{
+	sys.wait( 3 );
+	if( ROUND4_WAVE1_PLAYERKILLS < ROUND4_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_18_3" );		//"<darnell:> <Over Radio> I got a visual, three bogeys, port side."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND4_WAVE1_PLAYERKILLS < ROUND4_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_18_4" );		//"<darnell:> <Over Radio> That's two more down."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND4_WAVE1_PLAYERKILLS < ROUND4_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_18_5" );		//"<darnell:> <Over Radio> I got two more coming in, but they're out of range.  Can you get a lock on'em Dekard?"
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND4_WAVE1_PLAYERKILLS < ROUND4_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_18_6" );		//"<darnell:> <Over Radio> Dekard, I lost another one.  Finish'em off for me."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND4_WAVE1_PLAYERKILLS < ROUND4_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_18_7" );		//"<navajas:> <Over Radio> Watch it, Destroyer inbound."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND4_WAVE1_PLAYERKILLS < ROUND4_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_18_8" );		//"<navajas:> <Over Radio> Two more flyers.  They came from nowhere."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND4_WAVE1_PLAYERKILLS < ROUND4_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_18_9" );		//"<navajas:> <Over Radio> Dekard I got a visual, but I can't get a lock.  Should be coming out of your three."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND4_WAVE1_PLAYERKILLS < ROUND4_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_18_10" );		//"<navajas:> <Over Radio> Lost another one.  Should be headed your way, Dekard."
+	}
+
+	if( ROUND4_WAVE1_PLAYERKILLS < ROUND4_WAVE1_KILLCOUNT ) {
+		vo_teammatesRound4Wave1();
+	}
+}
+
+void vo_teammatesRound5Wave1()
+{
+	sys.wait( 3 );
+	if( ROUND5_WAVE1_PLAYERKILLS < ROUND5_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_19_3" );		//"<darnell:> <Over Radio> Confirm bogeys.  Three flyers coming in, Port side."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND5_WAVE1_PLAYERKILLS < ROUND5_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_19_4" );		//"<darnell:> <Over Radio> I got a visual on a Destroyer, it's headed right for the Alexander."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND5_WAVE1_PLAYERKILLS < ROUND5_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_19_5" );		//"<darnell:> <Over Radio> Contact!  More flyers headed your way, Dekard."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND5_WAVE1_PLAYERKILLS < ROUND5_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_19_6" );		//"<darnell:> <Over Radio> Another Destroyer.  I got too many flyers running interference, it's all on you, Dekard."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND5_WAVE1_PLAYERKILLS < ROUND5_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_19_7" );		//"<navajas:> <Over Radio> Multiple flyers, Starboard side."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND5_WAVE1_PLAYERKILLS < ROUND5_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_19_8" );		//"<navajas:> <Over Radio> Destroyer's down."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND5_WAVE1_PLAYERKILLS < ROUND5_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_19_9" );		//"<navajas:> <Over Radio> Dammit, two slipped by.  Can you catch'em, Dekard?"
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND5_WAVE1_PLAYERKILLS < ROUND5_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_19_10" );		//"<navajas:> <Over Radio> Looks like another Destroyer, take care of it, Dekard."
+	}
+
+	if( ROUND5_WAVE1_PLAYERKILLS < ROUND5_WAVE1_KILLCOUNT ) {
+		vo_teammatesRound5Wave1();
+	}
+}
+
+void vo_teammatesRound6Wave1()
+{
+	sys.wait( 3 );
+	if( ROUND6_WAVE1_PLAYERKILLS < ROUND6_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_20_3" );		//"<darnell:> <Over Radio> Destroyer!  I got'em."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND6_WAVE1_PLAYERKILLS < ROUND6_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_20_4" );		//"<darnell:> <Over Radio> That's three more flyers down."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND6_WAVE1_PLAYERKILLS < ROUND6_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_20_5" );		//"<darnell:> <Over Radio> Damn, they just split formation.  One, maybe two headed your way, Dekard."
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND6_WAVE1_PLAYERKILLS < ROUND6_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_20_6" );		//"<darnell:> <Over Radio> Watch the flank!  Dekard, take out that flyer!"
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND6_WAVE1_PLAYERKILLS < ROUND6_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_20_7" );		//"<navajas:> <Over Radio> Strogg destroyer!  This one's mine."
+	}
+
+//	sys.wait( sys.random(10) );
+//	if( ROUND6_WAVE1_PLAYERKILLS < ROUND6_WAVE1_KILLCOUNT ) {
+//		radioChatterPlayWait( $radiochatter2, "vo_1_20_8" );		//"<navajas:> <Over Radio> Damn, Big Gun Shot."
+//	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND6_WAVE1_PLAYERKILLS < ROUND6_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_20_9" );		//"<navajas:> <Over Radio> I got contact, entire squadron.  No way I can get them all. "
+	}
+
+	sys.wait( sys.random(10) );
+	if( ROUND6_WAVE1_PLAYERKILLS < ROUND6_WAVE1_KILLCOUNT ) {
+		radioChatterPlayWait( $radiochatter2, "vo_1_20_10" );		//"<navajas:> <Over Radio> I saw two just pass overhead, good bet they're circling back around."
+	}
+
+	if( ROUND6_WAVE1_PLAYERKILLS < ROUND6_WAVE1_KILLCOUNT ) {
+		vo_teammatesRound6Wave1();
+	}
+}
+
+///////////////////////////////////////////////////////////////
+                                                             //
+///////////////////////////////////////////////////////////////
+//
+///////////////////////////////////////////////////////////////
+//  startMap is the main function that controls the entire   //
+//  map.                                                     //
+///////////////////////////////////////////////////////////////
+
+//Called from main()
+void startMap()
+{
+	float t;
+	entity tur;
+	entity tar;
+	float telethread;
+	float introcin;
+
+	//start checking the mcc and the ship's health and display it on the guis
+	thread dropshiphealthcheck();
+	thread mcc1HealthCheck();
+	thread mcc2HealthCheck();
+	thread debris();
+	thread debris2();
+	thread debris3();
+	thread debris4();
+	thread skybox_movement();
+	thread ambientShaking();
+	thread loopMccSpline();
+	thread loopMcc2Spline();
+	thread start_dropships();
+
+	INTRO = true;
+
+	introcin = thread introCinematic();
+	sys.waitForThread( introcin );
+
+	$chair_clip_1.show();
+	$chair_clip_2.show();
+	$chair_clip_3.show();
+	$chair_clip_4.show();
+	$chair_clip_5.show();
+	$chair_clip_6.show();
+	INTRO = false;
+	sys.trigger( $chairs_aas_obst_1 );
+	sys.trigger( $chairs_aas_obst_2 );
+
+	sys.wait( 1 );
+
+	// ### DEBUG SKIP ###
+	if( SKIP_TO_ATMOS == 0 ) {
+	// ### DEBUG SKIP ###
+
+	//Save a checkpoint
+	sys.trigger( $func_savegame_1 );
+
+	thread player_standing_around();
+
+	//Wait for the player to get in the forward cannon
+	while( !PLAYERONTURRET ) {
+		sys.wait( 0.1 );
+	}
+	$seg1_spacecannon_1.startSoundShader( "vo_1_4_2", SND_CHANNEL_ANY );		//"Primary targeting system online.  Missile Batteries in firing position."
+
+	sys.wait( 6 );
+
+	//Training Session
+	//__________________________________________________________
+	radioChatterPlayWait( $radiochatter, "vo_1_4_3" );	//"Dekard, Darnell, Navajas.  Fire off a few missiles; I want to make sure the new batteries are responding"
+
+	IN_TRAINING = true;
+
+	while( !ROCKET_TRAINED ) {
+		sys.wait( 1 );
+	}
+	sys.wait( 2 );
+
+	radioChatterPlayWait( $radiochatter, "vo_1_4_4" );	//"Missile systems are go"
+	sys.wait( 1 );
+	$seg1_spacecannon_1.startSoundShader( "vo_1_4_5", SND_CHANNEL_ANY );	//"Cannons deployed.  Ballistics systems are online"
+	sys.wait( 5 );
+	radioChatterPlayWait( $radiochatter, "vo_1_4_6" );	//"Go ahead and switch to the cannons.  Fire off a few rounds, to make sure the loading mechanisms are stable"
+
+	while( !BLASTER_TRAINED ) {
+		sys.wait( 1 );
+	}
+	//__________________________________________________________
+
+	sys.wait( 2 );
+
+	sys.trigger( $redalert_klaxon );
+	thread startredlightrotate();
+
+	radioChatterPlay( $radiochatter, "vo_1_4_1" );		//"Red alert!  We've got inbound Strogg..."
+
+	$seg1_spacecannon_1_env.playCycle( ANIMCHANNEL_ALL, "airassault_space_cannon_idle" );
+	aiScriptedAnimLoop( $port_gunner, "airassault_space_cannon_idle", 0 );
+	$seg1_spacecannon_3_env.playCycle( ANIMCHANNEL_ALL, "airassault_space_cannon_idle" );
+	aiScriptedAnimLoop( $sb_gunner, "airassault_space_cannon_idle", 0 );
+
+	//Give objective #1
+	thread m01_giveObjective( 1 );
+
+	$redalert_klaxon.remove();
+
+	thread movePlanetCloser();
+
+	sys.trigger( $spacebattleturret_spk );
+	sys.trigger( $spacebattleturret_spk_1 );
+	$spacebattleturret_spk.fadeSound( SND_CHANNEL_ANY, 1, 0.25 );
+	$spacebattleturret_spk_1.fadeSound( SND_CHANNEL_ANY, 1, 0.25 );
+
+	WARN_PLAYER_1 = true;		//If the player gets off the turret he'll be told to get back on
+
+	thread move_upper_mcc();
+
+//	radioChatterPlayWait( $radiochatter, "vo_1_5_1" );	//"Nice job, Marines.  Hold your positions, our first contacts are straight ahead: Strogg Orbital Defense Grid.  Clear us a path, Ares Squad.
+
+	//__________________________________________________________
+
+	//Defensive Array
+	//__________________________________________________________
+	for(t=1;t<=9;t++) {
+		tur=sys.getEntity( "aa_sat_spawnfx_" + t );
+		sys.trigger( tur );
+	}
+	for(t=1;t<=9;t++) {
+		tur=sys.getEntity( "monster_q4x_aa_satellite_" + t );
+		sys.trigger( tur );
+	}
+	for(t=1;t<=9;t++) {
+		tur=sys.getEntity( "turret_" + t );
+		tar=sys.getEntity( "turret" + t + "_target" );
+		tur.time( 20 );
+		tur.accelTime( 19 );
+		tur.moveTo( tar );
+	}
+
+	sys.wait( 2 );
+
+	// ** VO **
+	radioChatterPlayWait( $radiochatter, "vo_1_5_2" );	//"<darnell:> I got contact, bearing two two nine.  Orbital Grid
+
+	sys.wait( 6 );
+
+	radioChatterPlay( $radiochatter, "vo_1_5_3" );		//"<navajas:> Roger that, I got multiple signatures coming in on three five two.  This thing is huge."
+
+//	thread vo_teammatesDefensiveArray();
+
+	sys.waitFor( $turret_1 );
+
+	for(t=1;t<=9;t++) {
+		tur=sys.getEntity( "monster_q4x_aa_satellite_" + t );
+		if( isValidEntity( tur ) )
+			tur.kill();
+	}
+	//____________________________________________________________
+
+	radioChatterPlayWait( $radiochatter, "vo_1_5_10" );	//"<darnell:> Heh, we're through.  No sweat, Boss."
+	sys.wait( 0.5 );
+	radioChatterPlayWait( $radiochatter, "vo_1_5_11" );	//"<markswell:> <Over Radio> Watch it, Darnell.  This ain't over yet.  We're still over fifty thousand..."
+
+	//wee little spaceships in the skybox
+	sys.trigger( $func_fx_13 );
+	sys.trigger( $func_fx_16 );
+	sys.trigger( $func_fx_7 );
+	sys.trigger( $func_fx_12 );
+	sys.trigger( $func_fx_15 );
+	sys.trigger( $func_fx_14 );
+	sys.trigger( $func_fx_10 );
+	sys.trigger( $func_fx_11 );
+
+	radioChatterPlayWait( $radiochatter, "vo_1_8_2" );	//"<markswell:> <Over Radio> Incoming.  Watch yourselves.  First wave should be on approach vector two eight six."
+
+	sys.wait( 1 );
+
+	//First quick wave of four fighters
+	sys.trigger( $seg1_spawn_rotj_1 );
+	sys.wait( 0.1 );
+	sys.trigger( $seg1_spawn_rotj_3 );
+	sys.wait( 0.1 );
+	sys.trigger( $seg1_spawn_rotj_2 );
+	sys.wait( 0.1 );
+	sys.trigger( $seg1_spawn_rotj_4 );
+
+	//Wait until all ships have been killed before proceeding
+	while( STROGG_WAVE_SHIP_COUNTER > 0 ) {
+		sys.wait( 1 );
+	}
+
+/*
+-----------------------------------------------------------------------------------
+  Cutting this out to shorten length of the map
+-----------------------------------------------------------------------------------
+
+	SUBSEGMENT = 11;
+
+	thread toggleMccGuns();
+
+	STROGG_WAVE_SHIP_COUNTER = 0;
+
+	radioChatterPlay( $radiochatter, "vo_1_7_1" );	//"<markswell:> <Over Radio> Contact!  Strogg Fighters coming in on vector one seven three.  "
+
+	sys.println( "Round 1 Wave 1" );
+	//____________________________________________________________
+	// Round 1 Wave 1 : Fighters from mostly left
+	//____________________________________________________________
+	thread vo_teammatesRound1Wave1();
+	while ( ROUND1_WAVE1_PLAYERKILLS < ROUND1_WAVE1_KILLCOUNT ) {
+
+		if( SPLINE_ONE_A_COMPLETED )
+			sys.trigger( $seg1_spawn_1a );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_B_COMPLETED )
+			sys.trigger( $seg1_spawn_1b );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_C_COMPLETED )
+			sys.trigger( $seg1_spawn_1c );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_D_COMPLETED )
+			sys.trigger( $seg1_spawn_1d );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_G_COMPLETED )
+			sys.trigger( $seg1_spawn_1g );
+
+		sys.wait( 0.1 );
+	}
+
+	//Wait until all ships have been killed before proceeding
+	while( STROGG_WAVE_SHIP_COUNTER > 0 ) {
+		sys.wait( 1 );
+	}
+	//____________________________________________________________
+
+	thread toggleMccGuns();
+
+	radioChatterPlayWait( $radiochatter, "vo_1_9_1" );	//"<markswell:> <Over Radio> I just got a report from the Poseidon.  We got another wave coming in.  Keep those turrets hot, Marines."
+
+	//Pause between waves, probably some dialogue here
+	sys.wait( 3 );
+
+	thread toggleMccGuns();
+
+	STROGG_WAVE_SHIP_COUNTER = 0;
+
+	SUBSEGMENT = 12;
+
+	sys.println( "Round 1 Wave 2" );
+	//____________________________________________________________
+	// Round 1 Wave 2 : Fighters from mostly right
+	//____________________________________________________________
+	thread vo_teammatesRound1Wave2();
+	while ( ROUND1_WAVE2_PLAYERKILLS < ROUND1_WAVE2_KILLCOUNT ) {
+
+		if( SPLINE_ONE_E_COMPLETED )
+			sys.trigger( $seg1_spawn_1e );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_F_COMPLETED )
+			sys.trigger( $seg1_spawn_1f );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_B_COMPLETED )
+			sys.trigger( $seg1_spawn_1b );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_D_COMPLETED )
+			sys.trigger( $seg1_spawn_1d );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_G_COMPLETED )
+			sys.trigger( $seg1_spawn_1g );
+
+		sys.wait( 0.1 );
+	}
+
+	//Wait until all ships have been killed before proceeding
+	while( STROGG_WAVE_SHIP_COUNTER > 0 ) {
+		sys.wait( 1 );
+	}
+	//____________________________________________________________
+
+	thread toggleMccGuns();
+
+	//Pause between waves, probably some dialogue here
+	sys.wait( 3 );
+
+-----------------------------------------------------------------------------------
+  End of cut
+-----------------------------------------------------------------------------------
+*/
+
+	thread chaseShips1();
+	thread haulass1();
+	thread fireRocketClusters();
+	thread toggleMccGuns();
+
+	STROGG_WAVE_SHIP_COUNTER = 0;
+
+	SUBSEGMENT = 13;
+
+	sys.println( "Round 1 Wave 3" );
+	//____________________________________________________________
+	// Round 1 Wave 3 : Fighters from left and right
+	//____________________________________________________________
+	thread vo_teammatesRound1Wave3();
+	while ( ROUND1_WAVE3_PLAYERKILLS < ROUND1_WAVE3_KILLCOUNT ) {
+
+		if( SPLINE_ONE_A_COMPLETED )
+			sys.trigger( $seg1_spawn_1a );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_G_COMPLETED )
+			sys.trigger( $seg1_spawn_1g );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_B_COMPLETED )
+			sys.trigger( $seg1_spawn_1b );
+
+		sys.wait( 0.1 );
+
+//		if( SPLINE_ONE_F_COMPLETED )
+//			sys.trigger( $seg1_spawn_1f );
+//
+//		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_C_COMPLETED )
+			sys.trigger( $seg1_spawn_1c );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_E_COMPLETED )
+			sys.trigger( $seg1_spawn_1e );
+
+		sys.wait( 0.1 );
+
+//		if( SPLINE_ONE_D_COMPLETED )
+//			sys.trigger( $seg1_spawn_1d );
+//
+//		sys.wait( 0.1 );
+	}
+
+	//Wait until all ships have been killed before proceeding
+	while( STROGG_WAVE_SHIP_COUNTER > 0 ) {
+		sys.wait( 1 );
+	}
+	//____________________________________________________________
+
+	thread toggleMccGuns();
+	thread doShipDamage2();
+
+	sys.wait( 2 );
+
+	//Save a checkpoint
+	sys.trigger( $func_savegame_1 );
+
+	sys.wait( 1 );
+
+	radioChatterPlay( $radiochatter, "vo_1_10_1" );	//"<markswell:> <Over Radio> The Hannibal and the Alexander are moving into position.  We're taking..."
+
+	//Move MCC1 into position over the top of the player's dropship
+	MCC1_STATE = 2;
+	while ( !MCC1_STATE1_COMPLETE ) {
+		sys.waitFrame();
+	}
+
+	$seg1_spacecannon_1.lock( 1 );
+	thread tiltRightStay();
+
+	$mcc1.stopSpline();
+	$mcc1.time( 6 );
+	$mcc1.accelTime( 2 );
+	$mcc1.decelTime( 2 );
+	$mcc1.moveTo( $mcc1_splinepath_above_null );
+	sys.wait( 4 );
+	thread tiltLeftStay();
+	sys.waitFor( $mcc1 );
+	$mcc1.accelTime( 0 );
+	$mcc1.decelTime( 0 );
+	thread loopMccSpline_above();
+
+	$seg1_spacecannon_1.lock( 0 );
+
+	sys.wait( 2 );
+
+/*
+-----------------------------------------------------------------------------------
+  Cutting this out to shorten length of the map
+-----------------------------------------------------------------------------------
+
+	thread toggleMccGuns();
+
+	STROGG_WAVE_SHIP_COUNTER = 0;
+
+	SUBSEGMENT = 21;
+
+	sys.wait( 2 );
+
+	radioChatterPlay( $radiochatter, "vo_1_10_2" );	//"<markswell:> <Over Radio> Reading large Strogg signatures.  They've got their destroyers inbound.  Keep'em off the Hannibal."
+
+	sys.println( "Round 2 Wave 1" );
+	//____________________________________________________________
+	// Round 2 Wave 1 : Bombers from low left and right
+	//____________________________________________________________
+	thread vo_teammatesRound2Wave1();
+	while ( ROUND2_WAVE1_PLAYERKILLS < ROUND2_WAVE1_KILLCOUNT ) {
+
+		if( SPLINE_BOMBER_1_COMPLETED )
+			sys.trigger( $bomber_1_spawn );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_BOMBER_4_COMPLETED )
+			sys.trigger( $bomber_4_spawn );
+
+		sys.wait( 0.1 );
+	}
+
+	//Wait until all ships have been killed before proceeding
+	while( STROGG_WAVE_SHIP_COUNTER > 0 ) {
+		sys.wait( 1 );
+	}
+	//____________________________________________________________
+
+	thread toggleMccGuns();
+
+	sys.wait( 5 );
+
+-----------------------------------------------------------------------------------
+  End of cut
+-----------------------------------------------------------------------------------
+*/
+
+	thread chaseShips2();
+	thread haulass2();
+	thread fireRocketClusters2();
+	thread toggleMccGuns();
+
+	radioChatterPlayWait( $radiochatter, "vo_1_11_1" );	//"<markswell:> <Over Radio> Nice job Marines.  We're thirty-five thousand clicks from Stroggos.  Keep alert; we got destroyers inbound."
+	sys.wait( 3 );
+
+	STROGG_WAVE_SHIP_COUNTER = 0;
+
+	SUBSEGMENT = 22;
+
+	radioChatterPlay( $radiochatter, "vo_1_11_2" );	//"<markswell:> <Over Radio> I got contact.  Strogg Destroyer bearing three three seven.  It's headed right for the Hannibal."
+
+	sys.println( "Round 2 Wave 2" );
+	//____________________________________________________________
+	// Round 2 Wave 2 : Bombers from low left and right
+	//____________________________________________________________
+	thread vo_teammatesRound2Wave2();
+	while ( ROUND2_WAVE2_PLAYERKILLS < ROUND2_WAVE2_KILLCOUNT ) {
+
+		if( SPLINE_BOMBER_1_COMPLETED )
+			sys.trigger( $bomber_1_spawn );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_BOMBER_2_COMPLETED )
+			sys.trigger( $bomber_2_spawn );
+
+		sys.wait( 1 );
+
+		if( SPLINE_BOMBER_3_COMPLETED )
+			sys.trigger( $bomber_3_spawn );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_BOMBER_4_COMPLETED )
+			sys.trigger( $bomber_4_spawn );
+
+		sys.wait( 1 );
+	}
+
+	//Wait until all ships have been killed before proceeding
+	while( STROGG_WAVE_SHIP_COUNTER > 0 ) {
+		sys.wait( 1 );
+	}
+	//____________________________________________________________
+
+	thread toggleMccGuns();
+
+	thread doShipDamage3();
+
+	//Save a checkpoint
+	sys.trigger( $func_savegame_1 );
+
+	sys.wait( 1 );
+
+	radioChatterPlay( $radiochatter, "vo_1_12_1" );	//"<markswell:> <Over Radio> We're shifting positions.  Dekard, Darnell, Navajas, I'm reading multiple..."
+
+	SHAKE_INTENSITY = 2;
+
+	//Move MCC1 into position under the player's dropship
+	MCC1_STATE = 3;
+	while ( !MCC1_STATE2_COMPLETE ) {
+		sys.waitFrame();
+	}
+	$mcc1.stopSpline();
+	$mcc1.time( 6 );
+	$mcc1.accelTime( 2 );
+	$mcc1.decelTime( 2 );
+	$mcc1.moveTo( $mcc1_splinepath_reposition_null );
+	sys.waitFor( $mcc1 );
+	$mcc1.time( 6 );
+	$mcc1.accelTime( 2 );
+	$mcc1.decelTime( 2 );
+	$mcc1.moveTo( $mcc1_splinepath_below_null );
+	sys.waitFor( $mcc1 );
+	$mcc1.accelTime( 0 );
+	$mcc1.decelTime( 0 );
+	thread loopMccSpline_below();
+
+/*
+-----------------------------------------------------------------------------------
+  Cutting this out to shorten length of the map
+-----------------------------------------------------------------------------------
+
+	thread toggleMccGuns();
+
+	STROGG_WAVE_SHIP_COUNTER = 0;
+
+	SUBSEGMENT = 31;
+
+	sys.println( "Round 3 Wave 1" );
+	//____________________________________________________________
+	// Round 3 Wave 1 : High Bombers and fighters
+	//____________________________________________________________
+	thread vo_teammatesRound3Wave1();
+	while ( ROUND3_WAVE1_PLAYERKILLS < ROUND3_WAVE1_KILLCOUNT ) {
+
+		if( SPLINE_BOMBER_5_COMPLETED )
+			sys.trigger( $bomber_5_spawn );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_B_COMPLETED )
+			sys.trigger( $seg1_spawn_1b );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_BOMBER_6_COMPLETED )
+			sys.trigger( $bomber_6_spawn );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_A_COMPLETED )
+			sys.trigger( $seg1_spawn_1a );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_C_COMPLETED )
+			sys.trigger( $seg1_spawn_1c );
+
+		sys.wait( 0.1 );
+	}
+
+	//Wait until all ships have been killed before proceeding
+	while( STROGG_WAVE_SHIP_COUNTER > 0 ) {
+		sys.wait( 1 );
+	}
+	//____________________________________________________________
+
+	thread toggleMccGuns();
+
+-----------------------------------------------------------------------------------
+  End of cut
+-----------------------------------------------------------------------------------
+*/
+
+	thread mccHealthRegen();	//Start regenerating MCC health
+
+	radioChatterPlayWait( $radiochatter, "vo_1_12_2" );	//"<markswell:> <Over Radio> This one's going to be tough, Marines.  The incoming destroyers have flyer escorts..."
+
+	TAK_WANDER = false;	//Stop Tak from wandering back and forth in preparation for his 'fix it' bit
+
+	thread toggleMccGuns();
+	thread fireRocketClusters3();
+	thread outOfControlStrogg();
+
+	STROGG_WAVE_SHIP_COUNTER = 0;
+
+	SUBSEGMENT = 32;
+
+	sys.println( "Round 3 Wave 2" );
+	//____________________________________________________________
+	// Round 3 Wave 2 : Bombers and fighters
+	//____________________________________________________________
+	thread vo_teammatesRound3Wave2();
+	while ( ROUND3_WAVE2_PLAYERKILLS < ROUND3_WAVE2_KILLCOUNT ) {
+
+		if( SPLINE_ONE_E_COMPLETED )
+			sys.trigger( $seg1_spawn_1e );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_BOMBER_5_COMPLETED )
+			sys.trigger( $bomber_5_spawn );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_B_COMPLETED )
+			sys.trigger( $seg1_spawn_1b );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_BOMBER_7_COMPLETED )
+			sys.trigger( $bomber_7_spawn );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_G_COMPLETED )
+			sys.trigger( $seg1_spawn_1g );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_BOMBER_6_COMPLETED )
+			sys.trigger( $bomber_6_spawn );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_A_COMPLETED )
+			sys.trigger( $seg1_spawn_1a );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_BOMBER_8_COMPLETED )
+			sys.trigger( $bomber_8_spawn );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_C_COMPLETED )
+			sys.trigger( $seg1_spawn_1c );
+
+		sys.wait( 0.1 );
+	}
+
+	//Wait until all ships have been killed before proceeding
+	while( STROGG_WAVE_SHIP_COUNTER > 0 ) {
+		sys.wait( 1 );
+	}
+	//____________________________________________________________
+
+	thread toggleMccGuns();
+
+	//Cluster of rockets hits the dropship
+	sys.trigger( $seg1_bighit_rocket_fx_1 );
+	sys.trigger( $seg1_bighit_rocket_fx_2 );
+	sys.trigger( $seg1_bighit_rocket_fx_3 );
+	sys.trigger( $bighit_rocket_spk );
+	sys.trigger( $seg1_bighit_rocket_shake_1 );
+	$seg1_bighit_rocket_1.show();
+	$seg1_bighit_rocket_2.show();
+	$seg1_bighit_rocket_3.show();
+	$seg1_bighit_rocket_1.time( 8 );
+	$seg1_bighit_rocket_1.accelTime( 6 );
+	$seg1_bighit_rocket_1.moveTo( $seg1_bighit_rocket_target );
+	sys.wait( 4 );
+	radioChatterPlay( $radiochatter, "vo_1_13_1" );	//"<markswell:> <Over Radio> Incoming Missiles.  Evasive Action.  Evasive Action!"
+	sys.wait( 1 );
+	radioChatterPlay( $radiochatter, "vo_1_13_2" );	//"<markswell:> <Over Radio> All hands, prepare for impact."
+	sys.waitFor( $seg1_bighit_rocket_1 );
+
+	sys.trigger( $missile_impact_spk );
+	sys.trigger( $missile_impact_shake );
+
+	//Turn off some of the lights in the ship to give a "power" out feel
+	$rear_door_light.Off();
+	$rear_door.setColor( 0, 0, 0 );
+	$seg3_invlight_1.Off();
+	$seg3_invlight_2.Off();
+	$seat_light.Off();
+
+//Disable the space cannon ... gotta wait for Wyeth to add the event to the gui though
+//	$seg1_spacecannon_1_env.guiEvent( "damaged" );
+	$seg1_spacecannon_1.disableWeapon();
+	$seg1_spacecannon_1.disableMovement();
+
+	WARN_PLAYER_1 = false;		//Its now ok for the player to get off the turret, don't warn him
+//	$player1.exitVehicle( 0 );
+
+	radioChatterPlayWait( $radiochatter, "vo_1_13_3" );	//"<markswell:> <Over Radio> Damage report?"
+	radioChatterPlayWait( $radiochatter, "vo_1_13_4" );	//"<tak:> <Over Radio> The primary power router is off line.  Shields seem to be holding..."
+	radioChatterPlayWait( $radiochatter, "vo_1_13_5" );	//"<mitchell:> <Over Radio> His pulse is weak, blood oxygen is way below norm.  Not good. I'll do what I can."
+	radioChatterPlayWait( $radiochatter, "vo_1_13_6" );	//"<markswell:> <Over Radio> Dekard, get back there and help Tak.  Darnell, Navajas.  
+
+	while( PLAYERONTURRET ) {
+		sys.wait( 0.1 );
+	}
+	sys.waitFrame();
+	$seg1_spacecannon_1.lock( 1 );
+
+	$bighit_rocket_spk.remove();
+	$seg1_bighit_rocket_shake_1.remove();
+	$seg1_bighit_rocket_1.remove();
+	$seg1_bighit_rocket_2.remove();
+	$seg1_bighit_rocket_3.remove();
+	$seg1_bighit_rocket_fx_1.remove();
+	$seg1_bighit_rocket_fx_2.remove();
+	$seg1_bighit_rocket_fx_3.remove();
+
+	thread doShipDamage1();
+	thread takFixStuff();
+	thread mitchellHelpTownsend();
+	sys.trigger( $playerneartaktrigger );
+
+	$seg1_spacecannon_1_env.playCycle( ANIMCHANNEL_ALL, "idle" );
+	aiScriptedAnimLoop( $port_gunner, "unarmed_idle", 0 );
+	$seg1_spacecannon_3_env.playCycle( ANIMCHANNEL_ALL, "idle" );
+	aiScriptedAnimLoop( $sb_gunner, "unarmed_idle", 0 );
+
+	//Give objective #2
+	thread m01_giveObjective( 2 );
+
+	while( !PLAYER_NEAR_TAK ) {
+		sys.wait( 1 );
+	}
+
+	$help_tak_console_normal.hide();	//func_static console by chairs	
+	$help_tak_console_use.show();		//func_static console by chairs the player must use
+
+	aiScriptedAnimLoop( $tak, "unarmed_idle", 12 );
+	aiScriptedFaceWait( $tak, $player1, 1 );
+	$tak.lookAt( $player1 );
+	aiSpeakWait( $tak, "lipsync_1_14_1" );	//"<tak:> Dekard.  I've got the manual override set up, but I need you to find ..."
+	sys.wait( 1 );
+	$tak.lookAt( $tak_floor_panel_lookat );
+	aiScriptedAnimLoop( $tak, "working_wall_panel_3", 12 );
+
+	while( !HELPED_TAK ) {
+		sys.wait( 1 );
+	}
+
+	sys.wait( 1 );
+	//Turn lights back on
+	$sb_hall_light_flicker.On();
+	$sb_light_flicker.On();
+	$forward_hall_light_flicker.On();
+	$forward_light_flicker.On();
+	$rear_door_light.On();
+	$rear_door.setColor( 1, 0, 0 );
+	$seg3_invlight_1.On();
+	$seg3_invlight_2.On();
+	$sb_door.setColor( 1, 0, 0 );
+	$forward_door.setColor( 1, 0, 0 );
+	$seat_light.On();
+
+	thread takDoneFixing();
+
+	$seg1_spacecannon_1_env.playCycle( ANIMCHANNEL_ALL, "airassault_space_cannon_idle" );
+	aiScriptedAnimLoop( $port_gunner, "airassault_space_cannon_idle", 0 );
+	$seg1_spacecannon_3_env.playCycle( ANIMCHANNEL_ALL, "airassault_space_cannon_idle" );
+	aiScriptedAnimLoop( $sb_gunner, "airassault_space_cannon_idle", 0 );
+
+	radioChatterPlayWait( $radiochatter, "vo_1_14_2" );	//"<markswell:> <Over Radio> Good job, Ares squad.  Dekard, get back to the forward turret..."  
+	sys.wait( 1 );
+
+	//Complete objective #2
+	thread m01_completeObjective( 2 );
+
+	//Re-enable the forward cannon
+	$seg1_spacecannon_1.enableWeapon();
+	$seg1_spacecannon_1.enableMovement();
+	$seg1_spacecannon_1.lock( 0 );
+
+	WARN_PLAYER_1 = true;		//Warn the player if he gets off the turret again
+
+	//Save a checkpoint
+	sys.trigger( $func_savegame_1 );
+
+	sys.wait( 5 );
+
+	thread toggleMccGuns();
+
+	STROGG_WAVE_SHIP_COUNTER = 0;
+
+	SUBSEGMENT = 33;
+
+	radioChatterPlayWait( $radiochatter, "vo_1_15_1" );	//"<markswell:> <Over Radio> The Strogg are all over the Hannibal.  Take'em out, Marines."  
+
+	sys.println( "Round 3 Wave 3" );
+	//____________________________________________________________
+	// Round 3 Wave 3 : Bombers and fighters
+	//____________________________________________________________
+	thread vo_teammatesRound3Wave3();
+	while ( ROUND3_WAVE3_PLAYERKILLS < ROUND3_WAVE3_KILLCOUNT ) {
+
+		if( SPLINE_ONE_A_COMPLETED )
+			sys.trigger( $seg1_spawn_1a );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_BOMBER_5_COMPLETED )
+			sys.trigger( $bomber_5_spawn );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_B_COMPLETED )
+			sys.trigger( $seg1_spawn_1b );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_BOMBER_6_COMPLETED )
+			sys.trigger( $bomber_6_spawn );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_C_COMPLETED )
+			sys.trigger( $seg1_spawn_1c );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_BOMBER_7_COMPLETED )
+			sys.trigger( $bomber_7_spawn );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_D_COMPLETED )
+			sys.trigger( $seg1_spawn_1d );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_BOMBER_8_COMPLETED )
+			sys.trigger( $bomber_8_spawn );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_E_COMPLETED )
+			sys.trigger( $seg1_spawn_1e );
+
+		sys.wait( 0.1 );
+	}
+
+	//Wait until all ships have been killed before proceeding
+	while( STROGG_WAVE_SHIP_COUNTER > 0 ) {
+		sys.wait( 1 );
+	}
+	//____________________________________________________________
+
+	thread toggleMccGuns();
+
+	DS_TWO_LOOP = false;
+	thread dsTwoExplode();
+
+	//Move MCC1 back to its original position
+	MCC1_STATE = 1;
+	while ( !MCC1_STATE3_COMPLETE ) {
+		sys.waitFrame();
+	}
+	$mcc1.stopSpline();
+	$mcc1.time( 6 );
+	$mcc1.accelTime( 2 );
+	$mcc1.decelTime( 2 );
+	$mcc1.moveTo( $mcc1_splinepath_reposition_null );
+	sys.waitFor( $mcc1 );
+
+	$seg1_spacecannon_1.lock( 1 );
+	thread tiltLeftStay();
+
+	$mcc1.time( 6 );
+	$mcc1.accelTime( 2 );
+	$mcc1.decelTime( 2 );
+	$mcc1.moveTo( $mcc1_splinepath_null );
+	sys.wait( 4 );
+	thread tiltRightStay();
+	sys.waitFor( $mcc1 );
+	$mcc1.accelTime( 0 );
+	$mcc1.decelTime( 0 );
+	thread loopMccSpline();
+
+	radioChatterPlay( $radiochatter, "vo_1_16_3" );	//"<markswell:> <Over Radio> That's enough, Darnell.  The Loki is going to move up on our flank.  We're shifting over to protect the Alexander"  
+
+	//Move MCC2 into position over the top of the player's dropship
+	MCC2_STATE = 2;
+	while ( !MCC2_STATE1_COMPLETE ) {
+		sys.waitFrame();
+	}
+
+	thread tiltLeftStay();
+
+	$mcc2.stopSpline();
+	$mcc2.time( 6 );
+	$mcc2.accelTime( 2 );
+	$mcc2.decelTime( 2 );
+	$mcc2.moveTo( $mcc2_splinepath_above_null );
+	sys.wait( 4 );
+	thread tiltRightStay();
+	sys.waitFor( $mcc2 );
+	$mcc2.accelTime( 0 );
+	$mcc2.decelTime( 0 );
+	thread loopMcc2Spline_above();
+
+	$seg1_spacecannon_1.lock( 0 );
+
+	sys.wait( 1 );
+
+	//Save a checkpoint
+	sys.trigger( $func_savegame_1 );
+
+	radioChatterPlayWait( $radiochatter, "vo_1_17_1" );	//"<markswell:> <Over Radio> I'm reading three squadrons, destroyers, escorts..."
+
+	sys.wait( 2 );
+
+	thread toggleMccGuns();
+	thread chaseShips3();
+
+	STROGG_WAVE_SHIP_COUNTER = 0;
+
+	SUBSEGMENT = 41;
+
+	sys.println( "Round 4 Wave 1" );
+	//__________________________________________________________________________
+	// Round 4 Wave 1 : Fighters center, fighters left, bombers low
+	//__________________________________________________________________________
+	thread vo_teammatesRound4Wave1();
+	while ( ROUND4_WAVE1_PLAYERKILLS < ROUND4_WAVE1_KILLCOUNT ) {
+
+		if( SPLINE_TWO_A_COMPLETED )
+			sys.trigger( $seg2_spawn_1a );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_TWO_B_COMPLETED )
+			sys.trigger( $seg2_spawn_1b );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_TWO_J_COMPLETED )
+			sys.trigger( $seg2_spawn_1j );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_TWO_L_COMPLETED )
+			sys.trigger( $seg2_spawn_1l );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_G_COMPLETED )
+			sys.trigger( $seg1_spawn_1g );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_H_COMPLETED )
+			sys.trigger( $seg1_spawn_1h );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_BOMBER_1_COMPLETED )
+			sys.trigger( $bomber_1_spawn );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_BOMBER_2_COMPLETED )
+			sys.trigger( $bomber_2_spawn );
+
+		sys.wait( 0.1 );
+	}
+
+	//Wait until all ships have been killed before proceeding
+	while( STROGG_WAVE_SHIP_COUNTER > 0 ) {
+		sys.wait( 1 );
+	}
+	//__________________________________________________________________________
+
+	thread toggleMccGuns();
+
+	radioChatterPlay( $radiochatter, "vo_1_19_1" );	//"<markswell:> <Over Radio> Loki's still got the Hannibal in one piece.  We're shifting position ..."
+
+	//Move MCC1 into position under the player's dropship
+	MCC2_STATE = 3;
+	while ( !MCC2_STATE2_COMPLETE ) {
+		sys.waitFrame();
+	}
+	$mcc2.stopSpline();
+	$mcc2.time( 6 );
+	$mcc2.accelTime( 2 );
+	$mcc2.decelTime( 2 );
+	$mcc2.moveTo( $mcc1_splinepath_reposition_null );
+	sys.waitFor( $mcc2 );
+	$mcc2.time( 6 );
+	$mcc2.accelTime( 2 );
+	$mcc2.decelTime( 2 );
+	$mcc2.moveTo( $mcc2_splinepath_below_null );
+	sys.waitFor( $mcc2 );
+	$mcc2.accelTime( 0 );
+	$mcc2.decelTime( 0 );
+	thread loopMcc2Spline_below();
+
+	thread toggleMccGuns();
+
+	STROGG_WAVE_SHIP_COUNTER = 0;
+
+	thread fireOtherBG();
+	thread mccSpecial();
+	thread chaseShips4();
+
+	SHAKE_INTENSITY = 3;
+
+	SUBSEGMENT = 51;
+
+	radioChatterPlay( $radiochatter, "vo_1_18_1" );	//"<markswell:> <Over Radio> We're twenty-two thousand clicks out.  Hannibal's still holding..."
+
+	sys.println( "Round 5 Wave 1" );
+	//__________________________________________________________________________
+	// Round 5 Wave 1 : Fighters right, fighters center, bombers high
+	//__________________________________________________________________________
+	thread vo_teammatesRound5Wave1();
+	while ( ROUND5_WAVE1_PLAYERKILLS < ROUND5_WAVE1_KILLCOUNT ) {
+
+		if( SPLINE_TWO_G_COMPLETED )
+			sys.trigger( $seg2_spawn_1g );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_TWO_H_COMPLETED )
+			sys.trigger( $seg2_spawn_1h );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_TWO_I_COMPLETED )
+			sys.trigger( $seg2_spawn_1i );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_TWO_M_COMPLETED )
+			sys.trigger( $seg2_spawn_1m );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_A_COMPLETED )
+			sys.trigger( $seg1_spawn_1a );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_F_COMPLETED )
+			sys.trigger( $seg1_spawn_1f );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_BOMBER_5_COMPLETED )
+			sys.trigger( $bomber_5_spawn );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_BOMBER_6_COMPLETED )
+			sys.trigger( $bomber_6_spawn );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_BOMBER_7_COMPLETED )
+			sys.trigger( $bomber_7_spawn );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_BOMBER_8_COMPLETED )
+			sys.trigger( $bomber_8_spawn );
+
+		sys.wait( 0.1 );
+	}
+
+	//Wait until all ships have been killed before proceeding
+	while( STROGG_WAVE_SHIP_COUNTER > 0 ) {
+		sys.wait( 1 );
+	}
+	//__________________________________________________________________________
+
+	thread toggleMccGuns();
+
+	DS_ONE_LOOP = false;
+	thread dsOneExplode();
+
+	radioChatterPlay( $radiochatter, "vo_1_21_2" );	//"<markswell:> <Over Radio> We just lost the Loki.  Dekard, Darnell, Navajas..."
+
+	//Move MCC2 back to its original position
+	MCC2_STATE = 1;
+	while ( !MCC2_STATE3_COMPLETE ) {
+		sys.waitFrame();
+	}
+	$mcc2.stopSpline();
+	$mcc2.time( 6 );
+	$mcc2.accelTime( 2 );
+	$mcc2.decelTime( 2 );
+	$mcc2.moveTo( $mcc1_splinepath_reposition_null );
+	sys.waitFor( $mcc2 );
+
+	$seg1_spacecannon_1.lock( 1 );
+	thread tiltRightStay();
+
+	$mcc2.time( 6 );
+	$mcc2.accelTime( 2 );
+	$mcc2.decelTime( 2 );
+	$mcc2.moveTo( $mcc2_splinepath_null );
+	sys.wait( 4 );
+	thread tiltLeftStay();
+	sys.waitFor( $mcc2 );
+	$mcc2.accelTime( 0 );
+	$mcc2.decelTime( 0 );
+	thread loopMcc2Spline();
+
+	$seg1_spacecannon_1.lock( 0 );
+
+	thread toggleMccGuns();
+
+	STROGG_WAVE_SHIP_COUNTER = 0;
+
+	thread fireOtherBG2();
+
+	SUBSEGMENT = 61;
+
+	radioChatterPlayWait( $radiochatter, "vo_1_20_1" );	//"<markswell:> <Over Radio> We're eighteen thousand clicks from groundfall..."
+	sys.wait( 3 );
+	radioChatterPlay( $radiochatter, "vo_1_20_2" );	//"<markswell:> <Over Radio> Multiple contacts, multiple approach vectors."
+
+	sys.println( "Round 6 Wave 1" );
+	//__________________________________________________________________________
+	// Round 6 Wave 1 : Throw everything at the player!
+	//__________________________________________________________________________
+	thread vo_teammatesRound6Wave1();
+	while ( ROUND6_WAVE1_PLAYERKILLS < ROUND6_WAVE1_KILLCOUNT ) {
+
+		if( SPLINE_TWO_A_COMPLETED )
+			sys.trigger( $seg2_spawn_1a );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_BOMBER_1_COMPLETED )
+			sys.trigger( $bomber_1_spawn );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_TWO_H_COMPLETED )
+			sys.trigger( $seg2_spawn_1h );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_TWO_B_COMPLETED )
+			sys.trigger( $seg2_spawn_1b );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_TWO_I_COMPLETED )
+			sys.trigger( $seg2_spawn_1i );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_TWO_G_COMPLETED )
+			sys.trigger( $seg2_spawn_1g );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_TWO_J_COMPLETED )
+			sys.trigger( $seg2_spawn_1j );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_BOMBER_5_COMPLETED )
+			sys.trigger( $bomber_5_spawn );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_TWO_L_COMPLETED )
+			sys.trigger( $seg2_spawn_1l );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_A_COMPLETED )
+			sys.trigger( $seg1_spawn_1a );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_BOMBER_3_COMPLETED )
+			sys.trigger( $bomber_3_spawn );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_B_COMPLETED )
+			sys.trigger( $seg1_spawn_1b );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_G_COMPLETED )
+			sys.trigger( $seg1_spawn_1g );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_ONE_H_COMPLETED )
+			sys.trigger( $seg1_spawn_1h );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_BOMBER_8_COMPLETED )
+			sys.trigger( $bomber_8_spawn );
+
+		sys.wait( 0.1 );
+	}
+
+	//Wait until all ships have been killed before proceeding
+	while( STROGG_WAVE_SHIP_COUNTER > 0 ) {
+		sys.wait( 1 );
+	}
+	//__________________________________________________________________________
+
+	thread toggleMccGuns();
+
+	radioChatterPlayWait( $radiochatter, "vo_1_23_1" );	//"<markswell:> <Over Radio> Good job, Ares Squad.  With the Air Defense Cannons out..."
+
+	WARN_PLAYER_1 = false;		//Its ok for the player to get off the turret now (he has to anyway)
+
+	//Complete objective #1
+	thread m01_completeObjective( 1 );
+
+	// ### END DEBUG SKIP ###
+	}
+	// ### END DEBUG SKIP ###
+
+	thread moveTakBackToChair();
+	thread moveNavajasBackToChair();
+	thread moveDarnellBackToChair();
+	thread moveMitchellBackToChair();
+
+	sys.trigger( $atmos_cin_clouds_1 );
+	sys.trigger( $atmos_cin_clouds_2 );
+	sys.trigger( $atmos_cin_clouds_3 );
+	sys.trigger( $atmos_cin_clouds_4 );
+	sys.trigger( $atmos_cin_clouds_5 );
+	sys.trigger( $atmos_cin_clouds_6 );
+	sys.trigger( $atmos_cin_clouds_7 );
+	sys.trigger( $atmos_cin_clouds_8 );
+	sys.trigger( $atmos_cin_clouds_9 );
+	sys.trigger( $atmos_cin_clouds_10 );
+	$atmos_cin_sun_1.On();
+	$atmos_cin_sun_2.On();
+	ATMOS_CIN = true;
+	$atmos_cin_strogg.show();
+	$atmos_cin_dropship.show();
+
+	thread shakeAtmosCinDropship();
+
+	sys.wait( 5 );
+
+	//Give objective #4
+	thread m01_giveObjective( 4 );
+
+	sys.trigger( $seg3_rear_droptele_obst );	//AAS obstacle that prevents AI from getting under the teleport drop point
+
+	sys.trigger( $playerschair_trigger );
+	thread remindPlayerStrapIn();
+	while( !PLAYER_IN_CHAIR ) {
+		sys.wait( 0.1 );
+	}
+
+	sys.killthread( "remindPlayerStrapIn" );
+	$player1.bind( $drop_ship );
+
+	//Complete objective #4
+	thread m01_completeObjective( 4 );
+	sys.wait( 4 );
+	SEGMENT = 3;
+
+	sys.fadeOut( '0 0 0', 1 );
+	sys.wait( 1 );
+
+	//Change the lighting from space to atmosphere
+	$seg1_sun.Off();
+	$atmos_sun_primary.On();
+	$atmos_sun_secondary.On();
+	$atmos_sun_secondary_1.On();
+	$ballturret_fill_light.On();
+
+	thread moveSkyCameraToAtmosphere();
+	thread toggleCloudEffects();
+
+	sys.killthread( "debris" );
+	sys.killthread( "debris2" );
+	sys.killthread( "debris3" );
+	sys.killthread( "debris4" );
+	$debris_1.remove();
+	$debris_2.remove();
+	$debris_3.remove();
+	$debris_4.remove();
+	$starboarddoor.lock( 1 );
+	$forwarddoor.lock( 1 );
+	$portdoor.lock( 1 );
+	MCC1_STATE = 99;	//This moves the MCCs to their looping splines for the atmosphere section
+	MCC2_STATE = 99;
+	$func_fx_13.remove();	//Get rid of the wee little ships in the space skybox
+	$func_fx_16.remove();
+	$func_fx_7.remove();
+	$func_fx_12.remove();
+	$func_fx_15.remove();
+	$func_fx_14.remove();
+	$func_fx_10.remove();
+	$func_fx_11.remove();
+
+	sys.trigger( $atmos_camera_1 );
+	sys.fadeIn( '0 0 0', 1 );
+
+	sys.wait( 4 );
+
+	$atmos_cin_strogg.time( 4 );
+	$atmos_cin_strogg.decelTime( 1 );
+	$atmos_cin_strogg.moveTo( $atmos_cin_strogg_null );
+	sys.waitFor( $atmos_cin_strogg );
+
+	sys.wait( 2 );
+
+	sys.trigger( $atmos_camera_2 );
+
+	ATMOS_CIN = false;
+
+	thread moveDarnelltoAttack();
+	thread moveTaktoAttack();
+
+	sys.trigger( $klaxon_2 );
+
+	$sound_weld.bind( $ship_cutoutfx_mover );
+	sys.trigger( $ship_cutoutfx );
+	sys.trigger( $sound_weld );
+
+	$ship_cutoutfx_mover.time( 8 );
+	$ship_cutoutfx_mover.startSpline( $seg3_rear_cutout_spline );
+	sys.waitFor( $ship_cutoutfx_mover );
+	sys.trigger( $ship_cutoutfx );
+	sys.trigger( $sound_weld );
+
+	sys.trigger( $inv_staticlip_rear );
+
+	$ship_cutout.time( 0.5 );
+	$ship_cutout.accelTime( 0.1 );
+	$ship_cutout.decelTime( 0 );
+	$ship_cutout.move( DOWN, 156 );
+	sys.waitFor( $ship_cutout );
+
+	sys.trigger( $sound_panelfall );
+
+	$ship_cutout.time( 0.1 );
+	$ship_cutout.accelTime( 0.05 );
+	$ship_cutout.decelTime( 0.05 );
+	$ship_cutout.rotateOnce( '-10 0 0' );
+	sys.waitFor( $ship_cutout );
+
+	sys.trigger( $sound_weld );
+	sys.trigger( $inv_sparks_1 );
+	sys.trigger( $inv_sparks_2 );
+	sys.trigger( $inv_sparks_3 );
+	sys.trigger( $inv_sparks_4 );
+	sys.trigger( $inv_sparks_5 );
+
+	radioChatterPlay( $radiochatter, "vo_1_24_1" );	//"<markswell:> <Over Radio> We've been tethered.  Ares Squad, grab your weapons, they're boarding."
+
+	telethread = thread drop_rear_teleporter();		//drop in the teleporter and wait for it to finish before proceeding
+	sys.waitForThread( telethread );
+
+	sys.trigger( $atmos_camera_3 );
+
+	sys.trigger( $seg3_spawner_boardingship_1 );
+
+	sys.trigger( $visdoor );
+
+	thread invasion_dmg_fx();
+
+	thread monitorTeleHealth();
+
+	sys.trigger( $seg3_reartele_attacktarget );
+
+	thread navajasGetsHit();
+
+	sys.wait( 2 );
+
+	sys.trigger( $atmos_camera_4 );
+
+	sys.wait( 2 );
+
+	sys.fadeOut( '0 0 0', 1 );
+	sys.wait( 1 );
+
+	$darnell.showSurface("models/weapons/mp_guns/w_sg");
+	$darnell.showSurface("models/weapons/mp_guns/w_sg_mod_ammo");
+	$tak.showSurface("models/weapons/mp_guns/w_mg_lo");
+
+	sys.trigger( $atmos_camera_4 );
+	sys.waitFrame();
+	sys.fadeIn( '0 0 0', 1 );
+	sys.wait( 1 );
+
+	$player1.unbind();
+
+	//Save a checkpoint
+	sys.trigger( $func_savegame_1 );
+
+	sys.wait( 1 );
+
+	radioChatterPlay( $radiochatter, "vo_1_24_2" );	//"<markswell:> <Over Radio> Dekard, take out that Teleporter before we're overrun.  Tak, Darnell, show those Strogg the exit.  Ares Squad style."
+
+	//Give objective #5
+	thread m01_giveObjective( 5 );
+
+	thread cleanupAtmosCin();
+
+	//make enemy AI attack the player
+	$player1.enableTarget();
+	sys.trigger( $give_shotgun );
+	$player1.enableWeapon();
+
+	while( TELEPORTER_REAR_ACTIVE ) {
+		sys.wait( 1 );
+	}
+
+	while( INVADER_COUNT > 0 ) {
+		sys.wait( 1 );
+	}
+
+	sys.trigger( $klaxon_2 );
+
+	//Complete objective #5
+	thread m01_completeObjective( 5 );
+
+	$darnell.becomePassive(1);
+	$tak.becomePassive(1);
+	aiScriptedAnimLoop( $tak, "idle", 12 );
+
+	$seg3_reartele_attacktarget.remove();
+
+	$seg3_spawner_boardingship_1.remove();
+
+	radioChatterPlayWait( $radiochatter, "vo_1_24_3" );	//"<markswell:> <Over Radio> Good job, Ares Squad.  Mitchell, how's Navajas?"
+	aiSpeakWait( $mitchell, "lipsync_1_24_4" );		//"<mitchell:> He's gonna be fine.  Shoulder'll probably be sore for a couple of days, though."
+	sys.wait( 1 );
+	radioChatterPlayWait( $radiochatter, "vo_1_24_5" );	//"<markswell:> <Over Radio> Strap him back in his chair.  Darnell, Tak, get on the forward turrets.  Dekard..."
+
+	//Open the door and hatch to ball turret
+	sys.trigger( $ballturret_light_white );
+	$seg3_rotate_red_3_flare.show();
+	sys.trigger( $seg3_rotate_red_3 );
+	$seg3_rotate_red_3.setColor( 1, 0, 0 );
+	sys.trigger( $ballturret_light_red );
+	sys.trigger( $ballturret_lightfixture_white );
+	sys.trigger( $ballturret_lightfixture_red );
+	sys.trigger( $trig_ballturret );
+	$seg3_ballturret_hatch.time( 3 );
+	$seg3_ballturret_hatch.accelTime( 0.5 );
+	$seg3_ballturret_hatch.decelTime( 0.5 );
+	$seg3_ballturret_hatch.move( UP, 94 );
+	sys.waitFor( $seg3_ballturret_hatch );
+	sys.wait( 3 );
+
+	$ballturret.show();
+
+	sys.trigger( $under_steam_1 );
+	sys.trigger( $under_steam_2 );
+
+	//Give objective #6
+	thread m01_giveObjective( 6 );
+
+	thread putDarnellBackInPort();
+	TAK_WANDER = true;
+	thread moveTaktoConsole();
+
+	//Wait for the player to get in the belly turret, give him VO reminders
+	thread remindPlayerBallTurret();
+	while( !PLAYER_ENTERED_BALLTURRET ) {
+		sys.wait( 1 );
+	}
+	sys.killthread( "remindPlayerBallTurret" );
+	$lowlevelscreenshaking.remove();
+	sys.trigger( $lowlevelscreenshaking_1 );
+	$front_facade.hide();
+	$bottom_facade.show();
+
+	sys.fadeOut( '0 0 0', 0.5 );
+	$player1.enterVehicle( $ballturret );
+	sys.waitFrame();
+	$ballturret.lock( 1 );
+	sys.fadeIn( '0 0 0', 0.5 );
+
+	sys.wait( 1 );
+
+	radioChatterPlayWait( $radiochatter, "vo_1_26_1" );	//"<markswell:> <Over Radio> The Strogg are sending everything they got.  I've got inbound signatures from everywhere.  Get ready, Marines."
+
+	thread chaseShips5();
+	thread atmos_biggunshots();
+	thread atmosphereCannonTilting();
+
+	SUBSEGMENT = 71;
+	STROGG_WAVE_SHIP_COUNTER = 0;
+
+	radioChatterPlay( $radiochatter, "vo_1_26_2" );	//"<darnell:> <Over Radio> Contact!  Flyers, multiple vectors!"
+
+	sys.println( "Round 7 Wave 1" );
+	//__________________________________________________________________________
+	// Round 7 Wave 1 : Atmosphere, ball turret, throw everything at the player!
+	//__________________________________________________________________________
+	while ( ROUND7_WAVE1_PLAYERKILLS < ROUND7_WAVE1_KILLCOUNT ) {
+
+		if( SPLINE_TWO_N_COMPLETED )
+			sys.trigger( $seg2_spawn_1n );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_TWO_S_COMPLETED )
+			sys.trigger( $seg2_spawn_1s );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_BOMBER_9_COMPLETED )
+			sys.trigger( $bomber_9_spawn );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_TWO_Q_COMPLETED )
+			sys.trigger( $seg2_spawn_1q );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_BOMBER_10_COMPLETED )
+			sys.trigger( $bomber_10_spawn );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_TWO_T_COMPLETED )
+			sys.trigger( $seg2_spawn_1t );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_TWO_P_COMPLETED )
+			sys.trigger( $seg2_spawn_1p );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_BOMBER_11_COMPLETED )
+			sys.trigger( $bomber_11_spawn );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_TWO_R_COMPLETED )
+			sys.trigger( $seg2_spawn_1r );
+
+		sys.wait( 0.1 );
+
+		if( SPLINE_TWO_U_COMPLETED )
+			sys.trigger( $seg2_spawn_1u );
+
+		sys.wait( 0.1 );
+	}
+
+	//Wait until all ships have been killed before proceeding
+	while( STROGG_WAVE_SHIP_COUNTER > 0 ) {
+		sys.wait( 1 );
+	}
+	//__________________________________________________________________________
+
+	sys.wait( 2 );
+
+	radioChatterPlayWait( $radiochatter, "vo_1_27_1" );	//"<hannibal:> <Over Radio> Ares, this is the Hannibal.  We're clear for our LZ.  Nice shooting, Marines."
+	radioChatterPlayWait( $radiochatter, "vo_1_27_2" );	//"<markswell:> <Over Radio> You heard it, Ares Squad.  Hannibal's inbound.  Good job.  Now, we got some work to do..."
+
+	SEGMENT = 4;
+	sys.wait( 2 );
+
+	sys.fadeOut( '0 0 0', 0.25);
+	sys.wait( 1 );
+
+	thread endingCinematic();
+	$comchat.remove();
+	$spacebattleturret_spk.remove();
+	$spacebattleturret_spk_1.remove();
+}
+
+///////////////////////////////////////////////////////////////
+                                                             //
+///////////////////////////////////////////////////////////////
+//
+///////////////////////////////////////////////////////////////
+//  Main                                                     //
+///////////////////////////////////////////////////////////////
+
+void main()
+{
+	sys.fadeOut( '0 0 0', 0);
+
+	GLOBAL_DS_HEALTH_SEVENTYFIVE = ( DROPSHIP_HEALTH * 0.75 );
+	GLOBAL_DS_HEALTH_FIFTY = ( DROPSHIP_HEALTH * 0.5 );
+	GLOBAL_DS_HEALTH_TWENTYFIVE = ( DROPSHIP_HEALTH * 0.25 );
+
+	GLOBAL_DS_HEALTH_90 = ( DROPSHIP_HEALTH * 0.9 );
+	GLOBAL_DS_HEALTH_80 = ( DROPSHIP_HEALTH * 0.8 );
+	GLOBAL_DS_HEALTH_70 = ( DROPSHIP_HEALTH * 0.7 );
+	GLOBAL_DS_HEALTH_60 = ( DROPSHIP_HEALTH * 0.6 );
+	GLOBAL_DS_HEALTH_50 = ( DROPSHIP_HEALTH * 0.5 );
+	GLOBAL_DS_HEALTH_40 = ( DROPSHIP_HEALTH * 0.4 );
+	GLOBAL_DS_HEALTH_30 = ( DROPSHIP_HEALTH * 0.3 );
+	GLOBAL_DS_HEALTH_20 = ( DROPSHIP_HEALTH * 0.2 );
+	GLOBAL_DS_HEALTH_10 = ( DROPSHIP_HEALTH * 0.1 );
+
+	GUI_90 = false;
+	GUI_80 = false;
+	GUI_70 = false;
+	GUI_60 = false;
+	GUI_50 = false;
+	GUI_40 = false;
+	GUI_30 = false;
+	GUI_20 = false;
+	GUI_10 = false;
+
+	WARN_SEVENTYFIVE_PERCENT = false;
+	WARN_FIFTY_PERCENT = false;
+	WARN_TWENTYFIVE_PERCENT = false;
+
+	GLOBAL_MCC_HEALTH_SEVENTYFIVE = ( MCC1_HEALTH * 0.75 );
+	GLOBAL_MCC_HEALTH_FIFTY = ( MCC1_HEALTH * 0.5 );
+	GLOBAL_MCC_HEALTH_TWENTYFIVE = ( MCC1_HEALTH * 0.25 );
+	GLOBAL_MCC2_HEALTH_FIFTY = ( MCC2_HEALTH * 0.5 );
+	GLOBAL_MCC2_HEALTH_FOURTY = ( MCC2_HEALTH * 0.4 );
+	GLOBAL_MCC2_HEALTH_THIRTY = ( MCC2_HEALTH * 0.3 );
+	GLOBAL_MCC2_HEALTH_TWENTY = ( MCC2_HEALTH * 0.2 );
+	WARN_MCC1_SEVENTYFIVE_PERCENT = false;
+	WARN_MCC1_FIFTY_PERCENT = false;
+	WARN_MCC1_TWENTYFIVE_PERCENT = false;
+	WARN_MCC2_FIFTY_PERCENT = false;
+	WARN_MCC2_FOURTY_PERCENT = false;
+	WARN_MCC2_THIRTY_PERCENT = false;
+	WARN_MCC2_TWENTY_PERCENT = false;
+
+	SPLINE_ONE_A_COMPLETED = true;
+	SPLINE_ONE_B_COMPLETED = true;
+	SPLINE_ONE_C_COMPLETED = true;
+	SPLINE_ONE_D_COMPLETED = true;
+	SPLINE_ONE_E_COMPLETED = true;
+	SPLINE_ONE_F_COMPLETED = true;
+	SPLINE_ONE_G_COMPLETED = true;
+	SPLINE_ONE_H_COMPLETED = true;
+	SPLINE_ONE_I_COMPLETED = true;
+	SPLINE_ONE_J_COMPLETED = true;
+	SPLINE_ONE_K_COMPLETED = true;
+	SPLINE_ONE_L_COMPLETED = true;
+	SPLINE_TWO_A_COMPLETED = true;
+	SPLINE_TWO_B_COMPLETED = true;
+	SPLINE_TWO_C_COMPLETED = true;
+	SPLINE_TWO_D_COMPLETED = true;
+	SPLINE_TWO_E_COMPLETED = true;
+	SPLINE_TWO_F_COMPLETED = true;
+	SPLINE_TWO_G_COMPLETED = true;
+	SPLINE_TWO_H_COMPLETED = true;
+	SPLINE_TWO_I_COMPLETED = true;
+	SPLINE_TWO_J_COMPLETED = true;
+	SPLINE_TWO_K_COMPLETED = true;
+	SPLINE_TWO_L_COMPLETED = true;
+	SPLINE_TWO_M_COMPLETED = true;
+	SPLINE_TWO_N_COMPLETED = true;
+	SPLINE_TWO_P_COMPLETED = true;
+	SPLINE_TWO_Q_COMPLETED = true;
+	SPLINE_TWO_R_COMPLETED = true;
+	SPLINE_TWO_S_COMPLETED = true;
+	SPLINE_TWO_T_COMPLETED = true;
+	SPLINE_TWO_U_COMPLETED = true;
+	PLAYERONTURRET = false;
+	WARN_PLAYER_1 = false;
+	PLAYER_ENTERED_BALLTURRET = false;
+	TELEPORTER_REAR_ACTIVE = true;
+	MCC1_STATE1_COMPLETE = false;
+	MCC1_STATE2_COMPLETE = false;
+	MCC1_STATE3_COMPLETE = false;
+	MCC2_STATE1_COMPLETE = false;
+	MCC2_STATE2_COMPLETE = false;
+	MCC2_STATE3_COMPLETE = false;
+	SPLINE_BOMBER_1_COMPLETED = true;
+	SPLINE_BOMBER_2_COMPLETED = true;
+	SPLINE_BOMBER_3_COMPLETED = true;
+	SPLINE_BOMBER_4_COMPLETED = true;
+	SPLINE_BOMBER_5_COMPLETED = true;
+	SPLINE_BOMBER_6_COMPLETED = true;
+	SPLINE_BOMBER_7_COMPLETED = true;
+	SPLINE_BOMBER_8_COMPLETED = true;
+	SPLINE_BOMBER_9_COMPLETED = true;
+	SPLINE_BOMBER_10_COMPLETED = true;
+	SPLINE_BOMBER_11_COMPLETED = true;
+	PLAYER_IN_CHAIR = false;
+	HELPED_TAK = false;
+	ATMOS_CIN = false;
+	TAK_WANDER = true;
+	ROCKET_TRAINED = false;
+	BLASTER_TRAINED = false;
+	PLAYER_NEAR_TAK = false;
+	IN_TRAINING = false;
+	DS_ONE_LOOP = true;
+	DS_TWO_LOOP = true;
+
+	$drop_ship.setHealth( DROPSHIP_HEALTH );
+	$mcc1.setHealth( MCC1_HEALTH );
+	$mcc2.setHealth( MCC2_HEALTH );
+
+	$player1.bind( $drop_ship );
+	$player1.disableWeapon();
+	$player1.disableTarget();
+	$player1.setHealth( 100 );
+
+	//These are AI placed in the map for AAS data generation only
+	$removeme_1.remove();
+	sys.waitFrame();
+	$removeme_2.remove();
+	thread startMap();
+}
+
+//end namespace
+}

@@ -1,0 +1,1768 @@
+
+lipSync vo_nava_howhedo
+{
+	text		"How’s he doing doc?"
+	visemes	"english"	"x3g <Hows> h5u AW11t z3p <he> h3u IY4q <doing> d6p UW13u IH6q NG4q <doc> d4r AA18y k8e x22f "
+}
+
+
+lipSync vo_mitch_aswell
+{
+	text		"As well as can be expected with three holes in his abdomen.  I’ve got him sedated but we need to keep a close eye on his vitals."
+	visemes	"english"	"x8i <As> AE7q z6r <well> w5q EH3q l3y <as> AE3q z5o <can> k5p AE3q n4v <be> b3v IY5q <expected> IH7q k3i s4j p3n EH10s k3g t6q AH3q d9t <with> w5q IH8r DH3j x25i <three> TH5q r6q IY11t <holes> h3s OW5q l11x z5q <in> IH3q n3s <his> h3s IH4q z5p <abdomen> AE14v b3l d4q OW3q m8t AH5q n11r x22k <Ive> AY12t v3n EH3q <got> g3t AA6q t3v <him> h3t IH3q m7q <sedated> s8p AH3q d5q EY12u t3s AH3q d9s <but> b7p AH3q t3q <we> w7q IY5q <need> n4x IY8r d6o <to> t7h UW3q <keep> k4p IY11t p4p <a> AH5q x3f <close> k9p l3z OW9s s7r <eye> AY16w <on> AA3q n8p <his> h3p IH4q z5l <vitals> v5q IH12t t3n AO4q l6p z17p x22i "
+}
+
+
+lipSync vo_mitch_gladfalc
+{
+	text		"I’m glad to be back on board the Falcon.  I’ll take a heavy gunship over those dropships any day."
+	visemes	"english"	"x6p <Im> IH3q m32v <glad> g5u l10x AE4q d3r <to> t3u UW3q <be> b3x IY4q <back> b3t AE15w k4p <on> AA6q n6q <board> b5t AO3q r3q d3x <the> DH8r IY3q x4f <Falcon> f3p AE5q l12u k4q AH5q n12r x21i <Ill> IH6q l5s <take> t5r EY11t k4s <a> AH4q <heavy> h10r EH4q v3r IY7q <gunship> g5r AH8r n5s SH8q IH7q p5q <over> OW8r v3u ER4q <those> DH6w OW7q z4q <dropships> d6s r4q AA11t p6h SH5n IH11s p3i s3n <any> EH3q n3t IY16w <day> d4o EY13t x20k "
+}
+
+
+lipSync vo_nava_considwedid
+{
+	text		"Considering we didn’t actually crash after that impact, we got lucky."
+	visemes	"english"	"x10k <Considering> k4v AH4q n3o s11u IH4q d3w ER5q IH3q NG5u <we> w5q IY3q <didnt> d4t IH5q d3t n6u t3x <actually> AE7q k4k CH5o AH3q w3q AH3q l3i IY3g <crash> k12w r7r AE14v SH10r <after> AE8r f3c t6p ER4q <that> DH3t AE12t t3s <impact> IH4q m8n p6x AE17x k3c t5g x3r <we> w4q IY6q <got> g5r AA12t t3j <lucky> l12r AH6q k10h IY5q x32c "
+}
+
+
+lipSync vo_darn_townsatk
+{
+	text		"Townsend and Atkins weren’t so lucky.  "
+	visemes	"english"	"x7j <Townsend> t5x AW13u n6p z5s AH3q n4s d3v <and> AE3q n6t d3x <Atkins> AE13u t6f k5j IH4q n4k z9f <werent> w10s ER3q n3k t3c <so> s12r OW13u <lucky> l8s AH9r k8i IY15u x12k "
+}
+
+
+lipSync vo_nava_yeahwellwe
+{
+	text		"Yeah, well, we accomplished the mission.  Speaking of which- Tak- what’s the verdict on that data we collected?"
+	visemes	"english"	"x6i <Yeah> y15w AE16x <well> w13u EH9s l18x <we> w9r IY11t <accomplished> AH3a k7n AA10s m3n p5n l3u IH3q SH5o t3k <the> DH4p IY3q <mission> m8s IH7q SH11q AH3q n6k x34k <Speaking> s8n p5o IY8r k4q IH3q NG3u <of> AH5q v6m <which> w7q IH4q CH19o <Tak> t13q AE24z k3g x35f <whats> w4q AH3q t4o s4o <the> DH5t IY3q <verdict> v8s ER9s d3w IH4q k4g t4p <on> AA7q n6q <that> DH3t AE8r t3i <data> d6r EY12u t3t AH4q <we> w10s IY6q <collected> k9m AH4q l8r EH3q k5e t7j AH3q d5f x22e "
+}
+
+
+lipSync vo_tak_sciconftac
+{
+	text		"Sci-tech confirmed what I suspected.  The data contains tactical information about the Strogg that nobody has seen before.  Most of it is encrypted.  They're trying to get in touch with Rhino Squad’s tech, Strauss.  He's one of 3 techs in the entire SMC that can decrypt Strogg data like this, and the only one that’s currently dirtside."
+	visemes	"english"	"x15f <Sci> s10u IY8r <tech> t7l EH8r k4f <confirmed> k5l AH3q n9k f4p ER11t m4m d3n <what> w3q AH3q t3u <I> AY10s <suspected> s8k AH4q s7i p6i EH10s k5e t6i AH3q d7k x29e <The> DH5o IY3q <data> d8q EY10s t3s AH4q <contains> k8i AH3q n5k t5l EY11s n6k z7k <tactical> t8m AE10s k5c t3h IH3f k3c AH3q l3o <information> IH3q n6l f4m ER4q m9n EY14u SH9l AH3q n3n <about> AH3q b6n AW10r t3c <the> DH3i IY3q <Strogg> s10m t6l r6q AA12t g5g <that> DH3k AE3q t3i <nobody> n8k OW10r b4i AA3q d4l IY6q <has> h3o AE5q z3j <seen> s10l IY10s n5n <before> b3m AH7q f8l AO11s r7q x58f <Most> m11s OW11s s3j t5o <of> AH3q v5n <it> IH3q t3s <is> IH5q z5n <encrypted> EH4q n4m k11j r5q IH8q p3g t6l AH3q d8l x67e <Theyre> DH3t EH3q r4q <trying> t7q r3q AY4q IH4q NG3n <to> t3p UW3q <get> g7o EH3q t3n <in> IH5q n4m <touch> t9k AH8q CH8k <with> w3q IH3q DH8h <Rhino> r8q AY10s n4o OW8q <Squads> s8k k4e w6q AA12t d6f z8h <tech> t7j EH12t k7k <Strauss> s7o t9m r7q AW20y s13h x36k <Hes> h4r IY6q z6o <one> w10s AH3q n15q <of> AH6q v5h <3> TH4m r4q IY9r <techs> t11l EH9r k5i s7k <in> IH3q n3m <the> DH3n IY6q <entire> EH3q n5k t7j AY12t ER25z <SMC> s9j m10k k3j x7l <that> DH6p AE8q t3n <can> k3n AE10r n12k <decrypt> d5l EH5q k14n r3q IH5q p3f t3m <Strogg> s9p t6k r5q AA11s g3i x3e <data> d3m EY11s t3k AH3q <like> l10n AY9q k3e x7c <this> DH3n IH12s s7k x36e <and> AE3f n3p d3s <the> DH3t IY8r <only> OW5q n4q l4s IY4q <one> w12t AH5q n7o <thats> TH3o AE4q t4g s5k <currently> k10k ER10r AH3q n3i t3j l4n IY5q <dirtside> d8m ER13u t8i s5k AY21y d3i EH3q x19f "
+}
+
+
+lipSync vo_marks_goodbadworse
+{
+	text		"Good news, bad news, and worse news gentlemen.  "
+	visemes	"english"	"x4g <Good> g6w UH5q d6o <news> n6u UW20z z8m x14c <bad> b3w AE14v d4n <news> n5p UW13u z7p <and> AE3q n11s d3t <worse> w4q ER9s s6o <news> n6l UW15u z5k <gentlemen> j6p EH3q n3r t3t AH3q l3p m4s EH6q n7p x20h "
+}
+
+
+lipSync vo_marks_goodfirst
+{
+	text		"Good news first, despite our losses, our mission to the Trianthinide facility was a success.  The facility was successfully destroyed and the data that we collected has perked the interests of SMC top brass.  "
+	visemes	"english"	"x12h <Good> g5y UH3q d5p <news> n7u UW13u z9o <first> f7l ER20y s9p t10k x39g <despite> d3o IH4q s7q p7q AY9r t3s <our> AW3q ER4q <losses> l14u AO13u s4k AH10q z13l x20g <our> AW3q ER3q <mission> m9s IH7q SH7t AH3q n6t <to> t5s UW3q <the> DH6s IY3q x4k <Trianthinide> t7q r4q IH9r AE4q n3l TH4m IH3q n3q AY5q d3q EH5q <facility> f6l AH5q s10o IH3q l4t AH3q t3q IY5q <was> w7q AA4q z7q <a> AH9r <success> s7s AH6q k3o s10u EH22z s13k x77f <The> DH3u IY3q <facility> f4s AH6q s15s IH6q l7v AH3q t3u IY6q <was> w3q AA3q z5m <successfully> s5n AH3q k5k s7s EH8r s3o f3n AH3q l5t IY3q <destroyed> d6p AH3q s11s t7o r8r OY18x d4m <and> AE3q n5l d3e x11g <the> DH3q IY3q <data> d12r EY8r t4t AH7q <that> DH3t AE3q t3o <we> w3q IY5q <collected> k8i AH3q l6u EH4q k3g t4o AH3q d4l <has> h3q AE3q z6j x10f <perked> p4u ER9r k3e t4e <the> DH3o IY5q <interests> IH6q n3r t6q r4q AH5q s4k t9p s4m <of> AH13u v3l <SMC> s4n m15q k9r x15s <top> t7q AA11t p8c <brass> b5m r6q AE23z s3j x24i "
+}
+
+
+lipSync vo_darn_goodhobtakdek
+{
+	text		"Good job Tak and Dekard!"
+	visemes	"english"	"x3g <Good> g6w UH5q d3s <job> j14w AA19y b3k x4g <Tak> t7s AE16w k5p <and> AE3q n5q d3m <Dekard> d4r IH15w k5p AA3q r3q d18i "
+}
+
+
+lipSync vo_marks_worsenews
+{
+	text		"Worse news, we just got word from the Hannibal, all four operation advantage EMP convoys were wiped out.  Most of the ground forces are captured or dead, and it would seem that the Strogg have replaced their leader with a new Makron."
+	visemes	"english"	"x5k <Worse> w6q ER10s s8q <news> n8m UW18w z16l x29i <we> w3q IY4q <just> j5r AH6q s5r t3s <got> g3v AA7q t6l <word> w9r ER6q d3l <from> f3m r3q AH3q m5r <the> DH3t IY3q <Hannibal> h7s AE8r n3r AH6q b4k AH3q l9n x28g <all> AO13u l6r <four> f8j AO8r r8r <operation> AA9r p8l ER5q EY11s SH4n AH3q n7r <advantage> AE5q d3o v6q AE7q n14q t4n IH26z j7n <EMP> EH10s m6f p4s <convoys> k3v AA7q n10p v6l OY12t z10m <were> w7q ER5q <wiped> w15v AY8r p6f t6n <out> AW22z t7i x59e <Most> m6v OW6q s3p t3p <of> AH3q v3r <the> DH3x IY3q <ground> g9q r3q AW12u n5o d3i <forces> f4l AO4q r5q s4n AH3q z7p <are> AA3q r3q x5e <captured> k7q AE7q p3q CH10n ER5q d4n <or> AO3q r7q <dead> d11p EH19y d4k <and> AE3g n3f d3e x34g <it> IH3g t7p <would> w3q UH5q d3n <seem> s7s IY5q m4u <that> DH3u AE4q t3j <the> DH3s IY6q <Strogg> s7r t7s r6q AA9r g3l <have> h3o AE3q v5o <replaced> r7q IY3c p6l l3t EY7q s5k t3k <their> DH3s EH3q r3q <leader> l9u IY5q d3p ER5q <with> w7q IH3q DH6o <a> AH3q <new> n10t UW14v <Makron> m9u AE14v k5l r6q AA13t n10i x25e "
+}
+
+
+lipSync vo_nava_what2
+{
+	text		"What?!"
+	visemes	"english"	"x7i <What> w17x AH14v t11l x30h "
+}
+
+
+lipSync vo_darn_whathellwar
+{
+	text		"What the hell, this war just took ten steps in the wrong direction."
+	visemes	"english"	"x6s <What> w4q AH11t t3o <the> DH3x IY3q <hell> h13w EH11t l14u x30e <this> DH4w IH6q s8s x6s <war> w8r AO3q r5q x4p <just> j8w AH6q s6o t6p <took> t5x UH5q k9n x3i <ten> t8u EH7q n6r <steps> s9p t6r EH14v p3n s6s <in> IH3q n16u <the> DH5y IY5q <wrong> r3q AO7r NG9r <direction> d3v ER9r EH14v k4k SH9u AH3q n4k x17f "
+}
+
+
+lipSync vo_mitch_holyshit
+{
+	text		"Holy shit?!   We committed more than half our ground forces to those objectives."
+	visemes	"english"	"x3i <Holy> h8t OW3q l15y IY10s <shit> SH13w IY12u t3l <We> w18x IY7q <committed> k5r AH3q m8v IH10t t3x AH3q d3q <more> m4v AO7r r3q <than> DH7t AE3q n6p <half> h12p AE9r f6p <our> AW6q ER3q <ground> g3o r3q AW13u n4s d3i <forces> f5n AO6q r6q s8n AH4q z6l <to> t6p UW3q <those> DH7t OW10s z6s <objectives> AH4q b3o j6r EH10s k3m t5n IH8q v5k z12p x15j "
+}
+
+
+lipSync vo_tak_straussconv
+{
+	text		"Strauss was in one of those convoys- without him, this data is worthless!"
+	visemes	"english"	"x14i <Strauss> s7v t7r r5q AW13u s8l <was> w3q AA3q z7o <in> IH7q n8p <one> w5q AH3q n4q <of> AH5q v3r <those> DH3w OW7q z4k <convoys> k14m AA14v n5o v13n OY14u z14h x12a <without> w7q IH3q TH4s AW13u t3o <him> h13r IH6q m5s <this> DH5s IH3q s3n <data> d4u EY11t t3u AH3q <is> IH6q z5l x5l <worthless> w10s ER10s TH7h l11o AH8q s17k x37g "
+}
+
+
+lipSync vo_marks_empeffortf
+{
+	text		"That’s right, after the EMP effort failed, sci-tech turned to the data we collected and discovered fragments pointing to how the Strogg brought a new Makron online so quickly. Unfortunately the rest of the data is heavily encrypted; and since it was our find, we’ve been tasked with locating the only marine that can unlock the rest of this critical data."
+	visemes	"english"	"x13i <Thats> TH3r AE9s t4n s6r <right> r9r AY11s t4k x38e <after> AE9r f3g t3l ER3q <the> DH3n IY28z <EMP> EH3q m7r p5q x6w <effort> EH10s f7j ER7q t5f x4a <failed> f4p EY15v l10q d4k x24f <sci> s12s IY9r <tech> t8n EH9r k3e x4g <turned> t5o ER9r n3q d4p <to> t7o UW4q <the> DH8o IY3q <data> d3w EY3q t3s AH4q <we> w7q IY5q x4c <collected> k4k AH3q l6s EH3q k4g t4o AH4q d9o x7i <and> AE3e n5l d4q <discovered> d6t IH5q s6o k3s AH5q v4p ER4q d6l x6h <fragments> f4r r3q AE12u g4k m3n AH5q n3k t3i s4h <pointing> p7j OY5q n4q t3q IH3q NG3o <to> t4p UW3q <how> h7s AW8r <the> DH6n IY3q <Strogg> s10o t8q r5q AA10s g4l <brought> b6l r3q AO4q t3q <a> AH3q <new> n9r UW8r <Makron> m10u AE11t k9l r3q AA5q n5m <online> AO8q n5n l3q AY12t n6l <so> s7n OW7q x4f <quickly> k3m w4q IH5q k8i l5s IY7q x62g <Unfortunately> AH6q n7s f6s AO8r r3q CH5n AH3q n3n AH3q t3n l11p IY8q x15j <the> DH4q IY3q <rest> r3q EH6q s8m t5p <of> AH4q v3p <the> DH3u IY11t <data> d3t EY4q t3s AH4q <is> IH7q z6l <heavily> h9s EH6q v4p AH3q l4t IY7q <encrypted> EH3q n6q k4l r6q IH4q p3h t4l AH8q d6k x49e <and> AE3q n3n d4l <since> s4n IH3q n3t s3q <it> IH3q t3u <was> w3q AA5q z6s <our> AW11t ER5q <find> f10k AY21z n5m d4j x40h <weve> w4q IY5q v6r EH3q <been> b3u IH3q n3m <tasked> t6s AE18y s4k k3g t3l <with> w3q IH4q DH9q <locating> l3w OW7q k11p EY3q t3q IH4q NG5s <the> DH3s IY7q x7n <only> OW7q n4u l3w IY5q <marine> m10u ER8r IY13u n3o <that> DH4p AE6q t3f <can> k4p AE3q n13o <unlock> AH7q n8s l4v AA10s k5f <the> DH4k IY3q <rest> r6q EH5q s4k t3j <of> AH4q v3m <this> DH3q IH6q s4p x6f <critical> k4o r3q IH3q t3q IH3q k4p AH3q l4p <data> d9s EY10s t3p AH13t x46f "
+}
+
+
+lipSync vo_tak_straussalive
+{
+	text		"Strauss.  Strauss is alive?"
+	visemes	"english"	"x15k <Strauss> s8w t7p r3q AW24z s3g x38g <Strauss> s6o t5r r4q AW10s s9l <is> IH5q z3k <alive> AH5q l14s AY23z v4i x33a "
+}
+
+
+lipSync vo_marks_yeshannib
+{
+	text		"Yes, the Hannibal has determined that Strauss is alive and en route to a Strogg bio processing center."
+	visemes	"english"	"x9j <Yes> y8r EH16w s15l x13c <the> DH4k IY3q <Hannibal> h10s AE5q n3r AH3q b5q AH3q l3v <has> h3u AE3q z5l <determined> d4p AH4q t9p ER3q m4s AH4q n3s d3r <that> DH3s AE5q t3n <Strauss> s6o t7r r3q AW11t s6n <is> IH6q z3q <alive> AH4q l11t AY26z v8k <and> AE3q n3m d3n <en> EH6q n5p <route> r8q AW6q t3m EH3g x3h <to> t4o UW4q <a> AH6q <Strogg> s8s t6r r5q AA9r g3o <bio> b14n AY10s OW9r x6f <processing> p6m r3q AA11t s4k EH6q s7i IH4q NG5l <center> s8o EH6q n3n t3p ER5q x37i "
+}
+
+
+lipSync vo_marks_nowbadnews
+{
+	text		"Now the bad news, we aren’t heading back to the MCC.  We’ve changed course to join up with a multiple unit task force to infiltrate the Strogg medlabs, prisons, and bio processing centers.  "
+	visemes	"english"	"x12l <Now> n3v AW11t <the> DH5q IY3q <bad> b13r AE17x d5l <news> n4k UW20x z13j x29h <we> w6q IY6q <arent> AA3q r3q AH3q n3m t3o <heading> h4s EH3q d3s IH3q NG8s <back> b5v AE11t k4g <to> t4l UW3q <the> DH3m IY10s <MCC> m8p k3n k5t x21r <Weve> w3q IY34z v16l EH4q x8k <changed> CH7t EY10s n3s j5r d4f <course> k8r AO9s r7q s4l <to> t6n UW3q <join> j10o OY7q n5t <up> AH5q p3k <with> w3q IH3q DH4n <a> AH3q <multiple> m10q AH3q l3w t3n AH3f p3i AH3q l12u <unit> y8q UW3q n5u AH3q t3k x6e <task> t5p AE17x s6j k3c x4a <force> f5i AO9r r8q s12m x8c <to> t4p UW6q <infiltrate> IH7q n5t f5q IH3q l5r t6n r4q EY8r t3l <the> DH4n IY3q <Strogg> s11o t5r r6q AA8r g4n <medlabs> m7s EH7q d3n l10s AE10s b3l z10l x14a <prisons> p3s r4q IH5q z4o AH4q n9s z10n x8i <and> AE4q n6u d3p <bio> b8s AY6q OW10s x4f <processing> p5o r5q AA9r s4l EH4q s7k IH3q NG5m <centers> s9r EH6q n4o t3p ER14t z13i x28f "
+}
+
+
+lipSync vo_marks_theirgoal
+{
+	text		"Their goal, to locate pre-stroggified marines. Our goal, to locate and rescue Strauss."
+	visemes	"english"	"<Their> DH9u EH9s r5q <goal> g10p OW12u l12s x23i <to> t4r UW4q <locate> l9u OW9s k9p EY9r t6f x3g <pre> p4q r3q IY8r <stroggified> s7r t5r r4q AA6q g5m IH4q f8n AY10s d3n <marines> m11q ER7q IY17w n13m z16n x32k <Our> AW8r ER8r <goal> g8o OW11t l12s x18i <to> t4p UW3q <locate> l12s OW7q k8r EY9s t3p <and> AE3q n5p d3r <rescue> r3q EH5q s8n k3k y5q UW7q <Strauss> s11s t8o r6q AW20y s16n x24c "
+}
+
+
+lipSync vo_darnell_wetwomen
+{
+	text		"We’re two men short!  "
+	visemes	"english"	"x7s <Were> w5q ER10s <two> t6w UW11t <men> m7x EH6q n9t <short> SH15x AO15w r13t t10l x14a "
+}
+
+
+lipSync vo_nava_anothershit
+{
+	text		"Another shit job.."
+	visemes	"english"	"<Another> AH5q n9p AH10s DH6t ER6q <shit> SH19v IY9r t4a <job> j14s AA22z b5g x27k "
+}
+
+
+lipSync vo_vansen_ltwing3
+{
+	text		"Lieutenant, we’ve just joined up with wing three of the task force, they’ve spotted Strogg air resistance on our vector."
+	visemes	"english"	"x11i <Lieutenant> l5z UW9r t3s EH13v n8v AH3q n7q t3m <weve> w3q IY7q v3n EH4q <just> j5u AH6q s3o t3l <joined> j9t OY4q n5x d20v <up> AH4q p3s <with> w4q IH17x DH3s <wing> w4q IH14v NG3k x10i <three> TH3q r9s IY6q <of> AH8r v3o <the> DH3w IY6q <task> t7p AE19z s4n k7i <force> f3k AO12u r8r s3q x12i <theyve> DH3x EY17x v3j EH3q <spotted> s3e p4y AA11t t3v AH3q d14r <Strogg> s5m t4s r3q AA21z g3s <air> EH9s r3q <resistance> r19y AH5q z3o IH3q s4i t7r AH6q n6n s3j x6r <on> AA7q n3q <our> AW10t ER6q <vector> v3q EH19y k3k t4r ER27z x45a "
+}
+
+
+lipSync vo_marks_iknowshort
+{
+	text		"Marines, I know we're short-handed, but stay frosty- getting this data decrypted could change the tide of this war in Earth’s favor.  Dekard, Darnell, I don’t have to tell you what’s at stake here, you’ve seen what the Strogg did to Earth firsthand.."
+	visemes	"english"	"<Marines> m21s ER13u IY20z n11i z14m x20i <I> AY6q <know> n5t OW6q <were> w4q IY3q r9s <short> SH9r AO6q r3q t3r <handed> h6t AE10s n3p d3o AH4q d8j x21f <but> b7l AH4q t4n <stay> s6r t7t EY9s x6h <frosty> f5p r4q AO12t s6n t5l IY12s x37c <getting> g4q EH3q t3u IH4q NG4t <this> DH3u IH5q s4l <data> d6r EY7q t3u AH3q <decrypted> d6q EH3q k14o r3q IH4q p3f t5n EH3q d6i x5c <could> k5q UH5q d5n <change> CH11s EY11t n5r j4j <the> DH3u IY4q <tide> t9p AY12t d3s <of> AH3q v5n <this> DH3t IH5q s7n x5l <war> w9r AO9s r4q <in> IH4q n7k <Earths> ER12t TH7i s13m <favor> f7r EY15v v4m ER10r x85e <Dekard> d3w IH9s k7m AA3q r4q d3o <Darnell> d9o AA3q r3q n11r EH9s l13r x14i <I> AY3q <dont> d3q AA4q n3n t3p <have> h3r AE3q v3j <to> t3n UW5q <tell> t10p EH3q l7v <you> y10s UW3q <whats> w10s AH3q t3l s4n <at> AE4q t4l <stake> s6o t7q EY11t k4k <here> h5n IH13u r6q x43g <youve> y4q UW3q v3v EH4q <seen> s14u IY10s n3t <what> w3q AH3q t3j <the> DH3r IY3q <Strogg> s10r t6r r5q AA9r g4m <did> d3r IH3q d3m <to> t3n UW7q <Earth> ER15v TH3m x12h <firsthand> f4o ER10s s4n t5p h6t AE17w n7k d5l x40e "
+}
+
+
+lipSync vo_vansen_wegotincom1
+{
+	text		"We’ve got incoming Strogg flyers!  "
+	visemes	"english"	"<Weve> w4q IY8r v3r EH3q <got> g3x AA9s t3u <incoming> IH13u n4o k6v AH4q m5t IH4q NG5n <Strogg> s3m t10o r3q AA10s g6s x6m <flyers> f5i l7v AY36z ER7q z4o x23h "
+}
+
+
+lipSync vo_marks_everystation
+{
+	text		"Everybody to stations!  Go!"
+	visemes	"english"	"x15l <Everybody> EH5q v4t r3q IY3q b3r AA4q d5v IY3q <to> t3r UW8r <stations> s7p t6r EY15w SH6q AH5q n9j z7k x10g <Go> g4t OW32z x21a "
+}
+
+
+lipSync vo_marks_dekgbelly
+{
+	text		"Dekard, get to the belly turret!"
+	visemes	"english"	"x5j <Dekard> d4y IH9s k7q AA3q r3q d6l x7e <get> g5w EH3q t3l <to> t4p UW3q <the> DH4t IY3q <belly> b10s EH4q l11y IY4q <turret> t10p ER11t AH8q t6e x11a "
+}
+
+
+lipSync vo_marks_dekmanbell
+{
+	text		"Dekard, man that belly turret now!"
+	visemes	"english"	"x3e <Dekard> d4y IH10t k6o AA4q r5q d6i x12f <man> m10s AE9s n4t <that> DH3u AE15w t3g <belly> b3v EH3q l10y IY4q <turret> t9q ER8r AH3q t4k <now> n7s AW41z x13a "
+}
+
+
+lipSync vo_makrs_movedek1
+{
+	text		"Move Dekard!"
+	visemes	"english"	"<Move> m9x UW19z v3r x5l <Dekard> d3w IH9s k8t AA3q r4q d8t x31h "
+}
+
+
+lipSync vo_computer_targsysonline
+{
+	text		"Targeting systems online, missile batteries, check, cannons, check.  Weapons ready."
+	visemes	"english"	"x3l <Targeting> t5q AA4q r3q g3v AH3q t3r IH4q NG8p x5l <systems> s3n IH4q s4k t4n AH4q m7o z6n x9n <online> AO15w n9r l5t AY11t n3p x27j <missile> m5n IH7q s5o AH3q l6p <batteries> b3m AE16w t3q ER5q IY14u z6k x10g <check> CH7p EH7q k3r x42k <cannons> k5o AE13u n10o AH3q n3k z3k x20f <check> CH6q EH20z k4l x27e <Weapons> w5q EH8r p4p AH5q n9m z8k x12g <ready> r4q EH26z d3f IY3c x34a "
+}
+
+
+lipSync vo_tak_sarge1
+{
+	text		"Sarge?"
+	visemes	"english"	"x7h <Sarge> s11u AA12u r12t j12h x20a "
+}
+
+
+lipSync vo_tak_dektherealot
+{
+	text		"Dekard, there are a lot of incoming targets!"
+	visemes	"english"	"x3e <Dekard> d3y IH9s k3i AA3q r7q d4m <there> DH8p EH3q r3q <are> AA3q r4q <a> AH3q <lot> l8u AA7r t3t <of> AH3q v7q <incoming> IH3q n8o k7n AH5q m6q IH3q NG5p <targets> t8p AA10s r10r g11j AH4g t3m s6i x22c "
+}
+
+
+lipSync vo_mitch_soundsside
+{
+	text		"Sounds like I've been sidelined."
+	visemes	"english"	"x5h <Sounds> s14u AW20z n3u d3s z3t <like> l6y AY7q k4s <Ive> AY16x v4o <been> b3v IH3q n9v <sidelined> s10u AY17x d3p l14p AY16v n8o d3n x24h "
+}
+
+
+lipSync vo_mitch_guessshort
+{
+	text		"I guess being shorthanded, we can't afford to lose the only medic."
+	visemes	"english"	"x10m <I> AY6q <guess> g6w EH11t s3n x3g <being> b4v IY7r IH3q NG4t <shorthanded> SH8r AO7r r6q TH3p AE15v n4s d3t EH3q d8p <we> w3q IY6q <cant> k9o AE9s n7t t3m <afford> AH3g f5q AO4q r3q d3r <to> t3u UW3q <lose> l10x UW15w z4q <the> DH3v IY10s <only> OW6q n3v l3v IY4q <medic> m7w EH15v d3q IH3q k8l x26j "
+}
+
+
+lipSync vo_nava_getintopos
+{
+	text		"Get into position Sergeant."
+	visemes	"english"	"<Get> g5w EH5q t3w <into> IH4q n3u t3t UW4q <position> p6y AH3q z9q IH9s SH8s AH3q n7n <Sergeant> s11q AA10s r4q j8l AH4q n12k t3h x41e "
+}
+
+
+lipSync vo_nava_weneedpost
+{
+	text		"We need you at your post."
+	visemes	"english"	"x4s <We> w5q IY4q <need> n7z IY13v d6p <you> y4q UW8r <at> AE5q t9n <your> y3q AO3q r4c x3l <post> p4z OW19y s12n t7j x34h "
+}
+
+
+lipSync vo_marks_okstations
+{
+	text		"Ok, stations check."
+	visemes	"english"	"<Ok> OW19y k6v EY18y <stations> s11o t5q EY14v SH5p AH4q n5p z11m <check> CH7t EH15v k12i x14a "
+}
+
+
+lipSync vo_vansen_pilot55
+{
+	text		"Pilot, 5 by 5."
+	visemes	"english"	"x7r <Pilot> p57w AY3q l3t AH3q t3i <5> f3v AY11t v3p x10u <by> b4z AY8r <5> f3x AY19y v3k x20k "
+}
+
+
+lipSync vo_vansen_pilotrog
+{
+	text		"Pilot, roger."
+	visemes	"english"	"x5r <Pilot> p22y AY10s l3i AH3q t3s <roger> r5q AA17x j9s ER12t x17f "
+}
+
+
+lipSync vo_nava_munitonline
+{
+	text		"Munitions, online."
+	visemes	"english"	"x4l <Munitions> m5t y4q UW3q n5t IH7q SH10w AH8q n7l z11r x9t <online> AO11t n9s l14x AY16w n3l x31e "
+}
+
+
+lipSync vo_tak_tacnavready
+{
+	text		"Tactical and Navigation ready."
+	visemes	"english"	"<Tactical> t5w AE10s k4n t4q IH4q k5q AH5q l5x <and> AE3q n3s d3p <Navigation> n4r AE12u v4u AH4q g4v EY10s SH10s AH8q n4p <ready> r3q EH11t d4s IY9r x21f "
+}
+
+
+lipSync vo_tak_tactnavradar
+{
+	text		"Tactical, Navigation and Radar ready."
+	visemes	"english"	"x3i <Tactical> t5u AE9s k7n t4s IH3q k6o AH6q l6s <Navigation> n8q AE10s v4p AH5q g4t EY11t SH9s AH4q n3o <and> AE5q n6l d3l <Radar> r3q EY11t d5v AA13u r3q <ready> r4q EH10s d3p IY9r x27e "
+}
+
+
+lipSync vo_darn_topsideturr
+{
+	text		"Topside turret good to go."
+	visemes	"english"	"<Topside> t7x AA3q p9x s13v AY9s d8s EH3q <turret> t10x ER7r AH3q t4u x9n <good> g5v UH6q d4p <to> t4u UW4q x7q <go> g4x OW7r x57p "
+}
+
+
+lipSync vo_marks_mitchremain
+{
+	text		"Mitchell, remain seated at all times, keep an eye on our guest and stay out of harms way."
+	visemes	"english"	"x13i <Mitchell> m3u IH8r CH7v AH11s l6p <remain> r3q AH8q m3v EY12u n5p <seated> s11t IY8r t3y AH5q d4w <at> AE6q t3w <all> AO8r l5w x6m <times> t5q AY28z m3k z12m x12l <keep> k4q IY6q p5t <an> AE3q n3x <eye> AY13v <on> AA3q n4v <our> AW5q ER3q x7n <guest> g3t EH12u s5o t7o <and> AE3q n3p d3p <stay> s6n t6r EY10t <out> AW4q t3w <of> AH4q v3q <harms> h13v AA3q r3q m4s z11r <way> w7q EY25z x36g "
+}
+
+
+lipSync vo_mitch_roger1
+{
+	text		"Roger."
+	visemes	"english"	"x9l <Roger> r7q AA14v j5u ER9s x43l "
+}
+
+
+lipSync vo_marks_dekfloat
+{
+	text		"Dekard, you're on floating duty - stay on your toes."
+	visemes	"english"	"x11l <Dekard> d3w IH10t k9q AA3q r3q d5n x19n <youre> y3q UH3q r3q <on> AA4q n5r <floating> f12p l10z OW3q t3u IH11s NG3k <duty> d5s UW4q t3r IY8q x10m <stay> s9t t4u EY20z <on> AA3q n3t x8p <your> y7q AO5q r3q <toes> t3u OW12t z15s x32c "
+}
+
+
+lipSync vo_marks_takwherearewe
+{
+	text		"Tak, where are we?"
+	visemes	"english"	"x3f <Tak> t6w AE17x k3p x15m <where> w5q EH9s r3q x10x <are> AA3q r3q <we> w5q IY11s x45i "
+}
+
+
+lipSync vo_tak_we75clk
+{
+	text		"We're 75 clicks from target."
+	visemes	"english"	"<Were> w5q IY3q r4q <75> s11s EH5q v3s EH3q n3p t3w IY3q x3l f3l AY12u v3l x5k <clicks> k8q l3z IH4q k4q s3p <from> f6n r3q AH4q m3j <target> t8o AA11t r8r g3t AH6q t3k x20a "
+}
+
+
+lipSync vo_marks_thirdwingf1
+{
+	text		"Third wing, this is Falcon 1, status, over."
+	visemes	"english"	"<Third> TH11q ER3q d3z <wing> w3q IH5q NG8r <this> DH3u IH12u s3s <is> IH16w z21r <Falcon> f6t AE3q l9x k12s AH3q n7u <1> w3q AH13u n3n <status> s9r t5t AE12u t7t AH3q s8s <over> OW15w v4p ER3q x62k "
+}
+
+
+lipSync vo_eagle23_ready
+{
+	text		"Eagle 23 ready, over."
+	visemes	"english"	"x4t <Eagle> IY13u g5x AH8r l3t <23> t11r w3q EH15w n3x t3p IY3q TH6t r6q IY23z <ready> r3q EH10t d3t IY14v x33n <over> OW13v v5s ER12u x28l "
+}
+
+
+lipSync vo_eagle15_ready
+{
+	text		"Eagle 15, good to go, over."
+	visemes	"english"	"x3t <Eagle> IY19z g3y AH14v l3q <15> f6r IH16w f12p t5x IY26z n3s <good> g4y UH3q d65v x28x <to> t4y UW9s <go> g3x OW4q x5r <over> OW3q v3t ER3q x19l "
+}
+
+
+lipSync vo_raven8_combatrdy
+{
+	text		"Raven 8, combat ready, over."
+	visemes	"english"	"x4q <Raven> r5q EY14v v3v AH3q n3x <8> EY20z t5t <combat> k6u AA8r m4q b3u AE12u t3r <ready> r3q EH10t d3v IY16w <over> OW12u v5u ER9s x19k "
+}
+
+
+lipSync vo_tak_strgairbursts
+{
+	text		"Strogg air bursts inbound!"
+	visemes	"english"	"<Strogg> s9w t3t r8r AA12u g6x <air> EH8r r6q x8r <bursts> b3t ER11t s7n t4t s3v <inbound> IH8q n3k b3w AW23z n4r d3o x40h "
+}
+
+
+lipSync vo_marks_hangon
+{
+	text		"Hold on!"
+	visemes	"english"	"x14f <Hold> h40x OW3q l3v d3q x22i <on> AA4a n5a x19a "
+}
+
+
+lipSync vo_vansen_desttail
+{
+	text		"We've got a destroyer on our tail, Get that thing offa me!"
+	visemes	"english"	"<Weve> w3q IY3q v3o <got> g7w AA5q t4x <a> AH3q <destroyer> d3y AH5q s6w t9u r3q OY5q ER3q <on> AA3q n3z <our> AW4q ER3q x22v <tail> t8w EY9s l10v x4j <Get> g5x EH4q t6v <that> DH3w AE4q t3s <thing> TH3y IH7q NG4w <offa> AO14v f6s f3v AH5q <me> m5v IY22z x20a "
+}
+
+
+lipSync vo_vansen_cantshkd
+{
+	text		"I can't shake this destroyer."
+	visemes	"english"	"x8t <I> AY7q <cant> k6x AE11t n3t t3y <shake> SH10x EY11t k3t <this> DH3x IH4q s6u <destroyer> d5y AH3q s9x t9u r6q OY13u ER4q x36t "
+}
+
+
+lipSync vo_vansen_cantshkf
+{
+	text		"I can't shake this fighter!"
+	visemes	"english"	"x11t <I> AY3q <cant> k7w AE10s n3s t3x <shake> SH8x EY10s k4u <this> DH3y IH4q s5x x10r <fighter> f3t AY16x t9x ER4q x20q "
+}
+
+
+lipSync vo_marks_dektakedest
+{
+	text		"Dekard, take out that destoryer on our tail!"
+	visemes	"english"	"<Dekard> d5w IH10t k7w AA3q r3q d8k <take> t8v EY9s k5w <out> AW7q t4t x4q <that> DH3y AE11t t3u <destoryer> d3x EH4q s9v t8v AO8r r3q IH3q ER3q <on> AA10s n3v <our> AW7q ER3q x5q <tail> t6t EY15w l10u x17j "
+}
+
+
+lipSync vo_marks_dekfightt
+{
+	text		"Dekard, that fighter on our tail is ripping us apart, take it out!"
+	visemes	"english"	"<Dekard> d4w IH4q k8w AA3q r4q d6r <that> DH3z AE10s t5o <fighter> f4s AY11t t8x ER3q <on> AA4q n4w <our> AW6q ER3q x5o <tail> t7w EY6q l9x <is> IH3q z10w <ripping> r3q IH3q p4s IH6q NG3x <us> AH7q s4v <apart> AH4q p24u AA3q r5q t6l <take> t8v EY5q k3w <it> IH3q t4w <out> AW32z t4a x18a "
+}
+
+
+lipSync vo_marks_takeoutt6
+{
+	text		"Dekard, take out that target on our 6!"
+	visemes	"english"	"<Dekard> d9x IH5q k3v AA4q r7q d6o <take> t8w EY6q k6v <out> AW9s t4s <that> DH3x AE6q t3o x4m <target> t7x AA9s r3q g3x AH3q t3x <on> AA7q n3x <our> AW10s ER7r <6> s14v IH3q k19w s18s x10a "
+}
+
+
+lipSync vo_tak_hol60inb
+{
+	text		"Holy .... We have almost 60 inbound Strogg targets!  All heading to intercept!"
+	visemes	"english"	"x8t <Holy> h5x OW8r l4t IY4q <We> w5q IY10s x61p <have> h6w AE10s v4u <almost> AO4q l3s m5u OW11t s4v t5u <60> s7v IH4q k3v s5u t5t IY13u <inbound> IH6q n4q b3t AW12u n3u d3w <Strogg> s5w t8w r3q AA11t g3q <targets> t9w AA13u r5q g3w AH3q t10r s5p x35o <All> AO9s l4w <heading> h3w EH3q d5w IH5q NG4t <to> t3y UW3q <intercept> IH8r n3w t3y ER6q s10v EH4q p9u t14p x10a "
+}
+
+
+lipSync vo_tak_50targ
+{
+	text		"50 Strogg targets remaining!"
+	visemes	"english"	"x3w <50> f3x IH5q f3r t6v IY6q <Strogg> s8w t7w r4q AA8r g3p x5p <targets> t5x AA4q r11t g3u AH3q t3y s4x <remaining> r3q AH6q m3x EY12u n4v IH9s NG4p x13l "
+}
+
+
+lipSync vo_tak_40targ
+{
+	text		"40 Strogg fighters left!"
+	visemes	"english"	"x6s <40> f4w AO6q r3q t3y IY4q <Strogg> s5w t9w r3q AA6q g3r x3q <fighters> f5t AY12u t3x ER4q z13v <left> l5y EH11t f3v t14p x13c "
+}
+
+
+lipSync vo_tak_30targ
+{
+	text		"30 Strogg targets remaining!"
+	visemes	"english"	"x6n <30> TH3w ER6q t3y IY11t <Strogg> s6x t7v r3q AA12u g3o <targets> t8w AA7r r4q g3x AH3q t3w s4x x3u <remaining> r6q AH3q m3x EY10s n3v IH14v NG11f x11a "
+}
+
+
+lipSync vo_tak_15targ
+{
+	text		"15 Strogg targets still inbound!"
+	visemes	"english"	"x10w <15> f3s IH3q f3l t4x IY8r n5w <Strogg> s6v t7w r4q AA9s g3n <targets> t9w AA3q r4q g6w AH3q t3s s3u <still> s4o t5w IH3q l11x <inbound> IH4q n6p b3u AW22z n3n d7l x11a "
+}
+
+
+lipSync vo_tak_5targ
+{
+	text		"We are getting close marines, there are only 5 Strogg targets on radar!"
+	visemes	"english"	"<We> w3q IY3q <are> AA3q r4q <getting> g5v EH3q t3w IH6q NG4r <close> k10v l6w OW6q s5w x6r <marines> m4v ER3q IY16w n7r z20t x23e <there> DH3w EH3q r3q <are> AA3q r3q <only> OW3q n3v l4x IY3q x8p <5> f3t AY17x v4x <Strogg> s4t t7w r3q AA14v g3j <targets> t6x AA6q r5q g3x AH3q t3u s4w <on> AA10s n3w <radar> r3q EY9s d3x AA15w r3q x26n "
+}
+
+
+lipSync vo_tak_nastyfire
+{
+	text		"We've got a nasty fire back here! "
+	visemes	"english"	"x4k <Weve> w3q IY3q v3y <got> g3x AA5q t5v <a> AH3q <nasty> n3x AE13v s4u t5v IY6q x3r <fire> f7s AY21z ER3q <back> b3w AE11t k3t <here> h11w IH12u r7q x27r "
+}
+
+
+lipSync vo_tak_firespread
+{
+	text		"The fire has spread to the cargo!"
+	visemes	"english"	"<The> DH3w IY3q <fire> f3r AY3q ER3q <has> h18y AE6q z3w <spread> s3v p6s r3q EH4q d3r <to> t7w UW3q <the> DH4v IY5q <cargo> k41w AA6q r4q g3h OW3a x12a "
+}
+
+
+lipSync vo_tak_holyshit2
+{
+	text		"Holy shit!"
+	visemes	"english"	"<Holy> h11v OW3q l8w IY4q <shit> SH18x IY3q t17t x13a "
+}
+
+
+lipSync vo_mitch_trianthrupt
+{
+	text		"The Trianthinide cargo just ruptured, we've got shrapnel all over the place down here!"
+	visemes	"english"	"<The> DH5v IY3q <Trianthinide> t10x r3q IH5q AE6q n3r TH3w IH3q n3x AY3q d6v EH4q <cargo> k6x AA14v r9s g5x OW3q <just> j3y AH3q s3p t3t <ruptured> r3q AH5q p9v CH4y ER5q d3s <weve> w3q IY3q v5g x8l <got> g11w AA6q t3y <shrapnel> SH12x r3q AE7q p4s n3t AH15w l3v <all> AO3q l7y <over> OW3q v3v ER3q <the> DH3w IY3q <place> p13u l4x EY6q s5t <down> d6v AW8r n3y <here> h11w IH14v r4q x24p "
+}
+
+
+lipSync vo_mitch_damnrazor
+{
+	text		"Damn!  Our guest from Razor squad just took some shrapnel!"
+	visemes	"english"	"<Damn> d7w AE8r m3x <Our> AW15w ER3q x27q <guest> g17w EH9s s4v t6w <from> f3v r3q AH3q m3u <Razor> r3q EY10s z9x ER5q <squad> s5w k12v w3q AA3q d3w x5u <just> j4x AH4q s4t t5v <took> t3x UH3q k3s <some> s9x AH5q m4u <shrapnel> SH11x r3q AE14v p9v n3t AH4q l3q x18h "
+}
+
+
+lipSync vo_marks_takhitsupp
+{
+	text		"Tak, hit the fire suppression system!"
+	visemes	"english"	"<Tak> t8w AE3q k3x <hit> h20w IH5q t6t <the> DH3t IY3q <fire> f6q AY11t ER6q <suppression> s5x AH6q p7r r5q EH7q SH7x AH6q n4r <system> s8w IH8r s6v t5u AH12t m3e x14a "
+}
+
+
+lipSync vo_tak_suppdead
+{
+	text		"Suppression system is dead, damnit, nothing!"
+	visemes	"english"	"x3w <Suppression> s7y AH8q p9x r3q EH3q SH5x AH5q n3t x3w <system> s4w IH3q s5v t5w AH3q m3w <is> IH6q z5t <dead> d19s EH10s d8v <damnit> d12u AE11t m3x n3x IH4q t6n <nothing> n5u AH9s TH6u IH16w NG3k x16c "
+}
+
+
+lipSync vo_marks_taktact
+{
+	text		"Tak, get back to tactical. Dekard, grab that Strogg cold cannon and put out those fires!"
+	visemes	"english"	"<Tak> t6w AE15w k3r <get> g3v EH4q t5k x3r <back> b3y AE8r k5s <to> t4u UW3q <tactical> t12t AE11t k3s t4v IH5q k5w AH7q l3p x42i <Dekard> d8y IH3q k9x AA3q r3q d10k <grab> g7u r3q AE10s b3u <that> DH3y AE8r t3v <Strogg> s6x t8w r4q AA5q g3t <cold> k17u OW6q l5v d3n <cannon> k9w AE7q n3w AH5q n3w <and> AE4q n3r d5o <put> p5v UH3q t3x <out> AW5q t3q x5s <those> DH3y OW5q z13v <fires> f4t AY28z ER4q z15u x21a "
+}
+
+
+lipSync vo_mairs_dekshutturr
+{
+	text		"Dekard, I'm shutting down your turret, put out that fire!"
+	visemes	"english"	"x3h <Dekard> d8x IH7q k4w AA3q r3q d3w <Im> AY6q m3s <shutting> SH8x AH5q t3x IH5q NG3s <down> d4x AW6q n3w <your> y7r AO4q r6q <turret> t7x ER4q AH6q t10t x10n <put> p3v UH3q t3w <out> AW3q t6v x6r <that> DH3x AE12t t3o <fire> f5q AY27z ER3q x32o "
+}
+
+
+lipSync vo_tak_trianthtoohot
+{
+	text		"That Trianthinide is still too hot, I'm dumping the cargo.  Stand clear of the cargo ramp!"
+	visemes	"english"	"x3c <That> DH3w AE5q t6q <Trianthinide> t4u r3q IH3q AE8r n3m TH3r IH3q n3v AY3q d3w EH3q <is> IH5q z3t <still> s4p t5r IH3q l4u <too> t6q UW10s <hot> h19w AA3q t4n <Im> AY4q m11o <dumping> d5v AH5q m3o p3u IH3q NG3n <the> DH4v IY3q <cargo> k14t AA5q r7q g6s OW17x x40a <Stand> s8q t6s AE8r n6r d3r <clear> k3t l3w IH7q r3q <of> AH3q v3o <the> DH3u IY3q <cargo> k10t AA10s r3q g3s OW8r <ramp> r9s AE16w m6i p5c x13a "
+}
+
+
+lipSync vo_tak_cargoaway
+{
+	text		"Cargo away!"
+	visemes	"english"	"<Cargo> k7v AA3q r6q g6s OW30z <away> AH3q w9s EY34z x18a "
+}
+
+
+lipSync vo_tak_stroggtrginb
+{
+	text		"Strogg targets inbound!"
+	visemes	"english"	"x4q <Strogg> s4v t5u r3q AA14v g3n <targets> t8p AA12u r3q g3w AH6q t3m s4l x5o <inbound> IH10s n5k b3w AW4q n3x d3v x52o "
+}
+
+
+lipSync vo_tak_strggflyers12low
+{
+	text		"Strogg flyers, 12 o'clock low!"
+	visemes	"english"	"x4r <Strogg> s7x t7y r3q AA7q g3o x3n <flyers> f7m l3v AY24z ER7q z8m <12> t7m w3q EH3q l4x v3s <oclock> AH6q k31v l3p AA3q k3v <low> l3x OW23z x31g "
+}
+
+
+lipSync vo_tak_targs2oclock
+{
+	text		"Targets at 2 o'clock!"
+	visemes	"english"	"<Targets> t3x AA7r r9s g3x AH8q t3l s5q <at> AE4q t3k x4k <2> t7t UW9s <oclock> AH7q k8r l7z AA10t k5s x38i "
+}
+
+
+lipSync vo_tak_fly3oclock
+{
+	text		"Flyers at 3 o'clock!"
+	visemes	"english"	"<Flyers> f6p l12z AY9s ER7q z6o <at> AE10s t4o <3> TH3s r3q IY9s <oclock> AH7q k6q l9y AA6q k3v x38m "
+}
+
+
+lipSync vo_tak_inb5oclock
+{
+	text		"Inbound, 5 o'clock!"
+	visemes	"english"	"<Inbound> IH16w n3m b3w AW14v n3q d3o x6j <5> f4m AY14v v3t <oclock> AH7q k9t l9z AA10s k3q x25j "
+}
+
+
+lipSync vo_tak_flyerson6
+{
+	text		"Flyers on our 6!"
+	visemes	"english"	"<Flyers> f6r l7y AY14v ER7q z6u <on> AA8r n5v <our> AW4q ER5q <6> s14q IH22z k5n s16n x11c "
+}
+
+
+lipSync vo_tak_cont8oclock
+{
+	text		"Contact, 8 o'clock!"
+	visemes	"english"	"x4s <Contact> k8y AA8r n3p t4s AE15w k5n t8p x4r <8> EY10t t3w <oclock> AH3q k11q l4z AA3q k20v x35i "
+}
+
+
+lipSync vo_tak_flyers9oclock
+{
+	text		"Flyers, 9 o'clock!"
+	visemes	"english"	"x6n <Flyers> f5u l5z AY20z ER7q z8m <9> n8w AY7r n4x <oclock> AH5q k8q l8z AA4q k5x x61m "
+}
+
+
+lipSync vo_tak_contact10oclock
+{
+	text		"Contact, 10 o'clock!"
+	visemes	"english"	"<Contact> k14x AA6q n3q t5t AE13v k6p t7n x5j <10> t6t EH6q n6x <oclock> AH4q k15x l3z AA3q k10u x43j "
+}
+
+
+lipSync vo_tak_incoming12oclock
+{
+	text		"Incoming, 12 o'clock!"
+	visemes	"english"	"<Incoming> IH15w n3r k11y AH3q m3u IH9s NG3n x9o <12> t7t w3q EH5q l3w v3u <oclock> AH3q k13q l5y AA8r k16v x38i "
+}
+
+
+lipSync vo_tak_strgvec90m315
+{
+	text		"Strogg flyers, vector 90 mark 315!"
+	visemes	"english"	"x5r <Strogg> s9y t5y r3q AA10t g3r <flyers> f9r l6z AY25z ER8q z15n x13j <vector> v3v EH9s k6m t5w ER5q <90> n4v AY4q n10r t3y IY3q <mark> m3y AA4q r6q k7v x9l <315> TH9r r3q IY9s h18x AH10s n7o d7z r3q EH14v d3o f3k IH3q f3k t7u IY17x n25w x83u "
+}
+
+
+lipSync vo_tak_targsb135m315
+{
+	text		"Targets bearing 135 mark 315!"
+	visemes	"english"	"x4k <Targets> t10x AA6q r5q g3y AH4q t4n s5o x4l <bearing> b3y EH8r r8r IH9r NG6y <135> w4q AH6q n3r h99v h9v AH3q n3w d3r r3q EH3q d3o x6i TH7o ER3q t3z IY10s f3p AY3q v3u <mark> m3z AA3q r3q k4t <315> TH3p r3q IY3q h23x AH3q n3s d3t r3q EH3q d3l f4h IH3c f3c t3a IY3a n3a x7a "
+}
+
+
+lipSync vo_tak_flyers180m380
+{
+	text		"Flyers at 180 mark 380!"
+	visemes	"english"	"x3k <Flyers> f3v l4z AY18y ER10s z5t <at> AE7r t3p x9q <180> w3q AH8r n3t h52u AH3q n3z d3x r3q EH3q d3x EY3q t3r IY3q <mark> m4u AA14v r5q k3o <380> TH13q r4q IY14v h42v AH3q n3z d3w r3q EH3q d3x EY7q t3r IY3q x24i "
+}
+
+
+lipSync vo_tak_inbound225m300
+{
+	text		"Inbound, 225 mark 300!"
+	visemes	"english"	"<Inbound> IH16w n6q b3y AW19y n3r d3n x18j <225> t7w UW11t h85v AH6q n3y d3x r3q EH9r d4o x12j t3s w3q EH4q n3z t3y IY10s f11v AY3q v3y <mark> m4w AA3q r3q k8s <300> TH6q r3q IY8r h8z AH9s n3u d3r r3q EH3q d4i x11c "
+}
+
+
+lipSync vo_tak_flyersi270m315
+{
+	text		"Flyers vector 270 mark 315!"
+	visemes	"english"	"x3e <Flyers> f10s l5z AY28z ER5q z11o x7h <vector> v5s EH7r k8m t7w ER5q x8m <270> t10v UW5q h3z AH3q n3u d3q r3q EH3q d3o s11t EH9s v4q EH6q n5o t9s IY10t <mark> m3x AA3q r3q k49v x13i <315> TH4u r4q IY17x h54w AH3q n3x d3t r3q EH3q d3m f4k IH3q f3e t3e IY3a n3c x14a "
+}
+
+
+lipSync vo_tak_contact315m380
+{
+	text		"Contact, bearing 315 mark 380!"
+	visemes	"english"	"x3u <Contact> k9y AA6q n3q t14w AE11t k6m t5m x7g <bearing> b3w EH8r r3q IH14v NG3p x17k <315> TH5u r3q IY10t h65v AH3q n3w d3v r3q EH3q d3n x4k f4i IH3q f7o t3y IY3q n3z <mark> m3y AA6q r3q k3n x6o <380> TH18p r7r IY4q h57v AH3q n3x d3w r3q EH10s d3t EY3q t4k IY3q x27c "
+}
+
+
+lipSync vo_tak_flyersiv360m315
+{
+	text		"Flyers, vector 360 mark 315!"
+	visemes	"english"	"x3c <Flyers> f8s l9z AY26z ER6q z11m x11i <vector> v3w EH9s k7n t3q ER14v x12n <360> TH3u r7r IY3q h54t AH3q n3z d3y r3q EH4q d3z s3x IH13u k3n s3k t3i IY5q <mark> m5v AA3q r3q k11w x19m <315> TH3t r5q IY3q h66v AH3q n3o d4l r3q EH3g d4e f3c IH3e f3c t4c IY3a n3a x19a "
+}
+
+
+lipSync vo_tak_contact45m330
+{
+	text		"Contact, 45 mark 330!"
+	visemes	"english"	"x4v <Contact> k8y AA5q n3q t8u AE16w k5l t4o x16k <45> f6s AO11t r5q t4p IY3q f4q AY30z v3n x14j <mark> m4t AA20z r3q k9m <330> TH11m r8r IY3q h44t AH3q n3y d3y r3q EH16w d3t TH3r ER3q t3k IY3f x10c "
+}
+
+
+lipSync vo_tak_incomingv90
+{
+	text		"Incoming, vector 90!"
+	visemes	"english"	"x3u <Incoming> IH13u n3p k11x AH6q m3v IH9s NG3o x16k <vector> v4q EH10t k7o t8x ER6q <90> n7w AY19y n3n t8p IY35z x27l "
+}
+
+
+lipSync vo_tak_targb135
+{
+	text		"Targets bearing 135!"
+	visemes	"english"	"x3k <Targets> t7y AA7r r10s g3x AH5q t3q s4p x4l <bearing> b3x EH9s r3q IH7q NG3p <135> w3q AH3q n5u h4x AH3q n3y d3v r3q EH3q d3l TH4n ER3q t3x IY10s x10l f3u AY29z v3o x27h "
+}
+
+
+lipSync vo_tak_flyersv180
+{
+	text		"Flyers at vector 180!"
+	visemes	"english"	"x3k <Flyers> f8t l6z AY17x ER11t z9q <at> AE9s t3l x5n <vector> v3x EH9s k7m t4t ER7r <180> w3q AH5q n7s h63v AH3q n3z d3w r3q EH3q d3w EY4q t3s IY3q x19g "
+}
+
+
+lipSync vo_tak_inboundv225
+{
+	text		"Inbound, vector 225!"
+	visemes	"english"	"x3s <Inbound> IH13v n6q b3x AW23z n3r d3m x7k <vector> v3w EH5q k3u t3p ER3q <225> t3v UW3q h5x AH3q n3m d11u r3q EH7q d5r x4n t6w w3q EH3q n3t t3o IY3q f10q AY31z v3m x24g "
+}
+
+
+lipSync vo_tak_flyersv270m315
+{
+	text		"Flyers vector 270!"
+	visemes	"english"	"x6n <Flyers> f6t l6z AY23z ER7q z15n <vector> v3u EH9s k6m t4u ER11t x8l <270> t9v UW18y h14v AH7q n3n d3v r6q EH3q d3m s9u EH7r v4z EH20z n4p t3k IY3q x18a "
+}
+
+
+lipSync vo_tak_contactb315
+{
+	text		"Contact, bearing 315!"
+	visemes	"english"	"x3l <Contact> k14y AA3q n3r t9t AE23z k6p t5l x13j <bearing> b3x EH10t r6q IH8r NG3p x13m <315> TH3r r3q IY15w h48w AH3q n3t d3q r3q EH3q d3k x13g f3a IH3a f3a t3a IY3a n3a x11a "
+}
+
+
+lipSync vo_tak_flyersv360m315
+{
+	text		"Flyers, vector 360!"
+	visemes	"english"	"<Flyers> f9t l6z AY25z ER8q z8o x4l <vector> v3w EH6q k6o t8w ER4q x5l <360> TH7q r3q IY16x x13s h31v AH3q n3z d3z r3q EH3q d3x s3u IH15v k7i s3c t3f IY3a x8a "
+}
+
+
+lipSync vo_tak_contactv45
+{
+	text		"Contact, vector 45!"
+	visemes	"english"	"x4t <Contact> k8z AA3q n7w t10r AE18y k5m t6o x8j <vector> v3w EH7r k6n t8v ER7r x7n <45> f9r AO9s r3q t3z IY5q x11r f3t AY35z v3m x44f "
+}
+
+
+lipSync vo_tak_dest12oclock
+{
+	text		"Strogg destroyers, 12 o'clock high!"
+	visemes	"english"	"x4t <Strogg> s8y t8y r3q AA5q g6x x4r <destroyers> d3y AH6q s10v t8v r9s OY7r ER14v z10o <12> t7t w4q EH3q l3x v3w <oclock> AH3q k3t l3r AA3q k3y <high> h56x AY9r x28f "
+}
+
+
+lipSync vo_tak_dest2oclock
+{
+	text		"Destroyers at 2 o'clock high!"
+	visemes	"english"	"<Destroyers> d5w AH3q s9x t6v r9s OY11t ER11t z6r <at> AE11t t4r <2> t6x UW3q <oclock> AH3q k3y l6z AA3q k6u <high> h60x AY9r x25h "
+}
+
+
+lipSync vo_tak_dest3oclock
+{
+	text		"Destroyers at 3 o'clock high!"
+	visemes	"english"	"x4i <Destroyers> d4y AH4q s8x t6y r5q OY12u ER9s z9s <at> AE11t t3n <3> TH5x r10t IY3q <oclock> AH8r k4q l3w AA3q k3y <high> h40x AY13u x28g "
+}
+
+
+lipSync vo_tak_dest5oclock
+{
+	text		"Inbound Destroyer at 5 o'clock high!"
+	visemes	"english"	"x4u <Inbound> IH15w n3t b3y AW7r n3x d4v x6p <Destroyer> d4x AH3q s9v t5v r3q OY15w ER10s <at> AE12t t5l <5> f6r AY14v v3u <oclock> AH8r k11v l3z AA3q k4v <high> h36x AY14v x24i "
+}
+
+
+lipSync vo_tak_dest6oclock
+{
+	text		"Destroyers on our high 6!"
+	visemes	"english"	"<Destroyers> d4v AH4q s7y t6w r7r OY10t ER10s z9v <on> AA3q n4t <our> AW9s ER3q <high> h17x AY9s x9q <6> s7u IH20z k4p s3p x42k "
+}
+
+
+lipSync vo_tak_dest8oclock
+{
+	text		"Destroyers, 8 o'clock high!"
+	visemes	"english"	"x5m <Destroyers> d3x AH3q s9x t4t r10t OY7r ER15w z11q x6u <8> EY9s t4z <oclock> AH7q k8q l3y AA4q k10w <high> h48w AY3q x22g "
+}
+
+
+lipSync vo_tak_dest9oclock
+{
+	text		"Destroyers, 9 o'clock high!"
+	visemes	"english"	"x4l <Destroyers> d3x AH3q s10x t8w r3q OY13v ER13u z9n <9> n3o AY3q n3w <oclock> AH3q k12y l4x AA3q k3p <high> h57w AY10s x35f "
+}
+
+
+lipSync vo_tak_dest10oclock
+{
+	text		"Destroyers, 10 o'clock high!"
+	visemes	"english"	"<Destroyers> d6v AH3q s7y t6x r6q OY11t ER8r z10q <10> t9t EH4q n3x <oclock> AH3q k4y l3w AA3q k6r <high> h54w AY4q x21f "
+}
+
+
+lipSync vo_tak_dest12oclock2
+{
+	text		"Destroyers, 12 o'clock high!"
+	visemes	"english"	"x3n <Destroyers> d3u AH3q s6v t10x r16x OY4q ER4q z9p <12> t10r w4q EH3q l4y v3v <oclock> AH4q k12s l3z AA4q k6x <high> h44w AY7q x25f "
+}
+
+
+lipSync vo_tak_flyersv90m45
+{
+	text		"Strogg flyers, vector 90 mark 45!"
+	visemes	"english"	"x8r <Strogg> s7y t6w r3q AA6q g4x x10o <flyers> f3t l6z AY14v ER11t z7n x4l <vector> v3u EH7q k6o t7w ER6q <90> n12v AY18y n4q t10p IY10t <mark> m3x AA3q r3q k30x x15l <45> f4t AO6q r4q t3y IY3q x6n f3r AY30z v3o x36g "
+}
+
+
+lipSync vo_tak_targs135m35
+{
+	text		"Targets bearing 135 mark 35!"
+	visemes	"english"	"<Targets> t6y AA8r r6q g4z AH5q t3p s5o x6p <bearing> b3z EH7r r8r IH4q NG14t <135> w3q AH5q n3s h82v AH5q n3x d3y r3q EH5q d7s x9j TH3p ER4q t3x IY12u x6n f3q AY3q v3z <mark> m3z AA3q r3q k4y <35> TH3x ER3q t3t IY3q f3o AY3q v3j x25e "
+}
+
+
+lipSync vo_tak_flyers180m50
+{
+	text		"Flyers at 180 mark 50!"
+	visemes	"english"	"<Flyers> f9q l5z AY14v ER12u z6q <at> AE10s t3m x7k <180> w3q AH8r n3x h99v h10v AH3q n3z d3z r3q EH3q d3t EY3q t8p IY11t <mark> m3w AA3q r3q k3v <50> f3u IH7q f3r t3r IY3q x20c "
+}
+
+
+
+
+lipSync vo_tak_inbound225m45
+{
+ text  "Inbound, 225 mark 45!"
+}
+lipSync vo_tak_flyersv270m45
+{
+	text		"Flyers vector 270 mark 45!"
+	visemes	"english"	"x9k <Flyers> f6t l5z AY27z ER6q z9o x5k <vector> v3w EH7r k6o t3u ER7r <270> t3p UW6q h12u AH3q n3w d3y r3q EH3q d3t s10u EH8r v4t EH5q n4p t9q IY9s <mark> m6z AA9s r3q k27w x10o <45> f15q AO12u r3q t3p IY3q f7s AY29z v3o x38g "
+}
+
+
+lipSync vo_tak_contact315m50
+{
+	text		"Contact, bearing 315 mark 50!"
+	visemes	"english"	"<Contact> k19x AA6q n5s t8s AE19z k4n t8p x9k <bearing> b3y EH10t r3q IH6q NG7q x7k <315> TH5r r3q IY14v h88w AH3q n3y d3v r3q EH3q d3o f17v IH17x f7o t4p IY10t n3x <mark> m3u AA3q r3q k3u <50> f3s IH7q f3n t4j IY3g x49a "
+}
+
+
+lipSync vo_tak_flyers360m45
+{
+	text		"Flyers, vector 360 mark 45!"
+	visemes	"english"	"x4i <Flyers> f7s l6y AY23z ER11t z14o <vector> v3u EH5q k3u t3p ER4q <360> TH3s r4q IY4q h12p AH3q n3l d3v r3q EH8r d10u s13s IH10s k6p s6p t3v IY10t <mark> m3z AA3q r4q k42w x4m <45> f15p AO12u r3q t3o IY4q f3o AY36z v3l x53e "
+}
+
+
+lipSync vo_tak_contact45m30
+{
+	text		"Contact, 45 mark 30!"
+	visemes	"english"	"<Contact> k17y AA3q n3r t7t AE18y k4n t10p <45> f9l AO5q r4q t9x IY3q x5m f4u AY25z v3n x12m <mark> m3w AA18y r3q k6q x8k <30> TH5p ER3q t4x IY42z x41s "
+}
+
+
+lipSync vo_marks_gunnersfire
+{
+	text		"Gunners, fire at will!"
+	visemes	"english"	"x15k <Gunners> g3x AH9s n6w ER8r z11p <fire> f7p AY11t ER3q <at> AE8r t3r x7m <will> w4q IH7r l23v x23f "
+}
+
+
+lipSync vo_marks_darndekfirew
+{
+	text		"Darnell, Dekard, fire at will!"
+	visemes	"english"	"x3g <Darnell> d6v AA3q r4q n4u EH6q l3y <Dekard> d3z IH10s k20v AA3q r3q d3l x12j <fire> f4r AY13v ER3q <at> AE5q t7u x6o <will> w3q IH27z l5m x45e "
+}
+
+
+lipSync vo_tak_multtargallq
+{
+	text		"Multiple targets!  All quadrants!"
+	visemes	"english"	"<Multiple> m3x AH3q l5z t3x AH4q p8u AH6q l3v <targets> t12t AA9s r13v g3y AH3q t3o s7n x6s <All> AO3q l3z <quadrants> k26v w3q AE15w d9t r4q AE5q n4n t6k s17q x20a "
+}
+
+
+lipSync vo_tak_toomany
+{
+	text		"There are too many of em'!"
+	visemes	"english"	"<There> DH5u EH6q r6q <are> AA3q r3q <too> t16v UW4q <many> m3w EH7r n4t IY14v <of> AH11t v4r <em> EH5q m3o x20h "
+}
+
+
+lipSync vo_tak_multtargallvec
+{
+	text		"Multiple targets!  All vectors!"
+	visemes	"english"	"x5q <Multiple> m3w AH3q l5z t3u AH4q p34v AH3q l3z <targets> t3z AA5q r3q g4y AH6q t3o s4p x6s <All> AO3q l19y x6o <vectors> v3x EH9s k7p t5t ER16w z17m x25a "
+}
+
+
+lipSync vo_tak_theyeveryw
+{
+	text		"They’re everywhere!"
+	visemes	"english"	"x5q <Theyre> DH3y EY8r r3q EH8r x7u <everywhere> EH3q v3v r6q IY8r w5q EH25z r3q x38g "
+}
+
+
+lipSync vo_tak_shitpassair
+{
+	text		"Shit, we're passing through some active air defense batteries!"
+	visemes	"english"	"<Shit> SH25x IY9s t11p x8l <were> w3q IY3q r3q x4p <passing> p6x AE12u s7u IH8r NG3m <through> TH3u r3q UW5q <some> s7v AH5q m3v x11y <active> AE3q k6n t3v IH15v v4w <air> EH12u r3q <defense> d7v AH3q f6n EH10s n4m s5n x4i <batteries> b3w AE15w t3x ER6q IY16w z12n x18a "
+}
+
+
+lipSync vo_tak_incomingairdef
+{
+	text		"Incoming air defense fire!"
+	visemes	"english"	"<Incoming> IH13u n3q k13x AH3q m3z IH7r NG12v <air> EH17x r3q <defense> d4v AH5q f5r EH11t n4n s8q <fire> f6p AY32z ER3q x27g "
+}
+
+
+lipSync vo_vansen_evasiveman
+{
+	text		"Evasive maneuvers, hold on!"
+	visemes	"english"	"x4u <Evasive> IH14v v3z EY3q s3y IH3q v3p <maneuvers> m3q AH3q n3v UW4q v4q ER3q z4w <hold> h95w OW3q l3o d3l <on> AA3q n3e x8a "
+}
+
+
+lipSync vo_vansen_keepdestsoff
+{
+	text		"Keep those destroyers offa' me!"
+	visemes	"english"	"x3t <Keep> k6x IY8r p6l <those> DH5x OW3q z3v x11p <destroyers> d3x AH3q s8o t8w r3q OY3q ER4q z3x x5y <offa> AO3q f3o f3t AH3q x31u <me> m4t IY25z x24k "
+}
+
+
+lipSync vo_vansen_hangon
+{
+	text		"Hang on!"
+	visemes	"english"	"x4o <Hang> h54x AE7q NG3m <on> AA3q n3l x28g "
+}
+
+
+lipSync vo_vansen_evasiv2
+{
+	text		"Evasive maneuvers."
+	visemes	"english"	"<Evasive> IH14v v3u EY19y s9r IH17w v3s x22v <maneuvers> m3x AH3q n3y UW6q v3x ER4q z3n x22l "
+}
+
+
+lipSync vo_vansen_evasive3
+{
+	text		"Evasive action!"
+	visemes	"english"	"<Evasive> IH10s v3u EY19y s3o IH6q v4r <action> AE11t k13u SH14w AH13u n6m x17c "
+}
+
+
+lipSync vo_vansen_getbumpy
+{
+	text		"This is gonna get bumpy!"
+	visemes	"english"	"<This> DH4u IH6q s8q <is> IH5q z5r <gonna> g9x AA3q n3w AH3q <get> g5w EH7r t8n x3l <bumpy> b3y AH9s m3r p10o IY20z x17c "
+}
+
+
+lipSync vo_vansen_holdlunch
+{
+	text		"Hold on to your lunch marines!"
+	visemes	"english"	"<Hold> h8u OW3q l5v d5w <on> AA3q n3z x11u <to> t5w UW3q <your> y3q AO3q r3q x5u <lunch> l3z AH7q n3n CH10t x4k <marines> m3u ER10s IY23z n7s z4m x22k "
+}
+
+
+lipSync vo_nava_dekyounotmiss
+{
+	text		"Dekard, you're not using your missiles.  You do know to operate that equipment, yes?"
+	visemes	"english"	"x4o <Dekard> d6y IH5q k3r AA4q r4q d6t <youre> y4q UH3q r3q <not> n5u AA7q t7w x6v <using> y3q UW7q z5q IH3q NG5r <your> y5q AO3q r3q <missiles> m5s IH10s s10r AH8r l3p z15q x13j <You> y5q UW4q x20j <do> d4y UW12u <know> n11v OW12u <to> t3x UW7r <operate> AA18y p9r ER4q EY10s t3q <that> DH3y AE5q t3x <equipment> IH6q k6m w3q IH8r p5l m3r AH3q n3v t3n x3k <yes> y9s EH13u s18p x20a "
+}
+
+
+lipSync vo_tak_dekareyourmiss
+{
+	text		"Dekard, are your missile targeting systems working?  I don't see you using missiles at all!"
+	visemes	"english"	"<Dekard> d4u IH9s k9t AA3q r8r d5t <are> AA4q r4q <your> y10s AO3q r3q <missile> m3r IH14v s7s AH4q l4s <targeting> t11r AA7r r7q g3z AH3q t3w IH5q NG6r <systems> s9t IH8r s3n t5q AH4q m3q z10r <working> w9s ER4q k6o IH16w NG3t x7s <I> AY7r <dont> d3y OW4q n4t t4r <see> s8t IY14v <you> y3q UW4q <using> y14v UW6q z3o IH6q NG8s <missiles> m3s IH10s s7r AH26z l3t z3x <at> AE17x t4w <all> AO5q l4p x49f "
+}
+
+
+lipSync vo_marks_dekusemiss
+{
+	text		"Dekard, use your guided missiles!"
+	visemes	"english"	"x10k <Dekard> d3w IH13v k9q AA3q r3q d5k x10k <use> y9r UW4q s4s <your> y3q AO3q r3q x5l <guided> g5w AY10t d3t AH8q d3m <missiles> m3p IH11t s11p AH6q l3n z15p x43c "
+}
+
+
+lipSync vo_tak_hullbrmain
+{
+	text		"We've got a hull breach in main cabin, structure is holding."
+	visemes	"english"	"x8j <Weve> w5q IY4q v3k <got> g4w AA3q t3z <a> AH3q <hull> h19w AH3q l10x x5n <breach> b3s r7r IY7q CH9u <in> IH4q n6s <main> m3x EY17x n3s <cabin> k8v AE16w b3v AH4q n3o x18l <structure> s11x t5t r3q AH3q k3s CH8w ER5q <is> IH6q z6t <holding> h14w OW3q l3t d6x IH8r NG3n x26f "
+}
+
+
+lipSync vo_tak_hullstrssmax
+{
+	text		"Hull stress is approaching maximum."
+	visemes	"english"	"x5t <Hull> h7z AH5q l3w <stress> s10t t4v r4q EH8r s10p <is> IH3q z4r <approaching> AH11t p12u r5q OW4q CH6u IH3q NG3q x7s <maximum> m3x AE13v k6p s7r AH7q m3q AH9r m3k x25e "
+}
+
+
+lipSync vo_tak_powersysst
+{
+	text		"Power systems are starting to fluctuate."
+	visemes	"english"	"x3q <Power> p8y AW9s ER5q <systems> s10r IH4q s5o t3o AH6q m3p z4r <are> AA3q r3q x4w <starting> s7s t5u AA8r r3q t3v IH8r NG4u <to> t3u UW3q x5k <fluctuate> f4r l3z AH6q k3r CH9t AH8q w4q EY24z t3j x31e "
+}
+
+
+lipSync vo_tak_wehavemajdam
+{
+	text		"We have major damage in aft starboard."
+	visemes	"english"	"x3p <We> w3q IY5q <have> h22u AE3q v3y <major> m3z EY10t j7w ER5q <damage> d19v AE4q m5t AH5q j8r <in> IH6q n3n x8u <aft> AE14v f3o t3o <starboard> s9p t4q AA16x r4q b4p ER8r d4p x33f "
+}
+
+
+lipSync vo_tak_damagelevcrty
+{
+	text		"Damage levels are reaching critical."
+	visemes	"english"	"<Damage> d11x AE5q m4x AH6q j7r <levels> l7x EH5q v4u AH6q l4t z12s <are> AA3q r3q <reaching> r8r IY7q CH7v IH8r NG3n <critical> k10r r3q IH7q t3x IH3q k9q AH16w l3l x14i "
+}
+
+
+lipSync vo_tak_wecnttakeany
+{
+	text		"We can't take any more damage!"
+	visemes	"english"	"x3n <We> w3q IY5q <cant> k17x AE8r n3p t4s <take> t3v EY10s k4u <any> EH8r n3v IY12u <more> m3z AO6q r3q x7p <damage> d7x AE15w m4s AH14u j16p x25c "
+}
+
+
+lipSync vo_tak_damagelev
+{
+	text		"Damage levels are holding."
+	visemes	"english"	"<Damage> d11x AE5q m3w AH6q j6r <levels> l8x EH5q v4v AH3q l4t z7s <are> AA3q r3q <holding> h19v OW3q l4v d3t IH12t NG6k x27c "
+}
+
+
+lipSync vo_minordamtoseconday
+{
+	text		"Minor damage to the secondary hull."
+	visemes	"english"	"x6p <Minor> m3x AY14v n3z ER5q x5p <damage> d13x AE4q m5u AH5q j12r <to> t3s UW3q <the> DH4t IY4q <secondary> s11s EH7r k7t AH3q n5q d3y EH9s r3q IY8r <hull> h20v AH11t l3l x24g "
+}
+
+
+lipSync vo_wegotmajordamsec
+{
+	text		"We've got major damage to the secondary hull."
+	visemes	"english"	"<Weve> w6q IY4q v3p <got> g4w AA4q t9v <major> m3p EY21z j5w ER4q <damage> d15v AE10s m5u AH6q j9s <to> t4n UW3q <the> DH4q IY4q <secondary> s10s EH7q k7s AH3q n4q d4x EH9s r4q IY8r <hull> h16v AH7q l7t x28h "
+}
+
+
+lipSync vo_tak_wecantakemuch
+{
+	text		"We can't take much more fire."
+	visemes	"english"	"<We> w4q IY3q x4p <cant> k9y AE14v n3n t3s <take> t3w EY15w k3p <much> m3u AH11t CH5s x5n <more> m4u AO4q r3q x11p <fire> f3x AY47z ER5e "
+}
+
+
+lipSync vo_tak_onmorebigshot
+{
+	text		"One more big shot and we are done for."
+	visemes	"english"	"<One> w5q AH13v n3v <more> m3v AO3q r3q x15u <big> b3z IH3q g5s <shot> SH16x AA8r t4y <and> AE11t n3q d3t <we> w3q IY5q <are> AA3q r3q x5l <done> d15y AH3q n3t x8o <for> f5s AO8r r3q x46r "
+}
+
+
+lipSync vo_tak_primaryhydarul
+{
+	text		"Primary hydraulics system is totally shot."
+	visemes	"english"	"x4g <Primary> p9x r3q AY7r m3v EH9s r3q IY7q <hydraulics> h14v AY6q d7u r4q AO8r l6y IH4q k3p s4p <system> s6q IH8r s4p t4r AH5q m3t <is> IH5q z7q <totally> t12u OW4q t11x AH4q l3z IY5q <shot> SH18w AA16x t3y x51n "
+}
+
+
+lipSync vo_marks_eagle23fire
+{
+	text		"Eagle 23, I see an engine fire, confirm?"
+	visemes	"english"	"x4p <Eagle> IY7q g3r AH3q l3y <23> t3u w3q EH3q n3p t3r IY11t x6n TH4o r3q IY23z <I> AY8r <see> s7p IY8r <an> AE3q n3u <engine> EH7q n3s j7u AH3q n5m <fire> f10r AY16w ER3q x5p <confirm> k3r AH3q n3l f9n ER13u m3t x44i "
+}
+
+
+lipSync vo_eagle23_welosealt
+{
+	text		"We are losing altitude, port engine is gone and starboard is failing."
+	visemes	"english"	"x6v <We> w4q IY6q <are> AA4q r3q <losing> l9z UW4q z3v IH8r NG3w <altitude> AE4q l3u t3v AH5q t6y UW4q d3y <port> p8y AO3q r3q t4s <engine> EH4q n4s j30v AH7q n3z <is> IH43z z9s <gone> g5x AO6q n3y x10x <and> AE5q n3v d3t <starboard> s12v t4x AA5q r3q b3s ER3q d3z <is> IH22z z14r <failing> f12s EY4q l3z IH7r NG3x x32r "
+}
+
+
+lipSync vo_marks_23isgone
+{
+	text		"Eagle 23 is gone."
+	visemes	"english"	"x6f <Eagle> IY14v g3r AH3q l3y <23> t3x w3q EH3q n3p t4r IY8r TH10q r3q IY13u <is> IH5q z9o <gone> g6u AO10s n3w x67o "
+}
+
+
+lipSync vo_eagle15_wehitgodown
+{
+	text		"We've been hit and are going down!"
+	visemes	"english"	"x3v <Weve> w4q IY5q v3z x6x <been> b3z IH10t n3w <hit> h63y IH5q t5z <and> AE5q n3x d30z <are> AA3q r3q <going> g3w OW3q IH4q NG3t <down> d4p AW3q n3f x4e "
+}
+
+
+lipSync vo_marks_eagle15hit
+{
+	text		"Eagle 15 is hit."
+	visemes	"english"	"x7s <Eagle> IY8r g4t AH6q l3v <15> f5o IH9s f7k t6r IY11t n3s <is> IH8r z5r <hit> h6v IH16x t5m x42g "
+}
+
+
+lipSync vo_eagle15_shouting
+{
+	text		"(Incomprehensible dialog)"
+	visemes	"english"	"<Incomprehensible> IH3q NG3z k4z AA3q m3z p3z r3q AH3q h92z EH3q n3y s3y AH3q b3x AH3q l3y <dialog> d4x AY5q AH3q l3x AO3q g4m "
+}
+
+
+lipSync vo_marks_eagle15dest
+{
+	text		"Eagle 15 destroyed."
+	visemes	"english"	"x8p <Eagle> IY10s g4u AH3q l3x x6p <15> f3s IH14v f3f t6o IY14v n3m <destroyed> d4t AH4q s14t t10s r3q OY26z d6n x44g "
+}
+
+
+lipSync vo_raven8_shitfire
+{
+	text		"Shit!  We've got a fire in our munitions bay, suppression syst...(cut)"
+	visemes	"english"	"x3p <Shit> SH11x IY3q t12y x8p <Weve> w3q IY10t v3q <got> g4w AA5q t4x <a> AH11t <fire> f9o AY16x ER3q <in> IH3q n3y <our> AW3q ER3q <munitions> m3u y7q UW5q n4x IH9s SH7w AH5q n5t z3r <bay> b3s EY20z <suppression> s6t AH7q p4t r3q EH8r SH8w AH6q n3u x4r <syst> s5r IH11t s3s t3s <cut> k3q AH3q t3a x3a "
+}
+
+
+lipSync vo_markswell_raven8com
+{
+	text		"Raven 8, come in!"
+	visemes	"english"	"x9m <Raven> r3q EY11t v3v AH3q n3w <8> EY19y t7t <come> k3x AH3q m3t <in> IH17x n4n x23g "
+}
+
+
+lipSync vo_raven8_die
+{
+	text		"Arrgghh! (cut)"
+	visemes	"english"	"<Arrgghh> AH5q r3q g3y x51x <cut> k12w AH3q t6r x21k "
+}
+
+
+lipSync vo_makrs_exploraven8
+{
+	text		"Explosion on Raven 8, going down hard!"
+	visemes	"english"	"x6p <Explosion> IH5q k5x s5w p12s l3x OW4q ZH10u AH3q n6u <on> AA6q n7t <Raven> r6q EY6q v4s AH3q n4u <8> EY22z t3p x25k <going> g3q OW5q IH13u NG3o <down> d4w AW3q n3x <hard> h45w AA3q r3q d5l x48f "
+}
+
+
+lipSync vo_vansen_porteng80
+{
+	text		"Port engine is at 80%, getting bumpy."
+}
+
+
+lipSync vo_vansen_latercont
+{
+	text		"Lateral control is getting sluggish."
+	visemes	"english"	"<Lateral> l4x AE10t t4u ER3q AH11t l3t x5k <control> k8q AH3q n3p t11u r8r OW3q l9y <is> IH4q z3r x10k <getting> g4u EH6q t3t IH9s NG3r <sluggish> s13n l5y AH11t g5v IH10s SH20t x16a "
+}
+
+
+lipSync vo_vansen_botheng
+{
+	text		"Both engines are down more than 30%"
+}
+
+
+lipSync vo_vansen_shipdamcrit
+{
+	text		"Ship damage is getting critical"
+	visemes	"english"	"<Ship> SH13x IH10s p4k <damage> d14x AE6q m5v AH5q j12v <is> IH3q z4l <getting> g4x EH3q t3w IH4q NG9r <critical> k9u r6q IH3q t3x IH5q k25x AH4q l3m x24e "
+}
+
+
+lipSync vo_darn_gotalock
+{
+	text		"I got a lock.  Strogg down."
+	visemes	"english"	"x4w <I> AY7q <got> g5y AA4q t3y <a> AH16x <lock> l3y AA3q k16v x7q <Strogg> s11u t14w r4q AA7q g3s x8p <down> d26w AW3q n3q x27k "
+}
+
+
+lipSync vo_darn_watchtarg
+{
+	text		"Watch out, Dekard, target headed your way."
+	visemes	"english"	"x12q <Watch> w5q AA11t CH8x <out> AW13u t4p x6n <Dekard> d6x IH11t k4r AA3q r3q d3r x23i <target> t7x AA4q r3q g3y AH3q t8v <headed> h10w EH6q d7v AH3q d3r <your> y3q AO4q r3q x7t <way> w3q EY16w x26j "
+}
+
+
+lipSync vo_darn_flydown
+{
+	text		"Flyer down."
+	visemes	"english"	"x3l <Flyer> f7t l7z AY15w ER4q x8q <down> d24w AW3q n3r x31k "
+}
+
+
+lipSync vo_darn_destdown
+{
+	text		"Destroyer down."
+	visemes	"english"	"<Destroyer> d3y AH4q s13t t10x r3q OY12u ER5q x12o <down> d26x AW3q n3s x31k "
+}
+
+
+lipSync vo_darn_threemore
+{
+	text		"Three more down."
+	visemes	"english"	"x3i <Three> TH15w r8r IY10s x5z <more> m3z AO7r r3q x6p <down> d10y AW3q n3w x44r "
+}
+
+
+lipSync vo_darn_cannonsuseless
+{
+	text		"Cannons are useless, I’m switching to missiles."
+	visemes	"english"	"<Cannons> k8x AE15w n3w AH3q n3s z4u <are> AA3q r5q <useless> y11t UW12u s13u l3w AH4q s7u <Im> IH7r m5s <switching> s11u w4q IH9s CH7w IH3q NG5q <to> t3y UW3q <missiles> m7s IH11t s10r AH4q l4n z22s x21e "
+}
+
+
+lipSync vo_marks_dekgetbackpos
+{
+	text		"Dekard! Get back to your position, we’re getting hammered!"
+	visemes	"english"	"x9k <Dekard> d4x IH9s k9r AA3q r3q d3l x8i <Get> g5w EH6q t3n x10k <back> b3x AE8r k7t <to> t3p UW4q <your> y11t AO3q r3q x6k <position> p4u AH3q z10r IH11t SH6u AH3q n3m x6p <were> w3q ER4q <getting> g3x EH4q t3x IH4q NG3u <hammered> h26v AE10s m3m ER3q d3l x33c "
+}
+
+
+lipSync vo_marks_dekweneedyouin
+{
+	text		"Dekard, we need you in position!"
+	visemes	"english"	"x5p <Dekard> d4y IH6q k6q AA3q r3q d3o x9l <we> w3q IY5q <need> n11r IY7r d6v x7q <you> y5q UW4q <in> IH9s n4r <position> p5u AH4q z8t IH10t SH9v AH3q n3o x42f "
+}
+
+
+lipSync vo_makrs_getbackpost
+{
+	text		"Get back to your post, Marine!"
+	visemes	"english"	"<Get> g5v EH16w t3l <back> b3v AE14v k7r <to> t3t UW3q <your> y4q AO3q r3q x14l <post> p10x OW5q s3t t3p x11q <Marine> m4x ER4q IY23z n6o x53e "
+}
+
+
+lipSync vo_marks_stopfriend
+{
+	text		"Dekard, stop shooting friendlies!"
+	visemes	"english"	"x10k <Dekard> d9x IH5q k7q AA3q r3q d5l <stop> s7n t5v AA5q p6r <shooting> SH12v UW3q t3v IH5q NG3p x7l <friendlies> f4o r3q IY3q EH4q n7p d5v l3x IY9r s13o x44a "
+}
+
+
+lipSync vo_marks_thoseourship
+{
+	text		"Those are our ships, stop shooting!"
+	visemes	"english"	"x4k <Those> DH5v OW7q z7x x12w <are> AA3q r7r x7z <our> AW5q ER8r <ships> SH8s IH7r p5p s3q <stop> s7p t5t AA5q p6t <shooting> SH15u UW3q t3z IH15w NG3m x46g "
+}
+
+
+lipSync vo_marks_dekdonotdam
+{
+	text		"Dekard, do not damage friendly craft!"
+	visemes	"english"	"x4k <Dekard> d4x IH10s k5s AA3q r3q d3i x14i <do> d10x UW5q <not> n6u AA10t t4t x8m <damage> d3v AE17x m3y AH4q j10q <friendly> f3s r3q EH3q n3r d3s l3x IY6q <craft> k8r r3q AE18y f12m t6k x39a "
+}
+
+
+lipSync vo_marks_dekwatchfire
+{
+	text		"Dekard, watch your fire!"
+	visemes	"english"	"x4o <Dekard> d3x IH19y k3n AA3q r3q d3n <watch> w3q AA8r CH9s <your> y4q AO3q r3q x8k <fire> f3l AY24z ER3q x49l "
+}
+
+
+lipSync vo_marks_takwhatpos
+{
+	text		"Tak, what's our position?"
+	visemes	"english"	"x3c <Tak> t10w AE11t k3o x5n <whats> w3q AH3q t3p s3u <our> AW5q ER3q x6m <position> p3t AH3q z9p IH11t SH9u AH3q n3k x41e "
+}
+
+
+lipSync vo_tak_50clickslz
+{
+	text		"50 clicks from LZ."
+	visemes	"english"	"<50> f6r IH7q f3p t3u IY7q <clicks> k11u l3y IH5q k4s s7t <from> f3s r9s AH14v m3y <LZ> l3r z6p x39u "
+}
+
+
+lipSync vo_tak_30clickslz
+{
+	text		"30 clicks from LZ."
+	visemes	"english"	"<30> TH6w ER10t t3x IY4q <clicks> k10q l5z IH5q k3r s9t <from> f3v r8r AH5q m3x <LZ> l11v z8q x46s "
+}
+
+
+lipSync vo_marks_taktellcls
+{
+	text		"Tak, tell me we're getting close!"
+	visemes	"english"	"<Tak> t11u AE14v k3o x7l <tell> t6r EH4q l4v <me> m5q IY5q <were> w4q IY3q r4q <getting> g3x EH3q t3y IH8r NG3n <close> k25v l4s OW4q s12q x40e "
+}
+
+
+lipSync vo_tak_almost10clk
+{
+	text		"Almost there, 10 clicks!"
+	visemes	"english"	"x5u <Almost> AO4q l4x m4v OW9s s3r t5n <there> DH3w EH22z r3q <10> t8r EH8r n7q <clicks> k8r l7y IH14v k4o s19p x23c "
+}
+
+
+lipSync vo_marks_dekwelldone
+{
+	text		"Dekard, well done!"
+	visemes	"english"	"x7l <Dekard> d3v IH14v k8q AA3q r3q d4k x9h <well> w3q EH6q l10y <done> d8u AH9s n3t x60l "
+}
+
+
+lipSync vo_marks_goodshotdek
+{
+	text		"Good shot Dekard!"
+	visemes	"english"	"x4a <Good> g6v UH3q d4o x9l <shot> SH16w AA12u t4r x10k <Dekard> d3o IH11t k7o AA3q r5q d7o x39f "
+}
+
+
+lipSync vo_marks_niceshootgun
+{
+	text		"Nice shooting gunners!"
+	visemes	"english"	"x9e <Nice> n3u AY16w s4u <shooting> SH10u UW7q t3v IH6q NG3n x6m <gunners> g4u AH9s n3v ER12u z16p x37a "
+}
+
+
+lipSync vo_marks_niceshotdek
+{
+	text		"Nice shot Dekard!"
+	visemes	"english"	"x5e <Nice> n6s AY11t s3t <shot> SH18w AA5q t8v x11k <Dekard> d3s IH10s k7u AA3q r3q d5p x49g "
+}
+
+
+lipSync vo_nava_firemunit
+{
+	text		"I've got a fire in the munitions bay, auto fire suppression isn't kicking in!"
+	visemes	"english"	"x7p <Ive> AY4q v5m <got> g5w AA5q t3x <a> AH6q <fire> f12p AY14v ER3q <in> IH12u n4o <the> DH3s IY4q <munitions> m5t y3q UW3q n3w IH6q SH11w AH5q n3m z6o x4f <bay> b3w EY19y x34n <auto> AO12u t3x OW9s <fire> f10q AY10t ER11t <suppression> s8p AH6q p4r r3q EH8r SH9x AH3q n4t <isnt> IH8r z4r AH3q n5q t3i <kicking> k6s IH8r k7p IH6q NG4t <in> IH13u n3m x32f "
+}
+
+
+lipSync vo_vansen_cookinghyd
+{
+	text		"That fire is cooking the hydraulics system, switching to secondary."
+	visemes	"english"	"<That> DH3x AE13u t3o <fire> f6x AY12u ER3q <is> IH8r z3m <cooking> k3m UH3q k8u IH7q NG4u <the> DH3v IY3q <hydraulics> h42w AY3q d3y r3q AO3q l3z IH4q k4l s4m <system> s4r IH8r s5k t5s AH7q m3s x9p <switching> s6q w4q IH6q CH5x IH9s NG3q <to> t4y UW4q x6o <secondary> s3s EH9s k6t AH4q n3p d8x EH10t r4q IY14v x25i "
+}
+
+
+lipSync vo_darn_illkeepcov
+{
+	text		"I'll keep us covered, go Dekard."
+	visemes	"english"	"x5w <Ill> AY5q l4y <keep> k13u IY6q p12u <us> AH4q s7r <covered> k8x AH13u v4v ER4q d3s x12q <go> g4y OW19y <Dekard> d5x IH8r k7s AA3q r5q d3o x22i "
+}
+
+
+lipSync vo_marks_dekgetofire
+{
+	text		"Dekard, get to fire control and suppress that fire!"
+	visemes	"english"	"x7f <Dekard> d4v IH10t k3q AA3q r3q d4p x25l <get> g4u EH6q t3m <to> t4s UW3q <fire> f10p AY18y ER4q <control> k3t AH3q n4o t9t r3q OW3q l3v <and> AE3q n3q d3m <suppress> s4p AH6q p9n r3q EH7q s7p <that> DH3v AE7q t3n x6l <fire> f6s AY17x ER3q x59n "
+}
+
+
+lipSync vo_nava_firegrow
+{
+	text		"The fire is growing, Dekard."
+	visemes	"english"	"x7h <The> DH3s IY3q <fire> f8u AY18y ER3q <is> IH6q z6n x6l <growing> g3s r6q OW9s IH7q NG6r <Dekard> d6u IH11t k6q AA3q r3q d4p x25f "
+}
+
+
+lipSync vo_marks_dekfirectrln
+{
+	text		"Dekard, get to fire control NOW."
+	visemes	"english"	"x4e <Dekard> d5v IH9s k4q AA3q r3q d3m x6k <get> g4w EH4q t3o <to> t4u UW3q x11m <fire> f3o AY12u ER4q <control> k8t AH4q n3n t8s r3q OW3q l8v <NOW> n10s AW39z x34g "
+}
+
+
+lipSync vo_marks_goodbackbell
+{
+	text		"Good job Dekard, now get back to the belly turret."
+	visemes	"english"	"x8g <Good> g4w UH3q d8r <job> j9w AA11t b3t x8m <Dekard> d3t IH11t k8t AA3q r3q d4r x21k <now> n3u AW5q <get> g4v EH5q t6l <back> b3u AE11t k3o <to> t4o UW3q <the> DH3u IY4q x6l <belly> b3w EH5q l5x IY5q <turret> t12q ER5q AH16w t3j x36c "
+}
+
+
+lipSync vo_mitch_navayouneedmed
+{
+	text		"Navajas, you need medical?"
+	visemes	"english"	"x4i <Navajas> n3r AE4q v4t AE9s j5t AE13u s7p <you> y3q UW3q <need> n3s IY9s d3n <medical> m3t EH7r d4x AH5q k6s AH3q l3v x20k "
+}
+
+
+lipSync vo_nava_firedidnt
+{
+	text		"No, the fire didn't reach me."
+	visemes	"english"	"x9n <No> n8w OW12u <the> DH3w IY3q x6o <fire> f5s AY13v ER3q <didnt> d5t IH4q d3s AH3q n5o t3q <reach> r3q IY10s CH10s <me> m4r IY8q x26k "
+}
+
+
+lipSync vo_mitch_whoacargo
+{
+	text		"Whoa, cargo fire!"
+	visemes	"english"	"x8m <Whoa> w3q OW3q <cargo> k66x AA3q r3q g3u OW3q <fire> f3y AY37z ER3q x46n "
+}
+
+
+lipSync vo_tak_holyshittri
+{
+	text		"Holy shit, the Trianthinide containers are on fire!"
+	visemes	"english"	"<Holy> h13z OW3q l6x IY3q <shit> SH26x IY5q t3r <the> DH5v IY4q <Trianthinide> t11u r11t IH6q AE4q n3o TH3s IH5q n6w AY10s d3o EH3q <containers> k4r AH3q n4s t8r EY11t n4w ER6q z6w <are> AA4q r3q <on> AA8r n3n x7k <fire> f3t AY34z ER3q x33h "
+}
+
+
+lipSync vo_marks_takhitfire
+{
+	text		"Tak, hit the fire suppression system!"
+	visemes	"english"	"<Tak> t5a AE3f k3v <hit> h30w IH5q t3m <the> DH3x IY3q x6n <fire> f3m AY12u ER7q <suppression> s4q AH4q p10m r4q EH9s SH3s AH3q n3u x5o <system> s6r IH8r s4p t5q AH9r m3k x45e "
+}
+
+
+lipSync vo_tak_suppsysdead
+{
+	text		"Suppression system is dead, damnit, nothing!"
+	visemes	"english"	"x4i <Suppression> s10u AH6q p6w r6q EH5q SH10x AH5q n3r <system> s9v IH5q s5q t6v AH3q m3v <is> IH8r z6m x7m <dead> d19y EH5q d4q x13m <damnit> d10y AE5q m3v n5t IH4q t10p <nothing> n9t AH17x TH5u IH19y NG3k x10g "
+}
+
+
+lipSync vo_marks_takgettac
+{
+	text		"Tak, get back to tactical. Dekard, grab that Strogg cold cannon and put out that cargo!"
+	visemes	"english"	"x4k <Tak> t9w AE11t k3n x5m <get> g3s EH4q t5p <back> b3x AE8r k3n <to> t3r UW3q x7k <tactical> t5r AE13u k3n t8n IH3q k3r AH7q l4n x12h <Dekard> d3u IH5q k10u AA3q r3q d3k x14i <grab> g3s r6q AE3q b3s <that> DH4t AE9s t3n <Strogg> s7q t7v r4q AA7q g3n x7k <cold> k4s OW3q l9x d3p x7o <cannon> k4u AE11t n3u AH3q n3p <and> AE4q n3r d3n x5l <put> p16x UH3q t5q <out> AW5q t5s x11p <that> DH3x AE9s t6s <cargo> k8t AA3q r3q g3p OW3q x47c "
+}
+
+
+lipSync vo_marks_darnmovetobelly
+{
+	text		"Darnell, move to the belly turret, we have heavy incoming from below."
+	visemes	"english"	"x8f <Darnell> d5w AA3q r3q n9v EH11t l3v x26o <move> m3y UW4q v3p <to> t6q UW3q <the> DH3v IY6q x7n <belly> b3y EH4q l6x IY6q x5o <turret> t7t ER3q AH4q t3s <we> w3q IY3q x10k <have> h7w AE3q v3n <heavy> h14u EH5q v3s IY8r <incoming> IH8r n4n k6v AH4q m3s IH4q NG3n <from> f6o r3q AH4q m3q x5m <below> b3t AH26z l3t OW6q x44f "
+}
+
+
+lipSync vo_darn_rogerthtlt
+{
+	text		"Roger that lieutenant."
+	visemes	"english"	"x5p <Roger> r3q AA4q j38w ER3q <that> DH3r AE3q t3w <lieutenant> l6u UW3q t8t EH8r n3u AH3q n3w t3r x23i "
+}
+
+
+lipSync vo_marks_dekextingcarg
+{
+	text		"Dekard, extinguish that cargo NOW!"
+	visemes	"english"	"x12l <Dekard> d7x IH7q k6s AA3q r4q d3m <extinguish> IH3q k9r s7o t4r IH4q NG3v g3r w3q IH5q SH4p <that> DH3w AE9s t6n <cargo> k9w AA3q r4q g6w OW11t <NOW> n10r AW37z x44g "
+}
+
+
+lipSync vo_marks_goodjbdek
+{
+	text		"Good job Dekard."
+	visemes	"english"	"x8c <Good> g6s UH5q d7s <job> j11w AA8r b3u x6n <Dekard> d4s IH10t k4p AA3q r7q d7n x37e "
+}
+
+
+lipSync vo_tak_containhot
+{
+	text		"Those containers are still hot, we need to lose the cargo. If the Trianthinide goes up we're all dead!"
+	visemes	"english"	"x8g <Those> DH3v OW6q z4o <containers> k5s AH3q n3p t9t EY10s n3s ER8r z6o <are> AA5q r3q <still> s8n t4q IH4q l12t <hot> h7q AA16w t3n x19h <we> w4q IY3q <need> n4r IY7q d3p <to> t3r UW4q <lose> l13u UW7q z5n <the> DH11u IY3q <cargo> k8n AA13v r7q g5p OW18x x33a <If> IH3a f3a x7c <the> DH5r IY3q <Trianthinide> t10s r4q IH13u AE4q n3l TH3r IH5q n4u AY11t d3n EH3q <goes> g3v OW12u z7s <up> AH11t p5k <were> w5q IY3q r5q <all> AO4q l21u <dead> d4u EH25z d6k x25h "
+}
+
+
+lipSync vo_marks_dekgettoeject
+{
+	text		"Dekard, get to the cargo controls and eject the cargo."
+	visemes	"english"	"x8k <Dekard> d3w IH9s k5s AA3q r3q d3m x9m <get> g4v EH3q t3n <to> t6o UW3q <the> DH3w IY3q <cargo> k13u AA3q r3q g3x OW3q <controls> k16t AH3q n3n t9s r3q OW6q l11y z4p <and> AE12t n4p d9w x9n <eject> IH9r j5s EH12u k3w t4r <the> DH3t IY3q <cargo> k3v AA3q r3q g3s OW3q x44f "
+}
+
+
+lipSync vo_marks_dekejectvol
+{
+	text		"Dekard, eject the volatile cargo!"
+	visemes	"english"	"x6k <Dekard> d5x IH9s k8t AA3q r4q d3m x14k <eject> IH10s j6t EH12u k3o t3n <the> DH3x IY3q x5n <volatile> v3x AA3q l3y AH9s t9r AH13v l3t x3n <cargo> k18v AA5q r3q g4v OW17x x41f "
+}
+
+
+lipSync vo_marks_getcrgo
+{
+	text		"Get that cargo off this ship marine!"
+	visemes	"english"	"x12m <Get> g3x EH3q t4q x7l <that> DH3w AE6q t11s <cargo> k27v AA3q r4q g3x OW3q <off> AO3q f5s <this> DH3u IH4q s3u <ship> SH10v IH3q p19t <marine> m3x ER3q IY21z n8p x44g "
+}
+
+
+lipSync vo_vansen_whathelltht
+{
+	text		"What the hell was that?!"
+	visemes	"english"	"<What> w3q AH3q t4r x4n <the> DH3y IY3q <hell> h66w EH3q l3t <was> w3q AA4q z8o x13a <that> DH3a AE3a t3a "
+}
+
+
+lipSync vo_tak_thatwastoo
+{
+	text		"That was too close."
+	visemes	"english"	"<That> DH11r AE6q t3p <was> w5q AA3q z11l <too> t11q UW13u <close> k10n l8x OW19y s21m x27c "
+}
+
+
+lipSync vo_marks_dekgettotop
+{
+	text		"Dekard, get to the topside turret."
+	visemes	"english"	"x14l <Dekard> d3w IH10s k9o AA3q r4q d3q x19l <get> g4u EH7q t6o <to> t4u UW3q <the> DH3p IY4q <topside> t5t AA15w p3q s6p AY13u d3k EH4q <turret> t11v ER5q AH10s t8l x35a "
+}
+
+
+lipSync vo_marks_dektopturr
+{
+	text		"Dekard, man the topshide turret now!"
+	visemes	"english"	"x8i <Dekard> d3u IH11t k8p AA3q r3q d6m x12g <man> m4s AE10s n3n <the> DH3r IY3q x6j <topshide> t8u AA11t p3r SH5q AY13u d3k EH3q <turret> t11u ER4q AH3q t3l x7l <now> n3t AW34z x43g "
+}
+
+
+lipSync vo_marks_movedektopturr
+{
+	text		"Move Dekard, topside turret ASAP!"
+	visemes	"english"	"x12f <Move> m3t UW4q v3y x24s <Dekard> d3t IH13u k4s AA3q r5q d12m <topside> t5u AA4q p14t s5s AY22z d6r EH18y x18k <turret> t4v ER3q AH3q t4y <ASAP> AE11t z3o AE12u p36v x49g "
+}
+
+
+lipSync vo_computer_munitjam
+{
+	text		"Warning, munitions jam."
+	visemes	"english"	"x4i <Warning> w8r AO3q r5q n4q IH4q NG17k x11c <munitions> m3n y3q UW3q n4p IH10s SH3o AH3q n14m z5i <jam> j8m AE22z m3i x42c "
+}
+
+
+lipSync vo_darn_shitgunsdead
+{
+	text		"Shit, my guns are dead, missiles are dead too."
+	visemes	"english"	"x3o <Shit> SH22y IY20z t3o <my> m3u AY13u <guns> g4w AH12u n3r z4v <are> AA3q r3q x8q <dead> d3y EH12u d12t x16l <missiles> m3p IH10t s8u AH3q l3x z9u <are> AA3q r3q x6p <dead> d3x EH3q d11w x7q <too> t8w UW24z x22h "
+}
+
+
+lipSync vo_nava_feedjam
+{
+	text		"I've got a feeder jam back here, I need help clearing the feeders!"
+	visemes	"english"	"x3s <Ive> AY6q v5n <got> g4x AA3q t3x <a> AH10s x9o <feeder> f5p IY10s d5w ER7q <jam> j11w AE15w m5m <back> b3w AE13u k3n <here> h18u IH6q r3q <I> AY5q <need> n6u IY4q d3x <help> h28w EH3q l4n p5k <clearing> k10r l4y IH5q r3q IH3q NG3r <the> DH3t IY3q x7n <feeders> f3r IY11t d6w ER10s z22p x8a "
+}
+
+
+lipSync vo_marks_dekhelpnavfe
+{
+	text		"Dekard, help Navajas get those feeders operational!"
+	visemes	"english"	"x7m <Dekard> d3v IH10t k12r AA3q r3q d3m <help> h10s EH3q l4s p3m <Navajas> n5o AE7q v7q AE8r j3x AE13u s5o <get> g4p EH5q t5l <those> DH4t OW6q z8p <feeders> f5s IY6q d6v ER3q z7r <operational> AA4q p14s ER3q EY14v SH11u AH5q n3r AH3q l3n x42e "
+}
+
+
+lipSync vo_marks_getfeednow
+{
+	text		"Get those feeders operational NOW!"
+	visemes	"english"	"x4n <Get> g3w EH5q t3m x4k <those> DH5w OW8r z9p <feeders> f5q IY7q d3v ER8r z6u <operational> AA5q p9q ER3q EY12u SH11s AH3q n3x AH3q l3n <NOW> n6t AW31z x41h "
+}
+
+
+lipSync vo_darn_sittduck
+{
+	text		"Come on Dekard, we're sitting ducks here!"
+	visemes	"english"	"x3u <Come> k13w AH6q m3z <on> AA4q n4u x7q <Dekard> d6x IH8r k7t AA3q r5q d4n x38i <were> w3q IY3q r3q <sitting> s12u IH5q t7w IH3q NG5o <ducks> d3x AH3q k13x s6s <here> h23v IH6q r3q x22f "
+}
+
+
+lipSync vo_vansen_whatquick
+{
+	text		"Whatever your going to do, do it quick."
+	visemes	"english"	"x8k <Whatever> w4q AH3q t3y EH9s v3t ER3q x7v <your> y5q AO3q r3q <going> g5w OW5q IH7q NG3q <to> t9u UW4q <do> d16x UW3q <do> d3z UW10s x10r <it> IH21z t5o <quick> k8v w3q IH21z k10o x17a "
+}
+
+
+lipSync vo_nava_detammofeed
+{
+	text		"Dekard, get to the ammo feeder system and wait for my signal."
+	visemes	"english"	"x4k <Dekard> d4y IH8r k3g AA3q r5q d9k <get> g6t EH4q t3k <to> t5o UW6q <the> DH3o IY12u <ammo> AE8r m6u OW7q <feeder> f11l IY9r d4t ER7q <system> s10n IH6q s5s t7o AH3q m8t <and> AE3q n6q d3q <wait> w14v EY9r t7f <for> f3n AO3q r3q <my> m6u AY8r <signal> s14r IH6q g9k n3n AH4q l7n x18l "
+}
+
+
+lipSync vo_nava_dammwaitsig
+{
+	text		"Damnit Dekard!  I said wait for my signal, now I need to reset this manually."
+	visemes	"english"	"x9m <Damnit> d4y AE11t m3t n3w IH4q t5e <Dekard> d6r IH8r k5f AA3q r6q d4s <I> AY8r <said> s12q EH5q d4n <wait> w15v EY8r t4g <for> f4n AO3q r3q <my> m3u AY9s <signal> s12r IH6q g5i n3m AH3q l5k x24l <now> n5u AW13v <I> AY7q <need> n5r IY8q d3j <to> t3p UW4q <reset> r4q IY6q s8o EH8r t3f <this> DH5p IH4q s9n <manually> m12u AE14v n3o y3q UW3q AH3q l8o IY6q x26g "
+}
+
+
+lipSync vo_nava_okdekon3
+{
+	text		"Ok Dekard, on 3 press the feeder reset, 1, 2, 3.."
+	visemes	"english"	"x5m <Ok> OW10s k9t EY12u <Dekard> d7p IH11t k8m AA3q r3q d3u <on> AA8r n7p <3> TH17r r4q IY17x x4f <press> p9z r4q EH5q s9o <the> DH3q IY3q <feeder> f11l IY8r d3u ER5q <reset> r6q IY7q s12q EH15v t4i x24j <1> w16w AH16w n13p x48g <2> t9w UW27z x35i <3> TH18t r7r IY19y x35e "
+}
+
+
+lipSync vo_nava_isaidon3
+{
+	text		"I said on 3 damnit!  Resetting. "
+	visemes	"english"	"<I> AY6q <said> s9w EH7r d4w x6t <on> AA17x n9u <3> TH15r r6q IY17x <damnit> d11t AE12u m4s n3w IH5q t3g x44j <Resetting> r5q IY7q z13s EH12u t3t t3v IH6q NG5i x25i "
+}
+
+
+lipSync vo_nava_lookinggood
+{
+	text		"Looking good..."
+	visemes	"english"	"x7o <Looking> l7x UH5q k8p IH3q NG8v <good> g3v UH21z d5q x36k "
+}
+
+
+lipSync vo_nava_jamisfree
+{
+	text		"Jam is free, feeders are operational again."
+	visemes	"english"	"x10j <Jam> j10w AE12u m5u <is> IH6q z10q <free> f7p r4q IY20z <feeders> f13m IY11t d3w ER9s z7q <are> AA4q r8r <operational> AA11t p6q ER10s EY10s SH10o AH3q n3o AH3q l4o <again> AH4q g8k EH11s n6j x17l "
+}
+
+
+lipSync vo_darn_firingweback
+{
+	text		"Firing!  We're back up!"
+	visemes	"english"	"x4j <Firing> f12v AY18y r3q IH9s NG3t x38n <Were> w4q IY6q r3q <back> b3x AE7r k3y x13v <up> AH4q p24t x21f "
+}
+
+
+lipSync vo_marks_dekmovetopt
+{
+	text		"Dekard, back to the topside turret."
+	visemes	"english"	"x8k <Dekard> d9y IH3q k9r AA3q r3q d3k x9h <back> b3w AE8r k4q <to> t5l UW3q <the> DH4v IY4q x5k <topside> t9w AA5q p6o s8r AY10s d4m EH3q <turret> t9s ER6q AH12u t6l x42e "
+}
+
+
+lipSync vo_marks_movedek2
+{
+	text		"Move Dekard!"
+	visemes	"english"	"x13f <Move> m4s UW11t v3x x14o <Dekard> d10x IH3q k7v AA3q r3q d4r x50h "
+}
+
+
+lipSync vo_vansen_shitportract
+{
+	text		"Shit!  Port engine has a reaction chamber failure.  I can't reset it from here!"
+	visemes	"english"	"<Shit> SH14x IY4q t3y <Port> p27s AO6q r9s t6y <engine> EH4q n3o j11v AH4q n8x <has> h6w AE3q z5t <a> AH4q <reaction> r8r IY4q AE9s k6t SH11s AH4q n3w <chamber> CH10w EY12u m3m b3u ER6q <failure> f10m EY12u l8w y8r ER3q <I> AY4q <cant> k4v AE5q n3i t10w x15w <reset> r5q IY6q s9o EH6q t4w <it> IH11t t6p <from> f4t r4q AH3q m3u <here> h22x IH7q r4q x13c "
+}
+
+
+lipSync vo_vansen_shitburnout
+{
+	text		"Shit!  Port engine burnout!  I can't reset it from here!"
+	visemes	"english"	"x5s <Shit> SH13y IY9s t3x <Port> p22r AO6q r16x t3s <engine> EH3q n3p j12v AH3q n6q <burnout> b4x ER11t n4u AW18y t4p x9t <I> AY7q <cant> k8w AE3q n3z t4w x4r <reset> r3q IY7q s9q EH5q t3y <it> IH3q t10v x4l <from> f6q r3q AH4q m3z <here> h31x IH3q r3q x19e "
+}
+
+
+lipSync vo_marks_dekgettosec
+{
+	text		"Dekard, get to the secondary engine panel and reset the port engine!"
+	visemes	"english"	"x4n <Dekard> d3v IH10t k9s AA3q r3q d4l x9j <get> g4w EH6q t4n <to> t3s UW3q <the> DH3v IY4q <secondary> s9s EH8r k5r AH4q n3l d4v EH5q r3q IY16x <engine> EH3q n3q j4t AH5q n4o x5l <panel> p4s AE7q n3w AH3q l3v <and> AE14v n4n d3u <reset> r4q IY5q s7r EH6q t10r <the> DH3n IY3q x4k <port> p7u AO7q r3q t3u <engine> EH9s n3n j9r AH6q n3k x42c "
+}
+
+
+lipSync vo_vansen_portfail
+{
+	text		"Port engine is failing, we're losing altitude!"
+	visemes	"english"	"x5p <Port> p5x AO4q r6q t3x <engine> EH13u n3s j10w AH3q n3u <is> IH8r z3o <failing> f7q EY6q l3y IH6q NG3u <were> w4q IY13u r3q <losing> l17v UW9s z4u IH3q NG8w <altitude> AE19y l3m t6n AH8r t14w UW20z d7o x24g "
+}
+
+
+lipSync vo_vansen_welist
+{
+	text		"We are listing, I need that engine reset NOW!"
+	visemes	"english"	"x6q <We> w3q IY3q <are> AA3q r5q <listing> l12x IH8r s7m t5t IH4q NG10x <I> AY9s <need> n3w IY3q d8y x5m <that> DH3x AE11t t3w x6z <engine> EH3q n5p j11u AH3q n3p <reset> r3q IY7r s11r EH5q t6v x35w <NOW> n3z AW22z x30e "
+}
+
+
+lipSync vo_marks_dekgetengin
+{
+	text		"Dekard, get to the engine reset panel NOW!"
+	visemes	"english"	"x8j <Dekard> d4x IH11t k6r AA3q r3q d3l x14l <get> g3v EH12u t3p <to> t4n UW3q <the> DH3p IY7q <engine> EH11t n3q j8u AH3q n3q <reset> r3q IY6q s5p EH8r t3n x7k <panel> p35v AE18y n6y AH4q l5s <NOW> n3q AW3q x37f "
+}
+
+
+lipSync vo_vansen_okport
+{
+	text		"Ok, port engine is shut down, this is gonna get bumpy."
+	visemes	"english"	"x6t <Ok> OW10s k6x EY27z x3j <port> p11t AO3q r6q t4x <engine> EH6q n10t j10u AH4q n3v <is> IH6q z10w <shut> SH6x AH3q t7v x7l <down> d3x AW15w n6o x5k <this> DH3y IH6q s3m x7p <is> IH4q z4k <gonna> g7v AA3q n7w AH4q <get> g3x EH6q t3o x11m <bumpy> b3y AH11t m3l p7o IY15w x14i "
+}
+
+
+lipSync vo_vansen_reactclr
+{
+	text		"Reaction chamber is clear, fuel injection has engaged."
+	visemes	"english"	"x6q <Reaction> r3q IY6q AE6q k3t SH10u AH3q n3o <chamber> CH11w EY9s m4p b3w ER3q <is> IH6q z5v x8n <clear> k8r l3w IH10t r9s <fuel> f14u y3q UW3q AH9s l4w <injection> IH11t n3s j5y EH8r k3q SH10v AH3q n3p <has> h15w AE12u z3r <engaged> EH4q n7u g3x EY28z j14t d8r x14a "
+}
+
+
+lipSync vo_vansen_pressengag
+{
+	text		"Press engage and we should be back up."
+	visemes	"english"	"x4t <Press> p4y r4q EH3q s3q x5o <engage> EH3q n3t g3q EY3q j27w <and> AE3q n3x d3z <we> w3q IY4q <should> SH20w UH3q d9w <be> b3u IY3q <back> b4x AE18y k5t <up> AH4q p19w x22e "
+}
+
+
+lipSync vo_marks_dekprsseng
+{
+	text		"Dekard, press engage on that engine panel!"
+	visemes	"english"	"x13l <Dekard> d9y IH3q k8s AA3q r3q d3k x11l <press> p3t r3q EH6q s7s <engage> EH5q n9o g6w EY13u j8t <on> AA3q n3r <that> DH3w AE6q t3x <engine> EH8r n3n j11u AH5q n3k <panel> p3p AE13u n6u AH7q l4n x32f "
+}
+
+
+lipSync vo_marks_deknow
+{
+	text		"Dekard, now!"
+	visemes	"english"	"x4a <Dekard> d4t IH13u k16u AA3q r3q d10x x12y <now> n3y AW15w x47g "
+}
+
+
+lipSync vo_vansen_portenginback
+{
+	text		"Port engine is back, stabilizing."
+	visemes	"english"	"x3s <Port> p6y AO3q r5q t3y <engine> EH10s n5p j11u AH3q n3w <is> IH9s z5m x4f <back> b3w AE11t k4v x20m <stabilizing> s3k t9v EY11t b3t AH4q l4y AY19y z5l IH20z NG3j x17a "
+}
+
+
+lipSync vo_marks_grtworkdek
+{
+	text		"Great work Dekard.  "
+	visemes	"english"	"x4f <Great> g6r r3q EY14v t7m <work> w3q ER3q k8v x13l <Dekard> d3s IH11t k6s AA3q r3q d8p x50g "
+}
+
+
+lipSync vo_vansen_weapprchlz
+{
+	text		"We are approaching the LZ"
+	visemes	"english"	"x10q <We> w3q IY14v <are> AA3q r8r <approaching> AH8q p40u r3q OW3q CH3y IH23z NG3p x6n <the> DH3z IY30z <LZ> l6h z3c x23a "
+}
+
+
+lipSync vo_marks_everyprep
+{
+	text		"Everybody prep for landing, back to your seats."
+	visemes	"english"	"x6n <Everybody> EH9s v3t r6q IY3q b3w AA5q d10v IY7q <prep> p3r r3q EH4q p5l <for> f5o AO3q r3q <landing> l6x AE12u n3o d3w IH4q NG3l x12i <back> b3v AE6q k7t <to> t6q UW3q <your> y3q AO3q r3q <seats> s13q IY18y t3p s12o x38c "
+}
+
+
+lipSync vo_vansen_lz150
+{
+	text		"LZ in one-five-zero, on final approach vector."
+	visemes	"english"	"x11w <LZ> l24x z16x <in> IH16w n6u <one> w4q AH14v n3m <five> f9n AY24z v4l x4k <zero> z3l IH15w r5q OW3q x9v <on> AA3q n3v x8l <final> f3w AY5q n3w AH3q l3w <approach> AH4q p24v r3q OW3q CH14u <vector> v5s EH10t k40v t5t ER16w x18g "
+}
+
+
+lipSync vo_marks_everybdyback
+{
+	text		"Everybody back to your seats."
+	visemes	"english"	"x3s <Everybody> EH6q v5q r3q IY3q b3v AA5q d3x IY10s <back> b3v AE12u k6o <to> t3p UW3q <your> y3q AO3q r3q <seats> s12r IY15w t4n s13q x42c "
+}
+
+
+lipSync vo_vansen_gocgunf1lz
+{
+	text		"GOC, this is gunship Falcon 1 on final approach to LZ, over."
+	visemes	"english"	"x16w <GOC> g8y AA7q k27u x9v <this> DH3r IH3q s4l <is> IH5q z4k x5e <gunship> g5w AH8r n8u SH8v IH5q p94u x7e <Falcon> f4r AE11t l3v k3y AH3q n3y <1> w3q AH7q n3i x10s <on> AA7r n3v x5o <final> f17v AY4q n4y AH10s l6x <approach> AH5q p4o r4q OW4q CH3w <to> t3w UW8r <LZ> l4w z3x <over> OW17x v5l ER16w x14f "
+}
+
+
+
+
+lipSync vo_goc_rogfalc1altlz
+{
+ text  "Roger Falcon 1, 1st, 2nd and 4th wings have set down at alternate LZs, minimal losses."
+}
+lipSync vo_marks_everybdyout
+{
+	text		"Everybody out!  Double time!"
+	visemes	"english"	"x13i <Everybody> EH9s v3n r7q IY3q b3u AA6q d3s IY10s <out> AW17x t4k x7h <Double> d4v AH7q b3s AH3q l4s x4k <time> t3r AY26z m7i x22a "
+}
+
+
+lipSync vo_vansen_delivpack
+{
+	text		"Dropship Falcon 1 has delivered the package and is dusting off."
+	visemes	"english"	"x3s <Dropship> d5z r5q AA7r p5m SH16t IH7r p12m <Falcon> f3o AE15w l4p k8t AH3q n3r <1> w3q AH3q n3x <has> h27v AE8r z8k <delivered> d3n AH7q l4x IH8r v3r ER3q d3p x4p <the> DH4u IY3q <package> p12w AE12u k12t IH3q j11v <and> AE4q n3r d3w <is> IH7r z9j <dusting> d12x AH3q s6l t5r IH27z NG3w <off> AO11t f15k x18a "
+}
+
+
+lipSync vo_marks_infiltopsid
+{
+	text		"Dekard.  You, Tak, and Darnell infiltrate topside.  See if you can gain access to the facility specs, it’s the only way we’re gonna find Strauss in time.  Navajas, Mitchell, and I have been ordered to meet up with the other extraction teams.  We'll coordinate as soon as you locate the specs."
+	visemes	"english"	"x14f <Dekard> d4x IH11t k9k AA3q r3q d10f <You> y7q UW7q <Tak> t9p AE12u k5o <and> AE3q n7q d3k <Darnell> d3u AA6q r3q n4r EH9s l10q <infiltrate> IH5q n3k f4k IH3q l3n t7n r3q EY5q t5f <topside> t7q AA11t p3j s12n AY16v d4e EH3a x44a <See> s9p IY7q <if> IH3q f3l <you> y4q UW4q <can> k3q AE3q n3s <gain> g8t EY10s n4r <access> AE14v k4k s7o EH8q s5i <to> t5k UW3q <the> DH5p IY3q <facility> f7m AH4q s11p IH4q l5v AH3q t3s IY6q <specs> s10o p7p EH13u k6i s10k x38c <its> IH3g t3o s3r <the> DH3t IY3q <only> OW6q n3r l3v IY5q <way> w5q EY8r <were> w6q ER3q <gonna> g3t AA3q n3q AH7q x4c <find> f4q AY11t n4m d3m <Strauss> s6k t5q r3q AW10s s6l <in> IH3q n5m x6i <time> t6o AY24z m3g x82f <Navajas> n3u AE3q v7r AE14v j3u AE12t s6h <Mitchell> m7q IH5q CH6n AH3q l9u <and> AE3q n4q d3u <I> AY15v <have> h3q AE12s v3i <been> b3m IH3q n5n <ordered> AO10s r3q d3r ER3q d4m <to> t3o UW3q <meet> m9r IY3q t3u <up> AH11t p3h <with> w3q IH3q DH3f <the> DH3n IY7q <other> AH3q DH4s ER7q <extraction> IH4q k3k s6l t6q r3q AE9r k3j SH5n AH3q n7l <teams> t7k IY11r m9i z10i x47h <Well> w4q IY3q l4p <coordinate> k10o OW3q AO9s r4q d6p AH3q n3u AH3q t3s <as> AE6q z3l <soon> s4o UW4q n4t <as> AE5q z4p <you> y3q UW5q <locate> l6u OW7q k6o EY10s t3f <the> DH3m IY3q <specs> s9n p8p EH12t k9k s13l x32e "
+}
+
+
+lipSync vo_marks_moveout3
+{
+	text		"Move out!"
+	visemes	"english"	"<Move> m12v UW11t v4u <out> AW21z t3c x25a "
+}
+
+

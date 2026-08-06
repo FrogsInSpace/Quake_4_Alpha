@@ -1,0 +1,37 @@
+/***********************************************************************
+Exploding Towers
+***********************************************************************/
+
+export env_q4x_dropship_landing
+{
+	options -game /q4xbase  -prefix DROP_ -scale .3937  -keep origin originShape r_engine_2 r_engine_3 c_engine_3 r_engine_1 c_engine_2 c_engine_1 l_engine_1 joint9 l_engine_3 belly_turret_muzzle belly_turret_aim belly_turret_ball l_vtol_vent l_vtol_2 l_vtol_1 l_forward_turret_muzzle l_forward_turret_aim r_forward_turret_muzzle r_forward_turret_aim c_forward_turret_muzzle c_forward_turret_aim r_ramp_2 r_ramp_1 l_ramp_2 l_ramp_1 l_engine_2 r_vtol_vent r_vtol_2 r_vtol_1  dropship_base ALL -sourcedir cinematics/air_assault/landing/dropship/animations -destdir models/mapobjects/airborneassault/dropship_landing 
+
+	mesh	idle.ma								-dest mesh
+	anim	idle.ma								-dest idle
+	anim	dropship_landing.ma						-dest landing
+}
+
+model model_env_q4x_dropship_landing
+
+{
+	mesh				models/mapobjects/airborneassault/dropship_landing/mesh.md5mesh
+	anim idle			models/mapobjects/airborneassault/dropship_landing/idle.md5anim
+	
+	anim landing		models/mapobjects/airborneassault/dropship_landing/landing.md5anim
+	{
+	}
+}
+
+entityDef env_q4x_dropship_landing
+{
+	"editor_color"			"0 .5 .25"
+	"editor_mins"			"-32 -32 0"
+	"editor_maxs"			"32 32 16"
+
+	"spawnclass"			"idAnimated"
+
+	"model"					"model_env_q4x_dropship_landing"
+	"anim"					"idle"
+	
+}
+

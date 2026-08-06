@@ -1,0 +1,38 @@
+sound airassault_emp_flak
+{
+	minDistance	20000
+	maxDistance	40000
+	volumeDb	-8
+	soundClass	1
+
+	sound/ambience/flak/flak_explo1
+	sound/ambience/flak/flak_explo2
+	
+	shakeData 0 aaaaaaabbbcceghhhlllmkqntpupqqvtrrqvwrsouwkieedecbcbbbbbaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+}
+
+sound airassault_emp_flak2
+{
+	minDistance	20000
+	maxDistance	40000
+	volumeDb	-4
+	soundClass	1
+	shakes		0.5
+
+	sound/ambience/flak/flak_explo2
+	sound/ambience/flak/flak_explo3
+
+	shakeData 0 zzzvzuxyuxxxwwwwrstvuoroonrotrppookpjilljmhhhkjjgjijigfgfgefecdbccccbabbaaaaaa
+}
+
+sound effects_q4x_barrel_explode
+{
+	minDistance	196
+	maxDistance	2952
+	volumeDb	10
+
+	//shakes 0.2
+
+	sound/effects/explosions/no_debris01.wav
+}
+

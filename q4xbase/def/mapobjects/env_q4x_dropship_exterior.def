@@ -1,0 +1,58 @@
+/***********************************************************************
+Marine Dropship
+***********************************************************************/
+
+
+export  dropship
+{
+	options -prefix DROPSHIP_ -scale .3937 -align ALL -keep fx1 fx2 fx3 fx4 base_trans missle_right_01 missle_right_02 missle_right_03 missle_left_01 missle_left_02 missle_left_03 gun_right_01 gun_right_02 gun_right_03 gun_left_01 gun_left_02 gun_left_03 engine_right engine_left engine_center
+	anim models\vehicles\dropship_exterior\animations\st_dropship_intro_01.ma					-dest models\vehicles\dropship_exterior\st_dropship_intro_01
+	anim models\vehicles\dropship_exterior\animations\st_dropship_intro_02.ma					-dest models\vehicles\dropship_exterior\st_dropship_intro_02
+	anim models\vehicles\dropship_exterior\animations\st_dropship_intro_03.ma					-dest models\vehicles\dropship_exterior\st_dropship_intro_03
+
+}
+entityDef env_q4x_dropship
+{
+"inherit" 								"env_dropship"
+"model"									"model_q4x_dropship"
+
+"fx_thrusters"							"effects/vehicles/intro_thrusters.fx"
+}
+
+model model_q4x_dropship
+{
+	inherit						model_dropship
+	anim st_dropship_intro_01			models\vehicles\dropship_exterior\st_dropship_intro_01.md5anim	
+	{
+		frame 114							fx		fx_pre_liftoff		base_trans
+		frame 114						fx		fx_vtol1			fx1
+		frame 114 						fx		fx_vtol1			fx2
+		frame 114						fx		fx_vtol1			fx3
+		frame 114						fx		fx_vtol1			fx4
+		frame 221						fx		fx_thrusters			engine_righ
+		frame 222						fx		fx_thrusters			engine_left
+	}
+	
+	anim st_dropship_intro_02			models\vehicles\dropship_exterior\st_dropship_intro_02.md5anim	
+
+	{
+		frame 154							fx		fx_pre_liftoff		base_trans
+		frame 154						fx		fx_vtol1			fx1
+		frame 154 						fx		fx_vtol1			fx2
+		frame 154						fx		fx_vtol1			fx3
+		frame 154							fx		fx_vtol1			fx4
+		frame 260						fx		fx_thrusters			engine_righ
+		frame 261						fx		fx_thrusters			engine_left
+	}
+	anim st_dropship_intro_03			models\vehicles\dropship_exterior\st_dropship_intro_03.md5anim	
+
+	{
+		frame 194							fx		fx_pre_liftoff		base_trans
+		frame 194						fx		fx_vtol1			fx1
+		frame 194 						fx		fx_vtol1			fx2
+		frame 194						fx		fx_vtol1			fx3
+		frame 194							fx		fx_vtol1			fx4
+		frame 304						fx		fx_thrusters			engine_righ
+		frame 305						fx		fx_thrusters			engine_left
+	}
+}

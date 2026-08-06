@@ -1,0 +1,113 @@
+
+model model_cryo_marine
+{
+	inherit				model_char_q4x_marine
+
+	anim 	idle_wrist_gui_start	models/characters/marine/idle_wrist_gui_start.md5anim
+	anim 	idle_wrist_gui_loop	models/characters/marine/idle_wrist_gui_loop.md5anim
+	anim 	idle_wrist_gui_end	models/characters/marine/idle_wrist_gui_end.md5anim
+}
+
+
+
+model model_cryo_marine_tech
+{
+	inherit				model_char_q4x_marine_tech
+
+	anim 	idle_wrist_gui_start	models/characters/marine/idle_wrist_gui_start.md5anim
+	anim 	idle_wrist_gui_loop	models/characters/marine/idle_wrist_gui_loop.md5anim
+	anim 	idle_wrist_gui_end	models/characters/marine/idle_wrist_gui_end.md5anim
+}
+
+
+
+model model_cryo_marine_medic
+{
+	inherit				model_char_q4x_marine_tech
+
+	anim 	idle_wrist_gui_start	models/characters/marine/idle_wrist_gui_start.md5anim
+	anim 	idle_wrist_gui_loop	models/characters/marine/idle_wrist_gui_loop.md5anim
+	anim 	idle_wrist_gui_end	models/characters/marine/idle_wrist_gui_end.md5anim
+}
+
+
+
+
+
+
+
+
+
+
+
+entityDef char_marine_npc_tak_cryofac
+{
+	"inherit1"		"char_q4x_marine_tech"
+	"inherit2"		"char_npc_tak_M08_cryo_vo"
+	"editor_menu"	"char_npc_q4x_cryofac"
+	"model"		"model_cryo_marine_tech"
+	"def_persona"	"persona_q4x_tak_pvt"
+
+	"lipsync_busy_1"	"vo_tak_weneveloc"
+	"lipsync_busy_2"	"vo_tak_onceval"
+	"lipsync_busy_3"	"vo_tak_lockload"
+
+}
+
+
+entityDef char_marine_npc_navajas_cryofac
+{
+	"inherit1"		"char_q4x_marine"
+	"inherit2"		"char_npc_navajas_M08_cryo_vo"
+	"editor_menu"	"char_npc_q4x_cryofac"
+	"model"		"model_cryo_marine"
+	"def_persona"	"persona_q4x_navajas_pvt"
+
+	"lipsync_busy_1"	"vo_nava_follw"
+	"lipsync_busy_2"	"vo_nava_roughops"
+	"lipsync_busy_3"	"vo_nava_nexkill"
+}
+
+
+entityDef char_marine_npc_darnell_cryofac
+{
+	"inherit1"		"char_q4x_marine"
+	"inherit2"		"char_npc_darnell_M08_cryo_vo"
+	"editor_menu"	"char_npc_q4x_cryofac"
+	"model"		"model_cryo_marine"
+	"def_persona"	"persona_q4x_darnell_pfc"
+}
+
+
+entityDef char_marine_npc_dekard_cryofac
+{
+	"inherit1"		"char_q4x_marine"
+	"inherit2"		"char_npc_dekard_M08_cryo_vo"
+	"editor_menu"	"char_npc_q4x_cryofac"
+	"model"		"model_cryo_marine"
+	"def_persona"	"persona_q4x_dekard_sgt"
+}
+
+
+entityDef char_marine_npc_mitchell_cryofac
+{
+	"inherit1"		"char_marine_medic_armed"
+	"inherit2"		"char_npc_mitchell_M08_cryo_vo"
+	"editor_menu"	"char_npc_q4x_cryofac"
+	"model"		"model_cryo_marine_medic"
+	"def_persona"	"persona_q4x_mitchell_pvt"
+}
+
+
+
+entityDef char_marine_npc_markswell_cryofac
+{
+	"inherit1"		"char_q4x_marine"
+	"inherit2"		"char_npc_markswell_M08_cryo_vo"
+	"editor_menu"	"char_npc_q4x_cryofac"
+	"model"		"model_cryo_marine"
+	"def_persona"	"persona_q4x_markswell_lt"
+	"followRange"	"128 228"
+}
+
+

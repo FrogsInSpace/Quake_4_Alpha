@@ -1,0 +1,379 @@
+textures/q4x_decals/h9k
+{
+	qer_editorimage textures/q4x_decals/h9k_d.tga
+	DECAL_MACRO
+	noShadows
+	noimpact
+
+	diffusemap textures/q4x_decals/h9k_d.tga
+	{
+		blend add
+		map textures/q4x_decals/h9k_add.tga
+	}
+}
+
+textures/q4x_decals/blastmark01_q4x
+{
+	qer_editorimage textures/q4x_decals/blastmark01_q4x.tga
+	DECAL_MACRO
+	noShadows
+	noimpact
+	translucent
+	{
+       	blend GL_DST_COLOR, GL_SRC_COLOR
+		map textures/q4x_decals/blastmark01_q4x.tga
+	}
+}
+textures/q4x_decals/blastmark02_q4x
+{
+	qer_editorimage textures/q4x_decals/blastmark02_q4x.tga
+	DECAL_MACRO
+	noShadows
+	noimpact
+	translucent
+	{
+       	blend GL_DST_COLOR, GL_SRC_COLOR
+		map textures/q4x_decals/blastmark02_q4x.tga
+	}
+}
+textures/q4x_decals/blastmark03_q4x
+{
+	qer_editorimage textures/q4x_decals/blastmark03_q4x.tga
+	DECAL_MACRO
+	noShadows
+	noimpact
+	translucent
+	{
+       	blend GL_DST_COLOR, GL_SRC_COLOR
+		map textures/q4x_decals/blastmark03_q4x.tga
+	}
+}
+textures/q4x_decals/blastmark04_q4x
+{
+	qer_editorimage textures/q4x_decals/blastmark04_q4x.tga
+	DECAL_MACRO
+	noShadows
+	noimpact
+	translucent
+	{
+       	blend GL_DST_COLOR, GL_SRC_COLOR
+		map textures/q4x_decals/blastmark04_q4x.tga
+	}
+}
+textures/q4x_decals/blastmark05_q4x
+{
+	qer_editorimage textures/q4x_decals/blastmark05_q4x.tga
+	DECAL_MACRO
+	noShadows
+	noimpact
+	translucent
+	{
+       	blend GL_DST_COLOR, GL_SRC_COLOR
+		map textures/q4x_decals/blastmark05_q4x.tga
+	}
+}
+textures/q4x_decals/blastmark06_q4x
+{
+	qer_editorimage textures/q4x_decals/blastmark06_q4x.tga
+	DECAL_MACRO
+	noShadows
+	noimpact
+	translucent
+	{
+       	blend GL_DST_COLOR, GL_SRC_COLOR
+		map textures/q4x_decals/blastmark06_q4x.tga
+	}
+}
+textures/q4x_decals/blastmark07_q4x
+{
+	qer_editorimage textures/q4x_decals/blastmark07_q4x.tga
+	DECAL_MACRO
+	noShadows
+	noimpact
+	translucent
+	{
+       	blend GL_DST_COLOR, GL_SRC_COLOR
+		map textures/q4x_decals/blastmark07_q4x.tga
+	}
+}
+textures/q4x_decals/pipe_hole01_8_q4x
+{
+	qer_editorimage textures/q4x_decals/pipe_hole01_8_q4x.tga
+	DECAL_MACRO
+	noShadows
+	noimpact
+	translucent
+	{
+       	blend GL_DST_COLOR, GL_SRC_COLOR
+		map textures/q4x_decals/pipe_hole01_8_q4x.tga
+	}
+}
+textures/q4x_decals/pipe_hole01_16_q4x
+{
+	qer_editorimage textures/q4x_decals/pipe_hole01_16_q4x.tga
+	DECAL_MACRO
+	noShadows
+	noimpact
+	translucent
+	{
+       	blend GL_DST_COLOR, GL_SRC_COLOR
+		map textures/q4x_decals/pipe_hole01_16_q4x.tga
+	}
+}
+textures/q4x_decals/pipe_hole01_32_q4x
+{
+	qer_editorimage textures/q4x_decals/pipe_hole01_32_q4x.tga
+	DECAL_MACRO
+	noShadows
+	noimpact
+	translucent
+	
+	{
+       	blend GL_DST_COLOR, GL_SRC_COLOR
+		map textures/q4x_decals/pipe_hole01_32_q4x.tga
+	}
+}
+textures/q4x_decals/bullethole_glass_window
+{
+	qer_editorimage textures/q4x_decals/bullethole_glass_window.tga
+	DECAL_MACRO
+	noShadows
+	noimpact
+	translucent
+	{
+       	blend GL_DST_COLOR, GL_SRC_COLOR
+		map textures/q4x_decals/bullethole_glass_window.tga
+	}
+}
+textures/q4x_decals/bullethole_glass_monitor
+{
+	qer_editorimage textures/q4x_decals/bullethole_glass_monitor.tga
+	DECAL_MACRO
+	noShadows
+	noimpact
+	translucent
+	{
+       	blend GL_DST_COLOR, GL_SRC_COLOR
+		map textures/q4x_decals/bullethole_glass_monitor.tga
+	}
+}
+
+textures/q4x_decals/ice_flow01
+{
+	//DECAL_MACRO
+	translucent
+	noshadows
+	qer_editorimage	textures/q4x_decals/ice_flow01.tga
+	
+	{
+		Program			heatHaze.vfp
+		vertexParm		0	time * 0 , time * 0
+		vertexParm		1	5
+		fragmentProgram	heatHaze.vfp
+		fragmentMap		0	_currentRender
+		fragmentMap		1	textures/q4x_decals/ice_flow01_local.tga
+	}
+	{       
+		blend		gl_dst_color, gl_src_color
+		//blend		diffusemap
+		map			textures/q4x_decals/ice_flow01.tga
+	}
+	
+	specularmap 	textures/q4x_decals/ice_flow01_s.tga
+	
+	{       
+		blend		blend
+		map			textures/q4x_decals/ice_flow01.tga
+		alpha 		0.25
+	}
+}
+
+textures/q4x_decals/ice_flow02
+{
+	//DECAL_MACRO
+	translucent
+	noshadows
+	qer_editorimage	textures/q4x_decals/ice_flow02.tga
+	
+	{
+		Program			heatHaze.vfp
+		vertexParm		0	time * 0 , time * 0
+		vertexParm		1	4
+		fragmentProgram	heatHaze.vfp
+		fragmentMap		0	_currentRender
+		fragmentMap		1	textures/q4x_decals/ice_flow02_local.tga
+	}
+	{       
+		blend		gl_dst_color, gl_src_color
+		map			textures/q4x_decals/ice_flow02.tga
+	}
+	
+	specularmap 	textures/q4x_decals/ice_flow02_s.tga
+	
+	{       
+		blend		blend
+		map			textures/q4x_decals/ice_flow02.tga
+		alpha 		0.25
+	}
+}
+
+textures/q4x_decals/ice_flow03
+{
+	translucent
+	noshadows
+	qer_editorimage	textures/q4x_decals/ice_flow03.tga
+	
+	{
+		Program			heatHaze.vfp
+		vertexParm		0	time * 0 , time * 0
+		vertexParm		1	4
+		fragmentProgram	heatHaze.vfp
+		fragmentMap		0	_currentRender
+		fragmentMap		1	textures/q4x_decals/ice_flow03_local.tga
+	}
+	{       
+		blend		gl_dst_color, gl_src_color
+		map			textures/q4x_decals/ice_flow03.tga
+	}
+	
+	specularmap 	textures/q4x_decals/ice_flow03_s.tga
+	
+	{       
+		blend		blend
+		map			textures/q4x_decals/ice_flow03.tga
+		alpha 		0.25
+	}
+}
+
+textures/q4x_decals/ice_flow04
+{
+	translucent
+	noshadows
+	qer_editorimage	textures/q4x_decals/ice_flow04.tga
+	
+	{
+		Program			heatHaze.vfp
+		vertexParm		0	time * 0 , time * 0
+		vertexParm		1	5
+		fragmentProgram	heatHaze.vfp
+		fragmentMap		0	_currentRender
+		fragmentMap		1	textures/q4x_decals/ice_flow04_local.tga
+	}
+	{       
+		blend		gl_dst_color, gl_src_color
+		//blend		diffusemap
+		map			textures/q4x_decals/ice_flow04.tga
+	}
+	
+	specularmap 	textures/q4x_decals/ice_flow04_s.tga
+	
+	{       
+		blend		blend
+		map			textures/q4x_decals/ice_flow04.tga
+		alpha 		0.25
+	}
+}
+
+textures/q4x_decals/cryo_frost_tile01
+{
+	qer_editorimage textures/q4x_decals/cryo_frost_tile01.tga
+	DECAL_MACRO
+	noShadows
+	noimpact
+	translucent
+	{       
+		blend				blend 
+		map				textures/q4x_decals/cryo_frost_tile01.tga
+		red       Parm0
+		green     Parm1
+		blue      Parm2
+		alpha     Parm3
+	}
+	{
+		blend 				specularmap
+		map				textures/q4x_decals/cryo_frost_tile01_s.tga
+	
+		red       Parm0
+		green     Parm1
+		blue      Parm2
+		alpha     Parm3
+	}
+}
+
+textures/q4x_decals/cryo_frost_tile02
+{
+	qer_editorimage textures/q4x_decals/cryo_frost_tile02.tga
+	DECAL_MACRO
+	noShadows
+	noimpact
+	translucent
+	{       
+		blend				blend 
+		map				textures/q4x_decals/cryo_frost_tile02.tga
+		red       Parm0
+		green     Parm1
+		blue      Parm2
+		alpha     Parm3
+	}
+	{
+		blend 				specularmap
+		map				textures/q4x_decals/cryo_frost_tile02_s.tga
+	
+		red       Parm0
+		green     Parm1
+		blue      Parm2
+		alpha     Parm3
+	}
+}
+
+textures/q4x_decals/cryo_frost_edge01
+{
+	qer_editorimage textures/q4x_decals/cryo_frost_edge01.tga
+	DECAL_MACRO
+	noShadows
+	noimpact
+	translucent
+	{       
+		blend				blend 
+		map				textures/q4x_decals/cryo_frost_edge01.tga
+		red       Parm0
+		green     Parm1
+		blue      Parm2
+		alpha     Parm3
+	}
+	{
+		blend 				specularmap
+		map				textures/q4x_decals/cryo_frost_edge01_s.tga
+	
+		red       Parm0
+		green     Parm1
+		blue      Parm2
+		alpha     Parm3
+	}
+}
+
+textures/q4x_decals/cryo_frost_spot01
+{
+	qer_editorimage textures/q4x_decals/cryo_frost_spot01.tga
+	DECAL_MACRO
+	noShadows
+	noimpact
+	translucent
+	{       
+		blend				blend 
+		map				textures/q4x_decals/cryo_frost_spot01.tga
+		red       Parm0
+		green     Parm1
+		blue      Parm2
+		alpha     Parm3
+	}
+	{
+		blend 				specularmap
+		map				textures/q4x_decals/cryo_frost_spot01_s.tga
+	
+		red       Parm0
+		green     Parm1
+		blue      Parm2
+		alpha     Parm3
+	}
+}

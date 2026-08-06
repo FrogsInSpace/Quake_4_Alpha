@@ -1,0 +1,590 @@
+/*
+===============================================================================
+
+	pain_lord
+
+===============================================================================
+*/
+
+export pain_lord
+{	
+	options -game q4xbase/ -prefix PAIN_ -align ALL -scale .8 -parent root origin -keep root hook_attach -sourcedir /models/monsters/pain_lord/animations -destdir models/monsters/pain_lord
+	
+	mesh	idle.ma					-dest mesh
+	anim	idle.ma					-dest idle
+	anim	idle.ma					-dest af_pose
+	anim	melee01.ma				-dest melee01	
+	anim	melee02.ma				-dest melee02	
+	//anim	melee03.ma				-dest melee03	
+	//anim	ranged01.ma				-dest ranged01
+	anim	turn_left.ma				-dest turn_left
+	anim	turn_right.ma				-dest turn_right
+	anim	walk.ma					-dest walk
+	anim	walk_left.ma				-dest walk_left
+	anim	walk_right.ma				-dest walk_right
+	anim	walk_backwards.ma			-dest walk_backward
+	anim	walk.ma					-dest walk
+	//anim	evade_left.ma				-dest evade_left
+	//anim	evade_right.ma				-dest evade_right
+	//anim	evade_left_hop.ma			-dest evade_left_hop
+	//anim	evade_right_hop.ma			-dest evade_right_hop
+	anim	pain01.ma				-dest pain01
+	anim	pain02.ma				-dest pain02
+	//anim	onfire03.ma				-dest pain_fire
+	anim 	stunned.ma		-range 0 43	-dest stunned_intro
+	anim 	stunned.ma		-range 44 166	-dest stunned_loop
+	anim 	stunned_end.ma		-range 167 220	-dest stunned_end
+	anim 	stunned_pain.ma				-dest stunned_pain
+	anim 	stunned_pain_left.ma			-dest stunned_pain_left
+	anim 	stunned_pain_right.ma			-dest stunned_pain_right
+	anim 	stunned_end_rage.ma	-range 167 270 	-dest stunned_end_rage
+	anim 	death.ma		-range 0 99 	-dest death
+	anim 	death.ma		-range 100 300 	-dest death_idle
+	anim 	console_idle.ma			 	-dest console_idle
+	
+}
+
+/*
+===============================================================================
+
+	pain_lord Model
+
+===============================================================================
+*/
+
+model model_monster_q4x_pain_lord
+{
+	mesh									models/monsters/pain_lord/mesh.md5mesh
+	
+	channel torso								( *hips )
+	channel legs								( *root origin -*hips )
+	
+	//channel torso								( *hips )
+	//channel legs								( *root origin -*hips -*dl_base -*dr_base)
+	//channel head								( *dl_base )
+	//channel eyelids								( *dr_base )
+	
+	
+	anim ik_pose								models/monsters/pain_lord/af_pose.md5anim
+	anim af_pose								models/monsters/pain_lord/af_pose.md5anim
+
+	// -------------------------------- Standard Anims ------------------------
+	anim idle								models/monsters/pain_lord/idle.md5anim
+	{
+		//ai_no_turn
+		frame 	1								sound		snd_idle	
+	}
+	
+	anim walk								models/monsters/pain_lord/walk.md5anim	
+	{
+		sync_cycle
+		frame 	1,21								sound		snd_walk
+		frame 	20,53								sound		snd_step
+	}
+	
+	anim walk_backwards							models/monsters/pain_lord/walk_backward.md5anim	
+	{
+		sync_cycle
+		frame 	1,21								sound		snd_walk
+		frame 	20,53								sound		snd_step		
+	}
+		
+	anim run								models/monsters/pain_lord/walk.md5anim	
+	{
+		sync_cycle
+		frame 	1								sound		snd_run	
+		frame 	20,53								sound		snd_step
+	}	
+	
+	anim run_backwards							models/monsters/pain_lord/walk_backward.md5anim	
+	{
+		sync_cycle
+		frame 	1								sound		snd_run	
+		frame 	20,53								sound		snd_step
+	}
+	
+	anim evade_left								models/monsters/pain_lord/walk_left.md5anim	
+	{
+		sync_cycle
+		frame 	1								sound		snd_evade
+		frame 	17,38								sound		snd_step	
+	}
+	
+	anim evade_right							models/monsters/pain_lord/walk_right.md5anim	
+	{
+		sync_cycle
+		frame 	1								sound		snd_evade
+		frame 	17,38								sound		snd_step	
+	}
+		
+	anim walk_left								models/monsters/pain_lord/walk_left.md5anim	
+	{
+		sync_cycle
+		frame 	1								sound		snd_walk
+		frame 	17,38								sound		snd_step	
+	}
+	
+	anim walk_right								models/monsters/pain_lord/walk_right.md5anim	
+	{
+		sync_cycle
+		frame 	1								sound		snd_walk
+		frame 	17,38								sound		snd_step	
+	}
+
+	anim run_left								models/monsters/pain_lord/walk_left.md5anim	
+	{
+		sync_cycle
+		frame 	1								sound		snd_run	
+		frame 	17,38								sound		snd_step
+	}
+	
+	anim run_right								models/monsters/pain_lord/walk_right.md5anim	
+	{
+		sync_cycle
+		frame 	1								sound		snd_run
+		frame 	17,38								sound		snd_step	
+	}
+
+	anim turn_right_90							models/monsters/pain_lord/turn_left.md5anim, models/monsters/pain_lord/turn_left.md5anim
+	{
+		//anim_turn
+		frame 	1								sound		snd_turn	
+	}
+	
+	anim turn_left_90							models/monsters/pain_lord/turn_right.md5anim, models/monsters/pain_lord/turn_right.md5anim
+	{
+		//anim_turn
+		frame 	1								sound		snd_turn	
+	}
+	
+	anim pain1								models/monsters/pain_lord/pain01.md5anim
+	{
+		ai_no_turn
+		frame 	1								sound_body		snd_pain	
+	}
+		
+	anim pain2								models/monsters/pain_lord/pain02.md5anim
+	{
+		ai_no_turn
+		frame 	1								sound_body		snd_pain	
+	}
+
+	anim stunned_intro							models/monsters/pain_lord/stunned_intro.md5anim
+	{
+		ai_no_turn
+		ai_no_look
+		frame 	1								sound_body		snd_pain	
+	}
+
+	anim stunned_loop							models/monsters/pain_lord/stunned_loop.md5anim
+	{
+		ai_no_turn
+		ai_no_look
+		frame 	1								sound_body		snd_pain	
+	}
+
+	anim stunned_end							models/monsters/pain_lord/stunned_end.md5anim
+	{
+		//ai_no_turn
+		frame 	1								sound_body		snd_pain	
+		/*
+		frame 	22								ai_attack	ranged				blade
+		frame 	1								sound_weapon		snd_buildup_ranged
+		frame 	22								sound_weapon		snd_ranged
+		frame 	10,13,19						sound		snd_step
+		*/
+	}
+	
+	anim stunned_end_rage							models/monsters/pain_lord/stunned_end_rage.md5anim
+	{
+		rate 0.6
+		frame 	80								sound_body		snd_pain
+		frame 	10,14,20,33,40							sound		snd_step
+	}
+
+	anim stunned_pain							models/monsters/pain_lord/stunned_pain.md5anim
+	{
+		ai_no_look
+		ai_no_turn
+		frame 	1								sound_body		snd_pain	
+	}
+	
+	anim stunned_pain_left							models/monsters/pain_lord/stunned_pain_left.md5anim
+	{
+		ai_no_look
+		ai_no_turn
+		frame 	1								sound_body		snd_pain	
+	}
+
+	anim stunned_pain_right							models/monsters/pain_lord/stunned_pain_right.md5anim
+	{
+		ai_no_look
+		ai_no_turn
+		frame 	1								sound_body		snd_pain	
+	}
+
+	anim melee_attack1							models/monsters/pain_lord/melee01.md5anim
+	{
+		frame 12								fx			fx_swipe		r_wrist
+		frame 16								ai_attack_melee		melee
+		frame 	1								sound_weapon		snd_melee_one	
+	}
+
+	anim melee_attack2							models/monsters/pain_lord/melee02.md5anim
+	{
+		frame 12								fx			fx_swipe		l_wrist
+		frame 16								ai_attack_melee		melee
+		frame 	1								sound_weapon		snd_melee_two	
+	}
+	
+	/*
+	anim range_attack1							models/monsters/pain_lord/ranged01.md5anim
+	{
+		frame 	24								ai_attack	ranged				blade
+		frame 	1								sound_weapon		snd_buildup_ranged
+		frame 	24								sound_weapon		snd_ranged
+	}
+	*/
+
+	anim death							models/monsters/pain_lord/death.md5anim
+	{
+		rate 0.6
+		ai_no_look
+		ai_no_turn
+		frame 	1							sound_body		snd_pain	
+		frame 	14,22							sound			snd_step
+	}
+	
+	anim death_idle							models/monsters/pain_lord/death_idle.md5anim
+	{
+		ai_no_look
+		ai_no_turn
+	}
+
+	anim console_idle							models/monsters/pain_lord/console_idle.md5anim
+	{
+	}
+}
+
+
+/*
+===============================================================================
+
+	pain_lord Attacks
+
+===============================================================================
+*/
+
+/*
+entityDef projectile_pain_lord_blade
+{
+	"spawnclass"				"idProjectile"
+	"mins"						"-4 -4 -4"
+	"maxs"						"4 4 4"
+	"cone"						""
+	"noshadows"					"1"
+	"clipmask_largeshot"		"1"
+	
+	"no_contents"				"0"
+	
+	"impactForce"				"20000"
+	"maxPinDistance"			"10"
+								
+	//"model"					"models/weapons/grenadelauncher/w_grenade.lwo"
+	"model"						"models/monsters/pain_lord/blade.ase"
+	//"clipmodel"				"models/weapons/core_cannon/w_core_cannon_clip.ASE"
+	"def_damage"				"damage_pain_lord_blade_direct"
+	//"def_splash_damage"		"damage_pain_lord_blade_splash"
+																											
+	"speed"						"1000"
+
+	"settle_duration"			"0.08"
+	
+	"linear_friction"			"0"
+	"angular_friction"			"0"
+	"contact_friction"			"0"
+	//"bounce"					".65"
+	//"gravity"					"0"
+	"fuse"						"20"
+	"sticky"					"1"
+								
+	"detonate_on_fuse"			"1"
+	"detonate_on_death"			"1"
+	"detonate_on_world"			"0"
+	"detonate_on_actor"			"1"
+								
+	"impact_gib"				"0"								
+	"decal_size"				"75"
+
+	"flyEffectAttenuateSpeed"	"200"
+	
+	"airBurst_desc"				"midair_"
+
+	//"fx_fly"					"effects/weapons/core_cannon/fly.fx"
+	//"fx_detonate"				"effects/weapons/core_cannon/detonate.fx"
+	"fx_impact"					"effects/weapons/grenadelauncher/impact.fx"
+	"fx_impact_water"			"effects/ambient/splash_med.fx"
+
+	//"snd_ricochet"			"grenade_bounce"	
+}
+
+
+entityDef damage_pain_lord_blade_direct
+{
+	"damage"					"100"
+	"gib"						"0"
+
+	"knockback"					"200"
+	"deathPush"					"200"
+	"deathPushMin"				"3000 2000"
+	"deathPushMax"				"5000 3000"
+	
+	"push"						"250"
+	"pushdir"					"0 10 -10"
+	
+	"bloatRadius"				"15.0"
+	"bloatMagnitude"			"2.0"
+	
+	"bleed"						"1"	//Here to trigger the damage effect.
+	"dofximpact"				"1"
+	
+	"mtr_wound"					"textures/decals/hurt02"
+	
+	"impactforce"				"300"
+}
+
+
+entityDef damage_pain_lord_blade_splash
+{
+	"damage"					"75"
+	"radius"					"400"
+	//"knockback"				"400"
+	"push"						"10000"
+	"gib"						"0"
+
+	"deathPush"					"800"
+	"deathPushMin"				"7000 9000"
+	"deathPushMax"				"10000 12000"
+}
+*/
+
+entityDef melee_pain_lord
+{
+	"inherit"							"melee_monster_base"
+	"damage"							"50"
+	"knockback"							"200"
+	"push"								"200"
+	"pushdir"							"0 10 -10"
+	
+	"deathPush"							"150"
+	"deathPushMin"						"5000 4000"
+	"deathPushMax"						"9000 8000"
+
+	"snd_hit"							"painlord_punch"
+	"snd_miss"							"painlord_swing"
+}
+
+
+/*
+===============================================================================
+
+	pain_lord Entity Definition
+
+===============================================================================
+*/
+
+entityDef monster_q4x_pain_lord
+{
+	"inherit"								"actor_default"
+	"spawnclass"							"riMonsterPainLord"
+	
+	"editor_usage"							"In the script call .requestProcessing() when the Pain Lord is to move to the processing station and .atProcessingStation() when the pain lord has reached the processing station."
+	
+	"editor_var MoveToProcessingStationFunc"	"Script executed when .requestProcessing() is unblocked."
+	"editor_var EnragedFunc"					"Script executed when enraged."
+	"editor_var ProcessingBrokenFunc"			"Script executed when pulled out of his .atProcessingStation() behavior."
+	"editor_var ProcessingDoneFunc"				"Script executed when finished with his .atProcessingStation() behavior."
+	"editor_var StunnedFunc"					"Script executed when put into the stunned state."	
+	"editor_var UnstunnedFunc"					"Script executed when breaks out of his stunned state."
+
+	// ------------------------------- Actions ------------------------------------
+	//"actionTimer_rangedAttack_rate"		"3"				
+	"actionTimer_meleeAttack_rate"			"2"
+
+	"action_meleeAttack"					"1"
+	"action_meleeAttack_minRange"			"0"
+	"action_meleeAttack_maxRange"			"250"
+	"action_meleeAttack_chance"				"1"
+	//"action_meleeAttack_rate"				"0.1"
+	"action_meleeAttack_rate"				"1"
+	"action_meleeAttack_failrate"			"0"
+	
+	//"action_rangedAttack"					"1"
+	//"action_rangedAttack_rate"			"1"	
+	//"action_rangedAttack_minRange"		"200"
+	//"action_rangedAttack_maxRange"		"800"
+	
+	"action_evadeLeft"						"1"
+	"action_evadeLeft_minrange"				"150"
+	"action_evadeLeft_anim"					"walk"
+	
+	"action_evadeRight"						"0"
+	"action_evadeRight_minrange"			"150"
+	"action_evadeRight_anim"				"walk"
+	
+	"action_strafe"							"0"
+	"action_strafe_anim"					"walk"
+	"action_strafe_anim2"					"walk"
+	"action_strafe_minRange"				"50"
+	"action_strafe_maxRange"				"100"
+	"action_strafe_rate"					"0.75"
+	"action_strafe_chance"					"0.10"
+	"action_strafe_noturn"					"1"	
+		
+	//"def_attach1"							"env_ragdoll_q4x_little_friend"
+		
+	"awareRange"							"800"
+	"aggressiveRange"						"512"
+	"searchRange"							"128 2048"
+	"maxLostVisTime"						"1"
+	
+	
+	// --------------------------------- Body ------------------------------------
+	"model"									"model_monster_q4x_pain_lord"
+	//"ragdoll"								"monster_pain_lord"	
+	
+	"health"								"8000"
+	"damageRegionHealth"					"1500"
+
+	"size"									"94 94 96"
+	"use_aas"								"aas96"
+	//"chatter_idle_rate"					"8"
+	//"chatter_combat_rate"					"8"	
+	
+	"joint_eyeOffset"						"head"
+	"joint_chestOffset"						"spine2"
+	
+	"turn_rate"								"120"
+
+	"fov"									"180"
+
+	
+	// --------------------------------- Combat ----------------------------------
+	"painThreshold"							"40"
+	"missile_visibility_joint"				"spine2"
+	
+	"directionalMovement"					"1"
+	"walkRange"								"20"
+	"forceWalk"								"1"
+	
+	"tactical_ranged"						"0"
+	"tactical_rush"							"1"
+	"tactical_cover"						"0"
+	"tactical_hide"							"0"
+	//"remove_on_death"						"0" // causes too much trouble if he dies in the wrong spot
+	
+	"melee_range"							"250"
+	"def_attack_melee"						"melee_pain_lord"
+	
+	//"attackRange"							"256 1200"
+	
+	//"def_attack_ranged"					"projectile_pain_lord_blade"
+	//"attack_ranged_accuracy"				".5"
+	//"attack_ranged_predict"				"1"
+
+	
+	// --------------------------------- Damage Zones -----------------------------
+	"damage_zone head"						"*neck1"
+	"damage_zone legs"						"*root origin"
+	"damage_zone dl"						"*dl_base"
+	"damage_zone dr"						"*dr_base"
+	
+	"damage_scale dl"						"2"
+	"damage_scale dr"						"2"
+	"damage_scale head"						"2"	
+	"damage_scale legs"						".75"	
+	
+
+	// -------------------------------- Look Joints -----------------------------
+	//"look_joint root"					"0.2 0.2 0"
+	"look_joint spine1"					"0.2 0.2 0"
+	  "look_joint spine2"					"0.2 0.2 0"
+	     //"look_joint neck1"					"0 0.2 0"
+	     	//"look_joint neck2"					"0 0.2 0"
+	      	 "look_joint head"				"0 0.2 0"
+
+	      	 
+	// --------------------------------- IK --------------------------------------
+	/*	
+	"ik_numLegs"							"2"
+	"ik_footSize"							"4"
+	"ik_waist"								"Body"
+	"ik_hip1"								"rt_up_leg"
+	"ik_hip2"								"lft_up_leg"
+	"ik_knee1"								"rt_knee"
+	"ik_knee2"								"lft_knee"
+	"ik_ankle1"								"rt_ankle"
+	"ik_ankle2"								"lft_ankle"
+	"ik_foot1"								"rt_mid_foot"
+	"ik_foot2"								"lft_mid_foot"
+	*/
+
+	
+	// --------------------------------- Sounds ----------------------------------
+	"painlord_punch"				"painlord_punch"	
+	"painlord_swing"				"painlord_swing"
+	"snd_pain"						"painlord_pain"
+	"snd_turn"						"painlord_turn"
+	"snd_run"						"painlord_run"
+	"snd_walk"						"painlord_walk"
+	"snd_idle"						"painlord_idle"
+	"snd_evade"						"painlord_evade"
+	"snd_melee_one"					"painlord_melee_one"
+	"snd_melee_two"					"painlord_melee_two"
+	//"snd_buildup_ranged"			"painlord_buildup_ranged"
+	//"snd_ranged"					"painlord_ranged"		
+
+	
+	// --------------------------------- Effects ----------------------------------
+	"fx_gib"							"effects/monsters/gib.fx"
+	"fx_swipe"							"effects/monsters/grunt/swipe_attack.fx"
+	
+	/* No burn
+	"fx_burn_lightning"					"effects/monsters/lightning_death.fx"	
+	"fx_burn_particles"					"effects/monsters/teleport3.fx"
+	"fx_burn_particles_chest"			"effects/monsters/teleport4.fx"
+	*/
+}
+
+/*
+entityDef env_ragdoll_q4x_little_friend
+{
+	"joint"							"hook_attach"
+	"origin"						"5 0 0"
+	"angles"						"0 0 0"
+	"spawnclass"					"idAFEntity_Generic"
+
+	"editor_usage"					"nekkid marine ragdoll"
+
+	"articulatedFigure"				"env_q4x_ragdoll_little_friend"
+	"ragdoll"						"env_q4x_ragdoll_little_friend"
+	
+	"model"							"env_q4x_little_friend"
+	"skin" 							"skins/characters/tube_marine/tm_base_dead"
+	"joint_head"					"chest"
+	"joint_eyeOffset"				"Rt_EyeBall"
+
+	"copy_joint neckcontrol"		"neckcontrol"
+	"copy_joint shoulders"			"shoulders"
+	"copy_joint legs_channel"		"legs_channel"
+}
+
+
+
+model env_q4x_little_friend
+{
+	inherit						model_char_marine_naked
+
+	mesh 						models/monsters/pain_lord/little_friend_mesh.md5mesh
+}
+*/

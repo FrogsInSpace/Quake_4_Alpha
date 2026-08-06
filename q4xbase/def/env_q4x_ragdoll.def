@@ -1,0 +1,71 @@
+// marine_naked removed from baseq4
+//entityDef env_q4x_ragdoll_marine_naked
+//{
+//	"editor_color"				"1 .5 0"
+//	"editor_mins"				"-8 -8 -8"
+//	"editor_maxs"				"8 8 8"
+//	
+//	"spawnclass"				"idAFEntity_Generic"
+//
+//	"editor_usage"				"nekkid marine ragdoll"
+//
+//	"articulatedFigure"			"marine3_q4x"
+//	//"ragdoll"					"marine3_q4x"
+//	
+//	"model"						"model_char_marine_naked"
+//	"skin"						"skins/characters/tube_marine/tm_base_bruised"
+//
+//	"joint_head"				"chest"
+//	"joint_eyeOffset"			"Rt_EyeBall"
+//
+//	"copy_joint neckcontrol"	"neckcontrol"
+//	"copy_joint shoulders"		"shoulders"
+//	"copy_joint legs_channel"	"legs_channel"
+//
+//	"sleep"						"1"
+//	"bleed"						"0"
+//	"noPlayerImpactFX"			"1"
+//}
+
+entityDef env_q4x_ragdoll_mcc_marine_officer
+{
+	"editor_color"				"1 .5 0"
+	"editor_mins"				"-8 -8 -8"
+	"editor_maxs"				"8 8 8"
+	
+	"spawnclass"				"idAFEntity_WithAttachedHead"
+
+	"editor_usage"				"mcc marine officer ragdoll"
+	
+	"model"						"mcc1_model_char_marine_officer"
+
+	"joint_head"				"chest"
+	"def_head"					"char_marinehead_default"	
+	
+	"articulatedFigure"			"marine3_q4x_mcc"
+	//"ragdoll"					"marine3_q4x_mcc"
+
+	//"joint_head"				"chest"
+	"joint_eyeOffset"			"Rt_EyeBall"
+
+	"copy_joint neckcontrol"	"neckcontrol"
+	"copy_joint shoulders"		"shoulders"
+	"copy_joint legs_channel"	"legs_channel"
+	
+	"sleep"						"1"
+	"bleed"						"0"
+	"noPlayerImpactFX"			"1"
+}
+
+
+entityDef env_q4x_ragdoll_mcc_marine_fatigues
+{
+	"editor_color"				"1 .5 0"
+	"editor_mins"				"-8 -8 -8"
+	"editor_maxs"				"8 8 8"
+	
+	"inherit"					"env_q4x_ragdoll_mcc_marine_officer"
+	"editor_usage"				"mcc marine fatigues ragdoll"
+	
+	"model"						"mcc1_model_char_marine_fatigues"
+}

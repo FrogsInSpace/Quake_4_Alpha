@@ -1,0 +1,353 @@
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Q4X CORE CANNON	
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+sound corecannon_core_fire
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	4
+
+	sound/weapons/corecannon/fire1.wav
+}
+
+
+sound corecannon_core_move
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	-6
+
+	sound/weapons/corecannon/loadup.wav
+}
+
+sound corecannon_core_load
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	-2
+
+	sound/weapons/corecannon/loadup.wav
+}
+
+
+sound corecannon_core_fire_mono
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	4
+
+	sound/weapons/corecannon/firemono1.wav
+}
+
+sound corecannon_core_chargedfire
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	4
+
+	sound/weapons/corecannon/chargedfire1.wav
+}
+
+sound corecannon_core_chargedfire_mono
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	4
+
+	sound/weapons/corecannon/chargedfiremono1.wav
+}
+
+
+sound corecannon_core_flyloop
+{
+	minDistance	30
+	maxDistance	200
+	volumeDb	-10
+	looping
+	
+	sound/weapons/corecannon/core_flyloop.wav
+}
+
+sound corecannon_core_impact
+{
+	minDistance	196
+	maxDistance	500
+	volumeDb	4
+
+	sound/weapons/corecannon/start.wav
+}
+
+
+sound corecannon_core_explode
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+
+	sound/weapons/corecannon/stop.wav
+}
+
+sound corecannon_core_charge
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+	looping
+	
+	sound/weapons/corecannon/corecharge1.wav
+	//sound/weapons/corecannon/corecharge2.wav
+}
+
+
+sound core_casing
+{
+	minDistance	39
+	maxDistance	1181
+	volumeDb	3
+
+	//sound/vehicles/impacts/crash_small1.wav
+
+}
+
+sound corecannon_sparks
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+	//looping
+	sound/weapons/corecannon/coresparks.wav
+}
+
+sound corecannon_heat
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+	//looping
+	sound/weapons/corecannon/core_heat.wav
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Q4X GOOB GUN	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+sound weapon_goobgun_fire
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+
+	sound/weapons/goobgun/goobfire1.wav
+}
+
+sound weapon_goobgun_fire_mono
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+
+	sound/weapons/goobgun/goobfiremono.wav
+}
+
+sound weapon_goobgun_explode
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	-2
+
+	sound/weapons/goobgun/goobexplo1.wav
+}
+
+sound weapon_goobgun_goo_inair
+{
+	minDistance	196
+	maxDistance	600
+	volumeDb	-6
+
+	sound/weapons/goobgun/goo_inair.wav
+}
+
+
+sound weapon_goobgun_goo_burn
+{
+	minDistance	196
+	maxDistance	600
+	volumeDb	-6
+	looping
+	
+	sound/weapons/goobgun/goo_burn.wav
+}
+
+
+
+sound weapon_goobgun_subexplode
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	4
+
+	sound/weapons/goobgun/goobsubexplo2.wav
+}
+
+sound weapon_goobgun_reload
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	-5
+
+	sound/weapons/goobgun/goobreload1a.wav
+}
+
+
+sound weapon_goobgun_bounce
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+
+	sound/weapons/goobgun/goob_bounce.wav
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Q4X GRAPPLING GUN	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+sound weapon_grapple_fire
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+
+	sound/weapons/grapple/grapplefire1.wav
+}
+
+sound weapon_grapple_fire_mono
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	3
+
+	sound/weapons/grapple/grapplefiremono.wav
+}
+
+sound weapon_grapple_fire_loop
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+	looping
+	sound/weapons/grapple/grapplefireloop.wav
+}
+
+
+
+sound weapon_grapple_raise
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	-6
+
+	sound/weapons/grapple/grappleraise.wav
+}
+
+sound weapon_grapple_lower
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	-6
+
+	sound/weapons/grapple/grapplelower.wav
+}
+
+//ZAK -- Not sure if you want the grapple hook to have a reload sound, but added this in her
+//since it was creating a warning.
+sound weapon_grapple_reload
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	-6
+	
+	sound/null.wav
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Q4X GRAVITY TURRET	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+sound weapon_gravityturret_acquire_loop
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	-6
+	looping
+	sound/weapons/gravity/grav_acquire
+}
+
+sound weapon_gravityturret_grabbed_loop
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	-2
+	looping
+	sound/weapons/gravity/grav_grabbed
+}
+
+
+sound weapon_gravityturret_fire
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+	
+	sound/weapons/gravity/grav_fire
+}
+
+sound weapon_gravityturret_impactgrabbed
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+	
+	sound/weapons/gravity/grav_impact_grabbed
+}
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Q4X FREEZE GUN
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+sound freezegun_loopone
+{
+	minDistance	39
+	maxDistance	472
+	volumeDb	-12
+//	looping
+
+	sound/weapons/freezegun/freeze_loopone.wav
+	shakeData 0 efdeeeeeeedegeed
+}
+
+
+sound freezegun_looptwo
+{
+	minDistance	40
+	maxDistance	400
+	volumeDb	-8
+//	looping
+
+	sound/weapons/freezegun/freeze_looptwo.wav
+	shakeData 0 mnpnkmmplmllnlljmkjljjjkkjjlljkjnhkjlllllllkkllmmmmkljlmnnnnmknmommmkimlkjkmjmkllojnkkkjmlimjijkkkmjjklkkkkmmlkkokmm
+}
+
+sound freezegun_tempfiresound
+{
+	minDistance	39
+	maxDistance	472
+	volumeDb	-12
+
+	sound/weapons/freezegun/freeze_tempfiresound.wav
+	shakeData 0 efdeeeeeeedegeed
+}
+

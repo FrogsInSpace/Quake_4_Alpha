@@ -1,0 +1,32 @@
+MD5Version 10
+commandline "anim work/models/mapobjects/strogg/stroyent/dispersal/acid_gun/idle.ma -dest models/mapobjects/strogg/stroyent/dispersal/acid_gun/idle.md5anim -game Quake4 -prefix AG_ -scale .4"
+
+numFrames 2
+numJoints 4
+frameRate 24
+numAnimatedComponents 0
+
+hierarchy {
+	"origin"	-1 0 0	//
+	"joint1"	0 0 0	// origin
+	"joint2"	1 0 0	// joint1
+	"barrel"	2 0 0	// joint2
+}
+
+bounds {
+	( -32.104057312 -62.4305152893 -0.0273742639 ) ( 32.1040763855 32.153678894 80.2701950073 )
+	( -32.104057312 -62.4305152893 -0.0273742639 ) ( 32.1040763855 32.153678894 80.2701950073 )
+}
+
+baseframe {
+	( 0 0 0 ) ( -0.7071067691 0 0 )
+	( 0 0 0 ) ( -0.5853558183 -0.3966844678 -0.5853558183 )
+	( 51.4909172058 0.0000011285 -0 ) ( 0.9982977509 -0.0583238751 0 )
+	( 10.9030485153 -0.0000000948 0 ) ( -0.7936894894 0.6083231568 0 )
+}
+
+frame 0 {
+}
+
+frame 1 {
+}

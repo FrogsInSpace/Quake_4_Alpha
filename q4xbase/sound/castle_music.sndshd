@@ -1,0 +1,11 @@
+
+
+sound castle_prototype01_song01
+{
+	minDistance	8192
+	maxDistance	8192
+	volumeDb	0
+	global
+
+	sound/prototype/castle_music/castle_prototype01_song01.wav
+}

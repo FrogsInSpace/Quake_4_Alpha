@@ -1,0 +1,924 @@
+
+
+sound vo_tak_wedefrt
+{
+ description "<Tak:> We’re definitely in the right place.  I’m picking up all kinds of EM and data traffic.  Navajas, you think you can blast through this ice wall?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_wedefrt.wav
+}
+
+
+sound vo_nava_dontlot
+{
+ description "<Navajas:> I don’t have a lot of charges, Tak. We blow ’em all here and we may not have enough to take out the guardian."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/nava_dontlot.wav
+}
+
+
+sound vo_tak_heysrg
+{
+ description "<Tak:> Hmm.  Hey, Sarge.  Look at this.  I don’t think this is pure ice… It’s got to be a suspended polymer of some kind.  I bet that Strogg Napalm launcher would punch a hole right through it."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_heysrg.wav
+}
+
+
+sound vo_tak_hmmsrgna
+{
+ description "<Tak:> Hmm.  Hey, Sarge.  Your Strogg Napalm launcher should punch a hole right through it."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_hmmsrgna.wav
+}
+
+
+sound vo_tak_weneveloc
+{
+ description "<Tak +use:> We never located any information about what the Valkaryne actually looks like, we need to stay on our toes."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_weneveloc.wav
+}
+
+
+sound vo_tak_onceval
+{
+ description "<Tak +use:> Once we take care of the Valkaryne, we'll need to destroy the cryogenically frozen Makrons next."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_onceval.wav
+}
+
+
+sound vo_tak_lockload
+{
+ description "<Tak +use:> Locked and loaded, Sarge."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_lockload.wav
+}
+
+
+sound vo_nava_follw
+{
+ description "<Navajas +use:> I’m following you, Sergeant"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/nava_follw.wav
+}
+
+
+sound vo_nava_roughops
+{
+ description "<Navajas +use:> It's been a rough couple of operations, but you've done very well"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/nava_roughops.wav
+}
+
+
+sound vo_nava_nexkill
+{
+ description "<Navajas +use:> We better get moving, the Nexus assault force could kill the Makron at any time"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/nava_nexkill.wav
+}
+
+
+sound vo_nava_takhitlite
+{
+ description "<Navajas:> Tak, hit the lights."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/nava_takhitlite.wav
+}
+
+
+sound vo_tak_onesecthr
+{
+ description "<Tak:> One second (beat) there..."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_onesecthr.wav
+}
+
+
+sound vo_tak_wowlkplc
+{
+ description "<Tak:> Wow...look at this place"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_wowlkplc.wav
+}
+
+
+sound vo_tak_lookslike
+{
+ description "<Tak:> Looks like we’re the first ones here, at least at this entrance.  If Darnell and the rest of Anchor squad made it through the locks, they’d be on the far side of the facility by now."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_lookslike.wav
+}
+
+
+sound vo_tak_maynotknw
+{
+ description "<Tak:> I may not know as much about the Strogg as Strauss, but from the looks of these supports, we’re at the bottom of the facility… Or damn close to it.  The main entrance has to be close."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_maynotknw.wav
+}
+
+
+sound vo_tak_darncomemrk
+{
+ description "<Tak:> Darnell, come in...Markswell, this is Falcon squad, can anybody read me?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_darncomemrk.wav
+}
+
+
+sound vo_tak_lookslikecomm
+{
+ description "<Tak:> Looks like communications are going to be a bit dodgy down here."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_lookslikecomm.wav
+}
+
+
+sound vo_tak_lookathis
+{
+ description "<Tak:> Look at this!  The Strogg may be crude, but their energy efficiency is staggering.  There’s enough liquid cryocene pumping through here to freeze a city."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_lookathis.wav
+}
+
+
+sound vo_nava_whyisplc
+{
+ description "<Navajas:> Then why is this place so poorly defended?  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/nava_whyisplc.wav
+}
+
+
+sound vo_tak_goodquest
+{
+ description "<Tak:> Good question.."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_goodquest.wav
+}
+
+
+sound vo_tak_iwonder
+{
+ description "<Tak:> I wonder how they maintain the temperature differential without compensating for the atmospheric pressure?  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_iwonder.wav
+}
+
+
+sound vo_nava_dntthink
+{
+ description "<Navajas:> I don’t think they are.  Two well placed charges would nuke that entire coil. "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/nava_dntthink.wav
+}
+
+
+sound vo_tak_yourealize
+{
+ description "<Tak:> You realize we’re the first human eyes to ever see the inside of this facility?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_yourealize.wav
+}
+
+
+sound vo_nava_smarttak
+{
+ description "<Navajas:> You're a smart man, there, Tak, but your priorities are bit out of whack."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/nava_smarttak.wav
+}
+
+
+sound vo_tak_usecoredis
+{
+ description "<Tak:> Dekard, use your core cannon to dislodge those stalactites!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_usecoredis.wav
+}
+
+
+sound vo_nava_usecoredis
+{
+ description "<Navajas:> Dekard, use your core cannon to dislodge those stalactites!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/nava_usecoredis.wav
+}
+
+
+sound vo_darn_private
+{
+ description "<Darnell:> This a private party or is anyone invited?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/darn_private.wav
+}
+
+
+sound vo_tak_darnell
+{
+ description "<Tak:> Darnell!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_darnell.wav
+}
+
+
+sound vo_darn_aliveprime
+{
+ description "<Darnell:> Alive and Prime-Time, Tak.  It was tough ride, though, we lost a few men en route.  We’ve already split formation, and my fireteam’s already headed your way"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/darn_aliveprime.wav
+}
+
+
+sound vo_nava_youhrsmthing
+{
+ description "<Navajas:> You hear something?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/nava_youhrsmthing.wav
+}
+
+
+sound vo_tak_evdwn
+{
+ description "<Tak:> Everybody down!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_evdwn.wav
+}
+
+
+sound vo_nava_forgettht
+{
+ description "<Navajas:> Forget that one, Sarge.  We’ll be here all day if you try and burn through it.  We’ll take care of this one my way."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/nava_forgettht.wav
+}
+
+
+sound vo_nava_herewegset2
+{
+ description "<Navajas:> Here we go.  Setting the first charge."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08-Cryo/nava_herewegset2.wav
+}
+
+
+sound vo_nava_seconchrg2
+{
+ description "<Navajas:> Second charge in place.  One more."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08-Cryo/nava_seconchrg2.wav
+}
+
+
+sound vo_nava_thatsit2
+{
+ description "<Navajas:> That’s it.  Everybody back.  Clear.  Clear."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08-Cryo/nava_thatsit2.wav
+}
+
+
+sound vo_nava_demvawaychrg2
+{
+ description "<Navajas:> Dekard, move away from the charges!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08-Cryo/nava_demvawaychrg2.wav
+}
+
+
+sound vo_nava_thosechrglive2
+{
+ description "<Navajas:> Those charges are live, get back!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08-Cryo/nava_thosechrglive2.wav
+}
+
+
+sound vo_nava_detonat2
+{
+ description "<Navajas:> Detonating!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08-Cryo/nava_detonat2.wav
+}
+
+
+sound vo_nava_whathellgo
+{
+ description "<Navajas:> What the hell is going on?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/nava_whathellgo.wav
+}
+
+
+sound vo_tak_itcryocfrz
+{
+ description "<Tak:> It’s cryocene.  They’re gonna freeze us alive."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_itcryocfrz.wav
+}
+
+
+sound vo_tak_ddcc
+{
+ description "<Tak:> Darnell!  Darnell!  Come in, Come in!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_ddcc.wav
+}
+
+
+sound vo_darn_whatmattb
+{
+ description "<Darnell:> What’s the matter, boys?  Things get a little drafty and you come crying to Uncle Darnell.  So, you gonna thank me now, or later."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/darn_whatmattb.wav
+}
+
+
+sound vo_nava_shoveit
+{
+ description "<Navajas:> Shove it, Darnell"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/nava_shoveit.wav
+}
+
+
+sound vo_darn_solaterthn
+{
+ description "<Darnell:> So… later then."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/darn_solaterthn.wav
+}
+
+
+sound vo_darn_therecryoc
+{
+ description "<Darnell:> There (beat) the cryocene should be clearing.  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/darn_therecryoc.wav
+}
+
+
+sound vo_nava_thanksdarn
+{
+ description "<Navajas:> Thanks Darnell"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/nava_thanksdarn.wav
+}
+
+
+sound vo_darn_noprobfiretm
+{
+ description "<Darnell:> No problem, my fireteam is moving ahead, we should meet up shortly"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/darn_noprobfiretm.wav
+}
+
+
+sound vo_darn_holyshitcold
+{
+ description "<Darnell:> Holy shit is it cold in here.  Dekard, I guess it’s your turn to save my ass.  Damn, karma’s a bitch.  Now, don’t go thinking that – What the hell is that?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/darn_holyshitcold.wav
+}
+
+
+sound vo_marine1_die
+{
+ description "<Marine 1:> Arrrghh!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/marine1_die.wav
+}
+
+
+sound vo_tak_itmakguard
+{
+ description "<Tak:> It's the Makron Guardian, The Valkaryne!  Darnell, fall back!  Fall back!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_itmakguard.wav
+}
+
+
+sound vo_tak_darngethell
+{
+ description "<Tak:> Darnell, get the hell outta there!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_darngethell.wav
+}
+
+
+sound vo_darn_die
+{
+ description "<Darnell:> Arrrghh!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/darn_die.wav
+}
+
+
+sound vo_tak_sheflood
+{
+ description "<Tak:> She's flooded the room with cryocene!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_sheflood.wav
+}
+
+
+sound vo_nava_weneedloccryo
+{
+ description "<Navajas:> We need to locate the cryocene purge systems!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/nava_weneedloccryo.wav
+}
+
+
+sound vo_tak_wecantlast
+{
+ description "<Tak:> Dekard, we can't last much longer!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_wecantlast.wav
+}
+
+
+sound vo_tak_cantfeelhand
+{
+ description "<Tak:> I can't feel my hands!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_cantfeelhand.wav
+}
+
+
+sound vo_tak_wowcls
+{
+ description "<Tak:> Wow, that was close."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_wowcls.wav
+}
+
+
+sound vo_nava_sorryserg
+{
+ description "<Navajas:> I’m…  sorry, Sarge.  Darnell.  He was a good solider.  I’m not sure how we’ll finish this operation without him."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/nava_sorryserg.wav
+}
+
+
+sound vo_tak_darnman
+{
+ description "<Tak:> Good solider?  Darnell was a good man.  Falcon Squad won’t be the same with out him."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_darnman.wav
+}
+
+
+sound vo_marks_falconsqkn
+{
+ description "<Markswell:> Falcon Squad, Kain just killed the Makron!  Dekard, get moving, you’ve got to take out the Makron Guardian before she manages to raise a new Makron.  Hurry, Sergeant.  We’re not going to get another chance at this."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/marks_falconsqkn.wav
+}
+
+
+sound vo_marks_stroggos
+{
+ description "<Markswell:> Looks like the Strogg are on to us, Falcon Squad.  We’re seeing unprecedented data transfers across multiple facilities all across Stroggos.  They’re preemptively backing up data from the Nexus.  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/marks_stroggos.wav
+}
+
+
+sound vo_tak_sargehrvalk
+{
+ description "<Tak:> Sarge, it’s here.  The Valkaryne!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_sargehrvalk.wav
+}
+
+
+sound vo_tak_readingsorts
+{
+ description "<Tak:> I’m reading all sorts of data traffic.  Sarge… The Makron is coming online!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_readingsorts.wav
+}
+
+
+sound vo_valk_reborn
+{
+ description "<Valkaryne:> …Reborn…."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/valk_reborn.wav
+}
+
+
+sound vo_valk_stroggetern
+{
+ description "<Valkaryne:> …The Strogg are eternal…"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/valk_stroggetern.wav
+}
+
+
+sound vo_valk_makrons
+{
+ description "<Valkaryne:> …The Makrons…"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/valk_makrons.wav
+}
+
+
+sound vo_valk_immort
+{
+ description "<Valkaryne:> …Are Immortal…"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/valk_immort.wav
+}
+
+
+sound vo_valk_racedies
+{
+ description "<Valkaryne:> …Your race dies here…"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/valk_racedies.wav
+}
+
+
+sound vo_valk_youcntstop
+{
+ description "<Valkaryne:> ... You cannot stop us ..."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/valk_youcntstop.wav
+}
+
+
+sound vo_valk_iseeyou
+{
+ description "<Valkaryne:> ... I see you..."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/valk_iseeyou.wav
+}
+
+
+sound vo_valk_timedie
+{
+ description "<Valkaryne:> ...Time to Die..."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/valk_timedie.wav
+}
+
+
+sound vo_tak_everover
+{
+ description "<Tak:> Everybody, over here!  Look!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_everover.wav
+}
+
+
+sound vo_tak_die
+{
+ description "<Tak:> Arrrghh!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/tak_die.wav
+}
+
+
+sound vo_nava_takthatbitch
+{
+ description "<Navajas:> Tak!  That Strogg Bitch!  She’s gonna pay.  Dekard, let’s go.  I’m taking her out if I have to shove my charges up her – (explosion cuts him off)"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/nava_takthatbitch.wav
+}
+
+
+sound vo_nava_letsgonow
+{
+ description "<Navajas:> Let’s go, Dekard!   NOW!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/nava_letsgonow.wav
+}
+
+
+sound vo_nava_wegotfini
+{
+ description "<Navajas:> We’ve got to finish this!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/nava_wegotfini.wav
+}
+
+
+sound vo_nava_notwaitsrg
+{
+ description "<Navajas:> I’m not waiting, Sarge.  I’m taking that bitch out, with our without you."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M08_Cryo/nava_notwaitsrg.wav
+}

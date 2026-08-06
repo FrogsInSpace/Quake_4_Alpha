@@ -1,0 +1,62 @@
+/*
+===============================================================================
+
+	Q4X AirAssault Satellite Turret
+
+===============================================================================
+*/
+
+
+/*
+===============================================================================
+
+	Model definition
+
+===============================================================================
+*/
+
+model model_q4x_aa_satellite
+{
+	mesh										models/mapobjects/q4x/air_rocket_turret/air_rocket_turret.md5mesh
+
+	anim idle									models/mapobjects/q4x/air_rocket_turret/idle.md5anim
+
+	anim range_attack							models/mapobjects/q4x/air_rocket_turret/idle.md5anim
+	{
+		rate	.6
+		frame 1									ai_disablePain
+		frame 3									ai_attack	blaster	body_bone
+		frame 3									fx	fx_blaster_flash	body_bone
+	}
+}
+
+/*
+===============================================================================
+
+	Q4X AirAssault Satellite Turret
+
+===============================================================================
+*/
+
+entityDef monster_q4x_aa_satellite 
+{
+	"inherit"										"monster_turret"
+
+	"model"											"model_q4x_aa_satellite"
+	
+	"attack_blaster_spread"							"30"
+	
+	"def_attack_blaster"							"projectile_m01_scripted_red_rocket"
+	"fx_blaster_flash"								"effects/levels/tram/turretflash.fx"
+
+	"minShots"										"1"
+	"maxShots"										"2"
+	"actionTimer_rangedAttack_rate"								"0.75"				
+	"action_blasterAttack_Rate"								"0.75"
+	"action_blasterAttack_minRange"								"1024"
+	"action_blasterAttack_maxRange"								"10000"
+
+	"health"										"50"
+	
+	"fx_death"										"effects/monsters/flyer_space/q4x_aa_explode.fx"
+}

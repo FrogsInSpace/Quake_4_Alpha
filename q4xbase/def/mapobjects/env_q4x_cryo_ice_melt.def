@@ -1,0 +1,33 @@
+/***********************************************************************
+Exploding Cryo ice melting
+
+***********************************************************************/
+//added by nick
+
+model model_env_q4x_cryo_ice_melt01
+
+{
+	mesh				models/mapobjects/q4x/cryo_ice_melt/mesh01.md5mesh
+	anim idle			models/mapobjects/q4x/cryo_ice_melt/idle01.md5anim
+	
+	anim melt			models/mapobjects/q4x/cryo_ice_melt/melt01.md5anim
+	{
+	}
+	anim endidle		models/mapobjects/q4x/cryo_ice_melt/endidle01.md5anim
+	
+	
+	
+}
+
+entityDef env_q4x_cryo_ice_melt01
+{
+	"editor_color"			"0 .5 .25"
+	"editor_mins"			"-32 -32 0"
+	"editor_maxs"			"32 32 16"
+
+	"spawnclass"			"idAnimated"
+
+	"model"					"model_env_q4x_cryo_ice_melt01"
+	"anim"					"idle"
+	
+}

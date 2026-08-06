@@ -1,0 +1,22 @@
+
+/*
+===============================================================================
+
+	Strogg Flyer Bomber2 Entity Definition
+
+===============================================================================
+*/
+
+entityDef monster_q4x_strogg_flyer_space_bomber2
+{
+	"inherit"						"monster_q4x_strogg_flyer_space_bomber"
+	"attackRange"						"0 14000"
+	"action_blasterAttack_rate"				"1"
+	"blasterAttackDuration"					"10"
+	"blasterAttackRate"					"1"
+	"health"						"2000"
+}
+
+
+	
+

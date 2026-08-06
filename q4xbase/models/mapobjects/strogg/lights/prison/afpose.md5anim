@@ -1,0 +1,28 @@
+MD5Version 10
+commandline "anim work/models/mapobjects/strogg/lights/prison/lightpose.ma -dest models/mapobjects/strogg/lights/prison/afpose.md5anim -game Quake4 -prefix LIGHT_ -align ALL"
+
+numFrames 2
+numJoints 2
+frameRate 24
+numAnimatedComponents 0
+
+hierarchy {
+	"origin"	-1 0 0	//
+	"light"	0 0 0	// origin
+}
+
+bounds {
+	( -42.4000015259 -8.0000095367 -36 ) ( 42.4000015259 8.0000114441 36 )
+	( -42.4000015259 -8.0000095367 -36 ) ( 42.4000015259 8.0000114441 36 )
+}
+
+baseframe {
+	( 0 0 0 ) ( -0.5 -0.5 -0.5 )
+	( 0 0 0 ) ( 0 0 0 )
+}
+
+frame 0 {
+}
+
+frame 1 {
+}

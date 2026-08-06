@@ -1,0 +1,32 @@
+MD5Version 10
+commandline "anim models/mapobjects/mcc_second/hatch/animations/hatch_climb.ma -dest models/mapobjects/mcc_second/hatch/end_idle.md5anim -game Quake4 -game /q4xbase -scale .3937 -prefix HATCH_ -keep origin base lid ladder -range 193 194"
+
+numFrames 2
+numJoints 4
+frameRate 24
+numAnimatedComponents 0
+
+hierarchy {
+	"origin"	-1 0 0	//
+	"base"	0 0 0	// origin
+	"ladder"	1 0 0	// base
+	"lid"	1 0 0	// base
+}
+
+bounds {
+	( -45.1433372498 -160.8597564697 105.1935119629 ) ( 45.1433448792 -62.3931083679 383.1176452637 )
+	( -45.1433372498 -160.8597564697 105.1935119629 ) ( 45.1433448792 -62.3931083679 383.1176452637 )
+}
+
+baseframe {
+	( 0 0 0 ) ( -0.7071067691 0 0 )
+	( 0.0000230684 0.0000350831 107.9997177124 ) ( 0 0 0 )
+	( 0 139.3969726563 20.1382980347 ) ( 0 0 0 )
+	( 0 120.8351821899 48.7146072388 ) ( -0.7071067691 0 0 )
+}
+
+frame 0 {
+}
+
+frame 1 {
+}

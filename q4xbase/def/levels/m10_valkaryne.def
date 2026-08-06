@@ -1,0 +1,26 @@
+/*
+===============================================================================
+
+	M10_Valkaryne Marines
+
+===============================================================================
+*/
+
+entityDef char_marine_npc_navajas_m10
+{
+	"inherit1"	"char_q4x_marine"
+	"inherit2"	"char_npc_navajas_M09_Valk_vo"
+	"editor_menu"	"char_npc_q4x_m10"
+	"model"		"model_char_q4x_marine"
+	"def_persona"	"persona_q4x_navajas_pvt"
+	"followRange"	"128 228"
+}
+
+entityDef char_marine_npc_markswell_m09
+{
+	"inherit1"	"char_q4x_marine"
+	"inherit2"	"char_npc_markswell_M09_Valk_vo"
+	"editor_menu"	"char_npc_q4x_m10"
+	"model"		"model_char_q4x_marine"
+	"def_persona"	"persona_q4x_markswell_lt"
+}

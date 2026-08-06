@@ -1,0 +1,89 @@
+sound m01_introcin
+{
+	minDistance	100000
+	maxDistance	300000
+	volumeDb	-2
+	sound/ambience/m01/m01_introcin
+}
+
+//large hectic battlefield ambience
+sound trench_ambientbattle_01
+{
+	minDistance	1000
+	maxDistance	3000
+	looping
+	sound/ambience/trench/q4x_trench_1c.ogg
+}
+
+//large hectic battlefield ambience
+sound trench_ambientmachinegun_01
+{
+	minDistance	1000
+	maxDistance	3000
+	looping
+	sound/ambience/trench/q4x_trench_mgunfire1_22.wav
+}
+
+sound trench_ambientmachinegun_02
+{
+	minDistance	1000
+	maxDistance	3000
+	looping
+	sound/ambience/trench/q4x_trench_mgunfire2_22.wav
+}
+
+sound medium_battleloop1
+{
+	minDistance	1000
+	maxDistance	3000
+	looping
+	sound/ambience/m01/medium_battleloop1
+}
+
+sound close_battleloop1
+{
+	minDistance	1000
+	maxDistance	3000
+	looping
+	sound/ambience/m01/close_battleloop1
+}
+
+sound close_battleloop2
+{
+	minDistance	1000
+	maxDistance	3000
+	looping
+	sound/ambience/m01/close_battleloop2
+}
+sound close_battleloop3
+{
+	minDistance	1000
+	maxDistance	3000
+	looping
+	sound/ambience/m01/close_battleloop3
+}
+sound distant_battle_loop1
+{
+	minDistance	1000
+	maxDistance	3000
+	looping
+	sound/ambience/m01/distant_battle_loop1
+}
+
+sound interior_battleloop1
+{
+	minDistance	1000
+	maxDistance	3000
+	looping
+	sound/ambience/m01/interior_battleloop1
+}
+
+sound flyovers
+{
+	minDistance	1000
+	maxDistance	3000
+	looping
+	sound/ambience/m01/flyovers.ogg
+}
+
+

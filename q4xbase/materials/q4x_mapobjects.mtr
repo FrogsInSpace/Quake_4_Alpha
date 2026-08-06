@@ -1,0 +1,1684 @@
+models/mapobjects/marine/equipment/misc/data_station3
+{
+      noSelfShadow
+      unSmoothedTangents
+
+	renderBump  -size 512 512 -trace 0.05 -aa 2 -mergehigh models/mapobjects/marine/equipment/misc/data_station3_local.tga work/models/mapobjects/marine/equipment/misc/data_station3_high.lwo
+
+	materialType solidmetal
+
+	bumpmap	addnormals	( models/mapobjects/marine/equipment/misc/data_station3_local.tga, heightmap ( models/mapobjects/marine/equipment/misc/data_station3_h.tga,1 ) )
+	diffusemap		models/mapobjects/marine/equipment/misc/data_station3_d.tga
+	specularmap		models/mapobjects/marine/equipment/misc/data_station3_s.tga
+
+
+}
+
+models/mapobjects/q4x/doors/cryoframe_d
+{
+	qer_editorimage mapobjects/q4x_cryo/cryoframe_d.tga
+
+	diffusemap 			models/mapobjects/q4x/doors/cryoframe_d.tga
+    bumpmap				models/mapobjects/q4x/doors/cryoframe_local.tga
+	specularmap 		models/mapobjects/q4x/doors/cryoframe_s.tga
+	
+	{
+		blend add
+		map models/mapobjects/q4x/doors/cryoframe_add.tga
+		//rgb (0.5 * sintable [.5 * time ]) +0.5
+	}
+	
+	{
+		if ( parm7 == 0 )
+		blend 	add
+		map		models/mapobjects/q4x/doors/cryoframe_lock.tga
+		red		1
+		green	0.1
+		blue	0.1
+
+	}
+	{
+		if ( parm7 == 1 )
+		blend 	add
+		map		models/mapobjects/q4x/doors/cryoframe_lock.tga
+		red		0.6
+		green	1
+		blue	0.23
+	}
+}
+
+
+models/mapobjects/q4x/doors/cryodoor01_d
+{
+	qer_editorimage mapobjects/q4x_cryo/cryodoor01_d.tga
+
+	diffusemap 			models/mapobjects/q4x/doors/cryodoor01_d.tga
+    bumpmap				models/mapobjects/q4x/doors/cryodoor01_local.tga
+	specularmap 		models/mapobjects/q4x/doors/cryodoor01_s.tga
+
+}
+
+
+models/mapobjects/q4x/machines/sf_power_core/sf_core_shaft
+{
+	diffusemap 			models/mapobjects/q4x/machines/sf_power_core/sf_core_shaft_d.tga
+    bumpmap				models/mapobjects/q4x/machines/sf_power_core/sf_core_shaft_local.tga
+	specularmap 		models/mapobjects/q4x/machines/sf_power_core/sf_core_shaft_s.tga
+
+	{
+		blend add
+		map models/mapobjects/q4x/machines/sf_power_core/sf_core_shaft_add.tga
+
+	}
+}
+
+
+
+models/mapobjects/q4x/machines/sf_power_core/sf_core_part
+{
+	diffusemap 			models/mapobjects/q4x/machines/sf_power_core/sf_core_part_d.tga
+    bumpmap				models/mapobjects/q4x/machines/sf_power_core/sf_core_part_local.tga
+	specularmap 		models/mapobjects/q4x/machines/sf_power_core/sf_core_part_s.tga
+
+	{
+		blend add
+		map models/mapobjects/q4x/machines/sf_power_core/sf_core_part_add.tga
+	}
+}
+
+
+models/mapobjects/q4x/machines/sf_power_core/sf_core_sphere01
+{
+	translucent
+	{
+		blend diffuseMap
+		map models/mapobjects/q4x/machines/sf_power_core/sf_core_sphere01_d.tga
+		scroll time * 0.6, time * 0.3
+	}	
+
+	{
+		Program			heatHaze.vfp
+		vertexParm		0	time * 0.6 , time * 0.3								// texture scrolling
+		vertexParm		1	4													// magnitude of the distortion
+		fragmentProgram	heatHaze.vfp
+		fragmentMap		0	_currentRender
+		fragmentMap		1	models/mapobjects/q4x/machines/sf_power_core/sf_core_sphere01_local.tga	// the normal map for distortion
+	}
+
+	//specularMap		models/mapobjects/q4x/machines/sf_power_core/sf_core_sphere01_s.tga
+
+	
+	{
+		blend GL_DST_COLOR, GL_ONE
+		map models/mapobjects/q4x/machines/sf_power_core/sf_core_sphere01_d.tga
+		scroll time * -0.6, time * 0.3
+	}
+
+	{
+		blend add
+		map models/mapobjects/q4x/machines/sf_power_core/sf_core_sphere01_d.tga
+		scroll time * -0.6, time * 0.3
+	}
+	
+}
+
+
+
+models/mapobjects/q4x/cryotubebase/cryotubebase_d
+
+{
+
+//unSmoothedTangents
+
+	qer_editorimage mapobjects/q4x_cryo/cryodoor01_d.tga
+
+	diffusemap 		models/mapobjects/q4x/cryotubebase/cryotubebase_d.tga
+    bumpmap			models/mapobjects/q4x/cryotubebase/cryotubebase_local.tga
+	specularmap 	models/mapobjects/q4x/cryotubebase/cryotubebase_s.tga
+
+}
+
+
+models/mapobjects/q4x/machines/sf_power_core/sf_core_part2
+{
+	diffusemap 		models/mapobjects/q4x/machines/sf_power_core/sf_core_part2_d.tga
+    bumpmap			models/mapobjects/q4x/machines/sf_power_core/sf_core_part2_local.tga
+	specularmap 		models/mapobjects/q4x/machines/sf_power_core/sf_core_part2_s.tga
+	
+	{
+		blend add
+		map models/mapobjects/q4x/machines/sf_power_core/sf_core_part2_add.tga
+	}
+
+}
+
+models/mapobjects/q4x/machines/sf_power_core/sf_core_top
+{
+	diffusemap 			models/mapobjects/q4x/machines/sf_power_core/sf_core_top_d.tga
+    bumpmap			models/mapobjects/q4x/machines/sf_power_core/sf_core_top_local.tga
+	specularmap 		models/mapobjects/q4x/machines/sf_power_core/sf_core_top_s.tga
+}
+
+models/mapobjects/q4x/cryo_vent/cryo_vent
+{
+
+unSmoothedTangents
+
+	diffusemap 		models/mapobjects/q4x/cryo_vent/cryo_vent_d.tga
+    	bumpmap			models/mapobjects/q4x/cryo_vent/cryo_vent_local.tga
+	specularmap 		models/mapobjects/q4x/cryo_vent/cryo_vent_s.tga
+}
+
+
+
+models/mapobjects/q4x/cryo_queenlight/cryo_queenlight
+{
+
+
+	diffusemap 		models/mapobjects/q4x/cryo_queenlight/cryo_queenlight_d.tga
+    	bumpmap			models/mapobjects/q4x/cryo_queenlight/cryo_queenlight_local.tga
+	specularmap 		models/mapobjects/q4x/cryo_queenlight/cryo_queenlight_s.tga
+
+	{
+		blend add
+		map models/mapobjects/q4x/cryo_queenlight/cryo_queenlight_add.tga
+	}
+
+
+}
+
+models/mapobjects/q4x/cryo_queenlight/cryo_queenlight_glass
+{
+	qer_EditorImage		models/mapobjects/q4x/cryo_queenlight/cryo_queenlight_glass_d.tga
+	noshadows
+	translucent
+	materialType glass
+	
+	{
+		blend diffuseMap
+		map models/mapobjects/q4x/cryo_queenlight/cryo_queenlight_glass_d.tga
+	}
+
+	{
+		Program			heatHaze.vfp
+		vertexParm		0	time * 0 , time * 0						// texture scrolling
+		vertexParm		1	5										// magnitude of the distortion
+		fragmentProgram	heatHaze.vfp
+		fragmentMap		0	_currentRender
+		fragmentMap		1	models/mapobjects/q4x/cryo_queenlight/cryo_queenlight_glass_local.tga	// the normal map for distortion
+	}
+	{
+		blend blend
+		map models/mapobjects/q4x/cryo_queenlight/cryo_queenlight_glass_d.tga
+	}
+
+}
+
+models/mapobjects/q4x/machines/sf_power_core/sf_core_gears
+{
+	diffusemap 		models/mapobjects/q4x/machines/sf_power_core/sf_core_gears_d.tga
+    	bumpmap			models/mapobjects/q4x/machines/sf_power_core/sf_core_gears_local.tga
+	specularmap 		models/mapobjects/q4x/machines/sf_power_core/sf_core_gears_s.tga
+}
+
+models/mapobjects/q4x/machines/sf_power_core/sf_core_gearmech
+{
+	diffusemap 		models/mapobjects/q4x/machines/sf_power_core/sf_core_gearmech_d.tga
+    	bumpmap			models/mapobjects/q4x/machines/sf_power_core/sf_core_gearmech_local.tga
+	specularmap 		models/mapobjects/q4x/machines/sf_power_core/sf_core_gearmech_s.tga
+}
+
+models/mapobjects/q4x/machines/dropship/dropshipchair_d
+{
+		//unsmoothedtangents		
+		diffusemap 		models/mapobjects/q4x/machines/dropship/dropshipchair_d.tga
+    	bumpmap			models/mapobjects/q4x/machines/dropship/dropshipchair_local.tga
+		specularmap 	models/mapobjects/q4x/machines/dropship/dropshipchair_s.tga
+}
+
+models/mapobjects/q4x/machines/dropship/dropchairarm
+{
+		//unsmoothedtangents		
+		diffusemap 		models/mapobjects/q4x/machines/dropship/dropchairarm_d.tga
+    	bumpmap			models/mapobjects/q4x/machines/dropship/dropchairarm_local.tga
+		specularmap 	models/mapobjects/q4x/machines/dropship/dropchairarm_s.tga
+}
+
+models/mapobjects/q4x/speeder_ductrib/speeder_ductrib_d
+{
+		unsmoothedtangents		
+		diffusemap 		models/mapobjects/q4x/speeder_ductrib/speeder_ductrib_d.tga
+    	bumpmap			models/mapobjects/q4x/speeder_ductrib/speeder_ductrib_local.tga
+		specularmap 	models/mapobjects/q4x/speeder_ductrib/speeder_ductrib_s.tga
+		{
+		blend add
+		map				models/mapobjects/q4x/speeder_ductrib/speeder_ductrib_add.tga
+		colored
+		rgb             (.3 * sintable [.2 + time ]) +.2
+		}
+}  
+
+
+models/mapobjects/q4x/machines/speeder/pipe_rib/pipe_rib01
+{
+		unsmoothedtangents		
+		diffusemap 		models/mapobjects/q4x/machines/speeder/pipe_rib/pipe_rib01_d.tga
+    		bumpMap			addnormals ( models/mapobjects/q4x/machines/speeder/pipe_rib/pipe_rib01_local.tga, heightmap( models/mapobjects/q4x/machines/speeder/pipe_rib/pipe_rib01_h.tga, 1 ) )
+		specularmap 		models/mapobjects/q4x/machines/speeder/pipe_rib/pipe_rib01_s.tga
+		{
+		blend add
+		map			models/mapobjects/q4x/machines/speeder/pipe_rib/pipe_rib01_add.tga
+		}
+}
+
+models/mapobjects/q4x/machines/speeder/pipe_rib/pipe_rib01_unlit
+{
+		unsmoothedtangents		
+		diffusemap 		models/mapobjects/q4x/machines/speeder/pipe_rib/pipe_rib01_d.tga
+    		bumpMap			addnormals ( models/mapobjects/q4x/machines/speeder/pipe_rib/pipe_rib01_local.tga, heightmap( models/mapobjects/q4x/machines/speeder/pipe_rib/pipe_rib01_h.tga, 1 ) )
+		specularmap 		models/mapobjects/q4x/machines/speeder/pipe_rib/pipe_rib01_s.tga
+	
+}    
+
+
+models/mapobjects/q4x/speeder_skytower01/speeder_skytower01_d
+{
+		noselfshadow
+		unsmoothedtangents
+				
+		diffusemap 		models/mapobjects/q4x/speeder_skytower01/speeder_skytower01_d.tga
+	   	bumpmap			models/mapobjects/q4x/speeder_skytower01/speeder_skytower01_local.tga
+		specularmap 	models/mapobjects/q4x/speeder_skytower01/speeder_skytower01_s.tga
+		{
+		blend 	add
+		map		models/mapobjects/q4x/speeder_skytower01/speeder_skytower01_add.tga
+		rgb 	(.5 * sinTable [.5 * time ]) + 1
+		}
+		{
+		blend 	add
+		map		models/mapobjects/q4x/speeder_skytower01/speeder_skytower01_add2.tga
+		}
+}
+
+// Added by Wyeth
+models/mapobjects/q4x/machines/cryo_techmachine
+{
+
+		noselfshadow
+		unsmoothedtangents
+
+	diffusemap 			models/mapobjects/q4x/cryo_techmachine/cryo_techmachine_d.tga
+    bumpmap				models/mapobjects/q4x/cryo_techmachine/cryo_techmachine_local.tga
+	specularmap 		models/mapobjects/q4x/cryo_techmachine/cryo_techmachine_s.tga
+
+		{
+		blend 			add
+		map				models/mapobjects/q4x/cryo_techmachine/cryo_techmachine_add.tga
+		rgb 	 		(1 * random [.04 * time ]) + 0.7
+		}
+	
+}
+
+// Added by nick
+models/mapobjects/q4x/race_light01/race_light01
+{
+	diffusemap 			models/mapobjects/q4x/race_light01/race_light01_d.tga
+    	bumpmap				models/mapobjects/q4x/race_light01/race_light01_local.tga
+	specularmap 			models/mapobjects/q4x/race_light01/race_light01_s.tga
+
+	{
+		blend add
+		map models/mapobjects/q4x/race_light01/race_light01_add.tga
+
+	}
+}
+
+////////////////////////////////////////////////// Added by Steve H ///////////////////////////////////////////////////////
+
+models/mapobjects/q4x/cryo_pump/pump01
+{
+      	noselfShadow
+	unsmoothedtangents
+
+	bumpmap		addnormals (models/mapobjects/q4x/cryo_pump/pump01_local.tga, heightmap (models/mapobjects/q4x/cryo_pump/pump01_h.tga, 2))
+	diffusemap		models/mapobjects/q4x/cryo_pump/pump01_d.tga
+	specularmap		models/mapobjects/q4x/cryo_pump/pump01_s.tga
+
+}
+
+// cryo_pillar_stack2----------------------------------------------------
+
+models/mapobjects/q4x/cryo_pillars/stack2
+{
+//	noselfShadow
+	unsmoothedtangents
+
+//check path	renderbump  -size 256 256 -aa 2 -MergeHigh -trace .05 models/mapobjects/strogg/supports_and_pillars/pillar_stack2_lo_local.tga work/models/mapobjects/strogg/supports_and_pillars/pillar_stack2_hi.lwo
+
+	bumpmap		addnormals (models/mapobjects/q4x/cryo_pillars/stack2_local.tga, heightmap (models/mapobjects/q4x/cryo_pillars/stack2_h.tga, 2))
+	diffusemap		models/mapobjects/q4x/cryo_pillars/stack2_d.tga
+	specularmap		models/mapobjects/q4x/cryo_pillars/stack2_s.tga
+
+}
+
+models/mapobjects/q4x/cryo_locker/cryo_locker_d
+{
+	noselfShadow
+	unsmoothedtangents
+
+	bumpmap		addnormals (models/mapobjects/q4x/cryo_locker/cryo_locker_local.tga, heightmap (models/mapobjects/q4x/cryo_locker/cryo_locker_h.tga, 2))
+	diffusemap		models/mapobjects/q4x/cryo_locker/cryo_locker_d.tga
+	specularmap		models/mapobjects/q4x/cryo_locker/cryo_locker_s.tga
+
+}
+
+models/mapobjects/q4x/speeder_pipe_sup01/speeder_pipe_sup01_d
+{
+	unsmoothedtangents
+
+	bumpmap		addnormals (models/mapobjects/q4x/speeder_pipe_sup01/speeder_pipe_sup01_local.tga, heightmap (models/mapobjects/q4x/speeder_pipe_sup01/speeder_pipe_sup01_h.tga, 2))
+	diffusemap		models/mapobjects/q4x/speeder_pipe_sup01/speeder_pipe_sup01_d.tga
+	specularmap		models/mapobjects/q4x/speeder_pipe_sup01/speeder_pipe_sup01_s.tga
+
+}
+
+models/mapobjects/q4x/speeder_pipe_sup01/speeder_pipe_supcable_d
+{
+	unsmoothedtangents
+
+	bumpmap			models/mapobjects/q4x/speeder_pipe_sup01/speeder_pipe_supcable_local.tga
+	diffusemap		models/mapobjects/q4x/speeder_pipe_sup01/speeder_pipe_supcable_d.tga
+	specularmap		models/mapobjects/q4x/speeder_pipe_sup01/speeder_pipe_supcable_d.tga
+
+}
+
+models/mapobjects/q4x/cryo_table/cryo_table_d
+{
+//	noselfShadow
+	unsmoothedtangents
+
+	bumpmap		addnormals (models/mapobjects/q4x/cryo_table/cryo_table_local.tga, heightmap (models/mapobjects/q4x/cryo_table/cryo_table_h.tga, 2))
+	{ 
+		blend add		
+		map				models/mapobjects/q4x/cryo_table/cryo_table_add.tga
+	}  
+	diffusemap		models/mapobjects/q4x/cryo_table/cryo_table_d.tga
+	specularmap		models/mapobjects/q4x/cryo_table/cryo_table_s.tga
+
+}
+
+//cryo_main_frame2 for the large_media_monitor plus 2 skin files----------------------------------------------------
+
+models/mapobjects/q4x/cryo_monitors/frame_2b
+{
+	noselfShadow
+	unsmoothedtangents
+
+	bumpmap		addnormals (models/mapobjects/q4x/cryo_monitors/frame_2_local.tga, heightmap (models/mapobjects/q4x/cryo_monitors/frame_2_h.tga, 2))
+	diffusemap		models/mapobjects/q4x/cryo_monitors/frame_2_d.tga
+	specularmap		models/mapobjects/q4x/cryo_monitors/frame_2_s.tga
+
+}
+
+models/mapobjects/q4x/cryo_monitors/bridge_d
+{
+      	noselfShadow
+	unSmoothedTangents
+	materialImage models/mapobjects/q4x/cryo_monitors/bridge_d_hit
+	
+//check path	renderbump  -size 256 256 -aa 2 -MergeHigh -trace .05  models/mapobjects/strogg/terminal/bridge_d_local.tga models/mapobjects/strogg/terminal/bridge_d_hi.lwo
+
+	bumpmap		addnormals (models/mapobjects/q4x/cryo_monitors/bridge_d_local.tga, heightmap (models/mapobjects/q4x/cryo_monitors/bridge_d_h.tga, 2))
+	diffusemap		models/mapobjects/q4x/cryo_monitors/bridge_d_d.tga
+	specularmap		models/mapobjects/q4x/cryo_monitors/bridge_d_s.tga
+
+}
+
+models/mapobjects/q4x/cryo_pump/cryo_pump01_d
+{
+      	noselfShadow
+	unSmoothedTangents
+	materialImage models/mapobjects/q4x/cryo_pump/cryo_pump01_hit
+	bumpmap		addnormals (models/mapobjects/q4x/cryo_pump/cryo_pump01_local.tga, heightmap (models/mapobjects/q4x/cryo_pump/cryo_pump01_h.tga, 2))
+	diffusemap		models/mapobjects/q4x/cryo_pump/cryo_pump01_d.tga
+	specularmap		models/mapobjects/q4x/cryo_pump/cryo_pump01_s.tga
+	{
+		blend add
+		map models/mapobjects/q4x/cryo_pump/cryo_pump01_add.tga
+
+	}
+
+}
+
+models/mapobjects/q4x/cryo_pump/pump_hub01_d
+{
+      	noselfShadow
+	unSmoothedTangents
+	materialImage models/mapobjects/q4x/cryo_pump/pump_hub01_hit
+	bumpmap		addnormals (models/mapobjects/q4x/cryo_pump/pump_hub01_local.tga, heightmap (models/mapobjects/q4x/cryo_pump/pump_hub01_h.tga, 2))
+	diffusemap		models/mapobjects/q4x/cryo_pump/pump_hub01_d.tga
+	specularmap		models/mapobjects/q4x/cryo_pump/pump_hub01_s.tga
+	
+}
+
+models/mapobjects/q4x/dropship/dropship_d
+{
+		//unsmoothedtangents		
+		//twosided
+		
+			
+		{
+		blend		diffusemap
+		map		models/mapobjects/q4x/dropship/dropship_d.tga
+		alphatest	.5
+		}
+		
+		//diffusemap 		models/mapobjects/q4x/dropship/dropship_d.tga
+    	bumpmap			models/mapobjects/q4x/dropship/dropship_local.tga
+		specularmap 	models/mapobjects/q4x/dropship/dropship_s.tga
+		{ 
+		blend add		
+		map				models/mapobjects/q4x/dropship/dropship_add.tga
+		}  
+		{ 
+		blend add		
+		map				models/mapobjects/q4x/dropship/dropship_add2.tga
+		rgb 			(.5 * sinTable [.5 * time ]) + 1			
+		}            
+}
+
+
+models/mapobjects/q4x/dropship/dropshipgizmo_d
+{
+		//unsmoothedtangents		
+		diffusemap 		models/mapobjects/q4x/dropship/dropshipgizmo_d.tga
+    	bumpmap			models/mapobjects/q4x/dropship/dropshipgizmo_local.tga
+		specularmap 	models/mapobjects/q4x/dropship/dropshipgizmo_s.tga
+}
+
+
+
+
+models/mapobjects/q4x/dropship/dropshipglass_d
+
+ {
+	noSelfShadow
+	noshadows
+	twosided
+	translucent
+	glass
+	forceoverlays
+	sort decal
+	
+	materialType	glass
+	
+	qer_editorimage textures/glass/outdoorglass1_mask
+	{
+                Program           heatHaze.vfp
+                vertexParm              0       time * 0 , time * 0 // texture scrolling
+                vertexParm              1       .4         // magnitude of the distortion
+                fragmentProgram			heatHaze.vfp
+                fragmentMap             0       _currentRender
+                fragmentMap             1       gfx/env/vp1   // the normal map for distortion			
+             
+    }
+	{
+		blend		filter
+		map models/mapobjects/q4x/dropship/dropshipglass_d.tga
+	}
+		
+	{
+	    blend add
+       	cubeMap		gfx/env/outsideglass1
+        texgen		reflect
+		red Parm0
+		green Parm1
+		blue  Parm2
+	}
+	
+	{
+		blend blend
+		map models/mapobjects/q4x/dropship/dropshipglass_d.tga
+	}
+	
+}
+
+// Added by nick
+models/mapobjects/q4x/air_bunker/air_bunker_small
+{
+	//unsmoothedtangents
+	diffusemap 			models/mapobjects/q4x/air_bunker/air_bunker_small_d.tga
+    	bumpmap				models/mapobjects/q4x/air_bunker/air_bunker_small_local.tga
+	specularmap 			models/mapobjects/q4x/air_bunker/air_bunker_small_s.tga
+
+	//{
+		//blend add
+		//map models/mapobjects/q4x/race_light01/race_light01_add.tga
+
+	}
+}
+
+
+
+models/mapobjects/q4x/speeder_skytower02/speedertower02_d
+{
+		noselfshadow
+		unsmoothedtangents
+				
+		diffusemap 		models/mapobjects/q4x/speeder_skytower02/speedertower02_d.tga
+	   	bumpmap			models/mapobjects/q4x/speeder_skytower02/speedertower02_local.tga
+		specularmap 	models/mapobjects/q4x/speeder_skytower02/speedertower02_s.tga
+		{
+		blend add
+		map 			models/mapobjects/q4x/speeder_skytower02/speedertower02_add.tga
+
+		}
+		
+		
+}
+
+models/mapobjects/q4x/speeder_skytower03/speedertower03_d
+{
+		noselfshadow
+		unsmoothedtangents
+				
+		diffusemap 		models/mapobjects/q4x/speeder_skytower03/speedertower03_d.tga
+	   	bumpmap			models/mapobjects/q4x/speeder_skytower03/speedertower03_local.tga
+		specularmap 	models/mapobjects/q4x/speeder_skytower03/speedertower03_s.tga
+		{
+		blend add
+		map 			models/mapobjects/q4x/speeder_skytower03/speedertower03_add.tga
+
+		}
+}
+
+models/mapobjects/q4x/speeder_skytower04/speedertower04_d
+{
+		noselfshadow
+		unsmoothedtangents
+				
+		diffusemap 		models/mapobjects/q4x/speeder_skytower04/speedertower04_d.tga
+	   	bumpmap			models/mapobjects/q4x/speeder_skytower04/speedertower04_local.tga
+		specularmap 	models/mapobjects/q4x/speeder_skytower04/speedertower04_s.tga
+		
+}
+
+models/mapobjects/q4x/speeder_skytower05/speedertower05_d
+{
+		noselfshadow
+		unsmoothedtangents
+				
+		diffusemap 		models/mapobjects/q4x/speeder_skytower05/speedertower05_d.tga
+	   	bumpmap			models/mapobjects/q4x/speeder_skytower05/speedertower05_local.tga
+		specularmap 	models/mapobjects/q4x/speeder_skytower05/speedertower05_s.tga
+		{
+		blend add
+		map 			models/mapobjects/q4x/speeder_skytower05/speedertower05_add.tga
+		rgb 			(.5 * sinTable [.5 * time ]) + 1
+		}
+}
+
+
+models/mapobjects/q4x/asteroids/asteroids_d
+{
+		noselfshadow
+		unsmoothedtangents
+				
+		diffusemap 		models/mapobjects/q4x/asteroids/asteroids_d.tga
+	   	bumpmap			models/mapobjects/q4x/asteroids/asteroids_local.tga
+		specularmap 	models/mapobjects/q4x/asteroids/asteroids_s.tga
+		
+}
+
+//table satellitetable { snap { 0.2, 0.2, 1, 1, 1, } }
+
+// Added by nick / tweaked wyeth 8/01
+models/mapobjects/q4x/air_rocket_turret/air_rocket_turret
+{
+	//unsmoothedtangents
+	diffusemap 			models/mapobjects/q4x/air_rocket_turret/air_rocket_turret_d.tga
+    bumpmap				models/mapobjects/q4x/air_rocket_turret/air_rocket_turret_local.tga
+	specularmap 			models/mapobjects/q4x/air_rocket_turret/air_rocket_turret_s.tga
+
+	{
+		blend add
+		map models/mapobjects/q4x/air_rocket_turret/air_rocket_turret_add.tga
+	}
+//	{
+//		blend add
+//		map models/mapobjects/q4x/air_rocket_turret/air_rocket_turret_add2.tga
+//		rgb		satellitetable[ time * 0.45 ]
+//	}
+}
+
+// Added by nick
+models/mapobjects/q4x/grapple_node/grapple_node
+{
+	//unsmoothedtangents
+	diffusemap 			models/mapobjects/q4x/grapple_node/grapple_node_d.tga
+    	bumpmap				models/mapobjects/q4x/grapple_node/grapple_node_local.tga
+	specularmap 			models/mapobjects/q4x/grapple_node/grapple_node_s.tga
+
+	{
+		blend add
+		map models/mapobjects/q4x/grapple_node/grapple_node_add.tga
+
+	}
+}
+
+// TEMPORARY ICE SHADER UNTIL WE CAN OPTIMIZE
+models/mapobjects/q4x/cryo_cave01/cryo_cave
+{
+           noSelfShadow
+           materialType glass
+	{
+		blend 		bumpmap
+		map			models/mapobjects/q4x/cryo_cave01/cryo_cave03_local.tga
+		//scale 1.25, 1.25
+	}
+	{
+		blend 		diffusemap
+		map			models/mapobjects/q4x/cryo_cave01/cryo_cave02_d.tga
+		inverseVertexColor
+	}
+	{
+		blend 		bumpmap
+		map			models/mapobjects/q4x/cryo_cave01/cryo_cave01_local.tga
+	}
+	{
+		blend 		diffusemap
+		map			models/mapobjects/q4x/cryo_cave01/cryo_cave01_d.tga
+		VertexColor
+	}
+	{
+		blend		gl_dst_color, gl_one
+		texgen		reflect
+		cubeMap gfx/env/marhelmet
+	}
+
+}
+
+
+/*
+// THIS WAS COMMENTED OUT UNTIL WE CAN OPTIMIZE IT. THE CURRENT ONE IS ABOVE IT.
+// Added by nick //Tweaked Wyeth 6-30
+models/mapobjects/q4x/cryo_cave01/cryo_cave
+{
+           noSelfShadow
+           materialType glass
+
+	{
+		blend 		bumpmap
+		map			models/mapobjects/q4x/cryo_cave01/cryo_cave02_local.tga
+		scale 1.25, 1.25
+		inverseVertexColor
+	}
+	{
+		blend 		diffusemap
+		map			models/mapobjects/q4x/cryo_cave01/cryo_cave02_d.tga
+		inverseVertexColor
+	}
+	{
+		blend		specularmap
+		map			models/mapobjects/q4x/cryo_cave01/cryo_cave02_s.tga
+		inverseVertexColor
+	}
+	{
+		blend 		bumpmap
+		map			models/mapobjects/q4x/cryo_cave01/cryo_cave01_local.tga
+		scale 2.0, 2.0
+		VertexColor
+	}
+	{
+		blend 		diffusemap
+		map			models/mapobjects/q4x/cryo_cave01/cryo_cave01_d.tga
+		scale 2, 2
+		VertexColor
+	}
+	{
+		blend		specularmap
+		map			models/mapobjects/q4x/cryo_cave01/cryo_cave01_s.tga
+		scale 2, 2
+		VertexColor
+	}
+
+	{
+		blend		gl_dst_color, gl_one
+		texgen		reflect
+		cubeMap gfx/env/cryo_cave
+		VertexColor
+	}
+	
+	{
+		blend		gl_src_alpha, gl_one_minus_src_alpha
+		map			models/mapobjects/q4x/cryo_cave01/cryo_cave01_frost_d.tga
+		scale 2, 2
+	}
+
+}
+*/
+
+
+
+
+// Added by nick
+models/mapobjects/q4x/cryo_cave01/cryo_cavefacade
+{
+	//unsmoothedtangents
+	diffusemap 			models/mapobjects/q4x/cryo_cave01/cryo_cavefacade_d.tga
+
+	{
+		//blend add
+		map models/mapobjects/q4x/cryo_cave01/cryo_cavefacade_d.tga
+		scale 1.1, 1.1
+
+	}
+}
+
+models/mapobjects/q4x/cryo_coffin/cryo_coffin
+{
+		noselfshadow
+		//unsmoothedtangents
+				
+		diffusemap 		models/mapobjects/q4x/cryo_coffin/cryo_coffin_d.tga
+	   	bumpmap			models/mapobjects/q4x/cryo_coffin/cryo_coffin_local.tga
+		specularmap 	models/mapobjects/q4x/cryo_coffin/cryo_coffin_s.tga
+		{
+		blend add 
+		map				models/mapobjects/q4x/cryo_coffin/cryo_coffin_add.tga
+		rgb 	 		(1 * random [.04 * time ]) + 0.7
+		}
+}
+
+models/mapobjects/q4x/cryo_valk_ice/cryo_valk_ice
+{
+	qer_EditorImage		models/mapobjects/q4x/cryo_valk_ice/cryo_valk_ice_d.tga
+	noshadows
+	//translucent
+	//twosided
+	materialType glass
+	
+	{
+		blend diffuseMap
+		map models/mapobjects/q4x/cryo_valk_ice/cryo_valk_ice_d.tga
+	}
+
+	{
+		Program			heatHaze.vfp
+		vertexParm		0	time * 0 , time * 0						// texture scrolling
+		vertexParm		1	10										// magnitude of the distortion
+		fragmentProgram	heatHaze.vfp
+		fragmentMap		0	_currentRender
+		fragmentMap		1	models/mapobjects/q4x/cryo_valk_ice/cryo_valk_ice_local.tga	// the normal map for distortion
+	}
+	//{
+		//blend blend
+		//map models/mapobjects/q4x/cryo_valk_ice/cryo_valk_ice_d.tga
+	//}
+
+}
+
+models/mapobjects/q4x/cryo_hangingman/cryohangingman
+{
+		noselfshadow
+		//unsmoothedtangents
+				
+		diffusemap 		models/mapobjects/q4x/cryo_hangingman/cryohangingman_d.tga
+	   	bumpmap			models/mapobjects/q4x/cryo_hangingman/cryohangingman_local.tga
+		specularmap 	models/mapobjects/q4x/cryo_hangingman/cryohangingman_s.tga
+	
+}
+
+models/mapobjects/q4x/cryo_hangingman/cryohangingmanhose
+{
+		noselfshadow
+		//unsmoothedtangents
+				
+		diffusemap 		models/mapobjects/q4x/cryo_hangingman/cryohangingmanhose_d.tga
+	   	bumpmap			models/mapobjects/q4x/cryo_hangingman/cryohangingmanhose_local.tga
+		specularmap 	models/mapobjects/q4x/cryo_hangingman/cryohangingmanhose_s.tga
+		{
+		blend add 
+		map				models/mapobjects/q4x/cryo_hangingman/cryohangingmanhose_add.tga
+		rgb 	 		(1 * random [.02 * time ]) + 0.7
+		}
+}
+
+models/mapobjects/q4x/air_turret/air_turret_case
+{
+		noselfshadow
+				
+		diffusemap 		models/mapobjects/q4x/air_turret/air_turret_case_d.tga
+	   	bumpmap			models/mapobjects/q4x/air_turret/air_turret_case_local.tga
+		specularmap 	models/mapobjects/q4x/air_turret/air_turret_case_s.tga
+	
+}
+
+models/mapobjects/q4x/air_turret/air_turret_glass
+{
+	noSelfShadow
+	noshadows
+	twosided
+	translucent
+	glass
+	forceoverlays
+	sort decal
+	materialType glass
+
+//	{
+//		Program			heatHaze.vfp
+//		vertexParm		0	time * 0 , time * 0
+//		vertexParm		1	3
+//		fragmentProgram	heatHaze.vfp
+//		fragmentMap		0	_currentRender
+//		fragmentMap		1	models/mapobjects/q4x/air_turret/air_turret_glass_local.tga
+//	}
+	{
+		blend 	blend
+		map 	models/mapobjects/q4x/air_turret/air_turret_glass.tga
+	}
+    //{
+        //maskcolor				
+        //map 	makealpha(models/mapobjects/q4x/air_turret/air_turret_glass_mask.tga)
+    //}	
+//    {
+        //blend gl_dst_alpha, gl_one
+        //maskalpha
+        //map models/mapobjects/q4x/air_turret/air_turret_glass_field.tga
+		//scroll time * 0, time * -0.15
+		//scale 	3, 3
+		//red 	0.4
+		//green 	0.9
+		//blue 	0.6
+    //}
+   
+}
+
+models/mapobjects/q4x/air_turret/air_turret_chair
+{
+		noselfshadow
+		//unsmoothedtangents
+				
+		diffusemap 		models/mapobjects/q4x/air_turret/air_turret_chair_d.tga
+	   	bumpmap			models/mapobjects/q4x/air_turret/air_turret_chair_local.tga
+		specularmap 		models/mapobjects/q4x/air_turret/air_turret_chair_s.tga
+		{
+		blend add
+		map			models/mapobjects/q4x/air_turret/air_turret_chair_add.tga
+
+		}
+	
+}
+
+models/mapobjects/q4x/air_turret/air_turret_platform
+{
+		noselfshadow
+		//unsmoothedtangents
+				
+		diffusemap 		models/mapobjects/q4x/air_turret/air_turret_platform_d.tga
+	   	bumpmap			models/mapobjects/q4x/air_turret/air_turret_platform_local.tga
+		specularmap 	models/mapobjects/q4x/air_turret/air_turret_platform_s.tga
+	
+}
+
+models/mapobjects/q4x/air_turret/air_turret_brace
+{
+		noselfshadow
+		//unsmoothedtangents
+				
+		diffusemap 		models/mapobjects/q4x/air_turret/air_turret_brace_d.tga
+	   	bumpmap			models/mapobjects/q4x/air_turret/air_turret_brace_local.tga
+		specularmap 	models/mapobjects/q4x/air_turret/air_turret_brace_s.tga
+	
+}
+
+models/mapobjects/q4x/air_turret/air_turret_frame
+{
+		noselfshadow
+		//unsmoothedtangents
+				
+		diffusemap 		models/mapobjects/q4x/air_turret/air_turret_frame_d.tga
+	   	bumpmap			models/mapobjects/q4x/air_turret/air_turret_frame_local.tga
+		specularmap 	models/mapobjects/q4x/air_turret/air_turret_frame_s.tga
+		{
+		blend add 
+		map				models/mapobjects/q4x/air_turret/air_turret_frame_add.tga
+		
+		}
+}
+
+models/mapobjects/q4x/speeder_vent/speeder_vent
+{
+		noselfshadow
+		unsmoothedtangents
+				
+		diffusemap 		models/mapobjects/q4x/speeder_vent/speeder_vent_d.tga
+	   	bumpmap			models/mapobjects/q4x/speeder_vent/speeder_vent_local.tga
+		specularmap 	models/mapobjects/q4x/speeder_vent/speeder_vent_s.tga
+			
+		
+}
+
+models/mapobjects/q4x/speeder_vent/speeder_ventgrate
+{
+		noselfshadow
+		unsmoothedtangents
+				
+		diffusemap 		models/mapobjects/q4x/speeder_vent/speeder_ventgrate_d.tga
+	   	bumpmap			models/mapobjects/q4x/speeder_vent/speeder_ventgrate_local.tga
+		specularmap 	models/mapobjects/q4x/speeder_vent/speeder_ventgrate_s.tga
+			
+		
+}
+
+
+models/mapobjects/q4x/air_turret_bottom/air_turret_glass
+{
+	noSelfShadow
+	noshadows
+	twosided
+	translucent
+	glass
+	forceoverlays
+	sort decal
+	materialType glass
+	qer_editorimage		models/mapobjects/q4x/air_turret_bottom/air_turret_glassbottom.tga
+	specularmap	 models/mapobjects/q4x/air_turret_bottom/air_turret_glassbottom.tga
+	{
+	 	uncompressed
+		blend blend
+		map 	models/mapobjects/q4x/air_turret_bottom/air_turret_glassbottom.tga
+		
+	}
+
+}
+
+models/mapobjects/q4x/air_turret_bottom/air_turret_handle
+{
+		noselfshadow
+		//unsmoothedtangents
+				
+		diffusemap 		models/mapobjects/q4x/air_turret_bottom/air_turret_handle_d.tga
+	   	bumpmap			models/mapobjects/q4x/air_turret_bottom/air_turret_handle_local.tga
+		specularmap 	models/mapobjects/q4x/air_turret_bottom/air_turret_handle_s.tga
+	
+}
+
+models/mapobjects/q4x/air_turret_bottom/air_turret_barrel
+{
+		noselfshadow
+		//unsmoothedtangents
+				
+		diffusemap 		models/mapobjects/q4x/air_turret_bottom/air_turret_barrel_d.tga
+	   	bumpmap			models/mapobjects/q4x/air_turret_bottom/air_turret_barrel_local.tga
+		specularmap 	models/mapobjects/q4x/air_turret_bottom/air_turret_barrel_s.tga
+	
+}
+
+models/mapobjects/q4x/air_turret_bottom/air_turret_ball
+{
+		noselfshadow
+		//unsmoothedtangents
+				
+		diffusemap 		models/mapobjects/q4x/air_turret_bottom/air_turret_ball_d.tga
+	   	bumpmap			models/mapobjects/q4x/air_turret_bottom/air_turret_ball_local.tga
+		specularmap 	models/mapobjects/q4x/air_turret_bottom/air_turret_ball_s.tga
+	
+}
+
+models/mapobjects/q4x/mcc_track_turret/mcc_track_turret
+{
+		noselfshadow
+		//unsmoothedtangents
+				
+		diffusemap 		models/mapobjects/q4x/mcc_track_turret/mcc_track_turret_d.tga
+	   	bumpmap			models/mapobjects/q4x/mcc_track_turret/mcc_track_turret_local.tga
+		specularmap 		models/mapobjects/q4x/mcc_track_turret/mcc_track_turret_s.tga
+		{
+		blend add
+		map		models/mapobjects/q4x/mcc_track_turret/mcc_track_turret_add.tga
+
+		}
+	
+}
+
+models/mapobjects/q4x/air_turret_bottom/air_turret_glassbottom
+{
+	noSelfShadow
+	noshadows
+	twosided
+	translucent
+	glass
+	forceoverlays
+	sort decal
+	materialType glass
+	qer_editorimage		models/mapobjects/q4x/air_turret_bottom/air_turret_glassbottom.tga
+	specularmap	 models/mapobjects/q4x/air_turret_bottom/air_turret_glassbottom.tga
+	{
+	 	uncompressed
+		blend blend
+		map 	models/mapobjects/q4x/air_turret_bottom/air_turret_glassbottom.tga
+		
+	}
+
+}
+
+
+models/mapobjects/q4x/stroggos
+{
+    noselfshadow
+    unsmoothedtangents
+
+	{
+	blend diffuseMap	
+	map models/mapobjects/strogg/stroggos/stroggos_d.tga
+	scroll time * .0015, 0fdgdg
+	}
+
+	{
+	blend bumpmap	
+	map addnormals ( models/mapobjects/strogg/stroggos/stroggos_local.tga, heightmap ( models/mapobjects/strogg/stroggos/stroggos_h.tga, 8 ))
+	scroll time * .0015, 0
+	}
+
+	{	
+	blend 	specularmap	
+	map models/mapobjects/strogg/stroggos/stroggos_s.tga
+	scroll time * .0015, 0
+	}
+
+}
+
+models/mapobjects/q4x/valk_makronball/outershield
+{
+		noselfshadow
+		//unsmoothedtangents
+				
+		diffusemap 		models/mapobjects/q4x/valk_makronball/outershield_d.tga
+	   	bumpmap			models/mapobjects/q4x/valk_makronball/outershield_local.tga
+		specularmap 	models/mapobjects/q4x/valk_makronball/outershield_s.tga
+		{
+		blend add
+		map				models/mapobjects/q4x/valk_makronball/outershield_add.tga
+
+		}
+		//{
+		//blend		GL_DST_ALPHA, gl_one
+		//texgen		reflect
+		//cubeMap 	gfx/env/valk
+		//}
+	
+}
+
+models/mapobjects/q4x/valk_makronball/innershield
+{
+		noselfshadow
+		//unsmoothedtangents
+				
+		diffusemap 		models/mapobjects/q4x/valk_makronball/innershield_d.tga
+	   	bumpmap			models/mapobjects/q4x/valk_makronball/innershield_local.tga
+		specularmap 	models/mapobjects/q4x/valk_makronball/innershield_s.tga
+		{
+		blend add
+		map				models/mapobjects/q4x/valk_makronball/innershield_add.tga
+
+		}
+		//{
+		//blend		GL_DST_ALPHA, gl_one
+		//texgen		reflect
+		//cubeMap 	gfx/env/valk
+		//}
+	
+}
+
+models/mapobjects/q4x/valk_makronball/makron
+{
+		noselfshadow
+		//unsmoothedtangents
+				
+		diffusemap 		models/mapobjects/q4x/valk_makronball/makron_lo_d.tga
+	   	bumpmap			models/mapobjects/q4x/valk_makronball/makron_lo_local.tga
+		specularmap 	models/mapobjects/q4x/valk_makronball/makron_lo_s.tga
+		{
+		blend add
+		map				models/mapobjects/q4x/valk_makronball/makron_lo_gl.tga
+
+		}
+	
+}
+
+models/mapobjects/q4x/valk_makronball/makronsphere
+
+{
+	noShadows
+	translucent
+	//John S:  this has to be solid so the player can shoot it
+	//nonSolid
+	twoSided
+	deform turbulent sinTable 0.009 (time * .05 ) 1
+	
+	materialType glass
+	
+	qer_editorimage 			textures/q4x_cryo/Fluid01.tga
+
+	{
+		Program			heatHaze.vfp
+		vertexParm		0	time * 0 , time * 0.2			// texture scrolling
+		vertexParm		1	7								// magnitude of the distortion
+		fragmentProgram	heatHaze.vfp
+		fragmentMap		0	_currentRender
+		fragmentMap		1	textures/q4x_cryo/fluid01_local.tga	// the normal map for distortion
+	}
+	
+	{
+		blend diffuseMap	
+		map 					models/mapobjects/q4x/valk_makronball/makronsphere01
+		scale 1.3, 0.35
+		scroll time * 0.5, time * 0.5
+		rgb          (5 * sintable [.3 * time ]) +5 
+		
+	}
+
+	{
+		blend		add
+		texgen		reflect
+		cubeMap 	gfx/env/valk
+		
+	}
+
+	{
+		blend add
+		map 					models/mapobjects/q4x/valk_makronball/makronsphere01
+		scale 1.9, 1.2
+		scroll time * 0.05, time * 0.051
+			
+		
+	}
+	
+	{
+		blend blend
+		map 					textures/q4x_cryo/Fluid04.tga
+	}
+
+
+}
+
+models/mapobjects/q4x/mp_backpack/mp_backpack
+{
+		noselfshadow
+		//unsmoothedtangents
+				
+		diffusemap 		models/mapobjects/q4x/mp_backpack/mp_backpack_d.tga
+	   	bumpmap			models/mapobjects/q4x/mp_backpack/mp_backpack_local.tga
+		specularmap 	models/mapobjects/q4x/mp_backpack/mp_backpack_s.tga
+		{
+		blend add
+		map				models/mapobjects/q4x/mp_backpack/mp_backpack_add.tga
+
+		}
+	
+}
+
+models/mapobjects/q4x/prison/prison_cell
+{
+		noselfshadow
+		//unsmoothedtangents
+				
+		diffusemap 		models/mapobjects/q4x/prison/prison_cell_d.tga
+	   	bumpmap			addnormals (models/mapobjects/q4x/prison/prison_cell_local.tga, heightmap (models/mapobjects/q4x/prison/prison_cell_h.tga, 2))
+		specularmap 		models/mapobjects/q4x/prison/prison_cell_s.tga
+	{
+		if ( parm7 == 0 )
+		blend add
+		map models/mapobjects/q4x/prison/prison_cell_add.tga
+		rgb (0.5 * random [6 * time ]) + 0.5
+	}
+	
+	{
+		if ( parm7 == 0 )
+		blend 	add
+		map		models/mapobjects/q4x/prison/prison_cell_lock.tga
+		red		1
+		green	0.1
+		blue	0.1
+
+	}
+	{
+		if ( parm7 == 1 )
+		blend 	add
+		map		models/mapobjects/q4x/prison/prison_cell_lock.tga
+		red		0.6
+		green	1
+		blue	0.23
+	}
+	
+}
+
+models/mapobjects/q4x/prison/prison_camera
+{
+		noselfshadow
+		//unsmoothedtangents
+				
+		diffusemap 		models/mapobjects/q4x/prison/prison_camera_d.tga
+	   	bumpmap			models/mapobjects/q4x/prison/prison_camera_local.tga
+		specularmap 		models/mapobjects/q4x/prison/prison_camera_s.tga
+	{
+		blend add
+		map models/mapobjects/q4x/prison/prison_camera_add.tga
+		rgb (0.5 * random [6 * time ]) + 0.5
+	}
+}
+
+models/mapobjects/q4x/air_turret_rocketcannon/airturret_frame
+
+
+{
+		noselfshadow
+		unsmoothedtangents				
+		diffusemap 		models/mapobjects/q4x/air_turret_rocketcannon/airturret_frame_d.tga
+	   	bumpmap			models/mapobjects/q4x/air_turret_rocketcannon/airturret_frame_local.tga
+		specularmap 	models/mapobjects/q4x/air_turret_rocketcannon/airturret_frame_s.tga
+		
+		{
+		
+		blend add
+		map 			models/mapobjects/q4x/air_turret_rocketcannon/airturret_frame_add.tga
+		}
+	
+}
+
+
+models/mapobjects/q4x/air_turret_rocketcannon/airturret_barrel
+
+{
+		noselfshadow
+		unsmoothedtangents				
+		diffusemap 		models/mapobjects/q4x/air_turret_rocketcannon/airturret_barrel_d.tga
+	   	bumpmap			models/mapobjects/q4x/air_turret_rocketcannon/airturret_barrel_local.tga
+		specularmap 	models/mapobjects/q4x/air_turret_rocketcannon/airturret_barrel_s.tga
+	
+}
+
+
+
+models/mapobjects/q4x/air_turret_rocketcannon/airturret_console
+
+{
+		noselfshadow
+		unsmoothedtangents				
+		diffusemap 		models/mapobjects/q4x/air_turret_rocketcannon/airturret_console_d.tga
+	   	bumpmap			models/mapobjects/q4x/air_turret_rocketcannon/airturret_console_local.tga
+		specularmap 	models/mapobjects/q4x/air_turret_rocketcannon/airturret_console_s.tga
+		
+		
+		{
+		
+		blend add
+		map 			models/mapobjects/q4x/air_turret_rocketcannon/airturret_console_add.tga
+		}
+	
+}
+
+
+models/mapobjects/q4x/air_turret_rocketcannon/airturret_sidegui
+
+{
+		noselfshadow
+		unsmoothedtangents				
+		diffusemap 		models/mapobjects/q4x/air_turret_rocketcannon/airturret_sidegui_d.tga
+	   	bumpmap			models/mapobjects/q4x/air_turret_rocketcannon/airturret_sidegui_local.tga
+		specularmap 	models/mapobjects/q4x/air_turret_rocketcannon/airturret_sidegui_s.tga
+		
+		
+		{
+		
+		blend add
+		map 			models/mapobjects/q4x/air_turret_rocketcannon/airturret_sidegui_add.tga
+		//rgb             (.7 * sintable [.5 * time ]) +1
+		}
+	
+}
+
+models/mapobjects/q4x/air_turret_rocketcannon/airturret_glass
+{
+	noSelfShadow
+	noshadows
+	//twosided
+	translucent
+	glass
+	forceoverlays
+	sort decal
+	materialType glass
+
+	/*{
+		Program			heatHaze.vfp
+		vertexParm		0	time * 0 , time * 0
+		vertexParm		1	1
+		fragmentProgram	heatHaze.vfp
+		fragmentMap		0	_currentRender
+		fragmentMap		1	models/mapobjects/q4x/air_turret_rocketcannon/airturret_glass_local.tga
+	}*/
+	{
+		blend 	add
+		map 	models/mapobjects/q4x/air_turret_rocketcannon/airturret_glass_d.tga
+	}
+	/*{
+		blend 	add
+		map 	models/mapobjects/q4x/air_turret_rocketcannon/airturret_glass_add.tga
+		scroll time * 0, time * 0.05
+	}*/
+	//{
+		//blend		gl_dst_color, gl_one
+		//texgen		reflect
+		//cubeMap gfx/env/marhelmet
+	//}
+
+}
+   
+
+models/mapobjects/q4x/common_turret_strogg/common_turret_strogg01
+
+{
+		noselfshadow
+		//unsmoothedtangents				
+		diffusemap 		models/mapobjects/q4x/common_turret_strogg/common_turret_strogg01_d.tga
+	   	bumpmap			models/mapobjects/q4x/common_turret_strogg/common_turret_strogg01_local.tga
+		specularmap 	models/mapobjects/q4x/common_turret_strogg/common_turret_strogg01_s.tga
+	
+}
+
+models/mapobjects/q4x/common_turret_strogg/common_turret_strogg02
+
+{
+		noselfshadow
+		//translucent
+		//unsmoothedtangents	
+			
+		{
+		blend diffusemap
+		map 	models/mapobjects/q4x/common_turret_strogg/common_turret_strogg02_d.tga
+		alphatest	.5
+		}		
+	   	bumpmap			models/mapobjects/q4x/common_turret_strogg/common_turret_strogg02_local.tga
+		specularmap 	models/mapobjects/q4x/common_turret_strogg/common_turret_strogg02_s.tga
+	
+}
+
+models/mapobjects/q4x/common_turret_strogg/common_turret_strogg03
+
+{
+		noselfshadow
+		//unsmoothedtangents				
+		diffusemap 		models/mapobjects/q4x/common_turret_strogg/common_turret_strogg03_d.tga
+	   	bumpmap			models/mapobjects/q4x/common_turret_strogg/common_turret_strogg03_local.tga
+		specularmap 	models/mapobjects/q4x/common_turret_strogg/common_turret_strogg03_s.tga
+	
+}
+
+models/mapobjects/q4x/common_turret_strogg/common_turret_strogg04
+
+{
+		noselfshadow
+		//unsmoothedtangents				
+		diffusemap 		models/mapobjects/q4x/common_turret_strogg/common_turret_strogg04_d.tga
+	   	bumpmap			models/mapobjects/q4x/common_turret_strogg/common_turret_strogg04_local.tga
+		specularmap 	models/mapobjects/q4x/common_turret_strogg/common_turret_strogg04_s.tga
+	
+}
+
+textures/rock/q4x_sand01_to_q4x_sharprock01_brown
+{
+        materialType rock  
+        noselfshadow
+	{
+		blend		bumpmap
+		map			textures/rock/q4x_sand01_local.tga
+		scale 		2, 2
+	}
+	{
+		blend 		diffusemap
+		map			textures/rock/q4x_sand01_d.tga
+		scale 		3, 3
+		vertexColor
+	}
+	{
+		blend 		specularmap
+		map			textures/rock/q4x_sand01_s.tga
+		scale 		3, 3
+		vertexColor
+	}
+	{
+		blend		bumpmap
+		map			textures/rock/q4x_sharprock_local.tga
+		scale 		1.5, 1.5
+	}
+	{
+		blend		diffusemap
+		map			textures/rock/q4x_sharprock01_brown_d.tga
+		scale 		2, 2
+		inverseVertexColor
+	}
+	{
+		blend		diffusemap
+		map			textures/rock/q4x_sharprock01_brown_s.tga
+		scale 		1, 1
+		inverseVertexColor
+	}
+}
+
+textures/rock/q4x_sand01_to_q4x_skysand2
+{
+        materialType rock    
+        noselfshadow
+	{
+		blend		bumpmap
+		map			textures/rock/q4x_sharprock_local.tga
+		scale 		1.0, 1.0
+	}
+	{
+		blend		diffusemap
+		map			textures/rock/q4x_sharprock01_brown_d.tga
+		scale 		1.0, 1.0
+		vertexColor
+	}
+	{
+		blend 		bumpmap
+		map			textures/rock/q4x_skysand1_local.tga
+		scale 		0.5, 0.5
+	}
+	{
+		blend		diffusemap
+		map			textures/rock/q4x_skysand2_d.tga
+		scale 		0.75, 0.75
+		inverseVertexColor
+	}
+}
+
+textures/rock/q4x_sand01_to_q4x_sharprock01_brown_shadow
+{
+        materialType rock  
+        //noselfshadow
+	{
+		blend		bumpmap
+		map			textures/rock/q4x_sand01_local.tga
+		scale 		2, 2
+	}
+	{
+		blend 		diffusemap
+		map			textures/rock/q4x_sand01_d.tga
+		scale 		3, 3
+		vertexColor
+	}
+	{
+		blend 		specularmap
+		map			textures/rock/q4x_sand01_s.tga
+		scale 		3, 3
+		vertexColor
+	}
+	{
+		blend		bumpmap
+		map			textures/rock/q4x_sharprock_local.tga
+		scale 		1.5, 1.5
+	}
+	{
+		blend		diffusemap
+		map			textures/rock/q4x_sharprock01_brown_d.tga
+		scale 		2, 2
+		inverseVertexColor
+	}
+	{
+		blend		diffusemap
+		map			textures/rock/q4x_sharprock01_brown_s.tga
+		scale 		1, 1
+		inverseVertexColor
+	}
+}
+
+textures/rock/q4x_sand01_to_q4x_skysand2_race_shadow
+{
+        materialType rock    
+        //noselfshadow
+	{
+		blend		bumpmap
+		map			textures/rock/q4x_sand01_local.tga
+		scale 		2, 2
+	}
+	{
+		blend 		diffusemap
+		map			textures/rock/q4x_sand01_d.tga
+		scale 		3, 3
+		vertexColor
+	}
+	{
+		blend 		specularmap
+		map			textures/rock/q4x_sand01_s.tga
+		scale 		3, 3
+		vertexColor
+	}
+	{
+		blend 		bumpmap
+		map			textures/rock/q4x_skysand1_local.tga
+		scale 		0.5, 0.5
+	}
+	{
+		blend		diffusemap
+		map			textures/rock/q4x_skysand2_d.tga
+		scale 		0.75, 0.75
+		inverseVertexColor
+	}
+}
+
+textures/rock/q4x_sand01_to_q4x_skysand2_race
+{
+        materialType rock    
+        noselfshadow
+	{
+		blend		bumpmap
+		map			textures/rock/q4x_sand01_local.tga
+		scale 		2, 2
+	}
+	{
+		blend 		diffusemap
+		map			textures/rock/q4x_sand01_d.tga
+		scale 		3, 3
+		vertexColor
+	}
+	{
+		blend 		specularmap
+		map			textures/rock/q4x_sand01_s.tga
+		scale 		3, 3
+		vertexColor
+	}
+	{
+		blend 		bumpmap
+		map			textures/rock/q4x_skysand1_local.tga
+		scale 		0.5, 0.5
+	}
+	{
+		blend		diffusemap
+		map			textures/rock/q4x_skysand2_d.tga
+		scale 		0.75, 0.75
+		inverseVertexColor
+	}
+}
+
+models/mapobjects/strogg/console/generic/set1_c
+{
+      	noselfShadow
+	unsmoothedtangents
+	
+
+	bumpmap			addnormals (models/mapobjects/strogg/console/generic/set1_c_local.tga, heightmap (models/mapobjects/strogg/console/generic/set1_c_h.tga, 2))
+	diffusemap		models/mapobjects/strogg/console/generic/set1_c_d.tga
+	specularmap		models/mapobjects/strogg/console/generic/set1_c_s.tga
+
+}
+
+textures/rock/q4x_skysand2_race_to_q4x_trian_specks
+{
+        materialType rock    
+        noselfshadow
+	{
+		blend		bumpmap
+		map			textures/rock/q4x_skysand1_local.tga
+		scale 		0.5, 0.5
+	}
+	{
+		blend 		diffusemap
+		map			textures/rock/q4x_skysand2_d.tga
+		scale 		0.75, 0.75
+		vertexColor
+	}
+	{
+		blend 		bumpmap
+		map			textures/rock/q4x_trian_specks_local.tga
+		scale 		1, 1
+	}
+	{
+		blend		diffusemap
+		map			textures/rock/q4x_trian_specks_d.tga
+		scale 		2, 2
+		inverseVertexColor
+	}
+	{
+		blend 		specularmap
+		map			textures/rock/q4x_trian_specks_s.tga
+		scale 		2, 2
+		inversevertexColor
+	}
+}
+
+textures/rock/q4x_trian_crystals
+{
+	noshadows
+	//translucent
+	twosided
+//	materialType glass
+	
+	{
+		blend diffuseMap
+		map textures/rock/q4x_trian_crystals_d.tga
+		scale 1, 1
+	}
+
+	//{
+		//Program			heatHaze.vfp
+		//vertexParm		0	time * 0 , time * 0						// texture scrolling
+		//vertexParm		1	1										// magnitude of the distortion
+		//fragmentProgram	heatHaze.vfp
+		//fragmentMap		0	_currentRender
+		//fragmentMap		1	textures/rock/q4x_trian_crystals_local.tga	// the normal map for distortion
+	//}
+	{
+		blend 		specularmap
+		map			textures/rock/q4x_trian_specks_s.tga
+		scale 		1, 1
+	}
+
+	{
+		blend add
+		map textures/rock/q4x_trian_crystals_d.tga
+		rgb 	0.5	//	(.2 * sinTable [2 * time ]) + 1
+		scale 1, 1
+	}
+}

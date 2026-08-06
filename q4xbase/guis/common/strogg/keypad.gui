@@ -1,0 +1,1717 @@
+windowDef Desktop
+{
+	rect	0,0,640,480
+	backcolor	0,0,0,1
+	visible	1
+	definevec4	"white"	1,1,1,1
+	definevec4	"white_0"	1,1,1,0
+	definevec4	"white_7"	1,1,1,0.7
+	definevec4	"black_0"	0,0,0,0
+	definevec4	"black_5"	0,0,0,.65
+	definevec4	"red1"	0.737,0.211,0.152,1
+	definevec4	"red1_75"	0.737,0.211,0.152,0.75
+	definevec4	"red1_5"	0.737,0.211,0.152,.5
+	definevec4	"red1_4"	0.737,0.211,0.152,.4
+	definevec4	"red1_3"	0.737,0.211,0.152,.3
+	definevec4	"red1_2"	0.737,0.211,0.152,.2
+	definevec4	"warning_red"	0.737,0.211,0.152,1
+	definevec4	"denied_red"	1,0.2,0.1,1
+	definevec4	"secure"	0.976,0.741,0.329,0.75
+	definevec4	"secure_3"	0.976,0.741,0.329,0.3
+	definevec4	"red2_7"	0.749,0.329,0.149,0.7
+	definevec4	"red2_3"	0.749,0.329,0.149,0.3
+	definevec4	"red2"	0.954,0.341,0.121,1
+	definevec4	"red_indent"	0.980,0.623,0.411,0.25
+	definevec4	"red3_25"	0.980,0.623,0.411,0.25
+	definevec4	"orange1_7"	0.878,0.474,0.113,0.7
+	definevec4	"orange1_5"	0.878,0.474,0.113,0.5
+	definevec4	"green1"	0.0862,0.462,0.313,1
+	definevec4	"green1_85"	0.0862,0.462,0.313,.85
+	definevec4	"green1_75"	0.0862,0.462,0.313,.75
+	definevec4	"green1_65"	0.0862,0.462,0.313,.65
+	definevec4	"green1_6"	0.0862,0.462,0.313,.6
+	definevec4	"green1_5"	0.0862,0.462,0.313,.5
+	definevec4	"green1_45"	0.0862,0.462,0.313,.45
+	definevec4	"green1_4"	0.0862,0.462,0.313,.4
+	definevec4	"green1_3"	0.0862,0.462,0.313,.3
+	definevec4	"green1_2"	0.0862,0.462,0.313,.2
+	definevec4	"granted"	0.686,0.976,0.592,0.75
+	definevec4	"granted_4"	0.686,0.976,0.592,0.4
+	definevec4	"green2_7"	0.0901,0.458,0.247,0.7
+	definevec4	"green_indent"	0.474,0.980,0.403,0.25
+	definevec4	"green3_5"	0.317,0.635,0.372,0.5
+	definevec4	"back_red"	0.0392,0.0196,0.0196,1
+	float	"onkey"	0
+	float	"key1"	0
+	float	"key2"	0
+	float	"key3"	0
+	float	"key4"	0
+	float	"key5"	0
+	windowDef p_rear
+	{
+		rect	0,0,640,480
+		visible	1
+		windowDef top_bgline1
+		{
+			rect	29,38,582,147
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_bgline"
+			matcolor	0.737,0.211,0.152,1
+		}
+		windowDef top_bgline2
+		{
+			rect	56,68,527,142
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_bgline"
+			matcolor	0.737,0.211,0.152,1
+		}
+		windowDef top_bgline3
+		{
+			rect	91,98,462,128
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_bgline"
+			matcolor	0.737,0.211,0.152,1
+		}
+		windowDef btm_bgline1
+		{
+			rect	29,298,582,147
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_bgline"
+			matcolor	0.737,0.211,0.152,1
+			matscaley	-1
+		}
+		windowDef btm_bgline2
+		{
+			rect	56,274,527,142
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_bgline"
+			matcolor	0.737,0.211,0.152,1
+			matscaley	-1
+		}
+		windowDef btm_bgline3
+		{
+			rect	91,258,462,128
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_bgline"
+			matcolor	0.737,0.211,0.152,1
+			matscaley	-1
+		}
+		windowDef inner_ring
+		{
+			rect	275,95,290,290
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_ring"
+			matcolor	0.733,0.207,0.149,0.4
+			rotate	-.02*time
+		}
+		windowDef outer_ring
+		{
+			rect	240,61,360,360
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_ring"
+			matcolor	0.737,0.211,0.152,0.4
+			rotate	.01*time
+		}
+		windowDef bgcirc
+		{
+			rect	204,23,430,430
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_bgcirc"
+			matcolor	0.737,0.211,0.152,0.75
+		}
+		windowDef top_bgline1_g
+		{
+			rect	29,38,582,147
+			visible	0
+			background	"gfx/guis/doors/strogg/lockpad_bgline"
+			matcolor	0.0862,0.462,0.313,1
+		}
+		windowDef top_bgline2_g
+		{
+			rect	56,68,527,142
+			visible	0
+			background	"gfx/guis/doors/strogg/lockpad_bgline"
+			matcolor	0.0862,0.462,0.313,1
+		}
+		windowDef top_bgline3_g
+		{
+			rect	91,98,462,128
+			visible	0
+			background	"gfx/guis/doors/strogg/lockpad_bgline"
+			matcolor	0.0862,0.462,0.313,1
+		}
+		windowDef btm_bgline1_g
+		{
+			rect	29,298,582,147
+			visible	0
+			background	"gfx/guis/doors/strogg/lockpad_bgline"
+			matcolor	0.0862,0.462,0.313,1
+			matscaley	-1
+		}
+		windowDef btm_bgline2_g
+		{
+			rect	56,274,527,142
+			visible	0
+			background	"gfx/guis/doors/strogg/lockpad_bgline"
+			matcolor	0.0862,0.462,0.313,1
+			matscaley	-1
+		}
+		windowDef btm_bgline3_g
+		{
+			rect	91,258,462,128
+			visible	0
+			background	"gfx/guis/doors/strogg/lockpad_bgline"
+			matcolor	0.0862,0.462,0.313,1
+			matscaley	-1
+		}
+	}
+	windowDef p_mainbg2
+	{
+		rect	-5,8,640,480
+		visible	1
+		windowDef tr_corner1
+		{
+			rect	517,3,115,82
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_corner"
+			matcolor	0.737,0.211,0.152,.3
+		}
+		windowDef tl_corner1
+		{
+			rect	8,3,115,82
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_corner"
+			matcolor	0.737,0.211,0.152,.3
+			matscalex	-1
+		}
+		windowDef br_corner1
+		{
+			rect	517,396,115,82
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_corner"
+			matcolor	0.737,0.211,0.152,.3
+			matscaley	-1
+		}
+		windowDef bl_corner1
+		{
+			rect	8,396,115,82
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_corner"
+			matcolor	0.737,0.211,0.152,.3
+			matscalex	-1
+			matscaley	-1
+		}
+		windowDef tr_edge1
+		{
+			rect	320,8,318,161
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_edge"
+			matcolor	0.737,0.211,0.152,0.5
+		}
+		windowDef tl_edge1
+		{
+			rect	2,8,318,161
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_edge"
+			matcolor	0.737,0.211,0.152,.5
+			matscalex	-1
+		}
+		windowDef br_edge1
+		{
+			rect	320,311,318,161
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_edge"
+			matcolor	0.737,0.211,0.152,.5
+			matscaley	-1
+		}
+		windowDef bl_edge1
+		{
+			rect	2,311,318,161
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_edge"
+			matcolor	0.737,0.211,0.152,.5
+			matscalex	-1
+			matscaley	-1
+		}
+		windowDef t_cstrip1
+		{
+			rect	100,34,298,140
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_strip"
+			matcolor	0.737,0.211,0.152,.2
+		}
+		windowDef b_cstrip1
+		{
+			rect	100,305,298,140
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_strip"
+			matcolor	0.737,0.211,0.152,.2
+			matscaley	-1
+		}
+	}
+	windowDef p_mainbg
+	{
+		rect	0,0,640,480
+		visible	1
+		windowDef tr_corner
+		{
+			rect	517,3,115,82
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_corner"
+			matcolor	0.737,0.211,0.152,.5
+		}
+		windowDef tl_corner
+		{
+			rect	8,3,115,82
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_corner"
+			matcolor	0.737,0.211,0.152,.5
+			matscalex	-1
+		}
+		windowDef br_corner
+		{
+			rect	517,396,115,82
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_corner"
+			matcolor	0.737,0.211,0.152,.5
+			matscaley	-1
+		}
+		windowDef bl_corner
+		{
+			rect	8,396,115,82
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_corner"
+			matcolor	0.737,0.211,0.152,.5
+			matscalex	-1
+			matscaley	-1
+		}
+		windowDef tr_edge
+		{
+			rect	320,8,318,161
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_edge"
+			matcolor	0.737,0.211,0.152,0.75
+		}
+		windowDef tl_edge
+		{
+			rect	2,8,318,161
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_edge"
+			matcolor	0.737,0.211,0.152,.75
+			matscalex	-1
+		}
+		windowDef br_edge
+		{
+			rect	320,311,318,161
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_edge"
+			matcolor	0.737,0.211,0.152,.75
+			matscaley	-1
+		}
+		windowDef bl_edge
+		{
+			rect	2,311,318,161
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_edge"
+			matcolor	0.737,0.211,0.152,.75
+			matscalex	-1
+			matscaley	-1
+		}
+		windowDef tr_edge_g
+		{
+			rect	320,8,318,161
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_edge_g"
+			matcolor	1,0.827,0.509,0.5*guitable_8_5[time*0.005]
+		}
+		windowDef tl_edge_g
+		{
+			rect	2,8,318,161
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_edge_g"
+			matcolor	1,0.827,0.509,0.5*guitable_8_5[time*0.005]
+			matscalex	-1
+		}
+		windowDef br_edge_g
+		{
+			rect	320,311,318,161
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_edge_g"
+			matcolor	1,0.827,0.509,0.5*guitable_8_5[time*0.005]
+			matscaley	-1
+		}
+		windowDef bl_edge_g
+		{
+			rect	2,311,318,161
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_edge_g"
+			matcolor	1,0.827,0.509,0.5*guitable_8_5[time*0.005]
+			matscalex	-1
+			matscaley	-1
+		}
+		windowDef t_cstrip
+		{
+			rect	96,34,298,140
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_strip"
+			matcolor	0.737,0.211,0.152,.4
+		}
+		windowDef b_cstrip
+		{
+			rect	96,305,298,140
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_strip"
+			matcolor	0.737,0.211,0.152,.4
+			matscaley	-1
+		}
+	}
+	windowDef p_btns
+	{
+		rect	0,0,640,480
+		visible	1
+		windowDef button_0
+		{
+			rect	257,94,103,89
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_button"
+			matcolor	0.749,0.329,0.149,0.7
+			rotate	120
+		}
+		windowDef button_1
+		{
+			rect	322,53,103,89
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_button"
+			matcolor	0.749,0.329,0.149,0.7
+			rotate	90
+		}
+		windowDef button_2
+		{
+			rect	399,49,103,89
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_button"
+			matcolor	0.749,0.329,0.149,0.7
+			rotate	60
+		}
+		windowDef button_3
+		{
+			rect	468,85,103,89
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_button"
+			matcolor	0.749,0.329,0.149,0.7
+			rotate	30
+		}
+		windowDef button_4
+		{
+			rect	510,149,103,89
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_button"
+			matcolor	0.749,0.329,0.149,0.7
+		}
+		windowDef button_5
+		{
+			rect	510,242,103,89
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_button"
+			matcolor	0.749,0.329,0.149,0.7
+			matscaley	-1
+		}
+		windowDef button_6
+		{
+			rect	468,307,103,89
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_button"
+			matcolor	0.749,0.329,0.149,0.7
+			matscaley	-1
+			rotate	330
+		}
+		windowDef button_7
+		{
+			rect	398,343,103,89
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_button"
+			matcolor	0.749,0.329,0.149,0.7
+			matscaley	-1
+			rotate	300
+		}
+		windowDef button_8
+		{
+			rect	322,338,103,89
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_button"
+			matcolor	0.749,0.329,0.149,0.7
+			matscaley	-1
+			rotate	270
+		}
+		windowDef button_9
+		{
+			rect	257,297,103,89
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_button"
+			matcolor	0.749,0.329,0.149,0.7
+			matscaley	-1
+			rotate	240
+		}
+		windowDef indent_0
+		{
+			rect	293,111,48,49
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_divot"
+			matcolor	0.980,0.623,0.411,0.25
+		}
+		windowDef indent_1
+		{
+			rect	358,72,48,49
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_divot"
+			matcolor	0.980,0.623,0.411,0.25
+		}
+		windowDef indent_2
+		{
+			rect	431,72,48,49
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_divot"
+			matcolor	0.980,0.623,0.411,0.25
+		}
+		windowDef indent_3
+		{
+			rect	498,112,48,49
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_divot"
+			matcolor	0.980,0.623,0.411,0.25
+		}
+		windowDef indent_4
+		{
+			rect	537,178,48,49
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_divot"
+			matcolor	0.980,0.623,0.411,0.25
+		}
+		windowDef indent_5
+		{
+			rect	537,252,48,49
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_divot"
+			matcolor	0.980,0.623,0.411,0.25
+		}
+		windowDef indent_6
+		{
+			rect	498,318,48,49
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_divot"
+			matcolor	0.980,0.623,0.411,0.25
+		}
+		windowDef indent_7
+		{
+			rect	431,357,48,49
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_divot"
+			matcolor	0.980,0.623,0.411,0.25
+		}
+		windowDef indent_8
+		{
+			rect	358,356,48,49
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_divot"
+			matcolor	0.980,0.623,0.411,0.25
+		}
+		windowDef indent_9
+		{
+			rect	292,319,48,49
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_divot"
+			matcolor	0.980,0.623,0.411,0.25
+		}
+		windowDef number_0
+		{
+			rect	297,121,41,34
+			visible	1
+			forecolor	1,1,1,0.686
+			text	"0"
+			textscale	0.7
+			font	"fonts/r_strogg"
+			textalign	1
+			textaligny	3
+		}
+		windowDef number_1
+		{
+			rect	360,82,41,34
+			visible	1
+			forecolor	1,1,1,0.694
+			text	"1"
+			textscale	0.7
+			font	"fonts/r_strogg"
+			textaligny	3
+			textalign	1
+		}
+		windowDef number_2
+		{
+			rect	435,81,41,34
+			visible	1
+			forecolor	1,1,1,0.698
+			text	"2"
+			textscale	0.7
+			font	"fonts/r_strogg"
+			textalign	1
+			textaligny	3
+		}
+		windowDef number_3
+		{
+			rect	501,121,41,34
+			visible	1
+			forecolor	1,1,1,0.698
+			text	"3"
+			textscale	0.7
+			font	"fonts/r_strogg"
+			textalign	1
+			textaligny	3
+		}
+		windowDef number_4
+		{
+			rect	541,187,41,34
+			visible	1
+			forecolor	1,1,1,0.698
+			text	"4"
+			textscale	0.7
+			font	"fonts/r_strogg"
+			textalign	1
+			textaligny	3
+		}
+		windowDef number_5
+		{
+			rect	541,261,41,34
+			visible	1
+			forecolor	1,1,1,.7
+			text	"5"
+			textscale	0.7
+			font	"fonts/r_strogg"
+			textalign	1
+			textaligny	3
+		}
+		windowDef number_6
+		{
+			rect	501,328,41,34
+			visible	1
+			forecolor	1,1,1,0.698
+			text	"6"
+			textscale	0.7
+			font	"fonts/r_strogg"
+			textalign	1
+			textaligny	3
+		}
+		windowDef number_7
+		{
+			rect	434,368,41,34
+			visible	1
+			forecolor	1,1,1,0.698
+			text	"7"
+			textscale	0.7
+			font	"fonts/r_strogg"
+			textalign	1
+			textaligny	3
+		}
+		windowDef number_8
+		{
+			rect	362,366,41,34
+			visible	1
+			forecolor	1,1,1,0.698
+			text	"8"
+			textscale	0.7
+			font	"fonts/r_strogg"
+			textalign	1
+			textaligny	3
+		}
+		windowDef number_9
+		{
+			rect	295,329,41,34
+			visible	1
+			forecolor	1,1,1,0.698
+			text	"9"
+			textscale	0.7
+			font	"fonts/r_strogg"
+			textalign	1
+			textaligny	3
+		}
+	}
+	windowDef p_keys
+	{
+		rect	0,0,640,480
+		visible	1
+		windowDef key_btn_1
+		{
+			rect	67,117,83,54
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_button2"
+			matcolor	0.878,0.474,0.113,0.5
+			rotate	318
+		}
+		windowDef key_btn_2
+		{
+			rect	40,161,84,55
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_button2"
+			matcolor	0.878,0.474,0.113,0.5
+			rotate	339
+		}
+		windowDef key_btn_3
+		{
+			rect	32,212,83,54
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_button2"
+			matcolor	0.878,0.474,0.113,0.5
+		}
+		windowDef key_btn_4
+		{
+			rect	40,264,83,54
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_button2"
+			matcolor	0.878,0.474,0.113,0.5
+			rotate	19
+		}
+		windowDef key_btn_5
+		{
+			rect	67,309,83,54
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_button2"
+			matcolor	0.878,0.474,0.113,0.5
+			rotate	40
+		}
+		windowDef key_1
+		{
+			rect	95,132,25,30
+			visible	8
+			forecolor	1,1,1,0.686
+			text	""
+			textscale	0.55
+			font	"fonts/r_strogg"
+			textalign	1
+		}
+		windowDef key_2
+		{
+			rect	67,178,25,30
+			visible	1
+			forecolor	1,1,1,0.690
+			text	""
+			textscale	0.55
+			font	"fonts/r_strogg"
+			textalign	1
+		}
+		windowDef key_3
+		{
+			rect	60,228,25,30
+			visible	1
+			forecolor	1,1,1,0.690
+			text	""
+			textscale	0.55
+			font	"fonts/r_strogg"
+			textalign	1
+		}
+		windowDef key_4
+		{
+			rect	67,281,25,30
+			visible	1
+			forecolor	1,1,1,0.690
+			text	""
+			textscale	0.55
+			font	"fonts/r_strogg"
+			textalign	1
+		}
+		windowDef key_5
+		{
+			rect	95,326,25,30
+			visible	1
+			forecolor	1,1,1,0.690
+			text	""
+			textscale	0.55
+			font	"fonts/r_strogg"
+			textalign	1
+		}
+	}
+	windowDef p_warning
+	{
+		rect	0,0,640,480
+		visible	1
+		windowDef warningblack
+		{
+			rect	0,0,640,480
+			visible	1
+			backcolor	0,0,0,0
+		}
+		windowDef warning
+		{
+			rect	125,183,383,112
+			visible	1
+			background	"gfx/guis/doors/strogg/lockpad_warning"
+			matcolor	0.737,0.211,0.152,1
+		}
+		windowDef secure
+		{
+			rect	151,226,332,30
+			visible	1
+			forecolor	0.972,0.780,0.203,.8
+			text	"SECURE AREA"
+			textscale	0.65
+			textalign	1
+			font	"fonts/r_strogg"
+		}
+		windowDef denied
+		{
+			rect	151,226,332,30
+			visible	0
+			forecolor	0.972,0.780,0.203,.8
+			text	"ACCESS DENIED"
+			textscale	0.65
+			font	"fonts/r_strogg"
+			textalign	1
+
+			onTime 0 {
+				transition "matcolor" "$desktop::secure" "$desktop::secure_3" "200" ;
+			}
+
+			onTime 200 {
+				transition "matcolor" "$desktop::secure_3" "$desktop::secure" "200" ;
+			}
+
+			onTime 400 {
+				resettime "0" ;
+			}
+
+		}
+		windowDef granted
+		{
+			rect	151,226,332,30
+			visible	0
+			forecolor	0.529,0.988,0.396,0.8
+			text	"ACCESS GRANTED"
+			textscale	0.65
+			textalign	1
+			font	"fonts/r_strogg"
+
+			onTime 0 {
+				transition "matcolor" "$desktop::granted" "$desktop::granted_4" "500" ;
+			}
+
+			onTime 500 {
+				transition "matcolor" "$desktop::granted_4" "$desktop::granted" "500" ;
+			}
+
+			onTime 1000 {
+				resettime "0" ;
+			}
+
+		}
+		windowDef d_warning
+		{
+			rect	25,156,590,168
+			visible	0
+			background	"gfx/guis/doors/strogg/lockpad_warning"
+			matcolor	0.737,0.211,0.152,1
+		}
+		windowDef d_denied
+		{
+			rect	82,209,471,64
+			visible	0
+			background	"gfx/guis/doors/strogg/lockpad_denied"
+			matcolor	0.972,0.737,0.325,0.749
+		}
+	}
+	windowDef anim_open
+	{
+		rect	0,0,640,480
+		visible	1
+		notime	1
+	}
+	windowDef anim_granted
+	{
+		rect	0,0,640,480
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "p_b::visible" "0" ;
+			transition "warning::matcolor" "$desktop::warning_red" "$desktop::green1" "250" ;	
+			transition "gradient::matcolor" "$desktop::red1_2" "$desktop::green1_2" "750" ;		
+		}
+
+		onTime 150 {
+			set "secure::visible" "0" ;
+			set "denied::visible" "0" ;
+			set "granted::visible" "1" ;
+		}
+
+		onTime 250 {
+			transition "inner_ring::matcolor" "$desktop::red1_4" "$desktop::green1_5" "250" ;	
+			transition "outer_ring::matcolor" "$desktop::red1_4" "$desktop::green1_5" "250" ;	
+			transition "bgcirc::matcolor" "$desktop::red1_75" "$desktop::green1_75" "250" ;	
+		}
+
+		onTime 500 {
+			transition "button_0::matcolor" "$desktop::red2_7" "$desktop::green2_7" "250" ;
+			transition "button_1::matcolor" "$desktop::red2_7" "$desktop::green2_7" "250" ;
+			transition "button_2::matcolor" "$desktop::red2_7" "$desktop::green2_7" "250" ;
+			transition "button_3::matcolor" "$desktop::red2_7" "$desktop::green2_7" "250" ;
+			transition "button_4::matcolor" "$desktop::red2_7" "$desktop::green2_7" "250" ;
+			transition "button_5::matcolor" "$desktop::red2_7" "$desktop::green2_7" "250" ;
+			transition "button_6::matcolor" "$desktop::red2_7" "$desktop::green2_7" "250" ;
+			transition "button_7::matcolor" "$desktop::red2_7" "$desktop::green2_7" "250" ;
+			transition "button_8::matcolor" "$desktop::red2_7" "$desktop::green2_7" "250" ;
+			transition "button_9::matcolor" "$desktop::red2_7" "$desktop::green2_7" "250" ;
+			
+			transition "indent_0::matcolor" "$desktop::red_indent" "$desktop::green_indent" "250" ;
+			transition "indent_1::matcolor" "$desktop::red_indent" "$desktop::green_indent" "250" ;
+			transition "indent_2::matcolor" "$desktop::red_indent" "$desktop::green_indent" "250" ;
+			transition "indent_3::matcolor" "$desktop::red_indent" "$desktop::green_indent" "250" ;
+			transition "indent_4::matcolor" "$desktop::red_indent" "$desktop::green_indent" "250" ;
+			transition "indent_5::matcolor" "$desktop::red_indent" "$desktop::green_indent" "250" ;
+			transition "indent_6::matcolor" "$desktop::red_indent" "$desktop::green_indent" "250" ;
+			transition "indent_7::matcolor" "$desktop::red_indent" "$desktop::green_indent" "250" ;
+			transition "indent_8::matcolor" "$desktop::red_indent" "$desktop::green_indent" "250" ;
+			transition "indent_9::matcolor" "$desktop::red_indent" "$desktop::green_indent" "250" ;
+			
+			transition "key_btn_1::matcolor" "$desktop::orange1_7" "$desktop::green3_5" "250" ;
+			transition "key_btn_2::matcolor" "$desktop::orange1_7" "$desktop::green3_5" "250" ;
+			transition "key_btn_3::matcolor" "$desktop::orange1_7" "$desktop::green3_5" "250" ;
+			transition "key_btn_4::matcolor" "$desktop::orange1_7" "$desktop::green3_5" "250" ;
+			transition "key_btn_5::matcolor" "$desktop::orange1_7" "$desktop::green3_5" "250" ;
+			
+			transition "t_cstrip::matcolor" "$desktop::red1_4" "$desktop::green1_45" "250" ;
+			transition "b_cstrip::matcolor" "$desktop::red1_4" "$desktop::green1_45" "250" ;
+			transition "t_cstrip1::matcolor" "$desktop::red1_2" "$desktop::green1_3" "250" ;
+			transition "b_cstrip1::matcolor" "$desktop::red1_2" "$desktop::green1_3" "250" ;
+		}
+
+		onTime 650 {
+			set "top_bgline1::visible" "0" ;
+			set "top_bgline2::visible" "0" ;
+			set "top_bgline3::visible" "0" ;
+			set "btm_bgline1::visible" "0" ;
+			set "btm_bgline2::visible" "0" ;
+			set "btm_bgline3::visible" "0" ;
+			
+			set "top_bgline1_g::visible" "1" ;
+			set "top_bgline2_g::visible" "1" ;
+			set "top_bgline3_g::visible" "1" ;
+			set "btm_bgline1_g::visible" "1" ;
+			set "btm_bgline2_g::visible" "1" ;
+			set "btm_bgline3_g::visible" "1" ;
+		}
+
+		onTime 750 {
+			transition "tr_edge::matcolor" "$desktop::red1_75" "$desktop::green1_85" "250" ;
+			transition "br_edge::matcolor" "$desktop::red1_75" "$desktop::green1_85" "250" ;
+			transition "tl_edge::matcolor" "$desktop::red1_75" "$desktop::green1_85" "250" ;
+			transition "bl_edge::matcolor" "$desktop::red1_75" "$desktop::green1_85" "250" ;
+			transition "tr_edge1::matcolor" "$desktop::red1_5" "$desktop::green1_6" "250" ;
+			transition "br_edge1::matcolor" "$desktop::red1_5" "$desktop::green1_6" "250" ;
+			transition "tl_edge1::matcolor" "$desktop::red1_5" "$desktop::green1_6" "250" ;
+			transition "bl_edge1::matcolor" "$desktop::red1_5" "$desktop::green1_6" "250" ;
+		}
+
+		onTime 1000 {
+			transition "tr_corner::matcolor" "$desktop::red1_5" "$desktop::green1_65" "250" ;
+			transition "br_corner::matcolor" "$desktop::red1_5" "$desktop::green1_65" "250" ;
+			transition "tl_corner::matcolor" "$desktop::red1_5" "$desktop::green1_65" "250" ;
+			transition "bl_corner::matcolor" "$desktop::red1_5" "$desktop::green1_65" "250" ;
+			transition "tr_corner1::matcolor" "$desktop::red1_3" "$desktop::green1_4" "250" ;
+			transition "br_corner1::matcolor" "$desktop::red1_3" "$desktop::green1_4" "250" ;
+			transition "tl_corner1::matcolor" "$desktop::red1_3" "$desktop::green1_4" "250" ;
+			transition "bl_corner1::matcolor" "$desktop::red1_3" "$desktop::green1_4" "250" ;
+		}
+
+	}
+	windowDef anim_bglines
+	{
+		rect	0,0,640,480
+		visible	1
+
+		onTime 0 {
+			transition "top_bgline3::matcolor" "$desktop::red1" "$desktop::red1_3" "250" ;
+			transition "btm_bgline3::matcolor" "$desktop::red1" "$desktop::red1_3" "250" ;
+		}
+
+		onTime 250 {
+			transition "top_bgline2::matcolor" "$desktop::red1" "$desktop::red1_3" "250" ;
+			transition "btm_bgline2::matcolor" "$desktop::red1" "$desktop::red1_3" "250" ;
+		}
+
+		onTime 500 {
+			transition "top_bgline3::matcolor" "$desktop::red1_3" "$desktop::red1" "250" ;
+			transition "top_bgline1::matcolor" "$desktop::red1" "$desktop::red1_3" "250" ;
+			transition "btm_bgline3::matcolor" "$desktop::red1_3" "$desktop::red1" "250" ;
+			transition "btm_bgline1::matcolor" "$desktop::red1" "$desktop::red1_3" "250" ;
+		}
+
+		onTime 750 {
+			transition "top_bgline2::matcolor" "$desktop::red1_3" "$desktop::red1" "250" ;
+			transition "btm_bgline2::matcolor" "$desktop::red1_3" "$desktop::red1" "250" ;
+		}
+
+		onTime 1000 {
+			transition "top_bgline1::matcolor" "$desktop::red1_3" "$desktop::red1" "250" ;
+			transition "btm_bgline1::matcolor" "$desktop::red1_3" "$desktop::red1" "250" ;
+			resettime "0" ;
+		}
+
+	}
+	windowDef anim_bglines_g
+	{
+		rect	0,0,640,480
+		visible	1
+
+		onTime 0 {
+			transition "top_bgline3_g::matcolor" "$desktop::green1" "$desktop::green1_4" "250" ;
+			transition "btm_bgline3_g::matcolor" "$desktop::green1" "$desktop::green1_4" "250" ;
+		}
+
+		onTime 250 {
+			transition "top_bgline2_g::matcolor" "$desktop::green1" "$desktop::green1_4" "250" ;
+			transition "btm_bgline2_g::matcolor" "$desktop::green1" "$desktop::green1_4" "250" ;
+		}
+
+		onTime 500 {
+			transition "top_bgline3_g::matcolor" "$desktop::green1_4" "$desktop::green1" "250" ;
+			transition "top_bgline1_g::matcolor" "$desktop::green1" "$desktop::green1_4" "250" ;
+			transition "btm_bgline3_g::matcolor" "$desktop::green1_4" "$desktop::green1" "250" ;
+			transition "btm_bgline1_g::matcolor" "$desktop::green1" "$desktop::green1_4" "250" ;
+		}
+
+		onTime 750 {
+			transition "top_bgline2_g::matcolor" "$desktop::green1_4" "$desktop::green1" "250" ;
+			transition "btm_bgline2_g::matcolor" "$desktop::green1_4" "$desktop::green1" "250" ;
+		}
+
+		onTime 1000 {
+			transition "top_bgline1_g::matcolor" "$desktop::green1_4" "$desktop::green1" "250" ;
+			transition "btm_bgline1_g::matcolor" "$desktop::green1_4" "$desktop::green1" "250" ;
+			resettime "0" ;
+		}
+
+	}
+	windowDef anim_denied
+	{
+		rect	0,0,640,480
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "p_b::visible" "0" ;
+			transition "warningblack::backcolor" "$desktop::black_0" "$desktop::black_5" "300" ;
+			transition "warning::rect" "$warning::rect" "$d_warning::rect" "150" ;
+			transition "denied::rect" "$denied::rect" "$d_denied::rect" "150" ;
+			transition "warning::matcolor" "$desktop::warning_red" "$desktop::denied_red" "300" ;
+			set "secure::visible" "0" ;
+			set "denied::visible" "1" ;
+		}
+
+		onTime 2700 {
+			transition "warningblack::backcolor" "$desktop::black_5" "$desktop::black_0" "300" ;
+			transition "warning::matcolor" "$desktop::denied_red" "$desktop::warning_red" "300" ;
+			transition "warning::rect" "$d_warning::rect" "$warning::rect" "150" ;
+			transition "denied::rect" "$d_denied::rect" "$denied::rect" "150" ;
+			
+			set "desktop::onkey" "0";
+			set "desktop::key1" "0";
+			set "desktop::key2" "0";
+			set "desktop::key3" "0";
+			set "desktop::key4" "0";
+			set "desktop::key5" "0";
+			set "key_1::text" "" ;
+			set "key_2::text" "" ;
+			set "key_3::text" "" ;
+			set "key_4::text" "" ;
+			set "key_5::text" "" ;
+			set "key_btn_1::matcolor" "$desktop::orange1_5" ;
+			set "key_btn_2::matcolor" "$desktop::orange1_5" ;
+			set "key_btn_3::matcolor" "$desktop::orange1_5" ;
+			set "key_btn_4::matcolor" "$desktop::orange1_5" ;
+			set "key_btn_5::matcolor" "$desktop::orange1_5" ;
+		}
+
+		onTime 3000 {
+			set "p_b::visible" "1" ;
+			set "denied::visible" "0" ;
+			set "secure::visible" "1" ;
+		}
+
+	}
+	windowDef topstuff
+	{
+		visible	1
+		rect	0,0,640,480
+		windowDef sline
+		{
+			visible	1
+			rect	0,-129,640,695
+			background	"gfx/guis/common/monitor_line3"
+			matcolor	1,0.501,0,0.15
+		}
+		windowDef dirt
+		{
+			visible	1
+			rect	0,0,640,480
+			background	"gfx/guis/common/screen_dirt2"
+			matcolor	0.325,0.305,0.176,1
+		}
+		windowDef topreflect
+		{
+			visible	1
+			rect	-13,-26,667,514
+			background	"gfx/guis/common/monitor_reflect"
+			matcolor	1,1,1,0.15
+		}
+		windowDef gradient
+		{
+			visible	1
+			rect	-41,-33,743,703
+			background	"gfx/guis/common/gradient"
+			matcolor	0.737,0.211,0.152,.2
+		}
+	}
+	windowDef p_b
+	{
+		rect	0,0,640,480
+		visible	1
+		notime	1
+		windowDef b_0
+		{
+			rect	295,114,44,44
+			visible	1
+			cursor	1
+
+			onMouseEnter {
+				transition "number_0::forecolor" "$desktop::white_7" "$desktop::white" "200" ;
+				transition "button_0::matcolor" "$desktop::red2_7" "$desktop::red2" "200" ;
+			}
+
+			onMouseExit {
+				transition "number_0::forecolor" "$desktop::white" "$desktop::white_7" "200" ;
+				transition "button_0::matcolor" "$desktop::red2" "$desktop::red2_7" "200" ;
+			}
+
+			onAction {
+				transition "number_0::forecolor" "$desktop::white" "$desktop::white" "0" ;
+				transition "button_0::matcolor" "$desktop::white" "$desktop::red2" "200" ;
+				
+				if ("desktop::onkey" < 5) {
+					if ("desktop::onkey" == 0) {
+						set "key_1::text" "0" ;
+						set "desktop::key1" "0" ;
+						set "desktop::onkey" "1" ;
+						set "key_btn_1::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 1) {
+						set "key_2::text" "0" ;
+						set "desktop::key2" "0" ;
+						set "desktop::onkey" "2" ;
+						set "key_btn_2::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 2) {
+						set "key_3::text" "0" ;
+						set "desktop::key3" "0" ;
+						set "desktop::onkey" "3" ;
+						set "key_btn_3::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 3) {
+						set "key_4::text" "0" ;
+						set "desktop::key4" "0" ;
+						set "desktop::onkey" "4" ;
+						set "key_btn_4::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 4) {
+						set "key_5::text" "0" ;
+						set "desktop::key5" "0" ;
+						set "desktop::onkey" "5" ;
+						set "key_btn_5::matcolor" "$desktop::orange1_7" ;
+						
+						EvalRegs;
+						if ("gui::gui_parm1" == "desktop::key1" && "gui::gui_parm2" == "desktop::key2" && "gui::gui_parm3" == "desktop::key3" && "gui::gui_parm4" == "desktop::key4" && "gui::gui_parm5" == "desktop::key5") {
+							set "cmd" "activate" ;
+							resettime "anim_granted" "0" ;
+						}
+						
+						else {
+							resettime "anim_denied" "0" ;
+						}
+						
+					}
+				}
+			}
+
+		}
+		windowDef b_1
+		{
+			rect	360,75,44,44
+			visible	1
+
+			onMouseEnter {
+				transition "number_1::forecolor" "$desktop::white_7" "$desktop::white" "200" ;
+				transition "button_1::matcolor" "$desktop::red2_7" "$desktop::red2" "200" ;
+			}
+
+			onMouseExit {
+				transition "number_1::forecolor" "$desktop::white" "$desktop::white_7" "200" ;
+				transition "button_1::matcolor" "$desktop::red2" "$desktop::red2_7" "200" ;
+			}
+
+			onAction {
+				transition "number_1::forecolor" "$desktop::white" "$desktop::white" "0" ;
+				transition "button_1::matcolor" "$desktop::white" "$desktop::red2" "200" ;
+				
+				if ("desktop::onkey" < 5) {
+					if ("desktop::onkey" == 0) {
+						set "key_1::text" "1" ;
+						set "desktop::key1" "1" ;
+						set "desktop::onkey" "1" ;
+						set "key_btn_1::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 1) {
+						set "key_2::text" "1" ;
+						set "desktop::key2" "1" ;
+						set "desktop::onkey" "2" ;
+						set "key_btn_2::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 2) {
+						set "key_3::text" "1" ;
+						set "desktop::key3" "1" ;
+						set "desktop::onkey" "3" ;
+						set "key_btn_3::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 3) {
+						set "key_4::text" "1" ;
+						set "desktop::key4" "1" ;
+						set "desktop::onkey" "4" ;
+						set "key_btn_4::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 4) {
+						set "key_5::text" "1" ;
+						set "desktop::key5" "1" ;
+						set "desktop::onkey" "5" ;
+						set "key_btn_5::matcolor" "$desktop::orange1_7" ;
+						
+						EvalRegs;
+						if ("gui::gui_parm1" == "desktop::key1" && "gui::gui_parm2" == "desktop::key2" && "gui::gui_parm3" == "desktop::key3" && "gui::gui_parm4" == "desktop::key4" && "gui::gui_parm5" == "desktop::key5") {
+							set "cmd" "activate" ;
+							resettime "anim_granted" "0" ;
+						}
+						
+						else {
+							resettime "anim_denied" "0" ;
+						}
+					}
+				}
+			}
+
+		}
+		windowDef b_2
+		{
+			rect	433,75,44,44
+			visible	1
+
+			onMouseEnter {
+				transition "number_2::forecolor" "$desktop::white_7" "$desktop::white" "200" ;
+				transition "button_2::matcolor" "$desktop::red2_7" "$desktop::red2" "200" ;
+			}
+
+			onMouseExit {
+				transition "number_2::forecolor" "$desktop::white" "$desktop::white_7" "200" ;
+				transition "button_2::matcolor" "$desktop::red2" "$desktop::red2_7" "200" ;
+			}
+
+			onAction {
+				transition "number_2::forecolor" "$desktop::white" "$desktop::white" "0" ;
+				transition "button_2::matcolor" "$desktop::white" "$desktop::red2" "200" ;
+				
+				if ("desktop::onkey" < 5) {
+					if ("desktop::onkey" == 0) {
+						set "key_1::text" "2" ;
+						set "desktop::key1" "2" ;
+						set "desktop::onkey" "1" ;
+						set "key_btn_1::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 1) {
+						set "key_2::text" "2" ;
+						set "desktop::key2" "2" ;
+						set "desktop::onkey" "2" ;
+						set "key_btn_2::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 2) {
+						set "key_3::text" "2" ;
+						set "desktop::key3" "2" ;
+						set "desktop::onkey" "3" ;
+						set "key_btn_3::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 3) {
+						set "key_4::text" "2" ;
+						set "desktop::key4" "2" ;
+						set "desktop::onkey" "4" ;
+						set "key_btn_4::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 4) {
+						set "key_5::text" "2" ;
+						set "desktop::key5" "2" ;
+						set "desktop::onkey" "5" ;
+						set "key_btn_5::matcolor" "$desktop::orange1_7" ;
+						
+						EvalRegs;
+						if ("gui::gui_parm1" == "desktop::key1" && "gui::gui_parm2" == "desktop::key2" && "gui::gui_parm3" == "desktop::key3" && "gui::gui_parm4" == "desktop::key4" && "gui::gui_parm5" == "desktop::key5") {
+							set "cmd" "activate" ;
+							resettime "anim_granted" "0" ;
+						}
+						
+						else {
+							resettime "anim_denied" "0" ;
+						}
+					}
+				}
+			}
+
+		}
+		windowDef b_3
+		{
+			rect	500,115,44,44
+			visible	1
+
+			onMouseEnter {
+				transition "number_3::forecolor" "$desktop::white_7" "$desktop::white" "200" ;
+				transition "button_3::matcolor" "$desktop::red2_7" "$desktop::red2" "200" ;
+			}
+
+			onMouseExit {
+				transition "number_3::forecolor" "$desktop::white" "$desktop::white_7" "200" ;
+				transition "button_3::matcolor" "$desktop::red2" "$desktop::red2_7" "200" ;
+			}
+
+			onAction {
+				transition "number_3::forecolor" "$desktop::white" "$desktop::white" "0" ;
+				transition "button_3::matcolor" "$desktop::white" "$desktop::red2" "200" ;
+				
+				if ("desktop::onkey" < 5) {
+					if ("desktop::onkey" == 0) {
+						set "key_1::text" "3" ;
+						set "desktop::key1" "3" ;
+						set "desktop::onkey" "1" ;
+						set "key_btn_1::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 1) {
+						set "key_2::text" "3" ;
+						set "desktop::key2" "3" ;
+						set "desktop::onkey" "2" ;
+						set "key_btn_2::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 2) {
+						set "key_3::text" "3" ;
+						set "desktop::key3" "3" ;
+						set "desktop::onkey" "3" ;
+						set "key_btn_3::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 3) {
+						set "key_4::text" "3" ;
+						set "desktop::key4" "3" ;
+						set "desktop::onkey" "4" ;
+						set "key_btn_4::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 4) {
+						set "key_5::text" "3" ;
+						set "desktop::key5" "3" ;
+						set "desktop::onkey" "5" ;
+						set "key_btn_5::matcolor" "$desktop::orange1_7" ;
+						
+						EvalRegs;
+						if ("gui::gui_parm1" == "desktop::key1" && "gui::gui_parm2" == "desktop::key2" && "gui::gui_parm3" == "desktop::key3" && "gui::gui_parm4" == "desktop::key4" && "gui::gui_parm5" == "desktop::key5") {
+							set "cmd" "activate" ;
+							resettime "anim_granted" "0" ;
+						}
+						
+						else {
+							resettime "anim_denied" "0" ;
+						}
+					}
+				}
+			}
+
+		}
+		windowDef b_4
+		{
+			rect	538,181,44,44
+			visible	1
+
+			onMouseEnter {
+				transition "number_4::forecolor" "$desktop::white_7" "$desktop::white" "200" ;
+				transition "button_4::matcolor" "$desktop::red2_7" "$desktop::red2" "200" ;
+			}
+
+			onMouseExit {
+				transition "number_4::forecolor" "$desktop::white" "$desktop::white_7" "200" ;
+				transition "button_4::matcolor" "$desktop::red2" "$desktop::red2_7" "200" ;
+			}
+
+			onAction {
+				transition "number_4::forecolor" "$desktop::white" "$desktop::white" "0" ;
+				transition "button_4::matcolor" "$desktop::white" "$desktop::red2" "200" ;
+				
+				if ("desktop::onkey" < 5) {
+					if ("desktop::onkey" == 0) {
+						set "key_1::text" "4" ;
+						set "desktop::key1" "4" ;
+						set "desktop::onkey" "1" ;
+						set "key_btn_1::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 1) {
+						set "key_2::text" "4" ;
+						set "desktop::key2" "4" ;
+						set "desktop::onkey" "2" ;
+						set "key_btn_2::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 2) {
+						set "key_3::text" "4" ;
+						set "desktop::key3" "4" ;
+						set "desktop::onkey" "3" ;
+						set "key_btn_3::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 3) {
+						set "key_4::text" "4" ;
+						set "desktop::key4" "4" ;
+						set "desktop::onkey" "4" ;
+						set "key_btn_4::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 4) {
+						set "key_5::text" "4" ;
+						set "desktop::key5" "4" ;
+						set "desktop::onkey" "5" ;
+						set "key_btn_5::matcolor" "$desktop::orange1_7" ;
+						
+						EvalRegs;
+						if ("gui::gui_parm1" == "desktop::key1" && "gui::gui_parm2" == "desktop::key2" && "gui::gui_parm3" == "desktop::key3" && "gui::gui_parm4" == "desktop::key4" && "gui::gui_parm5" == "desktop::key5") {
+							set "cmd" "activate" ;
+							resettime "anim_granted" "0" ;
+						}
+						
+						else {
+							resettime "anim_denied" "0" ;
+						}
+					}
+				}
+			}
+
+		}
+		windowDef b_5
+		{
+			rect	539,255,44,44
+			visible	1
+
+			onMouseEnter {
+				transition "number_5::forecolor" "$desktop::white_7" "$desktop::white" "200" ;
+				transition "button_5::matcolor" "$desktop::red2_7" "$desktop::red2" "200" ;
+			}
+
+			onMouseExit {
+				transition "number_5::forecolor" "$desktop::white" "$desktop::white_7" "200" ;
+				transition "button_5::matcolor" "$desktop::red2" "$desktop::red2_7" "200" ;
+			}
+
+			onAction {
+				transition "number_5::forecolor" "$desktop::white" "$desktop::white" "0" ;
+				transition "button_5::matcolor" "$desktop::white" "$desktop::red2" "200" ;
+				
+				if ("desktop::onkey" < 5) {
+					if ("desktop::onkey" == 0) {
+						set "key_1::text" "5" ;
+						set "desktop::key1" "5" ;
+						set "desktop::onkey" "1" ;
+						set "key_btn_1::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 1) {
+						set "key_2::text" "5" ;
+						set "desktop::key2" "5" ;
+						set "desktop::onkey" "2" ;
+						set "key_btn_2::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 2) {
+						set "key_3::text" "5" ;
+						set "desktop::onkey" "3" ;
+						set "key_btn_3::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 3) {
+						set "key_4::text" "5" ;
+						set "desktop::key4" "5" ;
+						set "desktop::onkey" "4" ;
+						set "key_btn_4::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 4) {
+						set "key_5::text" "5" ;
+						set "desktop::key5" "5" ;
+						set "desktop::onkey" "5" ;
+						set "key_btn_5::matcolor" "$desktop::orange1_7" ;
+						
+						EvalRegs;
+						if ("gui::gui_parm1" == "desktop::key1" && "gui::gui_parm2" == "desktop::key2" && "gui::gui_parm3" == "desktop::key3" && "gui::gui_parm4" == "desktop::key4" && "gui::gui_parm5" == "desktop::key5") {
+							set "cmd" "activate" ;
+							resettime "anim_granted" "0" ;
+						}
+						
+						else {
+							resettime "anim_denied" "0" ;
+						}
+					}
+				}
+			}
+
+		}
+		windowDef b_6
+		{
+			rect	500,322,44,44
+			visible	1
+
+			onMouseEnter {
+				transition "number_6::forecolor" "$desktop::white_7" "$desktop::white" "200" ;
+				transition "button_6::matcolor" "$desktop::red2_7" "$desktop::red2" "200" ;
+			}
+
+			onMouseExit {
+				transition "number_6::forecolor" "$desktop::white" "$desktop::white_7" "200" ;
+				transition "button_6::matcolor" "$desktop::red2" "$desktop::red2_7" "200" ;
+			}
+
+			onAction {
+				transition "number_6::forecolor" "$desktop::white" "$desktop::white" "0" ;
+				transition "button_6::matcolor" "$desktop::white" "$desktop::red2" "200" ;
+				
+				if ("desktop::onkey" < 5) {
+					if ("desktop::onkey" == 0) {
+						set "key_1::text" "6" ;
+						set "desktop::key1" "6" ;
+						set "desktop::onkey" "1" ;
+						set "key_btn_1::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 1) {
+						set "key_2::text" "6" ;
+						set "desktop::key2" "6" ;
+						set "desktop::onkey" "2" ;
+						set "key_btn_2::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 2) {
+						set "key_3::text" "6" ;
+						set "desktop::key3" "6" ;
+						set "desktop::onkey" "3" ;
+						set "key_btn_3::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 3) {
+						set "key_4::text" "6" ;
+						set "desktop::key4" "6" ;
+						set "desktop::onkey" "4" ;
+						set "key_btn_4::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 4) {
+						set "key_5::text" "6" ;
+						set "desktop::key5" "6" ;
+						set "desktop::onkey" "5" ;
+						set "key_btn_5::matcolor" "$desktop::orange1_7" ;
+						
+						EvalRegs;
+						if ("gui::gui_parm1" == "desktop::key1" && "gui::gui_parm2" == "desktop::key2" && "gui::gui_parm3" == "desktop::key3" && "gui::gui_parm4" == "desktop::key4" && "gui::gui_parm5" == "desktop::key5") {
+							set "cmd" "activate" ;
+							resettime "anim_granted" "0" ;
+						}
+						
+						else {
+							resettime "anim_denied" "0" ;
+						}
+					}
+				}
+			}
+
+		}
+		windowDef b_7
+		{
+			rect	432,361,44,44
+			visible	1
+
+			onMouseEnter {
+				transition "number_7::forecolor" "$desktop::white_7" "$desktop::white" "200" ;
+				transition "button_7::matcolor" "$desktop::red2_7" "$desktop::red2" "200" ;
+			}
+
+			onMouseExit {
+				transition "number_7::forecolor" "$desktop::white" "$desktop::white_7" "200" ;
+				transition "button_7::matcolor" "$desktop::red2" "$desktop::red2_7" "200" ;
+			}
+
+			onAction {
+				transition "number_7::forecolor" "$desktop::white" "$desktop::white" "0" ;
+				transition "button_7::matcolor" "$desktop::white" "$desktop::red2" "200" ;
+				
+				if ("desktop::onkey" < 5) {
+					if ("desktop::onkey" == 0) {
+						set "key_1::text" "7" ;
+						set "desktop::key1" "7" ;
+						set "desktop::onkey" "1" ;
+						set "key_btn_1::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 1) {
+						set "key_2::text" "7" ;
+						set "desktop::key2" "7" ;
+						set "desktop::onkey" "2" ;
+						set "key_btn_2::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 2) {
+						set "key_3::text" "7" ;
+						set "desktop::key3" "7" ;
+						set "desktop::onkey" "3" ;
+						set "key_btn_3::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 3) {
+						set "key_4::text" "7" ;
+						set "desktop::key4" "7" ;
+						set "desktop::onkey" "4" ;
+						set "key_btn_4::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 4) {
+						set "key_5::text" "7" ;
+						set "desktop::key5" "7" ;
+						set "desktop::onkey" "5" ;
+						set "key_btn_5::matcolor" "$desktop::orange1_7" ;
+						
+						EvalRegs;
+						if ("gui::gui_parm1" == "desktop::key1" && "gui::key2" == "desktop::gui_parm2" && "gui::gui_parm3" == "desktop::key3" && "gui::gui_parm4" == "desktop::key4" && "gui::gui_parm5" == "desktop::key5") {
+							set "cmd" "activate" ;
+							resettime "anim_granted" "0" ;
+						}
+						
+						else {
+							resettime "anim_denied" "0" ;
+						}
+					}
+				}
+			}
+
+		}
+		windowDef b_8
+		{
+			rect	360,360,44,44
+			visible	1
+
+			onMouseEnter {
+				transition "number_8::forecolor" "$desktop::white_7" "$desktop::white" "200" ;
+				transition "button_8::matcolor" "$desktop::red2_7" "$desktop::red2" "200" ;
+			}
+
+			onMouseExit {
+				transition "number_8::forecolor" "$desktop::white" "$desktop::white_7" "200" ;
+				transition "button_8::matcolor" "$desktop::red2" "$desktop::red2_7" "200" ;
+			}
+
+			onAction {
+				transition "number_8::forecolor" "$desktop::white" "$desktop::white" "0" ;
+				transition "button_8::matcolor" "$desktop::white" "$desktop::red2" "200" ;
+				
+				if ("desktop::onkey" < 5) {
+					if ("desktop::onkey" == 0) {
+						set "key_1::text" "8" ;
+						set "desktop::key1" "8" ;
+						set "desktop::onkey" "1" ;
+						set "key_btn_1::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 1) {
+						set "key_2::text" "8" ;
+						set "desktop::key2" "8" ;
+						set "desktop::onkey" "2" ;
+						set "key_btn_2::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 2) {
+						set "key_3::text" "8" ;
+						set "desktop::key3" "8" ;
+						set "desktop::onkey" "3" ;
+						set "key_btn_3::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 3) {
+						set "key_4::text" "8" ;
+						set "desktop::key4" "8" ;
+						set "desktop::onkey" "4" ;
+						set "key_btn_4::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 4) {
+						set "key_5::text" "8" ;
+						set "desktop::key5" "8" ;
+						set "desktop::onkey" "5" ;
+						set "key_btn_5::matcolor" "$desktop::orange1_7" ;
+						
+						EvalRegs;
+						if ("gui::gui_parm1" == "desktop::key1" && "gui::gui_parm2" == "desktop::key2" && "gui::gui_parm3" == "desktop::key3" && "gui::gui_parm4" == "desktop::key4" && "gui::gui_parm5" == "desktop::key5") {
+							set "cmd" "activate" ;
+							resettime "anim_granted" "0" ;
+						}
+						
+						else {
+							resettime "anim_denied" "0" ;
+						}
+					}
+				}
+			}
+
+		}
+		windowDef b_9
+		{
+			rect	293,323,44,44
+			visible	1
+
+			onMouseEnter {
+				transition "number_9::forecolor" "$desktop::white_7" "$desktop::white" "200" ;
+				transition "button_9::matcolor" "$desktop::red2_7" "$desktop::red2" "200" ;
+			}
+
+			onMouseExit {
+				transition "number_9::forecolor" "$desktop::white" "$desktop::white_7" "200" ;
+				transition "button_9::matcolor" "$desktop::red2" "$desktop::red2_7" "200" ;
+			}
+
+			onAction {
+				transition "number_9::forecolor" "$desktop::white" "$desktop::white" "0" ;
+				transition "button_9::matcolor" "$desktop::white" "$desktop::red2" "200" ;
+				
+				if ("desktop::onkey" < 5) {
+					if ("desktop::onkey" == 0) {
+						set "key_1::text" "9" ;
+						set "desktop::key1" "9" ;
+						set "desktop::onkey" "1" ;
+						set "key_btn_1::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 1) {
+						set "key_2::text" "9" ;
+						set "desktop::key2" "9" ;
+						set "desktop::onkey" "2" ;
+						set "key_btn_2::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 2) {
+						set "key_3::text" "9" ;
+						set "desktop::key3" "9" ;
+						set "desktop::onkey" "3" ;
+						set "key_btn_3::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 3) {
+						set "key_4::text" "9" ;
+						set "desktop::key4" "9" ;
+						set "desktop::onkey" "4" ;
+						set "key_btn_4::matcolor" "$desktop::orange1_7" ;
+					}
+					if ("desktop::onkey" == 4) {
+						set "key_5::text" "9" ;
+						set "desktop::key5" "9" ;
+						set "desktop::onkey" "5" ;
+						set "key_btn_5::matcolor" "$desktop::orange1_7" ;
+						
+						EvalRegs;
+						if ("gui::gui_parm1" == "desktop::key1" && "gui::gui_parm2" == "desktop::key2" && "gui::gui_parm3" == "desktop::key3" && "gui::gui_parm4" == "desktop::key4" && "gui::gui_parm5" == "desktop::key5") {
+							set "cmd" "activate" ;
+							resettime "anim_granted" "0" ;
+						}
+						
+						else {
+							resettime "anim_denied" "0" ;
+						}
+					}
+				}
+			}
+
+		}
+	}
+}

@@ -1,0 +1,36 @@
+MD5Version 10
+commandline "anim cinematics/stranarus_trench/intro/referenced/dropshipbusted_a.ma -dest models/mapobjects/stranarustrench/dropshipbusted/idle_a.md5anim -game Quake4 -game /q4xbase -prefix SUCK_ -scale .3937 -align all -keep all origin body chair_1 chair_2 chair_3 -range 1 2"
+
+numFrames 2
+numJoints 6
+frameRate 24
+numAnimatedComponents 0
+
+hierarchy {
+	"origin"	-1 0 0	//
+	"all"	0 0 0	// origin
+	"body"	1 0 0	// all
+	"chair_1"	2 0 0	// body
+	"chair_2"	2 0 0	// body
+	"chair_3"	2 0 0	// body
+}
+
+bounds {
+	( -125.9436340332 -310.8759765625 -76.5366363525 ) ( 371.3044128418 430.4385070801 192.6249847412 )
+	( -125.9436340332 -310.8759765625 -76.5366363525 ) ( 371.3044128418 430.4385070801 192.6249847412 )
+}
+
+baseframe {
+	( 0 0 0 ) ( -0.5 -0.5 -0.5 )
+	( 0 0 0 ) ( 0 0 0 )
+	( 127.9997940063 -2.3008003235 159.9997406006 ) ( 0 -0.9996675253 0 )
+	( 35.8670501709 26.6627826691 93.8196029663 ) ( 0 0.702902317 0 )
+	( 68.9321289063 26.6627826691 95.5728378296 ) ( 0 0.702902317 0 )
+	( 154.7770690918 19.4763374329 81.3058242798 ) ( 0 0.702902317 0 )
+}
+
+frame 0 {
+}
+
+frame 1 {
+}

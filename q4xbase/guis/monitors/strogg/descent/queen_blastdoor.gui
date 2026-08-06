@@ -1,0 +1,138 @@
+windowDef Desktop
+{
+	comment	"set gui_Parm1 == to your map_namespace::scriptname"
+	visible	1
+	rect	0,0,640,480
+	backcolor	0,0,0,1
+	windowDef bg
+	{
+		rect	0,0,640,480
+		visible	1
+		background	"gfx/guis/maps/descent/blastdoor_base"
+		matcolor	1,1,1,1
+	}
+	windowDef data
+	{
+		rect	0,0,640,480
+		visible	1
+		background	"gfx/guis/common/strogg/data"
+		matcolor	0.152,0.439,0.470,0.0941
+		shear	0, -.4
+		matscalex	-1
+	}
+	windowDef leftdoor
+	{
+		rect	-480,45,640,290
+		visible	1
+		background	"gfx/guis/maps/descent/blastdoor_door"
+		matcolor	1,1,1,1
+	}
+	windowDef rightdoor
+	{
+		rect	470,45,640,290
+		visible	1
+		background	"gfx/guis/maps/descent/blastdoor_door"
+		matcolor	1,1,1,1
+		matscalex	-1
+	}
+	windowDef symbol
+	{
+		rect	149,101,329,175
+		visible	1
+		background	"gfx/guis/maps/descent/blastdoor_symbol"
+		matcolor	1,0,0,1
+	}
+	windowDef Framearound
+	{
+		rect	0,0,640,480
+		visible	1
+		background	"gfx/guis/maps/descent/blastdoor_base_alpha"
+		matcolor	1,1,1,1
+	}
+	windowDef topstuff
+	{
+		visible	1
+		rect	0,0,640,480
+		windowDef sline
+		{
+			visible	1
+			rect	2,-203,640,906
+			background	"gfx/guis/common/monitor_line4"
+			matcolor	0.580,0.650,0.705,0.1
+		}
+		windowDef monitor_darkedge
+		{
+			visible	1
+			rect	0,0,640,480
+			background	"gfx/guis/common/monitor_darkedge2"
+			matcolor	0,0,0,1
+		}
+		windowDef topreflect
+		{
+			visible	1
+			rect	0,0,640,480
+			background	"gfx/guis/common/gradient"
+			matcolor	0.674,0.8,0.635,.2
+		}
+	}
+	windowDef numbershadow
+	{
+		rect	81,351,489,52
+		visible	1
+		forecolor	0,0,0,0.690
+		text	"ACTIVATE BLAST DOORS"
+		textscale	1
+		font	"fonts/strogg"
+		textalign	1
+	}
+	windowDef number
+	{
+		rect	79,350,490,52
+		visible	1
+		forecolor	1,0,0,1
+		text	"ACTIVATE BLAST DOORS"
+		textscale	1
+		font	"fonts/strogg"
+		textalign	1
+	}
+	windowDef btn1
+	{
+		rect	0,2,640,478
+		visible	1
+		shear	0,0
+
+		onMouseEnter {
+			//transition "matcolor" "0.7,0.7,0.7,1" "1,1,1,1" "200" ;
+		}
+
+		onMouseExit {
+			//transition "matcolor" "1,1,1,1" "0.8,0.8,0.8,1" "200" ;
+		}
+
+		onAction {
+			set "cmd" "play guisound_beep2 ; runscript" "$gui::gui_Parm1" ;
+			
+			transition "symbol::matcolor" "1,0,0,1" "1,0,0,0" "2600" ;
+			
+			transition "leftdoor::rect" "$leftdoor::rect" "$d_leftdoor::rect" "3800" ;
+			transition "rightdoor::rect" "$rightdoor::rect" "$d_rightdoor::rect" "3800" ;
+			
+		}
+
+	}
+	windowDef d_leftdoor
+	{
+		rect	-319,45,640,290
+		visible	0
+		background	"gfx/guis/maps/descent/blastdoor_door"
+		matcolor	1,1,1,1
+	}
+	windowDef d_rightdoor
+	{
+		rect	320,45,640,290
+		visible	0
+		background	"gfx/guis/maps/descent/blastdoor_door"
+		matcolor	1,1,1,1
+		matscalex	-1
+	}
+}

@@ -1,0 +1,129 @@
+//------------------------------------------------------------------------------
+// chaingun.def
+//
+// Copyright 2002-2004 Raven Software
+//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+//							Vehicle Defintion
+//------------------------------------------------------------------------------
+
+entityDef vehicle_q4x_turret_chaingun
+{
+	"inherit"					"vehicle_turret_chaingun"
+	"model"						"common_turret_strogg"
+	"mins"						"-32 -32 0"
+	"maxs"						"32 32 64"	
+
+	"def_position_driver"		"vehicle_q4x_chaingun_driver"
+}
+
+entityDef vehicle_q4x_chaingun_driver
+{
+	"inherit" 					"vehicle_chaingun_driver"
+	
+	"angles_offset"				"0 0 0"
+	"spread"					"2"
+}
+
+
+entityDef vehicle_q4x_turret_chaingun_trench
+{
+	"inherit"					"vehicle_q4x_turret_chaingun"
+	"def_position_driver"		"vehicle_q4x_chaingun_driver_trench"
+	"minpitch"					"-70"
+	"maxpitch"					"70"
+}
+
+
+entityDef vehicle_q4x_chaingun_driver_trench
+{
+	"inherit" 					"vehicle_chaingun_driver"
+	
+	"angles_offset"				"0 0 0"
+	"spread"					"2"
+
+	"def_part_yaw"				"vehicle_q4x_turret_chaingun_yaw"
+	"def_part_pitch"			"vehicle_q4x_turret_chaingun_pitch"
+}
+
+entityDef vehicle_q4x_turret_chaingun_yaw
+{
+	"spawnclass"				"rvVehicleTurret"
+
+	"joint"						"origin"
+	
+	"yaw"						"0"
+	
+	"snd_move"					"vehicle_turret_move"
+	"moveMinVolume"				"-4"
+	"moveMaxVolume"				"8"
+	
+	"turnrate"					"180"
+}
+
+entityDef vehicle_q4x_turret_chaingun_pitch
+{
+	"spawnclass"				"rvVehicleTurret"
+
+	"joint"						"joint2"
+
+	"pitch"						"1"
+	"minpitch"					"-70"
+	"maxpitch"					"70"
+	"pitchinvert"				"1"
+
+	"snd_move"					"vehicle_turret_move"
+	"moveMinVolume"				"-4"
+	"moveMaxVolume"				"6"
+}
+
+
+
+
+
+//------------------------------------------------------------------------------
+//								Model Defintion
+//------------------------------------------------------------------------------
+
+model common_turret_strogg
+{
+	mesh						"models/mapobjects/q4x/common_turret_strogg/common_turret_strogg.md5mesh"
+
+	channel legs				( *origin )
+
+	anim idle					"models/mapobjects/q4x/common_turret_strogg/idle.md5anim"
+}
+
+
+entityDef vehicle_acidgun_turret_yaw
+{
+	
+	"turnrate"					"240"
+}
+
+
+entityDef damage_machinegun
+{
+	"damage"					"40"
+	"damage_flesh"				"45"
+	
+}
+
+entityDef vehicle_chaingun_weapon
+{
+	"spawnclass"				"rvVehicleWeapon"
+
+	"joint"						"muzzle"
+	"launchfromjoint"			"1"
+	
+	"firedelay"					".06"
+	"def_hitscan"				"hitscan_bullet"
+	"fx_muzzleflash"			"effects/vehicles/walker/machinegun/muzzleflash.fx"
+	"snd_fire"					"vehicle_walker_machinegun"
+	"spread"					"5"
+	
+	"recoilTime"				"145"
+	"recoilAngles"				"-1 0 0"
+	"mtr_crosshair"				"gfx/guis/crosshairs/crosshair_machinegun"
+}

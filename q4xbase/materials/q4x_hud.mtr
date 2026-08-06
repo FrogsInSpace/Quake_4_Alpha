@@ -1,0 +1,108 @@
+//created by MarkM 10/13/05
+
+gfx/guis/hud/icons/gun_flamegun
+{	
+	noShadows
+	translucent
+	
+	{
+		blend blend
+		Map   gfx/guis/hud/icons/gun_flamegun.tga
+		colored
+	}
+}
+
+gfx/guis/hud/icons/item_flamegun_colored
+{	
+	noShadows
+	translucent
+	
+	{
+		blend blend
+		Map    gfx/guis/hud/icons/item_fire.tga
+		red 1
+		green 1
+		blue 0
+		alpha parm3
+	}
+}
+
+
+gfx/guis/hud/icons/gun_corecannon
+{	
+	noShadows
+	translucent
+	
+	{
+		blend blend
+		Map   gfx/guis/hud/icons/gun_flamegun.tga
+		colored
+	}
+}
+
+gfx/guis/hud/icons/item_corecannon_colored
+{	
+	noShadows
+	translucent
+	
+	{
+		blend blend
+		Map    gfx/guis/hud/icons/item_corecannon.tga
+		red 1
+		green 1
+		blue 0
+		alpha parm3
+	}
+}
+
+gfx/guis/hud/icons/gun_freezegun
+{	
+	noShadows
+	translucent
+	
+	{
+		blend blend
+		Map   gfx/guis/hud/icons/gun_flamegun.tga
+		colored
+	}
+}
+
+gfx/guis/hud/icons/item_freezegun_colored
+{	
+	noShadows
+	translucent
+	
+	{
+		blend blend
+		Map    gfx/guis/hud/icons/item_freeze.tga
+		red 1
+		green 1
+		blue 0
+		alpha parm3
+	}
+}
+
+
+
+
+gfx/guis/vehicle/speeder/progressbar_01
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		colored
+		Map gfx/guis/vehicle/speeder/progressbar_01.tga
+	}
+}
+
+gfx/guis/vehicle/speeder/progressbar_03
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		colored
+		Map gfx/guis/vehicle/speeder/progressbar_03.tga
+	}
+}

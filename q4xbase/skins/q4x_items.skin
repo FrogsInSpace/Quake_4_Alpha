@@ -1,0 +1,19 @@
+// Created 11/07/05 by MarkM
+
+skin skins/items/ammo/flamegun
+{
+	"models/items/ammo/ammo_box"	"models/items/ammo/flamegun"
+	"models/items/ammo/icon"		"models/items/ammo/flamegun_decal"
+}
+
+skin skins/items/ammo/corecannon
+{
+	"models/items/ammo/ammo_box"	"models/items/ammo/corecannon"
+	"models/items/ammo/icon"		"models/items/ammo/corecannon_decal"
+}
+
+skin skins/items/ammo/freezegun
+{
+	"models/items/ammo/ammo_box"	"models/items/ammo/freezegun"
+	"models/items/ammo/icon"		"models/items/ammo/freezegun_decal"
+}

@@ -1,0 +1,39 @@
+/////////////////////////////////////////////////////
+/////////////// ADDED BY WYETH //////////////////////
+/////////////////////////////////////////////////////
+
+textures/q4x_prison/prison_forcefield01
+{
+	twosided
+	translucent
+
+	qer_editorimage	textures/q4x_prison/prison_forcefield01.tga
+
+	{
+		Program			heatHaze.vfp
+		vertexParm		0	time * 1 , time * -2
+		vertexParm		1	2
+		fragmentProgram	heatHaze.vfp
+		fragmentMap		0	_currentRender
+		fragmentMap		1	textures/q4x_prison/prison_forcefield01_local.tga
+	}
+
+	{
+		blend add
+		map textures/q4x_prison/prison_forcefield01.tga
+		scale 6, 6
+		scroll time * 0, time * -0.03
+		rgb 	0.25
+	}	
+
+	
+	{
+		blend specularmap
+		map textures/q4x_prison/prison_forcefield01.tga
+		scale 4, 4
+		scroll time * 0, time * -0.05
+		rgb 	0.9 
+	}
+
+	
+}

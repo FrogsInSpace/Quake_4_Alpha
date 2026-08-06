@@ -1,0 +1,64 @@
+/*
+===============================================================================
+
+	q4x a sheilded chaingun turret for bunkers
+
+===============================================================================
+*/
+
+entityDef hitscan_turret_bunker_chaingun_bullet_dummy
+{
+	"inherit"							"hitscan_base"
+	"def_damage"						"damage_turret_bunker_chaingun_bullet_dummy"
+	
+	"attack_spread_horizontal"			"10"
+	"attack_spread_vertical"			"7"
+	
+	"fx_impact"							"effects/monsters/tank/machinegun_burst.fx"
+	"fx_impact_water"					"effects/ambient/splash_smll.fx"
+	"fx_impact_concrete"				"effects/weapons/machinegun/impact_concrete.fx"
+	"fx_impact_rock"					"effects/weapons/machinegun/impact_concrete.fx"
+	"fx_impact_electronics"				"effects/weapons/machinegun/impact_electronics.fx"
+	"fx_impact_flesh"					"effects/weapons/machinegun/impact_flesh.fx"						
+	"fx_impact_glass"					"effects/weapons/machinegun/impact_glass.fx"
+	"fx_impact_monstermetal"			"effects/weapons/machinegun/impact_monstermetal.fx"
+	"fx_impact_bpglass"					"effects/weapons/machinegun/impact_bpglass.fx"
+	
+	"fx_tracer"							"effects/monsters/grunt/bullet_tracer.fx"
+	"fx_fly"							"effects/monsters/grunt/bullet_tracer.fx"
+	"snd_fly"							"weapon_energy_projectile_loop"
+}
+
+entityDef damage_turret_bunker_chaingun_bullet_dummy
+{
+	"inherit"							"damage_bullet_base"
+	"push"								"60"
+	"knockback"							"45"
+	"damage"							"10"
+	"gib"								"0"
+
+	"deathPush"							"100"
+	"deathPushMin"						"3000 2000"
+	"deathPushMax"						"5000 3000"
+}
+
+entityDef monster_q4x_big_bunker_turret_chaingun_dummy
+{
+	"inherit"					"monster_turret"
+	"health"					"4000"
+	
+	"attack_blaster_spread"				"12"
+	
+	"def_attack_blaster"				"hitscan_turret_bunker_chaingun_bullet_dummy"
+	"attack_blaster_hitscan"			"1"
+
+	"minShots"					"200"
+	"maxShots"					"300"
+	"actionTimer_rangedAttack_rate"			"2.5"				
+	"action_blasterAttack_Rate"			"3"
+	"attack_blaster_accuracy"			"1"
+	"attack_blaster_cone"				".75"
+	"action_blasterAttack_minRange"			"1"
+	"action_blasterAttack_maxRange"			"30000"
+	
+	}

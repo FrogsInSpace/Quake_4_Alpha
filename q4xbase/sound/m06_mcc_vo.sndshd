@@ -1,0 +1,4109 @@
+
+
+sound vo_harp_falcsqcom
+{
+ description "<Harper/Davenport:> Falcon squad, I'm here to compliment you on your efforts today, your team has pulled off the impossible by getting Strauss back in one piece, and the Strogg data you collected has become essential to the entire war effort, Strauss..."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/harp_falcsqcom.wav
+}
+
+
+sound vo_strauss_workingondata
+{
+ description "<Strauss:> I've been working on the data decryption since my rescue, it took me the better part of a day, but I’ve finished the decryption algorithms."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/strauss_workingondata.wav
+}
+
+
+sound vo_strauss_somuchdat
+{
+ description "<Strauss:> There is so much data, it could take weeks to fully decode, but, as you can see here, we have every available CPU dedicated to the task."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/strauss_somuchdat.wav
+}
+
+
+sound vo_strauss_thatsaid
+{
+ description "<Strauss:> That said, some of the decrypted information has already proven useful in outlining our next major offensive against the Nexus."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/strauss_thatsaid.wav
+}
+
+
+sound vo_harp_withinhr
+{
+ description "<Harper/Davenport:> Within the hour, we will be launching a major strike against the source of the Strogg communication network, the Core."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/harp_withinhr.wav
+}
+
+
+sound vo_harp_anothrhin
+{
+ description "<Harper/Davenport:> Another Rhino squad member, Corporal Kain was pulled from the medlabs just before he was fully converted into a Strogg soldier.  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/harp_anothrhin.wav
+}
+
+
+sound vo_harp_accorddata
+{
+ description "<Harper/Davenport:> According to the data you collected, Kain's newly acquired Strogg physiology will allow us to get inside the Core to destroy the Nexus, and possibly the Makron.  Lieutenant..."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/harp_accorddata.wav
+}
+
+
+sound vo_marks_commandfinordlong
+{
+ description "<Markswell:> Command is finalizing our orders as we speak, the long and short of it is that we aren't going in with the Nexus assault.  They've got something else planned for us, Sci-Tech has uncovered something critical inside the Strogg data, and until that information is fully decoded, we are in a holding pattern.  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marks_commandfinordlong.wav
+}
+
+
+sound vo_strauss_likehelp
+{
+ description "<Strauss:> I would like to help the decryption effort, but my skills are required for the upcoming Nexus assault, it cannot succeed without my assistance."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/strauss_likehelp.wav
+}
+
+
+sound vo_strauss_leftdecrypt
+{
+ description "<Strauss:> I’ve left the decryption algorithms with Sci-tech. Find your Technician, Tak. He is the only one at Sci-Tech with the intellect to finish the work I’ve begun. Good luck."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/strauss_leftdecrypt.wav
+}
+
+
+sound vo_marks_dekgetsci
+{
+ description "<Markswell:> Dekard, get to sci-tech and see where Tak is with the decryption efforts.  Dismissed."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marks_dekgetsci.wav
+}
+
+
+
+sound vo_strauss_itoldcmdint
+{
+ description "<Strauss +use:> I've told command time and time again, it's intellect that will win this war"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/strauss_itoldcmdint.wav
+}
+
+
+sound vo_strauss_youshouldcmd
+{
+ description "<Strauss +use:> You should be commended for your skills Sergeant, had I succumbed to the Strogg, this war would be over"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/strauss_youshouldcmd.wav
+}
+
+
+sound vo_strauss_waitingrh
+{
+ description "<Strauss +use:> I'm waiting on the rest of Rhino squad for our Nexus briefing, it was good to meet you Sergeant Chase"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/strauss_waitingrh.wav
+}
+
+
+
+sound vo_benn_serg
+{
+ description "<Bennette +use:> Sergeant?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/benn_serg.wav
+}
+
+
+sound vo_benn_yess
+{
+ description "<Bennette +use:> Yes sir?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/benn_yess.wav
+}
+
+
+sound vo_benn_youneed
+{
+ description "<Bennette +use:> Do you need something sir?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/benn_youneed.wav
+}
+
+
+sound vo_graves_rhinsq
+{
+ description "<Graves +use:> Rhino squad's next up for this briefing room."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/graves_rhinsq.wav
+}
+
+
+sound vo_graves_doyouneed
+{
+ description "<Graves +use:> Do you need anything else sir?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/graves_doyouneed.wav
+}
+
+
+sound vo_graves_canihelp
+{
+ description "<Graves +use:> Can I help you?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/graves_canihelp.wav
+}
+
+
+sound vo_trab_didkain
+{
+ description "<Trabbold +use:> Did you hear about Kain from Rhino Squad?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/trab_didkain.wav
+}
+
+
+sound vo_shower_saveass
+{
+ description "<Showers (response):> Yeah, they saved his ass right before being turned into a full on Squib."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/shower_saveass.wav
+}
+
+
+sound vo_trab_donttrus
+{
+ description "<Trabbold (response):> I don't trust him, with that much Squib hardware, who knows when he's gonna flip."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/trab_donttrus.wav
+}
+
+
+sound vo_shower_wewaitkain
+{
+ description "<Showers +use:> We're waiting for Kain to show up, got a few things to say to that Squib."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/shower_wewaitkain.wav
+}
+
+
+sound vo_trab_yeahwatchass
+{
+ description "<Trabbold (response):> Yeah, like watch your ass"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/trab_yeahwatchass.wav
+}
+
+
+sound vo_shower_notshitturn
+{
+ description "<Showers (response):> No shit, he better no turn his back on me. "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/shower_notshitturn.wav
+}
+
+
+
+sound vo_luch_youhrkain
+{
+ description "<Luch +use:> You hear about Corporal Kain?  He's been (beat) Stroggified"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/luch_youhrkain.wav
+}
+
+
+sound vo_luch_canteven
+{
+ description "<Luch +use:> I can't even imagine what that's like"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/luch_canteven.wav
+}
+
+
+sound vo_luch_wonderrer
+{
+ description "<Luch +use:> I wonder if they rerouted the neural pathways to account for the icreased neural activity?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/luch_wonderrer.wav
+}
+
+
+sound vo_holdorf_iwondkain
+{
+ description "<Holdorf +use:> I wonder what kind of hardware Corporal Kain's got in his head right now."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/holdorf_iwondkain.wav
+}
+
+
+sound vo_holdorf_iwondinst
+{
+ description "<Holdorf +use:> I really wonder how many instructions per second he can perform."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/holdorf_iwondinst.wav
+}
+
+
+sound vo_holdorf_youthinkstrgg
+{
+ description "<Holdorf +use:> You think the Strogg are using nanotechnology to enhance the celluar membranes?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/holdorf_youthinkstrgg.wav
+}
+
+
+
+sound vo_yoshi_icanbellett
+{
+ description "<Yoshida +use:> I can't believe they're just letting him walk around!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/yoshi_icanbellett.wav
+}
+
+
+sound vo_yoshi_swearmust
+{
+ description "<Yoshida +use:> I swear, command must be desperate if they're putting Kain back in the field"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/yoshi_swearmust.wav
+}
+
+
+sound vo_yoshi_bettrnot
+{
+ description "<Yoshida +use:> They better not let him wander the ship without his bodyguard."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/yoshi_bettrnot.wav
+}
+
+
+sound vo_mustaine_leavenex
+{
+ description "<Mustaine +use:> My Squad leaves for the Nexus in a half-hour."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mustaine_leavenex.wav
+}
+
+
+sound vo_mustaine_icantwait
+{
+ description "<Mustaine +use:> I can’t wait to end this war."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mustaine_icantwait.wav
+}
+
+
+sound vo_mustaine_ilost3sq
+{
+ description "<Mustaine +use:> I lost three squad mates in the Prison Assault.  I’ll make the Strogg the pay."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mustaine_ilost3sq.wav
+}
+
+
+sound vo_luwg_quiteamaz
+{
+ description "<Dr Ludwig:> It's really quite amazing that anbody survives the Stroggification procedure"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/luwg_quiteamaz.wav
+}
+
+
+sound vo_luwg_rigtest
+{
+ description "<Dr Ludwig:> Most likely through rigirious testing on live subjects"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/luwg_rigtest.wav
+}
+
+
+sound vo_luwg_howover
+{
+ description "<Dr Ludwig:> How they overcame the body rejecting all the foreign hardware is baffling "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/luwg_howover.wav
+}
+
+
+sound vo_core_strggperf
+{
+ description "<Dr Coreman:> It would seem the Strogg have perfected their process."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/core_strggperf.wav
+}
+
+
+sound vo_core_earlystrgg
+{
+ description "<Dr Coreman:> Agreed, I would expect that early Stroggification proved quite unsuccessful."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/core_earlystrgg.wav
+}
+
+
+sound vo_core_wonderwill
+{
+ description "<Dr Coreman:> I wonder if they will let us look into that by studying Corporal Kain?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/core_wonderwill.wav
+}
+
+
+sound vo_marks_dekprettybsy
+{
+ description "<Markswell +use:> Dekard, I'm pretty busy at the moment"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marks_dekprettybsy.wav
+}
+
+
+sound vo_marks_dekordersci
+{
+ description "<Markswell +use:> Dekard, didn't I order you to get to Sci-Tech?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marks_dekordersci.wav
+}
+
+
+sound vo_marks_takwaitfor
+{
+ description "<Markswell +use:> Tak is waiting for you in Sci-tech Dekard, get moving."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marks_takwaitfor.wav
+}
+
+
+sound vo_marks_thiwasthear
+{
+ description "<Markswell:> This was the area we received heavy air defense fire, I'm positive there is a key Strogg position near those mountains"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marks_thiwasthear.wav
+}
+
+
+
+
+sound vo_renner_cantyousee
+{
+ description "<Renner +use:> Can't you see I'm a bit busy right now?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/renner_cantyousee.wav
+}
+
+
+sound vo_renner_sargpls
+{
+ description "<Renner +use:> Sargeant, please..."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/renner_sargpls.wav
+}
+
+
+sound vo_renner_ivgotno
+{
+ description "<Renner +use:> I've got nothing else to say to you."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/renner_ivgotno.wav
+}
+
+
+sound vo_renner_whatpos
+{
+ description "<Renner  :> What is your position?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/renner_whatpos.wav
+}
+
+
+sound vo_marine_noideawe
+{
+ description "<Marine:> I have no idea, we are totally pinned down and need immediate support!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine_noideawe.wav
+}
+
+
+sound vo_renner_yousigisnt
+{
+ description "<Renner:> Your signal isn't clear, we can't determine your position from here, you'll need to get to a better transmisison point!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/renner_yousigisnt.wav
+}
+
+
+sound vo_marine_ifwemovedie
+{
+ description "<Marine:> If we move, we die!  Just send some help and tell them to listen for the gunfire!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine_ifwemovedie.wav
+}
+
+
+sound vo_hughes_imsorrtn
+{
+ description "<Hughes +use:> I'm sorry Sargeant, not right now."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/hughes_imsorrtn.wav
+}
+
+
+sound vo_hughes_maybewec
+{
+ description "<Hughes +use:> Maybe we can chat another time."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/hughes_maybewec.wav
+}
+
+
+sound vo_hughes_notsay
+{
+ description "<Hughes +use:> I'm not going to say it again."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/hughes_notsay.wav
+}
+
+
+sound vo_hughes_isposs
+{
+ description "<Hughes:> It's possible, we don't have any recon data for that area at all"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/hughes_isposs.wav
+}
+
+
+sound vo_weldon_mainescirc
+{
+ description "<Weldon +use:> These marines have been running in circles for hours."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/weldon_mainescirc.wav
+}
+
+
+sound vo_weldon_triedtell
+{
+ description "<Weldon +use:> I've tried to tell them, but they keep getting turned around."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/weldon_triedtell.wav
+}
+
+
+sound vo_weldon_frustra
+{
+ description "<Weldon +use:> This is so frustrating."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/weldon_frustra.wav
+}
+
+
+
+
+sound vo_inglis_heywhy
+{
+ description "<Inglis +use:> Hey, why aren't you part of the Nexus assault like the rest of us?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/inglis_heywhy.wav
+}
+
+
+sound vo_mccaugh_shutinglis
+{
+ description "<McCaughey (response):> Shut the hell up Inglis, their squad lost 3 members today, these guys have already been on two full ops while you were still dreaming about Earth"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mccaugh_shutinglis.wav
+}
+
+
+sound vo_inglis_reallysht
+{
+ description "<Inglis (response):> Really?  Oh shit.."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/inglis_reallysht.wav
+}
+
+
+sound vo_mccaugh_falcsqisinall
+{
+ description "<McCaughey +use:> Falcon squad is in all the news this morning."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mccaugh_falcsqisinall.wav
+}
+
+
+sound vo_inglis_whofalc
+{
+ description "<Inglis (response):> Who's Falcon squad again?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/inglis_whofalc.wav
+}
+
+
+sound vo_mccaugh_nevermind
+{
+ description "<McCaughey (response):> Nevermind."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mccaugh_nevermind.wav
+}
+
+
+sound vo_martel_itsamaz
+{
+ description "<Martel +use:> It's amazing this damn ship has stood up as long as it has."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/martel_itsamaz.wav
+}
+
+
+sound vo_martel_stuckrert
+{
+ description "<Martel +use:> I'm stuck here re-routing systems day in and day out"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/martel_stuckrert.wav
+}
+
+
+sound vo_martel_maybeoneofthese
+{
+ description "<Martel +use:> Maybe one of these days I'll get re-assigned to a modern ship."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/martel_maybeoneofthese.wav
+}
+
+
+sound vo_banks_peridef
+{
+ description "<Banks +use:> The Perimeter Defense System is ready.  We’re just doing the last few checks."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/banks_peridef.wav
+}
+
+
+sound vo_banks_nexass
+{
+ description "<Banks +use:> If the Nexus Assault is successful, the war will be over before we'll ever need these defense systems."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/banks_nexass.wav
+}
+
+
+sound vo_banks_coupltarg
+{
+ description "<Banks +use:> We only have a couple more tests.  The system should be good to go."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/banks_coupltarg.wav
+}
+
+
+sound vo_scott_almostev
+{
+ description "<Scott +use:> Almost everyone’s already headed out for the Nexus Assault."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/scott_almostev.wav
+}
+
+
+sound vo_scott_ihopethiswar
+{
+ description "<Scott +use:> I hope this war ends soon."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/scott_ihopethiswar.wav
+}
+
+
+sound vo_scott_stroggtear
+{
+ description "<Scott +use:> The Strogg have been tearing us up, Sir.  But if this works, it will all be worth it."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/scott_stroggtear.wav
+}
+
+
+sound vo_mcken_yourdefch
+{
+ description "<McKenzie +use:> You’re Dekard Chase, aren’t you?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcken_yourdefch.wav
+}
+
+
+sound vo_mcken_ihrdwhat
+{
+ description "<McKenzie +use:> I heard what you went through to rescue Strauss.  I’ve met the guy.  I’ve gotta say, you’re a bigger man than I am."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcken_ihrdwhat.wav
+}
+
+
+sound vo_mcken_glattomeet
+{
+ description "<McKenzie +use:> Glad to meet you Sargeant, but I've got to get back to work now."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcken_glattomeet.wav
+}
+
+
+
+sound vo_tak_dekinsci
+{
+ description "<Tak:> Dekard, I need you in Sci-tech"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/tak_dekinsci.wav
+}
+
+
+sound vo_tak_heydekwhenyou
+{
+ description "<Tak:> Hey Dekard, when you get a chance, stop by Sci-tech"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/tak_heydekwhenyou.wav
+}
+
+
+sound vo_tak_dekyougoing
+{
+ description "<Tak:> Dekard, you're going to want to see the data we've uncovered here in Sci-tech"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/tak_dekyougoing.wav
+}
+
+
+sound vo_mcc_primaryreact
+{
+ description "<MCC Announce:> Primary reactor operating at seventy-six percent."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcc_primaryreact.wav
+}
+
+
+sound vo_mcc_perimdefon
+{
+ description "<MCC Announce:> Perimeter Defense System is back online.  Coil charge at thirty-seven percent."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcc_perimdefon.wav
+}
+
+
+sound vo_mcc_warnposscont
+{
+ description "<MCC Announce:> Warning.  Possible containment breach on deck 4."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcc_warnposscont.wav
+}
+
+
+sound vo_mcc_dropintrp
+{
+ description "<MCC Announce:> Dropship Intrepid is ready for deployment."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcc_dropintrp.wav
+}
+
+
+sound vo_mcc_warnpower
+{
+ description "<MCC Announce:> Warning.  Power fluctuations detected in auxiliary sensor array.  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcc_warnpower.wav
+}
+
+
+sound vo_mcc_heatshiedn
+{
+ description "<MCC Announce:> Heat shielding on the main port thruster has been repaired."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcc_heatshiedn.wav
+}
+
+
+sound vo_mcc_navsysdia
+{
+ description "<MCC Announce:> Navigation system diagnostic complete, system is functioning within normal parameters."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcc_navsysdia.wav
+}
+
+
+sound vo_mcc_alertcool
+{
+ description "<MCC Announce:> Alert.  Coolant rupture detected on deck 5.  Immediate repair is required."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcc_alertcool.wav
+}
+
+
+sound vo_mcc_warnseis
+{
+ description "<MCC Announce:> Warning.  Seismic activity detected.  Waveform is outside acceptable range."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcc_warnseis.wav
+}
+
+
+sound vo_mcc_thirdo2
+{
+ description "<MCC Announce:> Third and Forth oxygen filters are now online.  Oxygen content increased by three hundred and fifty parts per million."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcc_thirdo2.wav
+}
+
+
+
+sound vo_nix_datayourteam
+{
+ description "<Nix +use:> This data your team collected is amazing."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/nix_datayourteam.wav
+}
+
+
+sound vo_nix_weableacc
+{
+ description "<Nix +use:> We've been able to access information about this history of the Strogg world that we've never seen before"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/nix_weableacc.wav
+}
+
+
+sound vo_nix_itseemstrgg
+{
+ description "<Nix +use:> It seems that the Strogg were much like us once, until they tried to genetically engineer themselves into perfection."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/nix_itseemstrgg.wav
+}
+
+
+sound vo_bergr_datateam
+{
+ description "<Berger +use:> I'm sure you've already heard, but without the data your team collected, there would be no Nexus assault"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/bergr_datateam.wav
+}
+
+
+sound vo_bergr_prochand
+{
+ description "<Berger +use:> It's too much data for us to process by hand, so we have search algorythims looking for key tactical information"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/bergr_prochand.wav
+}
+
+
+sound vo_bergr_study
+{
+ description "<Berger +use:> We will be strudying this find for years to come, even after the war is over."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/bergr_study.wav
+}
+
+
+sound vo_schuch_strogghist
+{
+ description "<Schuch +use:> The Strogg history is well guarded"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/schuch_strogghist.wav
+}
+
+
+sound vo_schuch_planetravag
+{
+ description "<Schuch +use:> Their planet was ravaged by some kind of civil war for decades."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/schuch_planetravag.wav
+}
+
+
+sound vo_schuch_geneteng
+{
+ description "<Schuch +use:> Genetically engineered Strogg versus another group of un-engineered Strogg, must have been a bloodbath"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/schuch_geneteng.wav
+}
+
+
+sound vo_tak_dekwepouringover
+{
+ description "<Tak:> Dekard, we've been pouring over the data since Strauss provided the decryption algorithms, and we've come across something really disturbing..."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/tak_dekwepouringover.wav
+}
+
+
+sound vo_tak_numrefvalk
+{
+ description "<Tak:> There are a number of references to the Makron, or Makrons, we aren't sure, but more importantly, there is talk of some kind of Makron Guardian, the Strogg refer to it as the Valkaryne."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/tak_numrefvalk.wav
+}
+
+
+sound vo_tak_wemins
+{
+ description "<Tak:> We're minutes away from fully decoding this sequence, once that is complete we will..."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/tak_wemins.wav
+}
+
+
+sound vo_tak_whathellgo
+{
+ description "<Tak:> What the hell is going on?!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/tak_whathellgo.wav
+}
+
+
+sound vo_mcc_allperidef
+{
+ description "<MCC Announce:> All perimeter defense trained marines, report to a perimeter defense pod immediately."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcc_allperidef.wav
+}
+
+
+sound vo_marks_dekgettodef
+{
+ description "<Markswell:> Dekard, get to a perimeter defense gun, now!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marks_dekgettodef.wav
+}
+
+
+sound vo_tak_dekperi
+{
+ description "<Tak +use:> Dekard, get to a perimeter defense gun!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/tak_dekperi.wav
+}
+
+
+sound vo_tak_ineedtostay
+{
+ description "<Tak +use:> I need to stay here and get this data decoded!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/tak_ineedtostay.wav
+}
+
+
+sound vo_tak_sorrydekn
+{
+ description "<Tak +use:> Sorry Dekard, I need to focus on this data!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/tak_sorrydekn.wav
+}
+
+
+sound vo_martel_greatstrgg
+{
+ description "<Martel +use:> Great!  Now the Strogg are going to help this ship fall apart!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/martel_greatstrgg.wav
+}
+
+
+sound vo_martel_oncethose
+{
+ description "<Martel +use:> Once those shields go down, this ship doesn't stand a chance."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/martel_oncethose.wav
+}
+
+
+sound vo_martel_wellsucc
+{
+ description "<Martel +use:> Well, if they are successful, at least we'll get to move to a more moden ship."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/martel_wellsucc.wav
+}
+
+
+sound vo_smith_sirperidef
+{
+ description "<Smith +use:> Sir, they need you on a perimeter defense cannon!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/smith_sirperidef.wav
+}
+
+
+sound vo_smith_comdctr
+{
+ description "<Smith +use:> The command center is closed access right now"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/smith_comdctr.wav
+}
+
+
+sound vo_smith_sir5
+{
+ description "<Smith +use:> Sir!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/smith_sir5.wav
+}
+
+
+sound vo_rich_nocmdctr
+{
+ description "<Richardson +use:> I can't let you in the command center right now, sorry sir."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/rich_nocmdctr.wav
+}
+
+
+sound vo_rich_thesqbredy
+{
+ description "<Richardson +use:> If the squibs get on board, I'll be ready"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/rich_thesqbredy.wav
+}
+
+
+sound vo_rich_siravadef
+{
+ description "<Richardson +use:> Sir, available defense cannons are just down the hallway."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/rich_siravadef.wav
+}
+
+
+sound vo_darn_overdef
+{
+ description "<Darnell:> Dekard, over here, this defense turret is ready for you!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/darn_overdef.wav
+}
+
+
+sound vo_marine1_thisperdef
+{
+ description "<Marine 1:> This is perimeter defense control, I've got waves of Strogg fighters incoming, ready up marines!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine1_thisperdef.wav
+}
+
+
+sound vo_marine1_harvinb
+{
+ description "<Marine 1:> Harvester is inbound, south turrets incoming!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine1_harvinb.wav
+}
+
+
+sound vo_marine1_morestrgg
+{
+ description "<Marine 1:> More Strogg fighters moving in from the east!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine1_morestrgg.wav
+}
+
+
+sound vo_marine1_nexdroppod
+{
+ description "<Marine 1:> The Nexus assault drop pods are exiting the ship!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine1_nexdroppod.wav
+}
+
+
+sound vo_marine1_nexasspod
+{
+ description "<Marine 1:> Nexus assault pods are away, good job marines!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine1_nexasspod.wav
+}
+
+
+sound vo_marine1_nexgrnd
+{
+ description "<Marine 1:> Nexus assault ground forces are departing the ship, marines, cover those ground forces!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine1_nexgrnd.wav
+}
+
+
+sound vo_marine1_grnsred
+{
+ description "<Marine 1:> The ground foces are getting torn to shreads.  Marines, cover those ground forces!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine1_grnsred.wav
+}
+
+
+sound vo_marks_attfalcspeed
+{
+ description "<Markswell:> Attention Falcon squad, once those ground forces are away, everybody report to the speeder hanger immediately- we have new orders!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marks_attfalcspeed.wav
+}
+
+
+sound vo_marine1_holdshharv
+{
+ description "<Marine 1:> Holy shit, we've got a harvester climbing over the ship to get to the Nexus ground assault forces, south turrets be ready!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine1_holdshharv.wav
+}
+
+
+sound vo_marine1_nexgaway
+{
+ description "<Marine 1:> Nexus ground assault forces are away, we have more incoming Strogg fighters!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine1_nexgaway.wav
+}
+
+
+sound vo_marks_falcgetto
+{
+ description "<Markswell:> Falcon, get to the speeder hanger, double time it!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marks_falcgetto.wav
+}
+
+
+sound vo_marks_dekweneedspeed
+{
+ description "<Markswell:> Dekard, we need you at the speeder hanger now!  Move it marine!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marks_dekweneedspeed.wav
+}
+
+
+sound vo_marks_dekwherehell
+{
+ description "<Markswell:> Dekard, where the hell are you?!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marks_dekwherehell.wav
+}
+
+
+sound vo_mcc_warnhull57
+{
+ description "<MCC Announce:> Warning!  Hull Breach on Decks 5, 7, and 10."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcc_warnhull57.wav
+}
+
+
+sound vo_mcc_strogglife
+{
+ description "<MCC Announce:> Strogg Lifeforms detected in corridor twelve."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcc_strogglife.wav
+}
+
+
+sound vo_mcc_medicalatt
+{
+ description "<MCC Announce:> Medical attention required on Deck 9."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcc_medicalatt.wav
+}
+
+
+sound vo_mcc_warnprimar
+{
+ description "<MCC Announce:> Warning.  Primary reactors exposed.  Radiation leak imminent."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcc_warnprimar.wav
+}
+
+
+sound vo_mcc_primarhang
+{
+ description "<MCC Announce:> Primary Hanger is under attack."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcc_primarhang.wav
+}
+
+
+sound vo_mcc_hullinteg
+{
+ description "<MCC Announce:> Hull integrity at 68 percent."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcc_hullinteg.wav
+}
+
+
+sound vo_mcc_primpowsys
+{
+ description "<MCC Announce:> Primary power systems offline.  Rerouting through secondary lines."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcc_primpowsys.wav
+}
+
+
+sound vo_mcc_alertprimwe
+{
+ description "<MCC Announce:> Alert!  Primary weapons battery has been destroyed."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcc_alertprimwe.wav
+}
+
+
+sound vo_mcc_warnlifesupp
+{
+ description "<MCC Announce:> Warning!  Life support systems failing.  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcc_warnlifesupp.wav
+}
+
+
+sound vo_mcc_alertreactcrit
+{
+ description "<MCC Announce:> Alert!  Reactor critical.  Primary engines offline."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcc_alertreactcrit.wav
+}
+
+
+sound vo_marine1_contaceng
+{
+ description "<marine 1:> I got contact!  Watch the Engine Room!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine1_contaceng.wav
+}
+
+
+sound vo_marine1_thereact
+{
+ description "<marine 1:> They’re going for the reactor!  Push’em back!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine1_thereact.wav
+}
+
+
+sound vo_marine2_thecomport
+{
+ description "<marine 2:> They’re coming from Port!  Hold’em off!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine2_thecomport.wav
+}
+
+
+sound vo_marine2_heavycont
+{
+ description "<marine 2:> I got three heavy contacts off starboard, they’re… Oh shit. (Static)"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine2_heavycont.wav
+}
+
+
+sound vo_marine3_nexassalms
+{
+ description "<marine 3:> Nexus Assault’s almost prepped get us a little more time!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine3_nexassalms.wav
+}
+
+
+sound vo_marine3_panthersq
+{
+ description "<marine 3:> Panther squad, requesting support on deck 12.  We’re being overrun."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine3_panthersq.wav
+}
+
+
+sound vo_marine4_ivegothost
+{
+ description "<marine 4:> I’ve got hostile signatures all over!  This is gonna get tough."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine4_ivegothost.wav
+}
+
+
+sound vo_marine4_deck3lstnoon
+{
+ description "<marine 4:> Deck 3 is lost.  There’s no one left."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine4_deck3lstnoon.wav
+}
+
+
+sound vo_marine5_igotthreemen
+{
+ description "<marine 5:> I got three men down on Deck 5.  Requesting medical assistance."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine5_igotthreemen.wav
+}
+
+
+sound vo_marine5_wherenexass
+{
+ description "<marine 5:> Where is the Nexus Assault?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine5_wherenexass.wav
+}
+
+
+sound vo_marine6_theydroppte
+{
+ description "<marine 6:> They’re dropping teleporters!  They’re gonna split us open from the inside."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine6_theydroppte.wav
+}
+
+
+sound vo_marine6_thatnegpan
+{
+ description "<marine 6:> That’s a negative, Panther.  They’ve locked down corridor 5.  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine6_thatnegpan.wav
+}
+
+
+sound vo_marine7_thehitreactch
+{
+ description "<marine 7:> They’ve hit the reactor chamber.  We got two… make that three leaks near the aft cargo holds."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine7_thehitreactch.wav
+}
+
+
+sound vo_marine7_watchreactcrit
+{
+ description "<marine 7:> Watch it!  Reactor’s critical!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine7_watchreactcrit.wav
+}
+
+
+sound vo_marine8_deack9sec
+{
+ description "<marine 8:> Deck 9 secure.  Moving to (static) What the fu(ck – Static)"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine8_deack9sec.wav
+}
+
+
+sound vo_marine8_tarrantdmn
+{
+ description "<marine 8:> Tarrant!  Lt. Tarrant!  Answer me damn… Oh geezus! (Screams)"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine8_tarrantdmn.wav
+}
+
+
+sound vo_marine1_wesquib
+{
+ description "<marine 1:> We got squibs in the main hanger!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine1_wesquib.wav
+}
+
+
+sound vo_marine1_gotcnt3
+{
+ description "<marine 1:> I got contact.  Three incoming squadrons, bearing five three nine.  Watch yourselves."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine1_gotcnt3.wav
+}
+
+
+sound vo_marine2_fallbbb
+{
+ description "<marine 2:> They’re all over us!  Fall back.  Fall back!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine2_fallbbb.wav
+}
+
+
+sound vo_marine2_ahshitwhr
+{
+ description "<marine 2:> Ah shit!  We’re do they keep coming from?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marine2_ahshitwhr.wav
+}
+
+
+sound vo_belica_sirgun
+{
+ description "<Belica:> Here sir, your guns, I also was able to modify your Cold Fire cannon with an extended clip!  Good luck!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/belica_sirgun.wav
+}
+
+
+sound vo_belica_die
+{
+ description "<Belica:> Arrrghhh!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/belica_die.wav
+}
+
+
+sound vo_mason_theytakeng
+{
+ description "<Mason +use:> They've taken engineering!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mason_theytakeng.wav
+}
+
+
+sound vo_mason_wegottop
+{
+ description "<Mason +use:> We've got to push back in there!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mason_wegottop.wav
+}
+
+
+sound vo_mason_staydown5
+{
+ description "<Mason +use:> Stay down!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mason_staydown5.wav
+}
+
+
+sound vo_russ_damnsqbs
+{
+ description "<Russell +use:> Damn squbs got the jump on us!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/russ_damnsqbs.wav
+}
+
+
+sound vo_russ_stopyamm
+{
+ description "<Russell +use:> Stop yammering and take up a gun!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/russ_stopyamm.wav
+}
+
+
+sound vo_russ_putupsht
+{
+ description "<Russell +use:> Put up or shut up Sarge!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/russ_putupsht.wav
+}
+
+
+sound vo_mason_takethatshit
+{
+ description "<Mason:> Take that shit squib!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mason_takethatshit.wav
+}
+
+
+sound vo_mason_getyrhead
+{
+ description "<Mason:> Get your head down!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mason_getyrhead.wav
+}
+
+
+sound vo_mason_theflank
+{
+ description "<Mason:> They'll flank this position soon!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mason_theflank.wav
+}
+
+
+sound vo_russ_dieyoupsh
+{
+ description "<Russell:> Die you piece of shit!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/russ_dieyoupsh.wav
+}
+
+
+sound vo_russ_youlikesome
+{
+ description "<Russell:> You like some of that!?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/russ_youlikesome.wav
+}
+
+
+sound vo_russ_weneedbacks
+{
+ description "<Russell:> We need backup in Sector D four!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/russ_weneedbacks.wav
+}
+
+
+sound vo_turguy_arrrrg
+{
+ description "<Turret Guy:> Arrrghhh!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/turguy_arrrrg.wav
+}
+
+
+sound vo_nava_holdfire
+{
+ description "<Navajas:> Hold your fire!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/nava_holdfire.wav
+}
+
+
+sound vo_darn_wasted
+{
+ description "<Darnell:> Holy shit, Dekard, I almost wasted you.  Let's get to the speeder hanger!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/darn_wasted.wav
+}
+
+
+
+sound vo_marks_dekgoodnex
+{
+ description "<Markswell:> Dekard, good.  The Nexus assault has lifted off, but we have an enormous problem. Tak..."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marks_dekgoodnex.wav
+}
+
+
+sound vo_tak_wefindec
+{
+ description "<Tak:> We finished decoding the data about the Makron guardian, AKA the Valkaryne?  She is the reason why another Makron appeared so quickly after the first one fell.  Her entire purpose is to awaken a new Makron when one is destroyed.  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/tak_wefindec.wav
+}
+
+
+sound vo_tak_valkact
+{
+ description "<Tak:> The Valkaryne acts as a data conduit for a newly awakened Makron.  She filters all the data from the Nexus into a new Makron, making sure the Strogg leadership doesn't skip a beat.  This is even more concerning- since she can filter Nexus information directly, it's possible she doesn't need the Nexus like the other Strogg do.  She can function without it!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/tak_valkact.wav
+}
+
+
+sound vo_tak_datapoint
+{
+ description "<Tak:> The data we found  pointed us to a cryogenic facility where perhaps hundreds of Makrons are stored in stasis, if the Nexus assault is successful - the Valkaryne will just awaken another Makron immediately and we'll be back to square one."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/tak_datapoint.wav
+}
+
+
+sound vo_marks_wetrycomm
+{
+ description "<Markswell:> We've tried to communicate this data to the Nexus assault forces, but the Squib attack has cut off our communication.  So our only chance here is to strike at the Valkaryne where they least expect it.  Inside the Makron Cryogenics facility."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marks_wetrycomm.wav
+}
+
+
+sound vo_tak_unfortstrgg
+{
+ description "<Tak:> Unfortunately, the Strogg have already begun to shut down access lines to the Cryogenics facility, like a preemptive action in case they detect that the Makron is danger.  Locking mechanisms are shutting down as we speak."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/tak_unfortstrgg.wav
+}
+
+
+sound vo_marks_dektimeshort
+{
+ description "<Markswell:> Dekard, time is short - you and these men need to haul ass to the Cryogenics facility, the rest of us are staying behind to scuttle the MCC so the Squibs don't capture it."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marks_dektimeshort.wav
+}
+
+
+sound vo_marks_youonlyfew
+{
+ description "<Markswell:> You'll only have a few minutes to clear the MCC blast radius.  Go as fast as you can Dekard, get to the Cryogenics facility before the Strogg finish locking down the access lines  The race is on."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marks_youonlyfew.wav
+}
+
+
+sound vo_marks_moveout5
+{
+ description "<Markswell:> Move out!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marks_moveout5.wav
+}
+
+
+
+sound vo_nava_dekletsgo
+{
+ description "<Navajas +use:> Dekard, lets go!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/nava_dekletsgo.wav
+}
+
+
+sound vo_nava_wehavenotime
+{
+ description "<Navajas +use:> We have no time to waste!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/nava_wehavenotime.wav
+}
+
+
+sound vo_nava_thepresson
+{
+ description "<Navajas +use:> The pressures on now, eh Sarge?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/nava_thepresson.wav
+}
+
+
+sound vo_darn_notime
+{
+ description "<Darnell +use:> No time to chat now!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/darn_notime.wav
+}
+
+
+sound vo_darn_getmv
+{
+ description "<Darnell +use:> Let's get moving!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/darn_getmv.wav
+}
+
+
+sound vo_darn_comeon5
+{
+ description "<Darnell +use:> Come on!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/darn_comeon5.wav
+}
+
+
+sound vo_marks_getmovoverr
+{
+ description "<Markswell +use:> Get moving Dekard, this ship's gonna be totally overrun in minutes!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marks_getmovoverr.wav
+}
+
+
+sound vo_marks_gettospeed
+{
+ description "<Markswell +use:> Get to your speeder!  We'll be leaving via dropshp, don't worry about us!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marks_gettospeed.wav
+}
+
+
+sound vo_marks_nexrely
+{
+ description "<Markswell +use:> The Nexus assault is relying on your success, go!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/marks_nexrely.wav
+}
+
+
+sound vo_tak_hundredsmak
+{
+ description "<Tak +use:> Hundreds of Makrons...We've got to succeed"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/tak_hundredsmak.wav
+}
+
+
+sound vo_tak_letsgodek
+{
+ description "<Tak +use:> Let's go Dekard."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/tak_letsgodek.wav
+}
+
+
+sound vo_tak_routtocryo
+{
+ description "<Tak +use:> The route to the Cryogenics facility is closing as we speak, we have to go!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/tak_routtocryo.wav
+}
+
+
+sound vo_morgan_youknowspeed
+{
+ description "<Morgan +use:> You know these speeders haven't been field tested yet?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/morgan_youknowspeed.wav
+}
+
+
+sound vo_morgan_pushthing
+{
+ description "<Morgan +use:> I wouldn't push these things too hard, who knows what can happen."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/morgan_pushthing.wav
+}
+
+
+sound vo_morgan_onbnav
+{
+ description "<Morgan +use:> The on-board navigation system is buggy as hell"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/morgan_onbnav.wav
+}
+
+
+sound vo_naymush_cntbelievgonna
+{
+ description "<Naymushin +use:> Can't believe their gonna blow this ship. "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/naymush_cntbelievgonna.wav
+}
+
+
+sound vo_naymush_wegottop
+{
+ description "<Naymushin +use:> We've got to get the hell outta here!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/naymush_wegottop.wav
+}
+
+
+sound vo_naymush_wedntwant
+{
+ description "<Naymushin +use:> We really don't want to be here in the next 10 minutes."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/naymush_wedntwant.wav
+}
+
+
+sound vo_mcc_allspeed
+{
+ description "<MCC Announce:> All speeder units, prepare for departure."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcc_allspeed.wav
+}
+
+
+sound vo_mcc_attenallhand
+{
+ description "<MCC Announce:> Attention all hands, escape pods and final dropships are leaving in 3 minutes."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcc_attenallhand.wav
+}
+
+
+sound vo_mcc_hannibself
+{
+ description "<MCC Announce:> Hannibal self-destruct sequence activated.  All hands, abandon ship."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcc_hannibself.wav
+}
+
+
+sound vo_mcc_warninauto
+{
+ description "<MCC Announce:> Warning.  Auto-destruct sequence committed."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcc_warninauto.wav
+}
+
+
+
+sound vo_2_2_10_265_1
+{
+ description "<pilot_1:> Paging Private Herman. Paging Private Paul Herman. Please report to General Harper's office."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_265_1.wav
+}
+
+
+sound vo_2_2_10_270_1
+{
+ description "<pilot_1:> Evac drills for decks 4 and 5 to commence at oh two hundred hours."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_270_1.wav
+}
+
+
+sound vo_2_2_19_120_1
+{
+ description "<pilot_1:> We have Strogg boarding parties on decks 2 and 3!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_19_120_1.wav
+}
+
+
+sound vo_2_2_10_210_24
+{
+ description "<pilot_2:> Battle stations. A Strogg force is incoming. Fliers and ground troops are confirmed."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_210_24.wav
+}
+
+
+sound vo_2_2_10_280_1
+{
+ description "<pilot_2:> Security, report to deck 2. A Strogg Warrior has been sighted."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_280_1.wav
+}
+
+
+sound vo_2_2_10_290_1
+{
+ description "<pilot_2:> Condor squad, report to briefing room 4."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_290_1.wav
+}
+
+
+sound vo_2_2_19_140_1
+{
+ description "<pilot_2:> Security, report to hangar, deck 2. Strogg boarding parties have been reported."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_19_140_1.wav
+}
+
+
+sound vo_2_2_20_10_1
+{
+ description "<pilot_2:> Wolf squad, report to engineering and repel boarding parties."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_20_10_1.wav
+}
+
+
+sound vo_2_2_10_257_1
+{
+ description "<marine_1:> HQ, this Bison commander. Get us some air support right now or we’re all dead men."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_257_1.wav
+}
+
+
+sound vo_2_2_10_259_1
+{
+ description "<marine_1:> Where the hell is that air support?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_259_1.wav
+}
+
+
+sound vo_2_2_10_259_3
+{
+ description "<marine_1:> We aren’t gonna last that long."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_259_3.wav
+}
+
+
+sound vo_2_2_10_263_2
+{
+ description "<marine_1:> Forget the damn computer. Target them visually."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_263_2.wav
+}
+
+
+sound vo_2_2_10_254_1
+{
+ description "<marine_3:> My turret’s been hit . . . aaaah, I'm on fire. Heeeelp meeee!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_254_1.wav
+}
+
+
+sound vo_2_2_10_256_1
+{
+ description "<marine_3:> Walker Bison 5 is on fire!  Get Banks out of there!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_256_1.wav
+}
+
+
+sound vo_2_2_10_258_1
+{
+ description "<marine_3:> Badger squad, this is HQ. Set up a defensive position at coordinates 43 by 82. Render assistance to Bison squad."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_258_1.wav
+}
+
+
+sound vo_2_2_10_259_2
+{
+ description "<marine_3:> ETA is 3 minutes."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_259_2.wav
+}
+
+
+sound vo_2_2_10_261_1
+{
+ description "<marine_3:> Strogg flyers approaching at 3 O’clock."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_261_1.wav
+}
+
+
+sound vo_2_2_10_262_1
+{
+ description "<marine_3:> Damn!  They just keep coming."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_262_1.wav
+}
+
+
+sound vo_2_2_10_262_5
+{
+ description "<marine_3:> There’s too many!  There’s just too damn many!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_262_5.wav
+}
+
+
+sound vo_2_2_10_260_1
+{
+ description "<marine_4:> Another Strogg transport just landed! Where the hell are they all coming from?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_260_1.wav
+}
+
+
+sound vo_2_2_10_261_2
+{
+ description "<marine_4:> I’m on ’em."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_261_2.wav
+}
+
+
+sound vo_2_2_10_262_4
+{
+ description "<marine_4:> They’re all over the place!  I can’t stop them!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_262_4.wav
+}
+
+
+sound vo_2_2_20_60_2
+{
+ description "<marine_5:> I confirm that. Re-transmitting pod flight plan."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_20_60_2.wav
+}
+
+
+sound vo_3_1_0_10_1
+{
+ description "<marine_5:> First wave has launched. All Pods are in the green."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/3_1_0_10_1.wav
+}
+
+
+sound vo_2_2_10_251_1
+{
+ description "<marine_8:> Exterior shields sustaining heavy damage."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_251_1.wav
+}
+
+
+sound vo_2_2_10_251_10
+{
+ description "<marine_8:> Danger! Hull has been breached on decks two and three. (Beat) Danger! Hull has been breached."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_251_10.wav
+}
+
+
+sound vo_2_2_10_251_2
+{
+ description "<marine_8:> Shields are at 86%."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_251_2.wav
+}
+
+
+sound vo_2_2_10_251_3
+{
+ description "<marine_8:> Shields at 72%, rerouting power from propulsion."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_251_3.wav
+}
+
+
+sound vo_2_2_10_251_4
+{
+ description "<marine_8:> Shields currently at 63%"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_251_4.wav
+}
+
+
+sound vo_2_2_10_251_5
+{
+ description "<marine_8:> Warning. Exterior shields are at 48%."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_251_5.wav
+}
+
+
+sound vo_2_2_10_251_6
+{
+ description "<marine_8:> Aft shields intermittent. Damage reported on Decks 2 and 3."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_251_6.wav
+}
+
+
+sound vo_2_2_10_251_7
+{
+ description "<marine_8:> Warning. Shields have dropped to 29%."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_251_7.wav
+}
+
+
+sound vo_2_2_10_251_8
+{
+ description "<marine_8:> Danger. Exterior shields are at 13%."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_251_8.wav
+}
+
+
+sound vo_2_2_10_251_9
+{
+ description "<marine_8:> Exterior shields are down. "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_251_9.wav
+}
+
+
+sound vo_2_2_10_255_1
+{
+ description "<marine_8:> Harvesters approaching on the left flank.  We need walkers over there ASAP!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_255_1.wav
+}
+
+
+sound vo_2_2_10_262_2
+{
+ description "<marine_8:> Aaahhhh!  Yeah! Take that you freaking Squibs!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_262_2.wav
+}
+
+
+sound vo_2_2_10_262_3
+{
+ description "<marine_8:> They’re trying to take engineering!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_262_3.wav
+}
+
+
+sound vo_2_2_10_263_1
+{
+ description "<marine_8:> Crap. I can’t get a lock on the flyers. They’re comin’ in too low!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_263_1.wav
+}
+
+
+sound vo_7_6_2
+{
+	description	"<dekard:> Stand down Marine."
+
+	minDistance	80
+	maxDistance	900
+	volumeDb	0
+
+	sound/vo/M07_mcc_invasion/7_6_2.wav
+}
+sound vo_7_6_3
+{
+	description	"<marine6:> But sir, he's one of them now.  He's -"
+
+	minDistance	80
+	maxDistance	900
+	volumeDb	0
+
+	sound/vo/M07_mcc_invasion/7_6_3.wav
+}
+sound vo_7_6_4
+{
+	description	"<dekard:> He's a marine.  He has a job to do."
+
+	minDistance	80
+	maxDistance	900
+	volumeDb	0
+
+	sound/vo/M07_mcc_invasion/7_6_4.wav
+}
+sound vo_7_6_5
+{
+	description	"<dekard:> .And so do you."
+
+	minDistance	80
+	maxDistance	900
+	volumeDb	0
+
+	sound/vo/M07_mcc_invasion/7_6_5.wav
+}
+sound vo_7_6_6
+{
+	description	"<marine6:> Yes sir."
+
+	minDistance	80
+	maxDistance	900
+	volumeDb	0
+
+	sound/vo/M07_mcc_invasion/7_6_6.wav
+}
+
+sound vo_trab_said
+{
+ description "<Trabbold:> I thought you said he'd be coming out from the Rhino quarters?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/trab_said.wav
+}
+
+
+sound vo_shower_jacksoin
+{
+ description "<Showers:> Well, that's what Holdorf told me..."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/shower_jackson.wav
+}
+
+
+sound vo_trab_jackson
+{
+ description "<Trabbold:> Holdorf!?  That chump doesn't know his ass from a hole in the ground!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/trab_jackson.wav
+}
+
+
+sound vo_show_kain
+{
+ description "<Showers:> Kain will be here, he's gotta come here for the Rhino briefing.  We'll see him."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/show_kain.wav
+}
+
+
+sound vo_luch_conv1
+{
+ description "<Luch:> Shouldn't he be coming out of Medical soon?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/luch_conv1.wav
+}
+
+
+sound vo_hold_conv2
+{
+ description "<Holdorf:> Yeah, he'll come right past here before the Rhino brief."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/hold_conv2.wav
+}
+
+
+sound vo_luch_conv3
+{
+ description "<Luch:> Well, as long as Trabbold and Showers don't give him any shit,"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/luch_conv3.wav
+}
+
+
+sound vo_hold_conv4
+{
+ description "<Holdorf:> Don't worry, I told Trabbold he would be coming from Rhino Quarters."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/hold_conv4.wav
+}
+
+
+sound vo_luch_conv5
+{
+ description "<Luch:> Nice!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/luch_conv5.wav
+}
+
+
+sound vo_doc_0_1
+{
+ description "<Doctor 0:> This Strogg gunner was found dead without any apparent contact wounds"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/doc_0_1.wav
+}
+
+
+sound vo_doc_0_2
+{
+ description "<Doctor 0:> Further investigation revealed a severe deterioration  between the biomechanical implants and fused tissue, leading to a severe infection"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/doc_0_2.wav
+}
+
+
+sound vo_doc_0_3
+{
+ description "<Doctor 0:> Impossible to tell actual COD without removing the Strogg implants"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/doc_0_3.wav
+}
+
+
+sound vo_2_2_10_130_1
+{
+ description "<Yoshida :> What's the piece of shit strogg doing on the Hannibal"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/mcc_2/2_2_10_130_1.wav
+}
+
+
+sound vo_
+{
+ description "<Dekard:> Stand down Marine."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/.wav
+}
+
+
+sound vo_
+{
+ description "<Yoshida :> But sir, he's one of them now.  He's -"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/.wav
+}
+
+
+sound vo_
+{
+ description "<Dekard:> He's a marine.  He has a job to do.  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/.wav
+}
+
+
+sound vo_
+{
+ description "<Yoshida :> ...and so do you."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/.wav
+}
+
+
+sound vo_
+{
+ description "<Yoshida :> Yes sir"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/.wav
+}
+
+
+sound vo_doc_1
+{
+ description "<Doctor 1:> There seems to be some concern from command that Kain might turn"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/doc_1.wav
+}
+
+
+sound vo_doc_2
+{
+ description "<Doctor 2:> That's impossible, the neurocyte isn't active."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/doc_2.wav
+}
+
+
+sound vo_doc_3
+{
+ description "<Doctor 1:> You also said it was impossible for another Markon to lead the Strogg"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/doc_3.wav
+}
+
+
+sound vo_doc_4
+{
+ description "<Doctor 2:> That's totally irrelevant, nobody predicted that, I'm speaking from hard medical evidence"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/doc_4.wav
+}
+
+
+sound vo_guard1_holdon
+{
+ description "<Guard 1:> Hold on sir."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/guard1_holdon.wav
+}
+
+
+sound vo_guard1_okmove
+{
+ description "<Guard 1:> Ok, move along."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/guard1_okmove.wav
+}
+
+
+sound vo_cloud_assault
+{
+ description "<General Cloud:> The assault on the Nexus cannot fail again."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/cloud_assault.wav
+}
+
+
+sound vo_cloud_ground
+{
+ description "<General Cloud:> Our ground presence on Stroggos is extremely limited."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/cloud_ground.wav
+}
+
+
+sound vo_weldon_angry1
+{
+ description "<Weldon:> Damn, these marines just circled around again"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/weldon_angry1.wav
+}
+
+
+sound vo_mcnutt_angry2
+{
+ description "<Mcnutt:> Did you update their positioning systems to account for the latest SMC update?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcnutt_angry2.wav
+}
+
+
+sound vo_weldon_angry3
+{
+ description "<Weldon:> I can't, the signal quality isn't good enough to send a digigal update, they're totally lost."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/weldon_angry3.wav
+}
+
+
+sound vo_mcnutt_angry4
+{
+ description "<Mcnutt:> Process an update through the analog router, it will take some time, but it should reset their location beacons."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/mcnutt_angry4.wav
+}
+
+
+sound vo_frank_conv1
+{
+ description "<Franklin:> Who the hell was that?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/frank_conv1.wav
+}
+
+
+sound vo_munro_conv2
+{
+ description "<Munro:> That was general Cloud, he hasn't been down to this deck since we left Earth."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/munro_conv2.wav
+}
+
+
+sound vo_frank_conv3
+{
+ description "<Franklin:> Why the hell does he have an armed escort?  There are no squibs on this ship!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/frank_conv3.wav
+}
+
+
+sound vo_munro_conv4
+{
+ description "<Munro:> The medical centers on this deck keep the brass jumpy, not all Strogg those docs work on have proven to be dead, remember?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/munro_conv4.wav
+}
+
+
+sound vo_frank_conv5
+{
+ description "<Franklin:> Oh yeah, I forgot about that mess."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/frank_conv5.wav
+}
+
+
+sound vo_frank_use1
+{
+ description "<Franklin +use:> I'm surprised to see armed guards escorting a general"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/frank_use1.wav
+}
+
+
+sound vo_frank_use2
+{
+ description "<Franklin +use:> Maybe their worried about that freak from Rhino squad."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/frank_use2.wav
+}
+
+
+sound vo_frank_use3
+{
+ description "<Franklin +use:> I don't know if anybody is excited about having THAT former marine on board."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/frank_use3.wav
+}
+
+
+sound vo_munro_use1
+{
+ description "<Munro +use:> It is strange seeing general Cloud down on this deck"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/munro_use1.wav
+}
+
+
+sound vo_munro_use2
+{
+ description "<Munro +use:> The upcoming assault has everybody on edge"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/munro_use2.wav
+}
+
+
+sound vo_munro_use3
+{
+ description "<Munro +use:> I need to get back to work."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/munro_use3.wav
+}
+
+
+sound vo_brian_system
+{
+ description "<Eiserloh:> System is reading on-line.  What do you have on your end?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/brian_system.wav
+}
+
+
+sound vo_fowler_hangon
+{
+ description "<Fowler:> Hang on… I got the same.  Full power, full operations.  Looks like it's ready"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/fowler_hangon.wav
+}
+
+
+sound vo_brian_coil
+{
+ description "<Eiserloh:> You check redundant coil switch?  (beat)  well?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/brian_coil.wav
+}
+
+
+sound vo_fowler_yes
+{
+ description "<Fowler:> Yes."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/fowler_yes.wav
+}
+
+
+sound vo_brian_lying
+{
+ description "<Eiserloh:> Are you lying to me?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/brian_lying.wav
+}
+
+
+sound vo_fowler_yes2
+{
+ description "<Fowler:> Yes."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/fowler_yes2.wav
+}
+
+
+sound vo_brian_look
+{
+ description "<Eiserloh:> Look, just check it over, and we'll get you out of there.  The system should be fine."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/brian_look.wav
+}
+
+
+sound vo_brian_use1
+{
+ description "<Eiserloh +use:> Feel like we've been working on this defense system for days."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/brian_use1.wav
+}
+
+
+sound vo_brian_use2
+{
+ description "<Eiserloh +use:> Fowler's been in that hatch without a break since shift change"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/brian_use2.wav
+}
+
+
+sound vo_brian_use3
+{
+ description "<Eiserloh +use:> Hopefully we won't need these guns anytime soon."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/brian_use3.wav
+}
+
+
+sound vo_garrett_door
+{
+ description "<Garrett :> Sir, this door is malfunctioning, you'll need to go around.  Sorry."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/garrett_door.wav
+}
+
+
+sound vo_garrett_use1
+{
+ description "<Garrett +use:> This ship is falling apart around us."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/garrett_use1.wav
+}
+
+
+sound vo_garrett_use2
+{
+ description "<Garrett +use:> Can't even keep the messhall open, you should see what the munitions bay looks like"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/garrett_use2.wav
+}
+
+
+sound vo_garrett_use3
+{
+ description "<Garrett +use:> The landing really jarred a lot of systems, I'll be happy once we are back in space."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/garrett_use3.wav
+}
+
+
+sound vo_sleeper_use1
+{
+ description "<Sleeper:> ...urgh, leave me alone..."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/sleeper_use1.wav
+}
+
+
+sound vo_sleeper_use2
+{
+ description "<Sleeper:> ..ugh, damnit, I've been up for 20 hours, let me get some shut eye..."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/sleeper_use2.wav
+}
+
+
+sound vo_sleeper_use3
+{
+ description "<Sleeper:> ..the presentations for the nexus assault were changed last minute, no sleep trying to fix it in time..."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/sleeper_use3.wav
+}
+
+
+sound vo_sleeper_use4
+{
+ description "<Sleeper:> ..please, just let me sleep.."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/sleeper_use4.wav
+}
+
+
+sound vo_news_earth
+{
+ description "<TV:> Earth cleanup efforts in New Berlin have been hindered by unexpected high levels of a previously undiscovered Strogg radiation at all Strogg landing sites."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/news_earth.wav
+}
+
+
+sound vo_news_workers
+{
+ description "<TV:> 15 workers have been hospitalized due to radiation related sickness.  Labor groups are confused and angry since each site was proclaimed safe by SMC engineers over 2 months ago"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/news_workers.wav
+}
+
+
+sound vo_news_engineers
+{
+ description "<TV:> SMC engineers on site have reported that the radiation source was Strogg in nature, and had not been a type of Radiation known to SMC engineers before the hospitalizations took place."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/news_engineers.wav
+}
+
+
+sound vo_tvguy_annoyed1
+{
+ description "<TV Guy +use:> Hey, I'm watching this."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/tvguy_annoyed1.wav
+}
+
+
+sound vo_tvguy_annoyed2
+{
+ description "<TV Guy +use:> Shh..."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/tvguy_annoyed2.wav
+}
+
+
+sound vo_tvguy_annoyed3
+{
+ description "<TV Guy +use:> Sir, please."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/tvguy_annoyed3.wav
+}
+
+
+sound vo_richard_holdon
+{
+ description "<Richardson:> Hold on sir, marines on the move."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/richard_holdon.wav
+}
+
+
+sound vo_richard_goahead
+{
+ description "<Richardson:> Ok, go ahead."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/richard_goahead.wav
+}
+
+
+sound vo_richard_use1
+{
+ description "<Richardson +use:> We have a lot of marines preping for the Nexus assault"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/richard_use1.wav
+}
+
+
+sound vo_richard_use2
+{
+ description "<Richardson +use:> Operations on deck 4 were shut down entirely for Nexus prep"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/richard_use2.wav
+}
+
+
+sound vo_richard_use3
+{
+ description "<Richardson +use:> Once the Nexus force leaves, we will be running on a skeleton crew."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/richard_use3.wav
+}
+
+
+sound vo_runmarine_1
+{
+ description "<Running Marine:> Go Go Go!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/run_marine1.wav
+}
+
+
+sound vo_runmarine_2
+{
+ description "<Running Marine:> Move it ladies!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/run_marine2.wav
+}
+
+
+sound vo_runmarine_3
+{
+ description "<Running Marine:> The Nexus assault won't wait for you!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/run_marine3.wav
+}
+
+
+sound vo_nix_laptop
+{
+ description "<Nix +use:> Have you seen my laptop?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/nix_laptop.wav
+}
+
+
+sound vo_flan_data1
+{
+ description "<Flannagan:> If we setup the decryption algorithm on every workstation on the ship, we can process the data in parallel"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/flan_data.wav
+}
+
+
+sound vo_ketch_data2
+{
+ description "<Ketcherside:> Is it possible to do that without modifying every workstation manually?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/ketch_data2.wav
+}
+
+
+sound vo_flan_data3
+{
+ description "<Flannagan:> No, too many systems on the ship are locked out from each other, we could get root access to each subsystem and install it from there."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/flan_data3.wav
+}
+
+
+sound vo_ketch_data4
+{
+ description "<Ketcherside:> We can't do that while there are any active operations, it would require a total shutdown and restart for all systems"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/ketch_data4.wav
+}
+
+
+sound vo_flan_use1
+{
+ description "<Flannagan +use:> There are over four thousand workstations on this ship, all of which could assist in processing this data"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/flan_use1.wav
+}
+
+
+sound vo_flan_use2
+{
+ description "<Flannagan +use:> We have to manually install the decryption algorithm on each workstation, we don't have time for that"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/flan_use2.wav
+}
+
+
+sound vo_flan_use3
+{
+ description "<Flannagan +use:> This wasn't something we anticipated having to deal with, this is an enormous amount of data"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/flan_use3.wav
+}
+
+
+sound vo_ketch_use1
+{
+ description "<Ketcherside +use:> Parallel processing would have this data decrypted in just under a day"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/ketch_use1.wav
+}
+
+
+sound vo_ketch_use2
+{
+ description "<Ketcherside +use:> We have every CPU in sci-tech already dedicated to this task"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/ketch_use2.wav
+}
+
+
+sound vo_ketch_use3
+{
+ description "<Ketcherside +use:> The data is processing much faster, but still not quickly enough."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/ketch_use3.wav
+}
+
+
+sound vo_must_dooropen
+{
+ description "<Mustaine :> I'm trying to get this door open!  Almost there!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/must_dooropen.wav
+}
+
+
+sound vo_must_onemore
+{
+ description "<Mustaine :> One more second!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/must_onemore.wav
+}
+
+
+sound vo_must_gotit
+{
+ description "<Mustaine :> Got it!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M06_MCC/must_gotit.wav
+}
+

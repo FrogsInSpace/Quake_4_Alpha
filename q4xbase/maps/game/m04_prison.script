@@ -1,0 +1,2960 @@
+#include "scripts/doom_defs.script"
+
+
+	entity starget;				//Global entity for passing targets to the func_vehicle_drivers
+
+	boolean SECROOMSPECS;
+	boolean TUBESAREOFF;
+	boolean STRAUSSCINEMATIC;
+	boolean DRIVER_STOP_FIRING;		//Tells the func_vehicle_driver when to stop shooting at bad guys
+	boolean DRIVER_FIRING;			//Whether or not the driver is already firing at something
+
+	
+	
+	void straussCinematicOver();
+	void transferRoomTransport();
+	void squadTopLoop7Pos();
+	void controlRoomSeq2();
+	
+	void theLevelBegins()
+	{
+		
+		sys.fadeOut( '0 0 0', 0);
+		sys.wait( .2 );
+		sys.fadeIn( '0 0 0', .3);
+		$tak.setUndying( 1 );
+		$darnell.setUndying( 1 );
+		
+	}
+
+	void tubeTransportSystem() //scripted tube mover
+	{
+		sys.trigger( $char_marine_naked_1 );
+		//aiScriptedAnimLoop( $char_marine_naked_1, "med_tube_float", 0 );
+		sys.trigger( $char_marine_naked_2 );
+		//aiScriptedAnimLoop( $char_marine_naked_2, "med_tube_float", 0 );
+		sys.trigger( $char_marine_naked_3 );
+		//aiScriptedAnimLoop( $char_marine_naked_3, "med_tube_float", 0 );
+				
+		while( !TUBESAREOFF )
+		{
+			
+			$transport_topclamp_3.time( 5.0 );
+			$transport_topclamp_4.time( 5.0 );
+			$transport_topclamp_5.time( 5.0 );
+			$transport_topclamp_6.time( 5.0 );
+			$transport_topclamp_3.moveTo( $transport_target_2 );
+			$transport_topclamp_4.moveTo( $transport_target_3 );
+			$transport_topclamp_5.moveTo( $transport_target_4 );
+			$transport_topclamp_6.moveTo( $transport_target_1 );
+			sys.wait( 1.35 );
+			sys.trigger( $func_door_1569 );
+			sys.wait( 1.0 );
+			sys.trigger( $func_door_1572 );
+			sys.waitFor( $transport_topclamp_6 );
+			
+			$transport_topclamp_3.time( 5.0 );
+			$transport_topclamp_4.time( 5.0 );
+			$transport_topclamp_5.time( 5.0 );
+			$transport_topclamp_6.time( 5.0 );
+			$transport_topclamp_3.moveTo( $transport_target_3 );
+			$transport_topclamp_4.moveTo( $transport_target_4 );
+			$transport_topclamp_5.moveTo( $transport_target_1 );
+			$transport_topclamp_6.moveTo( $transport_target_2 );
+			sys.wait( 1.35 );
+			sys.trigger( $func_door_1569 );
+			sys.wait( 1.0 );
+			sys.trigger( $func_door_1572 );
+			sys.waitFor( $transport_topclamp_6 );
+			
+			$transport_topclamp_3.time( 5.0 );
+			$transport_topclamp_4.time( 5.0 );
+			$transport_topclamp_5.time( 5.0 );
+			$transport_topclamp_6.time( 5.0 );
+			$transport_topclamp_3.moveTo( $transport_target_4 );
+			$transport_topclamp_4.moveTo( $transport_target_1 );
+			$transport_topclamp_5.moveTo( $transport_target_2 );
+			$transport_topclamp_6.moveTo( $transport_target_3 );
+			sys.wait( 1.35 );
+			sys.trigger( $func_door_1569 );
+			sys.wait( 1.0 );
+			sys.trigger( $func_door_1572 );
+			sys.waitFor( $transport_topclamp_6 );
+			
+			$transport_topclamp_3.time( 5.0 );
+			$transport_topclamp_4.time( 5.0 );
+			$transport_topclamp_5.time( 5.0 );
+			$transport_topclamp_6.time( 5.0 );
+			$transport_topclamp_3.moveTo( $transport_target_1 );
+			$transport_topclamp_4.moveTo( $transport_target_2 );
+			$transport_topclamp_5.moveTo( $transport_target_3 );
+			$transport_topclamp_6.moveTo( $transport_target_4 );
+			sys.wait( 1.35 );
+			sys.trigger( $func_door_1569 );
+			sys.wait( 1.0 );
+			sys.trigger( $func_door_1572 );
+			sys.waitFor( $transport_topclamp_6 );
+		}
+	}
+
+	void tubeTransportSystem2()
+	{
+		while( !TUBESAREOFF )
+		{
+			$transport2_topclamp_1.show();
+			$transport2_pod_1.show();
+			$transport2_topclamp_1.time( 5.0 );
+			$transport2_topclamp_2.time( 5.0 );
+			$transport2_topclamp_3.hide();
+			$transport2_pod_3.hide();
+			$transport2_topclamp_3.time( 5.0 );
+			$transport2_topclamp_1.moveTo( $transport2_target_2 );
+			$transport2_topclamp_2.moveTo( $transport2_target_3 );
+			$transport2_topclamp_3.moveTo( $transport2_target_1 );
+			sys.waitFor( $transport2_topclamp_3 );
+			
+			$transport2_topclamp_1.time( 5.0 );
+			$transport2_topclamp_2.hide();
+			$transport2_pod_2.hide();
+			$transport2_topclamp_2.time( 5.0 );
+			$transport2_topclamp_3.show();
+			$transport2_pod_3.show();
+			$transport2_topclamp_3.time( 5.0 );
+			$transport2_topclamp_1.moveTo( $transport2_target_3 );
+			$transport2_topclamp_2.moveTo( $transport2_target_1 );
+			$transport2_topclamp_3.moveTo( $transport2_target_2 );
+			sys.waitFor( $transport2_topclamp_3 );
+			
+			$transport2_topclamp_1.hide();
+			$transport2_pod_1.hide();
+			$transport2_topclamp_1.time( 5.0 );
+			$transport2_topclamp_2.show();
+			$transport2_pod_2.show();
+			$transport2_topclamp_2.time( 5.0 );
+			$transport2_topclamp_3.time( 5.0 );
+			$transport2_topclamp_1.moveTo( $transport2_target_1 );
+			$transport2_topclamp_2.moveTo( $transport2_target_2 );
+			$transport2_topclamp_3.moveTo( $transport2_target_3 );
+			sys.waitFor( $transport2_topclamp_3 );
+			
+		}
+	}
+	
+	void startupPump()
+	{
+		$m05_pistonb_1.playCycle(ANIMCHANNEL_ALL, "cycle");
+	}
+	
+	void setSecWindowShields()
+	{
+		$sec_windowShield_01.setOrigin( '1408 -3072 648' );
+		$sec_windowShield_02.setOrigin( '1248 -3232 648' );
+
+	}
+	
+	//------------security camera startup threads--------------------
+	
+	void secCamStart(entity secCamName)
+	{
+		secCamName.playCycle(ANIMCHANNEL_ALL, "idle");
+	}
+	
+	void checkpointHit()
+	{
+		sys.trigger( $func_savegame_1 );
+	}
+	
+	void controlRoomCheat()
+	{
+		$tak.setOrigin( '926 -200 232' );
+		$darnell.setOrigin( '1016 -340 232' );
+	}
+	
+	void tacticalTakesALook()
+	{
+		sys.trigger( $monster_tactical_mgun_1 );
+		aiScriptedMoveWait( $monster_tactical_mgun_1, $sec_room_tact_check_pos2, 16, 1 );
+		//sys.trigger( $aas_obs_trapdoor );
+		aiScriptedMove( $monster_tactical_mgun_1, $t_mgun_1_pos, 32, 1 );
+	}
+	
+	void squadMoveUp_0() //move team mates forward
+	{
+		sys.wait(.5 );
+		aiScriptedMove( $darnell, $darnell_tactpos_start, 8, 1 );
+		aiSpeakWait( $tak, "lipsync_tak_dekletmstrg" );
+		aiScriptedMoveWait( $tak, $player1, 64, 0 );
+		aiScriptedAnimWait( $tak, "player_gift_start", 4, 0 );
+		aiScriptedAnimWait( $tak, "player_gift_end", 4, 0 );
+		//sys.wait( 3 );
+		aiSpeakWait( $tak, "lipsync_tak_therethatscp" );
+		sys.trigger( $core_mod_give );
+		sys.wait( .5 );
+		sys.music( "m4_enter_prison" );
+		thread tacticalTakesALook();
+		$player_start_block.hide();
+		sys.trigger( $item_objective_2 );
+		aiScriptedMove( $darnell, $darnell_tactpos_0, 8, 0 );
+		aiScriptedMove( $tak, $tak_tactpos_0, 8, 0 );
+	}
+
+	void candidCamScientist1()
+	{
+		sys.trigger( $monster_scientist_5 );
+		$monster_scientist_5.becomeNonSolid();
+		sys.wait( 0.1 );
+		aiScriptedAnimLoop( $monster_scientist_5, "work_on_human3_loop", 0 );
+	}
+	
+	void squadMoveUp_1() //move team mates forward
+	{
+		aiScriptedMove( $darnell, $darnell_tactpos_1, 8, 1 );
+		sys.wait( 1 );
+		aiScriptedMove( $tak, $tak_tactpos_1, 8, 1 );
+	}
+	
+	void welcomeParty()
+	{
+		
+		sys.trigger( $monster_tactical_mgun_35 );
+		sys.trigger( $tactical_secRoom );
+		thread candidCamScientist1();
+		sys.wait( 2 );
+	}
+	
+	void run_for_alarm()  //force ai to run & turn on alarm
+	{
+		thread squadMoveUp_1();
+		aiScriptedMoveWait( $tactical_secRoom, $alarm_location_3, 4, 0 );	//move to window
+		aiScriptedFaceWait( $tactical_secRoom, $func_static_1740, 0 );
+		//aiScriptedAnimWait( $tactical_secRoom, "point_left", 4, 0 ); //gesture
+		aiScriptedMoveWait( $tactical_secRoom, $alarm_location_1, 4, 0 ); //move to console
+		aiScriptedFaceWait( $tactical_secRoom, $func_static_54011, 0 );
+		//aiScriptedAnimWait( $tactical_secRoom, "point_forward", 4, 0 ); //turn on alarm
+		sys.trigger( $security_alarm_1 );
+		sys.trigger( $alarm_light01 );
+		sys.trigger( $func_rotating_1 );
+		$secRoomDoorFrame01.setShaderParm( 7, 0 );
+		$secRoomDoora.lock( 2 );
+		$secRoomDoorb.lock( 2 );
+		$sec_windowShield_01.time( 4 );
+		$sec_windowShield_01.accelTime( 1 );
+		$sec_windowShield_01.decelTime( .5 );
+		$sec_windowShield_02.time( 4 );
+		$sec_windowShield_02.accelTime( 1 );
+		$sec_windowShield_02.decelTime( .5 );
+		$sec_windowShield_01.move( DOWN, 120 );
+		$sec_windowShield_02.move( DOWN, 120 );
+
+		sys.wait( .3 );
+		sys.trigger( $alarm_light02 );
+		sys.trigger( $func_rotating_2 );
+		aiScriptedMove( $tactical_secRoom, $alarm_location_2, 4, 0 ); //move to console
+		sys.wait( .5 );
+		aiSpeakWait( $darnell, "lipsync_darn_shittrig" );
+		sys.wait( 1 );
+		aiSpeakWait( $tak, "lipsync_tak_thatalarmb" );
+		//aiScriptedFaceWait( $tactical_secRoom, $func_static_54013, 0 );
+		$tactical_secRoom.remove();
+
+	}
+
+	void securityRoomReinforcements()
+	{
+		sys.trigger( $secRoom_berserker );
+		sys.trigger( $monster_tactical_mgun_33 );
+		sys.trigger( $monster_tactical_mgun_34 );
+		sys.waitFrame();
+		sys.trigger( $secRoomAAS_block );
+		$secRoomDoora.lock( 0 );
+		$secRoomDoorb.lock( 0 );
+		aiScriptedMove( $secRoom_berserker, $secRoom_berkserk_pos_1, 4, 1 );
+		sys.wait( .5 );
+		aiScriptedMove( $monster_tactical_mgun_33, $secRoom_mgun33_pos_1, 32, 1 );
+		sys.wait( .5 );
+		aiScriptedMove( $monster_tactical_mgun_34, $secRoom_mgun34_pos_1, 32, 1 );
+		sys.wait( 3 );
+		sys.trigger( $secRoomAAS_block );
+		$secRoomDoora.lock( 2 );
+		$secRoomDoorb.lock( 2 );
+
+	}
+	
+	void takDoorHack_1()
+	{
+		aiScriptedMoveWait( $tak, $tak_doorhackpos_1, 4, 1);
+		aiScriptedFaceWait( $tak, $doorhack_monitor_1, 1);
+		aiScriptedAnimWait( $tak, "plant_tnt_low_start", 16, 1 );
+	}
+	
+	void darnellNagHatch()
+	{
+		while(1)
+		{
+			sys.wait( 10 );
+			aiSpeak( $darnell, "lipsync_darn_overhere3" );
+		}
+			
+	}
+	
+	void darnellAtHatch()
+	{
+		sys.killthread( "darnellNagHatch" );
+		aiScriptedFaceWait( $darnell, $player1, 0);
+		aiSpeakWait( $darnell, "lipsync_darn_thistunn" );
+		aiScriptedMoveWait( $darnell, $darnell_doorhackpos_1, 8, 1);
+	}
+	
+	void darnellLooksAround()
+	{
+		aiScriptedMoveWait( $darnell, $darnell_accessGratePos_4, 8, 0);
+		sys.wait( 5 );
+		aiScriptedMoveWait( $darnell, $darnell_accessGratePos_1, 4, 0);
+		aiScriptedFaceWait( $darnell, $sec_grate_clip, 1);
+		aiScriptedAnim( $darnell, "pr_darnell_grate", 8, 0 );
+		aiSpeak( $darnell, "lipsync_darn_ifoundh" );
+		sys.wait( $env_q4x_pr_darnell_grate_1.playAnim(ANIMCHANNEL_ALL, "pr_darnell_grate"));
+			//sys.waitFor( $env_q4x_pr_darnell_grate_1 );
+		$env_q4x_pr_darnell_grate_1.playCycle(ANIMCHANNEL_ALL, "end_idle");
+		$sec_grate_clip.remove();
+		sys.trigger( $darnell_hatch_trig );
+		thread darnellNagHatch();
+	}
+	
+	void secRoomLastOne()
+	{
+		float k;
+		sys.wait( 3 );
+		aiScriptedMoveWait( $tak, $tak_doorhackpos_1, 8, 0 );
+		aiSpeak( $tak, "lipsync_tak_pris_door1" );
+		aiScriptedFaceWait( $tak, $doorhack_monitor_1, 0 );
+		
+		aiScriptedAnimWait( $tak, "console_stand_start", 4, 0 );
+		aiScriptedAnimWait( $tak, "console_stand_loop", 4, 0 );
+		aiScriptedAnimWait( $tak, "console_stand_end", 4, 0 );
+		aiSpeak( $tak, "lipsync_tak_weneedsecproc" );
+		aiScriptedMoveWait( $tak, $tak_doorhackpos_2, 8, 1);
+		aiScriptedFaceWait( $tak, $func_static_53381, 1);
+		aiScriptedAnim( $tak, "conversation_1", 16, 1 );
+		k = thread darnellLooksAround();
+		sys.wait( 5 );
+		aiSpeakWait( $tak, "lipsync_tak_accordacc" );
+		sys.wait( 2 );
+
+		sys.trigger( $item_objective_sec_room );
+		sys.waitForThread( k );
+		thread takDoorHack_1();
+	}
+	
+	
+	void tunnelReparBotWorking()
+	{
+		float t;
+		
+		while( isValidEntity( $tunnel_bot ))
+		{
+		aiScriptedAnimLoop( $tunnel_bot, "idle", 12 );
+		sys.waitFrame();
+			
+		aiScriptedMoveWait( $tunnel_bot, $tunBot_spot_1, 8, 0 );
+		aiScriptedFaceWait( $tunnel_bot, $func_static_54312, 0 );
+		$repbot_1.bind( $tunBot_spot_1 );
+		sys.wait( 1 );
+
+		aiScriptedActionWait( $tunnel_bot, $func_static_54312, 0 );
+		sys.wait( .5 );
+
+		$tunnel_bot.unbind();
+		aiScriptedAnimLoop( $tunnel_bot, "idle", 12 );
+		
+		sys.wait( 1 );
+		
+		aiScriptedMoveWait( $tunnel_bot, $tunBot_spot_2, 8, 0 );
+		aiScriptedFaceWait( $tunnel_bot, $func_static_54314, 0 );
+		$repbot_1.bind( $tunBot_spot_1 );
+		sys.wait( 1 );
+
+		aiScriptedActionWait( $tunnel_bot, $func_static_54314, 0 );
+		sys.wait( .5 );
+
+		$tunnel_bot.unbind();
+		aiScriptedAnimLoop( $tunnel_bot, "idle", 12 );
+		
+		sys.wait( 1 );
+		
+		//aiScriptedMoveWait( $tunnel_bot, $tunBot_spot_3, 8, 0 );
+		//aiScriptedFaceWait( $tunnel_bot, $func_static_54678, 0 );
+		//$repbot_1.bind( $tunBot_spot_1 );
+		//sys.wait( 1 );
+
+		//aiScriptedActionWait( $tunnel_bot, $func_static_54678, 0 );
+		//sys.wait( .5 );
+
+		//$tunnel_bot.unbind();
+		//aiScriptedAnimLoop( $tunnel_bot, "idle", 12 );
+		
+		//sys.wait( 1 );
+			
+			
+		}
+	}
+
+	
+	void overSecRoom()
+	{
+		sys.trigger( $tactical_secRoom_1 );
+		sys.wait( 0.5 );
+		aiScriptedMoveWait( $tactical_secRoom_1, $alarm_location_2, 16, 1 );
+		aiScriptedFaceWait( $tactical_secRoom_1, $func_static_54013, 1 );
+		aiScriptedWait( $tactical_secRoom_1 );
+		//aiScriptedAnimWait( $tactical_secRoom_1, "point_forward", 4, 1 );
+		aiScriptedMoveWait( $tactical_secRoom_1, $alarm_location_5, 16, 1 );
+		aiScriptedFaceWait( $tactical_secRoom_1, $func_static_54012, 1 );
+		aiScriptedWait( $tactical_secRoom_1 );
+		//aiScriptedAnimWait( $tactical_secRoom_1, "point_forward", 4, 1 );
+		aiScriptedMoveWait( $tactical_secRoom_1, $alarm_location_1, 16, 1 );
+		aiScriptedFaceWait( $tactical_secRoom_1, $func_static_54011, 1 );
+	}
+	
+	void noMoreMrNiceGuy()
+	{
+		sys.killthread( "overSecRoom" );
+	}
+	
+	void secRoomNag()
+	{
+		while( !SECROOMSPECS )
+		{
+			sys.wait( 30 );
+			radioChatterPlayWait($prison1_radiochatter, "vo_tak_wegottogetg");
+			sys.wait( 30 );
+			radioChatterPlayWait($prison1_radiochatter, "vo_tak_thatalarmb");
+
+		}
+	}
+
+	void gotSpecs()
+	{
+		SECROOMSPECS = true;
+		sys.killthread( "secRoomNag" );
+		sys.wait ( 1 );
+		radioChatterPlayWait($prison1_radiochatter, "vo_tak_thatsitdek");
+
+	}
+	
+	void unlockSecRoomDoors()  //unlocks security room doors
+	{
+		$secRoomDoorFrame01.setShaderParm( 7, 1 );
+		$secRoomDoora.lock( 0 );
+		$secRoomDoorb.lock( 0 );
+		$secRoomDoorFrame02.setShaderParm( 7, 1 );
+		$secRoomDoor02R.lock( 0 );
+		$secRoomDoor02L.lock( 0 );
+		$sec_windowShield_01.time( 4 );
+		$sec_windowShield_01.accelTime( .5 );
+		$sec_windowShield_01.decelTime( .5 );
+		$sec_windowShield_02.time( 4 );
+		$sec_windowShield_02.accelTime( .5 );
+		$sec_windowShield_02.decelTime( .5 );
+
+		$sec_windowShield_01.move( UP, 120 );
+		$sec_windowShield_02.move( UP, 120 );
+		sys.trigger( $security_alarm_1 );
+		sys.trigger( $secRoomAAS_block );
+		sys.trigger( $item_objectivecomplete_sec_room );
+		sys.trigger( $alarm_light03 );
+		sys.trigger( $func_rotating_5 );
+		sys.trigger( $alarm_light01 );
+		sys.trigger( $func_rotating_1 );
+		sys.trigger( $alarm_light02 );
+		sys.trigger( $func_rotating_2 );
+		$func_mover_18.hide();
+		$func_mover_19.hide();
+		thread gotSpecs();
+	}
+	
+	void cellblock0_prisoners() //turn on and set anims on cellblock guys
+	{
+		sys.trigger( $cellblock0_prisoner_1 );
+		sys.trigger( $cellblock0_prisoner_2 );
+		sys.trigger( $cellblock0_prisoner_3 );
+		sys.trigger( $cellblock0_prisoner_4 );
+		sys.trigger( $cellblock0_prisoner_5 );
+		//aiScriptedAnimLoop( $cellblock0_prisoner_1, "idle_sitting_2", 0 ); 
+		//aiScriptedAnimLoop( $cellblock0_prisoner_2, "ad_wounded_on_knee_loop", 0 );
+		//aiScriptedAnimLoop( $cellblock0_prisoner_3, "waving_down_tram", 0 );
+		//aiScriptedAnimLoop( $cellblock0_prisoner_4, "ad_wounded_on_knee_loop", 0 );
+		//aiScriptedAnimLoop( $cellblock0_prisoner_5, "idle_sitting_2", 0 );
+	}
+	
+	void squadMoveUp_2() //move team mates forward
+	{
+		thread cellblock0_prisoners();
+		sys.wait( 0.1 );
+		aiScriptedMove( $darnell, $darnell_tactpos_2, 8, 1 );
+		sys.wait( 1 );
+		aiScriptedMove( $tak, $tak_tactpos_2, 8, 1 );
+		aiScriptedWait( $darnell );
+		aiScriptedWait( $tak );
+		sys.trigger( $squad_block_pos_2 );
+
+	}
+	
+	void bridge_unfold()
+	{
+		$center_walkway_east.time( 3 );
+		$center_walkway_east.rotateOnce( '-90 0 0' );
+		sys.wait( 1 );
+		$bridge_plat_rt_d_east.time( .5 );
+		$bridge_plat_lf_d_east.time( .5 );
+		$bridge_plat_lf_d_east.move( SOUTH, 24 );
+		$bridge_plat_rt_d_east.move( SOUTH, 24 );
+	}
+	
+	void catwalk_c_east()
+	{
+		$bridge_arm_lf_c_east.time(1.5);
+		$bridge_arm_rt_c_east.time(1.5);
+		$bridge_plat_rt_c_east.time(1.5);
+		$bridge_plat_lf_c_east.time(1.5);
+		
+		$bridge_plat_lf_c_east.rotateOnce('0 0 -195');
+		$bridge_plat_rt_c_east.rotateOnce('0 0 195');
+		
+		sys.waitFor( $bridge_plat_rt_c_east );
+		
+		$bridge_arm_lf_c_east.rotateOnce('-203 0 0');
+		$bridge_arm_rt_c_east.rotateOnce('-203 0 0');
+		
+		sys.wait( .75 );
+		$bridge_plat_lf_c_east.time(.75);
+		$bridge_plat_rt_c_east.time(.75);
+		$bridge_plat_lf_c_east.rotateOnce('0 0 128');
+		$bridge_plat_rt_c_east.rotateOnce('0 0 -128');
+			
+		sys.waitFor($bridge_arm_lf_c_east);
+		//sys.waitFor( $bridge_plat_rt_c_east );
+		
+		$bridge_arm_lf_c_east.time(.5);
+		$bridge_arm_rt_c_east.time(.5);
+		
+		$bridge_arm_lf_c_east.move(SOUTH, 232);
+		$bridge_arm_rt_c_east.move(SOUTH, 232);
+		
+	}
+	
+	void catwalk_b_east()
+	{
+		$bridge_arm_lf_b_east.time(1.5);
+		$bridge_arm_rt_b_east.time(1.5);
+		$bridge_plat_rt_b_east.time(1.5);
+		$bridge_plat_lf_b_east.time(1.5);
+	
+		$bridge_plat_lf_b_east.rotateOnce('0 0 -195');
+		$bridge_plat_rt_b_east.rotateOnce('0 0 195');
+		
+		sys.waitFor( $bridge_plat_rt_b_east );
+		
+		$bridge_arm_lf_b_east.rotateOnce('-203 0 0');
+		$bridge_arm_rt_b_east.rotateOnce('-203 0 0');
+		
+		sys.wait( .75 );
+		$bridge_plat_lf_b_east.time(.75);
+		$bridge_plat_rt_b_east.time(.75);
+		$bridge_plat_lf_b_east.rotateOnce('0 0 128');
+		$bridge_plat_rt_b_east.rotateOnce('0 0 -128');
+			
+		sys.waitFor($bridge_arm_lf_b_east);
+		//sys.waitFor( $bridge_plat_rt_b_east );
+		
+		sys.wait( .5 );
+		
+		$bridge_arm_lf_b_east.time(1.);
+		$bridge_arm_rt_b_east.time(1.);
+		
+		$bridge_arm_lf_b_east.move(SOUTH, 320);
+		$bridge_arm_rt_b_east.move(SOUTH, 320);
+	}
+	
+	void catwalk_a_east()
+	{
+		$bridge_arm_lf_a_east.time(1.5);
+		$bridge_arm_rt_a_east.time(1.5);
+		$bridge_plat_rt_a_east.time(1.5);
+		$bridge_plat_lf_a_east.time(1.5);
+	
+		$bridge_plat_lf_a_east.rotateOnce('0 0 -195');
+		$bridge_plat_rt_a_east.rotateOnce('0 0 195');
+		
+		sys.waitFor( $bridge_plat_rt_a_east );
+		
+		$bridge_arm_lf_a_east.rotateOnce('-203 0 0');
+		$bridge_arm_rt_a_east.rotateOnce('-203 0 0');
+		
+		sys.wait( .75 );
+		$bridge_plat_lf_a_east.time(.75);
+		$bridge_plat_rt_a_east.time(.75);
+		$bridge_plat_lf_a_east.rotateOnce('0 0 128');
+		$bridge_plat_rt_a_east.rotateOnce('0 0 -128');
+			
+		sys.waitFor($bridge_arm_lf_a_east);
+		//sys.waitFor( $bridge_plat_rt_a_east );
+		
+		sys.wait( 1 );
+		
+		$bridge_arm_lf_a_east.time(1.5);
+		$bridge_arm_rt_a_east.time(1.5);
+		
+		$bridge_arm_lf_a_east.move(SOUTH, 420);
+		$bridge_arm_rt_a_east.move(SOUTH, 420);
+	}
+	
+	void bridge_retract()
+	{
+		$bridge_east_supports.accelTime(.5);
+		$bridge_east_supports.decelTime(.5);
+		$bridge_east_supports.time(1.5);
+		$bridge_east_supports.move(SOUTH, 424);
+		sys.waitFor($bridge_east_supports);
+	}
+	
+	void catwalks()
+	{
+		thread catwalk_c_east();
+		sys.wait(.5);
+		thread catwalk_b_east();
+		sys.wait(.5);
+		thread catwalk_a_east();
+	}
+	
+	void prison_bridge()
+	{
+		thread bridge_unfold();
+		sys.wait(.5 );
+		thread catwalks();
+		sys.wait( 5 );
+		thread bridge_retract();
+		sys.wait( 2 );
+		
+		sys.trigger( $alarm_light03 );
+		sys.trigger( $func_rotating_5 );
+	}
+	
+	
+	void scientistLeavesRoom()
+	{
+		sys.trigger( $monster_scientist_8 );
+		sys.trigger( $grunt_dragger_1 );
+		sys.trigger( $grunt_dragee );
+		sys.wait( .5 );
+		aiScriptedMove( $monster_scientist_8, $scientist_moveTo_2, 16, 1 );
+		sys.wait ( 1 );
+		aiScriptedAnim( $grunt_dragger_1, "pr_drag_marine", 16, 1 );
+		aiScriptedAnim( $grunt_dragee, "pr_drag_marine", 16, 1 );
+		aiScriptedWait( $monster_scientist_8 );
+		$monster_scientist_8.remove();
+		aiScriptedWait( $grunt_dragger_1 );
+		$grunt_dragger_1.remove();
+		$grunt_dragee.remove();
+	}
+	
+	
+	void takGuardBridge()
+	{
+		aiScriptedMoveWait( $tak, $tak_BridgePos_1, 8, 1 );
+		aiScriptedFaceWait( $tak, $center_walkway_east, 1 );
+
+	}
+	
+	void bridgeSpawn3Go(entity bridgeBlaster3)
+	{
+		aiScriptedMove( bridgeBlaster3, $bridgeBlaster_pos3, 32, 1 );
+	}
+	
+	void bridgeSpawn4Go(entity bridgeBlaster4)
+	{
+		aiScriptedMove( bridgeBlaster4, $bridgeBlaster_pos4, 32, 1 );
+	}
+	
+	void bridgeSpawn5Go(entity bridgeBlaster5)
+	{
+		aiScriptedMove( bridgeBlaster5, $bridgeBlaster_pos5, 32, 1 );
+	}
+	
+	void bridgeSpawn6Go(entity bridgeBlaster6)
+	{
+		aiScriptedMove( bridgeBlaster6, $bridgeBlaster_pos6, 32, 1 );
+	}
+	
+	void bridgeSpawn7Go(entity bridgeBlaster7)
+	{
+		aiScriptedMove( bridgeBlaster7, $bridgeBlaster_pos7, 32, 1 );
+	}
+	
+	void bridgeSpawn8Go(entity bridgeBlaster8)
+	{
+		aiScriptedMove( bridgeBlaster8, $bridgeBlaster_pos8, 32, 1 );
+	}
+	
+	void darnellDies()
+	{
+		sys.trigger( $objectivefailed_bridge );
+	}
+	
+	void letsTakeTheBridge()
+	{
+		sys.trigger( $lift_1_block );
+		sys.waitFrame();
+		aiScriptedMove( $darnell, $darnell_bridge_pos_1, 8, 1 );
+		sys.wait( .5 );
+		aiScriptedMove( $tak, $tak_bridge_pos_1, 8, 1 );
+		aiSpeakWait( $darnell, "lipsync_darn_lookcondits" );
+		aiSpeakWait( $tak, "lipsync_tak_extractcare" );
+		aiSpeakWait( $darnell, "lipsync_darn_anystrauss" );
+		aiSpeakWait( $tak, "lipsync_tak_neg4" );
+	}
+	
+	//-------------------------------------------------------------------------------------
+	//				start bridge extend
+	//-------------------------------------------------------------------------------------
+	
+	void bridge_up()
+	{
+		$center_walkway_east.time( 2 );
+		$center_walkway_east.accelTime( .5 );
+		$center_walkway_east.decelTime( .5 );
+		$center_walkway_east.rotateOnce( '90 0 0' );
+		sys.wait( 1 );
+		$bridge_plat_rt_d_east.time( .5 );
+		$bridge_plat_lf_d_east.time( .5 );
+		$bridge_plat_lf_d_east.move( NORTH, 24 );
+		$bridge_plat_rt_d_east.move( NORTH, 24 );
+	}
+	
+	
+	
+	void catwalk_a_east_out()
+	{
+		$bridge_arm_lf_a_east.time(1.5);
+		$bridge_arm_rt_a_east.time(1.5);
+		
+		$bridge_arm_lf_a_east.move(NORTH, 420);
+		$bridge_arm_rt_a_east.move(NORTH, 420);
+		
+		$bridge_arm_lf_a_east.time(1.5);
+		$bridge_arm_rt_a_east.time(1.5);
+		$bridge_plat_rt_a_east.time(1.5);
+		$bridge_plat_lf_a_east.time(1.5);
+			
+		sys.waitFor( $bridge_arm_rt_a_east );
+		
+		$bridge_arm_lf_a_east.rotateOnce('203 0 0');
+		$bridge_arm_rt_a_east.rotateOnce('203 0 0');
+		
+		$bridge_plat_lf_a_east.time(.75);
+		$bridge_plat_rt_a_east.time(.75);
+		$bridge_plat_lf_a_east.rotateOnce('0 0 -128');
+		$bridge_plat_rt_a_east.rotateOnce('0 0 128');
+			
+		sys.waitFor($bridge_arm_lf_a_east);
+		
+		$bridge_plat_lf_a_east.rotateOnce('0 0 195');
+		$bridge_plat_rt_a_east.rotateOnce('0 0 -195');
+		
+		sys.waitFor($bridge_plat_rt_a_east);
+		
+		
+	}
+	
+	void catwalk_b_east_out()
+	{
+		$bridge_arm_lf_b_east.time(1);
+		$bridge_arm_rt_b_east.time(1);
+		$bridge_arm_lf_b_east.move(NORTH, 320);
+		$bridge_arm_rt_b_east.move(NORTH, 320);
+		
+		$bridge_arm_lf_b_east.time(1.5);
+		$bridge_arm_rt_b_east.time(1.5);
+		$bridge_plat_rt_b_east.time(1.5);
+		$bridge_plat_lf_b_east.time(1.5);
+				
+		sys.waitFor($bridge_arm_lf_b_east);
+		
+		$bridge_arm_lf_b_east.rotateOnce('203 0 0');
+		$bridge_arm_rt_b_east.rotateOnce('203 0 0');
+
+		$bridge_plat_lf_b_east.time(.75);
+		$bridge_plat_rt_b_east.time(.75);
+		$bridge_plat_lf_b_east.rotateOnce('0 0 -128');
+		$bridge_plat_rt_b_east.rotateOnce('0 0 128');
+			
+		sys.waitFor($bridge_arm_lf_b_east);
+
+		$bridge_plat_lf_b_east.rotateOnce('0 0 195');
+		$bridge_plat_rt_b_east.rotateOnce('0 0 -195');
+		
+		sys.waitFor( $bridge_plat_rt_b_east );
+	}
+	
+	void catwalk_c_east_out()
+	{
+		$bridge_arm_lf_c_east.time(.5);
+		$bridge_arm_rt_c_east.time(.5);
+		$bridge_arm_lf_c_east.move(NORTH, 232);
+		$bridge_arm_rt_c_east.move(NORTH, 232);
+		
+		$bridge_arm_lf_c_east.time(1.5);
+		$bridge_arm_rt_c_east.time(1.5);
+		$bridge_plat_rt_c_east.time(1.5);
+		$bridge_plat_lf_c_east.time(1.5);
+				
+		sys.waitFor($bridge_arm_lf_c_east);
+		
+		$bridge_arm_lf_c_east.rotateOnce('203 0 0');
+		$bridge_arm_rt_c_east.rotateOnce('203 0 0');
+
+		$bridge_plat_lf_c_east.time(.75);
+		$bridge_plat_rt_c_east.time(.75);
+		$bridge_plat_lf_c_east.rotateOnce('0 0 -128');
+		$bridge_plat_rt_c_east.rotateOnce('0 0 128');
+			
+		sys.waitFor($bridge_arm_lf_c_east);
+
+		$bridge_plat_lf_c_east.rotateOnce('0 0 195');
+		$bridge_plat_rt_c_east.rotateOnce('0 0 -195');
+		
+		sys.waitFor( $bridge_plat_rt_c_east );
+	}
+	
+	void bridge_extend()
+	{
+		$bridge_east_supports.accelTime(.5);
+		$bridge_east_supports.decelTime(.5);
+		$bridge_east_supports.time(1.5);
+		$bridge_east_supports.move(NORTH, 424);
+		sys.waitFor($bridge_east_supports);
+	}
+	
+	void catwalks_out()
+	{
+		thread catwalk_a_east_out();
+		sys.wait(1);
+		thread catwalk_b_east_out();
+		sys.wait(1);
+		thread catwalk_c_east_out();
+	}
+	
+	void prison_bridge_out()
+	{
+		aiScriptedMoveWait( $tak, $tak_BridgePos_1, 8, 0 );
+		$bridge_controls.show();
+		aiSpeakWait( $tak, "lipsync_tak_bridgereeng" );
+		aiScriptedFaceWait( $tak, $bridge_controller, 0 );
+		sys.wait( 2 );
+		aiScriptedAnimWait( $tak, "console_stand_start", 4, 0 );
+		aiScriptedAnimWait( $tak, "console_stand_loop", 4, 0 );
+		aiScriptedAnimWait( $tak, "console_stand_end", 4, 0 );
+		thread bridge_extend();
+		sys.wait( 2 );
+		thread catwalks_out();
+		sys.wait( 4 );
+		thread bridge_up();
+		aiScriptedMove( $tak, $tak_toploop_13, 8, 1 );
+		sys.wait( 3 );
+
+	}
+	
+	//-------------------------------------------------------------------------------------
+	//				end bridge extend
+	//-------------------------------------------------------------------------------------
+	
+	void darnellBridgeAnims()
+	{
+		$darnell.becomePassive( 1 );
+		aiScriptedAnimWait( $darnell, "prison_bridge_start", 4, 0 );
+		aiScriptedAnimWait( $darnell, "prison_bridge_idle", 4, 0 );
+		aiScriptedAnimWait( $darnell, "prison_bridge_idle", 4, 0 );
+		aiScriptedAnimWait( $darnell, "prison_bridge_idle", 4, 0 );
+		aiScriptedAnimWait( $darnell, "prison_bridge_idle", 4, 0 );
+		aiScriptedAnimWait( $darnell, "prison_bridge_idle", 4, 0 );
+		aiScriptedAnimWait( $darnell, "prison_bridge_idle", 4, 0 );
+		aiScriptedAnimWait( $darnell, "prison_bridge_idle", 4, 0 );
+		aiScriptedAnimWait( $darnell, "prison_bridge_end", 16, 1 );
+		$darnell.setUndying( 1 );
+		aiScriptedMoveWait( $darnell, $darnell_tactpos_postbridge, 8, 1 );
+			
+		$darnell.becomeAggressive();
+		sys.trigger( $objectivecomplete_bridge );
+	}
+	
+	void darnellUnlocksDoor1()
+	{
+		float db;
+		float pbo;
+		
+		aiScriptedMoveWait( $tak, $tak_BridgePos_1, 8, 0 );
+		aiScriptedFaceWait( $tak, $bridge_controller, 0 );
+		aiScriptedAnimWait( $tak, "console_stand_start", 4, 0 );
+		aiScriptedAnimWait( $tak, "console_stand_loop", 4, 0 );
+		aiScriptedAnimWait( $tak, "console_stand_end", 4, 1 );
+		aiSpeakWait( $tak, "lipsync_tak_damncutoff" );
+		aiSpeakWait( $darnell, "lipsync_darn_imonit" );
+		aiSpeakWait( $tak, "lipsync_tak_rogethat3" );
+		thread takGuardBridge();
+		aiScriptedMove( $tak, $tak_BridgePos_2, 8, 1 );
+		sys.wait( 1 );
+		aiScriptedMoveWait( $darnell, $darnell_unlockBridgeDoorPos_1, 2, 0 );
+		aiScriptedFaceWait( $darnell, $center_walkway_east, 0 );
+		sys.trigger( $objective_bridge );
+		$darnell.setUndying( 0 );
+		$darnell.setHealth( 200 );
+		db = thread darnellBridgeAnims();
+		sys.wait( 2 );
+		sys.trigger( $bridgeSpawner_1 );
+		radioChatterPlay($prison1_radiochatter, "vo_darn_iseeit");
+		sys.wait( 4 );
+		sys.trigger( $bridgeSpawner_2 );
+		radioChatterPlay($prison1_radiochatter, "vo_darn_gettclose");
+		sys.wait( 4 );
+		radioChatterPlay($prison1_radiochatter, "vo_darn_almostthr");
+		sys.wait( 6 );
+		radioChatterPlay($prison1_radiochatter, "vo_darn_gotitkeep");
+		sys.wait( 34 );
+		sys.trigger( $bridgeSpawner_1 );
+		sys.trigger( $bridgeSpawner_2 );
+		sys.wait( 6 );
+		pbo = thread prison_bridge_out();
+		sys.waitForThread( db );
+		sys.wait( .5 );
+		sys.waitForThread( pbo );
+		sys.trigger( $bridge_teamblock );
+
+		thread letsTakeTheBridge();
+		
+	}
+	
+	void cleanupBridgeSpawns()
+	{
+		$ai_avoid_1.remove();
+		$ai_avoid_2.remove();
+	
+	}
+	
+	void squadTopLoop1Pos()
+	{
+		aiScriptedMove( $darnell, $darnell_toploop_1, 8, 1 );
+		sys.wait( 1 );
+		aiScriptedMove( $tak, $tak_toploop_1, 8, 1 );
+	}
+	
+	void assistFoxSquadDialog()
+	{
+		radioChatterPlayWait($prison1_radiochatter, "vo_fox1_thisisrose");
+		aiSpeakWait( $tak, "lipsync_tak_foxsq" );
+		aiSpeakComlinkWait( $darnell, "lipsync_darn_falcsqenroute" );
+		aiScriptedMove( $tak, $tak_toploop_1b, 8, 1 );
+		sys.wait( .5 );
+		aiScriptedMove( $darnell, $darnell_toploop_1b, 8, 1 );
+		radioChatterPlayWait($prison1_radiochatter, "vo_fox1_rogfalcsplit");
+		sys.wait( 1 );
+		sys.trigger( $item_objective_foxSquad_1 );
+	}
+	
+	void scientistComesOut()  //drop forcefield and move scientist into combat
+	{
+		aiScriptedMoveWait( $monster_scientist_1, $scientist_moveTo_1, 16, 0 );
+		aiScriptedWait( $monster_scientist_1 );
+		sys.wait( .5 );
+		$func_static_1500.setShaderParm( 7, 1 );
+		sys.trigger( $scientist_cell_beam_1 );
+		sys.trigger( $scientist_blocker_1 );
+		sys.wait( .2 );
+		aiScriptedMove( $monster_scientist_1, $scientist_moveTo_2, 16, 1 );
+		$monster_scientist_1.becomeAggressive();
+		
+	}
+	
+	void squadTopLoop2Pos()
+	{
+		aiScriptedMove( $darnell, $darnell_toploop_2, 8, 1 );
+		sys.wait( 1 );
+		aiScriptedMove( $tak, $tak_toploop_2, 8, 1 );
+	}
+	
+	void gruntShotty() 
+	{ 
+		sys.trigger( $grunt_jumper_1 );
+		//sys.wait(.2 );
+		sys.trigger( $shotty );
+		sys.wait( 3 );
+		aiScriptedMoveWait( $shotty, $heath_moveTo_pos_1, 8, 1 );
+		sys.wait( 2 );
+		aiScriptedMoveWait( $shotty, $heath_moveTo_pos_1, 8, 0 );
+		$shotty.remove();
+		
+	}
+	
+	void foxSquadWarmUp()
+	{
+		sys.trigger( $sq2_marine_2 );
+		sys.trigger( $sq2_marine_3 );
+		aiScriptedAnimLoop( $sq2_marine_2, "crouch_idle", 8 );
+		aiScriptedAnimLoop( $sq2_marine_3, "cine_console_stand_loop", 8 );
+		
+	}
+	
+	void squadTopLoop3Pos()
+	{
+		sys.trigger( $squad_block_pos_10 );
+		sys.waitFrame();
+		aiScriptedMove( $darnell, $darnell_toploop_3, 8, 1 );
+		sys.wait( 1 );
+		aiScriptedMoveWait( $tak, $tak_toploop_3, 4, 0 );
+		aiScriptedFaceWait( $tak, $shotty_seq_doorHack, 0 );
+		aiSpeak( $tak, "tak_pris_door2" );	
+		aiScriptedAnimWait( $tak, "console_stand_start", 4, 0 );
+		aiScriptedAnimWait( $tak, "console_stand_loop", 4, 0 );
+		aiScriptedAnimWait( $tak, "console_stand_end", 4, 1 );
+		$startSoloFrame.setShaderParm( 7, 1 );
+		sys.trigger( $shotty_door_trig );
+	}
+
+	void PostShottyHall()
+	{
+		sys.trigger( $squad_block_pos_9 );
+		$startSoloDoor_1.lock( 0 );
+		$startSoloDoor_2.lock( 0 );
+		sys.wait( .1 );
+		aiScriptedMove( $tak, $tak_toploop_4, 8, 1 );
+		aiScriptedMove( $darnell, $darnell_toploop_4, 8, 1 );
+		
+	}
+	
+	//----------------------------------------- fox squad 1 seq start -----------------------------------
+	
+	void pappasUnlocksDoor()
+	{
+		aiScriptedMoveWait( $sq2_marine_3, $fox1_door_pos, 8, 0 );
+		aiScriptedFaceWait( $sq2_marine_3, $fox1_exit_console, 0 );
+		aiScriptedAnimWait( $sq2_marine_3, "console_stand_start", 4, 0 );
+		aiScriptedAnimWait( $sq2_marine_3, "console_stand_loop", 4, 0 );
+		aiScriptedAnimWait( $sq2_marine_3, "console_stand_end", 4, 0 );
+		aiSpeak( $sq2_marine_3, "lipsync_fox3_thanksfalc" );
+		$turret_seq_frame.setShaderParm( 7, 1 ); //door is unlocked
+		$turret_seq_door1.lock( 0 );
+		$turret_seq_door2.lock( 0 );
+		$env_battery_5.playCycle(ANIMCHANNEL_ALL, "storage");
+		$env_battery_6.playCycle(ANIMCHANNEL_ALL, "shockloop");
+		aiScriptedAnimLoop( $sq2_marine_3, "relax_idle", 8 );
+		sys.trigger( $exit_to_turret_room ); 
+	}
+	
+	void takHelpsPappas()
+	{
+		aiScriptedMoveWait( $tak, $tak_helps_out_pos, 8, 0 );
+		aiScriptedFaceWait( $tak, $func_static_53432, 0 );
+		aiScriptedAnimLoop( $tak, "cine_console_stand_loop", 8 ); 
+		sys.wait( 15 );
+		TUBESAREOFF = true;
+		sys.wait( .25 );
+		sys.trigger( $conveyor_light_1 );
+		sys.trigger( $conveyor_light_2 );
+		sys.trigger( $conveyor_light_3 );
+		sys.trigger( $conveyor_light_4 );
+		sys.trigger( $conveyor_light_5 );
+		sys.trigger( $human_machine1 );
+		sys.killthread( "tubeTransportSystem" );
+		sys.killthread( "tubeTransportSystem2" );
+		aiSpeakWait( $tak, "lipsync_tak_okthatconv" );
+		aiSpeakWait( $sq2_marine_2, "lipsync_fox2_excellent" );
+		aiSpeakComlinkWait( $sq2_marine_2, "lipsync_fox2_ltrosedone" );
+		radioChatterPlayWait($prison1_radiochatter, "vo_fox1_pointdir");
+		aiScriptedFaceWait( $sq2_marine_2, $turret_seq_frame, 0 );
+		aiSpeak( $sq2_marine_2, "lipsync_fox2_okviacrawl" );
+		sys.wait( 2 );
+		aiScriptedAnimWait( $sq2_marine_2, "point_forward", 4, 0 );
+		
+		aiScriptedMove( $tak, $tak_toploop_5, 8, 1 );
+		aiScriptedMove( $darnell, $darnell_toploop_5, 8, 1 );
+		thread pappasUnlocksDoor();
+		
+		thread bridge_unfold();
+		sys.wait(.5 );
+		thread catwalks();
+		sys.wait( 4 );
+		thread bridge_retract();
+		sys.trigger( $bridge_teamblock );
+
+	}
+	
+	void givePlayerGoobgun()
+	{
+		sys.wait( 3 );
+		aiScriptedMoveWait( $sq2_marine_3, $player1, 64, 0 );
+		aiSpeak( $sq2_marine_3, "lipsync_fox3_heysarge" );
+		aiScriptedFaceWait( $sq2_marine_3, $player1, 0 );
+		aiScriptedAnimWait( $sq2_marine_3, "player_gift_start", 4, 0 );
+		aiScriptedAnimWait( $sq2_marine_3, "player_gift_end", 4, 0 );
+		sys.trigger( $flame_gun_give );
+		sys.wait( 2 );
+		aiScriptedMoveWait( $sq2_marine_3, $sq2_marine_3_pos_1, 8, 0 );
+		aiScriptedFaceWait( $sq2_marine_3, $func_static_53432, 0 );
+		aiScriptedAnimLoop( $sq2_marine_3, "relax_idle", 4 ); 
+	}
+	
+	void foxSquad1Meeting()
+	{
+		aiScriptedAnimWait( $sq2_marine_2, "crouch_to_relaxed", 4, 0 );
+		aiScriptedAnim( $sq2_marine_2, "conversation_1", 4, 0 );
+		aiSpeakWait( $sq2_marine_2, "lipsync_fox2_youshutdwn" );
+		aiSpeakWait( $tak, "lipsync_tak_letmeseewh" );
+		thread takHelpsPappas();
+		thread givePlayerGoobgun();
+		aiScriptedMoveWait( $sq2_marine_2, $sq2_marine_2_pos_3, 8, 0 );
+		aiScriptedFaceWait( $sq2_marine_2, $tak, 0 );
+		aiScriptedAnimLoop( $sq2_marine_2, "relax_idle", 4 ); 
+	}
+	
+	void darnellExitFox1()
+	{
+		aiScriptedMoveWait( $darnell, $darnell_toploop_6, 8, 0 );
+		sys.trigger( $fox1_exit_counter );
+	}
+	
+	void takExitFox1()
+	{
+		aiScriptedMoveWait( $tak, $tak_toploop_6, 8, 0 );
+		sys.trigger( $fox1_exit_counter );
+	}
+	
+	void squadTopLoop6Pos()
+	{
+		sys.trigger( $squad_block_fox1_exit );
+		sys.waitFrame();
+		thread darnellExitFox1();
+		sys.wait( 1 );
+		thread takExitFox1();
+	}
+	
+	void turretFalseStart()
+	{
+		aiScriptedMove( $tak, $tak_toploop_7, 8, 1 );
+		sys.wait( 1 );
+		aiScriptedMove( $darnell, $darnell_toploop_7, 8, 1 );
+	}
+	
+	void pappasLocksDoor()
+	{
+		thread turretFalseStart();
+		$turret_seq_frame.setShaderParm( 7, 0 ); //door is locked
+		$turret_seq_door1.lock( 2 );
+		$turret_seq_door2.lock( 2 );
+		aiScriptedAnimWait( $sq2_marine_3, "console_stand_start", 4, 0 );
+		aiScriptedAnimWait( $sq2_marine_3, "console_stand_loop", 4, 0 );
+		aiScriptedAnimWait( $sq2_marine_3, "console_stand_end", 4, 0 );
+		$sq2_marine_3.remove();
+		$sq2_marine_2.remove();
+	}
+	
+	void cellblock3_prisoners() //turn on and set anims on cellblock guys
+	{
+		sys.trigger( $cellblock3_prisoner_1 );
+		sys.trigger( $cellblock3_prisoner_2 );
+		sys.trigger( $cellblock3_prisoner_3 );
+		sys.trigger( $cellblock3_prisoner_4 );
+		sys.trigger( $cellblock3_prisoner_5 );
+		sys.trigger( $cellblock3_prisoner_6 );
+		//aiScriptedAnimLoop( $cellblock3_prisoner_2, "idle_sitting_2", 0 );
+		//aiScriptedAnimLoop( $cellblock3_prisoner_3, "ad_wounded_on_knee_loop", 0 );
+		//aiScriptedAnimLoop( $cellblock3_prisoner_4, "idle_sitting_2", 0 );
+	}
+	
+	//----------------------------------------- fox squad 1 seq end -----------------------------------
+	
+	//----------------------------------------- turret seq start -----------------------------------
+	
+	
+	void gruntAndGunnerAttack()
+	{
+		thread cellblock3_prisoners();
+		
+		if( isValidEntity( $prison_camera_8 ))
+			{
+				sys.wait( 2 );
+				sys.trigger( $monster_grunt_2 );
+				sys.waitFrame();
+				aiScriptedMoveWait( $monster_grunt_2, $Tbalcony_jumpdown_pos_3, 8, 0 );
+				aiScriptedAnimWait( $monster_grunt_2, "jump128", 8, 1 );
+				sys.wait( 2 );
+				sys.trigger( $monster_gunner_1 );
+			}
+		if( !isValidEntity( $prison_camera_8 ))
+			{
+				thread squadTopLoop7Pos();
+			}
+					
+	}
+	
+	void takDies()
+	{
+		sys.trigger( $item_objectivefailed_3 );
+	}
+	
+	void gunnerDropsIn()
+	{	
+		float jumptime;
+		jumptime = randomRoundFloat( 1, 20 ) + 20;
+		
+		sys.wait( jumptime );
+		
+		sys.trigger( $gunner_turret_jumpdown );
+		sys.waitFrame();
+		aiScriptedAnim( $gunner_turret_jumpdown, "pr_gunner_jump_down", 8, 1 );
+		sys.wait( .4 );
+		sys.trigger( $turret_glass_ceilingfx );
+		sys.trigger( $gunner_glass_ceilingbreak );
+		$turret_glass_ceiling.remove();
+	}	
+	
+	void manTheTurret()  //turret wave seq while teammate opens door
+	{
+		aiScriptedAnimWait( $tak, "console_stand_start", 4, 0 );
+		aiScriptedAnimLoop( $tak, "console_stand_loop", 8 );
+
+		sys.trigger( $hyg_obstacle );
+
+		sys.wait( 5 );
+		sys.trigger( $turretWaveSpawner ); //start wave of enemies
+		$tak.setUndying( 0 );
+		$tak.setHealth( 200 );
+		sys.wait( 8 );
+		thread gunnerDropsIn();
+		aiSpeak( $darnell, "vo_darn_aboveus" );
+		sys.trigger( $turretWaveSpawnerBig );
+		radioChatterPlay($prison1_radiochatter, "vo_tak_isobridge");
+		sys.wait( 15 );
+		radioChatterPlay($prison1_radiochatter, "vo_tak_firstbr");
+		sys.wait( 15 );
+		radioChatterPlay($prison1_radiochatter, "vo_tak_secondact");
+		sys.wait( 15 );
+		radioChatterPlay($prison1_radiochatter, "vo_tak_therethird");
+		sys.wait( 10 );
+		sys.trigger( $turretWaveSpawner ); 
+		sys.trigger( $turretWaveSpawnerBig );
+		sys.wait( 15 );	//allow for spawned monsters to move through
+		radioChatterPlay($prison1_radiochatter, "vo_tak_thatwein");
+		$tak.setUndying( 1 );
+		//$tak.setHealth( 2000 );
+		$turret_exit_frame.setShaderParm( 7, 1 ); //door is unlocked
+		$turret_exit_door_1.lock( 0 );
+		$turret_exit_door_2.lock( 0 );
+		aiScriptedAnimWait( $tak, "console_stand_end", 4, 1 );
+		sys.wait( 5.5 );
+		sys.trigger( $darnell_remove_tether );
+		sys.trigger( $turretWaveOverTrig ); //enables trigger for monsters, removes aas ob, moves teammates
+		sys.wait( 0.5 );
+		sys.trigger( $func_savegame_1 );
+	}
+		
+	void turretBalconyJumper(entity TJumperName)
+	{
+		//sys.println("jumperName =" + TJumperName.getName());
+		float x;
+
+		x = randomRoundFloat( 1, 4 );
+		
+		if( x == 1 )
+			{
+				//sys.println( "jumping" );
+				aiScriptedMoveWait(TJumperName, $Tbalcony_jumpdown_pos_1, 16, 1);
+				TJumperName.scriptedJumpDown( 90 ); // this is the jump angle
+				aiScriptedWait( TJumperName );
+			}
+			
+		if( x == 2 )
+			{
+				//sys.println( "jumping" );
+				aiScriptedMoveWait(TJumperName, $Tbalcony_jumpdown_pos_2, 16, 1);
+				TJumperName.scriptedJumpDown( 90 ); // this is the jump angle
+				aiScriptedWait( TJumperName );
+			}
+			
+		if( x > 2 )
+			{
+				aiScriptedMoveWait(TJumperName, $Tbalcony_moveTo_pos_2, 16, 1);
+			}
+	}
+	
+	void turretBalconyJumper2(entity TJumperName2)
+	{
+		//sys.println("jumperName =" + TJumperName2.getName());
+		float x;
+
+		x = randomRoundFloat( 1, 4 );
+		
+		if( x == 1 )
+			{
+				//sys.println( "jumping" );
+				aiScriptedMoveWait(TJumperName2, $Tbalcony_jumpdown_pos_3, 16, 1);
+				TJumperName2.scriptedJumpDown( 0 ); // this is the jump angle
+				aiScriptedWait( TJumperName2 );
+			}
+			
+		if( x == 2 )
+			{
+				//sys.println( "jumping" );
+				aiScriptedMoveWait(TJumperName2, $Tbalcony_jumpdown_pos_2, 16, 1);
+				TJumperName2.scriptedJumpDown( 90 ); // this is the jump angle
+				aiScriptedWait( TJumperName2 );
+			}
+			
+		if( x > 2 )
+			{
+				aiScriptedMoveWait(TJumperName2, $Tbalcony_moveTo_pos_2, 32, 1);
+			}
+			
+	}
+
+	void turretBalconyBerserk(entity TJumperBerserk)
+	{
+		//sys.println("jumperName =" + TJumperBerserk.getName());
+		float x;
+
+		x = randomRoundFloat( 1, 4 );
+		
+		if( x <= 2 )
+			{
+				//sys.println( "jumping" );
+				aiScriptedMoveWait(TJumperBerserk, $Tbalcony_jumpdown_pos_1, 16, 1);
+				TJumperBerserk.scriptedJumpDown( 90 ); // this is the jump angle
+				aiScriptedWait( TJumperBerserk );
+			}
+			
+		if( x > 2 )
+			{
+				//sys.println( "jumping" );
+				aiScriptedMoveWait(TJumperBerserk, $Tbalcony_jumpdown_pos_2, 16, 1);
+				TJumperBerserk.scriptedJumpDown( 90 ); // this is the jump angle
+				aiScriptedWait( TJumperBerserk );
+			}
+
+	}
+	
+	void turretBalconyNoJump1(entity TBalconyName1)
+	{
+		aiScriptedMove( TBalconyName1, $Tbalcony_moveTo_pos_3, 16, 1 );
+	}
+	
+	void turretBalconyNoJump2(entity TBalconyName2)
+	{
+		aiScriptedMove( TBalconyName2, $Tbalcony_moveTo_pos_2, 16, 1 );
+	}
+	
+	void turretBigSpawnLow(entity TBigLowName)
+	{
+		aiScriptedMove( TBigLowName, $big_spawn_low_pos_1, 16, 1 );
+	}
+	
+	void squadTopLoop7Pos() //team arrives at locked security door, tak overrides while player mans the turret
+	{
+		sys.wait( 4 );
+		aiScriptedMove( $tak, $tak_toploop_7, 8, 0 );
+		sys.wait( 1 );
+		aiScriptedMove( $darnell, $darnell_toploop_7, 8, 0 );
+		aiScriptedWait( $tak );
+		aiScriptedFaceWait( $tak, $turret_seq_monitor, 0 );
+		aiSpeak( $tak, "lipsync_tak_weneedtoget" );
+		aiScriptedAnimWait( $tak, "console_stand_start", 4, 0 );
+		aiScriptedAnimWait( $tak, "console_stand_loop", 4, 0 );
+		aiScriptedAnimWait( $tak, "console_stand_end", 4, 0 );
+		aiScriptedWait( $darnell );
+		sys.wait( .5 );
+		aiSpeakWait( $tak, "lipsync_tak_coverhack" );
+		aiSpeakWait( $darnell, "lipsync_darn_dekifyouman" );
+		
+		sys.wait( 4 );
+		sys.trigger( $spkr_breach_explosion );
+		sys.trigger( $breach_quake );
+		sys.trigger( $breach_quake_1 );
+		thread manTheTurret();
+		aiSpeak( $darnell, "lipsync_darn_incom3" );
+		aiScriptedMoveWait( $darnell, $darnell_hygpos_1, 8, 1 );
+		sys.trigger( $darnell_turret_tether );
+	}
+	
+	
+	//----------------------------------------- turret seq end -----------------------------------
+	
+	void squadTopLoop8Pos()
+	{
+		aiScriptedMove( $tak, $tak_toploop_8, 8, 1 );
+		sys.wait( 1 );
+		aiScriptedMove( $darnell, $darnell_toploop_8, 8, 1 );
+	}
+	
+	void cellblock2_prisoners() //turn on and set anims on cellblock guys
+	{
+		sys.trigger( $cellblock2_prisoner_1 );
+		sys.trigger( $cellblock2_prisoner_2 );
+		sys.trigger( $cellblock2_prisoner_3 );
+		sys.trigger( $cellblock2_prisoner_4 );
+		sys.trigger( $cellblock2_prisoner_5 );
+		sys.trigger( $cellblock2_prisoner_6 );
+		//aiScriptedAnimLoop( $cellblock2_prisoner_1, "waving_down_tram", 0 ); 
+		//aiScriptedAnimLoop( $cellblock2_prisoner_3, "ad_wounded_on_knee_loop", 0 );
+		//aiScriptedAnimLoop( $cellblock2_prisoner_4, "idle_sitting_2", 0 );
+		sys.trigger( $monster_scientist_7 );
+		$monster_scientist_7.becomeNonSolid();
+		sys.wait( 0.1 );
+		aiScriptedAnimLoop( $monster_scientist_7, "work_on_human3_loop", 0 );
+	}
+	
+	void topLoopElevUp()
+	{
+		if( isValidEntity( $prison_camera_7 ))
+			{
+				sys.trigger( $top_loop_tact_1 );
+				sys.trigger( $top_loop_tact_2 );
+				sys.wait( 0.1 );
+				sys.println( "lift starting" );
+				$topLoopElev.gotoFloor( 2 );
+				sys.wait( 4 );
+				sys.println( "lift finished" );
+			}
+
+	}
+	
+	void squadTopLoop9Pos()
+	{
+		aiScriptedMove( $tak, $tak_toploop_9, 8, 1 );
+		sys.wait( 1 );
+		aiScriptedMove( $darnell, $darnell_toploop_9, 8, 1 );
+	}
+	
+	void squadTopLoop10Pos()
+	{
+		//aiScriptedMove( $darnell, $darnell_toploop_10, 8, 1 );
+		//aiScriptedMoveWait( $tak, $tak_doorhack_CB_1, 8, 1 );
+		//aiScriptedFaceWait( $tak, $CB1_entrance_console, 0 );
+		//aiSpeak( $tak, "tak_pris_door3" );	
+		//aiScriptedAnimWait( $tak, "console_stand_start", 4, 0 );
+		//aiScriptedAnimWait( $tak, "console_stand_loop", 4, 0 );
+		//aiScriptedAnimWait( $tak, "console_stand_end", 4, 0 );
+		sys.trigger( $squad_block_CB1 );
+		//$CB1_hallframe.setShaderParm( 7, 1 ); //door is unlocked
+		//$CB1_halldoor1.lock( 0 );
+		//$CB1_halldoor2.lock( 0 );
+		aiScriptedMove( $tak, $tak_topLoop_CB1_1, 8, 1 );
+		sys.wait( .5 );
+		aiScriptedMove( $darnell, $darnell_topLoop_CB1_1, 8, 1 );
+	}
+	
+	void cellblock1_prisoners() //turn on and set anims on cellblock guys
+	{
+		sys.trigger( $cellblock1_prisoner_01 );
+		sys.trigger( $cellblock1_prisoner_02 );
+		sys.trigger( $cellblock1_prisoner_03 );
+		sys.trigger( $cellblock1_prisoner_05 );
+		sys.trigger( $cellblock1_prisoner_07 );
+		sys.trigger( $cellblock1_prisoner_08 );
+
+
+	}
+	
+	void CB1Grid1PrisonerOut()
+	{
+		aiScriptedMoveWait( $cellblock1_prisoner_01, $CB1_upr_escape_pos, 8, 0 );
+		$cellblock1_prisoner_01.remove();
+	}
+	
+	void CB1Grid2PrisonerOut()
+	{
+		aiScriptedMoveWait( $cellblock1_prisoner_02, $CB1_upr_escape_pos, 8, 0 );
+		$cellblock1_prisoner_02.remove();
+	}
+	
+	void CB1Grid3PrisonerOut()
+	{
+		aiScriptedMoveWait( $cellblock1_prisoner_03, $CB1_upr_escape_pos, 8, 0 );
+		$cellblock1_prisoner_03.remove();
+	}
+	
+	void CB1Grid5PrisonerOut()
+	{
+		aiScriptedMoveWait( $cellblock1_prisoner_05, $CB1_lwr_escape_pos, 8, 0 );
+		$cellblock1_prisoner_05.remove();
+	}
+	
+	void CB1Grid7PrisonerOut()
+	{
+		aiScriptedMoveWait( $cellblock1_prisoner_07, $CB1_lwr_escape_pos, 8, 0 );
+		$cellblock1_prisoner_07.remove();
+	}
+	
+	void CB1Grid8PrisonerOut()
+	{
+		aiScriptedMoveWait( $cellblock1_prisoner_08, $CB1_lwr_escape_pos, 8, 0 );
+		$cellblock1_prisoner_08.remove();
+	}
+	
+	void falconLeavesCB1()
+	{
+		sys.wait( 3 );
+		//aiScriptedMove( $darnell, $darnell_toploop_11, 8, 1 );
+		//aiScriptedMoveWait( $tak, $tak_doorhack_CB1_exit, 8, 1 );
+		//aiScriptedFaceWait( $tak, $CB1_exit_console, 0 );
+		//aiSpeak( $tak, "tak_pris_door4" );	
+		//aiScriptedAnimWait( $tak, "console_stand_start", 4, 0 );
+		//aiScriptedAnimWait( $tak, "console_stand_loop", 4, 0 );
+		//aiScriptedAnimWait( $tak, "console_stand_end", 4, 0 );
+		$CB1_exit_frame.setShaderParm( 7, 1 ); //door is unlocked
+		$CB1_exit_door_1.lock( 0 );
+		$CB1_exit_door_2.lock( 0 );
+		sys.waitFrame();
+		sys.trigger( $CB1_retch );
+		$bridgeFrame_1.setShaderParm( 7, 1 ); //door is unlocked
+		$bridgeDoor1R.lock( 0 );
+		$bridgeDoor1L.lock( 0 );
+
+	}
+	
+	void CellBreakLower()
+	{
+		sys.trigger( $cellblock_1_spawner2 );
+		
+		aiScriptedMoveWait( $CB1_marine_cover_lwr, $CB1_lwr_cvr_pos_1, 8, 1 );
+		sys.trigger( $CB1_marine_cover_lwr_tether );
+				
+		aiScriptedMoveWait( $CB1_marine_medic_lwr, $CB1_lwr_medic_pos_5, 8, 0 );	
+	
+		$CB1_grid_5.hide();
+		sys.wait( .2 );
+		$CB1_grid_5.show();
+		sys.wait( .3 );
+		$CB1_grid_5.hide();
+		sys.wait( .1 );
+		$CB1_grid_5.show();
+		sys.wait( .4 );
+		$CB1_grid_5.hide();
+		$CB1_grid_5_frame.setShaderParm( 7, 1 );
+		sys.wait( 1 );
+		thread CB1Grid5PrisonerOut();
+		aiScriptedMoveWait( $CB1_marine_medic_lwr, $CB1_lwr_medic_return_pos, 8, 0 );
+		sys.wait( 6 );
+		
+		aiScriptedMoveWait( $CB1_marine_medic_lwr, $CB1_lwr_medic_pos_6, 8, 0 );	
+		$CB1_grid_6.hide();
+		sys.wait( .2 );
+		$CB1_grid_6.show();
+		sys.wait( .3 );
+		$CB1_grid_6.hide();
+		sys.wait( .1 );
+		$CB1_grid_6.show();
+		sys.wait( .4 );
+		$CB1_grid_6.hide();
+		$CB1_grid_6_frame.setShaderParm( 7, 1 );
+		sys.wait( 1 );
+
+		
+		aiScriptedMoveWait( $CB1_marine_medic_lwr, $CB1_lwr_medic_pos_7, 8, 1 );
+		sys.wait( 6 );
+		
+		aiScriptedMoveWait( $CB1_marine_medic_lwr, $CB1_lwr_medic_pos_7, 8, 0 );
+		$CB1_grid_7.hide();
+		sys.wait( .2 );
+		$CB1_grid_7.show();
+		sys.wait( .3 );
+		$CB1_grid_7.hide();
+		sys.wait( .1 );
+		$CB1_grid_7.show();
+		sys.wait( .4 );
+		$CB1_grid_7.hide();
+		$CB1_grid_7_frame.setShaderParm( 7, 1 );
+		sys.wait( 1 );
+		thread CB1Grid7PrisonerOut();
+		aiScriptedMoveWait( $CB1_marine_medic_lwr, $CB1_lwr_medic_return_pos, 8, 0 );
+		sys.wait( 6 );
+		
+		aiScriptedMoveWait( $CB1_marine_medic_lwr, $CB1_lwr_medic_pos_8, 8, 0 );	
+		$CB1_grid_8.hide();
+		sys.wait( .2 );
+		$CB1_grid_8.show();
+		sys.wait( .3 );
+		$CB1_grid_8.hide();
+		sys.wait( .1 );
+		$CB1_grid_8.show();
+		sys.wait( .4 );
+		$CB1_grid_8.hide();
+		$CB1_grid_8_frame.setShaderParm( 7, 1 );
+		sys.wait( 1 );
+		thread CB1Grid8PrisonerOut();
+		aiScriptedMoveWait( $CB1_marine_medic_lwr, $CB1_lwr_medic_return_pos, 8, 0 );
+		
+		aiScriptedAnimWait( $tak, "console_stand_end", 4, 0 );
+		aiSpeakWait( $tak, "lipsync_tak_allicando" );
+		sys.wait( 2 );
+		radioChatterPlayWait($prison1_radiochatter, "vo_fox1_extractcomp");
+		sys.wait( 1 );
+		radioChatterPlayWait($prison1_radiochatter, "vo_fox1_thanksfalc");
+		sys.wait( 1 );
+		sys.trigger( $item_objectivecomplete_foxSquad_1 );
+		thread falconLeavesCB1();
+		//sys.trigger( $cellblock_1_spawner2 );
+		
+	}
+	
+	
+	
+	void readyCellBreak()
+	{
+		aiScriptedMoveWait( $tak, $tak_CB1_hack_pos, 8, 0 );
+		aiScriptedFaceWait( $tak, $CB1_console, 0 );
+		aiScriptedAnimWait( $tak, "console_stand_start", 4, 0 );
+		aiScriptedAnimLoop( $tak, "console_stand_loop", 8 );
+		sys.wait( 3 );
+		aiSpeakWait( $tak, "lipsync_tak_lookslike" );
+		sys.wait( 3 );
+		aiSpeak( $tak, "lipsync_tak_opencells" );
+		sys.wait( 1 );
+		aiScriptedMoveWait( $CB1_marine_cover_upr, $CB1_upr_cvr_pos_1, 8, 1 );
+		sys.trigger( $CB1_marine_cover_upr_tether );
+		
+		sys.wait( 1 );
+		
+		sys.wait( 2 );
+		sys.trigger( $cellblock_1_spawner );
+		sys.wait( 1 );
+		aiSpeakWait( $marine_climbdown, "lipsync_fox4_openfire" );
+		
+		aiScriptedMoveWait( $CB1_marine_medic_upr, $CB1_upr_medic_pos_1, 8, 0 );	
+		$CB1_grid_1.hide();
+		sys.wait( .2 );
+		$CB1_grid_1.show();
+		sys.wait( .3 );
+		$CB1_grid_1.hide();
+		sys.wait( .1 );
+		$CB1_grid_1.show();
+		sys.wait( .4 );
+		$CB1_grid_1.hide();
+		$CB1_grid_1_frame.setShaderParm( 7, 1 );
+		sys.wait( 1 );
+		thread CB1Grid1PrisonerOut();
+		aiScriptedMoveWait( $CB1_marine_medic_upr, $CB1_upr_medic_return_pos, 8, 0 );
+		sys.wait( 6 );
+		
+		aiScriptedMoveWait( $CB1_marine_medic_upr, $CB1_upr_medic_pos_2, 8, 0 );	
+		$CB1_grid_2.hide();
+		sys.wait( .2 );
+		$CB1_grid_2.show();
+		sys.wait( .3 );
+		$CB1_grid_2.hide();
+		sys.wait( .1 );
+		$CB1_grid_2.show();
+		sys.wait( .4 );
+		$CB1_grid_2.hide();
+		$CB1_grid_2_frame.setShaderParm( 7, 1 );
+		sys.wait( 1 );
+		thread CB1Grid2PrisonerOut();
+		aiScriptedMoveWait( $CB1_marine_medic_upr, $CB1_upr_medic_return_pos, 8, 0 );
+		sys.wait( 6 );
+		
+		aiScriptedMoveWait( $CB1_marine_medic_upr, $CB1_upr_medic_pos_3, 8, 0 );	
+		$CB1_grid_3.hide();
+		sys.wait( .2 );
+		$CB1_grid_3.show();
+		sys.wait( .3 );
+		$CB1_grid_3.hide();
+		sys.wait( .1 );
+		$CB1_grid_3.show();
+		sys.wait( .4 );
+		$CB1_grid_3.hide();
+		$CB1_grid_3_frame.setShaderParm( 7, 1 );
+		sys.wait( 1 );
+		thread CB1Grid3PrisonerOut();
+		aiScriptedMoveWait( $CB1_marine_medic_upr, $CB1_upr_medic_return_pos, 8, 0 );
+		sys.wait( 6 );
+		
+		//sys.trigger( $cellblock_1_spawner );
+		
+		aiScriptedMoveWait( $CB1_marine_medic_upr, $CB1_upr_medic_pos_4, 8, 0 );	
+		$CB1_grid_4.hide();
+		sys.wait( .2 );
+		$CB1_grid_4.show();
+		sys.wait( .3 );
+		$CB1_grid_4.hide();
+		sys.wait( .1 );
+		$CB1_grid_4.show();
+		sys.wait( .4 );
+		$CB1_grid_4.hide();
+		$CB1_grid_4_frame.setShaderParm( 7, 1 );
+		sys.wait( 1 );
+		thread CellBreakLower();
+		aiScriptedMoveWait( $CB1_marine_medic_upr, $CB1_upr_medic_return_pos, 8, 0 );
+			
+	}
+	
+	void cellblock1Help()  
+	{
+		sys.wait( 1 );
+		sys.trigger( $sec_accessGrate_3 );
+		sys.waitFrame();
+		$sec_accessGrate_3.applyImpulse( $sec_accessGrate_3, $sec_accessGrate_3.getWorldOrigin(), '0 2000 -5000' );
+		sys.wait( 1 );
+		sys.trigger( $marine_climbdown );
+		sys.waitFrame();
+		aiScriptedAnimWait( $marine_climbdown, "pr_climb_down", 4, 0 );
+		aiSpeakWait( $marine_climbdown, "lipsync_fox4_heywithlt" );
+		aiSpeakWait( $tak, "lipsync_tak_imonit3" );
+		aiSpeakComlinkWait( $marine_climbdown, "lipsync_fox4_falchere" );
+		radioChatterPlay($prison1_radiochatter, "vo_fox1_copymovein");
+		thread readyCellBreak();
+		aiScriptedMove( $darnell, $darnell_cine_cellblock1pos_2, 8, 1 );
+		aiScriptedMove( $marine_climbdown, $marine_climbdown_pos_1, 8, 0 );
+		sys.trigger( $ai_tether_radius_1 );
+		aiScriptedFaceWait( $marine_climbdown, $CB1_upr_medic_pos_2, 1 );
+		sys.wait( 13 );
+		sys.trigger( $CB1_behind_spawner );
+		
+	}
+	
+	void cellblock1UpperSpawnMove( entity CB1SpawnNameUpr )
+	{
+		aiScriptedMove( CB1SpawnNameUpr, $cb_1_upr_pos_1, 16, 1 );
+	}
+	
+	void cellblock1LowerSpawnMove( entity CB1SpawnNameLwr )
+	{
+		aiScriptedMove( CB1SpawnNameLwr, $cb_1_lwr_pos_1, 16, 1 );
+	}
+	
+	void cellblock1BehindYouSpawnMove( entity CB1SpawnNameBehind )
+	{
+		aiScriptedMove( CB1SpawnNameBehind, $CB1_behind_moveTo_pos, 16, 1 );
+	}
+	
+	void hideBridgeLift()
+	{
+		$func_mover_4.hide();
+		$func_mover_5.hide();
+		$func_elevator_1.hide();
+		$func_static_1572.setShaderParm( 7, 0 ); //door is locked
+		$func_static_1546.lock( 2 );
+		$func_static_1547.lock( 2 );
+		$bridge_sci_frame.setShaderParm( 7, 0 ); //door is locked
+		$bridge_sci_door2.lock( 2 );
+		$bridge_sci_door1.lock( 2 );
+	}
+
+	void prison_bridge_out_again()
+	{
+		aiScriptedMoveWait( $tak, $tak_BridgePos_1, 8, 0 );
+		aiScriptedFaceWait( $tak, $bridge_controller, 0 );
+		aiScriptedAnimWait( $tak, "console_stand_start", 4, 0 );
+		aiScriptedAnimWait( $tak, "console_stand_loop", 4, 0 );
+		aiScriptedAnimWait( $tak, "console_stand_end", 4, 0 );
+		thread bridge_extend();
+		sys.wait( 2 );
+		thread catwalks_out();
+		sys.wait( 4 );
+		thread bridge_up();
+		aiScriptedMove( $tak, $tak_toploop_13, 8, 1 );
+		sys.wait( 3 );
+
+	}
+	
+	void squadTopLoop13Pos()
+	{
+		float boa;
+		
+		aiScriptedMove( $darnell, $darnell_toploop_13, 8, 1 );
+		sys.wait( 1 );
+		aiScriptedMoveWait( $tak, $tak_toploop_13, 8, 0 );
+		boa = thread prison_bridge_out_again();
+		sys.trigger( $trigger_once_164 );
+		sys.waitForThread( boa );
+		sys.trigger( $bridge_teamblock );
+
+		sys.trigger( $glad_obs_1 );
+		sys.trigger( $glad_obs_2 );
+		sys.waitFrame();
+		aiScriptedMove( $darnell, $darnell_bridge_pos_1, 8, 1 );
+		sys.wait( .5 );
+		aiScriptedMove( $tak, $tak_bridge_pos_1, 8, 1 );
+	}
+	
+	void takTalksToInsane()
+	{
+		aiScriptedMoveWait( $tak, $tak_toploop_12, 8, 0 );
+		aiScriptedFaceWait( $tak, $insane_marine, 0 );
+		aiSpeak( $tak, "lipsync_tak_soldsold" );
+		aiSpeak( $insane_marine, "lipsync_insane1_mumble" );
+		sys.wait( 3 );
+		aiSpeak( $tak, "lipsync_tak_outtolunch" );
+		aiSpeakComlinkWait( $darnell, "lipsync_darn_foxsquad" );
+		sys.wait( 2 );
+		radioChatterPlay($prison1_radiochatter, "vo_fox1_roggetout");
+		
+		/*
+		aiScriptedMoveWait( $tak, $tak_doorhack_insane_pos, 8, 1 );
+		aiScriptedFaceWait( $tak, $insane_exit_console_1, 0 );
+		aiSpeak( $tak, "tak_pris_door5" );
+		aiScriptedAnimWait( $tak, "console_stand_start", 4, 0 );
+		aiScriptedAnimWait( $tak, "console_stand_loop", 4, 0 );
+		aiScriptedAnimWait( $tak, "console_stand_end", 4, 0 );
+		$bridgeFrame_1.setShaderParm( 7, 1 ); //door is unlocked
+		$bridgeDoor1R.lock( 0 );
+		$bridgeDoor1L.lock( 0 );
+		*/
+				
+		thread squadTopLoop13Pos();
+	}
+	
+	void squadTopLoop12Pos()
+	{
+		sys.trigger( $insane_marine );
+		sys.trigger( $insane_team_block );
+		aiScriptedAnimLoop( $insane_marine, "tortured01", 0 );
+		thread takTalksToInsane();
+		sys.wait( 1 );
+		aiScriptedMove( $darnell, $darnell_toploop_12, 8, 1 );
+				
+	}
+	
+	
+
+	void gladDownLift()
+	{
+		sys.trigger( $lift_gladiator );
+		sys.wait( 0.1 );
+		$func_elevator_4.gotoFloor( 1 );
+		sys.wait( 4 );
+		aiScriptedMove( $lift_gladiator, $gladiator_off_lift_pos, 8, 1 );
+		$lift_gladiator.becomeAggressive();
+		
+		$func_mover_11976.remove();
+		$func_mover_11975.remove();
+		$func_elevator_4.remove();
+		$func_mover_4.show();
+		$func_mover_5.show();
+		$func_elevator_1.show();
+	}
+	
+	void darnellOnLift() //move darnell into lift
+	{
+		aiScriptedMoveWait( $darnell, $darnell_tactpos_lift_1, 16, 0 );
+		sys.println( "darnell on lift" );
+		sys.trigger( $lift_count );
+	}
+	
+	void takOnLift() //move tak into lift
+	{
+		aiScriptedMoveWait( $tak, $tak_tactpos_lift, 16, 0 );
+		sys.println( "tak on lift" );
+		sys.trigger( $lift_count );
+	}
+	
+	void squadOntoLift()
+	{
+		sys.wait( 5 );
+		thread darnellOnLift();
+		sys.wait( 1 );
+		thread takOnLift();
+	}
+	
+	//************************************************************************************************************************************
+	
+	//*******************************************************loop 2*************************************************
+	
+	//************************************************************************************************************************************
+	
+	
+	
+	void playerOnLift()
+	{
+		$func_elevator_1.setGuiParm( "noninteractive", "0" );
+		sys.trigger( $lift_1_player_block );
+	}
+	
+
+	void lostStraussDialog()
+	{
+		aiSpeakWait( $tak, "lipsync_tak_shit3" );
+		aiSpeakWait( $darnell, "lipsync_darn_whatgoon" );
+		aiSpeakWait( $tak, "lipsync_tak_strssmedchip" );
+		aiSpeakWait( $darnell, "lipsync_darn_wednttime" );
+		aiSpeakWait( $tak, "lipsync_tak_wehavefindcent" );
+		aiSpeakWait( $tak, "lipsync_tak_icanfindstrss" );
+	}
+	
+	void squadMoveUpB1()
+	{
+		aiScriptedMove( $darnell, $darnell_tactpos_B_1, 8, 1 );
+		sys.wait( .5 );
+		aiScriptedMove( $tak, $tak_tactpos_B_1, 8, 1 );
+	}
+	
+	void squadOffLift()
+	{
+		//$darnell.setOrigin( '1476 -1320 262' );
+		//$tak.setOrigin( '1716 -1248 262' );
+		$func_elevator_1.setGuiParm( "noninteractive", "1" );
+		aiScriptedMove( $darnell, $darnell_tactpos_offLift, 8, 1 );
+		sys.wait( .5 );
+		sys.trigger( $lift_1_player_block );
+		aiScriptedMoveWait( $tak, $tak_tactpos_offLift, 8, 1 );
+		
+		/*
+		aiScriptedFaceWait( $tak, $bridge_door_console_2, 0 );
+		aiSpeak( $tak, "tak_pris_door6" );	
+		aiScriptedAnimWait( $tak, "console_stand_start", 4, 0 );
+		aiScriptedAnimWait( $tak, "console_stand_loop", 4, 0 );
+		aiScriptedAnimWait( $tak, "console_stand_end", 4, 0 );
+		$off_lift_frame.setShaderParm( 7, 1 ); //door is unlocked
+		$off_lift_door1.lock( 0 );
+		$off_lift_door2.lock( 0 );
+		*/
+		
+		thread squadMoveUpB1();	
+	}
+
+	void darnellMoveUpB2()
+	{
+		aiScriptedMove( $darnell, $darnell_tactpos_B_2, 8, 1 );
+	}
+	
+	void takMoveUpB2()
+	{
+		aiScriptedMove( $tak, $tak_tactpos_B_2, 8, 1 );
+	}
+	
+	void breakGunnerGlass()
+	{
+		sys.trigger( $gunner_glass_break_fx );
+		sys.trigger( $gunner_glass_throwbreak );
+		$gunner_glass_unbroken.hide();
+		$gunner_glass_broken.show();
+		$gunner_glass_floor.show();
+		sys.wait( 1 );
+		$monster_q4x_retch_2.becomeAggressive();
+	}
+	
+	void summonGunner02()  //pull gunner_02 into combat area 
+	{
+		aiScriptedMoveWait( $monster_gunner_2, $gunner_2_pos, 8, 1 );
+		aiSpeak( $darnell, "lipsync_darn_lookslikeweatt" );
+		sys.waitFrame();
+		$marine_dragged_2.applyImpulse( $marine_dragged_2, $marine_dragged_2.getWorldOrigin(), '0 75000 10000' );
+		thread breakGunnerGlass();	
+	}
+		
+	
+	void squadMoveUpB3()
+	{
+		aiScriptedMove( $darnell, $darnell_tactpos_B_3, 8, 1 );
+		sys.wait( .5 );
+		aiScriptedMove( $tak, $tak_tactpos_B_3, 8, 1 );
+	}
+	
+	void teleDropJumpUp()
+	{
+		$env_airdefense_pipes_1.playAnim(ANIMCHANNEL_ALL, "bustin_open");
+		sys.trigger( $bustpipes );
+		sys.trigger( $monster_teleport_dropper_1 );
+		sys.waitFrame();
+		$teleDropper_grate.becomeNonSolid();
+		aiScriptedAnim( $monster_teleport_dropper_1, "medlabs_intro", 4, 1 );
+		sys.wait( 1.1 );
+		sys.waitFrame();
+		$teleDropper_grate.applyImpulse( $teleDropper_grate, $teleDropper_grate.getWorldOrigin(), '-40000 70000 60000' );
+		aiScriptedWait( $monster_teleport_dropper_1 );
+		sys.trigger( $pit_obstacle );
+
+	}
+	
+	void takMoveUpB4()
+	{
+		aiScriptedMoveWait( $tak, $tak_tactpos_B_4, 16, 1 );
+
+	}
+	
+	void openTrapDoor()
+	{
+		$teledropper_vent_exit.time( 1 );
+		$teledropper_vent_exit.accelTime( .2 );
+		$teledropper_vent_exit.rotateOnce( '0 0 170' );
+	}
+	
+	void darnellMoveUpB5()
+	{
+		aiScriptedMoveWait( $darnell, $darnell_tactpos_B_5, 16, 1 );
+	}
+	
+	void takMoveUpB5()
+	{
+		aiScriptedMoveWait( $tak, $tak_tactpos_B_5, 16, 1 );
+		thread darnellMoveUpB5();
+	}
+	
+	void darnellMoveUpB4()
+	{
+		aiScriptedMoveWait( $darnell, $darnell_tactpos_B_4, 16, 1 );
+		thread takMoveUpB5();
+	}
+	
+	void takMoveUpB4_2()
+	{
+		aiScriptedMoveWait( $tak, $tak_tactpos_B_4_2, 16, 1 );
+		thread darnellMoveUpB4();
+	}
+	
+	void closerToControlRoom2()
+	{
+		aiSpeak( $tak, "lipsync_tak_centrctrl" );
+	}
+	
+	
+	
+	void squadMoveUp_12() //move team mates forward
+	{
+		//sys.trigger( $squad_block_pos_12 );
+		sys.wait( 0.1 );
+		aiScriptedMove( $darnell, $darnell_tactpos_12, 8, 1 );
+		sys.wait( 1 );
+		aiScriptedMove( $tak, $tak_tactpos_12, 8, 1 );
+	}
+	
+	void summonltTank2()  //pull lt tank into combat area 
+	{
+		sys.trigger( $monster_lt_tank_2 );
+		aiScriptedMove( $monster_lt_tank_2, $gladiator_1_pos, 32, 1 );
+	}
+	
+	
+	void squadMoveUp_13() //move team mates forward
+	{
+
+		aiScriptedMove( $darnell, $darnell_tactpos_13, 8, 1 );
+		sys.wait( 1 );
+		aiScriptedMove( $tak, $tak_tactpos_13, 8, 1 );
+	}
+	
+	
+	void squadMoveUp_14() //move team mates forward
+	{
+		aiScriptedMove( $darnell, $darnell_tactpos_14, 8, 1 );
+		sys.wait( 1 );
+		aiScriptedMove( $tak, $tak_tactpos_14, 8, 1 );
+	}
+
+	
+	void bridgeGunnerGo()  //pull gunner3 into combat area 
+	{
+		sys.wait( 6 );
+		sys.trigger( $monster_gunner_3 );
+		aiScriptedMove( $monster_gunner_3, $gunner_3_toBridge, 8, 1 );
+	}
+
+	
+	void navajasMovesIn()  //move navajas into control room
+	{
+		aiScriptedMoveWait( $navajas, $navajas_moveTo_1, 16, 1 );
+		$navajas.becomeAggressive();
+	}
+	
+	
+	void mitchellMovesIn()  //move mitchell into control room
+	{
+		aiScriptedMoveWait( $mitchell, $mitchell_moveTo_1, 16, 1 );
+		$mitchell.becomeAggressive();
+	}
+	
+	void navajasSecureDoor()  
+	{
+		aiScriptedMoveWait( $navajas, $navajas_moveTo_2, 16, 0 );
+		sys.wait( 7 );
+		$ctrlRoomLockdownFrame1.setShaderParm( 7, 0 ); // door is locked
+		$ctrlRoomLockdowndoor1.lock( 2 );
+		$ctrlRoomLockdowndoor2.lock( 2 );
+		radioChatterPlayWait ($prison1_radiochatter, "vo_nava_doorsec");	
+		aiScriptedMoveWait( $navajas, $navajas_moveTo_1, 16, 1 );	
+	}
+		
+	void mitchellComesDown()
+	{
+		aiScriptedMoveWait( $mitchell, $mitchell_moveTo_3, 16, 1 );
+		//$mitchell.setOrigin( '986 718 128' );
+		//sys.waitFrame();
+		aiScriptedMoveWait( $mitchell, $mitchell_moveTo_5, 16, 1 );
+	}
+	
+	void mitchellSecureDoor()  
+	{
+		aiScriptedMoveWait( $mitchell, $mitchell_moveTo_2, 16, 0 );
+		sys.wait( 5 );
+		$ctrlRoomLockdownFrame2.setShaderParm( 7, 0 ); // door is locked
+		$ctrlRoomLockdowndoor3.lock( 2 );
+		$ctrlRoomLockdowndoor4.lock( 2 );
+		radioChatterPlayWait ($prison1_radiochatter, "vo_mitch_doorsec");
+		sys.wait( 5 );
+		thread mitchellComesDown();
+		
+	}
+	
+	void markswellMovesIn()  //move markswell into control room
+	{
+		aiScriptedMoveWait( $markswell, $markswell_moveTo_1, 16, 0 );
+		$markswell.becomeAggressive();
+		sys.wait( 0.1 );
+		aiScriptedMove( $markswell, $markswell_moveTo_2, 16, 1 );
+		aiSpeakWait( $markswell, "lipsync_marks_mitchwipe" );
+		aiSpeak( $mitchell, "lipsync_mitch_onit" );
+		sys.wait( .2 );
+		sys.trigger( $ctrlroomspawner1 );
+		sys.trigger( $ctrlroomspawner2 );
+		aiSpeak( $navajas, "lipsync_nava_yessir2" );
+		thread navajasSecureDoor();
+		thread mitchellSecureDoor();
+		aiScriptedMoveWait( $markswell, $markswell_moveTo_3, 16, 1 );
+		sys.wait( 3 );
+		aiScriptedMoveWait( $markswell, $markswell_moveTo_4, 16, 1 );
+		sys.wait( 1 );
+		aiScriptedMoveWait( $markswell, $markswell_moveTo_4, 16, 1 );
+		aiSpeakWait( $markswell, "lipsync_marks_takgetcompu" );
+		aiSpeakWait( $tak, "lipsync_tak_onit" );
+		aiScriptedMoveWait( $darnell, $darnell_console_pos3, 16, 0 );
+		aiScriptedFaceWait( $markswell, $player1, 0 );
+		aiSpeakWait( $markswell, "lipsync_marks_pris_lgun" );
+		aiScriptedAnimWait( $markswell, "player_gift_start", 4, 0 );
+		aiScriptedAnimWait( $markswell, "player_gift_end", 4, 0 );
+		sys.trigger( $lightning_gun_give );
+		aiScriptedMoveWait( $markswell, $markswell_moveTo_4, 16, 1 );
+		thread controlRoomSeq2();
+		
+	}
+	
+	
+
+	void chaingunDriverFire( entity gunner )
+	{
+		float a;
+		float b;
+		float c;
+	
+		if( DRIVER_FIRING ) {
+			return;
+		}
+	
+		DRIVER_FIRING = true;
+	
+		a = starget.getHealth();
+	
+		while( a > 0 ) {
+			sys.wait( 2 );
+			gunner.lookAt( starget );
+			sys.wait( 0.5 );		
+			gunner.fireWeapon( 0, 1.5 );
+
+			sys.wait( .6 );
+			a = starget.getHealth();
+			if( DRIVER_STOP_FIRING ) {
+				break;
+			}
+		}
+	
+		DRIVER_FIRING = false;
+	}
+
+	
+	
+	void mitchellOnTurret()
+	{
+		aiScriptedMoveWait( $mitchell, $mitchell_turret_pos, 8, 0 );
+		aiScriptedFaceWait( $mitchell, $vehicle_q4x_turret_chaingun_3, 0);
+		sys.waitFrame();
+		$mitchell.bind( $vehicle_q4x_turret_chaingun_3 );
+		aiScriptedAnimLoop( $mitchell, "cine_weld_loop_short", 16 );
+		sys.waitFrame();
+		$chaingun_driver.enterVehicle( $vehicle_q4x_turret_chaingun_3 );
+		sys.waitFrame();
+		
+		sys.println( "mitchell on turret" );
+	}
+	
+	void controlRoomSeq2()
+	{
+		sys.trigger( $tether_remove_tak1 );
+		aiScriptedMoveWait( $tak, $tak_consolehackpos_1, 4, 0);
+		aiScriptedFaceWait( $tak, $control_column, 0);
+		
+		/*
+		aiScriptedAnimWait( $tak, "point_up", 16, 0 );
+		sys.trigger( $light_5233 );
+		sys.trigger( $light_5234 );
+		sys.trigger( $light_5897 );
+		sys.trigger( $light_5896 );
+		sys.trigger( $light_5895 );
+		sys.trigger( $light_5232 );
+		sys.trigger( $light_5231 );
+		sys.trigger( $light_5255 );
+		sys.trigger( $light_5169 );
+		sys.trigger( $light_5235 );
+		sys.trigger( $light_5270 );
+		sys.trigger( $light_5269 );
+		$func_static_53472.setColor( .9333, .9333, 1 );
+		$func_static_1649.setColor( .9333, .9333, 1 );
+		$func_static_53674.setColor( .9333, .9333, 1 );
+		$func_static_53673.setColor( .9333, .9333, 1 );
+		$func_static_54471.setColor( .7922, .949, 1 );
+		$func_static_54470.setColor( .7922, .949, 1 );
+		$func_static_54453.setColor( 1, .815686, .560784 );
+		$func_static_54474.setColor( 1, .815686, .560784 );
+		$func_static_54473.setColor( 1, .815686, .560784 );
+		$func_static_54472.setColor( 1, .815686, .560784 );
+		$func_static_54451.setColor( 1, .7882, .451 );
+		$func_static_54449.setColor( 1, .7882, .451 );
+		$func_static_54450.setColor( 1, .7882, .451 );
+		$func_static_54452.setColor( 1, .7882, .451 );
+
+		$control_column.time( 3 );
+		$control_column.accelTime( 1 );
+		$control_column.decelTime( 1 );
+		$control_column.move( DOWN,72 );
+		$tak.flashlight(0);
+		$darnell.flashlight(0);
+		sys.waitFor( $control_column );
+		*/
+				
+		aiScriptedAnimWait( $tak, "console_stand_start", 4, 0 );
+		aiScriptedAnimLoop( $tak, "console_stand_loop", 4 );
+		sys.wait( 1 );
+		aiSpeakWait( $tak, "lipsync_tak_gotmove" );
+		aiSpeakWait( $darnell, "lipsync_darn_howlongwe" );
+		aiSpeakWait( $tak, "lipsync_tak_notlong" );
+		$ctrlRoomLockdownFrame1.setShaderParm( 7, 1 ); // door is unlocked
+		$ctrlRoomLockdowndoor1.lock( 0 );
+		$ctrlRoomLockdowndoor2.lock( 0 );
+		aiSpeakWait( $darnell, "lipsync_darn_wegotincom" );
+		radioChatterPlayWait ($prison1_radiochatter, "vo_mitch_letshell");
+		aiSpeakWait( $tak, "lipsync_tak_thistrack" );
+		$ctrlRoomLockdownFrame2.setShaderParm( 7, 1 ); // door is unlocked
+		$ctrlRoomLockdowndoor3.lock( 0 );
+		$ctrlRoomLockdowndoor4.lock( 0 );
+		aiSpeakWait( $markswell, "lipsync_marks_dekholdpos" );
+		aiSpeakWait( $markswell, "lipsync_marks_takeupdef" );
+		aiSpeakWait( $markswell, "lipsync_marks_mitchturr" );
+		thread mitchellOnTurret();
+		$ctrlRmExit_frame.setShaderParm( 7, 1 ); // exit door is unlocked
+		$ctrlRmExit_door1.lock( 0 );
+		$ctrlRmExit_door2.lock( 0 );
+		aiSpeakWait( $tak, "lipsync_tak_guidede" );
+		aiScriptedMoveWait( $darnell, $darnell_tactpos_14, 16, 1 );
+		sys.trigger( $ctrlroomspawner1_1 );
+		sys.trigger( $ctrlroomspawner2_1 );
+		sys.wait( 2 );
+		aiSpeakWait( $markswell, "lipsync_marks_getnow" );
+		
+	}
+	
+	void lockEmIn()
+	{
+		$ctrlRmEntryFrame.setShaderParm( 7, 0 ); // exit door is locked
+		$ctrlRmEntryDoor1.lock( 2 );
+		$ctrlRmEntryDoor2.lock( 2 );
+	}
+	
+	void controlRoomHackSeq1()
+	{
+		sys.wait( 4 );
+		aiSpeak( $tak, "lipsync_tak_thatmain" );
+		aiScriptedMoveWait( $tak, $tak_consolehackpos_1, 4, 1);
+		aiScriptedFaceWait( $tak, $control_column, 1);
+		aiScriptedAnimWait( $tak, "console_stand_start", 4, 0 );
+		aiScriptedAnimLoop( $tak, "console_stand_loop", 4 );
+		sys.wait( 2 );
+		aiSpeakWait( $darnell, "lipsync_darn_wherestrss" );
+		aiSpeakWait( $tak, "lipsync_tak_hangonlord" );
+		aiSpeakWait( $darnell, "lipsync_darn_whattalk" );
+		aiSpeakWait( $tak, "lipsync_tak_adpsero" );
+		aiSpeakWait( $darnell, "lipsync_darn_takfndstrs" );
+		sys.wait( 2 );
+		aiSpeakWait( $tak, "lipsync_tak_okgetcls" );
+		sys.wait( 2 );
+		aiSpeakWait( $tak, "lipsync_tak_ithinkthis" );
+		aiSpeakWait( $tak, "lipsync_tak_ohshit" );
+		
+		/*
+		sys.trigger( $light_5233 );
+		sys.trigger( $light_5234 );
+		sys.trigger( $light_5897 );
+		sys.trigger( $light_5896 );
+		sys.trigger( $light_5895 );
+		sys.trigger( $light_5232 );
+		sys.trigger( $light_5231 );
+		sys.trigger( $light_5255 );
+		sys.trigger( $light_5169 );
+		sys.trigger( $light_5235 );
+		sys.trigger( $light_5270 );
+		sys.trigger( $light_5269 );
+		$func_static_53472.setColor( 0, 0, 0 );
+		$func_static_1649.setColor( 0, 0, 0 );
+		$func_static_53674.setColor( 0, 0, 0 );
+		$func_static_53673.setColor( 0, 0, 0 );
+		$func_static_54471.setColor( 0, 0, 0 );
+		$func_static_54470.setColor( 0, 0, 0 );
+		$func_static_54453.setColor( 0, 0, 0 );
+		$func_static_54474.setColor( 0, 0, 0 );
+		$func_static_54473.setColor( 0, 0, 0 );
+		$func_static_54472.setColor( 0, 0, 0 );
+		$func_static_54451.setColor( 0, 0, 0 );
+		$func_static_54449.setColor( 0, 0, 0 );
+		$func_static_54450.setColor( 0, 0, 0 );
+		$func_static_54452.setColor( 0, 0, 0 );
+		
+		$control_column.time( 3 );
+		$control_column.accelTime( 1 );
+		$control_column.decelTime( 1 );
+		$control_column.move( UP,72 );
+		$tak.flashlight(1);
+		$darnell.flashlight(1);
+		*/
+		
+		
+		aiScriptedAnimWait( $tak, "console_stand_end", 4, 0 );
+
+		
+		sys.trigger( $makron_prison_monitor );
+		sys.wait( 1 );
+		
+
+		$controlRmMakronScreenOn.show();
+		sys.waitFrame();
+		aiScriptedAnimLoop( $makron_prison_monitor, "verification_monitor", 0 );
+		
+		aiScriptedMoveWait( $darnell, $darnell_console_pos1, 8, 0 );
+		aiSpeakWait( $darnell, "lipsync_darn_whathapp" );
+		aiSpeakWait( $tak, "lipsync_tak_itrigalarm" );
+		aiSpeakWait( $darnell, "lipsync_darn_secdoors" );
+		aiSpeakWait( $tak, "lipsync_tak_onit" );
+		aiScriptedMoveWait( $tak, $tak_tactpos_14, 8, 1 );
+		sys.trigger( $tether_tak_ctrlRoom );
+		sys.trigger( $lockEmIn_trig );
+		
+		radioChatterPlayWait ($prison1_radiochatter, "vo_marks_dekstatus");
+		aiSpeakComlinkWait( $darnell, "lipsync_darn_weholed" );
+		aiScriptedMoveWait( $darnell, $darnell_tactpos_14, 8, 1 );
+		sys.trigger( $tether_darnell_ctrlRoom );
+		
+		sys.wait( 1 );
+
+		radioChatterPlayWait ($prison1_radiochatter, "vo_marks_wealmost");
+		sys.trigger( $ctrlroomspawner1 );
+		sys.wait( 4 );
+		sys.music( "m4_prison_breach" );
+		aiSpeak( $tak, "lipsync_tak_theyrehere" );
+		sys.trigger( $ctrlroomspawner2 );
+		sys.wait( 3 );
+		aiSpeakWait( $darnell, "lipsync_darn_openfire" );
+		sys.wait( 12 );
+		aiSpeakWait( $tak, "lipsync_tak_theretoomany" );
+		sys.wait( 8 );
+		aiSpeakWait( $darnell, "lipsync_darn_navamarkwhr" );
+		radioChatterPlayWait ($prison1_radiochatter, "vo_nava_wearecls");
+		sys.wait( 8 );
+		radioChatterPlayWait ($prison1_radiochatter, "vo_nava_planting");
+		sys.wait( 8 );
+		sys.trigger( $navajas );
+		sys.trigger( $mitchell );
+		sys.trigger( $markswell );
+		radioChatterPlayWait ($prison1_radiochatter, "vo_nava_detonating");
+		sys.wait( 0.5 );
+		sys.trigger( $breachDoorExp_fx1 );
+		sys.trigger( $breach_quake_2 );
+		$breachDoor_1.remove();
+		$breachDoor_2.remove();
+		$breachDoor_1_burst.show();
+		$breachDoor_2_burst.show();
+		sys.wait( 1 );
+		thread navajasMovesIn();
+		sys.wait( 1 );
+		thread mitchellMovesIn();
+		sys.wait( 1 );
+		thread markswellMovesIn();
+	}
+	
+	void setHeavyTarget(entity heavyStroggTarget)
+	{
+		starget = heavyStroggTarget;
+		sys.wait( 1 );
+		thread chaingunDriverFire( $chaingun_driver );
+	}
+		
+	void prisonWaveJumper(entity jumperName)
+	{
+		sys.println("jumperName =" + jumperName.getName());
+		float x;
+
+		x = randomRoundFloat( 1, 10 );
+		
+		if( x <= 5 )
+			{
+				//sys.println( "jumping" );
+				aiScriptedMoveWait(jumperName, $strogg_ctrlRm_jumper_1_pos_1, 8, 1);
+				jumperName.scriptedJumpDown( 270 ); // this is the jump angle
+				aiScriptedWait( jumperName );
+			}
+	}
+	
+	void startBatteries2()
+	{
+		$env_battery_1.playCycle(ANIMCHANNEL_ALL, "storage");
+		$env_battery_2.playCycle(ANIMCHANNEL_ALL, "shockloop");
+		sys.wait( .5 );
+		$env_battery_3.playCycle(ANIMCHANNEL_ALL, "storage");
+		$env_battery_4.playCycle(ANIMCHANNEL_ALL, "idle");
+	}
+	
+	void hideMonitorMakron()
+	{
+		$makron_prison_monitor.hide();
+		$controlRmMakronScreenOff.show();
+		$controlRmMakronScreenOn.hide();
+	}
+	
+	
+	void lockSecDoor01() //locks exit door from control room
+	{
+
+		$ctrlRmExit_frame.setShaderParm( 7, 0 );
+		$ctrlRmExit_door1.lock( 2 );
+		$ctrlRmExit_door2.lock( 2 );
+		$navajas.remove();
+		$tak.remove();
+		$darnell.remove();
+		$mitchell.remove();
+		$markswell.remove();
+	}
+	
+	void stroggJumper2() 
+	{ 
+		sys.trigger( $monster_strogg_marine_mgun_18 );
+		sys.wait( .1 );
+		thread lockSecDoor01();
+		aiScriptedMoveWait($monster_strogg_marine_mgun_18, $strogg_jumper_2_pos_1, 8, 1);
+		$monster_strogg_marine_mgun_18.scriptedJumpDown( 70 ); // this is the jump angle
+		aiScriptedWait( $monster_strogg_marine_mgun_18 );
+	}
+
+	void stroggJumper4() 
+	{ 
+		sys.trigger( $strogg_jumper_4 );
+		sys.wait( .1 );
+		aiScriptedMoveWait($strogg_jumper_4, $strogg_jumper_4_pos_1, 8, 1);
+		$strogg_jumper_4.scriptedJumpDown( 90 ); // this is the jump angle
+		aiScriptedWait( $strogg_jumper_4 );
+	}
+	
+	void gunnerOnElevator()
+	{
+		sys.trigger( $monster_gunner_5 );
+		sys.wait( 0.1 );
+		$basementElev.gotoFloor( 2 );
+		sys.wait( 2 );
+		$monster_gunner_5.becomeAggressive();
+		sys.wait( 3 );
+		sys.trigger( $monster_q4x_retch_3 );
+		sys.wait( .1 );
+		$func_static_1929.setShaderParm( 7, 1 );
+		$almost_done1.lock( 0 );
+		$almost_done2.lock( 0 );
+		sys.wait( .5 );
+		aiScriptedMove($monster_q4x_retch_3, $retch_3_pos_1, 8, 1);
+	}
+	
+	
+	void stroggJumper3() 
+	{ 
+		sys.trigger( $monster_strogg_marine_mgun_41 );
+		sys.wait( .1 );
+		aiScriptedMoveWait($monster_strogg_marine_mgun_41, $strogg_jumper_3_pos_1, 8, 1);
+		$monster_strogg_marine_mgun_41.scriptedJumpDown( 45 ); // this is the jump angle
+		aiScriptedWait( $monster_strogg_marine_mgun_41 );
+	}
+	
+	void tactical_spawned1( entity tacticalSolo1 )
+	{
+		aiScriptedMove( tacticalSolo1, $tactical_spawn1_pos, 16, 1 );
+	}
+	
+	void tactical_spawned2( entity tacticalSolo2 )
+	{
+		aiScriptedMove( tacticalSolo2, $tactical_spawn2_pos, 16, 1 );
+	}
+	
+	void tankPopsOut()
+	{
+		sys.trigger( $monster_q4x_lt_tank_1 );
+		sys.waitFrame();
+		$tank_plate.applyImpulse( $tank_plate, $tank_plate.getWorldOrigin(), '300000 -30000 65000' );
+
+	}
+	
+	void gettingCloseNow()
+	{
+		sys.trigger( $retch_wall_1 );
+		aiScriptedAnimWait( $retch_wall_1, "pr_wall_climb", 8, 0 );
+		radioChatterPlayWait ($prison1_radiochatter, "vo_tak_keepmovdek");
+	}
+	
+	void tact_strauss_1_out()
+	{
+		sys.trigger( $monster_q4x_tactical_railgun_1 );
+		sys.waitFrame();
+		aiScriptedMove($monster_q4x_tactical_railgun_1, $tact_strauss_1_pos, 16, 1);
+	}
+	
+	void hold2BerserkerMoveIn()
+	{
+		sys.wait( 1 );
+		aiScriptedMove($hold2_berserker, $hold2_berserker_pos_1, 8, 1);
+	}
+	
+	void straussTacticalEngage( entity tacticalEngage )
+	{
+		aiScriptedMove( tacticalEngage, $tactical_engage_pos, 16, 1 );
+	}
+	
+	void straightAhead()
+	{
+		radioChatterPlayWait ($prison1_radiochatter, "vo_tak_directhead");
+	}
+	
+	void straussCinematicOver()
+	{
+		thread transferRoomTransport();
+		$strauss_transfer_frame.setShaderParm( 7, 1 );
+		$strauss_transfer_door1.lock( 0 );
+		$strauss_transfer_door2.lock( 0 );
+		sys.trigger( $item_objectivecomplete_2 );
+		sys.trigger( $trigger_once_56 );
+		sys.trigger( $trigger_once_61 );
+		sys.trigger( $trigger_once_91 );
+		sys.trigger( $trigger_once_146 );
+		sys.trigger( $trigger_once_151 );
+		sys.wait( 5.0 );
+		sys.trigger( $item_objective_4 );
+		sys.wait( 3.0 );
+		sys.trigger( $func_savegame_1 );
+	}
+	
+	//************************************************************************
+	//			strauss pod mover start
+	//************************************************************************
+	
+	void transferRoomTransport()
+	{
+		while( !STRAUSSCINEMATIC )
+		{
+			$transfer_transport_pod1.show();
+			$transfer_transport_1.show();
+			
+			$transfer_transport_1.time( 5 );
+			$transfer_transport_1.decelTime( 1 );
+			$transfer_transport_1.moveTo( $transfer_transport_target_2 );
+	
+			sys.waitFor( $transfer_transport_1 );
+			
+			$scan_arm_lower_1.time( 1 );
+			$scan_arm_1.time( 1 );
+			$scan_arm_lower_2.time( 1 );
+			$scan_arm_2.time( 1 );
+			$scan_arm_lower_1.rotateOnce( '0 0 40' );
+			$scan_arm_1.moveTo( $scan_arm_1_up );
+			$scan_arm_lower_2.rotateOnce( '0 0 -40' );
+			$scan_arm_2.moveTo( $scan_arm_2_up );
+			
+			sys.waitFor( $scan_arm_1 );
+			
+			$scan_arm_1.bind( $scan_arm_lower_1 );
+			$scan_arm_2.bind( $scan_arm_lower_2 );
+			
+			sys.wait( 0.1 );
+			
+			$scan_arm_lower_1.bind( $scan_arm_base_1 );
+			$scan_arm_lower_2.bind( $scan_arm_base_2 );
+			$func_mover_20.show();
+			$func_mover_20.bind( $scan_arm_base_1 );
+			
+			sys.wait( 0.1 );
+			
+			$scan_arm_base_1.accelTime( 1.0 );
+			$scan_arm_base_2.accelTime( 1.0 );
+			$scan_arm_base_1.decelTime( 1.0 );
+			$scan_arm_base_2.decelTime( 1.0 );
+			$scan_arm_base_1.time( 5.0 );
+			$scan_arm_base_2.time( 5.0 );
+			$scan_arm_base_1.rotateOnce( '0 360 0' );
+			$scan_arm_base_2.rotateOnce( '0 360 0' );
+	
+			sys.waitFor( $scan_arm_base_2 );
+			
+			$func_mover_20.hide();
+			$scan_arm_lower_1.unbind();
+			$scan_arm_lower_2.unbind();
+			$scan_arm_1.unbind();
+			$scan_arm_2.unbind();
+			$func_mover_20.unbind();
+			$scan_arm_lower_1.time( 1 );
+			$scan_arm_1.time( 1 );
+			$scan_arm_lower_2.time( 1 );
+			$scan_arm_2.time( 1 );
+			$scan_arm_lower_1.rotateOnce( '0 0 -40' );
+			$scan_arm_1.moveTo( $scan_arm_1_down );
+			$scan_arm_lower_2.rotateOnce( '0 0 40' );
+			$scan_arm_2.moveTo( $scan_arm_2_down );
+			
+			sys.waitFor( $scan_arm_2 );
+			
+			$transfer_transport_1.time( 5 );
+			$transfer_transport_1.accelTime( 1 );
+			$transfer_transport_1.moveTo( $transfer_transport_target_3 );
+			
+			sys.waitFor( $transfer_transport_1 );
+			
+			$transfer_transport_pod1.hide();
+			$transfer_transport_1.hide();
+			setNewTimes($transfer_transport_1, .1, 0, 0);
+			$transfer_transport_1.moveTo( $transfer_transport_target_1 );
+			
+			sys.waitFor( $transfer_transport_1 );
+			
+			if ( STRAUSSCINEMATIC )
+					break;
+		}
+		
+		sys.fadeOut( '0 0 0', 1);
+		sys.wait( 1.0 );
+		//STRAUSSCINEMATIC = true;
+		$player1.hide();
+		$player1.setOrigin( '2264 -1080 504' );
+		sys.trigger( $camera_cine_strauss_2 );
+		sys.wait( .1 );
+		$cinematic_strauss_dekard.show();
+		//aiScriptedAnimLoop( $strauss, "med_tube_float", 0 );
+		sys.wait( .1 );
+		aiScriptedMove( $cinematic_strauss_dekard, $deckard_cine_strauss_pos_1, 4, 0 );
+		sys.fadeIn( '0 0 0', 1);
+		sys.music( "m6_strauss_is_taken" );
+		aiScriptedWait( $cinematic_strauss_dekard );
+		aiScriptedFaceWait( $cinematic_strauss_dekard, $scan_arm_1, 0 );
+		sys.wait( 2.0 );
+		sys.fadeOut( '0 0 0', 1);
+		sys.wait( 1.0 );
+		sys.trigger( $camera_cine_strauss_1 );
+		sys.wait( .1 );
+		sys.fadeIn( '0 0 0', 1);
+		sys.wait( 1.0 );
+		sys.trigger( $strauss );
+		$strauss_pod.bind( $transport_topclamp_2 );
+		//$transport_topclamp_2.accelTime( 1 );
+		$transport_topclamp_2.time( 5 );
+		$transport_topclamp_2.decelTime( 1 );
+		$transport_topclamp_2.move( EAST, 432 );
+		sys.wait( 2.5 );
+		$strauss.lookAt( $cinematic_strauss_dekard );
+		aiScriptedAnimLoop( $cinematic_strauss_dekard, "pr_dekard_glass", 8 );
+		sys.waitFor( $transport_topclamp_2 );
+		$scan_arm_lower_1.time( 1 );
+		$scan_arm_1.time( 1 );
+		$scan_arm_lower_2.time( 1 );
+		$scan_arm_2.time( 1 );
+		$scan_arm_lower_1.rotateOnce( '0 0 40' );
+		$scan_arm_1.moveTo( $scan_arm_1_up );
+		$scan_arm_lower_2.rotateOnce( '0 0 -40' );
+		$scan_arm_2.moveTo( $scan_arm_2_up );
+		sys.waitFor( $scan_arm_1 );
+		$scan_arm_1.bind( $scan_arm_lower_1 );
+		$scan_arm_2.bind( $scan_arm_lower_2 );
+		sys.wait( 0.1 );
+		$scan_arm_lower_1.bind( $scan_arm_base_1 );
+		$scan_arm_lower_2.bind( $scan_arm_base_2 );
+		$func_mover_20.show();
+		$func_mover_20.bind( $scan_arm_base_1 );
+		sys.wait( 0.1 );
+		$scan_arm_base_1.accelTime( 1.0 );
+		$scan_arm_base_2.accelTime( 1.0 );
+		$scan_arm_base_1.decelTime( 1.0 );
+		$scan_arm_base_2.decelTime( 1.0 );
+		$scan_arm_base_1.time( 5.0 );
+		$scan_arm_base_2.time( 5.0 );
+		$scan_arm_base_1.rotateOnce( '0 360 0' );
+		$scan_arm_base_2.rotateOnce( '0 360 0' );
+		sys.wait( 3.0 );
+		$strauss.lookAt( $pod_grasper );
+		sys.waitFor( $scan_arm_base_2 );
+		aiScriptedAnimLoop( $cinematic_strauss_dekard, "relax_idle", 8 );
+		$func_mover_20.hide();
+		$scan_arm_lower_1.unbind();
+		$scan_arm_lower_2.unbind();
+		$scan_arm_1.unbind();
+		$scan_arm_2.unbind();
+		$func_mover_20.unbind();
+		$scan_arm_lower_1.time( 1 );
+		$scan_arm_1.time( 1 );
+		$scan_arm_lower_2.time( 1 );
+		$scan_arm_2.time( 1 );
+		$scan_arm_lower_1.rotateOnce( '0 0 -40' );
+		$scan_arm_1.moveTo( $scan_arm_1_down );
+		$scan_arm_lower_2.rotateOnce( '0 0 40' );
+		$scan_arm_2.moveTo( $scan_arm_2_down );
+		sys.waitFor( $scan_arm_2 );
+		$pod_grasper.time( 2 );
+		$pod_grasper.accelTime( .7 );
+		$pod_grasper.decelTime( .7 );
+		$pod_grasper.moveTo( $pod_grasper_up );
+		sys.waitFor( $pod_grasper );
+		sys.wait( 0.1 );
+		$strauss_pod.unbind();
+		$strauss_pod.bind( $pod_grasper );
+		sys.wait( 0.1 );
+		$pod_grasper.time( 7 );
+		$pod_grasper.accelTime( 1 );
+		$pod_grasper.decelTime( 1 );
+		$pod_grasper.moveTo( $pod_grasper_down );
+		sys.wait( 1.0 );
+		$strauss.lookAt( $cinematic_strauss_dekard );
+		sys.wait( 5.0 );
+		aiSpeakComlinkWait( $cinematic_strauss_dekard, "lipsync_dek_taktube" );
+		radioChatterPlayWait ($prison1_radiochatter, "vo_tak_hangmom");
+		//sys.wait( 1 );
+		sys.trigger( $camera_cine_strauss_2 );
+		sys.wait( .5 );
+		aiSpeakComlinkWait( $cinematic_strauss_dekard, "lipsync_dek_rogthat" );
+		sys.fadeOut( '0 0 0', 1);
+		sys.wait( 1.0 );
+		sys.trigger( $camera_cine_strauss_2 );
+		$cinematic_strauss_dekard.hide();
+		$player1.setOrigin( '-784 -256 144' );
+		$player1.show();
+		$makron_prison_monitor.remove();
+		$transferRoomMakronMonitorOn.hide();
+		STRAUSSCINEMATIC = false;
+		thread straussCinematicOver();
+		sys.fadeIn( '0 0 0', 1);
+		sys.wait( 2.0 );
+		
+	}
+	
+
+	
+	//************************************************************************
+	//			strauss pod mover start
+	//************************************************************************
+	
+	void beginTransferRoomSpawns()
+	{
+		
+		$strauss_transfer_frame.setShaderParm( 7, 0 );
+		$strauss_transfer_door1.lock( 2 );
+		$strauss_transfer_door2.lock( 2 );
+		sys.wait( .5 );
+		$makron_prison_monitor.show();
+		sys.waitFrame();
+		aiScriptedAnimLoop( $makron_prison_monitor, "verification_monitor", 0 );
+		sys.wait( 4 );
+		$transferRoomMakronMonitorOn.show();
+		sys.trigger( $transfer_room_spawner );
+	}
+	
+	void timeForStraussCinematic()
+	{
+		STRAUSSCINEMATIC = true;
+	}
+
+
+	void unlockExitAccessDoor01() //unlocks exit door 
+	{
+		$doorframe_to_exit_01.setShaderParm( 7, 1 );
+		$exit_accessdoor01.lock( 0 );
+		$exit_accessdoor02.lock( 0 );
+		sys.wait( 1 );
+	}
+	
+	void darnellChecksIn()
+	{
+		radioChatterPlay ($prison1_radiochatter, "vo_darn_foxmeet");
+	}
+	
+	void viperSquadIn()
+	{
+
+		sys.trigger( $tolson_RS );
+		sys.trigger( $mitchell_RS );
+		//$mitchell_RS.enableHeal();
+	}
+	
+	void makronAngered()
+	{
+		$makron_prison.becomeAggressive();
+	}
+	
+	void retractLiftBridge()
+	{
+
+		$drawbridge_origin1_1.time(9);
+		$drawbridge_origin1_1.accelTime(4);
+		$drawbridge_origin1_1.decelTime(4);
+	
+		$drawbridge_origin2_1.time(9);
+		$drawbridge_origin2_1.accelTime(3);
+		$drawbridge_origin2_1.decelTime(6);
+	
+		$drawbridge_origin1_1.rotateOnce( '0 0 75' );
+		$drawbridge_origin2_1.rotateOnce( '0 0 -165' );
+	
+		sys.waitFor($drawbridge_origin2_1);
+	}
+	
+	void makronWalkThrough()
+	{
+		sys.trigger( $makron_prison );
+		thread retractLiftBridge();
+	}
+	
+	void MakronOutOfRoom()
+	{
+		$makron_prison.remove();
+	}
+	
+
+	void finalPositions()
+	{
+		sys.println( "go to final positions");
+		sys.wait( 0.5 );
+		aiScriptedMove( $tolson_RS, $tolson_exitPos_1, 16, 0 );
+		aiScriptedMove( $mitchell_RS, $mitchell_exitPos_1, 16, 0 );
+	}
+	
+	void extendLiftBridge()
+	{
+		sys.wait( 10 );
+		
+		$drawbridge_origin1_1.time(9);
+		$drawbridge_origin1_1.accelTime(4);
+		$drawbridge_origin1_1.decelTime(4);
+	
+		$drawbridge_origin2_1.time(9);
+		$drawbridge_origin2_1.accelTime(3);
+		$drawbridge_origin2_1.decelTime(6);
+	
+		$drawbridge_origin1_1.rotateOnce( '0 0 -75' );
+		$drawbridge_origin2_1.rotateOnce( '0 0 165' );
+	
+		sys.waitFor($drawbridge_origin2_1);
+		sys.trigger( $liftBridgeBlock );
+		sys.trigger( $liftBridgeBlock_2 );
+	}
+	
+	
+	
+	void liftOperative()
+	{
+		$func_static_53762.setGuiParm( "noninteractive", "1" );
+		$exitLedgeFrame.setShaderParm( 7, 0 );
+		$exitLedgeDoor1.lock( 2 );
+		$exitLedgeDoor2.lock( 2 );
+		sys.trigger( $monster_q4x_tank_1 );
+		sys.wait( .5 );
+		radioChatterPlay ($prison1_radiochatter, "vo_tak_actlift");
+		$exit_lift.gotoFloor( 2 );
+		thread extendLiftBridge();
+		sys.trigger( $item_objectivecomplete_4 );
+		$mitchell_RS.disableHeal();
+		sys.wait( 2 );
+		aiScriptedMoveWait( $mitchell_RS, $mitchell_exitPos_2, 8, 0 );
+		aiSpeak( $mitchell, "lipsync_mitch_theresome" );
+		aiScriptedAnimWait( $mitchell_RS, "point_down", 4, 0 );
+		sys.wait( 1 );
+		aiScriptedMove( $mitchell_RS, $mitchell_exitPos_1, 16, 0 );
+		sys.wait( 6 );
+		aiSpeak( $tolson_RS, "lipsync_fox5_takecover" );
+		aiScriptedMove( $mitchell_RS, $mitchell_exitPos_1, 16, 0 );
+		aiScriptedMove( $tolson_RS, $tolson_exitPos_1, 16, 0 );
+		sys.wait( 6 );
+		aiScriptedMove( $mitchell_RS, $mitchell_exitPos_1, 16, 1 );
+		aiScriptedMove( $tolson_RS, $tolson_exitPos_1, 16, 1 );
+
+	}
+	
+	void enableExitLift()
+	{
+		sys.wait( 3 );
+		aiScriptedMove( $mitchell_RS, $mitchell_exitPos_3, 8, 0 );
+		sys.wait( 1.0 );
+		aiScriptedMove( $tolson_RS, $tolson_exitPos_3, 8, 0 );
+		$exit_lift.setGuiParm( "noninteractive", "0" );
+	}
+	
+	void cinematicEndLevel()  
+		{
+		//sys.trigger( $exitAcessBlock_2 );
+		sys.fadeOut( '0 0 0', 1);
+		sys.wait( 1.0 );
+		if( isValidEntity( $monster_q4x_tank_1 ))
+			{
+				$monster_q4x_tank_1.remove();
+			}
+		sys.trigger( $camera_cine_levelEnd_1 );
+		$mitchell_RS.remove();
+		$tolson_RS.remove();
+		sys.wait( .1 );
+		$cinematic_endLevel_dekard.show();
+		sys.trigger( $cinematic_endLevel_mitchell );
+		sys.trigger( $cinematic_endLevel_tolson );
+		sys.wait( .5 );
+		aiScriptedMove( $cinematic_endLevel_dekard, $deckard_cine_endLevel_pos_1, 4, 0 );
+		sys.fadeIn( '0 0 0', 1);
+		sys.wait( 2.0 );
+		aiScriptedMove( $cinematic_endLevel_mitchell, $mitchell_cine_endLevel_pos_1, 8, 0 );
+		sys.wait( 1.0 );
+		aiScriptedMove( $cinematic_endLevel_tolson, $tolson_cine_endLevel_pos_1, 8, 0 );
+		sys.wait( 1.0 );
+		aiScriptedWait( $cinematic_endLevel_tolson );
+		aiScriptedFaceWait( $cinematic_endLevel_tolson, $tolson_cine_endLevel_face, 0 );
+		sys.wait( 1.0 );
+		aiScriptedFaceWait( $cinematic_endLevel_dekard, $exit_lift, 0 );
+		aiScriptedAnimWait( $cinematic_endLevel_dekard, "point_down", 4, 0);
+		sys.wait( .5 );
+		thread retractLiftBridge();
+		sys.wait( 3 );	
+		$exit_lift.gotoFloor( 1 );
+		sys.wait( 8 );
+		sys.trigger( $target_endlevel_1 );
+	}
+	
+	void main()
+	{
+		$func_mover_20.hide();
+		
+		sys.wait( 0.1 );
+		thread theLevelBegins();
+		
+		sys.wait( 0.1 );
+		thread setSecWindowShields();
+		
+				
+		sys.wait( 0.1 );
+		thread tubeTransportSystem();
+		
+		sys.wait( 0.1 );
+		thread tubeTransportSystem2();
+		
+		sys.wait( 0.1 );
+		thread startupPump();
+		
+		SECROOMSPECS = false;
+		TUBESAREOFF = false;
+		STRAUSSCINEMATIC = false;
+		DRIVER_STOP_FIRING = false;
+		DRIVER_FIRING = false;
+	}
+

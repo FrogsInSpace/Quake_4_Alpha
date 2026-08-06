@@ -1,0 +1,702 @@
+//Added by JohnS 10/17/05
+gfx/guis/vehicle/airassault/ds_dmg_1
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/vehicle/airassault/ds_dmg_1.tga
+	}
+}
+
+gfx/guis/vehicle/airassault/ds_dmg_2
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/vehicle/airassault/ds_dmg_2.tga
+	}
+}
+
+gfx/guis/vehicle/airassault/ds_dmg_3
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/vehicle/airassault/ds_dmg_3.tga
+	}
+}
+
+gfx/guis/vehicle/airassault/ds_dmg_4
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/vehicle/airassault/ds_dmg_4.tga
+	}
+}
+
+gfx/guis/vehicle/airassault/ds_dmg_5
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/vehicle/airassault/ds_dmg_5.tga
+	}
+}
+
+gfx/guis/vehicle/airassault/ds_dmg_6
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/vehicle/airassault/ds_dmg_6.tga
+	}
+}
+
+gfx/guis/vehicle/airassault/ds_dmg_7
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/vehicle/airassault/ds_dmg_7.tga
+	}
+}
+
+gfx/guis/vehicle/airassault/ds_dmg_8
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/vehicle/airassault/ds_dmg_8.tga
+	}
+}
+
+gfx/guis/vehicle/airassault/ds_dmg_9
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/vehicle/airassault/ds_dmg_9.tga
+	}
+}
+
+gfx/guis/vehicle/airassault/ds_dmg_10
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/vehicle/airassault/ds_dmg_10.tga
+	}
+}
+
+//--------------Wyeth-----------------------------
+
+gfx/guis/maps/mcc/ambient_mcc_tech1
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/maps/mcc/ambient_mcc_tech1.tga
+	}
+}
+
+gfx/guis/maps/mcc/ambient_mcc_tech2
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/maps/mcc/ambient_mcc_tech2.tga
+	}
+}
+
+gfx/guis/maps/mcc/ambient_mcc_tech3
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/maps/mcc/ambient_mcc_tech3.tga
+	}
+}
+
+gfx/guis/vehicle/speeder/speederbase
+{	
+	noShadows
+	translucent
+	{
+		colored
+		Map gfx/guis/vehicle/speeder/speederbase.tga
+	}
+}
+
+gfx/guis/vehicle/speeder/speederbase_blend
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		colored
+		Map gfx/guis/vehicle/speeder/speederbase.tga
+	}
+}
+
+gfx/guis/vehicle/speeder/speederarrow
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/vehicle/speeder/speederarrow.tga
+		scroll time * 0, time * 1
+		rgb 	 0.75// * cosine [time * 4]
+	}
+}
+
+gfx/guis/vehicle/speeder/speederlines
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/vehicle/speeder/speederlines.tga
+		scroll time * 0, time * 0.3
+	}
+}
+
+gfx/guis/vehicle/speeder/boosticon
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		colored
+		Map gfx/guis/vehicle/speeder/boosticon.tga
+	}
+}
+
+
+gfx/guis/vehicle/airassault/spacecannon1_base
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/vehicle/airassault/spacecannon1_base.tga
+	}
+}
+
+gfx/guis/vehicle/airassault/spacecannon1_base2
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/vehicle/airassault/spacecannon1_base2.tga
+	}
+}
+
+
+gfx/guis/vehicle/airassault/spacecannon1_dropship
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		colored
+		Map gfx/guis/vehicle/airassault/spacecannon1_dropship.tga
+	}
+}
+
+gfx/guis/vehicle/airassault/spacecannon2_base
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/vehicle/airassault/spacecannon2_base.tga
+	}
+}
+
+//////// Spacecannon Machnegun Base ////////
+
+gfx/guis/vehicle/airassault/spacecannon3_base
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/vehicle/airassault/spacecannon3_base.tga
+	}
+}
+
+gfx/guis/vehicle/airassault/spacecannon_heatbar_01
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/vehicle/airassault/spacecannon_heatbar_01.tga
+	}
+}
+
+
+gfx/guis/vehicle/airassault/spacecannon2_NT
+{	
+	noShadows
+	translucent
+	{
+		colored
+		blend add
+		Map gfx/guis/vehicle/airassault/spacecannon2_NT.tga
+	}
+}
+
+gfx/guis/vehicle/airassault/spacecannon2_AT
+{	
+	noShadows
+	translucent
+	{
+		colored
+		blend add
+		Map gfx/guis/vehicle/airassault/spacecannon2_AT.tga
+	}
+}
+
+gfx/guis/vehicle/airassault/spacecannon2_LT
+{	
+	noShadows
+	translucent
+	{
+		colored
+		blend add
+		Map gfx/guis/vehicle/airassault/spacecannon2_LT.tga
+	}
+}
+
+gfx/guis/vehicle/airassault/spacecannon2_LT_arrows
+{	
+	noShadows
+	translucent
+	{
+		colored
+		blend add
+		Map gfx/guis/vehicle/airassault/spacecannon2_LT_arrows.tga
+		red	sintable[time * 4] + 0.5
+	}
+}
+
+gfx/guis/vehicle/airassault/spacecannon2_rocket
+{	
+	noShadows
+	translucent
+	{
+		colored
+		blend add
+		Map gfx/guis/vehicle/airassault/spacecannon2_rocket.tga
+	}
+}
+
+gfx/guis/weapons/goobgun/fire_base01
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/weapons/goobgun/fire_base01.tga
+	}
+}
+
+gfx/guis/q4x_crosshairs/aa_space_default
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		Map gfx/guis/q4x_crosshairs/aa_space_default.tga
+		maskDepth
+		colored
+		nopicmip
+		linear
+	}
+}
+
+gfx/guis/q4x_crosshairs/aa_space_acquire
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		Map gfx/guis/q4x_crosshairs/aa_space_acquire.tga
+		maskDepth
+		colored
+		nopicmip
+		linear
+	}
+}
+
+gfx/guis/q4x_crosshairs/aa_space_lock
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		Map gfx/guis/q4x_crosshairs/aa_space_acquire.tga
+		maskDepth
+		colored
+		nopicmip
+		linear
+	}
+}
+
+gfx/guis/q4x_crosshairs/aa_space_friendly
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		Map gfx/guis/q4x_crosshairs/aa_space_friendly.tga
+		maskDepth
+		colored
+		nopicmip
+		linear
+	}
+}
+
+gfx/guis/q4x_crosshairs/aa_space_OOR
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		Map gfx/guis/q4x_crosshairs/aa_space_OOR.tga
+		maskDepth
+		colored
+		nopicmip
+		linear
+	}
+}
+
+gfx/guis/q4x_crosshairs/aa_space_OOR_FXLock
+{	
+	noShadows
+	translucent
+	{
+		blend GL_SRC_ALPHA, GL_ONE
+		Map gfx/guis/q4x_crosshairs/aa_space_OOR_FX.tga
+		vertexcolor
+		clamp
+		alpha 0.0
+	}
+}
+
+gfx/guis/q4x_crosshairs/aa_space_lock_FX
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		Map gfx/guis/q4x_crosshairs/aa_space_lock_FX.tga
+		vertexcolor
+		clamp
+	}
+}
+
+/////////////////// HUD ELEMENTS FOR SKY CANNON /////////////
+
+gfx/guis/vehicle/airassault/hud_base_01
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		colored
+		Map gfx/guis/vehicle/airassault/hud_base_01.tga
+	}
+}
+
+gfx/guis/vehicle/airassault/hud_base_02
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		colored
+		Map gfx/guis/vehicle/airassault/hud_base_02.tga
+	}
+}
+
+gfx/guis/vehicle/airassault/hud_base_03
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/vehicle/airassault/hud_base_03.tga
+	}
+}
+
+gfx/guis/vehicle/airassault/hud_ship_01
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		colored
+		Map gfx/guis/vehicle/airassault/hud_ship_01.tga
+	}
+}
+
+gfx/guis/vehicle/airassault/hud_ship_02
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		colored
+		Map gfx/guis/vehicle/airassault/hud_ship_02.tga
+	}
+}
+
+gfx/guis/vehicle/airassault/hud_ship_03
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		colored
+		Map gfx/guis/vehicle/airassault/hud_ship_03.tga
+	}
+}
+
+gfx/guis/vehicle/airassault/hud_ship_04
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		colored
+		Map gfx/guis/vehicle/airassault/hud_ship_04.tga
+	}
+}
+
+gfx/guis/vehicle/airassault/hud_ship_05
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		colored
+		Map gfx/guis/vehicle/airassault/hud_ship_05.tga
+	}
+}
+
+gfx/guis/vehicle/airassault/hud_ship_06
+{	
+	noShadows
+	translucent
+	{
+		blend blend
+		colored
+		Map gfx/guis/vehicle/airassault/hud_ship_06.tga
+	}
+}
+
+gfx/guis/vehicle/airassault/hud_target_01
+{	
+	noShadows
+	translucent
+	clamp
+	{
+		blend add
+		colored
+		Map gfx/guis/vehicle/airassault/hud_target_01.tga
+		rotate  time * 0.35
+	}
+}
+
+gfx/guis/vehicle/airassault/hud_warning_N
+{	
+	noShadows
+	translucent
+
+	{
+		blend add
+		colored
+		Map gfx/guis/vehicle/airassault/hud_warning_N.tga
+		rgb sinTable [ time * 2 ] + 0.5
+	}
+}
+
+gfx/guis/vehicle/airassault/hud_warning_NE
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/vehicle/airassault/hud_warning_NE.tga
+		rgb sinTable [ time * 2 ] + 0.5
+	}
+}
+
+gfx/guis/vehicle/airassault/hud_warning_E
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/vehicle/airassault/hud_warning_E.tga
+		rgb sinTable [ time * 2 ] + 0.5
+	}
+}
+
+gfx/guis/vehicle/airassault/hud_warning_SE
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/vehicle/airassault/hud_warning_SE.tga
+		rgb sinTable [ time * 2 ] + 0.5
+	}
+}
+
+gfx/guis/vehicle/airassault/hud_warning_S
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/vehicle/airassault/hud_warning_S.tga
+		rgb sinTable [ time * 2 ] + 0.5
+	}
+}
+
+gfx/guis/vehicle/airassault/hud_warning_SW
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/vehicle/airassault/hud_warning_SW.tga
+		rgb sinTable [ time * 2 ] + 0.5
+	}
+}
+
+gfx/guis/vehicle/airassault/hud_warning_W
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/vehicle/airassault/hud_warning_W.tga
+		rgb sinTable [ time * 2 ] + 0.5
+	}
+}
+
+gfx/guis/vehicle/airassault/hud_warning_NW
+{	
+	noShadows
+	translucent
+	{
+		blend add
+		colored
+		Map gfx/guis/vehicle/airassault/hud_warning_NW.tga
+		rgb sinTable [ time * 2 ] + 0.5
+	}
+}
+
+
+//// More main menu madness ////
+
+gfx/guis/mainmenu/q4logoleft
+{
+	noshadows
+	translucent
+	{
+		nopicmip
+		clamp
+		blend GL_ZERO, gl_one_minus_src_color
+		map gfx/guis/mainmenu/q4logoleft.tga
+		colored
+	}
+}
+
+gfx/guis/mainmenu/q4logoright
+{
+	noshadows
+	translucent
+	{
+		nopicmip
+		clamp
+		blend GL_ZERO, gl_one_minus_src_color
+		map gfx/guis/mainmenu/q4logoright.tga
+		colored
+	}
+}
+
+gfx/guis/mainmenu/swirl_bg
+{
+	noshadows
+	translucent
+	{
+		blend GL_DST_COLOR, GL_ONE
+		map gfx/guis/mainmenu/swirl_bg.tga
+		colored
+		scroll time * 0.01, time * 0.08
+		scale 2.4, 2.4
+	}
+	{
+		blend GL_DST_COLOR, GL_ONE
+		map gfx/guis/mainmenu/swirl_bg.tga
+		colored
+		scroll time * 0.04, time * 0.04
+		scale 2.0, 2.0
+	}
+	{
+		blend GL_DST_COLOR, GL_ONE
+		map gfx/guis/mainmenu/swirl_bg.tga
+		colored
+		scroll time * -0.03, time * 0.1
+		scale 2.8, 2.8
+	}
+}

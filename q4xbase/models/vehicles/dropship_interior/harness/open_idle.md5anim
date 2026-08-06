@@ -1,0 +1,30 @@
+MD5Version 10
+commandline "anim models/vehicles/dropship_interior/animations/open.ma -dest models/vehicles/dropship_interior/harness/open_idle.md5anim -game Quake4 -scale .3937 -prefix HARN_ -keep origin -align ALL -range 66 67"
+
+numFrames 2
+numJoints 2
+frameRate 24
+numAnimatedComponents 3
+
+hierarchy {
+	"origin"	-1 0 0	//
+	"base"	0 56 0	// origin ( Qx Qy Qz )
+}
+
+bounds {
+	( -5.3908967972 -13.8169727325 47.876411438 ) ( 21.9812145233 13.8172512054 67.4412078857 )
+	( -5.3951997757 -13.8169746399 47.8721084595 ) ( 21.7513256073 13.8172483444 67.6905670166 )
+}
+
+baseframe {
+	( 0 0 0 ) ( -0.5 -0.5 -0.5 )
+	( 0 50.7273178101 -2.5399949551 ) ( 0.4739311635 -0.5247754455 0.4739311635 )
+}
+
+frame 0 {
+	 0.4739311635 -0.5247754455 0.4739311635
+}
+
+frame 1 {
+	 0.478125751 -0.5209565759 0.478125751
+}

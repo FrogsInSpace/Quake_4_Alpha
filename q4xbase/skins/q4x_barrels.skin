@@ -1,0 +1,13 @@
+skin skins/mapobjects/q4x/trianbarrela
+{
+	"models/mapobjects/strogg/barrels/stroyent" "models/mapobjects/q4x/trianbarrel"
+}
+
+
+skin skins/mapobjects/q4x/trianbarrel/trian_groupa
+{
+	"models/mapobjects/strogg/barrels/stroyent_group_2" "models/mapobjects/q4x/trianbarrel_group"
+}
+
+
+

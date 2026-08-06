@@ -1,0 +1,542 @@
+//table q1teleTable { { 1, 1.25, 1.5, 1.25, 1, -1.25, -1.5, -1.25 } }
+table q1dm2lavatable { { .7,.8,1,1,1,1,1,1,.8,1,1,1,.8,.8,1,.7,1,.7,1,.7,.8,1,1,1,.7,.7  } }
+
+textures/q4x_q4xdm2/temppipe
+{
+	qer_editorimage textures/q4x_q4xdm2/temp_pipe.tga
+
+	diffusemap textures/q4x_q4xdm2/temp_pipe.tga
+}
+
+textures/q4x_q4xdm2/tempmachine
+{
+	qer_editorimage textures/q4x_q4xdm2/temp_machine.tga
+
+	diffusemap textures/q4x_q4xdm2/temp_machine.tga
+}
+
+textures/q4x_q4xdm2/door01
+{
+	//renderbumpflat -size 256 256 textures/q4x_q4xdm2/door.ASE
+	qer_editorimage textures/q4x_q4xdm2/door_local.tga
+
+	diffusemap textures/q4x_q4xdm2/door_d.tga
+	bumpmap textures/q4x_q4xdm2/door_local.tga
+}
+
+textures/q4x_q4xdm2/crusher
+{
+	qer_editorimage textures/q4x_q4xdm2/crusher_d.tga
+
+	diffusemap textures/q4x_q4xdm2/crusher_d.tga
+	bumpmap textures/q4x_q4xdm2/crusher_local.tga
+	specularmap textures/q4x_q4xdm2/crusher_s.tga
+}
+
+textures/q4x_q4xdm2/crushertop
+{
+	qer_editorimage textures/q4x_q4xdm2/crushertop_d.tga
+
+	diffusemap textures/q4x_q4xdm2/crushertop_d.tga
+	specularmap textures/q4x_q4xdm2/crusher_s.tga
+}
+
+textures/q4x_q4xdm2/crushergrate
+{
+	twosided
+	qer_editorimage textures/q4x_q4xdm2/crushergrate_d.tga
+
+	{
+		blend diffusemap
+		map textures/q4x_q4xdm2/crushergrate_d.tga
+		alphatest 0.5
+	}
+	bumpmap textures/q4x_q4xdm2/crushergrate_local.tga
+}
+
+textures/q4x_q4xdm2/light_whitecross01
+{
+	//renderbumpflat -size 128 128 textures/q4x_q4xdm2/light_whitecross.ASE
+	qer_editorimage textures/q4x_q4xdm2/light_whitecross_d.tga
+
+	diffusemap textures/q4x_q4xdm2/light_whitecross_d.tga
+	bumpmap textures/q4x_q4xdm2/light_whitecross_local.tga
+	{
+		blend add
+		map textures/q4x_q4xdm2/light_whitecross_glow.tga
+	}
+}
+
+lights/whitecross_projected
+{	
+	{
+		forceHighQuality
+		map textures/q4x_q4xdm2/light_whitecross_glow.tga
+		colored
+		zeroclamp
+	}
+}
+
+textures/q4x_q4xdm2/waterwithhaze
+{
+	qer_editorimage	        textures/q4x_q4xdm2/water01_d.tga
+	nonsolid
+
+	{
+		blend diffusemap
+		map textures/q4x_q4xdm2/water01_d.tga
+		translate	time * 0.03 , time * 0.02
+	}
+	{
+		blend specularmap
+		map textures/q4x_q4xdm2/water01_s.tga
+		translate	time * -0.05 , time * 0.06
+	}
+	{
+		vertexProgram	heatHaze.vfp
+		vertexParm		0		0 , time * 0.05	// texture scrolling
+		vertexParm		1		2				// magnitude of the distortion
+		fragmentProgram	heatHaze.vfp
+		fragmentMap		0		_currentRender
+		fragmentMap		1		textures/q4x_q4xdm2/lava1_local.tga	// the normal map for distortion
+	}
+}
+
+textures/q4x_q4xdm2/lava
+{
+	qer_editorimage		textures/q4x_q4xdm2/lava2.tga
+	translucent
+	nonsolid
+	twosided
+
+	{
+		map     textures/q4x_q4xdm2/lava2.tga
+		scale	1 , 1
+		translate	time * 0.005, time * -0.01
+		rgb		q1dm2lavatable[ time * .05 ]
+	}
+	{
+		blend add
+		map     textures/q4x_q4xdm2/lava2.tga
+		scale	1.4, 1.5
+		translate	time * 0, time * -0.03
+		rgb		q1dm2lavatable[ time * .04 ]
+	}
+	{
+		blend add
+		map     textures/q4x_q4xdm2/lava2.tga
+		scale	.8, 1.1
+		translate	time * -0.001, time * -0.02
+		rgb		q1dm2lavatable[ time * .1 ]
+	}
+}
+
+textures/q4x_q4xdm2/lavamoving
+{
+	translucent
+	qer_editorimage		textures/q4x_q4xdm2/lava2.tga
+
+	{
+		map     textures/q4x_q4xdm2/lava2.tga
+		scale	1 , 1
+		translate	0, time * -0.1
+		rgb		q1dm2lavatable[ time * .05 ]
+	}
+	{
+		blend add
+		map     textures/q4x_q4xdm2/lava2.tga
+		scale	1.4, 1.5
+		translate	0, time * -0.1
+		rgb		q1dm2lavatable[ time * .04 ]
+	}
+	{
+		blend add
+		map     textures/q4x_q4xdm2/lava2.tga
+		scale	.8, 1.1
+		translate	0, time * -0.1
+		rgb		q1dm2lavatable[ time * .1 ]
+	}
+}
+
+textures/q4x_q4xdm2/teleporter
+{
+	qer_editorimage textures/q4x_q4xdm2/telestars.tga
+	noselfshadow
+	noshadows
+	{
+		map textures/q4x_q4xdm2/telestars.tga
+		translate sinTable[ time * 0.005 ], sinTable[ time * 0.005 ]
+		//scale q1teleTable[ time * 0.05 ], q1teleTable[ time * 0.05 ]
+	}
+}
+
+textures/q4x_q4xdm2/symb_red_01
+{
+	//renderbumpflat -size 128 128 textures/q4x_q4xdm2/symbol_red_square.ASE
+	qer_editorimage textures/q4x_q4xdm2/symb_red_01_d.tga
+
+	diffusemap textures/q4x_q4xdm2/symb_red_01_d.tga
+	bumpmap textures/q4x_q4xdm2/symb_red_01_local.tga
+
+	{
+		blend add
+		map textures/q4x_q4xdm2/symb_red_01_red.tga
+	}
+}
+
+textures/q4x_q4xdm2/symb_gray_01
+{
+	//renderbumpflat -size 128 128 textures/q4x_q4xdm2/symbol_gray.ASE
+	qer_editorimage textures/q4x_q4xdm2/symb_gray_01_d.tga
+
+	diffusemap textures/q4x_q4xdm2/symb_gray_01_d.tga
+	bumpmap textures/q4x_q4xdm2/symb_gray_01_local.tga
+}
+
+textures/q4x_q4xdm2/brick03
+{
+	//renderbumpflat -size 256 256 textures/q4x_q4xdm2/brick03.ASE
+	qer_editorimage textures/q4x_q4xdm2/brick03_d.tga
+
+	diffusemap textures/q4x_q4xdm2/brick03_d.tga
+	bumpmap textures/q4x_q4xdm2/brick03_local.tga
+}
+
+textures/q4x_q4xdm2/brick05
+{
+	//renderbumpflat -size 256 256 textures/q4x_q4xdm2/brick05.ASE
+	qer_editorimage textures/q4x_q4xdm2/brick05_d.tga
+
+	diffusemap textures/q4x_q4xdm2/brick05_d.tga
+	bumpmap textures/q4x_q4xdm2/brick05_local.tga
+}
+
+textures/q4x_q4xdm2/ceiling01
+{
+	qer_editorimage textures/q4x_q4xdm2/ceiling_01_d.tga
+
+	{
+		blend diffusemap
+		map textures/q4x_q4xdm2/ceiling_01_d.tga
+	}
+	{
+		blend bumpmap
+		map textures/q4x_q4xdm2/ceiling_01_local.tga
+	}
+}
+
+textures/q4x_q4xdm2/floor01
+{
+	qer_editorimage textures/q4x_q4xdm2/floor01_d.tga
+
+	diffusemap textures/q4x_q4xdm2/floor01_d.tga
+	bumpmap textures/q4x_q4xdm2/floor01_local.tga
+	specularmap textures/q4x_q4xdm2/floor01_s.tga
+}
+
+textures/q4x_q4xdm2/floor02
+{
+	//renderbumpflat -size 64 64 textures/q4x_q4xdm2/floor02.ASE
+	qer_editorimage textures/q4x_q4xdm2/floor02_d.tga
+
+	diffusemap textures/q4x_q4xdm2/floor02_d.tga
+	bumpmap textures/q4x_q4xdm2/floor02_local.tga
+	specularmap textures/q4x_q4xdm2/floor02_s.tga
+}
+
+//textures/q4x_q4xdm2/flooroct
+//{
+	//renderbumpflat -size 256 256 textures/q4x_q4xdm2/floor_oct.ASE
+//	qer_editorimage textures/q4x_q4xdm2/floor_oct_d.tga
+
+//	diffusemap textures/q4x_q4xdm2/floor_oct_d.tga
+//	bumpmap textures/q4x_q4xdm2/floor_oct_local.tga
+//	specularmap textures/q4x_q4xdm2/floor_oct_s.tga
+//}
+
+textures/q4x_q4xdm2/metal_rivet
+{
+	//renderbumpflat -size 256 128 textures/q4x_q4xdm2/metal_rivet01.ASE
+	qer_editorimage textures/q4x_q4xdm2/metal_rivet01_local.tga
+
+	diffusemap textures/q4x_q4xdm2/metal_base_d.tga
+	bumpmap textures/q4x_q4xdm2/metal_rivet01_local.tga
+}
+
+textures/q4x_q4xdm2/metal_rivet2
+{
+	//renderbumpflat -size 256 128 textures/q4x_q4xdm2/metal_rivet02.ASE
+	qer_editorimage textures/q4x_q4xdm2/metal_rivet02_local.tga
+
+	diffusemap textures/q4x_q4xdm2/metal_rivet02_d.tga
+	bumpmap textures/q4x_q4xdm2/metal_rivet02_local.tga
+}
+
+textures/q4x_q4xdm2/metal_rivet2_nocolor
+{
+	//renderbumpflat -size 256 128 textures/q4x_q4xdm2/metal_rivet02.ASE
+	qer_editorimage textures/q4x_q4xdm2/metal_rivet02_local.tga
+
+	diffusemap textures/q4x_q4xdm2/metal_base_d.tga
+	bumpmap textures/q4x_q4xdm2/metal_rivet02_local.tga
+}
+
+textures/q4x_q4xdm2/metal_rivet_strip
+{
+	//renderbumpflat -size 128 16 textures/q4x_q4xdm2/metal_rivet_strip.ASE
+	qer_editorimage textures/q4x_q4xdm2/metal_rivet_strip_local.tga
+
+	diffusemap textures/q4x_q4xdm2/metal_rivet_strip_d.tga
+	bumpmap textures/q4x_q4xdm2/metal_rivet_strip_local.tga
+}
+
+textures/q4x_q4xdm2/metal_plain
+{
+	qer_editorimage textures/q4x_q4xdm2/metal_base_d.tga
+
+	diffusemap textures/q4x_q4xdm2/metal_base_d.tga
+	bumpmap textures/q4x_q4xdm2/metal_base_local.tga
+}
+
+textures/q4x_q4xdm2/mush
+{
+	//renderbumpflat -size 128 128 textures/q4x_q4xdm2/mush.ASE
+	qer_editorimage textures/q4x_q4xdm2/mush_d.tga
+
+	{
+		blend diffusemap
+		map textures/q4x_q4xdm2/mush_d.tga
+		scroll time * 0.01, 0
+	}
+	{
+		blend bumpmap
+		map textures/q4x_q4xdm2/mush_local.tga
+		scroll time * 0.01, 0
+	}
+	{
+		blend specularmap
+		map textures/q4x_q4xdm2/mush_s.tga
+		scroll time * 0.01, 0
+	}
+
+}
+
+textures/q4x_q4xdm2/evil_button
+{
+	//renderbumpflat -size 128 128 textures/q4x_q4xdm2/evil_button.ASE
+	qer_editorimage textures/q4x_q4xdm2/evil_button_d.tga
+
+	diffusemap textures/q4x_q4xdm2/evil_button_d.tga
+	bumpmap textures/q4x_q4xdm2/evil_button_local.tga
+
+	{
+		blend add
+		map textures/q4x_q4xdm2/evil_button_red.tga
+		rgb sinTable[ time * 0.5 ]
+	}
+}
+
+textures/q4x_q4xdm2/grate_circular
+{
+	//renderbumpflat -size 128 128 textures/q4x_q4xdm2/grate_circular.ASE
+	qer_editorimage textures/q4x_q4xdm2/grate_circular_d.tga
+
+	{
+		blend diffusemap
+		map textures/q4x_q4xdm2/grate_circular_d.tga
+		alphatest 0.5
+	}
+
+	bumpmap textures/q4x_q4xdm2/grate_circular_local.tga
+}
+
+textures/q4x_q4xdm2/grate_square
+{
+	twosided
+	qer_editorimage textures/q4x_q4xdm2/grate01_d.tga
+
+	{
+		blend diffusemap
+		map textures/q4x_q4xdm2/grate01_d.tga
+		alphatest 0.1
+	}
+
+	specularmap textures/q4x_q4xdm2/grate01_s.tga
+}
+
+textures/q4x_q4xdm2/grate03
+{
+	//renderbumpflat -size 256 256 textures/q4x_q4xdm2/grate03.ASE
+	twosided
+	qer_editorimage textures/q4x_q4xdm2/grate03_d.tga
+
+	{
+		blend diffusemap
+		map textures/q4x_q4xdm2/grate03_d.tga
+		alphatest 0.5
+	}
+	bumpmap textures/q4x_q4xdm2/grate03_local.tga
+	specularmap textures/q4x_q4xdm2/grate03_s.tga
+}
+
+textures/q4x_q4xdm2/stairfront
+{
+	//renderbumpflat -size 128 16 textures/q4x_q4xdm2/stair_front_01.ASE
+	qer_editorimage textures/q4x_q4xdm2/stair_front_01_d.tga
+
+	diffusemap textures/q4x_q4xdm2/stair_front_01_d.tga
+	bumpmap textures/q4x_q4xdm2/stair_front_01_local.tga
+
+	{
+		blend add
+		map textures/q4x_q4xdm2/stair_front_01_glow.tga
+	}
+}
+
+textures/q4x_q4xdm2/stairtop
+{
+	//renderbumpflat -size 256 32 textures/q4x_q4xdm2/stair_top_01.ASE
+	qer_editorimage textures/q4x_q4xdm2/stair_top_01_d.tga
+
+	diffusemap textures/q4x_q4xdm2/stair_top_01_d.tga
+	bumpmap textures/q4x_q4xdm2/stair_top_01_local.tga
+	specularmap textures/q4x_q4xdm2/stair_top_01_s.tga
+}
+
+textures/q4x_q4xdm2/platform01
+{
+	//renderbumpflat -size 256 256 textures/q4x_q4xdm2/platform_01.ASE
+	qer_editorimage textures/q4x_q4xdm2/platform_01_d.tga
+
+	diffusemap textures/q4x_q4xdm2/platform_01_d.tga
+	bumpmap textures/q4x_q4xdm2/platform_01_local.tga
+}
+
+textures/q4x_q4xdm2/platform_track01
+{
+	//renderbumpflat -size 128 32 textures/q4x_q4xdm2/platform_track_01.ASE
+	qer_editorimage textures/q4x_q4xdm2/platform_track_01_d.tga
+
+	diffusemap textures/q4x_q4xdm2/platform_track_01_d.tga
+	bumpmap textures/q4x_q4xdm2/platform_track_01_local.tga
+	specularmap textures/q4x_q4xdm2/platform_track_01_s.tga
+}
+
+textures/q4x_q4xdm2/gear_planarmap_d
+{
+	//renderbumpflat -size 256 256 models/q1/gear_large2_normalmap.ASE
+	qer_editorimage textures/q4x_q4xdm2/gear_planarmap_d.tga
+
+	diffusemap textures/q4x_q4xdm2/gear_planarmap_d.tga
+	bumpmap textures/q4x_q4xdm2/gear_local.tga
+	specularmap textures/q4x_q4xdm2/gear_s.tga
+}
+
+textures/q4x_q4xdm2/gearteeth
+{
+	qer_editorimage textures/q4x_q4xdm2/gear_teeth_d.tga
+
+	diffusemap textures/q4x_q4xdm2/gear_teeth_d.tga
+	specularmap textures/q4x_q4xdm2/gear_teeth_s.tga
+}
+
+textures/q4x_q4xdm2/platformedge
+{
+	//renderbumpflat -size 64 32 textures/q4x_q4xdm2/platform_gearedge.ASE
+	qer_editorimage textures/q4x_q4xdm2/platform_gearedge_local.tga
+
+	diffusemap textures/q4x_q4xdm2/platform_track_01_d.tga
+	bumpmap textures/q4x_q4xdm2/platform_gearedge_local.tga
+	specularmap textures/q4x_q4xdm2/platform_track_01_s.tga
+}
+
+textures/q4x_q4xdm2/glass01
+{
+	translucent
+	twoSided
+	noshadows
+	sort close	
+	glass
+	qer_editorimage	textures/q4x_q4xdm2/glass01_d.tga
+
+	{
+		blend add
+		cubeMap		gfx/env/q4dm2
+		texgen		reflect
+	}
+	{
+		blend	diffuseMap
+		map textures/q4x_q4xdm2/glass01_d.tga
+	}
+}
+
+textures/q4x_q4xdm2/glass01crack
+{
+	translucent
+	twoSided
+	noshadows
+	sort close	
+	glass
+	qer_editorimage	textures/q4x_q4xdm2/glass01_d.tga
+
+	{
+		blend	diffuseMap
+		map textures/q4x_q4xdm2/glass01_d.tga
+	}
+	{
+		blend	add
+		map textures/q4x_q4xdm2/glass01_d.tga
+	}
+}
+
+//temp weapon placement stuff
+textures/hal/gl
+{
+	qer_editorimage textures/hal/gl.tga
+	diffusemap textures/hal/gl.tga
+}
+
+textures/hal/ng
+{
+	qer_editorimage textures/hal/ng.tga
+	diffusemap textures/hal/ng.tga
+}
+
+textures/hal/nails
+{
+	qer_editorimage textures/hal/nails.tga
+	diffusemap textures/hal/nails.tga
+}
+
+textures/q4x_q4xdm2/q1sky
+{
+		qer_editorimage	gfx/env/q4dm2desert_forward.tga
+	noFragment
+	noshadows
+	nooverlays
+	forceOpaque				// so transparent windows can draw on top of it
+	{
+		blend		add		// so transparent windows can draw on top of it
+		cameraCubeMap	gfx/env/q4dm2desert
+		texgen		skybox
+		texgen			wobblesky .0 .0 .0
+	}
+}
+
+textures/q4x_q4xdm2/q1dm2vp1
+{
+		deform sprite
+		nonsolid
+		translucent
+        {
+                vertexProgram           heatHazeWithMask.vfp
+                vertexParm              0       time * 0.1 , time * 0.5 // texture scrolling
+                vertexParm              1       0.9            // magnitude of the distortion
+                fragmentProgram			heatHazeWithMask.vfp
+                fragmentMap             0       _currentRender
+                fragmentMap             1       textures/q4x_q4xdm2/vp1.tga   // the normal map for distortion
+                fragmentMap             2       textures/q4x_q4xdm2/vp1_alpha.tga   // the distortion blend map
+        }
+
+
+}

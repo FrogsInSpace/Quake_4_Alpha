@@ -1,0 +1,335 @@
+ 
+entityDef char_npc_markswell_M09_Valk_vo
+{
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Tense
+ // DIALOG : Dekard, the Nexus has been destroyed and the command stream is severed.  Strogg forces are going berserk.  We’ve got seven separate reports of entire Strogg battalions destroying each other.  They’re falling apart, Sergeant.
+ "lipsync_marks_deknexusdest"        "vo_marks_deknexusdest"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Tense 
+ // DIALOG : ...Dekard....come in....Dekard..The EM interference has cleared up....whatever you did has se(t...) (static)
+ "lipsync_marks_dekemclear"        "vo_marks_dekemclear"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Tense then Commanding
+ // DIALOG : Dekard, we’re reading a huge energy spike right underfoot.  Looks like that entire facility’s about to go nuclear.  Get out of there, double time, Solider.
+ "lipsync_marks_dekhugeenrgy"        "vo_marks_dekhugeenrgy"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : Go Dekard!
+ "lipsync_marks_godekk"        "vo_marks_godekk"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Commanding
+ // DIALOG : We can't hold this position for long Dekard, get going!
+ "lipsync_marks_wecanhldps"        "vo_marks_wecanhldps"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Apologetic
+ // DIALOG : I'm sorry Sargeant, we can't hold this position!
+ "lipsync_marks_srysrg"        "vo_marks_srysrg"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Warning
+ // DIALOG : Dekard, you've got less than a minute to get the hell outta there!
+ "lipsync_marks_dekyougot"        "vo_marks_dekyougot"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Warning
+ // DIALOG : Dekard, you've got less than three minutes to get the hell outta there!
+ "lipsync_marks_dek3min"        "vo_marks_dek3min"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Warning
+ // DIALOG : Dekard, you've only got two minutes to get out of there!
+ "lipsync_marks_dek2min"        "vo_marks_dek2min"
+
+
+ // CHARACTER: MARKSWELL
+ // CONTEXT:Warning
+ // DIALOG : 30 seconds!
+ "lipsync_marks_30sec"        "vo_marks_30sec"
+}
+ 
+entityDef char_npc_navajas_M09_Valk_vo
+{
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Yelling
+ // DIALOG : I’m gonna destroy the Makron, Dekard.  Then she'll have nothing to ressurect!
+ "lipsync_nava_imgonnadest"        "vo_nava_imgonnadest"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Yelling
+ // DIALOG : Hurry up, Dekard!
+ "lipsync_nava_hurrydek"        "vo_nava_hurrydek"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Yelling
+ // DIALOG : You can move faster than that, Sergeant!
+ "lipsync_nava_youfast"        "vo_nava_youfast"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Yelling
+ // DIALOG : You waiting for an invite?  Let’s go!
+ "lipsync_nava_youwaitinv"        "vo_nava_youwaitinv"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Yelling
+ // DIALOG : Don't disappoint me Sergeant!
+ "lipsync_nava_dontdisapp"        "vo_nava_dontdisapp"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Yelling
+ // DIALOG : Keep me covered while I plant these charges Dekard!
+ "lipsync_nava_keepcov"        "vo_nava_keepcov"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Yelling
+ // DIALOG : Keep those damn things offa me!
+ "lipsync_nava_keepthingsoff"        "vo_nava_keepthingsoff"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Tense
+ // DIALOG : Dekard, where are you?
+ "lipsync_nava_dekwhere"        "vo_nava_dekwhere"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Tense
+ // DIALOG : I’m planting the charges now; I’m gonna blast this thing into the stratosphere.
+ "lipsync_nava_plantcharg"        "vo_nava_plantcharg"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Tense
+ // DIALOG : Almost done, Dekard.  Let’s blow this thing and get the hell out of here.
+ "lipsync_nava_almstdone"        "vo_nava_almstdone"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Yelling
+ // DIALOG : Dekard, get down, I'm about to detonate!
+ "lipsync_nava_getdet"        "vo_nava_getdet"
+
+
+ // CHARACTER: NAVAJAS
+ // CONTEXT:Death Scream
+ // DIALOG : Arrrghhh!
+ "lipsync_nava_die"        "vo_nava_die"
+
+}
+ 
+entityDef char_npc_valkaryne_M09_Valk_vo
+{
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : …Useless…
+ "lipsync_valk_useless"        "vo_valk_useless"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : …There is no hope for you…
+ "lipsync_valk_nohope"        "vo_valk_nohope"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : …Your race will become ours…
+ "lipsync_valk_racewill"        "vo_valk_racewill"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : …Defeat is inevitable…
+ "lipsync_valk_defeat"        "vo_valk_defeat"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : …You will yield or you will die…
+ "lipsync_valk_yield"        "vo_valk_yield"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : …Behold our perfection…
+ "lipsync_valk_behold"        "vo_valk_behold"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : …All is Strogg…
+ "lipsync_valk_allis"        "vo_valk_allis"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : …In death you will serve…
+ "lipsync_valk_deathserv"        "vo_valk_deathserv"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : …The Makron will rise…
+ "lipsync_valk_makronrs"        "vo_valk_makronrs"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : ... I see you...
+ "lipsync_valk_iseeyou2"        "vo_valk_iseeyou2"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : ...Time to Die...
+ "lipsync_valk_timedie2"        "vo_valk_timedie2"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : ...Too Late...
+ "lipsync_valk_toolate2"        "vo_valk_toolate2"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : ...I am the Strogg...
+ "lipsync_valk_iamthestrg2"        "vo_valk_iamthestrg2"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : ...You are human...
+ "lipsync_valk_youhum2"        "vo_valk_youhum2"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : ...You will serve me...
+ "lipsync_valk_youwillserv2"        "vo_valk_youwillserv2"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : ...(menacing laughter)...
+ "lipsync_valk_laff2"        "vo_valk_laff2"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : ...Witness your oblivion...
+ "lipsync_valk_witnesso2"        "vo_valk_witnesso2"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : ...Behold Strogg glory...
+ "lipsync_valk_behold2"        "vo_valk_behold2"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : ...Your persistence is your weakness...
+ "lipsync_valk_persist2"        "vo_valk_persist2"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : ...Suffer...
+ "lipsync_valk_suffer2"        "vo_valk_suffer2"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : ...Pain...
+ "lipsync_valk_pain2"        "vo_valk_pain2"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : ...Conquest...
+ "lipsync_valk_conq2"        "vo_valk_conq2"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : ...Humanity is mine...
+ "lipsync_valk_human2"        "vo_valk_human2"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : ...My power is beyond limits...
+ "lipsync_valk_power2"        "vo_valk_power2"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : ...You see my power...
+ "lipsync_valk_yousee2"        "vo_valk_yousee2"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : ...You see the power of the Strogg...
+ "lipsync_valk_youpowstrgg"        "vo_valk_youpowstrgg"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : …advancement… …evolution… …perfection…
+ "lipsync_valk_advanevo"        "vo_valk_advanevo"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : …Eternal…
+ "lipsync_valk_etern2"        "vo_valk_etern2"
+
+
+ // CHARACTER: VALKARYNE
+ // CONTEXT:Ethereal
+ // DIALOG : …Impossible…  …We are Strogg…
+ "lipsync_valk_impstrgg2"        "vo_valk_impstrgg2"
+}
+ 
+entityDef char_npc_vansen_M09_Valk_vo
+{
+
+ // CHARACTER: VANSEN (PILOT)
+ // CONTEXT:Warning
+ // DIALOG : We can't hold this position.
+ "lipsync_vansen_wecanthold"        "vo_vansen_wecanthold"
+
+
+ // CHARACTER: VANSEN (PILOT)
+ // CONTEXT:Warning
+ // DIALOG : Stabalizers are failing!
+ "lipsync_vansen_stabilfail"        "vo_vansen_stabilfail"
+
+
+ // CHARACTER: VANSEN (PILOT)
+ // CONTEXT:Warning
+ // DIALOG : We've got to go now Lieutenant!
+ "lipsync_vansen_wegonow"        "vo_vansen_wegonow"
+
+}

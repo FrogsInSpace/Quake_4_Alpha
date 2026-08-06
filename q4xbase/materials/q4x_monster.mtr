@@ -1,0 +1,1188 @@
+models/vehicles/strogg_flyer/q4x_strogg_flyer_lo
+{      
+	noSelfShadow
+	unSmoothedTangents
+	materialImage	models/vehicles/strogg_flyer/strogg_flyer_lo_hit.tga
+
+		diffusemap	models/vehicles/strogg_flyer/q4x_strogg_flyer_lo_d.tga
+		bumpmap	addnormals ( models/vehicles/strogg_flyer/strogg_flyer_lo_local.tga, heightmap ( models/vehicles/strogg_flyer/strogg_flyer_lo_h.tga, 1 ))
+		specularmap	models/vehicles/strogg_flyer/strogg_flyer_lo_s.tga
+		
+		{ 
+			if (Parm4) == 0
+			blend add
+			map models/vehicles/strogg_flyer/strogg_flyer_lo_g.tga
+			rgb grunttable [ time * 1.3 ]
+		}
+		{ 
+			if (Parm4) == 0 
+			blend add
+			map models/vehicles/strogg_flyer/strogg_flyer_lo_g2.tga
+		}
+		{
+			if (Parm4) == 1
+			blend add
+			map _black
+		}
+}
+
+models/vehicles/strogg_flyer/q4x_strogg_flyer_lo_death
+{
+	noSelfShadow
+	unSmoothedTangents
+
+	diffusemap models/vehicles/strogg_flyer/q4x_strogg_flyer_lo_d.tga
+}
+
+
+//tank--------------------------------------------------------------------------------------------------
+table monster_tankTable { { 1, 0 } }
+table monster_retchTable { { .4, .3, .5, .7, 1, .6, .3, 1 } }
+table monster_retchTable2 { { 1, 0.4, 1, 1, 0.9, 0.9, 0.8, 0.7, 0.6, 0.5 } }
+
+
+
+models/monsters/tank/tank
+{
+	
+	noselfshadow
+	collision
+//	unsmoothedtangents
+	
+	materialImage models/vehicles/strogg_flyer/strogg_flyer_lo_hit.tga
+	
+	
+	diffuseMap 		models/monsters/tank/tank_d.tga		
+	bumpmap			models/monsters/tank/tank_local.tga
+	specularmap		models/monsters/tank/tank_s.tga
+	
+		{ 
+		blend add
+		map models/monsters/tank/tank_glowpass.tga
+		rgb monster_tankTable [ time * 1 ]
+		}
+		
+		{ 
+		blend add
+		map models/monsters/tank/tank_glowpass1.tga
+		rgb monster_tankTable [ time * 1.35 ]
+		}
+		
+		inlineGuide corpseBurnEffect(models/monsters/corpseBurnEffect_sm.tga)
+
+}
+
+
+models/monsters/tank/tank_launcherbreak
+{
+	
+	noselfshadow
+	collision
+//	unsmoothedtangents
+	
+	materialImage models/vehicles/strogg_flyer/strogg_flyer_lo_hit.tga
+	
+	
+	diffuseMap 		models/monsters/tank/tank_d.tga		
+	bumpmap			models/monsters/tank/tank_local.tga
+	specularmap		models/monsters/tank/tank_s.tga
+	
+		{ 
+		blend add
+		map models/monsters/tank/tank_glowpass.tga
+		rgb monster_tankTable [ time * 1 ]
+		}
+		
+		{ 
+		blend add
+		map models/monsters/tank/tank_glowpass1.tga
+		rgb monster_tankTable [ time * 1.35 ]
+		}
+		
+		inlineGuide corpseBurnEffect(models/monsters/corpseBurnEffect_sm.tga)
+
+}
+
+
+models/monsters/tank/tank_chestbreak
+{
+	
+	noselfshadow
+	collision
+//	unsmoothedtangents
+	
+	materialImage models/vehicles/strogg_flyer/strogg_flyer_lo_hit.tga
+	
+	
+	diffuseMap 		models/monsters/tank/tank_d.tga		
+	bumpmap			models/monsters/tank/tank_local.tga
+	specularmap		models/monsters/tank/tank_s.tga
+	
+		{ 
+		blend add
+		map models/monsters/tank/tank_glowpass.tga
+		rgb monster_tankTable [ time * 1 ]
+		}
+		
+		{ 
+		blend add
+		map models/monsters/tank/tank_glowpass1.tga
+		rgb monster_tankTable [ time * 1.35 ]
+		}
+		
+		inlineGuide corpseBurnEffect(models/monsters/corpseBurnEffect_sm.tga)
+
+}
+
+models/monsters/tank/tank_skull
+{
+	
+	translucent
+	materialType glass
+
+	
+	bumpMap		models/monsters/tank/tank_skull_local.tga
+	diffuseMap 	models/monsters/tank/tank_skull_d.tga		
+	specularmap	models/monsters/tank/tank_skull_s.tga
+
+//		{
+//		if parm7 < 1
+//		Program   heatHaze.vfp
+//		vertexParm 	0 time * 0, time * 0.0
+//		vertexParm  	1 4
+//		fragmentProgram heatHaze.vfp
+//		fragmentMap  0 _currentRender
+//		fragmentMap  1 models/monsters/tank/tank_skull_local.tga
+//		}
+// COMMENTED THIS OUT BECAUSE THE FRAGMENT SHADER DOES NOT WORTH WITH ALPHATESTING
+
+
+//		{									
+//		if	parm7		// This is a replacement pass which stands in for the corpse burn effect					
+//		blend 			blend
+//		map 			models/monsters/corpseBurnEffect_sm.tga
+//		alphaTest 		0.1 + 0.3 * (time - parm7)	
+//		}
+// TEMP PASS, CAN BE REMOVED 
+		
+		inlineGuide corpseBurnEffect(models/monsters/corpseBurnEffect_sm.tga)
+
+}
+
+//tank---------------------------------------------------------------------------------------
+
+
+
+//strogg_formation_fighter---------------------------------------------------------------------------------------
+
+
+models/monsters/strogg_fighter_formation/strogg_fighter_formation
+{
+	noSelfShadow
+	noimpact
+	unSmoothedTangents
+	  
+	renderbump  -size 512 512 -trace 0.09 -aa 2  models/vehicles/sm_flyer/flyer_local.tga work/models/vehicles/sm_flyer/flyer_hi.lwo
+
+	diffusemap	models/vehicles/sm_flyer/flyer_d.tga
+	bumpmap	addnormals ( models/vehicles/sm_flyer/flyer_local.tga, heightmap ( models/vehicles/sm_flyer/flyer_h.tga, 2 ))
+	specularmap	models/vehicles/sm_flyer/flyer_s.tga
+	{
+		blend add
+		map models/vehicles/sm_flyer/flyer_g.tga
+	}
+	{
+		blend add
+		map models/vehicles/sm_flyer/flyer_g2.tga
+		rgb grunttable [ time * 1.3 ]
+	}
+
+}
+//strogg_formation_fighter---------------------------------------------------------------------------------------
+
+
+
+//retch---------------------------------------------------------------------------------------
+
+models/monsters/retch/retch_body
+{
+	
+	noselfshadow
+	collision
+//	unsmoothedtangents
+	
+	materialImage models/monsters/retch/retch_body_hit.tga
+	
+	
+	diffuseMap 		models/monsters/retch/retch_body_d.tga		
+	bumpmap			models/monsters/retch/retch_body_local.tga
+	specularmap		models/monsters/retch/retch_body_s.tga
+{ 
+		blend add
+		map models/monsters/retch/retch_body_glowpass.tga
+		rgb monster_retchTable2 [ time * 0.4 ]
+		}
+
+inlineGuide corpseBurnEffect(models/monsters/retch/retch_body_tport.tga)
+}
+
+models/monsters/retch/retch_head
+{
+	
+	noselfshadow
+	collision
+//	unsmoothedtangents
+	
+	materialImage models/monsters/retch/retch_head_hit.tga
+	
+	
+	diffuseMap 		models/monsters/retch/retch_head_d.tga		
+	bumpmap			models/monsters/retch/retch_head_local.tga
+	specularmap		models/monsters/retch/retch_head_s.tga
+{ 
+		blend add
+		map models/monsters/retch/retch_head_glowpass.tga
+		rgb random [ time * 1 ]
+		}
+
+
+inlineGuide corpseBurnEffect(models/monsters/retch/retch_head_tport.tga)
+}
+
+models/monsters/retch/retch_leg
+{
+	
+	noselfshadow
+	collision
+//	unsmoothedtangents
+	
+	materialImage models/monsters/retch/retch_leg_hit.tga
+	
+	
+	diffuseMap 		models/monsters/retch/retch_leg_d.tga		
+	bumpmap			models/monsters/retch/retch_leg_local.tga
+	specularmap		models/monsters/retch/retch_leg_s.tga
+{ 
+		blend add
+		map models/monsters/retch/retch_leg_glowpass.tga
+		rgb monster_retchTable2 [ time * 0.4 ]
+		}
+
+inlineGuide corpseBurnEffect(models/monsters/retch/retch_leg_tport.tga)
+}
+
+
+//retch---------------------------------------------------------------------------------------
+
+
+
+//Valkaryne---------------------------------------------------------------------------------------
+
+models/monsters/valkaryne/valkaryne_body
+{
+	
+	noselfshadow
+	collision
+//	unsmoothedtangents
+	
+	materialImage models/monsters/valkaryne/valkaryne_body_d.tga
+	
+	
+	diffuseMap 		models/monsters/valkaryne/valkaryne_body_d.tga		
+	bumpmap			models/monsters/valkaryne/valkaryne_body_local.tga
+	specularmap		models/monsters/valkaryne/valkaryne_body_s.tga
+{ 
+		blend add
+		map models/monsters/valkaryne/valkaryne_body_glowpass.tga
+		rgb grunttable [ time * 1.3 ]
+		}
+		{
+	    blend GL_DST_ALPHA, gl_one
+	    maskalpha
+       	cubeMap		gfx/env/valk
+        texgen		reflect
+		red   Parm0
+		green Parm1
+		blue  Parm2
+	}
+
+inlineGuide corpseBurnEffect(models/monsters/retch/retch_body_tport.tga)
+}
+
+models/monsters/valkaryne/valkaryne_leg
+{
+	
+	noselfshadow
+	collision
+//	unsmoothedtangents
+	
+	materialImage models/monsters/valkaryne/valkaryne_leg_d.jpg
+	
+	
+	diffuseMap 		models/monsters/valkaryne/valkaryne_leg_d.jpg		
+	bumpmap			models/monsters/valkaryne/valkaryne_leg_local.jpg
+	specularmap		models/monsters/valkaryne/valkaryne_leg_s.jpg
+
+	{ 
+		blend add
+		map models/monsters/valkaryne/valkaryne_leg_glowpass.tga
+		rgb grunttable [ time * 1 ]
+		}
+		{
+	    blend GL_DST_ALPHA, gl_one
+	    maskalpha
+       	cubeMap		gfx/env/valk
+        texgen		reflect
+		red   Parm0
+		green Parm1
+		blue  Parm2
+	}
+
+inlineGuide corpseBurnEffect(models/monsters/retch/retch_leg_tport.tga)
+}
+
+models/monsters/valkaryne/valkaryne_upperarm
+{
+	
+	noselfshadow
+	collision
+//	unsmoothedtangents
+	
+	materialImage models/monsters/valkaryne/valkaryne_upperarm_d.jpg
+	
+	
+	diffuseMap 		models/monsters/valkaryne/valkaryne_upperarm_d.jpg		
+	bumpmap			models/monsters/valkaryne/valkaryne_upperarm_local.jpg
+	specularmap		models/monsters/valkaryne/valkaryne_upperarm_s.jpg
+
+{ 
+		blend add
+		map models/monsters/valkaryne/valkaryne_upperarm_glowpass.tga
+		rgb grunttable [ time * 1.3 ]
+		}
+		{
+	    blend GL_DST_ALPHA, gl_one
+	    maskalpha
+       	cubeMap		gfx/env/valk
+        texgen		reflect
+		red   Parm0
+		green Parm1
+		blue  Parm2
+	}
+
+inlineGuide corpseBurnEffect(models/monsters/retch/retch_body_tport.tga)
+}
+
+models/monsters/valkaryne/valkaryne_lowerarm
+{
+	
+	noselfshadow
+	collision
+//	unsmoothedtangents
+	
+	materialImage models/monsters/valkaryne/valkaryne_lowerarm_d.jpg
+	
+	
+	diffuseMap 		models/monsters/valkaryne/valkaryne_lowerarm_d.jpg		
+	bumpmap			models/monsters/valkaryne/valkaryne_lowerarm_local.jpg
+	specularmap		models/monsters/valkaryne/valkaryne_lowerarm_s.jpg
+
+		{ 
+		blend add
+		map models/monsters/valkaryne/valkaryne_lowerarm_glowpass.tga
+		rgb grunttable [ time * 1.3 ]
+		}
+		{
+	    blend GL_DST_ALPHA, gl_one
+	    maskalpha
+       	cubeMap		gfx/env/valk
+        texgen		reflect
+		red   Parm0
+		green Parm1
+		blue  Parm2
+	}
+
+inlineGuide corpseBurnEffect(models/monsters/retch/retch_body_tport.tga)
+}
+
+models/monsters/valkaryne/valkaryne_hitspots
+{
+	
+	noselfshadow
+	collision
+//	unsmoothedtangents
+	
+	materialImage models/monsters/valkaryne/valkaryne_body_d.tga
+	
+	
+	diffuseMap 		models/monsters/valkaryne/valkaryne_body_d.tga		
+	bumpmap			models/monsters/valkaryne/valkaryne_body_local.tga
+	specularmap		models/monsters/valkaryne/valkaryne_body_s.tga
+
+
+inlineGuide corpseBurnEffect(models/monsters/retch/retch_body_tport.tga)
+}
+
+models/monsters/valkaryne/valkaryne_plate
+{
+	
+	materialType glass
+	noselfshadow
+	collision
+//	translucent
+//	unsmoothedtangents
+	
+	materialImage models/monsters/valkaryne/valkaryne_plate_d.tga
+	
+	
+	diffuseMap 		models/monsters/valkaryne/valkaryne_plate_d.tga		
+	bumpmap			models/monsters/valkaryne/valkaryne_plate_local.tga
+	specularmap		models/monsters/valkaryne/valkaryne_plate_s.tga
+
+	
+	
+	{
+		if parm7 < 1
+		Program   heatHaze.vfp
+		vertexParm 	0 time * 0, time * 0.0
+		vertexParm  	1 4
+		fragmentProgram heatHaze.vfp
+		fragmentMap  0 _currentRender
+		fragmentMap  1 models/monsters/valkaryne/valkaryne_plate_local.tga
+		}
+// COMMENTED THIS OUT BECAUSE THE FRAGMENT SHADER DOES NOT WORTH WITH ALPHATESTING
+
+
+		{									
+		if	parm7		// This is a replacement pass which stands in for the corpse burn effect					
+		blend 			blend
+		map 			models/monsters/corpseBurnEffect_sm.tga
+		alphaTest 		0.1 + 0.3 * (time - parm7)	
+		}
+
+
+inlineGuide corpseBurnEffect(models/monsters/retch/retch_body_tport.tga)
+}
+//Valkaryne---------------------------------------------------------------------------------------
+
+
+
+
+
+//Pain_Lord---------------------------------------------------------------------------------------
+
+
+models/monsters/pain_lord/pain_lord_body
+{
+	
+	noselfshadow
+	collision
+//	unsmoothedtangents
+	
+	materialImage models/monsters/pain_lord/pain_lord_body_d.tga
+	
+	
+	diffuseMap 		models/monsters/pain_lord/pain_lord_body_d.tga		
+	bumpmap			models/monsters/pain_lord/pain_lord_body_local.tga
+	specularmap		models/monsters/pain_lord/pain_lord_body_s.tga
+
+	{ 
+		blend add
+		map models/monsters/pain_lord/pain_lord_body_glowpass.tga
+		rgb grunttable [ time * 1.3 ]
+		}
+
+//inlineGuide corpseBurnEffect(models/monsters/retch/retch_body_tport.tga)
+}
+
+
+models/monsters/pain_lord/pain_lord_head
+{
+	
+	noselfshadow
+	collision
+//	unsmoothedtangents
+	
+	materialImage models/monsters/pain_lord/pain_lord_head_d.tga
+	
+	
+	diffuseMap 		models/monsters/pain_lord/pain_lord_head_d.tga		
+	bumpmap			models/monsters/pain_lord/pain_lord_head_local.tga
+	specularmap		models/monsters/pain_lord/pain_lord_head_s.tga
+	
+	{ 
+		blend add
+		map models/monsters/pain_lord/pain_lord_head_glowpass.tga
+		rgb grunttable [ time * 1.3 ]
+		}
+
+
+//inlineGuide corpseBurnEffect(models/monsters/retch/retch_body_tport.tga)
+}
+
+
+models/monsters/pain_lord/pain_lord_hands
+{
+	
+	noselfshadow
+	collision
+//	unsmoothedtangents
+	
+	materialImage models/monsters/pain_lord/pain_lord_hands_d.tga
+	
+	
+	diffuseMap 		models/monsters/pain_lord/pain_lord_hands_d.tga		
+	bumpmap			models/monsters/pain_lord/pain_lord_hands_local.tga
+	specularmap		models/monsters/pain_lord/pain_lord_hands_s.tga
+
+
+//inlineGuide corpseBurnEffect(models/monsters/retch/retch_body_tport.tga)
+}
+
+models/monsters/pain_lord/pain_lord_blade
+{
+	
+	noselfshadow
+	collision
+//	unsmoothedtangents
+//	translucent
+	
+	materialImage models/monsters/pain_lord/pain_lord_blade_d.tga
+	
+		{
+		blend diffuseMap
+		map models/monsters/pain_lord/pain_lord_blade_d.tga
+	alphatest .5 }	
+	
+	
+	bumpmap			models/monsters/pain_lord/pain_lord_blade_local.tga
+	specularmap		models/monsters/pain_lord/pain_lord_blade_s.tga
+
+
+//inlineGuide corpseBurnEffect(models/monsters/retch/retch_body_tport.tga)
+}
+
+
+
+models/monsters/pain_lord/pain_lord_hook
+{
+      noSelfShadow
+      collision
+//      unSmoothedTangents
+      
+	renderbump  -size 512 512 -trace 0.07 -aa 2 -mergehigh models/characters/bodies_parts/hook_bodies/hook_local.tga work/models/characters/bodies_parts/hook_bodies/hook_hi.lwo
+
+		diffusemap			models/characters/bodies_parts/hook_bodies/body1_d.tga
+		bumpmap	addnormals ( models/characters/bodies_parts/hook_bodies/body1_local.tga, heightmap ( models/characters/bodies_parts/hook_bodies/body1_h.tga, 2 ))
+		specularmap			models/characters/bodies_parts/hook_bodies/body1_s.tga
+	
+//inlineGuide corpseBurnEffect(models/monsters/retch/retch_body_tport.tga)
+}
+
+models/monsters/pain_lord/pain_lord_dude_l
+{
+      noSelfShadow
+      collision
+//      unSmoothedTangents
+	
+
+		diffusemap			models/monsters/pain_lord/pain_lord_dude_l_d.tga
+		bumpmap				models/monsters/pain_lord/pain_lord_dude_l_local.tga
+		specularmap			models/monsters/pain_lord/pain_lord_dude_l_s.tga
+	
+//inlineGuide corpseBurnEffect(models/monsters/retch/retch_body_tport.tga)
+}
+
+models/monsters/pain_lord/pain_lord_dude_r
+{
+      noSelfShadow
+      collision
+//      unSmoothedTangents
+	
+
+		diffusemap			models/monsters/pain_lord/pain_lord_dude_r_d.tga
+		bumpmap				models/monsters/pain_lord/pain_lord_dude_r_local.tga
+		specularmap			models/monsters/pain_lord/pain_lord_dude_r_s.tga
+	
+//inlineGuide corpseBurnEffect(models/monsters/retch/retch_body_tport.tga)
+}
+
+models/monsters/pain_lord/pain_lord_dude_tubes
+{
+      noSelfShadow
+      collision
+//      unSmoothedTangents
+	
+
+		diffusemap			models/monsters/pain_lord/pain_lord_base_d.tga
+		bumpmap				models/monsters/pain_lord/pain_lord_base_local.tga
+		specularmap			models/monsters/pain_lord/pain_lord_base_s.tga
+	
+//inlineGuide corpseBurnEffect(models/monsters/retch/retch_body_tport.tga)
+}
+
+models/monsters/pain_lord/pain_lord_dude_tubes_l
+{
+      noSelfShadow
+      collision
+//      unSmoothedTangents
+	
+
+		diffusemap			models/monsters/pain_lord/pain_lord_base_d.tga
+		bumpmap				models/monsters/pain_lord/pain_lord_base_local.tga
+		specularmap			models/monsters/pain_lord/pain_lord_base_s.tga
+	
+//inlineGuide corpseBurnEffect(models/monsters/retch/retch_body_tport.tga)
+}
+
+models/monsters/pain_lord/pain_lord_dude_tubes_r
+{
+      noSelfShadow
+      collision
+//    unSmoothedTangents
+	
+
+		diffusemap			models/monsters/pain_lord/pain_lord_base_d.tga
+		bumpmap				models/monsters/pain_lord/pain_lord_base_local.tga
+		specularmap			models/monsters/pain_lord/pain_lord_base_s.tga
+	
+//inlineGuide corpseBurnEffect(models/monsters/retch/retch_body_tport.tga)
+}
+
+//Pain_Lord---------------------------------------------------------------------------------------
+
+
+
+//q4x_strogg_flyer_bomber------------------------------------------------------------------------
+models/monsters/q4x_strogg_flyer_bomber/strogg_flyer_bomber
+{
+		//unsmoothedtangents		
+		//twosided
+		
+			
+	
+		
+		diffusemap 		models/monsters/q4x_strogg_flyer_bomber/strogg_flyer_bomber_d.tga
+    	bumpmap			models/monsters/q4x_strogg_flyer_bomber/strogg_flyer_bomber_local.tga
+		specularmap 	models/monsters/q4x_strogg_flyer_bomber/strogg_flyer_bomber_s.tga
+		{ 
+		blend add		
+		map				models/monsters/q4x_strogg_flyer_bomber/strogg_flyer_bomber_add.tga
+		}  
+		{ 
+		blend add		
+		map				models/monsters/q4x_strogg_flyer_bomber/strogg_flyer_bomber_add2.tga
+		rgb 			(.5 * sinTable [.5 * time ]) + 1			
+		}            
+}
+
+models/monsters/q4x_strogg_flyer_bomber/strogg_flyer_bomber_gizmo
+
+
+{
+		//unsmoothedtangents		
+		diffusemap 		models/monsters/q4x_strogg_flyer_bomber/strogg_flyer_bomber_gizmo_d.tga
+    	bumpmap			models/monsters/q4x_strogg_flyer_bomber/strogg_flyer_bomber_gizmo_local.tga
+		specularmap 	models/monsters/q4x_strogg_flyer_bomber/strogg_flyer_bomber_gizmo_s.tga
+}
+
+models/monsters/q4x_strogg_flyer_bomber/strogg_flyer_bomber_glass
+
+ {
+	noSelfShadow
+	noshadows
+	twosided
+	translucent
+	glass
+	forceoverlays
+	sort decal
+	
+	materialType	glass
+	
+	qer_editorimage textures/glass/outdoorglass1_mask
+	{
+                Program           heatHaze.vfp
+                vertexParm              0       time * 0 , time * 0 // texture scrolling
+                vertexParm              1       .4         // magnitude of the distortion
+                fragmentProgram			heatHaze.vfp
+                fragmentMap             0       _currentRender
+                fragmentMap             1       gfx/env/vp1   // the normal map for distortion			
+             
+    }
+	{
+		blend		filter
+		map 		models/monsters/q4x_strogg_flyer_bomber/strogg_flyer_bomber_glass_d.tga
+	}
+		
+	{
+	    blend add
+       	cubeMap		gfx/env/outsideglass1
+        texgen		reflect
+		red Parm0
+		green Parm1
+		blue  Parm2
+	}
+	
+	{
+		blend blend
+		map 		models/monsters/q4x_strogg_flyer_bomber/strogg_flyer_bomber_glass_d.tga
+	}
+	
+}
+
+//q4x_gunner
+models/monsters/q4x_gunner_head_base
+
+{
+     noselfShadow
+     unsmoothedtangents
+
+
+	diffusemap	models/monsters/q4x_gunner/q4x_gunner_head_d.tga
+	bumpmap	addnormals ( models/monsters/gunner/gunner_head_local.tga, heightmap ( models/monsters/gunner/gunner_head_h.tga, 2 ))
+	specularmap	models/monsters/gunner/gunner_head_s.tga
+	
+/*		{ 	blend add
+			map models/monsters/gunner/gunner_head_g.tga
+			rgb gunnertable [ time * 3 ]
+		}
+*/
+	inlineGuide corpseBurnEffect(models/monsters/gunner/gunner_head_tport)
+}
+
+
+models/monsters/q4x_gunner_gundoors_base
+{
+	noSelfShadow
+	unsmoothedtangents
+
+	
+
+	diffusemap	models/monsters/q4x_gunner/q4x_gunner_gundoors_d.tga
+	bumpmap	addnormals ( models/monsters/gunner/gunner_gundoors_local.tga, heightmap ( models/monsters/gunner/gunner_gundoors_h.tga, 2 ))
+	specularmap	models/monsters/gunner/gunner_gundoors_s.tga
+
+	inlineGuide corpseBurnEffect(models/monsters/gunner/gunner_gundoors_tport)
+
+}
+
+
+
+models/monsters/q4x_gunner_body_base
+{
+	noSelfShadow
+	unsmoothedtangents
+
+
+			
+	diffuseMap	downsize( models/monsters/q4x_gunner/q4x_gunner_body_d.tga, 1 )
+	bumpMap	addnormals ( models/monsters/gunner/gunner_body_local.tga, heightmap ( models/monsters/gunner/gunner_body_h.tga, 2 ))
+	specularMap	downsize( models/monsters/gunner/gunner_body_s.tga, 1 )
+
+	{ 	blend add
+		map models/monsters/q4x_gunner/q4x_gunner_body_glow.tga
+		rgb grunttable [ time * 1.3 ]
+	}
+
+	inlineGuide corpseBurnEffect(models/monsters/gunner/gunner_body_tport)
+}
+
+
+
+models/monsters/q4x_gunner_armr_base
+{
+    noselfShadow
+    unsmoothedtangents
+
+	diffusemap	models/monsters/q4x_gunner/q4x_gunner_armr_d.tga
+	bumpmap	addnormals ( models/monsters/gunner/gunner_armr_local.tga, heightmap ( models/monsters/gunner/gunner_armr_h.tga, 2 ))
+	specularmap	models/monsters/gunner/gunner_armr_s.tga
+
+	inlineGuide corpseBurnEffect(models/monsters/gunner/gunner_armr_tport)
+
+}
+
+
+
+models/monsters/q4x_gunner_arml_base
+{
+	noSelfShadow
+	unsmoothedtangents
+
+	materialImage	models/monsters/gunner/gunner_arml_hit
+
+	diffusemap	models/monsters/q4x_gunner/q4x_gunner_arml_d.tga
+	bumpmap	addnormals ( models/monsters/gunner/gunner_arml_local.tga, heightmap ( models/monsters/gunner/gunner_arml_h.tga, 2 ))
+	specularmap	models/monsters/gunner/gunner_arml_s.tga
+
+	inlineGuide corpseBurnEffect(models/monsters/gunner/gunner_arml_tport)
+
+}
+//q4x_gunner END ----------------------------------------------------------------------------------------------------
+
+//q4x_grunt begin ---------------------------------------------------------------------------------------------------
+
+models/monsters/q4x_grunt/q4x_grunt_head
+{
+	noselfShadow
+	unSmoothedTangents
+	
+
+	diffusemap	downsize( models/monsters/q4x_grunt/q4x_grunt_head_d.tga, 1 )
+	bumpmap	addnormals ( models/monsters/grunt/grunt_head_local.tga, heightmap ( models/monsters/grunt/grunt_head_h.tga, 3 ))
+	specularmap	downsize( models/monsters/grunt/grunt_head_s.tga, 1 )
+	inlineGuide corpseBurnEffect(models/monsters/grunt/grunt_head_tport.tga)
+	
+	{ 
+		if ( parm6 == 0 )
+		blend add
+		map models/monsters/q4x_grunt/q4x_grunt_head_g.tga
+		rgb grunttable [ time * .6 ]
+	}
+
+	{
+		if ( parm6 != 0 )
+		maskColor
+		map makealpha(models/monsters/grunt/grunt_head_glowmask)
+	}
+
+	{
+		if ( parm6 != 0 )
+		blend gl_dst_alpha, gl_one
+	 	maskAlpha
+		map models/monsters/q4x_grunt/q4x_grunt_glow.tga
+		scroll time * .04, time * -.1
+		rgb gruntglow [ time * .6 ]
+	}
+
+	{ 
+		if ( parm6 != 0 )
+		blend add
+		map models/monsters/q4x_grunt/q4x_grunt_head_g2.tga
+		rgb grunttable [ time * 1.3 ]
+	}
+}
+
+
+
+models/monsters/q4x_grunt/q4x_grunt_body
+{
+	noselfShadow
+	unsmoothedTangents
+	
+	diffusemap	downsize( models/monsters/q4x_grunt/q4x_grunt_body_d.tga, 1 )
+	bumpmap	addnormals ( models/monsters/grunt/grunt_body_local.tga, heightmap ( models/monsters/grunt/grunt_body_h.tga, 3 ))
+	specularmap	downsize( models/monsters/grunt/grunt_body_s.tga, 1 )
+
+	inlineGuide corpseBurnEffect(models/monsters/grunt/grunt_body_tport.tga)
+	
+
+	{ 
+		if ( parm6 == 0 )
+		blend add
+		map models/monsters/q4x_grunt/q4x_grunt_body_glow.tga
+		rgb grunttable [ time * .6 ]
+	}
+
+	{
+		if ( parm6 != 0 )
+		maskColor
+		map makealpha(models/monsters/grunt/grunt_body_glowmask)
+	}
+
+	{
+		if ( parm6 != 0 )
+		blend gl_dst_alpha, gl_one
+	 	maskAlpha
+		map models/monsters/q4x_grunt/q4x_grunt_glow.tga
+		scroll time * .04, time * -.1
+		rgb gruntglow [ time * .6 ]
+	}
+
+	{ 
+		if ( parm6 != 0 )
+		blend add
+		map models/monsters/q4x_grunt/q4x_grunt_body_g2.tga
+		rgb grunttable [ time * .6 ]
+	}
+
+
+	// BURN_MACRO
+}
+
+
+models/monsters/q4x_grunt/q4x_grunt_arms
+{
+	noselfShadow
+	unsmoothedTangents
+	
+	
+	diffusemap	downsize( models/monsters/q4x_grunt/q4x_grunt_arms_d.tga, 1 )
+	bumpmap	addnormals ( models/monsters/grunt/grunt_arms_local.tga, heightmap ( models/monsters/grunt/grunt_arms_h.tga, 3 ))
+	specularmap	downsize( models/monsters/grunt/grunt_arms_s.tga, 1 )
+
+	inlineGuide corpseBurnEffect(models/monsters/grunt/grunt_arms_tport.tga)
+
+	{ 
+		if ( parm6 == 0 )
+		blend add
+		map models/monsters/q4x_grunt/q4x_grunt_arms_glow.tga
+		rgb grunttable [ time * .6 ]
+	}
+
+	{
+		if ( parm6 != 0 )
+		maskcolor
+		map makealpha(models/monsters/grunt/grunt_arms_glowmask)
+	}
+
+	{
+		if ( parm6 != 0 )
+		blend gl_dst_alpha, gl_one
+ 		maskAlpha
+		map models/monsters/q4x_grunt/q4x_grunt_glow.tga
+		scroll time * .04, time * -.1
+		rgb gruntglow [ time * .6 ]
+	}
+
+}
+
+//q4x_grunt END ---------------------------------------------------------------------------------------------------
+
+//q4x_strogg_marine BEGIN------------------------------------------------------------------------------------------
+models/monsters/q4x_strogg_marine/q4x_smv_head_b
+{
+	noselfshadow
+	unsmoothedtangents
+
+	diffuseMap	models/monsters/strogg_marine/smv_head_b_d.tga
+	bumpmap	addnormals ( models/monsters/strogg_marine/smv_head_b_local.tga, heightmap ( models/monsters/strogg_marine/smv_head_b_h.tga, 4 ))
+	specularmap	models/monsters/strogg_marine/smv_head_b_s.tga
+
+	inlineGuide corpseBurnEffect(models/monsters/strogg_marine/smv_head_b_tport.tga)
+}
+
+models/monsters/q4x_strogg_marine/q4x_smv_head_b4
+{
+	noselfshadow
+	unsmoothedtangents
+		
+	materialImage	models/monsters/strogg_marine/smv_head_b_hit.tga
+
+	inlineGuide corpseBurnEffect(models/monsters/strogg_marine/smv_head_b_tport.tga)
+	
+	diffusemap	models/monsters/strogg_marine/smv_head_b4_d.tga
+	bumpmap	addnormals ( models/monsters/strogg_marine/smv_head_b_local.tga, heightmap ( models/monsters/strogg_marine/smv_head_b_h.tga, 4 ))
+	specularmap	models/monsters/strogg_marine/smv_head_b4_s.tga							
+}
+
+
+models/monsters/q4x_strogg_marine/q4x_smv_head_b2
+{
+	noselfshadow
+	unSmoothedTangents
+	materialImage	models/monsters/strogg_marine/smv_head_b_hit.tga
+
+	inlineGuide corpseBurnEffect(models/monsters/strogg_marine/smv_head_b_tport.tga)
+
+	diffusemap	models/monsters/strogg_marine/smv_head_b2_d.tga
+	bumpmap	addnormals ( models/monsters/strogg_marine/smv_head_b_local.tga, heightmap ( models/monsters/strogg_marine/smv_head_b2_h.tga, 4 ))
+	specularmap	models/monsters/strogg_marine/smv_head_b2_s.tga
+}
+
+//----------------------------------------------------------------------------------------
+
+models/monsters/q4x_strogg_marine/q4x_smv_teeth
+{
+	noselfShadow
+	unsmoothedtangents
+
+		inlineGuide corpseBurnEffect(models/monsters/corpseBurnEffect_sm.tga)
+
+	diffusemap	models/monsters/strogg_marine/smv_teeth_d.tga
+	bumpmap	addnormals ( models/monsters/strogg_marine/smv_teeth_local.tga, heightmap ( models/monsters/strogg_marine/smv_teeth_h.tga, 2 ))
+	specularmap	models/monsters/strogg_marine/smv_teeth_s.tga
+}
+
+models/monsters/q4x_strogg_marine/q4x_smv_arms_lo
+{
+	noselfShadow
+	unsmoothedtangents
+
+	materialImage	models/monsters/strogg_marine/smv_arms_lo_hit.tga
+
+	inlineGuide corpseBurnEffect(models/monsters/strogg_marine/smv_arms_lo_tport.tga)
+
+	diffusemap	downsize( models/monsters/strogg_marine/smv_arms_lo_d.tga, 1 )
+	bumpmap	addnormals ( models/monsters/strogg_marine/smv_arms_lo_local.tga, heightmap ( models/monsters/strogg_marine/smv_arms_lo_h.tga, 4 ))
+	specularmap	downsize( models/monsters/strogg_marine/smv_arms_lo_s.tga, 1 )
+}
+
+models/monsters/q4x_strogg_marine/q4x_smv_arms_lo2
+{
+	noselfShadow
+	unsmoothedtangents
+	renderbump  -size 512 512 -trace 0.03 -aa 2 models/monsters/strogg_marine/smv_arms_lo_local.tga work/models/monsters/stroggified_marine/smv_handandgun_hi.lwo
+
+
+	inlineGuide corpseBurnEffect(models/monsters/strogg_marine/smv_arms_lo_tport.tga)
+
+
+	diffusemap	downsize( models/monsters/strogg_marine/smv_arms_lo_d.tga, 1 )
+	bumpmap	addnormals ( models/monsters/strogg_marine/smv_arms_lo_local.tga, heightmap ( models/monsters/strogg_marine/smv_arms_lo_h.tga, 4 ))
+	specularmap	downsize( models/monsters/strogg_marine/smv_arms_lo_s.tga, 1 )
+}
+
+models/monsters/q4x_strogg_marine/q4x_smv_bodylegs3_lo
+{
+	noselfShadow
+	unsmoothedtangents
+
+	materialImage	models/monsters/strogg_marine/smv_bodylegs_lo_hit.tga
+
+	inlineGuide corpseBurnEffect(models/monsters/strogg_marine/smv_bodylegs_lo_tport.tga)
+
+	diffusemap	downsize( models/monsters/q4x_strogg_marine/q4x_smv_bodylegs3_lo_d.tga, 1 )
+	bumpmap	addnormals ( models/monsters/strogg_marine/smv_bodylegs_lo_local.tga, heightmap ( models/monsters/strogg_marine/smv_bodylegs_lo_h.tga, 4 ))
+	specularmap	downsize( models/monsters/strogg_marine/smv_bodylegs_lo_s.tga, 1 )
+	
+	{ 
+		blend add
+		map models/monsters/q4x_strogg_marine/q4x_smv_bodylegs_lo_glowpass.tga
+		rgb grunttable [ time * 1.35 ]
+		}
+}
+
+models/monsters/q4x_strogg_marine/q4x_smv_blaster_lo
+{
+	noselfShadow
+	unsmoothedtangents
+
+	{ 
+		blend add
+		map models/monsters/strogg_marine/smv_glowpass.tga
+		rgb grunttable [ time * 1.3 ]
+	}
+
+	inlineGuide corpseBurnEffect(models/monsters/strogg_marine/smv_arms_lo_tport.tga)
+
+	diffusemap	downsize( models/monsters/strogg_marine/smv_arms_lo_d.tga, 1 )
+	bumpmap	addnormals ( models/monsters/strogg_marine/smv_arms_lo_local.tga, heightmap ( models/monsters/strogg_marine/smv_arms_lo_h.tga, 3 ))
+	specularmap	downsize( models/monsters/strogg_marine/smv_arms_lo_s.tga, 1 )
+}
+
+models/monsters/q4x_strogg_marine/q4x_shotgunarm_lo
+{
+	noselfShadow
+	unsmoothedtangents
+	
+	inlineGuide corpseBurnEffect(models/monsters/strogg_marine/shotgunarm_lo_tport.tga)
+
+	diffusemap	downsize( models/monsters/strogg_marine/shotgunarm_lo_d.tga, 1 )
+	bumpmap	addnormals ( models/monsters/strogg_marine/shotgunarm_lo_local.tga, heightmap ( models/monsters/strogg_marine/shotgunarm_lo_h.tga, 3 ))
+	specularmap	downsize( models/monsters/strogg_marine/shotgunarm_lo_s.tga, 1 )
+}
+
+models/monsters/q4x_strogg_marine/q4x_machinegunarm_lo
+{
+	noselfShadow
+	unsmoothedtangents
+
+	inlineGuide corpseBurnEffect(models/monsters/strogg_marine/shotgunarm_lo_tport.tga)
+
+	diffusemap	downsize( models/monsters/strogg_marine/shotgunarm_lo_d.tga, 1 )
+	bumpmap	addnormals ( models/monsters/strogg_marine/shotgunarm_lo_local.tga, heightmap ( models/monsters/strogg_marine/shotgunarm_lo_h.tga, 3 ))
+	specularmap	downsize( models/monsters/strogg_marine/shotgunarm_lo_s.tga, 1 )
+}
+
+models/monsters/q4x_strogg_marine/q4x_smv_bodylegs2_lo
+{
+	noselfShadow
+	unsmoothedtangents
+
+	materialImage	models/monsters/strogg_marine/smv_bodylegs_lo_hit.tga
+
+	inlineGuide corpseBurnEffect(models/monsters/strogg_marine/smv_bodylegs_lo_tport.tga)
+
+	diffusemap	downsize( models/monsters/q4x_strogg_marine/q4x_smv_bodylegs2_lo_d.tga, 1 )
+	bumpmap	addnormals ( models/monsters/strogg_marine/smv_bodylegs_lo_local.tga, heightmap ( models/monsters/strogg_marine/smv_bodylegs_lo_h.tga, 4 ))
+	specularmap	downsize( models/monsters/strogg_marine/smv_bodylegs_lo_s.tga, 1 )
+	
+	{ 
+		blend add
+		map models/monsters/q4x_strogg_marine/q4x_smv_bodylegs_lo_glowpass.tga
+		rgb grunttable [ time * 1.35 ]
+		}
+}
+	
+models/monsters/q4x_strogg_marine/q4x_smv_bodylegs_lo
+{
+	noselfShadow
+	unsmoothedtangents
+
+	inlineGuide corpseBurnEffect(models/monsters/strogg_marine/smv_bodylegs_lo_tport.tga)
+
+	diffusemap	downsize( models/monsters/q4x_strogg_marine/q4x_smv_bodylegs_lo_d.tga, 1 )
+	bumpmap	addnormals ( models/monsters/strogg_marine/smv_bodylegs_lo_local.tga, heightmap ( models/monsters/strogg_marine/smv_bodylegs_lo_h.tga, 4 ))
+	specularmap	downsize( models/monsters/strogg_marine/smv_bodylegs_lo_s.tga, 1 )
+	
+	{ 
+		blend add
+		map models/monsters/q4x_strogg_marine/q4x_smv_bodylegs_lo_glowpass.tga
+		rgb grunttable [ time * 1.35 ]
+		}
+}
+
+	
+
+// strogg marine eyes
+
+models/monsters/q4x_strogg_marine/q4x_smv_eyes_right
+{
+	translucent
+	noselfshadow
+//	deform	eyeBall
+	{
+		blend add
+		map models/monsters/strogg_marine/smv_eye.tga
+		centerScale	0.6, 0.6	
+	}
+	inlineGuide corpseBurnEffect(models/monsters/corpseBurnEffect_sm.tga)
+}
+
+
+models/monsters/q4x_strogg_marine/q4x_smv_eyes_left
+{
+	translucent
+	noselfshadow
+//	deform	eyeBall
+	{
+		blend add
+		map models/monsters/strogg_marine/smv_eye.tga
+		centerScale	0.6, 0.6	
+	}
+	inlineGuide corpseBurnEffect(models/monsters/corpseBurnEffect_sm.tga)
+}
+//q4x_strogg_marine END---------------------------------------------------------------------------------------
+
+//q4x_tactical BEGIN---------------------------------------------------------------------------------------
+models/monsters/q4x_tactical/q4x_tt_body
+{
+    noSelfShadow
+    unSmoothedTangents
+//   nonSolid
+    
+	
+	materialImage	models/monsters/tactical/tt_body_hit
+		
+	diffusemap	downsize( models/monsters/q4x_tactical/q4x_tt_body_d.tga, 1 )
+	bumpmap	addnormals ( models/monsters/tactical/tt_body_local.tga, heightmap ( models/monsters/tactical/tt_body_h.tga, 4 ))
+	specularmap	downsize( models/monsters/a4x_tactical/q4x_tt_body_s.tga, 1 )
+	
+	{ 	blend add
+		map models/monsters/tactical/tt_body_glow.tga
+	}
+	
+	inlineGuide corpseBurnEffect(models/monsters/tactical/tt_body_tport.tga)
+	
+}

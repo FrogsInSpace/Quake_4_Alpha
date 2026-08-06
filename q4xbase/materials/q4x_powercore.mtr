@@ -1,0 +1,88 @@
+//q4x_powercore shader for Q4x add-on pack
+
+guide textures/q4x_powercore/ba_panel1_1 generic_full_noheight("q4x_powercore/ba_panel1_1")
+guide textures/q4x_powercore/ba_panel1_2 generic_full_noheight("q4x_powercore/ba_panel1_2")
+guide textures/q4x_powercore/ba_smalltrim1_1 generic_full_noheight("q4x_powercore/ba_smalltrim1_1")
+guide textures/q4x_powercore/ba_smalltrim1_2 generic_full_noheight("q4x_powercore/ba_smalltrim1_2")
+guide textures/q4x_powercore/ba_smalltrim1_3 generic_full_noheight("q4x_powercore/ba_smalltrim1_3")
+
+textures/q4x_powercore/ba_techtrim1_1
+{
+	qer_EditorImage		textures/q4x_powercore/ba_techtrim1_1_d.tga
+	bumpMap			textures/common_walls/ba_techtrim1_1_local.tga
+	diffuseMap		textures/q4x_powercore/ba_techtrim1_1_d.tga
+	specularMap		textures/common_walls/ba_techtrim1_1_s.tga
+
+}
+
+guide textures/q4x_powercore/ba_wall1_1 generic_full_noheight("q4x_powercore/ba_wall1_1")
+guide textures/q4x_powercore/ba_wall1_2 generic_full_noheight("q4x_powercore/ba_wall1_2")
+guide textures/q4x_powercore/ba_wall1_3 generic_full_noheight("q4x_powercore/ba_wall1_3")
+guide textures/q4x_powercore/ba_wall1_5 generic_full_noheight("q4x_powercore/ba_wall1_5")
+guide textures/q4x_powercore/ba_wall1_5c generic_full_noheight("q4x_powercore/ba_wall1_5c")
+guide textures/q4x_powercore/ba_wall1_5d generic_full_noheight("q4x_powercore/ba_wall1_5d")
+guide textures/q4x_powercore/ba_wall_small1_1 generic_full_noheight("q4x_powercore/ba_wall_small1_1")
+guide textures/q4x_powercore/c_pipecap01 generic_full_noheight("q4x_powercore/c_pipecap01")
+guide textures/q4x_powercore/c_ribwall generic_full_noheight("q4x_powercore/c_ribwall")
+
+textures/q4x_powercore/c_support01
+{
+	qer_EditorImage		textures/q4x_powercore/c_support01_d.tga
+	bumpMap			textures/q4x_powercore/c_support01_local.tga
+	diffuseMap		textures/q4x_powercore/c_support01_d.tga
+	specularMap		textures/q4x_powercore/c_support01_s.tga
+	materialImage		textures/common_walls/c_support01_hit.tga
+}
+
+guide textures/q4x_powercore/c_t10_wall_8 generic_full_noheight("q4x_powercore/c_t10_wall_8")
+guide textures/q4x_powercore/c_trim03_label generic_full_noheight("q4x_powercore/c_trim03_label")
+guide textures/q4x_powercore/c_wall_7 generic_full_noheight("q4x_powercore/c_wall_7")
+guide textures/q4x_powercore/c_wall_8 generic_full_noheight("q4x_powercore/c_wall_8")
+guide textures/q4x_powercore/c_wall_9 generic_full_noheight("q4x_powercore/c_wall_9")
+guide textures/q4x_powercore/can_ceiling_concretebrown generic_full_noheight("q4x_powercore/can_ceiling_concretebrown")
+guide textures/q4x_powercore/c_wall_10 generic_full_noheight("q4x_powercore/c_wall_10")
+
+textures/q4x_powercore/ctech_wall1_1
+{
+	qer_EditorImage		textures/q4x_powercore/ctech_wall1_1_d.tga
+	bumpMap			textures/q4x_powercore/ctech_wall1_1_local.tga
+	diffuseMap		textures/q4x_powercore/ctech_wall1_1_d.tga
+	specularMap		textures/q4x_powercore/ctech_wall1_1_s.tga
+	
+	{
+		blend add
+		map textures/q4x_powercore/ctech_wall1_1_add.tga
+	}
+}
+
+textures/q4x_powercore/outdoor_wall1_9
+{
+	qer_EditorImage		textures/q4x_powercore/outdoor_wall1_9_d.tga
+	bumpMap			textures/common_walls/outdoor_wall1_9_local.tga
+	diffuseMap		textures/q4x_powercore/outdoor_wall1_9_d.tga
+	specularMap		textures/common_walls/outdoor_wall1_9_s.tga
+	
+}
+textures/q4x_powercore/outdoor_wall1_10
+{
+	qer_EditorImage		textures/q4x_powercore/outdoor_wall1_10_d.tga
+	bumpMap			textures/common_walls/outdoor_wall1_10_local.tga
+	diffuseMap		textures/q4x_powercore/outdoor_wall1_10_d.tga
+	specularMap		textures/common_walls/outdoor_wall1_10_s.tga
+	
+}
+
+guide textures/q4x_powercore/pc_floor01_1 generic_full_noheight("q4x_powercore/pc_floor01_1")
+
+//textures/q4x_powercore/pc_floor_alpha01
+//{
+//	qer_EditorImage		textures/q4x_powercore/pc_floor_alpha01_s.tga
+//	bumpMap			textures/common_walls/pc_floor_alpha01_local.tga
+//	specularMap		textures/common_walls/pc_floor_alpha01_s.tga
+//	{	
+//		diffuseMap		textures/q4x_powercore/pc_floor_alpha01_d.tga
+//		alphatest .5
+//	}
+//	
+//}
+guide textures/q4x_powercore/pc_floor_alpha01 generic_alpha_noheight("q4x_powercore/pc_floor_alpha01")

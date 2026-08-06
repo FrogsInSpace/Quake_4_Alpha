@@ -1,0 +1,122 @@
+windowDef Desktop
+{
+	rect	0,0,640,480
+	visible	1
+
+	
+	windowDef bg
+	{
+		rect	0,0,639,481
+		visible	1
+		background	"gfx/guis/monitors/marine/mccmed3_all"
+		matcolor	1,1,1,1
+	}
+	
+	windowDef txt_medlabs
+	{
+		rect	102,21,329,28
+		visible	1
+		forecolor	1,1,1,1
+		text	"#str_200707"
+		textscale	0.47
+		font	"fonts/marine"
+	}
+	windowDef med_scans
+	{
+		rect	367,430,197,40
+		visible	1
+		forecolor	1,1,1,1
+		text	"#str_200720"
+		textscale	0.6
+		font	"fonts/marine"
+	}
+	
+		windowDef s
+	{
+		rect	7,-1,41,56
+		visible	1
+		forecolor	1,1,1,1
+		text	"s"
+		textscale	1
+		font	"fonts/marine"
+	}
+	windowDef m
+	{
+		rect	65,-1,41,56
+		visible	1
+		forecolor	1,1,1,1
+		text	"c"
+		textscale	1
+		font	"fonts/marine"
+	}
+	windowDef EKG
+	{
+		rect	26,95,164,31
+		visible	1
+		background	"gfx/guis/monitors/marine/mccmed5_line1"
+		matcolor	0.580,0.823,0.878,0.8
+	}
+	windowDef c
+	{
+		rect	33,-1,41,56
+		visible	1
+		forecolor	1,1,1,1
+		text	"m"
+		textscale	1
+		font	"fonts/marine"
+	}
+	
+	windowDef base_main
+	{
+		rect	0,0,640,480
+		visible	1
+
+		windowDef b_lights
+		{
+			rect	50,190, 440,110
+			visible	1
+			backcolor	0,0,0.243,1
+			forecolor	1,1,1,1
+			text	"OPERATION: IN PROGRESS"
+			textscale	1
+			bordersize	1
+			bordercolor	0,0,0,1
+			textalign	1
+		}
+	}
+	
+	windowDef topstuff
+	{
+		rect	0,0,640,480
+		visible	1
+		windowDef sline
+		{
+			rect	0,0,640,480
+			visible	1
+			background	"gfx/guis/common/monitor_line3"
+			matcolor	0.552,0.650,0.678,0.360
+		}
+		windowDef monitor_darkedge
+		{
+			rect	0,0,640,480
+			visible	1
+			background	"gfx/guis/common/monitor_darkedge2"
+			matcolor	0.0509,0.0509,0.0509,1
+		}
+		windowDef scratches
+		{
+			rect	0,0,640,480
+			visible	1
+			background	"gfx/guis/common/screen_scratches2"
+			matcolor	1,1,1,0.2
+			matscaley	-1
+		}
+		windowDef topreflect
+		{
+			rect	0,0,640,480
+			visible	1
+			background	"gfx/guis/common/monitor_glow2"
+			matcolor	0.780,0.901,0.905,0.494
+		}
+	}
+}

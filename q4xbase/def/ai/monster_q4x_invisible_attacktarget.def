@@ -1,0 +1,44 @@
+/*
+===============================================================================
+
+	Q4X Invisible Attack Target
+	This is a small invisible cube that is used to get AI to shoot at something.
+
+===============================================================================
+*/
+
+/*
+===============================================================================
+
+	Model definition
+
+===============================================================================
+*/
+
+model model_q4x_invisbox
+{
+	mesh										models/mapobjects/airborneassault/target_practice/target_practice.md5mesh
+	anim idle									models/mapobjects/airborneassault/target_practice/idle.md5anim
+}
+
+/*
+===============================================================================
+
+	Q4X Invisible Attack Target
+
+===============================================================================
+*/
+
+entityDef monster_q4x_invisible_attacktarget {
+	"inherit"							"monster_default"
+
+	"editor_color"			"1 0.5 0"
+	"editor_mins"			"-32 -32 0"
+	"editor_maxs"			"32 32 64"
+
+	"model"								"model_q4x_invisbox"
+	"health"							"10000"
+	"team"								"0"
+	"bleed"								"0"
+	"gib"								"0"
+}

@@ -1,0 +1,171 @@
+/*
+===============================================================================
+
+	Marine_medic
+
+===============================================================================
+*/
+
+
+// export stuff might need to go here
+
+
+/*
+===============================================================================
+
+	Marine_medic Model Definition
+
+===============================================================================
+*/
+
+model model_char_q4x_marine_medic
+{
+	inherit							model_char_q4x_marine
+	
+	mesh							models/characters/marine_medic/marine_medic.md5mesh
+
+	channel torso	( *waist )
+	channel legs	( *origin *hips -*waist )
+
+	anim	idle							models/characters/marine/idle.md5anim
+	anim	medic_treating_player_start		models/characters/marine/medic_treating_player_start.md5anim
+	{
+		frame	13							attachment_show	medic_vaccinegun
+		rate 1.3
+	}
+	anim	medic_treating_player			models/characters/marine/medic_treating_player.md5anim
+	{
+		frame	1							sound	snd_med_gun_heal
+		frame	1							attachment_show	medic_vaccinegun
+		rate .5
+	}
+	anim	medic_treating_player_end		models/characters/marine/medic_treating_player_end.md5anim
+	{
+		frame	17							attachment_hide	medic_vaccinegun
+		rate 1.3
+	}
+}
+
+
+
+/*
+===============================================================================
+
+	Marine_medic Entity Definition
+
+===============================================================================
+*/
+
+entityDef char_q4x_marine_medic_extras
+{
+	"editor_ignore"					"1"
+
+	"spawnclass"					"rvAIMedic"
+	"editor_var disableHeal"		"Set to 1 to have them spawn with heal disabled - enable it later via the enableHeal script event.  Default 0."
+	"editor_var noAutoHeal"			"Won't heal you unless you click on them.  Defaults to 0."
+	"editor_var stationary"			"Won't move towards you to heal you.  Defaults to 0."
+	"editor_var healObeyTether"		"Won't break tethers to heal you.  Defaults to 0."
+	"editor_var minMarineHeal"		"When your health drops at or below this (as a normal marine), they will automatically try to heal you.  Also, when healing, they will heal you to *at least* this level.  Default 35.  This should really be consistent across all levels."
+	"editor_var maxMarineHeal"		"When your health is at or above this (as a normal marine), they will refuse to heal you even if you click on them.  Default 75.  This should really be consistent across all levels."
+	"editor_var minStroggHeal"		"When your health drops at or below this (when stroggified), they will automatically try to heal you.  Also, when healing, they will heal you to *at least* this level.  Default 35.  This should really be consistent across all levels."
+	"editor_var maxStroggHeal"		"When your health is at or above this (when stroggified), they will refuse to heal you even if you click on them.  Default 100.  This should really be consistent across all levels."
+	"editor_var healAmt"			"How much (minimum) they will heal you per heal instance.  Default 50.  This should really be consistent across all levels."
+	"editor_var patientRange"		"Maximum range their patient can be from them for them to automatically consider you as a patient.  Default 640.  Should not be changed unless necessary."
+	"editor_var buddyRange"			"Maximum range they look for buddies who are in combat - if there are buddies in this range with enemies, they won't auto-heal.  Default 640.  Should not be changed unless necessary."
+	"editor_var enemyRange"			"Maxiumum range they look for enemies who are in combat - if there are enemies in this range mad at the patient, the medic/tech or buddies within buddyRange, they won't auto-heal.  Default 1024.  Should not be changed unless necessary."
+	"editor_var healWait"			"How long (in seconds) they force you to wait between heals.  Default 0.  This should really be consistent across all levels."
+	"editor_var script_postHeal"	"Script function to execute after medic/tech has attempted a heal/repair. Called whether or not it actually happened, this is primarily to give an intermediate step between a heal and his normal idling."
+	"editor_var anim_preHeal"		"This key will cause the specified anim to play prior to starting the heal anim.  e.g. if anim_idle is crouch, setting this key to crouch_to_stand will have the medic/tech stand up first, then start the heal."
+	
+	"minMarineHeal"					"35"
+	"maxMarineHeal"					"75"
+	"minStroggHeal"					"35"
+	"maxStroggHeal"					"100"
+	"healAmt"						"50"
+	"patientRange"					"640"
+	"buddyRange"					"640"
+	"enemyRange"					"1024"
+
+	"def_attach"					"medic_vaccinegun"
+	
+	"annoyed"						"0"
+	
+//call
+	"lipsync_call_player_1"			"vo_9_11_290_1"
+	/*"lipsync_call_player_2"			"vo_9_11_300_1"
+	"lipsync_call_player_3"			"vo_9_11_300_2"
+	"lipsync_call_player_4"			"vo_9_11_300_3"
+	"lipsync_call_player_5"			"vo_9_11_300_4"*/
+
+//start
+	"lipsync_heal_start_1"			"vo_9_11_290_2"
+	"lipsync_heal_start_2"			"vo_9_11_290_3"
+	"lipsync_heal_start_3"			"vo_9_11_310_3"
+	"lipsync_heal_start_4"			"vo_9_11_310_4"
+
+//move
+	"lipsync_heal_move_1"			"vo_9_11_310_1"
+	"lipsync_heal_move_2"			"vo_9_11_310_2"
+	"lipsync_heal_move_3"			"vo_9_11_310_5"
+
+//done
+	"lipsync_heal_end_1"			"vo_9_11_320_1"
+	"lipsync_heal_end_2"			"vo_9_11_320_2"
+	"lipsync_heal_end_3"			"vo_9_11_320_3"
+	"lipsync_heal_end_4"			"vo_9_11_320_4"
+
+//busy
+	//"lipsync_heal_busy_1"			"vo_9_11_30_1" // CORPORAL
+	"lipsync_heal_busy_1"			"vo_9_11_30_2"
+
+//noheal
+	"lipsync_heal_noheal_1"			"vo_9_11_250_1"
+//	"lipsync_heal_noheal_2"			"vo_9_11_250_2"
+
+	"snd_med_gun_heal"				"med_gun_heal"
+
+	"snd_labored_breathing"			"vo_1_1_1_18_1"
+}
+
+entityDef char_q4x_marine_medic
+{
+	"inherit1"						"char_q4x_marine_medic_extras"
+	"inherit2"						"char_q4x_marine"
+	"editor_ignore"					"0"
+
+	"model"							"model_char_q4x_marine_medic"
+	"def_head"						"char_marinehead_helmet_medic"
+}	
+
+
+entityDef char_q4x_marine_medic_unarmed
+{
+	"inherit1"						"char_q4x_marine_medic_extras"
+	"inherit2"						"char_q4x_marine_unarmed"
+	"editor_ignore"					"0"
+	
+	"model"							"model_char_q4x_marine_medic"
+	"def_head"						"char_marinehead_helmet_medic"
+}
+
+
+entityDef char_q4x_marine_medic_shotgun
+{
+	"inherit1"						"char_q4x_marine_medic_extras"
+	"inherit2"						"char_q4x_marine_shotgun"
+	"editor_ignore"					"0"
+
+	"model"							"model_char_q4x_marine_medic"
+	"def_head"						"char_marinehead_helmet_medic"
+}
+
+
+entityDef char_q4x_marine_medic_hyperblaster
+{
+	"inherit1"						"char_q4x_marine_medic_extras"
+	"inherit2"						"char_q4x_marine_hyperblaster"
+	"editor_ignore"					"0"
+
+	"model"							"model_char_q4x_marine_medic"
+	"def_head"						"char_marinehead_helmet_medic"
+}	

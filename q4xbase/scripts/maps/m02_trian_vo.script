@@ -1,0 +1,1004 @@
+
+
+void VO_marks_hadesatlas( entity ent )
+{
+ //Markswell: Hades and Atlas are prepping this facility for some fireworks, let's get in, get our data, and get out.  
+ aiSpeakWait( ent, "lipsync_vo_marks_hadesatlas" );
+}
+
+
+void VO_tak_holdupdek( entity ent )
+{
+ //Tak: Hold up Dekard, the boys in Atlas squad showed me how to increase effective yield on their grenade launchers, give me yours and I'll do the same.  
+ aiSpeakWait( ent, "lipsync_vo_tak_holdupdek" );
+}
+
+
+void VO_tak_okdngren( entity ent )
+{
+ //Tak: Ok, done - now your grenades will have a larger concussive blast.  
+ aiSpeakWait( ent, "lipsync_vo_tak_okdngren" );
+}
+
+
+void VO_marks_letsmove2( entity ent )
+{
+ //Markswell: Let's move.  
+ aiSpeakWait( ent, "lipsync_vo_marks_letsmove2" );
+}
+
+
+void VO_marks_keepittight( entity ent )
+{
+ //Markswell: Keep it tight people.  
+ aiSpeakWait( ent, "lipsync_vo_marks_keepittight" );
+}
+
+
+void VO_tak_strgmine( entity ent )
+{
+ //Tak +use: The Strogg mine and process pure Trianthinide at this facility.  
+ aiSpeakWait( ent, "lipsync_vo_tak_strgmine" );
+}
+
+
+void VO_tak_triandamn( entity ent )
+{
+ //Tak +use: Trianthinide is a damn unstable element, like plutonium, they use it as a volatile power source.  
+ aiSpeakWait( ent, "lipsync_vo_tak_triandamn" );
+}
+
+
+void VO_tak_whenplcgo( entity ent )
+{
+ //Tak +use: When this place goes up, it's going to leave a giant crater.  
+ aiSpeakWait( ent, "lipsync_vo_tak_whenplcgo" );
+}
+
+
+void VO_nava_doyouneed( entity ent )
+{
+ //Navajas +use: Do you need something?  
+ aiSpeakWait( ent, "lipsync_vo_nava_doyouneed" );
+}
+
+
+void VO_nava_whatseems( entity ent )
+{
+ //Navajas +use: What seems to be the problem, sir?  
+ aiSpeakWait( ent, "lipsync_vo_nava_whatseems" );
+}
+
+
+void VO_nava_isuggpay( entity ent )
+{
+ //Navajas +use: I suggest paying attention to the Lieutenant.  
+ aiSpeakWait( ent, "lipsync_vo_nava_isuggpay" );
+}
+
+
+void VO_marks_idlikeemp( entity ent )
+{
+ //Markswell +use: I'd sure like to know how the EMP convoys are proceeding.  
+ aiSpeakWait( ent, "lipsync_vo_marks_idlikeemp" );
+}
+
+
+void VO_marks_iknowfirstdek( entity ent )
+{
+ //Markswell +use: I know it’s your first command, Dekard.  Don’t worry, you’re the right man for the job.  
+ aiSpeakWait( ent, "lipsync_vo_marks_iknowfirstdek" );
+}
+
+
+void VO_marks_dekstayfoc( entity ent )
+{
+ //Markswell +use: Dekard, stay focused.  We've got a job to do.  
+ aiSpeakWait( ent, "lipsync_vo_marks_dekstayfoc" );
+}
+
+
+void VO_razor1_garret( entity ent )
+{
+ //Razor Marine 1: This is Garrett from Razor 16, we're out of ammo and pinned down in a Trianthinide processing chamber.  If anybody can hear this, we need support!  
+ aiSpeakWait( ent, "lipsync_vo_razor1_garret" );
+}
+
+
+void VO_tak_holshitdead( entity ent )
+{
+ //Tak: Holy shit, I thought everybody on that Razor dropship was dead?  
+ aiSpeakWait( ent, "lipsync_vo_tak_holshitdead" );
+}
+
+
+void VO_marks_apparentnot( entity ent )
+{
+ //Markswell: Apparently not, let's double time it, they're directly ahead.  
+ aiSpeakWait( ent, "lipsync_vo_marks_apparentnot" );
+}
+
+
+void VO_marks_wereadrazor( entity ent )
+{
+ //Markswell: We read you Razor 16, Falcon is on the way.  
+ aiSpeakWait( ent, "lipsync_vo_marks_wereadrazor" );
+}
+
+
+void VO_tak_letmegetdr( entity ent )
+{
+ //Tak: Let me get this door open.  
+ aiSpeakWait( ent, "lipsync_vo_tak_letmegetdr" );
+}
+
+
+void VO_tak_done3( entity ent )
+{
+ //Tak: Done  
+ aiSpeakWait( ent, "lipsync_vo_tak_done3" );
+}
+
+
+void VO_razor1_getoff( entity ent )
+{
+ //Razor Marine 1: Get offa me!  
+ aiSpeakWait( ent, "lipsync_vo_razor1_getoff" );
+}
+
+
+void VO_razor1_pain( entity ent )
+{
+ //Razor Marine 1: Arrrghhh!  
+ aiSpeakWait( ent, "lipsync_vo_razor1_pain" );
+}
+
+
+void VO_razor2_ivegotem( entity ent )
+{
+ //Razor Marine 2: I've got em, look out!  
+ aiSpeakWait( ent, "lipsync_vo_razor2_ivegotem" );
+}
+
+
+void VO_razor2_pain( entity ent )
+{
+ //Razor Marine 2: Arrrghhh!  
+ aiSpeakWait( ent, "lipsync_vo_razor2_pain" );
+}
+
+
+void VO_razor1_damnglad( entity ent )
+{
+ //Razor Marine 1: Damn, are we glad to see you.  I'm Corporal Gray, this is Sergeant Garrett.  
+ aiSpeakWait( ent, "lipsync_vo_razor1_damnglad" );
+}
+
+
+void VO_marks_howmaysurv( entity ent )
+{
+ //Markswell: How many Razor survivors are there?  
+ aiSpeakWait( ent, "lipsync_vo_marks_howmaysurv" );
+}
+
+
+void VO_razor1_there4surv( entity ent )
+{
+ //Razor Marine 1: There were 4 survivors of the dropship crash, we're the only two left now.  Our objective is to retrieve Trianthinide samples.    
+ aiSpeakWait( ent, "lipsync_vo_razor1_there4surv" );
+}
+
+
+void VO_razor1_machineproc( entity ent )
+{
+ //Razor Marine 1: This machine processes raw Trianthinide, but we need to shut down its power generators in order to pull our samples.  
+ aiSpeakWait( ent, "lipsync_vo_razor1_machineproc" );
+}
+
+
+void VO_razor2_squadpush( entity ent )
+{
+ //Razor Marine 2: Our squad pushed to the generators but were ambushed.  We fell back to this position.  
+ aiSpeakWait( ent, "lipsync_vo_razor2_squadpush" );
+}
+
+
+void VO_razor1_foundstrg( entity ent )
+{
+ //Razor Marine 1: We found a Strogg Trianthinide weapon, but couldn't get it functioning in time to help with or assault.  Maybe your tech can get it working.  
+ aiSpeakWait( ent, "lipsync_vo_razor1_foundstrg" );
+}
+
+
+void VO_razor2_ltwordemp( entity ent )
+{
+ //Razor Marine 2: Hey Lieutenant, any word on the EMP convoys- did they pop the Tetranode?  
+ aiSpeakWait( ent, "lipsync_vo_razor2_ltwordemp" );
+}
+
+
+void VO_marks_nowordnoth( entity ent )
+{
+ //Markswell: No word, nothing yet.  
+ aiSpeakWait( ent, "lipsync_vo_marks_nowordnoth" );
+}
+
+
+void VO_marks_hereplannav( entity ent )
+{
+ //Markswell: Here's the plan: Navajas, stay here and hold this position with Garrett.  The rest of us will push ahead to the generators and shut them down.  
+ aiSpeakWait( ent, "lipsync_vo_marks_hereplannav" );
+}
+
+
+void VO_nava_understood( entity ent )
+{
+ //Navajas: Understood.  
+ aiSpeakWait( ent, "lipsync_vo_nava_understood" );
+}
+
+
+void VO_marks_letsgo3( entity ent )
+{
+ //Markswell: Let's go.  
+ aiSpeakWait( ent, "lipsync_vo_marks_letsgo3" );
+}
+
+
+void VO_nava_iwilladmit( entity ent )
+{
+ //Navajas +use: I will admit, your effort piloting the walker was exemplary.  
+ aiSpeakWait( ent, "lipsync_vo_nava_iwilladmit" );
+}
+
+
+void VO_nava_shouldmv( entity ent )
+{
+ //Navajas +use: Shouldn’t you be moving along Sergeant?  
+ aiSpeakWait( ent, "lipsync_vo_nava_shouldmv" );
+}
+
+
+void VO_nava_orders3( entity ent )
+{
+ //Navajas +use: I have my orders.    
+ aiSpeakWait( ent, "lipsync_vo_nava_orders3" );
+}
+
+
+void VO_razor1_weneedget( entity ent )
+{
+ //Razor Marine 1 +use: We need to get to those generators.  
+ aiSpeakWait( ent, "lipsync_vo_razor1_weneedget" );
+}
+
+
+void VO_razor2_oncedis( entity ent )
+{
+ //Razor Marine 2 +use: Once you disable those generators, our job gets much easier.  
+ aiSpeakWait( ent, "lipsync_vo_razor2_oncedis" );
+}
+
+
+void VO_razor2_dmnquib( entity ent )
+{
+ //Razor Marine 2 +use: Those damn squibs tried to stamp me out.  
+ aiSpeakWait( ent, "lipsync_vo_razor2_dmnquib" );
+}
+
+
+void VO_razor1_whereteamamb( entity ent )
+{
+ //Razor Marine 1: This is where our team was ambushed.  
+ aiSpeakWait( ent, "lipsync_vo_razor1_whereteamamb" );
+}
+
+
+void VO_razor1_theretrianth( entity ent )
+{
+ //Razor Marine 1: There's the Trianthinide weapon.  
+ aiSpeakWait( ent, "lipsync_vo_razor1_theretrianth" );
+}
+
+
+void VO_tak_hmmletmesee( entity ent )
+{
+ //Tak: Hmm, let me see, getting this to fire should be easy enough.  [beat] Done.  
+ aiSpeakWait( ent, "lipsync_vo_tak_hmmletmesee" );
+}
+
+
+void VO_tak_herekedshoots( entity ent )
+{
+ //Tak: Here Dekard, this looks like it shoots Trianthinide bolts, should do quite a bit of damage.  
+ aiSpeakWait( ent, "lipsync_vo_tak_herekedshoots" );
+}
+
+
+void VO_darn_ltmitchwnd( entity ent )
+{
+ //Darnell: Lieutenant, Mitchell has stabilized the wounded, we are pushing into the facility  
+ aiSpeakWait( ent, "lipsync_vo_darn_ltmitchwnd" );
+}
+
+
+void VO_marks_rogerthtterm( entity ent )
+{
+ //Markswell: Roger that Darnell, try to locate a terminal that Tak can use to data mine.  
+ aiSpeakWait( ent, "lipsync_vo_marks_rogerthtterm" );
+}
+
+
+void VO_darn_yessir( entity ent )
+{
+ //Darnell: Yes sir.  
+ aiSpeakWait( ent, "lipsync_vo_darn_yessir" );
+}
+
+
+void VO_razor1_genjustup( entity ent )
+{
+ //Razor Marine 1: The generators are just up that lift.  
+ aiSpeakWait( ent, "lipsync_vo_razor1_genjustup" );
+}
+
+
+void VO_razor1_genctrl( entity ent )
+{
+ //Razor Marine 1: There's the generator control, let me see what I can do.  
+ aiSpeakWait( ent, "lipsync_vo_razor1_genctrl" );
+}
+
+
+void VO_razor1_okshutdwn( entity ent )
+{
+ //Razor Marine 1: Ok, I can't shut them down, but I can overload the generators from here.  Cover me.  
+ aiSpeakWait( ent, "lipsync_vo_razor1_okshutdwn" );
+}
+
+
+void VO_razor1_overload( entity ent )
+{
+ //Razor Marine 1: Overload has begun.  
+ aiSpeakWait( ent, "lipsync_vo_razor1_overload" );
+}
+
+
+void VO_razor1_gen125( entity ent )
+{
+ //Razor Marine 1: Generators are at 125%  
+ aiSpeakWait( ent, "lipsync_vo_razor1_gen125" );
+}
+
+
+void VO_razor1_gen150( entity ent )
+{
+ //Razor Marine 1: Generators are at 150%  
+ aiSpeakWait( ent, "lipsync_vo_razor1_gen150" );
+}
+
+
+void VO_razor1_whathellrep( entity ent )
+{
+ //Razor Marine 1: What the hell?  Those repair bots are compensating for the overload.  
+ aiSpeakWait( ent, "lipsync_vo_razor1_whathellrep" );
+}
+
+
+void VO_razor1_damnpowdrp( entity ent )
+{
+ //Razor Marine 1: Damn, the power level is dropping!  
+ aiSpeakWait( ent, "lipsync_vo_razor1_damnpowdrp" );
+}
+
+
+void VO_marks_shootrepbot( entity ent )
+{
+ //Markswell: Shoot the repair bots marines!  
+ aiSpeakWait( ent, "lipsync_vo_marks_shootrepbot" );
+}
+
+
+void VO_marks_tkoutrep( entity ent )
+{
+ //Markswell: Take out those repair bots!  
+ aiSpeakWait( ent, "lipsync_vo_marks_tkoutrep" );
+}
+
+
+void VO_razor1_gdpwrlv( entity ent )
+{
+ //Razor Marine 1: Ok, good, the power level is rising again.  
+ aiSpeakWait( ent, "lipsync_vo_razor1_gdpwrlv" );
+}
+
+
+void VO_razor1_whathte( entity ent )
+{
+ //Razor Marine 1: What the..?  
+ aiSpeakWait( ent, "lipsync_vo_razor1_whathte" );
+}
+
+
+void VO_razor1_pain2( entity ent )
+{
+ //Razor Marine 1: Arrrghhh!  
+ aiSpeakWait( ent, "lipsync_vo_razor1_pain2" );
+}
+
+
+void VO_marks_takeout2( entity ent )
+{
+ //Markswell: Take that thing out!  
+ aiSpeakWait( ent, "lipsync_vo_marks_takeout2" );
+}
+
+
+void VO_marks_takctrlstat( entity ent )
+{
+ //Markswell: Tak, get on this control station and keep that overload going.  
+ aiSpeakWait( ent, "lipsync_vo_marks_takctrlstat" );
+}
+
+
+void VO_tak_yessir2( entity ent )
+{
+ //Tak: Yes sir.  
+ aiSpeakWait( ent, "lipsync_vo_tak_yessir2" );
+}
+
+
+void VO_darn_mitchlocterm( entity ent )
+{
+ //Darnell: Darnell here, Mitchell and I have located a terminal that Tak needs to ID for data mining, could be paydirt.  
+ aiSpeakWait( ent, "lipsync_vo_darn_mitchlocterm" );
+}
+
+
+void VO_marks_standdarn( entity ent )
+{
+ //Markswell: Standby Darnell.  
+ aiSpeakWait( ent, "lipsync_vo_marks_standdarn" );
+}
+
+
+void VO_tak_genat175( entity ent )
+{
+ //Tak: Generators are at 175%  
+ aiSpeakWait( ent, "lipsync_vo_tak_genat175" );
+}
+
+
+void VO_tak_genreachcrit( entity ent )
+{
+ //Tak: Generators reaching critical level.  
+ aiSpeakWait( ent, "lipsync_vo_tak_genreachcrit" );
+}
+
+
+void VO_tak_thatgenfall( entity ent )
+{
+ //Tak: That's it, the generators are failing.  
+ aiSpeakWait( ent, "lipsync_vo_tak_thatgenfall" );
+}
+
+
+void VO_tak_gen1failred( entity ent )
+{
+ //Tak: Generator 1 has failed.  
+ aiSpeakWait( ent, "lipsync_vo_tak_gen1failred" );
+}
+
+
+void VO_tak_andgen2fail( entity ent )
+{
+ //Tak: …and…Generator 2 has failed.  Razor should be able to finish their objective.  
+ aiSpeakWait( ent, "lipsync_vo_tak_andgen2fail" );
+}
+
+
+void VO_marks_alsplitting( entity ent )
+{
+ //Markswell: Allright, we're splitting up, Dekard, Tak, locate Darnell and Mitchell, see if the terminal they located will work for data mining.  I'm going back with Navajas to help Razor complete their objective.  
+ aiSpeakWait( ent, "lipsync_vo_marks_alsplitting" );
+}
+
+
+void VO_marks_darnloctermd( entity ent )
+{
+ //Markswell: Darnell, Tak and Dekard are coming your way.  
+ aiSpeakWait( ent, "lipsync_vo_marks_darnloctermd" );
+}
+
+
+void VO_darn_copylttell( entity ent )
+{
+ //Darnell: Copy Lieutenant, tell that pair to double time it, we've got some company down here.  
+ aiSpeakWait( ent, "lipsync_vo_darn_copylttell" );
+}
+
+
+void VO_marks_headback( entity ent )
+{
+ //Markswell: I'm heading back.  Get moving you two.  
+ aiSpeakWait( ent, "lipsync_vo_marks_headback" );
+}
+
+
+void VO_marks_youheardm( entity ent )
+{
+ //Markswell +use: You heard the man, get moving!  
+ aiSpeakWait( ent, "lipsync_vo_marks_youheardm" );
+}
+
+
+void VO_marks_deknownot( entity ent )
+{
+ //Markswell +use: Dekard, now is not the time.  
+ aiSpeakWait( ent, "lipsync_vo_marks_deknownot" );
+}
+
+
+void VO_marks_youhaveords( entity ent )
+{
+ //Markswell +use: You have your orders marine!  
+ aiSpeakWait( ent, "lipsync_vo_marks_youhaveords" );
+}
+
+
+void VO_tak_letsmvdrn( entity ent )
+{
+ //Tak +use: Let's move, Darnell and Mitchell need our help  
+ aiSpeakWait( ent, "lipsync_vo_tak_letsmvdrn" );
+}
+
+
+void VO_tak_sothisfirst( entity ent )
+{
+ //Tak +use: So this is your first command?  
+ aiSpeakWait( ent, "lipsync_vo_tak_sothisfirst" );
+}
+
+
+void VO_tak_darnearth( entity ent )
+{
+ //Tak +use: Darnell told me about what you guys did back on Earth.  Pretty impressive.  
+ aiSpeakWait( ent, "lipsync_vo_tak_darnearth" );
+}
+
+
+void VO_darn_gladjoin( entity ent )
+{
+ //Darnell: Glad you two could join us!  
+ aiSpeakWait( ent, "lipsync_vo_darn_gladjoin" );
+}
+
+
+void VO_mitch_termbetter( entity ent )
+{
+ //Mitchell: This terminal better be the one, we need to get the hell outta here.  
+ aiSpeakWait( ent, "lipsync_vo_mitch_termbetter" );
+}
+
+
+void VO_darn_calmmitch( entity ent )
+{
+ //Darnell: Calm down Mitch.  
+ aiSpeakWait( ent, "lipsync_vo_darn_calmmitch" );
+}
+
+
+void VO_tak_wowtermseen( entity ent )
+{
+ //Tak: Wow, this terminal is older than anything I've seen before.  Keep me covered guys, while I try to access this antique  
+ aiSpeakWait( ent, "lipsync_vo_tak_wowtermseen" );
+}
+
+
+void VO_darn_strogg3( entity ent )
+{
+ //Darnell: Strogg!    
+ aiSpeakWait( ent, "lipsync_vo_darn_strogg3" );
+}
+
+
+void VO_mitch_thereanother( entity ent )
+{
+ //Mitchell: There's another one!  
+ aiSpeakWait( ent, "lipsync_vo_mitch_thereanother" );
+}
+
+
+void VO_tak_keepemoff( entity ent )
+{
+ //Tak: Keep em' off me!  
+ aiSpeakWait( ent, "lipsync_vo_tak_keepemoff" );
+}
+
+
+void VO_tak_ltaccord( entity ent )
+{
+ //Tak: Lieutenant, according to the data I'm seeing here, there is a Nexus access point in this facility that doesn't contain any data lockouts of any kind.  If we can locate that access terminal, we will have found a serious hole in the Strogg network.  We could get our hands on info about the Strogg that nobody has seen before.  
+ aiSpeakWait( ent, "lipsync_vo_tak_ltaccord" );
+}
+
+
+void VO_marks_rogetakst( entity ent )
+{
+ //Markswell: Roger that Tak, standby.  
+ aiSpeakWait( ent, "lipsync_vo_marks_rogetakst" );
+}
+
+
+void VO_marks_okfalcgoc( entity ent )
+{
+ //Markswell: Ok Falcon, GOC has changed our primary objective.  We are to locate that unsecured Nexus access point at all costs, download any critical data we can, and get it back to the brass pronto.  
+ aiSpeakWait( ent, "lipsync_vo_marks_okfalcgoc" );
+}
+
+
+void VO_makrs_dekyouandyour( entity ent )
+{
+ //Markswell: Dekard, you and your team follow Tak to that access point, we'll catch up ASAP.  
+ aiSpeakWait( ent, "lipsync_vo_makrs_dekyouandyour" );
+}
+
+
+void VO_tak_whoawallsraw( entity ent )
+{
+ //Tak: Whoa, these walls contain raw exposed Trianthinide veins.  We need to watch our fire in here- hitting any of these veins could light up this entire facility.  
+ aiSpeakWait( ent, "lipsync_vo_tak_whoawallsraw" );
+}
+
+
+void VO_darn_greatmake( entity ent )
+{
+ //Darnell: Great, make sure and tell that to the Strogg.  
+ aiSpeakWait( ent, "lipsync_vo_darn_greatmake" );
+}
+
+
+void VO_tak_weneedfing( entity ent )
+{
+ //Tak +use: We need to find that access point.  
+ aiSpeakWait( ent, "lipsync_vo_tak_weneedfing" );
+}
+
+
+void VO_tak_ificanget( entity ent )
+{
+ //Tak +use: If I can get open access to the Nexus, it could change the tide of this war!  
+ aiSpeakWait( ent, "lipsync_vo_tak_ificanget" );
+}
+
+
+void VO_darn_darndekrais( entity ent )
+{
+ //Darnell +use: Darnell and Dekard, raising hell once again!  
+ aiSpeakWait( ent, "lipsync_vo_darn_darndekrais" );
+}
+
+
+void VO_darn_squibsdont( entity ent )
+{
+ //Darnell +use: The Squibs don't stand a chance!  
+ aiSpeakWait( ent, "lipsync_vo_darn_squibsdont" );
+}
+
+
+void VO_tak_watchfire( entity ent )
+{
+ //Tak: Watch your fire!  
+ aiSpeakWait( ent, "lipsync_vo_tak_watchfire" );
+}
+
+
+void VO_tak_trianthuns( entity ent )
+{
+ //Tak: Trianthinide is very unstable, check your targets!  
+ aiSpeakWait( ent, "lipsync_vo_tak_trianthuns" );
+}
+
+
+void VO_darn_hmmonlyway( entity ent )
+{
+ //Darnell: Hmm, this is the only way - Mitchell, help me with the door.  
+ aiSpeakWait( ent, "lipsync_vo_darn_hmmonlyway" );
+}
+
+
+void VO_darn_takgetunderths( entity ent )
+{
+ //Darnell: Tak, get under this door and see if there is an access panel on the other side.  
+ aiSpeakWait( ent, "lipsync_vo_darn_takgetunderths" );
+}
+
+
+void VO_darn_takgetdoor( entity ent )
+{
+ //Darnell: Tak, get through this door and see if there is an access panel on the other side  
+ aiSpeakWait( ent, "lipsync_vo_darn_takgetdoor" );
+}
+
+
+void VO_mitch_pain( entity ent )
+{
+ //Mitchell: Urrggh!  
+ aiSpeakWait( ent, "lipsync_vo_mitch_pain" );
+}
+
+
+void VO_darn_pain( entity ent )
+{
+ //Darnell: Urrggh!  
+ aiSpeakWait( ent, "lipsync_vo_darn_pain" );
+}
+
+
+void VO_tak_ok3( entity ent )
+{
+ //Tak: Ok…  
+ aiSpeakWait( ent, "lipsync_vo_tak_ok3" );
+}
+
+
+void VO_darn_dekseefind( entity ent )
+{
+ //Darnell: Dekard, see if you can find something to shove under this door.  
+ aiSpeakWait( ent, "lipsync_vo_darn_dekseefind" );
+}
+
+
+void VO_darn_takfindany( entity ent )
+{
+ //Darnell: Tak, you find anything?!  
+ aiSpeakWait( ent, "lipsync_vo_darn_takfindany" );
+}
+
+
+void VO_tak_noidntsee( entity ent )
+{
+ //Tak: No, I don't see an access panel, this door is controlled remotely.  
+ aiSpeakWait( ent, "lipsync_vo_tak_noidntsee" );
+}
+
+
+void VO_darn_dekforget( entity ent )
+{
+ //Darnell: Dekard, forget it, get under the door.  
+ aiSpeakWait( ent, "lipsync_vo_darn_dekforget" );
+}
+
+
+void VO_darn_dekgothru( entity ent )
+{
+ //Darnell: Dekard, go through the door!  
+ aiSpeakWait( ent, "lipsync_vo_darn_dekgothru" );
+}
+
+
+void VO_mitch_cntholdlng( entity ent )
+{
+ //Mitchell: I can't hold on much longer.  
+ aiSpeakWait( ent, "lipsync_vo_mitch_cntholdlng" );
+}
+
+
+void VO_darn_dekhrry( entity ent )
+{
+ //Darnell: Dekard, hurry up!  
+ aiSpeakWait( ent, "lipsync_vo_darn_dekhrry" );
+}
+
+
+void VO_darn_comondek( entity ent )
+{
+ //Darnell: Come on Dekard, we can't hold this any longer!  
+ aiSpeakWait( ent, "lipsync_vo_darn_comondek" );
+}
+
+
+void VO_mitch_pain2( entity ent )
+{
+ //Mitchell: Ugh!  
+ aiSpeakWait( ent, "lipsync_vo_mitch_pain2" );
+}
+
+
+void VO_darn_pain2( entity ent )
+{
+ //Darnell: Ugh!  
+ aiSpeakWait( ent, "lipsync_vo_darn_pain2" );
+}
+
+
+void VO_darn_takmeetmarks( entity ent )
+{
+ //Darnell: Tak, Dekard, we're meeting back up with Markswell and Navajas, you should keep moving  
+ aiSpeakWait( ent, "lipsync_vo_darn_takmeetmarks" );
+}
+
+
+void VO_tak_comnexus( entity ent )
+{
+ //Tak: Come on Dekard, the Nexus access point should be close.  
+ aiSpeakWait( ent, "lipsync_vo_tak_comnexus" );
+}
+
+
+void VO_tak_ifnavabr( entity ent )
+{
+ //Tak +use: If Navajas was here, we could breach this door.  
+ aiSpeakWait( ent, "lipsync_vo_tak_ifnavabr" );
+}
+
+
+void VO_tak_speaknava( entity ent )
+{
+ //Tak +use: Speaking of Navajas, don't mind him, he lost a lot of friends back on Earth.  
+ aiSpeakWait( ent, "lipsync_vo_tak_speaknava" );
+}
+
+
+void VO_tak_anyboderth( entity ent )
+{
+ //Tak +use: Navajas takes a while to warm up to anybody that was part of the Earth defensive.  
+ aiSpeakWait( ent, "lipsync_vo_tak_anyboderth" );
+}
+
+
+void VO_tak_hmmnexacc( entity ent )
+{
+ //Tak: Hmm, the Nexus access point is in the adjacent room, but the door is momentary.  Shit, Dekard, I can get the door open from here, but you’re going to have to get in there and access the terminal. I can't get to it from here.  
+ aiSpeakWait( ent, "lipsync_vo_tak_hmmnexacc" );
+}
+
+
+void VO_tak_lkarounddek( entity ent )
+{
+ //Tak: Look around Dekard, the Nexus access point should be easy to find.  
+ aiSpeakWait( ent, "lipsync_vo_tak_lkarounddek" );
+}
+
+
+
+void VO_tak_ltdeki( entity ent )
+{
+ //Tak: Lieutenant, Dekard and I are about to download the data from the Nexus access point  
+ aiSpeakWait( ent, "lipsync_vo_tak_ltdeki" );
+}
+
+
+void VO_marks_rogmakeitfast( entity ent )
+{
+ //Markswell: Roger that, make it fast, we have a gunship heading our way for evac. Atlas and Hades squads are ready to scrub this facility, you're on a timeline marines  
+ aiSpeakWait( ent, "lipsync_vo_marks_rogmakeitfast" );
+}
+
+
+void VO_dek_takinpos( entity ent )
+{
+ //Dekard: Tak?  I'm in position.  You ready?  
+ aiSpeakWait( ent, "lipsync_vo_dek_takinpos" );
+}
+
+
+void VO_tak_rogdek3( entity ent )
+{
+ //Tak: Roger that, Dekard.    
+ aiSpeakWait( ent, "lipsync_vo_tak_rogdek3" );
+}
+
+
+void VO_tak_gooddataacc( entity ent )
+{
+ //Tak: Ok, good, I can see the data you are accessing now, keep navigating.  
+ aiSpeakWait( ent, "lipsync_vo_tak_gooddataacc" );
+}
+
+
+void VO_tak_swtmoth( entity ent )
+{
+ //Tak: Sweet Mother!  What did you do Dekard?  
+ aiSpeakWait( ent, "lipsync_vo_tak_swtmoth" );
+}
+
+
+void VO_dek_yrguess( entity ent )
+{
+ //Dekard: Your guess is as good as mine.  
+ aiSpeakWait( ent, "lipsync_vo_dek_yrguess" );
+}
+
+
+void VO_tak_keepopensome( entity ent )
+{
+ //Tak: Keep it up.. You've opened up something..  I'm getting a data stream that's like nothing I've ever seen before.  This is amazing!  
+ aiSpeakWait( ent, "lipsync_vo_tak_keepopensome" );
+}
+
+
+void VO_tak_almostdown( entity ent )
+{
+ //Tak: I'm almost done with this download, oh shi(static)..ekard!  Something huge is coming your way!  
+ aiSpeakWait( ent, "lipsync_vo_tak_almostdown" );
+}
+
+
+void VO_dek_rptlattrans( entity ent )
+{
+ //Dekard: Repeat last transmission.  Tak?  Tak?  
+ aiSpeakWait( ent, "lipsync_vo_dek_rptlattrans" );
+}
+
+
+void VO_tak_thatdatserious( entity ent )
+{
+ //Tak: That data has set off a serious alarm (static)..coming your way!  Move out!  Move ou(static)  
+ aiSpeakWait( ent, "lipsync_vo_tak_thatdatserious" );
+}
+
+
+
+void VO_tak_holysht( entity ent )
+{
+ //Tak: Holy shit!  Look at the size of that thing?!  
+ aiSpeakWait( ent, "lipsync_vo_tak_holysht" );
+}
+
+
+void VO_darn_itnotthatbg( entity ent )
+{
+ //Darnell: It's not that big, the REAL big ones take more than just Dekard here to take down!  
+ aiSpeakWait( ent, "lipsync_vo_darn_itnotthatbg" );
+}
+
+
+void VO_marks_okgents( entity ent )
+{
+ //Markswell: Ok gentlemen, lets get moving to the LZ. Atlas and Hades squads are about to nuke this facility off the map, we don't want to be around for it.  
+ aiSpeakWait( ent, "lipsync_vo_marks_okgents" );
+}
+
+
+void VO_vansen_gunfalc1( entity ent )
+{
+ //Vansen: This is gunship Falcon 1 inbound, you marines need a ride?  
+ aiSpeakWait( ent, "lipsync_vo_vansen_gunfalc1" );
+}
+
+
+void VO_darn_alrightvans( entity ent )
+{
+ //Darnell: Allright!  Vansen's back, this time with some heavier air support firepower!  
+ aiSpeakWait( ent, "lipsync_vo_darn_alrightvans" );
+}
+
+
+void VO_marks_rogfalc1( entity ent )
+{
+ //Markswell: Roger Falcon 1, we are inbound to LZ  
+ aiSpeakWait( ent, "lipsync_vo_marks_rogfalc1" );
+}
+
+
+void VO_marks_didyouget( entity ent )
+{
+ //Markswell: Did you get the data Tak?  
+ aiSpeakWait( ent, "lipsync_vo_marks_didyouget" );
+}
+
+
+void VO_tak_yessfalc( entity ent )
+{
+ //Tak: Yes sir, once we're on the Falcon, I'll start pushing this data to the MCC. I need to spend a little time with the data, but this stuff is gold.  
+ aiSpeakWait( ent, "lipsync_vo_tak_yessfalc" );
+}
+
+
+void VO_marks_everybodyonb( entity ent )
+{
+ //Markswell: Everybody onboard!  
+ aiSpeakWait( ent, "lipsync_vo_marks_everybodyonb" );
+}
+

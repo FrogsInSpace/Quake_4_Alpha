@@ -1,0 +1,1769 @@
+
+
+
+sound vo_tak_dekletmstrg
+{
+ description "<Tak:> Dekard, let me see that Strogg core cannon, I think I can make a quick improvement"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_dekletmstrg.wav
+}
+
+
+sound vo_tak_therethatscp
+{
+ description "<Tak:> There, that scope should help with long range targets."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_therethatscp.wav
+}
+
+
+sound vo_tak_rdywhnstrs
+{
+ description "<Tak +use:> Ready when you are Sarge, lets find Strauss."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_rdywhnstrs.wav
+}
+
+
+sound vo_tak_thatdtaquite
+{
+ description "<Tak +use:> That data we found is quite perplexing, just before we landed I found some odd references to something called the Makron Guardian."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_thatdtaquite.wav
+}
+
+
+sound vo_tak_oncewegets
+{
+ description "<Tak +use:> Once we get Strauss, he'll be able to unlock the that data."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_oncewegets.wav
+}
+
+
+sound vo_darn_ishldbrt
+{
+ description "<Darnell +use:> I should've brought my shotgun for this shit."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_ishldbrt.wav
+}
+
+
+sound vo_darn_justlikeold
+{
+ description "<Darnell +use:> Just like the good old days eh Deckard?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_justlikeold.wav
+}
+
+
+sound vo_darn_letsgetmov
+{
+ description "<Darnell +use:> Let's get movin!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_letsgetmov.wav
+}
+
+
+sound vo_darn_shittrig
+{
+ description "<Darnell:> Shit, they triggered the alarm."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_shittrig.wav
+}
+
+
+sound vo_tak_weneedsecproc
+{
+ description "<Tak:> We need to get into that security room to proceed."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_weneedsecproc.wav
+}
+
+
+sound vo_tak_accordacc
+{
+ description "<Tak:> According to this, there should be an access hatch around here somewhere."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_accordacc.wav
+}
+
+
+sound vo_darn_ifoundh
+{
+ description "<Darnell:> I found the hatch."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_ifoundh.wav
+}
+
+
+sound vo_darn_overhere3
+{
+ description "<Darnell:> Over here."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_overhere3.wav
+}
+
+
+sound vo_darn_thistunn
+{
+ description "<Darnell:> This tunnel is some kind of heat exchanger, your cold cannon should allow you to bypass the high temperature exhaust."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_thistunn.wav
+}
+
+
+sound vo_tak_thatalarmb
+{
+ description "<Tak:> That alarm is bound to bring more attention to our position."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_thatalarmb.wav
+}
+
+
+sound vo_tak_wegottogetg
+{
+ description "<Tak:> We've got to get going, if we lose Strauss' medchip signal, we'll never find him."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_wegottogetg.wav
+}
+
+
+sound vo_tak_thatsitdek
+{
+ description "<Tak:> That's it Dekard, the alarms are off and the security doors unlocked."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_thatsitdek.wav
+}
+
+
+sound vo_tak_damncutoff
+{
+ description "<Tak:> Damn it, they cut us off.  Only way through is to find the override switch in the substructure below us."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_damncutoff.wav
+}
+
+
+sound vo_darn_imonit
+{
+ description "<Darnell:> I’m on it.  Cover me."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_imonit.wav
+}
+
+
+sound vo_tak_rogethat3
+{
+ description "<Tak:> Roger that."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_rogethat3.wav
+}
+
+
+sound vo_darn_iseeit
+{
+ description "<Darnell:> I see it."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_iseeit.wav
+}
+
+
+sound vo_darn_gettclose
+{
+ description "<Darnell:> Getting close."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_gettclose.wav
+}
+
+
+sound vo_darn_almostthr
+{
+ description "<Darnell:> Almost there."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_almostthr.wav
+}
+
+
+sound vo_darn_gotitkeep
+{
+ description "<Darnell:> Got it.  Keep ’em off me ‘til I get back."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_gotitkeep.wav
+}
+
+
+sound vo_tak_bridgereeng
+{
+ description "<Tak:> The Bridge is re-engaging.  Good work Darnell"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_bridgereeng.wav
+}
+
+
+sound vo_darn_lookcondits
+{
+ description "<Darnell:> Look at these conditions."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_lookcondits.wav
+}
+
+
+sound vo_tak_extractcare
+{
+ description "<Tak:> The extraction teams will take care of these guys"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_extractcare.wav
+}
+
+
+sound vo_darn_anystrauss
+{
+ description "<Darnell:> Are any of these Strauss?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_anystrauss.wav
+}
+
+
+sound vo_tak_neg4
+{
+ description "<Tak:> Negative"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_neg4.wav
+}
+
+
+sound vo_fox1_thisisrose
+{
+ description "<Fox Marine 1:> This is Lieutenant Rose from Fox squad to any marines with a tech in the Prison facility, requesting immediate assistance."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox1_thisisrose.wav
+}
+
+
+sound vo_tak_foxsq
+{
+ description "<Tak:> Fox squad is close, we've got no choice on this one."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_foxsq.wav
+}
+
+
+sound vo_darn_falcsqenroute
+{
+ description "<Darnell:> This is Falcon squad, en route to your location."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_falcsqenroute.wav
+}
+
+
+sound vo_fox1_rogfalcsplit
+{
+ description "<Fox Marine 1:> Roger Falcon, we are split up and both groups need immediate assistance"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox1_rogfalcsplit.wav
+}
+
+
+sound vo_fox2_youshutdwn
+{
+ description "<Fox Marine 2:> You guys from Falcon squad, great, we need your tech to shut down these processing conveyers so we can get these marines out."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox2_youshutdwn.wav
+}
+
+
+sound vo_tak_letmeseewh
+{
+ description "<Tak:> Let me see what I can do."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_letmeseewh.wav
+}
+
+
+sound vo_fox3_heysarge
+{
+ description "<Fox Marine 3:> Hey sergeant, we came across this Strogg incendiary weapon, your team is going deeper than we are, you can make better use of it than we can.  Here."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox3_heysarge.wav
+}
+
+
+sound vo_fox2_meakimpap
+{
+ description "<Fox Marine 2 +use:> I'm Meakim and that's Pappas, glad you could join us here is this sweet little resort."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox2_meakimpap.wav
+}
+
+
+sound vo_fox2_welosttech
+{
+ description "<Fox Marine 2 +use:> We lost our tech about 3 hours ago."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox2_welosttech.wav
+}
+
+
+sound vo_fox2_roughrider
+{
+ description "<Fox Marine 2 +use:> It's been a rough ride in this place without somebody who can navigate these Strogg interfaces."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox2_roughrider.wav
+}
+
+
+sound vo_fox3_we3squad
+{
+ description "<Fox Marine 3 +use:> We are one of 3 squads tasked with getting marines out of these Strogg prisons."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox3_we3squad.wav
+}
+
+
+sound vo_fox_prismed
+{
+ description "<Fox Marine 3 +use:> These prison facilities are right next to the Strogg medlabs."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox_prismed.wav
+}
+
+
+sound vo_fox3_makesnerv
+{
+ description "<Fox Marine 3 +use:> Makes me nervous as hell being this close to the medlabs, knowing what they do to people there."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox3_makesnerv.wav
+}
+
+
+sound vo_tak_okthatconv
+{
+ description "<Tak:> Ok, that's it.  The conveyers are disabled."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_okthatconv.wav
+}
+
+
+sound vo_fox2_excellent
+{
+ description "<Fox Marine 2:> Excellent."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox2_excellent.wav
+}
+
+
+sound vo_fox2_ltrosedone
+{
+ description "<Fox Marine 2:> Lieutenant Rose, we are done with Falcon here, what are your orders"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox2_ltrosedone.wav
+}
+
+
+sound vo_fox1_pointdir
+{
+ description "<Fox Marine 1:> Point them in our direction, we have an entire cell block to recover."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox1_pointdir.wav
+}
+
+
+sound vo_fox2_okviacrawl
+{
+ description "<Fox Marine 2:> Ok Falcon, we made it in here via ceiling crawlspaces, but you should be able to meet up with the rest of Fox through that door."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox2_okviacrawl.wav
+}
+
+
+sound vo_fox3_thanksfalc
+{
+ description "<Fox Marine 3:> Thanks again Falcon, once you're through, we're locking ourselves in."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox3_thanksfalc.wav
+}
+
+
+sound vo_fox1_whereareyou
+{
+ description "<Fox Marine 1:> Where are you Falcon squad, we need you here ASAP."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox1_whereareyou.wav
+}
+
+
+sound vo_fox1_falcdouble
+{
+ description "<Fox Marine 1:> Falcon squad, double time it!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox1_falcdouble.wav
+}
+
+
+sound vo_tak_weneedtoget
+{
+ description "<Tak:> We need to get through this door"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_weneedtoget.wav
+}
+
+
+sound vo_tak_coverhack
+{
+ description "<Tak:> Cover me, I'll hack this door open"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_coverhack.wav
+}
+
+
+sound vo_darn_dekifyouman
+{
+ description "<Darnell:> Dekard, If you man that mounted turret, I'll cover Tak up close."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_dekifyouman.wav
+}
+
+
+sound vo_darn_incom3
+{
+ description "<Darnell:> Incoming!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_incom3.wav
+}
+
+
+sound vo_darn_aboveus
+{
+ description "<Darnell:> Above us!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_aboveus.wav
+}
+
+
+sound vo_tak_isobridge
+{
+ description "<Tak:> I’ve isolated the primary circuit bridge.  Won’t take long now."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_isobridge.wav
+}
+
+
+sound vo_tak_firstbr
+{
+ description "<Tak:> First relay is active.  Three more."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_firstbr.wav
+}
+
+
+sound vo_tak_secondact
+{
+ description "<Tak:> Second relay is active."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_secondact.wav
+}
+
+
+sound vo_tak_therethird
+{
+ description "<Tak:> There’s the third, one more."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_therethird.wav
+}
+
+
+sound vo_tak_thatwein
+{
+ description "<Tak:> That’s it.  We’re in."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_thatwein.wav
+}
+
+
+sound vo_fox4_heywithlt
+{
+ description "<Fox Marine 4:> Hey, I'm with Lieutenant Rose, We need your tech to disable the cell block, while the rest of us provide cover for the extraction team."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox4_heywithlt.wav
+}
+
+
+sound vo_tak_imonit3
+{
+ description "<Tak:> I'm on it"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_imonit3.wav
+}
+
+
+sound vo_fox4_falchere
+{
+ description "<Fox Marine 4:> Falcon is here, their tech is starting on the cell blocks Lieutenant."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox4_falchere.wav
+}
+
+
+sound vo_fox1_copymovein
+{
+ description "<Fox Marine 1:> Copy that, we are moving in."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox1_copymovein.wav
+}
+
+
+sound vo_tak_lookslike
+{
+ description "<Tak:> Looks like I'm going to have to do this one cell at a time."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_lookslike.wav
+}
+
+
+sound vo_tak_opencells
+{
+ description "<Tak:> Opening cells"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_opencells.wav
+}
+
+
+sound vo_tak_allicando
+{
+ description "<Tak:> That's all I can do from here"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_allicando.wav
+}
+
+
+sound vo_fox4_openfire
+{
+ description "<Fox Marine 4:> Open fire, protect the extraction team!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox4_openfire.wav
+}
+
+
+sound vo_fox4_morestrogg
+{
+ description "<Fox Marine 4:> More Strogg, take em down!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox4_morestrogg.wav
+}
+
+
+sound vo_fox1_keepsquiboffa
+{
+ description "<Fox Marine 1:> Keep these squibs offa' us!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox1_keepsquiboffa.wav
+}
+
+
+sound vo_fox1_damcover
+{
+ description "<Fox Marine 1:> Damnit, we need cover!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox1_damcover.wav
+}
+
+
+sound vo_fox1_extractcomp
+{
+ description "<Fox Marine 1:> Extraction complete"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox1_extractcomp.wav
+}
+
+
+sound vo_fox1_thanksfalc
+{
+ description "<Fox Marine 1:> Thanks Falcon, we couldn't have done this without you, now get back to your objective"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox1_thanksfalc.wav
+}
+
+
+sound vo_insane1_mumble
+{
+ description "<Insane Marine 1:> (Incomprehensible mumbling)"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/insane1_mumble.wav
+}
+
+
+sound vo_tak_soldsold
+{
+ description "<Tak:> Soldier, SOLDIER!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_soldsold.wav
+}
+
+
+sound vo_tak_outtolunch
+{
+ description "<Tak:> This guy is out to lunch."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_outtolunch.wav
+}
+
+
+sound vo_darn_foxsquad
+{
+ description "<Darnell:> Fox squad, we've got a live marine at our location in no condition to join us"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_foxsquad.wav
+}
+
+
+sound vo_fox1_roggetout
+{
+ description "<Fox Marine 1:> roger that falcon, We'll get him out."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox1_roggetout.wav
+}
+
+
+sound vo_tak_shit3
+{
+ description "<Tak:> Shit!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_shit3.wav
+}
+
+
+sound vo_darn_whatgoon
+{
+ description "<Darnell:> What’s going on?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_whatgoon.wav
+}
+
+
+sound vo_tak_strssmedchip
+{
+ description "<Tak:> Straus’s med-chip signal.  It’s gone dead.  I’ve lost track of him."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_strssmedchip.wav
+}
+
+
+sound vo_darn_wednttime
+{
+ description "<Darnell:> We don’t have a lot of time, Tak.  Find him."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_wednttime.wav
+}
+
+
+sound vo_tak_wehavefindcent
+{
+ description "<Tak:> We have to find the central control room."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_wehavefindcent.wav
+}
+
+
+sound vo_tak_icanfindstrss
+{
+ description "<Tak:> I can find Strauss from there"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_icanfindstrss.wav
+}
+
+
+sound vo_darn_lookslikeweatt
+{
+ description "<Darnell:> Looks like we've attracted some attention"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_lookslikeweatt.wav
+}
+
+
+sound vo_tak_centrctrl
+{
+ description "<Tak:> Central control room should be just ahead"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_centrctrl.wav
+}
+
+
+sound vo_tak_thatmain
+{
+ description "<Tak:> That’s the mainframe."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_thatmain.wav
+}
+
+
+sound vo_darn_wherestrss
+{
+ description "<Darnell:> Where’s Strauss?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_wherestrss.wav
+}
+
+
+sound vo_tak_hangonlord
+{
+ description "<Tak:> Hang on.  I’m still – Good Lord.  What are they doing to those Marines."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_hangonlord.wav
+}
+
+
+sound vo_darn_whattalk
+{
+ description "<Darnell:> What are you talking about?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_whattalk.wav
+}
+
+
+sound vo_tak_adpsero
+{
+ description "<Tak:> Adrenaline, ADP, Serotonin… We’re nothing but fluid factories to them."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_adpsero.wav
+}
+
+
+sound vo_darn_takfndstrs
+{
+ description "<Darnell:> Tak, find Strauss."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_takfndstrs.wav
+}
+
+
+sound vo_tak_okgetcls
+{
+ description "<Tak:> Ok...I'm getting close..."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_okgetcls.wav
+}
+
+
+sound vo_tak_ithinkthis
+{
+ description "<Tak:> I think this is it."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_ithinkthis.wav
+}
+
+
+sound vo_tak_ohshit
+{
+ description "<Tak:> Oh shit."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_ohshit.wav
+}
+
+
+sound vo_darn_whathapp
+{
+ description "<Darnell:> What happened?  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_whathapp.wav
+}
+
+
+sound vo_tak_itrigalarm
+{
+ description "<Tak:> I triggered an alarm, we are about to have a LOT of company."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_itrigalarm.wav
+}
+
+
+sound vo_darn_secdoors
+{
+ description "<Darnell:> Secure these doors."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_secdoors.wav
+}
+
+
+sound vo_tak_onit
+{
+ description "<Tak:> On it."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_onit.wav
+}
+
+
+sound vo_marks_dekstatus
+{
+ description "<Markswell:> Dekard, Darnell what's your status, we lost radio contact for a while"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/marks_dekstatus.wav
+}
+
+
+sound vo_darn_weholed
+{
+ description "<Darnell:> We’re holed up in a control room that can track Strauss, but it sounds like we’re about to have some serious company."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_weholed.wav
+}
+
+
+sound vo_marks_wealmost
+{
+ description "<Markswell:> Roger that.  Hold tight, we’re almost there."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/marks_wealmost.wav
+}
+
+
+sound vo_tak_theyrehere
+{
+ description "<Tak:> They’re here!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_theyrehere.wav
+}
+
+
+sound vo_darn_openfire
+{
+ description "<Darnell:> Open fire!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_openfire.wav
+}
+
+
+sound vo_tak_theretoomany
+{
+ description "<Tak:> There are too many of em'!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_theretoomany.wav
+}
+
+
+sound vo_darn_navamarkwhr
+{
+ description "<Darnell:> Navajas, Markswell, where are you?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_navamarkwhr.wav
+}
+
+
+sound vo_nava_wearecls
+{
+ description "<Navajas:> We are close my friend, hold tight."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/nava_wearecls.wav
+}
+
+
+sound vo_nava_planting
+{
+ description "<Navajas:> I'm planting charges, keep clear of the far door."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/nava_planting.wav
+}
+
+
+sound vo_nava_detonating
+{
+ description "<Navajas:> Detonating!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/nava_detonating.wav
+}
+
+
+sound vo_marks_mitchwipe
+{
+ description "<Markswell:> Mitchell, Navajas, wipe out those squibs and secure those doors!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/marks_mitchwipe.wav
+}
+
+
+sound vo_nava_yessir2
+{
+ description "<Navajas:> Yes sir."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/nava_yessir2.wav
+}
+
+
+sound vo_mitch_onit
+{
+ description "<Mitchell:> On it."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/mitch_onit.wav
+}
+
+
+sound vo_nava_doorsec
+{
+ description "<Navajas:> Door secure."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/nava_doorsec.wav
+}
+
+
+sound vo_mitch_doorsec
+{
+ description "<Mitchell:> Door secure."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/mitch_doorsec.wav
+}
+
+
+sound vo_marks_takgetcompu
+{
+ description "<Markswell:> Tak, get back on that computer, find Strauss!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/marks_takgetcompu.wav
+}
+
+
+sound vo_tak_gotmove
+{
+ description "<Tak:> I got him.  They’re moving him, but he's close!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_gotmove.wav
+}
+
+
+sound vo_darn_howlongwe
+{
+ description "<Darnell:> How long do we have?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_howlongwe.wav
+}
+
+
+sound vo_tak_notlong
+{
+ description "<Tak:> Not long."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_notlong.wav
+}
+
+
+sound vo_darn_wegotincom
+{
+ description "<Darnell:> We've got incoming!  The Strogg are trying get back in here!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_wegotincom.wav
+}
+
+
+sound vo_mitch_letshell
+{
+ description "<Mitchell:> Let's get the hell outta here then, get to Strauss..."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/mitch_letshell.wav
+}
+
+
+sound vo_tak_thistrack
+{
+ description "<Tak:> This is the only place that we can track Strauss from, we need to stay here."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_thistrack.wav
+}
+
+
+sound vo_marks_dekholdpos
+{
+ description "<Markswell:> Dekard.  We need to hold this position, you get to Strauss."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/marks_dekholdpos.wav
+}
+
+
+sound vo_marks_takeupdef
+{
+ description "<Markswell:> Darnell, Navajas, Mitchell, take up defensive positions"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/marks_takeupdef.wav
+}
+
+
+sound vo_marks_mitchturr
+{
+ description "<Markswell:> Mitchell get on that Turret"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/marks_mitchturr.wav
+}
+
+
+sound vo_tak_guidede
+{
+ description "<Tak:> I'll guide you to Strauss Dekard.  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_guidede.wav
+}
+
+
+sound vo_marks_dekgetgoing
+{
+ description "<Markswell:> Dekard, get going!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/marks_dekgetgoing.wav
+}
+
+
+sound vo_marks_getnow
+{
+ description "<Markswell +use:> Get moving Dekard, now!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/marks_getnow.wav
+}
+
+
+sound vo_marks_areyouhard
+{
+ description "<Markswell +use:> Are you hard of hearing marine, get to Strauss!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/marks_areyouhard.wav
+}
+
+
+sound vo_marks_holdposition
+{
+ description "<Markswell +use:> Dekard, we can't hold this position forever, go!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/marks_holdposition.wav
+}
+
+
+sound vo_tak_keepmovdek
+{
+ description "<Tak:> Keep moving Dekard, you should come across Strauss soon!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_keepmovdek.wav
+}
+
+
+sound vo_tak_directhead
+{
+ description "<Tak:> Directly ahead Dekard, Strauss is right in front of you."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_directhead.wav
+}
+
+
+
+sound vo_dek_taktube
+{
+ description "<Dekard:> Tak, where’s Strauss' tube going?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/dek_taktube.wav
+}
+
+
+sound vo_strauss_muff
+{
+ description "<Strauss:> (Muffled dialog)"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/strauss_muff.wav
+}
+
+
+sound vo_tak_hangmom
+{
+ description "<Tak:> Hang on a moment...  It’s a transport system, looks like it’s taking him down into… Damn.  Bio-processing"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_hangmom.wav
+}
+
+
+sound vo_dek_rogthat
+{
+ description "<Dekard:> Roger that."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/dek_rogthat.wav
+}
+
+
+
+sound vo_darn_foxmeet
+{
+ description "<Darnell:> Dekard, Tak needs to stay at the control terminal if he’s going to keep tracking Strauss.  Navajas and I will hold this position with him.  I’ve sent Mitchell and a member of Fox squad to meet up with you."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/darn_foxmeet.wav
+}
+
+
+sound vo_tak_actlift
+{
+ description "<Tak:> I’ve activated the lift, Dekard.  It’ll take you straight to the bio-processing level.  You better hurry though, doesn’t look like Strauss has much time left."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_actlift.wav
+}
+
+
+sound vo_mitch_theresome
+{
+ description "<Mitchell:> There's something coming up that lift"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/mitch_theresome.wav
+}
+
+
+sound vo_fox5_takecover
+{
+ description "<Fox Marine 5:> Take cover!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/fox5_takecover.wav
+}
+
+sound vo_tak_pris_door1
+{
+ description "<Tak:> Let me get this door open."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_pris_door1.wav
+}
+
+
+sound vo_tak_pris_door2
+{
+ description "<Tak:> Opening this door"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_pris_door2.wav
+}
+
+
+sound vo_tak_pris_door3
+{
+ description "<Tak:> Accessing the door panel"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_pris_door3.wav
+}
+
+
+sound vo_tak_pris_door4
+{
+ description "<Tak:> One second for this door"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_pris_door4.wav
+}
+
+
+sound vo_tak_pris_door5
+{
+ description "<Tak:> Opening the door"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_pris_door5.wav
+}
+
+
+sound vo_tak_pris_door6
+{
+ description "<Tak:> I'll open this door"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/tak_pris_door6.wav
+}
+
+
+sound vo_marks_pris_lgun
+{
+ description "<Markswell:> Dekard, before you go, we found this Strogg lightning gun, you might need it"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/marks_pris_lgun.wav
+}
+
+
+sound vo_nava_pris_lgun
+{
+ description "<NAvajas:> Dekard, before you go, we found this Strogg lightning gun, you might need it"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M04_Prison/nava_pris_lgun.wav
+}
+
+
+

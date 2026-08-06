@@ -1,0 +1,9 @@
+// q4x npcs  created by MarkM 11/12/05
+
+
+
+skin skins/models/characters/marine_heads/navajashead
+{
+	"models/characters/marine_heads/cortez2"		"models/characters/marine_heads/navajas"
+	
+}

@@ -1,0 +1,77 @@
+textures/q4x_gunship/rivetmetal
+{
+	qer_editorimage 			textures/q4x_gunship/rivetmetal.tga
+
+	diffusemap	textures/q4x_gunship/rivetmetal_d.tga
+	bumpmap		textures/q4x_gunship/rivetmetal_local.tga
+	specularmap	textures/q4x_gunship/rivetmetal_s.tga
+
+	
+}
+
+textures/q4x_gunship/blasted_edge_d
+{
+	qer_editorimage 			textures/q4x_gunship/blasted_edge_d.tga
+
+	{
+		blend diffusemap
+		map textures/q4x_gunship/blasted_edge_d.tga
+		alphatest 0.5
+	}
+	bumpmap		textures/q4x_gunship/blasted_edge_local.tga
+	specularmap	textures/q4x_gunship/blasted_edge_s.tga
+}
+
+textures/q4x_gunship/flatmetal
+{
+	qer_editorimage 			textures/q4x_gunship/flatmetal_d.tga
+
+	diffusemap	textures/q4x_gunship/flatmetal_d.tga
+	bumpmap		textures/q4x_gunship/flatmetal_local.tga
+	specularmap	textures/q4x_gunship/flatmetal_s.tga
+}
+	
+models/mapobjects/q4x/air_assault_gunship/gunship_top
+{
+	noselfshadow
+	noShadows
+
+	qer_editorimage 			models/mapobjects/q4x/air_assault_gunship/gunship_top_d.tga
+
+	diffusemap	models/mapobjects/q4x/air_assault_gunship/gunship_top_d.tga
+	bumpmap		models/mapobjects/q4x/air_assault_gunship/gunship_top_local.tga
+	specularmap	models/mapobjects/q4x/air_assault_gunship/gunship_top_s.tga
+}
+
+models/mapobjects/q4x/air_assault_gunship/gunship_bottom
+{
+	noselfshadow
+
+	qer_editorimage 			models/mapobjects/q4x/air_assault_gunship/gunship_bottom_d.tga
+
+	diffusemap	models/mapobjects/q4x/air_assault_gunship/gunship_bottom_d.tga
+	bumpmap		models/mapobjects/q4x/air_assault_gunship/gunship_bottom_local.tga
+	specularmap	models/mapobjects/q4x/air_assault_gunship/gunship_bottom_s.tga
+}
+
+models/mapobjects/q4x/air_assault_gunship/gunthingie
+{
+	noselfshadow
+	noShadows
+
+	qer_editorimage 			models/mapobjects/q4x/air_assault_gunship/gunthingie_d.tga
+
+	diffusemap	models/mapobjects/q4x/air_assault_gunship/gunthingie_d.tga
+	bumpmap		models/mapobjects/q4x/air_assault_gunship/gunthingie_local.tga
+	specularmap	models/mapobjects/q4x/air_assault_gunship/gunthingie_s.tga
+{
+	    blend GL_DST_ALPHA, gl_one
+	    maskalpha
+       	cubeMap		gfx/env/marhelmet
+        texgen		reflect
+		red   Parm0
+		green Parm1
+		blue  Parm2
+	}
+	
+	}

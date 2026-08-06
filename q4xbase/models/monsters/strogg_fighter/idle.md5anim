@@ -1,0 +1,34 @@
+MD5Version 10
+commandline "anim work/models/vehicles/sm_flyer/animation/sm_flyer_idle.ma -dest models/monsters/strogg_fighter/idle.md5anim -game Quake4 -prefix SMFL_ -rotate 90 -scale .3937 -keep exhaust -keep muzzle_flash_l -keep muzzle_flash_r"
+
+numFrames 2
+numJoints 5
+frameRate 24
+numAnimatedComponents 0
+
+hierarchy {
+	"origin"	-1 0 0	//
+	"body"	0 0 0	// origin
+	"exhaust"	1 0 0	// body
+	"muzzle_flash_l"	1 0 0	// body
+	"muzzle_flash_r"	1 0 0	// body
+}
+
+bounds {
+	( -65.0199584961 -106.2687911987 -36.531288147 ) ( 96.4664840698 106.2687911987 15.8114089966 )
+	( -65.0199584961 -106.2687911987 -36.531288147 ) ( 96.4664840698 106.2687911987 15.8114089966 )
+}
+
+baseframe {
+	( 0 0 0 ) ( -0.5 -0.5 -0.5 )
+	( 0 0 0 ) ( 0 0 0 )
+	( -0 5.0538363457 -24.2752437592 ) ( -0.5 -0.5 0.5 )
+	( 9.2999811172 4.4344654083 26.6055488586 ) ( 0.4995214045 0.5004781485 0.5004781485 )
+	( -9.2958965302 4.4399909973 26.605506897 ) ( 0.4995214045 0.5004781485 0.5004781485 )
+}
+
+frame 0 {
+}
+
+frame 1 {
+}

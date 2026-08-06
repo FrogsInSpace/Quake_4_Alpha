@@ -1,0 +1,164 @@
+textures/q4x_common/solid_black
+{
+	qer_editorimage 	textures/q4x_common/solid_black.tga
+	diffusemap		textures/q4x_common/solid_black.tga	
+}
+
+common/damage_boost_overlay
+{
+	noselfShadow
+	unsmoothedTangents
+	translucent
+	
+	deform expand 0.3
+	
+	{
+		blend		gl_dst_color, gl_one
+		map			gfx/effects/q4x/damage_boost01.tga
+		//translate	time * 0.045 , time * 0.09
+		translate	time * 0.12 , time * 0.25
+	}
+//	{
+//		blend		gl_dst_color, gl_one
+//		map			gfx/effects/q4x/damage_boost01.tga
+//		translate	time * 0.032 , time * -0.07
+//	}
+}
+
+common/defense_boost_overlay
+{
+	noselfShadow
+	unsmoothedTangents
+	translucent
+	
+	deform expand .2 // ember1[time * 0.2] * 10
+	
+	{
+		blend		gl_dst_color, gl_one
+		map			gfx/effects/q4x/damage_boost01.tga
+		translate	time * 0.045 , time * 0.09
+	}
+	{
+		blend		gl_dst_color, gl_one
+		map			gfx/effects/q4x/damage_boost01.tga
+		translate	time * 0.032 , time * -0.07
+	}
+}
+
+
+common/freeze_death_overlay
+{
+	noselfShadow
+	unsmoothedTangents
+	translucent
+
+	
+	{
+		blend		blend
+		map			gfx/effects/q4x/ice/freeze01.tga
+	}
+	{
+		blend		blend
+		map			gfx/effects/q4x/ice/freeze01.tga
+		scale 3, 3
+	}
+//	{
+//		blend		gl_one, gl_one
+//		map			gfx/effects/q4x/ice/freeze01.tga
+//		rgb 0.1
+//	}
+	{
+		blend		gl_dst_color, gl_one
+		map			gfx/effects/q4x/ice/freeze01.tga
+	}
+}
+
+
+common/freeze_overlay1
+{
+	noselfShadow
+	unsmoothedTangents
+	translucent
+
+	{
+		blend		blend
+		map			gfx/effects/q4x/ice/freeze01.tga
+		alpha 0.3
+	}
+	{
+		blend		gl_dst_color, gl_one
+		map			gfx/effects/q4x/ice/freeze01.tga
+		rgb 0.1
+	}
+}
+
+
+common/freeze_overlay2
+{
+	noselfShadow
+	unsmoothedTangents
+	translucent
+	
+	{
+		blend		blend
+		map			gfx/effects/q4x/ice/freeze01.tga
+		alpha 0.4
+	}
+	{
+		blend		gl_one, gl_one
+		map			gfx/effects/q4x/ice/freeze01.tga
+		rgb 0.15
+	}
+}
+
+
+common/freeze_overlay3
+{
+	noselfShadow
+	unsmoothedTangents
+	translucent
+	
+	{
+		blend		blend
+		map			gfx/effects/q4x/ice/freeze01.tga
+		alpha 0.7
+	}
+	{
+		blend		gl_one, gl_one
+		map			gfx/effects/q4x/ice/freeze01.tga
+		rgb 0.2
+	}
+}
+
+common/freezegib/ice01
+{
+	noselfShadow
+	{
+		blend		diffusemap
+		map			gfx/effects/q4x/ice/freeze02.tga
+		red 1.1
+		green 1.1
+		blue 1.0
+		scale 7, 7
+	}
+	{
+		blend		gl_dst_color, gl_one
+		map			gfx/effects/q4x/ice/freeze01.tga
+		scale 2, 2
+		rgb 0.4
+	}
+
+inlineGuide corpseBurnEffect(models/monsters/burnout.tga)
+}
+
+common/freezegib/ice02
+{
+	translucent
+	twoSided
+	noShadows
+	{
+		blend blend
+		map			gfx/effects/q4x/ice/freeze03.tga
+		vertexColor
+	}
+}

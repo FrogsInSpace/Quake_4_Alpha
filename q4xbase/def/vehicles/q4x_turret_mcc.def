@@ -1,0 +1,196 @@
+//------------------------------------------------------------------------------
+//							Vehicle Defintion
+//------------------------------------------------------------------------------
+
+entityDef vehicle_q4x_mcc_track_turret
+{
+	"editor_color"				"1 .5 0"
+	"editor_mins"				"-24 -24 0"
+	"editor_maxs"				"24 24 80"
+	"editor_rotatable"			"1"
+	"editor_usage"				"Mounted Turret for MCC perimeter defense station"
+	
+	"spawnclass"				"rvVehicleStatic"
+
+	"gui_hud"					"guis/vehicles/hud.gui" //"guis/vehicles/turret_hud.gui"
+	//"gui_hud"					"guis/hud.gui"  
+	"gui"						"guis/monitors/marine/mcc/q4x_ambient_mcc1.gui"
+	"gui2"						"guis/monitors/marine/mcc/q4x_ambient_mcc2.gui"
+	"gui3"						"guis/monitors/marine/mcc/q4x_ambient_mcc1.gui"
+	"model"						"vehicle_mcc_track_turret"
+	"mins"						"-24 -64 0"
+	"maxs"						"24 36 80"
+
+	"team"						"0"
+	
+	"def_position_driver"		"vehicle_mcc_track_turret_driver"
+	
+	"health"					"10"
+	"mass"						"100"	
+	
+	"notPushable"				"1"
+	
+	"shieldMins"				"-256 -256 -64"
+	"shieldMaxs"				"256 256 256"
+	"shieldSides"				"10"
+	"shieldHealth"				"5000"
+	"shieldRegenDelay"			"6"
+	"shieldRegenTime"			"3"	
+	
+	// wait 6 seconds after taking damage before starting recharge
+	"healthRegenDelay"			"6"
+	// regain 100 health per second
+	"healthRegenRate"			"100"
+	"fx_shield"					"effects/vehicles/walker/shield.fx"	
+}
+
+
+entityDef vehicle_mcc_track_turret_turret_yaw
+{
+	"spawnclass"				"rvVehicleTurret"
+
+	"joint"						"origin"
+	
+	"yaw"						"0"	
+	"minyaw"					"-55"
+	"maxyaw"					"55"
+	"yawinvert"					"0"
+	
+	"snd_move"					"vehicle_turret_move"
+	"moveMinVolume"				"-4"
+	"moveMaxVolume"				"8"
+	
+	"turnrate"					"180"
+}
+
+entityDef vehicle_mcc_track_turret_turret_pitch
+{
+	"spawnclass"				"rvVehicleTurret"
+
+	"joint"						"joint2"
+
+	"pitch"						"1"
+	"minpitch"					"-55"
+	"maxpitch"					"55"
+	"pitchinvert"				"1"
+
+	"snd_move"					"vehicle_turret_move"
+	"moveMinVolume"				"-4"
+	"moveMaxVolume"				"6"
+}
+
+//------------------------------------------------------------------------------
+//								Model Defintion
+//------------------------------------------------------------------------------
+
+model vehicle_mcc_track_turret
+{
+	mesh						"models/mapobjects/q4x/mcc_track_turret/mcc_track_turret.md5mesh"
+
+	channel legs				( *origin )
+
+	anim idle					"models/mapobjects/q4x/mcc_track_turret/idle.md5anim"
+}
+
+
+//------------------------------------------------------------------------------
+//								Positions
+//------------------------------------------------------------------------------
+
+entityDef vehicle_mcc_track_turret_driver
+{
+	"def_part_yaw"				"vehicle_mcc_track_turret_turret_yaw"
+	"def_part_pitch"			"vehicle_mcc_track_turret_turret_pitch"
+	
+	"def_part_weapon"			"vehicle_mcc_track_turret_weapon"
+	
+	"angles_offset"				"0 0 0"
+	
+	"eyeJoint"					"eye"
+//	"eyeoffset"					"-25 0 2"
+	
+	"driverJoint"				"grunt_anchor"
+	"driverVisible"				"1"
+}
+
+
+//------------------------------------------------------------------------------
+//									Parts
+//------------------------------------------------------------------------------
+
+entityDef vehicle_mcc_track_turret_weapon
+{
+	"spawnclass"				"rvVehicleWeapon"
+
+	"joint" 					"muzzle"
+	"joint2"					"muzzle01"
+	"launchFromJoint"			"1"
+		
+	"snd_fire"					"vehicle_walker_rockets"
+//	"snd_fire"					"vehicle_speeder_rockets" //"vehicle_walker_cannon"
+	
+	"recoilTime"				"145"
+	"recoilAngles"				"-1 0 0"
+
+	"firedelay"					".25"
+	"def_projectile"			"projectile_mcc_turret_rocket"
+	"spread"					"2"
+//	"convergeRate"				".5"
+//	"lockrange"					"10000"
+		
+//	"ammopercharge"				"3"
+//	"chargetime"				"1"
+
+	"mtr_flashShader"			"lights/muzzleflash"
+	"flashColor"				"1 0.8 0.4"
+	"flashRadius"				"350"
+	"flashPointLight"			"1"
+	"flashTime"					".1"
+	"flashOffset"				"30 0 0"
+
+	"fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
+	"mtr_crosshair"				"gfx/guis/crosshairs/crosshair_nailgun"
+}
+
+
+entityDef projectile_mcc_turret_rocket
+{
+	"spawnclass"				"idProjectile"
+	"mins"						"-2 -2 -2"
+	"maxs"						"2 2 2"
+	"cone"						"1"
+	"noshadows"					"1"
+
+	"model"						"models/weapons/nailgun/nail.ase"
+
+	"def_damage"				"damage_walker_rocket"
+	"def_splash_damage"			"damage_walker_rocket_splash"
+											
+	"decal_scale"				"8"											
+	
+	"speed"						"2000"																
+	"mass"						"6"
+	"gravity"					"0"
+	"fuse"						"6"
+								
+	"detonate_on_fuse"			"1"
+	"detonate_on_death"			"0"
+	"detonate_on_world"			"1"
+	"detonate_on_actor"			"1"
+								
+	"impact_gib"				"1"
+								
+	"decal_bounce"				""
+	"decal_size"				"8"
+
+	"fx_trail"					"effects/vehicles/walker/rocket/trail.fx"
+	"fx_fly"					"effects/vehicles/walker/rocket/fly.fx"
+	"fx_detonate"				"effects/vehicles/walker/rocket/detonate.fx"
+
+	"fx_impact"					"effects/vehicles/walker/rocket/impact.fx"
+	"fx_impact_rock"			"effects/vehicles/walker/rocket/impact_rock.fx"
+	"fx_impact_dirt"			"effects/vehicles/walker/rocket/impact_rock.fx"
+	"fx_impact_sand"			"effects/vehicles/walker/rocket/impact_rock.fx"
+	"fx_impact_gravel"			"effects/vehicles/walker/rocket/impact_rock.fx"
+	"fx_impact_concrete"		"effects/vehicles/walker/rocket/impact_rock.fx"
+}

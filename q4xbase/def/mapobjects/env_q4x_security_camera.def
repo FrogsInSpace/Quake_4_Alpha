@@ -1,0 +1,78 @@
+/*
+
+===============================================================================
+
+	Turret Model
+
+===============================================================================
+*/
+
+model model_env_q4x_prison_camera
+{
+	mesh												models/mapobjects/q4x/prison/prison_camera.md5mesh
+	channel legs										( origin )
+	channel torso										( *origin -origin )
+
+	anim idle											models/mapobjects/q4x/prison/idle.md5anim
+	{
+	//ai_no_turn
+	//ai_no_look	
+	}
+ 	
+	anim scan											models/mapobjects/q4x/prison/turn.md5anim
+		
+	{
+	ai_no_turn
+	ai_no_look	
+	}
+}
+
+/*
+
+
+===============================================================================
+
+	Turret Entity Definition
+
+===============================================================================
+*/
+
+entityDef env_q4x_prison_camera
+{
+	"inherit"											"actor_default"
+	"spawnclass"										"rvMonsterTurret"
+	
+	"scanAnim"											"scan"
+
+
+	// --------------------------------- Body ------------------------------------
+	"model"												"model_env_q4x_prison_camera"
+	"size"												"43 43 74"
+	"mass"												"100000"
+	"use_aas"											""
+	"static"											"1"
+	"remove_on_Death"									"1"
+	"health"											"100"
+//	"shieldHealth"										"100"
+
+	// --------------------------------- Look Joints -----------------------------
+	"look_min"											"-80 -180 0"
+	"look_max"											"80 180 0"
+	"joint_eyeOffset"									"lookat"
+	"look_joint lookat"								"0.8 0.8 0.8"
+	"head_focus_rate"								"0.5"
+	
+
+	// --------------------------------- Combat ----------------------------------
+	"fov"												"80"				// so it can still see you straight down or up
+	"turn_rate"											"30"				// how fast it turns (degrees per second?)
+	"painThreshold"										"0"
+	"bleed"												"0"
+	
+
+	// --------------------------------- Effects ---------------------------------
+	"fx_death"											"effects/monsters/turret/d_death.fx"
+	"fx_blaster_flash"									"effects/monsters/turret/d_flash.fx"
+//	"fx_shieldHit"										"effects/monsters/turret/d_shieldhit.fx"
+//	"fx_shieldBreak"									"effects/monsters/turret/d_shieldbreak.fx"
+}

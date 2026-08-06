@@ -1,0 +1,123 @@
+
+//------------------------------------------------------------------------------
+//							Vehicle Defintion
+//------------------------------------------------------------------------------
+
+entityDef vehicle_turret_rlauncher
+{
+	"editor_color"				"1 .5 0"
+	"editor_mins"				"-8 -8 -8"
+	"editor_maxs"				"8 8 8"
+	"editor_rotatable"			"1"
+	"editor_usage"				"Rocket Mounted Turret."
+
+	"spawnclass"				"rvVehicleStatic"
+
+	"gui_hud"				"guis/hud.gui"  //"guis/vehicles/turret_hud.gui"
+
+	"model"					"vehicle_acidgun"
+	"mins"					"-16 -16 0"
+	"maxs"					"16 16 32"
+
+	"def_position_driver"			"vehicle_rlauncher_driver"
+	
+	"health"				"0"
+	"mass"					"100"	
+	
+	"notPushable"				"1"
+}
+
+
+entityDef vehicle_rlauncher_turret_yaw
+{
+	"spawnclass"				"rvVehicleTurret"
+
+	"joint"					"origin"
+	
+	"yaw"					"0"	
+	"minyaw"					"-60"
+	"maxyaw"					"60"
+	"yawinvert"					"0"
+	
+	"snd_move"				"vehicle_turret_move"
+	"moveMinVolume"				"-4"
+	"moveMaxVolume"				"8"
+	
+	"turnrate"				"180"
+}
+
+entityDef vehicle_rlauncher_turret_pitch
+{
+	"spawnclass"				"rvVehicleTurret"
+
+	"joint"					"joint2"
+
+	"pitch"					"1"
+	"minpitch"				"-60"
+	"maxpitch"				"60"
+	"pitchinvert"				"1"
+
+	"snd_move"				"vehicle_turret_move"
+	"moveMinVolume"				"-4"
+	"moveMaxVolume"				"6"
+}
+
+//------------------------------------------------------------------------------
+//								Positions
+//------------------------------------------------------------------------------
+
+entityDef vehicle_rlauncher_driver
+{
+	"def_part_yaw"				"vehicle_rlauncher_turret_yaw"
+	"def_part_pitch"			"vehicle_rlauncher_turret_pitch"
+	
+	"def_part_weapon"			"vehicle_rlauncher_weapon"
+	
+	"angles_offset"				"0 -90 0"
+	
+	"eyeJoint"				"eye"
+//	"eyeoffset"				"-25 0 2"
+	
+	"driverJoint"				"grunt_anchor"
+	"driverVisible"				"1"
+}
+
+//------------------------------------------------------------------------------
+//									Parts
+//------------------------------------------------------------------------------
+
+entityDef vehicle_rlauncher_weapon
+{
+	"spawnclass"				"rvVehicleWeapon"
+
+	"joint"					"muzzle"
+	"launchFromJoint"			"1"
+		
+//	"def_projectile"			"projectile_rocket"
+//	"fx_muzzleflash"			"effects/vehicles/walker/machinegun/muzzleflash.fx"
+	"snd_fire"				"vehicle_walker_rockets" //"vehicle_walker_cannon" //"vehicle_walker_machinegun" // "weapon_machinegun_fire"	
+//	"spread"				"2"
+	
+	"recoilTime"				"145"
+	"recoilAngles"				"-1 0 0"
+
+	"firedelay"					".5"
+	"def_projectile"			"projectile_speederbike_rocket"
+	"spread"					"2"
+	"convergeRate"				".5"
+	"lockrange"					"10000"
+		
+//	"ammopercharge"				"3"
+//	"chargetime"				"1"
+
+	"mtr_flashShader"			"lights/muzzleflash"
+	"flashColor"				"1 0.8 0.4"
+	"flashRadius"				"350"
+	"flashPointLight"			"1"
+	"flashTime"					".1"
+	"flashOffset"				"30 0 0"
+
+	"fx_muzzleflash"			"effects/vehicles/walker/rocket/muzzleflash.fx"
+//	"snd_fire"					"vehicle_speeder_rockets"
+}
+

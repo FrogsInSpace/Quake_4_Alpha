@@ -1,0 +1,4 @@
+textures\q4x_m10\cave_wall
+{	
+	diffusemap 		textures/q4x_m10/cave.tga	
+}

@@ -1,0 +1,366 @@
+
+
+sound painlord_footsteps
+{
+	description	"various footsteps for painlord walking."
+
+	minDistance	39
+	maxDistance	984
+	volumeDb	-5
+	frequencyshift	0.8000000119,1.2000000477
+	no_dups
+	shakes 0.1
+
+	sound/strogg/painlord/painlord_step1.wav
+//	sound/strogg/painlord/run_02.wav
+//	sound/strogg/painlord/run_03.wav
+//	sound/strogg/painlord/run_04.wav
+}
+
+sound painlord_ready_weapon
+{
+	description	"preparing gun"
+
+	minDistance	39
+	maxDistance	1181
+	volumeDb	0
+
+	sound/strogg/painlord/ready_weapon.wav
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// painlord MOVEMENT
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+sound painlord_servo
+{
+	description	"the squeaky painlord gets the...ahh nevermind."
+
+	minDistance	39
+	maxDistance	990
+	volumeDb	-10
+	no_dups
+	
+	sound/strogg/painlord/painlord_servo1.wav
+	//sound/strogg/painlord/painlord_servo2.wav
+}
+
+
+sound painlord_turn
+{
+	description	"turn 90 degrees"
+
+	minDistance	39
+	maxDistance	990
+	volumeDb	-10
+	no_dups
+	
+	sound/strogg/painlord/painlord_turn90.ogg
+}
+
+sound painlord_run
+{
+	description	"run"
+
+	minDistance	39
+	maxDistance	990
+	volumeDb	-10
+	no_dups
+	
+	sound/strogg/painlord/painlord_walk.ogg
+}
+
+sound painlord_walk
+{
+	description	"walk"
+
+	minDistance	39
+	maxDistance	990
+	volumeDb	-10
+	no_dups
+	
+	sound/strogg/painlord/painlord_walk.ogg
+}
+sound painlord_idle
+{
+	description	"idle"
+
+	minDistance	39
+	maxDistance	990
+	volumeDb	-10
+	no_dups
+	
+	sound/strogg/painlord/painlord_idle.ogg
+}
+
+sound painlord_evade
+{
+	description	"evade"
+
+	minDistance	39
+	maxDistance	990
+	volumeDb	-10
+	no_dups
+	
+	sound/strogg/painlord/painlord_turn90.ogg
+}
+
+sound painlord_melee_one
+{
+	description	"evade"
+
+	minDistance	39
+	maxDistance	990
+	volumeDb	-10
+	no_dups
+	
+	sound/strogg/painlord/painlord_meleeone_1.ogg
+	sound/strogg/painlord/painlord_meleeone_2.ogg
+	
+}
+
+sound painlord_melee_two
+{
+	description	"evade"
+
+	minDistance	39
+	maxDistance	990
+	volumeDb	-10
+	no_dups
+	
+	sound/strogg/painlord/painlord_meleetwo_1.ogg
+	sound/strogg/painlord/painlord_meleetwo_2.ogg
+	sound/strogg/painlord/painlord_meleetwo_3.ogg
+	
+}
+
+sound painlord_buildup_ranged
+{
+	description	"evade"
+
+	minDistance	39
+	maxDistance	990
+	volumeDb	-10
+	no_dups
+	no_occlusion
+		
+	sound/strogg/painlord/painlord_rangeone_1.ogg
+	sound/strogg/painlord/painlord_rangeone_2.ogg
+	
+}
+
+sound painlord_ranged
+{
+	description	"evade"
+
+	minDistance	39
+	maxDistance	990
+	volumeDb	-10
+	no_dups
+	
+	sound/strogg/painlord/painlord_fire.ogg
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+// PAINLORD MELEE
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+sound painlord_punch
+{
+	description	"pow"
+
+	minDistance	39
+	maxDistance	787
+	volumeDb	-4
+	frequencyshift	0.8000000119,1.2000000477
+
+	sound/weapons/impact/whooshes_melee/melee_hit1.wav
+	sound/weapons/impact/whooshes_melee/melee_hit2.wav
+	sound/weapons/impact/whooshes_melee/melee_hit3.wav
+}
+
+sound painlord_swing
+{
+	description	"whiff"
+
+	minDistance	39
+	maxDistance	866
+	volumeDb	10
+
+	sound/weapons/impact/whooshes_melee/whoosh1.wav
+	//sound/weapons/impact/whooshes_melee/whoosh2.wav
+	//sound/weapons/impact/whooshes_melee/whoosh3.wav
+	//sound/weapons/impact/whooshes_melee/whoosh4.wav
+	//sound/strogg/painlord/painlord_melee1.wav
+	//sound/strogg/painlord/growl2.wav
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// painlord WEAPONS
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+sound painlord_nailgun_fire
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+	frequencyshift	0.8000000119,1.2000000477
+
+	sound/strogg/painlord/painlord_nailgunfire.wav
+}
+
+sound painlord_machinegun_fire
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+	frequencyshift	0.8000000119,1.2000000477
+
+	sound/strogg/painlord/m_gun1.wav
+	sound/strogg/painlord/m_gun2.wav
+	sound/strogg/painlord/m_gun3.wav
+}
+
+sound painlord_missile_loop
+{
+	description	"missile loop"
+
+	minDistance	30
+	maxDistance	350
+	volumeDb	0
+	looping
+
+	sound/strogg/tank/tank_missileloop.wav
+}
+
+painlord_missile_explode
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+	frequencyshift	0.8000000119,1.2000000477
+
+	sound/strogg/painlord/painlord_ranged_explo.ogg
+}
+
+
+
+
+sound painlord_railgun
+{
+	description	"voip"
+
+	minDistance	196
+	maxDistance	1281
+	volumeDb	1
+	frequencyshift	0.8000000119,1.2000000477
+
+	sound/strogg/painlord/painlord_railgunfire.wav
+}
+
+sound painlord_chargerailgun
+{
+	description	"voip"
+
+	minDistance	196
+	maxDistance	1181
+	volumeDb	-4
+	frequencyshift	0.8000000119,1.2000000477
+
+	sound/strogg/painlord/painlord_railpowerup.wav
+}
+
+sound painlord_grenade_launch
+{
+	description	"test sound for painlord idle"
+
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+
+	sound/strogg/painlord/painlord_missilefire.wav
+}
+
+sound painlord_missile_launch
+{
+	description	"test sound for painlord idle"
+
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+
+	sound/strogg/painlord/painlord_missilefire.wav
+}
+
+sound painlord_machinegun
+{
+	description	"test sound for painlord idle"
+
+	minDistance	196
+	maxDistance	1181
+	volumeDb	0
+	frequencyshift	0.8000000119,1.2000000477
+
+	sound/strogg/painlord/machinegun_01.wav
+	sound/strogg/painlord/machinegun_02.wav
+}
+
+sound painlord_nailgun_fireseq
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	4
+	//frequencyshift	0.8000000119,1.2000000477
+
+	sound/strogg/painlord/painlord_nailgunfireseq.wav
+
+}
+
+sound painlord_missileexp
+{
+	minDistance	196
+	maxDistance	1181
+	volumeDb	10
+	frequencyshift	0.7000000119,1.3000000477
+	//shake 0.4
+	
+	sound/strogg/painlord/painlord_missileexp1.wav
+	sound/strogg/painlord/painlord_missileexp2.wav
+	
+
+}
+
+
+
+
+////////////////////////////
+// painlord DEATH, PAIN, BODY
+////////////////////////////
+
+sound painlord_pain
+{
+	description	"test sound for painlord idle"
+
+	minDistance	393
+	maxDistance	984
+	volumeDb	0
+
+	sound/strogg/painlord/painlord_painone_1.ogg
+	sound/strogg/painlord/painlord_painone_2.ogg
+	sound/strogg/painlord/painlord_painone_3.ogg
+	sound/strogg/painlord/painlord_painone_4.ogg
+}
+
+sound painlord_die
+{
+	description	"death to the painlord"
+
+	minDistance	393
+	maxDistance	1377
+	volumeDb	0
+
+	sound/strogg/painlord/painlord_painone_4.ogg
+}

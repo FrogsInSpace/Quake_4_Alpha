@@ -1,0 +1,1974 @@
+
+
+sound vo_mitch_whathelldo
+{
+ description "<Mitchell:> What the hell do they do down here?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_whathelldo.wav
+}
+
+
+sound vo_fox5_dntwntknw
+{
+ description "<Fox Marine 5:> I don’t want to know."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/fox5_dntwntknw.wav
+}
+
+
+sound vo_mitch_youheartht
+{
+ description "<Mitchell:> You hear that?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_youheartht.wav
+}
+
+
+sound vo_fox5_weallhrd
+{
+ description "<Fox Marine 5:> We all heard it."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/fox5_weallhrd.wav
+}
+
+
+sound vo_mitch_thatsndmar
+{
+ description "<Mitchell:> That… That sounded like marines."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_thatsndmar.wav
+}
+
+
+sound vo_fox5_shutup
+{
+ description "<Fox Marine 5:> Shut up."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/fox5_shutup.wav
+}
+
+
+sound vo_mitch_butthose
+{
+ description "<Mitchell:> But those screams.  I –"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_butthose.wav
+}
+
+
+sound vo_fox5_saidshutp
+{
+ description "<Fox Marine 5:> I said shut up."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/fox5_saidshutp.wav
+}
+
+
+sound vo_tak_gotalok
+{
+ description "<Tak:> I’ve got a lock on Strauss."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/tak_gotalok.wav
+}
+
+
+sound vo_tak_keepmvcls
+{
+ description "<Tak:> Keep moving, Dekard.  You’re getting closer."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/tak_keepmvcls.wav
+}
+
+
+sound vo_tak_straightah
+{
+ description "<Tak:> Straight ahead, Dekard."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/tak_straightah.wav
+}
+
+
+sound vo_tak_chkright
+{
+ description "<Tak:> Check the right."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/tak_chkright.wav
+}
+
+
+sound vo_tak_hetoleft
+{
+ description "<Tak:> He’s to the left."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/tak_hetoleft.wav
+}
+
+
+sound vo_tak_closingin
+{
+ description "<Tak:> You’re closing in on him, Dekard."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/tak_closingin.wav
+}
+
+
+sound vo_tak_straussdsnt
+{
+ description "<Tak:> Strauss doesn’t have much time."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/tak_straussdsnt.wav
+}
+
+
+sound vo_scrmar1_pain
+{
+ description "<Screaming Marine 1:> (Screams in pain)"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/scrmar1_pain.wav
+}
+
+
+sound vo_scrmar1_nonono
+{
+ description "<Screaming Marine 1:> No. No. Noooooo."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/scrmar1_nonono.wav
+}
+
+
+sound vo_scrmar2_killmepls
+{
+ description "<Screaming Marine 2:> Kill me!  Please just kill me."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/scrmar2_killmepls.wav
+}
+
+
+sound vo_scrmar2_whatwnt
+{
+ description "<Screaming Marine 2:> What do you want from me?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/scrmar2_whatwnt.wav
+}
+
+
+sound vo_scrmar3_noplsno
+{
+ description "<Screaming Marine 3:> No, please no. I – (Screams)"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/scrmar3_noplsno.wav
+}
+
+
+sound vo_scrmar3_nonothth
+{
+ description "<Screaming Marine 3:> No.  Not that. Not tha-(Screams)"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/scrmar3_nonothth.wav
+}
+
+
+sound vo_scrmar4_pain
+{
+ description "<Screaming Marine 4:> (Screams in pain)"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/scrmar4_pain.wav
+}
+
+
+sound vo_scrmar4_notnomr
+{
+ description "<Screaming Marine 4:> (Screams) Not again.  No more. Please, No more."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/scrmar4_notnomr.wav
+}
+
+
+sound vo_scrmar5_plsstop
+{
+ description "<Screaming Marine 5:> (Screams) Please, Stop.  Just stop (Screams)"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/scrmar5_plsstop.wav
+}
+
+
+sound vo_scrmar5_giveyou
+{
+ description "<Screaming Marine 5:> I’ll give you whatever you want, just please sto- (Screams)"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/scrmar5_giveyou.wav
+}
+
+
+sound vo_scrmar6_youdo
+{
+ description "<Screaming Marine 6:> What are you doing to me?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/scrmar6_youdo.wav
+}
+
+
+sound vo_scrmar6_smbdy
+{
+ description "<Screaming Marine 6:> Somebody, help!  Please."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/scrmar6_smbdy.wav
+}
+
+
+sound vo_mitch_whathell
+{
+ description "<Mithcell:> What the hell?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_whathell.wav
+}
+
+
+sound vo_fox5_whatmatt
+{
+ description "<Fox Marine 5:> What’s the matter, you afraid of the dark?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/fox5_whatmatt.wav
+}
+
+
+sound vo_mitch_nahafraid
+{
+ description "<Mitchell:> Nah, I’m afraid of what’s in it."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_nahafraid.wav
+}
+
+
+sound vo_mitch_wegonna
+{
+ description "<Mitchell:> We’re gonna have to find away into that control room."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_wegonna.wav
+}
+
+
+sound vo_fox5_theoverr
+{
+ description "<Fox Marine 5:> The override for the field generator has to be up in that control room."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/fox5_theoverr.wav
+}
+
+
+sound vo_fox5_heyover
+{
+ description "<Fox Marine 5:> Hey, over here."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/fox5_heyover.wav
+}
+
+
+sound vo_fox5_thresupp
+{
+ description "<Fox Marine 5:> There are some supply lines below, they might provide a way past this generator"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/fox5_thresupp.wav
+}
+
+
+sound vo_mitch_thereexhaust
+{
+ description "<Mitchell:> There should be an exhaust vent somewhere for that field generator"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_thereexhaust.wav
+}
+
+
+sound vo_mitch_deklookex
+{
+ description "<Mitchell:> Dekard, look for an exhaust vent attached to that field generator"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_deklookex.wav
+}
+
+
+sound vo_mitch_dektryblow
+{
+ description "<Mitchell:> Dekard, try blowing up the field generator, it's in there somewhere!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_dektryblow.wav
+}
+
+
+sound vo_mitch_damnmarst
+{
+ description "<Mitchell:> Damn, that marine didn't stand a chance.  I couldn't do anything for him."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_damnmarst.wav
+}
+
+
+sound vo_fox5_yourmeds
+{
+ description "<Fox Marine 5 +use:> Your medic seems a bit twitchy."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/fox5_yourmeds.wav
+}
+
+
+sound vo_fox5_ihearyour
+{
+ description "<Fox Marine 5 +use:> I hear your squad got hit pretty hard on the Citadel mission."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/fox5_ihearyour.wav
+}
+
+
+sound vo_fox5_strausswait
+{
+ description "<Fox Marine 5 +use:> Strauss won't wait forever."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/fox5_strausswait.wav
+}
+
+
+sound vo_mitch_wowcanyou
+{
+ description "<Mitchell +use:> Wow, can you imagine what goes on in this place?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_wowcanyou.wav
+}
+
+
+sound vo_mitch_oncewe
+{
+ description "<Mitchell +use:> Once we find Strauss, I'll feel much better."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_oncewe.wav
+}
+
+
+sound vo_mitch_icantwait
+{
+ description "<Mitchell +use:> I can't wait to get the hell outta here."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_icantwait.wav
+}
+
+
+sound vo_mitch_fieldgen
+{
+ description "<Mitchell:> Field generator is down Dekard.  Good work."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_fieldgen.wav
+}
+
+
+
+sound vo_fox5_incom
+{
+ description "<Fox Marine 5:> Incoming Strogg!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/fox5_incom.wav
+}
+
+
+sound vo_fox5_arrg
+{
+ description "<Fox Marine 5:> Argggh!!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/fox5_arrg.wav
+}
+
+
+
+sound vo_mitch_whatdonestrg
+{
+ description "<Mitchell:> What have they done?  How can the Strogg do this?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_whatdonestrg.wav
+}
+
+
+sound vo_mitch_nothinggd
+{
+ description "<Mitchell:> Nothing good happens to humans in this place."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_nothinggd.wav
+}
+
+
+sound vo_mitch_theycom
+{
+ description "<Mitchell:> They’re coming."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_theycom.wav
+}
+
+
+sound vo_mitch_takeco
+{
+ description "<Mitchell:> Take cover."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_takeco.wav
+}
+
+
+sound vo_mitch_covm
+{
+ description "<Mitchell:> Cover me."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_covm.wav
+}
+
+
+sound vo_mitch_underhvyfr
+{
+ description "<Mitchell:> I’m under heavy fire."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_underhvyfr.wav
+}
+
+
+sound vo_mitch_check6
+{
+ description "<Mitchell:> Check your six."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_check6.wav
+}
+
+
+sound vo_mitch_theyflnk
+{
+ description "<Mitchell:> They’re trying to flank."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_theyflnk.wav
+}
+
+
+sound vo_mitch_tolft
+{
+ description "<Mitchell:> To the left."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_tolft.wav
+}
+
+
+sound vo_mitch_comingin
+{
+ description "<Mitchell:> Coming in from the right."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_comingin.wav
+}
+
+
+sound vo_mitch_getdwn
+{
+ description "<Mitchell:> Get down!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_getdwn.wav
+}
+
+
+sound vo_mitch_chkdoor
+{
+ description "<Mitchell:> Check the door."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_chkdoor.wav
+}
+
+
+sound vo_viper1_johnvip
+{
+ description "<Viper marine 1:> This is Burleson from Viper squad, anybody out there, we need a medic..."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/viper1_johnvip.wav
+}
+
+
+sound vo_viper1_diestrgg
+{
+ description "<Viper marine 1:> Die Strogg!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/viper1_diestrgg.wav
+}
+
+
+sound vo_viper1_johngld
+{
+ description "<Viper marine 1:> Burleson, Viper squad, wow am I glad to see you guys"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/viper1_johngld.wav
+}
+
+
+sound vo_mitch_mitchhowget
+{
+ description "<Mitchell:> Mitchell, Dekard, Falcon squad...how did you get down here?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_mitchhowget.wav
+}
+
+
+sound vo_viper1_weweresq
+{
+ description "<Viper marine 1:> We were one of the squads looking for pre-strogged marines, got caught up and the rest of our squad was ambushed."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/viper1_weweresq.wav
+}
+
+
+sound vo_viper1_cometech
+{
+ description "<Viper marine 1:> Come with me, my tech is injured in the next room, he can help get us outta here"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/viper1_cometech.wav
+}
+
+
+sound vo_viper1_philipmed
+{
+ description "<Viper marine 1:> Stark, got a medic for you!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/viper1_philipmed.wav
+}
+
+
+sound vo_mitch_somestim
+{
+ description "<Mitchell:> Some stims and a medpak and he'll come around "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_somestim.wav
+}
+
+
+sound vo_viper2_goodtogo
+{
+ description "<Viper marine 2:> Urgh... Allright, I'm good to go."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/viper2_goodtogo.wav
+}
+
+
+sound vo_viper2_twodoorsld
+{
+ description "<Viper marine 2:> These two doors lead to remote access bridges, if we can get into one of the bridge control areas, I should be able to help you guys proceed"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/viper2_twodoorsld.wav
+}
+
+
+sound vo_viper1_wipeout
+{
+ description "<Viper marine 1 +use:> We've been wiping out squbs for hours now, you'd think they'd stop coming after a while."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/viper1_wipeout.wav
+}
+
+
+sound vo_viper1_preinvm
+{
+ description "<Viper marine 1 +use:> Those pre-invasion marine supply drops have saved our ass, the Strogg pulled those supplies all over their facilities"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/viper1_preinvm.wav
+}
+
+
+sound vo_viper1_egghead
+{
+ description "<Viper marine 1 +use:> Finally the eggheads got something right."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/viper1_egghead.wav
+}
+
+
+sound vo_viper2_squadhard
+{
+ description "<Viper marine 2 +use:> Our squad got hit pretty hard."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/viper2_squadhard.wav
+}
+
+
+sound vo_viper2_firstmarh
+{
+ description "<Viper marine 2 +use:> You two are the first marines we've seen in hours"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/viper2_firstmarh.wav
+}
+
+
+sound vo_viper2_thinkshore
+{
+ description "<Viper marine 2 +use:> Just think, if they could've popped just ONE of those EMPs, we'd all be on shore leave right now."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/viper2_thinkshore.wav
+}
+
+
+sound vo_viper1_letsgo
+{
+ description "<Viper Marine 1:> Let's go"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/viper1_letsgo.wav
+}
+
+
+sound vo_viper2_accbrid
+{
+ description "<Viper Marine 2:> Accessing the bridge controls"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/viper2_accbrid.wav
+}
+
+
+sound vo_viper2_takelong
+{
+ description "<Viper Marine 2:> This shouldn't take long"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/viper2_takelong.wav
+}
+
+
+sound vo_viper1_incstrgg
+{
+ description "<Viper Marine 1:> Incoming Strogg!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/viper1_incstrgg.wav
+}
+
+
+sound vo_viper1_whthell
+{
+ description "<Viper Marine 1:> What the hell?!  Take it down!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/viper1_whthell.wav
+}
+
+
+sound vo_viper1_diesqb
+{
+ description "<Viper Marine 1:> Die squibs!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/viper1_diesqb.wav
+}
+
+
+sound vo_viper2_bridgeext
+{
+ description "<Viper Marine 2:> Ok, the bridge will extended for anybody now."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/viper2_bridgeext.wav
+}
+
+
+sound vo_viper2_staybeh
+{
+ description "<Viper Marine 2:> We need to stay behind, we have orders to gain access to the other side of the facility."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/viper2_staybeh.wav
+}
+
+
+sound vo_viper2_napalm
+{
+ description "<Viper Marine 2:> Before you go, let me see your Napalm Launcher, I can enhance it for you."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/viper2_napalm.wav
+}
+
+
+sound vo_viper2_therezoom
+{
+ description "<Viper Marine 2:> There you go, when you zoom, the pilot light will ignite allowing for a flame thrower like functionality"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/viper2_therezoom.wav
+}
+
+
+sound vo_tak_watchdek
+{
+ description "<Tak:> You’re almost there, Dekard.  But I'm seeing some unusual activity on the Strogg network, the process Strauss is going to go through doesn't look good.  Watch yourself, Dekard, we have no idea what’s down there."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/tak_watchdek.wav
+}
+
+
+sound vo_tak_dekstrss
+{
+ description "<Tak:> Dekard.  Strauss should be just ahead."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/tak_dekstrss.wav
+}
+
+
+sound vo_mitch_therestrss
+{
+ description "<Mitchell:> There's Strauss, we need to try and get him down"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_therestrss.wav
+}
+
+
+sound vo_mitch_dektrystop
+{
+ description "<Mitchell:> Dekard, try to stop or slow down this machine!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_dektrystop.wav
+}
+
+
+sound vo_mitch_budge
+{
+ description "<Mitchell:> Arrghh...It won't budge"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_budge.wav
+}
+
+
+sound vo_mitch_gethim
+{
+ description "<Mitchell:> I can't get him out!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_gethim.wav
+}
+
+
+sound vo_mitch_needfollw
+{
+ description "<Mitchell:> We need to follow him!  Lets go Dekard!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_needfollw.wav
+}
+
+
+sound vo_mitch_thereheis
+{
+ description "<Mitchell:> There he is."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_thereheis.wav
+}
+
+
+sound vo_mitch_iseehim
+{
+ description "<Mitchell:> I see him"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_iseehim.wav
+}
+
+
+sound vo_mitch_therestrss2
+{
+ description "<Mitchell:> There's Strauss.  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_therestrss2.wav
+}
+
+
+sound vo_mitch_gotletout
+{
+ description "<Mitchell:> It's got to let out somewhere!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_gotletout.wav
+}
+
+
+
+sound vo_mitch_wecangetst
+{
+ description "<Mitchell:> Here, we can get Strauss out here."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_wecangetst.wav
+}
+
+
+sound vo_mitch_whathll
+{
+ description "<Mitchell:> What the hell?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_whathll.wav
+}
+
+
+sound vo_mitch_arrrg
+{
+ description "<Mitchell:> Arrrghhh!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_arrrg.wav
+}
+
+
+
+sound vo_tak_holdtgt
+{
+ description "<Tak:> Hold tight, Dekard.  We’re on our way."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/tak_holdtgt.wav
+}
+
+
+sound vo_tak_wontmuch
+{
+ description "<Tak:> It won’t be much longer, Dekard."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/tak_wontmuch.wav
+}
+
+
+sound vo_tak_evacdek
+{
+ description "<Tak:> We just called for an Evac, Dekard.  The dropship’s inbound.  Just hold on."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/tak_evacdek.wav
+}
+
+
+sound vo_tak_wecntget
+{
+ description "<Tak:> We can't get into the chamber you are in, something is keeping us out!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/tak_wecntget.wav
+}
+
+
+sound vo_tak_almostshit
+{
+ description "<Tak:> Almost there.  We – Shit, they patched the security bypass.  We’ll be there as soon as we can, Dekard."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/tak_almostshit.wav
+}
+
+
+sound vo_strauss_muffled
+{
+ description "<Strauss:> (Muffled dialog)"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/strauss_muffled.wav
+}
+
+
+sound vo_marine1_agony1
+{
+ description "<Marine 1:> (Screams of agony)"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/marine1_agony1.wav
+}
+
+
+sound vo_marine2_agony1
+{
+ description "<Marine 2:> (Screams of agony)"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/marine2_agony1.wav
+}
+
+
+sound vo_marine3_agony1
+{
+ description "<Marine 3:> (Screams of agony)"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/marine3_agony1.wav
+}
+
+
+
+sound vo_darn_dammitch
+{
+ description "<Darnell:> Damn, Mitchell...This was his first tour.  We can't just leave him here.."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/darn_dammitch.wav
+}
+
+
+sound vo_nava_exttakecare
+{
+ description "<Navajas:> The extraction teams will take care of him, we need to keep moving."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/nava_exttakecare.wav
+}
+
+
+sound vo_marks_dekstatrep
+{
+ description "<Markswell:> Dekard, status report."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/marks_dekstatrep.wav
+}
+
+
+sound vo_dek_wegotstrss
+{
+ description "<Dekard:> We've got Strauss, Mitchell is dead, ready for evac."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/dek_wegotstrss.wav
+}
+
+
+sound vo_marks_shitstrss
+{
+ description "<Markswell:> Shit.  What about Strauss, what's his condition?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/marks_shitstrss.wav
+}
+
+
+sound vo_nava_battfine
+{
+ description "<Navajas:> A little battered, but fine.  Aside from shutting down his med-chip, the Strogg didn't do anything to him.  From the looks of it, we got here just in time."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/nava_battfine.wav
+}
+
+
+sound vo_nava_couplehrs
+{
+ description "<Navajas:> Couple hours rest and he’ll be back to his old self."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/nava_couplehrs.wav
+}
+
+
+sound vo_marks_niceevac
+{
+ description "<Markswell:> Nice work, Falcon.  Evac is landing now.  Panther and Tiger Squads are moving through the upper floors, we’re gonna pull out as many marines as we can. Get back to the surface and get Strauss back to the Hannibal."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/marks_niceevac.wav
+}
+
+
+sound vo_dek_yessir5
+{
+ description "<Dekard:> Yes sir."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/dek_yessir5.wav
+}
+
+
+sound vo_dek_taknavast
+{
+ description "<Dekard:> Tak, Navajas, you hold back with Strauss, Darnell and I will clear out the exit halls, you move up when we call all clear."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/dek_taknavast.wav
+}
+
+
+sound vo_strauss_allthat2
+{
+ description "<Strauss:> After all of that, you plan on just leaving me behind?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/strauss_allthat2.wav
+}
+
+
+sound vo_dek_youtwoete
+{
+ description "<Dekard:> You two keep a close eye on Strauss, make sure nothing happens to him"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/dek_youtwoete.wav
+}
+
+
+sound vo_tak_yessir6
+{
+ description "<Tak:> Yes sir."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/tak_yessir6.wav
+}
+
+
+sound vo_strauss_gratitude
+{
+ description "<Strauss:> Thank you Sergeant, you have my gratitude."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/strauss_gratitude.wav
+}
+
+
+
+sound vo_darn_roomclr
+{
+ description "<Darnell:> Room clear, Tak, Navajas, move up with Strauss."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/darn_roomclr.wav
+}
+
+
+sound vo_darn_allclr
+{
+ description "<Darnell:> All clear."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/darn_allclr.wav
+}
+
+
+sound vo_darn_takmoveup
+{
+ description "<Darnell:> Tak, move up."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/darn_takmoveup.wav
+}
+
+
+sound vo_darn_taklift
+{
+ description "<Darnell:> Tak, we need you at this lift."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/darn_taklift.wav
+}
+
+
+sound vo_tak_moving5
+{
+ description "<Tak:> Moving."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/tak_moving5.wav
+}
+
+
+sound vo_tak_rogmoveup
+{
+ description "<Tak:> Roger, moving up."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/tak_rogmoveup.wav
+}
+
+
+sound vo_tak_downmin
+{
+ description "<Tak:> I'll have this down in a minute"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/tak_downmin.wav
+}
+
+
+sound vo_strauss_dobypass
+{
+ description "<Strauss:> What are you doing, bypassing the Strogg systems is quite inefficient"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/strauss_dobypass.wav
+}
+
+
+sound vo_tak_really2
+{
+ description "<Tak:> Really?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/tak_really2.wav
+}
+
+
+sound vo_strauss_stepas
+{
+ description "<Strauss:> Step aside."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/strauss_stepas.wav
+}
+
+
+sound vo_strauss_infutur
+{
+ description "<Strauss:> In the future, you should proceed directly to the maintenance cycle"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/strauss_infutur.wav
+}
+
+
+sound vo_strauss_execcmd
+{
+ description "<Strauss:> From there you can execute any command without tripping the security lockouts."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/strauss_execcmd.wav
+}
+
+
+sound vo_tak_damnfast
+{
+ description "<Tak:> Damn, that is faster!  Wow.  Thanks."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/tak_damnfast.wav
+}
+
+
+sound vo_darn_evlift
+{
+ description "<Darnell:> Everybody on the lift, let's move"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/darn_evlift.wav
+}
+
+
+sound vo_darn_ahwhthell
+{
+ description "<Darnell:> Ah what the hell?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/darn_ahwhthell.wav
+}
+
+
+sound vo_tak_givsec
+{
+ description "<Tak:> Give it a second."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/tak_givsec.wav
+}
+
+
+sound vo_strauss_confmak
+{
+ description "<Strauss +use:> I was captured while trying to disable the tetranode with my squad. I wonder what happened to Corporal Kane, he was confronted by the Makron."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/strauss_confmak.wav
+}
+
+
+sound vo_strauss_nevepredict
+{
+ description "<Strauss +use:> This should have never happened, we could have never predicted that another Makron would appear so quickly."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/strauss_nevepredict.wav
+}
+
+
+sound vo_strauss_sqlist
+{
+ description "<Strauss +use:> My squadmates should have listened to me when I said I needed more protection."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/strauss_sqlist.wav
+}
+
+
+sound vo_nava_takebeast
+{
+ description "<Navajas +use:> To take down that beast single-handedly was quite a feat"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/nava_takebeast.wav
+}
+
+
+sound vo_nava_stayshrp
+{
+ description "<Navajas +use:> Stay sharp Dekard."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/nava_stayshrp.wav
+}
+
+
+sound vo_nava_wealmstout
+{
+ description "<Navajas +use:> We're almost out of this place."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/nava_wealmstout.wav
+}
+
+
+sound vo_tak_strssdecrypt
+{
+ description "<Tak +use:> Now that we have Strauss, he should be able to decrypt the Strogg data."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/tak_strssdecrypt.wav
+}
+
+
+sound vo_strauss_whatdata
+{
+ description "<Strauss (response):> What data?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/strauss_whatdata.wav
+}
+
+
+sound vo_tak_wefndunprot
+{
+ description "<Tak (response):> We found an unprotected Nexus access terminal earlier today, downloaded an enormous amount of encrypted Strogg data- data nobody in Sci-tech has ever seen before."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/tak_wefndunprot.wav
+}
+
+
+sound vo_strauss_nowisee
+{
+ description "<Struass (response):> Now I see why they sent an entire squad to get me, I'm the only one who has a chance of getting into that data.  You must get me back to the Hannibal quickly."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/strauss_nowisee.wav
+}
+
+
+sound vo_darn_getout
+{
+ description "<Darnell +use:> We need to get hell outta here."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/darn_getout.wav
+}
+
+
+sound vo_darn_workloc
+{
+ description "<Darnell +use:> Good work locating Strauss Dekard.  "
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/darn_workloc.wav
+}
+
+
+sound vo_darn_hardbrass
+{
+ description "<Darnell +use:> It's going to be hard to keep the brass away from you after this operation."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/darn_hardbrass.wav
+}
+
+
+sound vo_tak_docreat
+{
+ description "<Tak:> Strauss, do you know what that thing was planning on doing to you?"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/tak_docreat.wav
+}
+
+
+sound vo_strauss_obvcap
+{
+ description "<Strauss:> That creature was obviously capable of downloading data from humans into the Nexus."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/strauss_obvcap.wav
+}
+
+
+sound vo_strauss_revealnex
+{
+ description "<Strauss:> Anybody successfully connected to that equipment would instantly reveal any key information to the Nexus, and therefore to every Strogg."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/strauss_revealnex.wav
+}
+
+
+sound vo_darn_sndtort
+{
+ description "<Darnell:> Sounds like they tortured the information out of the marines from what I heard."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/darn_sndtort.wav
+}
+
+
+sound vo_strauss_iassure
+{
+ description "<Strauss:> I assure you, being connected into the Nexus in that way would not be pleasant."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/strauss_iassure.wav
+}
+
+
+sound vo_strauss_trunklines
+{
+ description "<Strauss:> Trunklines from the Nexus were visible in that room, we were so close."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/strauss_trunklines.wav
+}
+
+
+sound vo_marks_marinesget
+{
+ description "<Markswell:> Dropship is dirtside marines.  Get to the surface."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/marks_marinesget.wav
+}
+
+
+sound vo_vansen_hannfalsq
+{
+ description "<Vansen (pilot):> Hannibal, Falcon squad has rendezvoused with us and is heading your way now."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/vansen_hannfalsq.wav
+}
+
+sound vo_mitch_needtogetdown
+{
+ description "<Mitchell:> There's Strauss, we need to get down there!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_needtogetdown.wav
+}
+
+
+sound vo_mitch_stopmachine
+{
+ description "<Mitchell:> Damnit, I can't stop this machine!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_stpmachine.wav
+}
+
+
+sound vo_mitch_letout
+{
+ description "<Mitchell:> This machine has to let out somewhere, we need to follow him."
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_letout.wav
+}
+
+
+sound vo_mitch_dooropen
+{
+ description "<Mitchell:> I should be able to open this door so we can follow him"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_dooropen.wav
+}
+
+
+sound vo_mitch_there
+{
+ description "<Mitchell:> There!"
+
+ minDistance 80
+ maxDistance 900
+ volumeDb 0
+
+ sound/vo/M05_Bio/mitch_there.wav
+}
+

@@ -1,0 +1,142 @@
+//This a basic list of shaders I am creating for tweaking my own stuff
+// -Castle
+
+textures/Castle/stran_trench_visportal_distance_near
+{
+	qer_editorimage	textures/editor/visportal.tga
+	portalDistanceNear 	1256
+	portalDistanceFar	1266
+	portalImage			"_black"
+	areaportal
+	noshadows
+}
+
+textures/Castle/stran_trench_visportal_distance_far
+{
+	qer_editorimage	textures/editor/visportal.tga
+	portalDistanceNear 	3284
+	portalDistanceFar	3290
+	portalImage			"_black"
+	areaportal
+	noshadows
+}
+
+guide textures/castle/st_model_vista_detail01_base generic_materialimageshader("canyon/Can_Topwall_02")
+guide textures/castle/st_model_vista_detail01_detail generic_materialimageshader("canyon/Can_Techtrench_01")
+guide textures/castle/st_model_vista_detail01_detail2 generic_Localvariant("canyon/Can_Ceiling_concrete" , "canyon/Can_Ceiling_concretebrown")
+guide textures/castle/st_model_vista_detail01_trim generic_Localvariant("canyon/Can_Buttress_front_bot" , "canyon/Can_Buttress_front_botbrown")
+guide textures/castle/st_model_vista_detail01_trim2 generic_materialimageshader("canyon/Can_Topwall_03")
+guide textures/castle/st_model_vista_detail01_flat_met generic_shader("sewers/sw_wall_27")
+guide textures/castle/st_rock generic_shader_heightmap ("rock/rock05d", "8")
+guide textures/castle/st_model_vista_detail01_rep01 generic_shader("prison/p2_wall_1")
+guide textures/castle/st_model_vista_detail01_rep02 generic_shader("prison/prisonnew_tunceiltop")
+
+
+
+
+
+
+
+textures/castle/st_trail_dirt_cracked
+{
+	noSelfShadow
+	materialType rock          
+	{
+		blend		bumpmap
+		map		addnormals( textures/rock/rock05c_local.tga, heightmap( textures/rock/rock05a_h.tga, 1 ) )
+	}
+	{
+		blend		diffusemap
+		map		textures/rock/rock05a_d.tga
+		inverseVertexColor
+	}
+	{
+		blend 		specularmap
+		map		textures/rock/rock05a_s.tga
+		inverseVertexColor
+	}
+}
+
+textures/castle/st_dirt
+{
+	noSelfShadow
+	materialType rock
+	{
+		blend 		bumpmap
+		map		textures/rock/cracked_terrain01_local.tga
+		scale 1.25, 1.25
+	}
+	{
+		blend 		diffusemap
+		map		textures/rock/cracked_terrain01_d.tga
+		vertexColor
+		scale 1.25, 1.25
+	}
+	{
+		blend		specularmap
+		map		textures/rock/cracked_terrain01_s.tga
+		vertexColor
+		scale 1.25, 1.25
+	}
+	{
+		blend		bumpmap
+		map		addnormals (textures/rock/rock04_local.tga,heightmap (textures/rock/rock04_h.tga, 4))
+	}
+	{
+		blend		diffusemap
+		map		textures/rock/rock04_d.tga
+		inverseVertexColor
+	}
+	{
+		blend 		specularmap
+		map		textures/rock/rock04_s.tga
+		inverseVertexColor
+	}
+
+}
+
+textures/castle/ST_heavy_rock
+{
+	noSelfShadow
+	materialType rock
+	qer_editorimage textures/rock/rock04.tga
+	diffuseMap	textures/rock/rock04_d.tga
+	specularmap	textures/rock/rock04_s.tga
+        bumpmap	        addnormals (textures/rock/rock04_local.tga,heightmap (textures/rock/rock04_h.tga, 4))	
+}
+
+textures/castle/ST_sand_to_rock
+{       
+	noSelfShadow
+	materialType rock
+	qer_editorimage textures/rock/rock05i_d.tga
+        {
+		blend		bumpmap
+		map		heightmap( textures/rock/rock05i_h.tga, 4 ) 
+	}
+	{
+		blend		diffusemap
+		map		textures/rock/rock05i_d.tga
+		VertexColor
+	}
+	{
+		blend 		specularmap
+		map		textures/rock/rock05i_s.tga
+		VertexColor
+	}
+	{ 
+		blend		bumpmap
+		map		heightmap (textures/rock/rock05n_h.tga, 4)
+
+	}
+	{
+		blend		diffusemap
+		map		textures/rock/rock05n_d.tga
+		inverseVertexColor
+	}
+	{
+		blend 		specularmap
+		map		textures/rock/rock05n_s.tga
+		inverseVertexColor
+	}
+}

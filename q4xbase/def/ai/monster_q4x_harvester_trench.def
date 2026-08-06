@@ -1,0 +1,33 @@
+/*
+===============================================================================
+	Trench Harvester
+===============================================================================
+*/
+
+
+model model_monster_q4x_harvester_trench
+{
+inherit							model_monster_q4x_harvester_combat
+
+
+
+	anim	walk								models/monsters/harvester/walk_01.md5anim
+	{
+		frame	1,14,36,44							sound		snd_flesh
+//		frame	15,25,43,54							footstep
+		frame	15									fx fx_step r_toe_front
+		frame	25									fx fx_step l_toe_back
+		frame	43									fx fx_step l_toe_front
+		frame	54									fx fx_step r_toe_back
+	}
+
+}
+
+
+
+entityDef monster_q4x_harvester_trench
+{
+"inherit"							"monster_harvester_combat"
+"model"								"model_monster_q4x_harvester_trench"
+}
+

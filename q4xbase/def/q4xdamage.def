@@ -1,0 +1,80 @@
+/***********************************************************************
+
+	q4xdamage.def
+	
+	Generic and global damage defs.  Should not contain any monster specific defs.
+
+***********************************************************************/
+
+
+entityDef damage_vehiclecrush {			
+	"damage"						"15000"
+	"gib"							"1"
+ 	"gibNonSolid"					"1"
+	"noArmor"						"1"
+	"noGod"							"1"
+}
+
+entityDef damage_triggerhurt_250 {
+	"damage"						"250"
+	"kickDir"						"0 0 0"
+	"mtr_blob"						"textures/decals/genericdamage"
+	"blob_time"						"0"
+	"blob_size"						"0"
+	"blob_offset_x"					"0"
+	"knockback"						"0"
+	"kick_time"						"0"
+	"kick_amplitude"				"0"
+	"dv_time"						"100"
+}
+
+entityDef damage_triggerhurt_500 {
+	"damage"						"500"
+	"kickDir"						"0 0 0"
+	"mtr_blob"						"textures/decals/genericdamage"
+	"blob_time"						"0"
+	"blob_size"						"0"
+	"blob_offset_x"					"0"
+	"knockback"						"0"
+	"kick_time"						"0"
+	"kick_amplitude"				"0"
+	"dv_time"						"100"
+}
+
+entityDef damage_triggerhurt_750 {
+	"damage"						"750"
+	"kickDir"						"0 0 0"
+	"mtr_blob"						"textures/decals/genericdamage"
+	"blob_time"						"0"
+	"blob_size"						"0"
+	"blob_offset_x"					"0"
+	"knockback"						"0"
+	"kick_time"						"0"
+	"kick_amplitude"				"0"
+	"dv_time"						"100"
+}
+
+entityDef damage_q1dm2lava {
+	"damage"						"40"
+	"kickDir"						"0 0 0"
+	"mtr_blob"						"genericDamage"
+	"blob_time"						"0"
+	"blob_size"						"0"
+	"blob_offset_x"						"0"
+	"knockback"						"0"
+	"kick_time"						"0"
+	"kick_amplitude"					"0"
+	"dv_time"						"200"
+	"burn"							"1"
+}
+
+
+entityDef damage_freezegib {
+	"damage"						"9999"
+	"freezegib"						"1"
+	"gib"							"1"
+	"noArmor"						"1"
+	"noGod"							"1"
+}
+
+

@@ -1,0 +1,102 @@
+/*
+===============================================================================
+
+	Strogg Fighter MCC Vehicle (A vehicle for ADDED CONTROL (lol pitch lol))
+
+===============================================================================
+*/
+
+
+//------------------------------------------------------------------------------
+//							Vehicle Definition
+//------------------------------------------------------------------------------
+entityDef vehicle_q4x_strogg_fighter_hack
+{
+	"spawnclass"				"rvVehicleRigid"
+	"model" 					"vehicle_q4x_strogg_fighter_hack"
+	"def_position_driver"		"vehicle_q4x_strogg_fighter_hack_position"
+	
+	"editor_color"				"1 .5 0"
+	"editor_mins"				"-8 -8 -8"
+	"editor_maxs"				"8 8 8"
+	"editor_ragdoll"			"1"
+	"editor_rotatable"			"1"
+	"editor_usage"				"Strogg fighter hackery"
+	"anim"						"idle"
+	
+	"fx_death"					"effects/monsters/strogg_flyer/explosion.fx"
+	"fx_exhaust"				"effects/monsters/strogg_flyer/smoke_trail.fx"
+	
+	"team"						"1"
+	"health" 					"40"
+	"mass"						"2000" //?
+	"snd_loop"					"convoy_large_ship_loop3"
+}
+
+
+//------------------------------------------------------------------------------
+//							 Vehicle Model
+//------------------------------------------------------------------------------
+model vehicle_q4x_strogg_fighter_hack
+{
+	mesh						"models/monsters/strogg_fighter/mesh.md5mesh"
+	anim idle					"models/monsters/strogg_fighter/idle.md5anim"
+	{
+		frame 1			fx		fx_exhaust		exhaust	
+	}
+}
+
+
+//------------------------------------------------------------------------------
+//							"Driver" Position
+//------------------------------------------------------------------------------
+entityDef vehicle_q4x_strogg_fighter_hack_position
+{
+	"eyeJoint"					"exhaust"
+	"def_part_weapon"			"vehicle_q4x_strogg_fighter_hack_weapon"
+	
+	"driverJoint"				"origin"
+	"driverVisible"				"0"
+}
+
+
+//------------------------------------------------------------------------------
+//							Projectile Definition
+//------------------------------------------------------------------------------
+entityDef projectile_q4x_strogg_fighter_bullet
+{
+	"inherit"					"projectile_blaster_base"
+	
+	"velocity"					"4096 0 0"
+	"fx_impact"					"effects/monsters/strogg_flyer/blaster_collide.fx"
+	"fx_fly"					"effects/weapons/rocketlauncher/fly.fx"
+	"def_damage"				"damage_q4x_strogg_fighter_blaster_space"
+}
+
+
+//------------------------------------------------------------------------------
+//							Weapon Definition
+//------------------------------------------------------------------------------
+entityDef vehicle_q4x_strogg_fighter_hack_weapon
+{
+	"spawnclass"				"rvVehicleWeapon"
+	
+	"joint"						"muzzle_flash_l"
+	"joint2"					"muzzle_flash_r"
+	
+	"launchFromJoint"			"1"
+	
+	"firedelay"					".33"
+	"def_projectile"			"projectile_q4x_strogg_fighter_bullet"
+	"spread"					"2"
+	
+	"ammopercharge"				"4"
+	"chargetime"				"2"
+
+	"mtr_flashShader"			"lights/muzzleflash"
+	"flashColor"				"1 0.8 0.4"
+	"flashRadius"				"350"
+	"flashPointLight"			"1"
+	"flashTime"					".1"
+	"flashOffset"				"30 0 0"
+}

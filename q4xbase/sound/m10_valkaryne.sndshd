@@ -1,0 +1,252 @@
+q4x_computer_loop_01
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-4
+
+	sound/ambience/computers/q4x_computer_console1.ogg
+}
+
+q4x_computer_loop_02
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-4
+
+	sound/ambience/computers/q4x_computer_console2.ogg
+}
+
+q4x_computer_loop_03
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-4
+
+	sound/ambience/computers/q4x_computer_console3.ogg
+}
+
+q4x_computer_loop_04
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-4
+
+	sound/ambience/computers/q4x_computer_console4.ogg
+}
+
+q4x_bubblemachine3
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-4
+
+	sound/ambience/m10/bubblemachine3.ogg
+}
+
+
+q4x_bubblemachine4
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-4
+
+	sound/ambience/m10/bubblemachine4.ogg
+}
+
+
+
+cryo_bigcreaky
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-4
+
+	sound/ambience/m10/cryo_bigcreaky.ogg
+}
+
+cryo_bigcreaky_mach1
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-4
+
+	sound/ambience/m10/cryo_bigcreaky_mach1.ogg
+}
+
+cryo_bigcreaky_mach2
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-4
+
+	sound/ambience/m10/cryo_bigcreaky_mach2.ogg
+}
+
+cryo_bigcreaky_mach3
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-4
+
+	sound/ambience/m10/cryo_bigcreaky_mach3.ogg
+}
+
+cryo_bigfan1
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-4
+
+	sound/ambience/m10/cryo_bigfan1.ogg
+}
+
+cryo_bigpipe1
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-4
+
+	sound/ambience/m10/cryo_bigpipe1.ogg
+}
+
+cryo_bigpipe1a
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-4
+
+	sound/ambience/m10/cryo_bigpipe1a.ogg
+}
+
+cryo_icemelter
+{
+	minDistance	128
+	maxDistance	512
+	
+	volumeDb		-4
+
+	sound/ambience/m10/cryo_icemelter.ogg
+}
+
+cryo_iceraise
+{
+	minDistance	128
+	maxDistance	512
+	
+	volumeDb		-4
+
+	sound/ambience/m10/cryo_iceraise.ogg
+}
+
+cryo_ice_loop1
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-4
+
+	sound/ambience/m10/ice_loop1.ogg
+}
+
+cryo_ice_loop1a
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-4
+
+	sound/ambience/m10/ice_loop1a.ogg
+}
+
+cryo_ice_loop_low1
+{
+	minDistance	128
+	maxDistance	512
+	looping
+	volumeDb		-4
+
+	sound/ambience/m10/ice_loop_low1.ogg
+}
+
+cryo_ice_pneu1
+{
+	minDistance	128
+	maxDistance	512
+	
+	volumeDb		-4
+
+	sound/ambience/m10/ice_pneu1.ogg
+}
+
+cryo_ice_pneu2
+{
+	minDistance	128
+	maxDistance	512
+	
+	volumeDb		-4
+
+	sound/ambience/m10/ice_pneu2.ogg
+}
+
+cryo_ice_pneu3
+{
+	minDistance	128
+	maxDistance	512
+	
+	volumeDb		-4
+
+	sound/ambience/m10/ice_pneu3.ogg
+}
+
+cryo_ice_steam1
+{
+	minDistance	128
+	maxDistance	512
+	looping	
+	volumeDb		-4
+
+	sound/ambience/m10/ice_steam1.ogg
+}
+
+valkaryne_orb
+{
+	minDistance	128
+	maxDistance	512
+	looping	
+	volumeDb		-4
+
+	sound/ambience/m10/valk_orb.ogg
+}
+
+end_ambience
+{
+	minDistance	528
+	maxDistance	812
+	looping	
+	volumeDb		-2
+
+	sound/ambience/m10/end_ambience.ogg
+}
+
+lift_breakoff
+{
+	minDistance	128
+	maxDistance	512
+
+	volumeDb		-4
+
+	sound/ambience/m10/lift_breakoff.ogg
+}

@@ -1,0 +1,13 @@
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////// shaders added by Steve H for q4x trench  ////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+guide textures/q4x_trench/outer_wall01_0 generic_shader("q4x_trench/outer_wall01_0")
+guide textures/q4x_trench/outer_wall01_1 generic_shader("q4x_trench/outer_wall01_1")
+guide textures/q4x_trench/outer_trim01_1 generic_shader("q4x_trench/outer_trim01_1")
+guide textures/q4x_trench/outer_trim01_2 generic_shader("q4x_trench/outer_trim01_2")
+guide textures/q4x_trench/outer_trim01_3 generic_shader("q4x_trench/outer_trim01_3")
+guide textures/q4x_trench/ramp_floor01_3 generic_shader("q4x_trench/ramp_floor01_3")
+guide textures/q4x_trench/ramp_floor01_1 generic_shader("q4x_trench/ramp_floor01_1")
+guide textures/q4x_trench/metal_damaged01_1 generic_shader("q4x_trench/metal_damaged01_1")
+guide textures/q4x_trench/rock_broke01_1 generic_shader("q4x_trench/rock_broke01_1")

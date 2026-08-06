@@ -1,0 +1,184 @@
+effects/hal9000/tiny_marineship
+{
+	qer_editorimage effects/hal9000/tiny_marineship.tga
+	deform sprite
+
+	{
+		blend blend
+		map effects/hal9000/tiny_marineship.tga
+		rgb 0.82
+	}
+}
+
+effects/hal9000/tiny_stroggship
+{
+	qer_editorimage effects/hal9000/tiny_stroggship.tga
+	deform sprite
+
+	{
+		blend blend
+		map effects/hal9000/tiny_stroggship.tga
+		rgb 0.82
+	}
+}
+
+gfx/effects/hal9000/black_warpin
+{
+	noSelfShadow
+	noshadows
+	{
+		blend 	diffusemap
+		map	gfx/effects/hal9000/black_warpin.tga
+		alphaTest 0.5
+	}
+}
+
+gfx/effects/hal9000/rocket_trail_blue
+{
+	noSelfShadow
+	noshadows
+	{
+		blend 	add
+		map	gfx/effects/hal9000/rocket_trail_blue.tga
+	}
+}
+
+gfx/effects/hal9000/rocket_trail_red
+{
+	noSelfShadow
+	noshadows
+	{
+		blend 	add
+		map	gfx/effects/hal9000/rocket_trail_red.tga
+	}
+}
+
+textures/hal9000/support_2sided
+{
+
+	qer_editorimage textures/hal9000/support_d.dds
+	Twosided
+
+	bumpmap textures/hal9000/support_local.dds
+	specularmap	textures/hal9000/support_s.dds
+
+	{
+		blend 	diffusemap	
+		map	textures/hal9000/support_d.dds
+		alphaTest 0.5
+	}
+}
+
+textures/q4x/rocket_satellite_d
+{
+	qer_editorimage textures/q4x/rocket_satellite_d.tga
+	deform sprite
+
+	{
+		blend diffusemap
+		map textures/q4x/rocket_satellite_d.tga
+		alphatest 0.5
+	}
+	{
+		blend add
+		map textures/q4x/rocket_satellite_d.tga
+		alphatest 0.5
+	}
+}
+
+textures/q4x/cloudalpha_d
+{
+	noSelfShadow
+	noshadows
+
+	qer_editorimage textures/q4x/cloudalpha_d.tga
+
+	{
+		blend diffusemap
+		map textures/q4x/cloudalpha_d.tga
+	}
+}
+
+
+
+textures/q4x/sky_stars
+{
+	noFragment
+	forceOpaque
+	noshadows
+	noimpact
+	{
+		blend		add		// so transparent windows can draw on top of it
+		cameraCubeMap	gfx/env/q4xstars
+		texgen		skybox
+	}
+}
+
+textures/q4x/sky_atmosphere
+{
+	noFragment
+	forceOpaque
+	noshadows
+	noimpact
+	{
+		blend		add		// so transparent windows can draw on top of it
+		cameraCubeMap	gfx/env/q4x_atmos
+		texgen		skybox
+	}
+}
+
+models/mapobjects/q4x/m01/planet1_d
+{
+	noSelfShadow
+	noshadows
+
+	diffusemap models/mapobjects/q4x/m01/planet1_d.tga
+	bumpmap models/mapobjects/q4x/m01/planet1_local.tga
+}
+
+models/mapobjects/q4x/m01/planet1_add
+{
+	noSelfShadow
+	noshadows
+
+	qer_editorimage models/mapobjects/q4x/m01/planet1_add.tga
+	{
+		blend add
+		map models/mapobjects/q4x/m01/planet1_add.tga
+	}
+}
+
+models/mapobjects/q4x/m01/planet2_d
+{
+	noSelfShadow
+	noshadows
+
+	diffusemap models/mapobjects/q4x/m01/planet2_d.tga
+	bumpmap models/mapobjects/q4x/m01/planet2_local.tga
+}
+
+textures/q4x/noise_d
+{
+	noSelfShadow
+	noshadows
+	diffusemap textures/q4x/noise_d.tga
+	{
+		blend add
+		map textures/q4x/noise_d.tga
+		translate	time * 1.25 , time * 2
+	}
+	{
+		blend add
+		map textures/q4x/noise2_d.tga
+		translate	time * -2 , time * -1.25
+	}
+}
+
+textures/q4x/planet_glow_ring
+{
+	qer_editorimage models/mapobjects/q4x/m01/planet_new_glow.tga
+	{
+		blend add
+		map models/mapobjects/q4x/m01/planet_new_glow.tga
+	}
+}

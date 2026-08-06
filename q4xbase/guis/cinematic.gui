@@ -1,0 +1,853 @@
+windowDef Desktop
+{
+	rect	0,0,640,480
+	nocursor	1
+	visible	1
+	definevec4	"logos"	0.635,0.772,0.313,1
+	definevec4	"black"	0,0,0,0
+	definevec4	"white"	1,1,1,1
+	definevec4	"text"	.8,1,0.6,0.4
+	definevec4	"text_6"	.8,1,0.6,0.2
+	definevec4	"text_0"	.8,1,0.6,0
+
+	// --------------!!!!! Begin Ritual !!!!!--------------
+
+	onNamedEvent text1_on {
+		resettime "anim_introtext1" "0" ;
+	}
+
+	onNamedEvent text2_on {
+		resettime "anim_introtext2" "0" ;
+	}
+
+	onNamedEvent text3_on {
+		resettime "anim_introtext3" "0" ;
+	}
+
+	onNamedEvent text4_on {
+		resettime "anim_introtext4" "0" ;
+	}
+
+	onNamedEvent text5_on {
+		resettime "anim_introtext5" "0" ;
+	}
+
+	onNamedEvent text6_on {
+		resettime "anim_introtext6" "0" ;
+	}
+
+	onNamedEvent id1 {
+		resettime "anim_idsoftware1" "0" ;
+	}
+
+	onNamedEvent id2 {
+		resettime "anim_idsoftware2" "0" ;
+	}
+
+	onNamedEvent id3 {
+		resettime "anim_idsoftware3" "0" ;
+	}
+
+	onNamedEvent rit1 {
+		resettime "anim_ritual1" "0" ;
+	}
+
+	onNamedEvent rit2 {
+		resettime "anim_ritual2" "0" ;
+	}
+
+	onNamedEvent pub {
+		resettime "anim_published" "0" ;
+	}
+
+	onNamedEvent act {
+		resettime "anim_activision" "0" ;
+	}
+
+	onNamedEvent quake {
+		resettime "anim_quake4" "0" ;
+	}
+
+	onNamedEvent awakening {
+		resettime "anim_awakening" "0" ;
+	}
+
+	windowDef introtext1
+	{
+		rect	50,340,255,39
+		visible	0
+		forecolor	0,0,0,0
+		text	"Planet Stroggos"
+		textscale	0.5
+		textstyle	2
+		font	"fonts/marine"
+	}
+	windowDef anim_introtext1
+	{
+		rect	50,340,255,39
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "introtext1::visible" "1";
+			transition "introtext1::forecolor" "1,1,1,1" "0,0.5,1,1" "1500" ;
+		}
+
+		onTime 8500 {
+			transition "introtext1::forecolor" "0,0.5,1,1" "0,0,0,0" "500" ;
+		}
+
+	}
+	windowDef introtext2
+	{
+		rect	50,370,474,39
+		visible	0
+		forecolor	0,0,0,0
+		text	"Marine Mobile Command Center"
+		textscale	0.5
+		textstyle	2
+		font	"fonts/marine"
+	}
+	windowDef anim_introtext2
+	{
+		rect	50,340,255,39
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "introtext2::visible" "1";
+			transition "introtext2::forecolor" "1,1,1,1" "0,0.5,1,1" "1500" ;
+		}
+
+		onTime 6500 {
+			transition "introtext2::forecolor" "0,0.5,1,1" "0,0,0,0" "500" ;
+		}
+
+	}
+	windowDef introtext3
+	{
+		rect	50,388,474,39
+		visible	0
+		forecolor	0,0,0,0
+		text	"USS Hannibal"
+		textscale	0.5
+		textstyle	2
+		font	"fonts/marine"
+	}
+	windowDef anim_introtext3
+	{
+		rect	50,340,255,39
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "introtext3::visible" "1";
+			transition "introtext3::forecolor" "1,1,1,1" "0,0.5,1,1" "1500" ;
+		}
+
+		onTime 6500 {
+			transition "introtext3::forecolor" "0,0.5,1,1" "0,0,0,0" "500" ;
+		}
+
+	}
+	windowDef introtext4
+	{
+		rect	51,340,474,39
+		visible	0
+		forecolor	0,0,0,0
+		text	"Zero Hour"
+		textscale	0.5
+		textstyle	2
+		font	"fonts/marine"
+	}
+	windowDef anim_introtext4
+	{
+		rect	50,340,255,39
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "introtext4::visible" "1";
+			transition "introtext4::forecolor" "1,1,1,1" "0,0.5,1,1" "1500" ;
+		}
+
+		onTime 6000 {
+			transition "introtext4::forecolor" "0,0.5,1,1" "0,0,0,0" "500" ;
+		}
+
+	}
+	windowDef introtext5
+	{
+		rect	50,370,319,39
+		visible	0
+		forecolor	0,0.501,1,1
+		text	"Operation Advantage"
+		textscale	0.5
+		textstyle	2
+		font	"fonts/marine"
+	}
+	windowDef anim_introtext5
+	{
+		rect	50,340,255,39
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "introtext5::visible" "1";
+			transition "introtext5::forecolor" "1,1,1,1" "0,0.5,1,1" "1500" ;
+		}
+
+		onTime 6000 {
+			transition "introtext5::forecolor" "0,0.5,1,1" "0,0,0,0" "500" ;
+		}
+
+	}
+	windowDef introtext6
+	{
+		rect	50,389,474,39
+		visible	0
+		forecolor	0,0.501,1,1
+		text	"(Tetranode Offensive)"
+		textscale	0.5
+		textstyle	2
+		font	"fonts/marine"
+	}
+	windowDef anim_introtext6
+	{
+		rect	50,340,255,39
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "introtext6::visible" "1";
+			transition "introtext6::forecolor" "1,1,1,1" "0,0.5,1,1" "1500" ;
+		}
+
+		onTime 6000 {
+			transition "introtext6::forecolor" "0,0.5,1,1" "0,0,0,0" "500" ;
+		}
+
+	}
+	windowDef anim_idsoftware1
+	{
+		rect	50,340,65,39
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "idsoftware1::visible" "1";
+			transition "idsoftware1::forecolor" "1,1,1,1" "0,0.5,1,1" "1500" ;
+		}
+
+		onTime 5000 {
+			transition "idsoftware1::forecolor" "0,0.5,1,1" "0,0,0,0" "500" ;
+		}
+
+	}
+	windowDef idsoftware2
+	{
+		rect	59,347,353,55
+		visible	0
+		forecolor	0,0,0,0
+		text	"id Software"
+		textscale	1
+		textstyle	2
+		font	"fonts/marine"
+	}
+	windowDef anim_idsoftware2
+	{
+		rect	46,344,353,58
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "idsoftware2::visible" "1";
+			transition "idsoftware2::forecolor" "1,1,1,1" "0,0.5,1,1" "1500" ;
+		}
+
+		onTime 5000 {
+			transition "idsoftware2::forecolor" "0,0.5,1,1" "0,0,0,0" "500" ;
+		}
+
+	}
+	windowDef idsoftware3
+	{
+		rect	62,388,73,39
+		visible	0
+		forecolor	0,0,0,0
+		text	"game"
+		textscale	0.5
+		textstyle	2
+		font	"fonts/marine"
+	}
+	windowDef anim_idsoftware3
+	{
+		rect	50,386,73,39
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "idsoftware3::visible" "1";
+			transition "idsoftware3::forecolor" "1,1,1,1" "0,0.5,1,1" "1500" ;
+		}
+
+		onTime 5000 {
+			transition "idsoftware3::forecolor" "0,0.5,1,1" "0,0,0,0" "500" ;
+		}
+
+	}
+	windowDef ritual1
+	{
+		rect	50,340,195,39
+		visible	0
+		forecolor	0,0,0,0
+		text	"developed by"
+		textscale	0.5
+		textstyle	2
+		font	"fonts/marine"
+	}
+	windowDef anim_ritual1
+	{
+		rect	50,340,195,39
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "ritual1::visible" "1";
+			transition "ritual1::forecolor" "1,1,1,1" "0,0.5,1,1" "1500" ;
+		}
+
+		onTime 5000 {
+			transition "ritual1::forecolor" "0,0.5,1,1" "0,0,0,0" "500" ;
+		}
+
+	}
+	windowDef ritual2
+	{
+		rect	46,351,545,57
+		visible	0
+		forecolor	0,0.5,1,1
+		text	"Ritual Entertainment"
+		textscale	0.85
+		textstyle	2
+		font	"fonts/marine"
+	}
+	windowDef anim_ritual2
+	{
+		rect	46,351,545,57
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "ritual2::visible" "1";
+			transition "ritual2::forecolor" "1,1,1,1" "0,0.5,1,1" "1500" ;
+		}
+
+		onTime 5000 {
+			transition "ritual2::forecolor" "0,0.5,1,1" "0,0,0,0" "500" ;
+		}
+
+	}
+	windowDef idsoftware1
+	{
+		rect	62,343,40,39
+		visible	0
+		forecolor	0,0,0,0
+		text	an
+		textscale	0.5
+		textstyle	2
+		font	"fonts/marine"
+	}
+	windowDef published
+	{
+		rect	50,340,255,39
+		visible	0
+		forecolor	0,0,0,0
+		text	"Published By"
+		textscale	0.5
+		textstyle	2
+		font	"fonts/marine"
+	}
+	windowDef anim_published
+	{
+		rect	50,340,255,39
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "published::visible" "1";
+			transition "published::forecolor" "1,1,1,1" "0,0.5,1,1" "1500" ;
+		}
+
+		onTime 4500 {
+			transition "published::forecolor" "0,0.5,1,1" "0,0,0,0" "500" ;
+		}
+
+	}
+	windowDef activision
+	{
+		rect	50,352,474,63
+		visible	0
+		forecolor	0,0,0,0
+		text	"Activision"
+		textscale	1
+		textstyle	2
+		font	"fonts/marine"
+	}
+	windowDef anim_activision
+	{
+		rect	50,352,474,63
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "activision::visible" "1";
+			transition "activision::forecolor" "1,1,1,1" "0,0.5,1,1" "1500" ;
+		}
+
+		onTime 5000 {
+			transition "activision::forecolor" "0,0.5,1,1" "0,0,0,0" "500" ;
+		}
+
+	}
+	windowDef quake4
+	{
+		rect	0,157,640,89
+		visible	0
+		forecolor	0,0,0,0
+		text	"QUAKE 4"
+		textscale	1.5
+		textalign	1
+		textstyle	2
+		font	"fonts/marine"
+	}
+	windowDef anim_quake4
+	{
+		rect	0,157,640,89
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "quake4::visible" "1";
+			transition "quake4::forecolor" "1,1,1,1" "0,0.5,1,1" "1500" ;
+		}
+
+		onTime 5000 {
+			transition "quake4::forecolor" "0,0.5,1,1" "0,0,0,0" "500" ;
+		}
+
+	}
+	windowDef awakening
+	{
+		rect	0,248,640,39
+		visible	0
+		forecolor	0,0,0,0
+		text	"The Awakening"
+		textscale	0.5
+		textalign	1
+		textstyle	2
+	}
+	windowDef anim_awakening
+	{
+		rect	0,248,640,39
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "awakening::visible" "1";
+			transition "awakening::forecolor" "1,1,1,1" "0,0.5,1,1" "1500" ;
+		}
+
+		onTime 5000 {
+			transition "awakening::forecolor" "0,0.5,1,1" "0,0,0,0" "500" ;
+		}
+
+	}
+
+	// --------------!!!! END RITUAL !!!!--------------
+
+
+	onNamedEvent cinematicStart {
+		//	resetTime "anim_bars" "0";
+	}
+
+	onNamedEvent logoStart {
+		resetTime "anim_logo" "0";
+	}
+
+	onNamedEvent hideLetterbox {
+		set "blackbar_top::visible" "0";
+		set "blackbar_bottom::visible" "0";
+		set "anim_bars::visible" "0";
+	}
+
+	onNamedEvent corporateLogoStart {
+		set "p_intrologos::visible" "1" ;
+		resetTime "anim_textintro" "0";
+	}
+
+	onNamedEvent endLogo {
+		resetTime "endlogo" "0";
+	}
+
+	windowDef blackbar_top
+	{
+		rect	0,0,640,60
+		visible	1
+		backcolor	0,0,0,1
+	}
+	windowDef blackbar_bottom
+	{
+		rect	0,420,640,60
+		visible	1
+		backcolor	0,0,0,1
+	}
+	windowDef anim_bars
+	{
+		rect	0,0,1,1
+		visible	1
+		notime	1
+
+		onTime 0 {
+			set "blackbar_top::visible" "1";
+			set "blackbar_bottom::visible" "1";
+			transition "blackbar_top::rect" "0,-60,640,60" "0,0,640,60" "1000";
+			transition "blackbar_bottom::rect" "0,480,640,60" "0,420,640,60" "1000";
+		}
+
+	}
+	windowDef q4logo
+	{
+		rect	160,80,319,319
+		visible	0
+		background	"gfx/guis/mainmenu/intro_logo"
+		matcolor	0.941,0.643,0.415,0
+	}
+	windowDef q4text
+	{
+		rect	106,140,428,108
+		visible	0
+		background	"gfx/guis/mainmenu/q4text"
+		matcolor	0,0,0,0
+	}
+	windowDef p_intrologos
+	{
+		rect	0,0,640,480
+		visible	0
+		windowDef cred0_s
+		{
+			rect	0,223,640,33
+			visible	1
+			forecolor	0.839,1,0.658,0
+			text	"#str_201031"
+			textscale	0.8
+			textalign	1
+			font	"fonts/strogg"
+			textspacing	1
+		}
+		windowDef p_cred0
+		{
+			rect	320,220,1,37
+			visible	1
+			windowDef cred0
+			{
+				rect	-320,0,640,37
+				visible	1
+				forecolor	0.839,1,0.658,0
+				text	"#str_201031"
+				textscale	0.61
+				textalign	1
+				font	"fonts/lowpixel"
+			}
+		}
+		windowDef cred3_s
+		{
+			rect	0,216,640,23
+			visible	1
+			forecolor	0.839,1,0.658,0
+			text	"#str_201032"
+			textscale	0.4
+			textalign	1
+			font	"fonts/strogg"
+		}
+		windowDef p_cred3
+		{
+			rect	320,214,1,23
+			visible	1
+			windowDef cred3
+			{
+				rect	-320,0,640,23
+				visible	1
+				forecolor	0.839,1,0.658,0
+				text	"#str_201032"
+				textscale	0.31
+				textalign	1
+				font	"fonts/lowpixel"
+			}
+		}
+		windowDef cred4_rv_s
+		{
+			rect	0,240,640,34
+			visible	1
+			forecolor	0.839,1,0.658,0
+			text	"#str_201033"
+			textscale	0.8
+			textalign	1
+			font	"fonts/strogg"
+			textspacing	2
+		}
+		windowDef p_cred4_rv
+		{
+			rect	320,237,1,34
+			visible	1
+			windowDef cred4_rv
+			{
+				rect	-320,0,640,34
+				visible	1
+				forecolor	0.839,1,0.658,0
+				text	"#str_201033"
+				textscale	0.61
+				textalign	1
+				font	"fonts/lowpixel"
+			}
+		}
+		windowDef p_cred5
+		{
+			rect	0,214,640,23
+			visible	1
+			windowDef cred5
+			{
+				rect	0,0,640,23
+				visible	1
+				forecolor	0.839,1,0.658,0
+				text	"#str_201034"
+				textscale	0.31
+				textalign	1
+				font	"fonts/lowpixel"
+			}
+		}
+		windowDef cred5_s
+		{
+			rect	0,216,640,23
+			visible	1
+			forecolor	0.839,1,0.658,0
+			text	"#str_201034"
+			textscale	0.4
+			textalign	1
+			font	"fonts/strogg"
+		}
+		windowDef p_cred6_av
+		{
+			rect	0,237,640,34
+			visible	1
+			windowDef cred6_av
+			{
+				rect	0,0,640,34
+				visible	1
+				forecolor	0.839,1,0.658,0
+				text	"#str_201035"
+				textscale	0.61
+				textalign	1
+				font	"fonts/lowpixel"
+			}
+		}
+		windowDef cred6_av_s
+		{
+			rect	0,240,640,34
+			visible	1
+			forecolor	0.839,1,0.658,0
+			text	"#str_201035"
+			textscale	0.8
+			textalign	1
+			font	"fonts/strogg"
+		}
+		windowDef presents_s
+		{
+			rect	0,229,640,24
+			visible	1
+			forecolor	0.839,1,0.658,0
+			text	PRESENTS
+			textscale	0.5
+			textalign	1
+			font	"fonts/strogg"
+			textspacing	1
+		}
+		windowDef p_presents
+		{
+			rect	320,226,1,24
+			visible	1
+			forecolor	0.839,1,0.658,0
+			text	"#str_201036"
+			textscale	0.4
+			textalign	1
+			font	"fonts/lowpixel"
+			windowDef presents
+			{
+				rect	-320,0,640,24
+				visible	1
+				forecolor	0.839,1,0.658,0
+				text	"#str_201036"
+				textscale	0.4
+				textalign	1
+				font	"fonts/lowpixel"
+			}
+		}
+	}
+	windowDef anim_logo
+	{
+		rect	0,0,1,1
+		visible	1
+		notime	1
+
+		onTime 0 {
+			//set "cmd" "runscript" "map_airdefense_intro::play_cine_intro_logo_main" ;
+			set "q4logo::visible" "1" ;
+			set "q4text::visible" "1" ;
+			transition "q4text::matcolor" "0,0,0,1" "1,1,1,1" "1000" ;
+		}
+
+		onTime +200 {
+			transition "q4logo::matcolor" "0.941,0.643,0.415,0" "0.941,0.643,0.415,0.32" "800" ;
+		}
+
+		onTime +4200 {
+			transition "q4text::matcolor" "1,1,1,1" "0,0,0,1" "1200" ;
+			transition "q4logo::matcolor" "0.941,0.643,0.415,0.32" "0.941,0.643,0.415,0" "2000" ;
+		}
+
+		onTime +2000 {
+			set "q4logo::visible" "0" ;
+			set "q4text::visible" "0" ;
+		}
+
+	}
+	windowDef anim_textintro
+	{
+		rect	0,0,1,1
+		visible	1
+		notime	1
+
+		onTime 0 {
+			//set "cmd" "runscript" "map_airdefense_intro::play_cine_intro_logo1" ;
+			transition "cred0_s::forecolor" "$desktop::text_0" "$desktop::text" "500" ;
+		}
+
+		onTime +500 {
+			transition "cred0::forecolor" "$desktop::white" "$desktop::text" "1000" ;
+			transition "cred0_s::forecolor" "$desktop::text" "$desktop::text_0" "1000" ;
+			transition "p_cred0::rect" "320,220,1,37" "0,220,640,37" "1000" ;
+			transition "cred0::rect" "-320,0,640,37" "0,0,640,37" "1000" ;
+		}
+
+		onTime +3800 {
+			transition "cred0::forecolor" "$desktop::text" "$desktop::text_0" "1000" ;
+		}
+
+		onTime +1200 {
+			//set "cmd" "runscript" "map_airdefense_intro::play_cine_intro_logo2" ;
+			transition "cred3_s::forecolor" "$desktop::text_0" "$desktop::text_6" "1000" ;
+		}
+
+		onTime +200 {
+			transition "cred4_rv_s::forecolor" "$desktop::text_0" "$desktop::text" "1000" ;
+		}
+
+		onTime +300 {
+			transition "cred3::forecolor" "$desktop::white" "$desktop::text_6" "1000" ;
+			transition "cred3_s::forecolor" "$desktop::text_6" "$desktop::text_0" "1000" ;
+			transition "p_cred3::rect" "320,214,1,23" "0,214,640,23" "1000" ;
+			transition "cred3::rect" "-320,0,640,23" "0,0,640,23" "1000" ;
+		}
+
+		onTime +200 {
+			transition "cred4_rv::forecolor" "$desktop::white" "$desktop::text" "1000" ;
+			transition "cred4_rv_s::forecolor" "$desktop::text" "$desktop::text_0" "1000" ;
+			transition "p_cred4_rv::rect" "320,237,1,34" "0,237,640,34" "1000" ;
+			transition "cred4_rv::rect" "-320,0,640,34" "0,0,640,34" "1000" ;
+		}
+
+		onTime +3600 {
+			transition "cred3::forecolor" "$desktop::text_6" "$desktop::text_0" "1000" ;
+		}
+
+		onTime +200 {
+			transition "cred4_rv::forecolor" "$desktop::text" "$desktop::text_0" "1000" ;
+		}
+
+		onTime +1000 {
+			//set "cmd" "runscript" "map_airdefense_intro::play_cine_intro_logo3" ;
+			transition "cred5_s::forecolor" "$desktop::text_0" "$desktop::text_6" "1000" ;
+		}
+
+		onTime +200 {
+			transition "cred6_av_s::forecolor" "$desktop::text_0" "$desktop::text" "1000" ;
+		}
+
+		onTime +300 {
+			transition "cred5::forecolor" "$desktop::white" "$desktop::text_6" "1000" ;
+			transition "cred5_s::forecolor" "$desktop::text_6" "$desktop::text_0" "1000" ;
+			transition "p_cred5::rect" "320,214,1,23" "0,214,640,23" "2000" ;
+			transition "cred5::rect" "-320,0,640,23" "0,0,640,23" "2000" ;
+		}
+
+		onTime +200 {
+			transition "cred6_av::forecolor" "$desktop::white" "$desktop::text" "1000" ;
+			transition "cred6_av_s::forecolor" "$desktop::text" "$desktop::text_0" "1000" ;
+			transition "p_cred6_av::rect" "320,237,1,34" "0,237,640,34" "1000" ;
+			transition "cred6_av::rect" "-320,0,640,34" "0,0,640,34" "1000" ;
+		}
+
+		onTime +3600 {
+			transition "cred5::forecolor" "$desktop::text_6" "$desktop::text_0" "1000" ;
+		}
+
+		onTime +200 {
+			transition "cred6_av::forecolor" "$desktop::text" "$desktop::text_0" "1000" ;
+		}
+
+		onTime +1000 {
+			//set "cmd" "runscript" "map_airdefense_intro::play_cine_intro_logo4" ;
+			//transition "presents_s::forecolor" "$desktop::text_0" "$desktop::text" "1000" ;
+		}
+
+		onTime +500 {
+			//transition "presents::forecolor" "$desktop::white" "$desktop::text" "1000" ;
+			//transition "presents_s::forecolor" "$desktop::text" "$desktop::text_0" "1000" ;
+			//transition "p_presents::rect" "320,226,1,24" "0,226,640,24" "2000" ;
+			//transition "presents::rect" "-320,0,640,24" "0,0,640,24" "2000" ;
+		}
+
+		onTime +1800 {
+			//transition "presents::forecolor" "$desktop::text" "$desktop::text_0" "1000" ;
+		}
+
+	}
+	windowDef endlogo_black
+	{
+		rect	0,0,640,480
+		visible	0
+		backcolor	0,0,0,1
+	}
+	windowDef endlogo
+	{
+		rect	0,0,640,480
+		visible	0
+		background	"gfx/guis/mainmenu/endlogo"
+		matcolor	1,1,1,0
+		notime	1
+
+		onTime 0 {
+			set "endlogo::visible" "1" ;
+			transition "endlogo::matcolor_w" "0" "1" "1000" ;
+		}
+		
+		onTime +1000 {
+			set "endlogo_black::visible" "1" ;
+		}
+		
+		onTime +5000 {
+			transition "endlogo::matcolor_w" "1" "0" "1500" ;
+		}
+
+	}
+}

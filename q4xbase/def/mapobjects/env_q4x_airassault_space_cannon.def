@@ -1,0 +1,37 @@
+/***********************************************************************
+Air Assault Turret
+***********************************************************************/
+
+export env_q4x_airassault_space_cannon
+{
+	options -game /q4xbase  -prefix AATUR_ -scale .3937  -keep origin pivot joint1 twist twist_grp steer_base steering_grp base muzzleflash01 muzzleflash02 ALL -sourcedir models/mapobjects/air_assualturret/cine/animations -destdir models/mapobjects/airborneassault/aa_turret
+
+	mesh	aa_turret_idle.ma								-dest mesh
+	anim	aa_turret_idle.ma								-dest aa_turret_idle
+}
+
+model model_env_q4x_airassault_space_cannon
+
+{
+	mesh					models/mapobjects/airborneassault/aa_turret/mesh.md5mesh
+	anim idle				models/mapobjects/airborneassault/aa_turret/aa_turret_idle.md5anim
+	anim airassault_space_cannon_idle	models/mapobjects/airborneassault/aa_turret/aa_turret_idle.md5anim
+}
+
+entityDef env_q4x_airassault_space_cannon
+{
+	"editor_color"			"0 .5 .25"
+	"editor_mins"			"-32 -32 0"
+	"editor_maxs"			"32 32 16"
+
+	"spawnclass"			"idAnimated"
+
+	"model"				"model_env_q4x_airassault_space_cannon"
+	"anim"				"airassault_space_cannon_idle"
+	"gui_hud"					""
+	"gui"						"guis/vehicles/airassault/spaceturret_rocket.gui"
+	"gui2"						"guis/vehicles/airassault/spaceturret_main.gui"
+	"gui3"						"guis/vehicles/airassault/spaceturret_rocket.gui"
+	
+}
+

@@ -1,0 +1,67 @@
+
+
+skin skins/models/mapobjects/q4x/cryo_pump/pump01
+{
+	"models/mapobjects/strogg/outdoor/pump/pump01"	
+	"models/mapobjects/q4x/cryo_pump/pump01"
+}
+
+// CRYO_ELEVATOR SKIN VARIANT 
+
+skin skins/models/mapobjects/q4x/cryo_elevator/strogglift_cryo
+{
+	"models/mapobjects/strogg/machines/elevators_and_lifts/lift_7_28/platform" "models/mapobjects/q4x/cryo_elevator/platform"
+	"models/mapobjects/strogg/machines/elevators_and_lifts/lift_7_28/monitor" "models/mapobjects/q4x/cryo_elevator/monitor"
+	"models/mapobjects/strogg/machines/elevators_and_lifts/lift_7_28/console" "models/mapobjects/q4x/cryo_elevator/console"
+	"models/mapobjects/strogg/machines/elevators_and_lifts/lift_7_28/rear_rail" "models/mapobjects/q4x/cryo_elevator/rear_rail"
+
+}
+
+// CRYO_DATABANK SKIN VARIANT
+
+skin skins/models/mapobjects/q4x/cryo_monitors/data_bank1
+{
+	"models/mapobjects/strogg/console/generic/data_bank1" "models/mapobjects/q4x/cryo_monitors/data_bank1"
+}
+
+// SHAFT_MACHINE 1_BOTTOM & 1_MIDDLE SKIN VARIANT
+
+skin skins/models/mapobjects/strogg/terminal/shaft_machines/1_middle_clean
+{
+	"models/mapobjects/strogg/terminal/shaft_machines/1_middle" "models/mapobjects/strogg/terminal/shaft_machines/1_middle_clean"
+}
+
+skin skins/models/mapobjects/q4x/machines/shaft_machines/1_bottom_clean
+{
+	"models/mapobjects/strogg/terminal/shaft_machines/1_bottom" "models/mapobjects/q4x/machines/shaft_machines/1_bottom_clean"
+}
+
+skin skins/models/mapobjects/strogg/structural/pillars/prison1_clean
+{
+	"models/mapobjects/strogg/structural/pillars/prison1" "models/mapobjects/strogg/structural/pillars/prison1_clean"
+}
+
+skin skins/models/mapobjects/strogg/structural/pillars/prison1_a
+{
+	"models/mapobjects/strogg/structural/pillars/prison1_a" "models/mapobjects/strogg/structural/pillars/prison1_clean"
+}
+
+skin skins/models/mapobjects/strogg/structural/pillars/prison1extra
+{
+	"models/mapobjects/strogg/structural/pillars/prison1extra" "models/mapobjects/strogg/structural/pillars/prison1_clean"
+}
+
+skin skins/models/mapobjects/strogg/console/q4x_generic/data_bank2
+{
+	"models/mapobjects/strogg/console/generic/data_bank2" "models/mapobjects/strogg/console/q4x_generic/data_bank2"
+}
+
+skin skins/models/mapobjects/strogg/console/q4x_generic/data_bank3
+{
+	"models/mapobjects/strogg/console/generic/data_bank3" "models/mapobjects/strogg/console/q4x_generic/data_bank3"
+}
+
+skin skins/models/mapobjects/q4x/cryo_pillars/stack1
+{
+	"models/mapobjects/strogg/structural/pillars/stack1" "models/mapobjects/q4x/cryo_pillars/stack2"
+}

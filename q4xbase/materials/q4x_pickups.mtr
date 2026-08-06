@@ -1,0 +1,24 @@
+models/pick_ups/mp_pickups/mp_q4x_adrenal
+{
+      noSelfShadow
+      //unSmoothedTangents
+
+	bumpmap			models/pick_ups/mp_pickups/mp_q4x_adrenal_local.tga
+	diffusemap		models/pick_ups/mp_pickups/mp_q4x_adrenal_d.tga
+	specularmap		models/pick_ups/mp_pickups/mp_q4x_adrenal_s.tga
+	{
+	blend      		add
+	map 			models/pick_ups/mp_pickups/mp_q4x_adrenal_add.tga
+	}
+	{
+	    blend GL_DST_ALPHA, gl_one
+	    maskalpha
+       	cubeMap		gfx/env/marhelmet
+        texgen		reflect
+		red   Parm0
+		green Parm1
+		blue  Parm2
+	}	
+}
+
+

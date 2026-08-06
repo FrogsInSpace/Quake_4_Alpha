@@ -1,0 +1,145 @@
+windowDef Desktop
+{
+	comment	"set gui_Parm1 == to your map_namespace::scriptname"
+	visible	1
+	rect	0,0,640,480
+	backcolor	0,0,0,1
+	windowDef bg
+	{
+		rect	0,0,640,480
+		visible	1
+		background	"gfx/guis/maps/cryo/cryo_func_coolingbutton_01"
+		matcolor	1,1,1,1
+	}
+	windowDef guage
+	{
+		rect	36,-1,570,239
+		visible	1
+		background	"gfx/guis/maps/cryo/cryo_func_coolingbutton_02"
+		matcolor	1,0,0,1
+	}
+	windowDef guage_add
+	{
+		rect	36,0,570,239
+		visible	1
+		background	"gfx/guis/maps/cryo/cryo_func_coolingbutton_02a"
+		matcolor	1,0,0,1
+	}
+	windowDef rectangle
+	{
+		rect	173,61,295,36
+		visible	1
+		background	"gfx/guis/maps/cryo/cryo_func_coolingbutton_04"
+		matcolor	1,0,0,0.149
+	}
+	windowDef data
+	{
+		rect	0,0,640,480
+		visible	1
+		background	"gfx/guis/common/strogg/data"
+		matcolor	0.152,0.439,0.470,0.0941
+		shear	0, -.4
+		matscalex	-1
+	}
+	windowDef number
+	{
+		rect	261,198,121,52
+		visible	1
+		forecolor	0.501,1,1,1
+		text	"42557"
+		textscale	1
+		font	"fonts/strogg"
+		textalign	1
+	}
+	windowDef ring
+	{
+		rect	290,50,60,57
+		visible	1
+		background	"gfx/guis/common/strogg/doorgui_outer"
+		matcolor	1,0,0,1
+	}
+	windowDef topstuff
+	{
+		visible	1
+		rect	0,0,640,480
+		windowDef sline
+		{
+			visible	1
+			rect	2,-203,640,906
+			background	"gfx/guis/common/monitor_line4"
+			matcolor	0.580,0.650,0.705,0.1
+		}
+		windowDef monitor_darkedge
+		{
+			visible	1
+			rect	0,0,640,480
+			background	"gfx/guis/common/monitor_darkedge2"
+			matcolor	0,0,0,1
+		}
+		windowDef topreflect
+		{
+			visible	1
+			rect	-167,-77,1026,575
+			background	"gfx/guis/common/gradient"
+			matcolor	0.674,0.8,0.635,.2
+		}
+	}
+	windowDef frost
+	{
+		rect	0,0,640,480
+		visible	1
+		background	"gfx/guis/maps/cryo/cryo_func_coolingbutton_05"
+		matcolor	1,1,1,0
+	}
+	windowDef btn1
+	{
+		rect	0,240,640,240
+		visible	1
+		shear	0,0
+		background	"gfx/guis/maps/cryo/cryo_func_coolingbutton_03"
+		matcolor	1,1,1,1
+
+		onMouseEnter {
+			transition "matcolor" "0.7,0.7,0.7,1" "1,1,1,1" "200" ;
+		}
+
+		onMouseExit {
+			transition "matcolor" "1,1,1,1" "0.8,0.8,0.8,1" "200" ;
+		}
+
+		onAction {
+			set "cmd" "play guisound_beep2 ; runscript" "$gui::gui_Parm1" ;
+			
+			transition "matcolor" "1,1,1,1" "0.6,0.7,0.8,1" "300" ;
+			transition "guage::matcolor" "1,0,0,1" "0,0.7,0.8,1" "2600" ;
+			transition "guage_add::matcolor" "1,0,0,1" "0,0.7,0.8,1" "2600" ;
+			transition "rectangle::matcolor" "1,0,0,1" "0,0.7,0.8,1" "2600" ;
+			transition "ring::matcolor" "1,0,0,1" "0,0,0,1" "400" ;
+			transition "ring::rect" "$ring::rect" "$d_ring::rect" "400" ;
+			transition "rectangle::rect" "$rectangle::rect" "$d_rectangle2::rect" "2200" ;
+			transition "frost::matcolor" "1,1,1,0" "1,1,1,1" "3200" ;
+		}
+
+	}
+	windowDef d_ring
+	{
+		rect	247,4,146,151
+		visible	0
+		background	"gfx/guis/common/strogg/doorgui_outer"
+		matcolor	1,0,0,1
+	}
+	windowDef d_rectangle1
+	{
+		rect	118,99,403,36
+		visible	0
+		background	"gfx/guis/maps/cryo/cryo_func_coolingbutton_04"
+		matcolor	1,0,0,0.149
+	}
+	windowDef d_rectangle2
+	{
+		rect	118,156,400,36
+		visible	0
+		background	"gfx/guis/maps/cryo/cryo_func_coolingbutton_04"
+		matcolor	1,0,0,0.149
+	}
+}

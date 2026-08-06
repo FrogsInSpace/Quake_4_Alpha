@@ -1,0 +1,3233 @@
+//---------------------------------------------------------------------------------------
+// stranarus_trench.script
+//
+// (c) Ritual 2005
+//	-The Castle was here
+//
+//	radioChatterPlayWait( $uni_radiochatter, "vo_vansen_whatquick" );		// %%%%%%%%%% VO %%%%%%%%%%
+//	radioChatterPlay( $uni_radiochatter, "vo_nava_detammofeed" );			// %%%%%%%%%% VO %%%%%%%%%%
+//
+//	aiSpeakWait( $markswell, "lipsync_marks_everystation" );				// %%%%%%%%%% VO %%%%%%%%%%
+//	aiSpeak( $markswell, "lipsync_marks_everystation" );					// %%%%%%%%%% VO %%%%%%%%%%
+//
+//$m04_intro_unit1_seq_1_townsend.hideSurface("models/weapons/mp_guns/w_mg_lo");
+//$m04_trench_unit1_uni_boom_flash_anc.setWorldOrigin ( $m04_trench_unit1_uni_boom_flash_anc_origin.getWorldOrigin() );
+//---------------------------------------------------------------------------------------
+#include "scripts/doom_defs.script"
+
+namespace m04_stranarus_trench	{
+
+//=================================================================================
+//---------------------------------------------------------------------------------
+//	intro_unit1 begin
+//---------------------------------------------------------------------------------
+//=================================================================================
+//---------------------------------------------------------------------------------
+// intro_unit1 Sequence 1 start
+// EXT. USS HANNIBAL, ESTALISHING SHOT
+//---------------------------------------------------------------------------------
+//Rotate the camera up towards the sky
+void setupCam1()
+{
+	$intro_unit1_seq_1_cam_1_mover.time( 0.01 );
+	$intro_unit1_seq_1_cam_1_mover.rotateOnce( '0 0 90' );
+	sys.waitFor( $intro_unit1_seq_1_cam_1_mover );
+}
+
+void setupDropship()
+{
+	$cin_dropship.playAnim( ANIMCHANNEL_ALL, "outro_dropship" );
+}
+
+//Tilt down, pan right, and dolly over to first target_null
+void moveCam1()
+{
+	$intro_unit1_seq_1_cam_1_mover.time( 12 );
+	$intro_unit1_seq_1_cam_1_mover.accelTime( 2 );
+	$intro_unit1_seq_1_cam_1_mover.decelTime( 5 );
+	$intro_unit1_seq_1_cam_1_mover.rotateOnce( '0 -10 -90' );
+	$intro_unit1_seq_1_cam_1_mover.moveTo( $intro_unit1_seq_1_cam_1_target_1 );
+	sys.waitFor( $intro_unit1_seq_1_cam_1_mover );
+}
+
+//Slow push in and pan right
+void moveCam1_second()
+{
+	$intro_unit1_seq_1_cam_1_mover.time( 6 );
+	$intro_unit1_seq_1_cam_1_mover.accelTime( 4 );
+	$intro_unit1_seq_1_cam_1_mover.decelTime( 2 );
+	$intro_unit1_seq_1_cam_1_mover.rotateOnce( '0 -5 5' );
+	$intro_unit1_seq_1_cam_1_mover.moveTo( $intro_unit1_seq_1_cam_1_target_2 );
+	sys.waitFor( $intro_unit1_seq_1_cam_1_mover );
+}
+
+void intro_unit1_seq_1_main()
+	{
+		sys.fadeOut('0 0 0', .01 );
+		sys.waitFrame();
+		setupCam1();
+		thread setupDropship();
+		
+		sys.trigger( $intro_unit1_seq_1_cam_1 );
+		sys.fadeIn('0 0 0', 1.5 );
+		sys.wait( 0.1 );
+		sys.wait( 1.9 );
+		sys.sendNamedEvent( GUI_CINEMATICHUD, "text1_on" );
+		thread moveCam1();
+		sys.wait( 5 );
+		sys.sendNamedEvent( GUI_CINEMATICHUD, "text2_on" );
+		sys.sendNamedEvent( GUI_CINEMATICHUD, "text3_on" );
+		sys.wait( 7.5 );
+		sys.sendNamedEvent( GUI_CINEMATICHUD, "text4_on" );
+		sys.wait( 0.1 );
+		sys.sendNamedEvent( GUI_CINEMATICHUD, "text5_on" );
+		sys.wait( 0.1 );
+		sys.sendNamedEvent( GUI_CINEMATICHUD, "text6_on" );
+		sys.wait( 1 );
+		thread moveCam1_second();
+		sys.wait( 7 );
+		//sys.trigger( $intro_unit1_seq_1_cam_1 );
+		
+		sys.trigger( $intro_unit1_seq_1_trigger_seq_2 );
+	}
+//---------------------------------------------------------------------------------
+// intro_unit1 Sequence 1 start
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+// m04_intro_unit1 Sequence 2 start
+// INT. USS HANNIBAL DROPSHIP HANGAR INTERIOR
+//---------------------------------------------------------------------------------
+void moveCamToNavajas()
+{
+	$intro_cam_1_mover.time( 4 );
+	$intro_cam_1_mover.accelTime( 2 );
+	$intro_cam_1_mover.decelTime( 2 );
+	$intro_cam_1_mover.rotateOnce( '0 -20 0' );
+	$intro_cam_1_mover.moveTo( $cam_1_target_2 );
+	sys.wait( 3 );
+	aiScriptedFace( $intro_unit1_seq_2_m01_darnell, $darnell_face_helper, 0 );
+	sys.waitFor( $intro_cam_1_mover );
+}
+
+void moveCam2Darnell()
+{
+	sys.wait( 2 );
+	$intro_cam_2_mover.time( 6 );
+	$intro_cam_2_mover.accelTime( 3 );
+	$intro_cam_2_mover.decelTime( 3 );
+	$intro_cam_2_mover.moveTo( $cam_2_target_1 );
+	sys.waitFor( $intro_cam_2_mover );
+}
+
+void moveMarkswellCam()
+{
+	$intro_cam_marks_mover.time( 5 );
+	$intro_cam_marks_mover.accelTime( 1 );
+	$intro_cam_marks_mover.decelTime( 2 );
+	$intro_cam_marks_mover.moveTo( $intro_cam_marks_target_1 );
+	sys.waitFor( $intro_cam_marks_mover );
+}
+
+void moveMarkswellCam2()
+{
+	sys.wait( 1 );
+	$intro_cam_marks_mover.time( 4 );
+	$intro_cam_marks_mover.accelTime( 2 );
+	$intro_cam_marks_mover.decelTime( 2 );
+	$intro_cam_marks_mover.rotateOnce( '10 0 0' );
+	$intro_cam_marks_mover.move( -1, 18 );
+	sys.waitFor( $intro_cam_marks_mover );
+
+	$intro_cam_marks_mover.time( 6 );
+	$intro_cam_marks_mover.accelTime( 3 );
+	$intro_cam_marks_mover.decelTime( 3 );
+	$intro_cam_marks_mover.moveTo( $intro_cam_marks_target_2 );
+	sys.waitFor( $intro_cam_marks_mover );
+}
+
+void moveTownsendFirst()
+{
+	aiScriptedMoveWait( $intro_unit1_seq_2_m01_townsend, $intro_unit1_seq_2_m01_townsend_marker_1, 8, 0 );
+	aiScriptedMoveWait( $intro_unit1_seq_2_m01_townsend, $intro_unit1_seq_2_m01_townsend_marker_2, 8, 0 );
+	aiScriptedMoveWait( $intro_unit1_seq_2_m01_townsend, $intro_unit1_seq_2_m01_townsend_marker_3, 8, 0 );
+}
+
+void moveMorons()
+{
+	aiScriptedMoveWait( $intro_unit1_seq_2_m01_darnell, $intro_unit1_seq_2_m01_darnell_node_attention, 8, 0 );
+	aiScriptedMoveWait( $intro_unit1_seq_2_m01_mitchell, $intro_unit1_seq_2_m01_mitchell_node_attention, 8, 0 );
+	aiScriptedFace( $intro_unit1_seq_2_m01_darnell, $intro_unit1_seq_2_m01_markswell, 0 );
+	aiScriptedFace( $intro_unit1_seq_2_m01_mitchell, $intro_unit1_seq_2_m01_markswell, 0 );
+}
+
+void animMitchell()
+{
+	aiScriptedAnimWait( $intro_unit1_seq_2_m01_mitchell, "weaponless_idle3_start", 16, 0 );
+	aiScriptedAnimWait( $intro_unit1_seq_2_m01_mitchell, "weaponless_idle3_loop", 16, 0 );
+	aiScriptedAnimWait( $intro_unit1_seq_2_m01_mitchell, "weaponless_idle3_end", 16, 0 );
+}
+
+void animDekard()
+{
+	aiScriptedAnimWait( $intro_unit1_seq_2_m01_dekard, "idle_weapon_2_start", 16, 0 );
+	aiScriptedAnimWait( $intro_unit1_seq_2_m01_dekard, "idle_weapon_2_loop", 16, 0 );
+	aiScriptedAnimWait( $intro_unit1_seq_2_m01_dekard, "idle_weapon_2_end", 16, 0 );
+}
+
+void intro_unit1_seq_2()
+	{
+		sys.trigger( $intro_unit1_seq_2_m01_tak );
+		sys.trigger( $intro_unit1_seq_2_m01_navajas );
+		sys.trigger( $intro_unit1_seq_2_m01_mitchell );
+		sys.trigger( $intro_unit1_seq_2_m01_darnell );
+		sys.trigger( $intro_unit1_seq_2_m01_townsend );
+		sys.trigger( $intro_unit1_seq_2_m01_atkins );
+		sys.trigger( $OFFICER_5 );
+		sys.trigger( $OFFICER_7 );
+
+		$intro_unit1_seq_2_m01_dekard.setMoveSpeed( AIMOVESPEED_WALK );
+		$intro_unit1_seq_2_m01_markswell.setMoveSpeed( AIMOVESPEED_WALK );
+		$intro_unit1_seq_2_m01_townsend.setMoveSpeed( AIMOVESPEED_WALK );
+		$intro_unit1_seq_2_m01_navajas.setMoveSpeed( AIMOVESPEED_WALK );
+		$intro_unit1_seq_2_m01_darnell.setMoveSpeed( AIMOVESPEED_WALK );
+		$intro_unit1_seq_2_m01_tak.setMoveSpeed( AIMOVESPEED_WALK );
+		$intro_unit1_seq_2_m01_mitchell.setMoveSpeed( AIMOVESPEED_WALK );
+		$intro_unit1_seq_2_m01_atkins.setMoveSpeed( AIMOVESPEED_WALK );
+
+		$intro_unit1_seq_2_m01_mitchell.hideSurface("models/weapons/mp_guns/w_mg_lo");
+		$intro_unit1_seq_2_m01_navajas.hideSurface("models/weapons/mp_guns/w_mg_lo");
+		
+		aiScriptedAnimLoop( $intro_unit1_seq_2_m01_tak, "relaxed_idle", 8 );
+		aiScriptedAnimLoop( $intro_unit1_seq_2_m01_mitchell, "unarmed_idle", 8 );
+		aiScriptedAnimLoop( $intro_unit1_seq_2_m01_darnell, "relaxed_idle", 8 );
+		aiScriptedAnimLoop( $intro_unit1_seq_2_m01_atkins, "relaxed_idle", 8 );
+
+		sys.trigger( $intro_cam_1 );
+
+		thread moveTownsendFirst();
+
+		$intro_cam_1_mover.time( 4 );
+		$intro_cam_1_mover.accelTime( 2 );
+		$intro_cam_1_mover.decelTime( 2 );
+		$intro_cam_1_mover.rotateOnce( '0 0 -80' );
+		sys.waitFor( $intro_cam_1_mover );
+
+		aiScriptedAnim( $intro_unit1_seq_2_m01_mitchell, "weaponless_point_front", 12, 0 );
+
+		// CHARACTER: MCC ANNOUNCE
+		radioChatterPlay( $uni_radiochatter, "vo_mcc_allop" );		// %%%%%%%%%% VO %%%%%%%%%%
+
+		$intro_cam_1_mover.time( 7 );
+		$intro_cam_1_mover.accelTime( 3 );
+		$intro_cam_1_mover.decelTime( 3.5 );
+		$intro_cam_1_mover.rotateOnce( '0 -5 0' );
+		$intro_cam_1_mover.moveTo( $cam_1_target_1 );
+		sys.wait( 5 );
+		aiScriptedAnim( $intro_unit1_seq_2_m01_darnell, "idle_checks_time", 12, 0 );
+		aiScriptedFace( $intro_unit1_seq_2_m01_mitchell, $intro_unit1_seq_2_m01_darnell, 0 );
+		$intro_unit1_seq_2_m01_mitchell.lookAt( $intro_unit1_seq_2_m01_darnell );
+		sys.waitFor( $intro_cam_1_mover );
+
+		// CHARACTER: MITCHELL
+ 		aiSpeakWait( $intro_unit1_seq_2_m01_mitchell, "lipsync_mitch_heydarn" );				// %%%%%%%%%% VO %%%%%%%%%%
+ 		
+		aiScriptedFace( $intro_unit1_seq_2_m01_darnell, $intro_unit1_seq_2_m01_mitchell, 0 );
+
+ 		// CHARACTER: DARNELL
+		aiSpeak( $intro_unit1_seq_2_m01_darnell, "lipsync_darn_stopworry" );				// %%%%%%%%%% VO %%%%%%%%%%
+		sys.wait( 2 );
+
+		$intro_unit1_seq_2_m01_navajas.lookAt( $intro_unit1_seq_2_m01_darnell );
+		aiScriptedMove( $intro_unit1_seq_2_m01_navajas, $intro_unit1_seq_2_m01_navajas_node_1, 4, 0 );
+
+		sys.wait( 4.25 );
+
+		$intro_unit1_seq_2_m01_tak.lookAt( $intro_unit1_seq_2_m01_atkins );
+		$intro_unit1_seq_2_m01_atkins.lookAt( $intro_unit1_seq_2_m01_tak );
+		thread moveCamToNavajas();
+		aiScriptedFaceWait( $intro_unit1_seq_2_m01_navajas, $intro_unit1_seq_2_m01_mitchell, 0 );
+
+		aiScriptedAnim( $intro_unit1_seq_2_m01_navajas, "weaponless_idle4_start", 12, 0 );
+ 		aiScriptedAnim( $intro_unit1_seq_2_m01_atkins, "weapon_check_3", 12, 0 );
+
+ 		// CHARACTER: NAVAJAS
+ 		aiSpeakWait( $intro_unit1_seq_2_m01_navajas, "lipsync_nava_yeahone" );				// %%%%%%%%%% VO %%%%%%%%%%
+
+		aiScriptedFace( $intro_unit1_seq_2_m01_darnell, $intro_unit1_seq_2_m01_navajas, 0 );
+
+		sys.trigger( $intro_cam_2 );
+
+		thread animMitchell();
+
+ 		// CHARACTER: DARNELL
+ 		aiSpeakWait( $intro_unit1_seq_2_m01_darnell, "lipsync_nava_shutupnav" );				// %%%%%%%%%% VO %%%%%%%%%%
+
+		$intro_unit1_seq_2_m01_navajas.hide();
+		$intro_unit1_seq_2_m01_navajas_sitting.show();
+		aiScriptedAnimLoop( $intro_unit1_seq_2_m01_navajas_sitting, "idle_sitting_1", 0 );
+
+		$intro_unit1_seq_2_m01_tak.lookAt( $intro_unit1_seq_2_m01_darnell );
+		aiScriptedFace( $intro_unit1_seq_2_m01_tak, $intro_unit1_seq_2_m01_darnell, 0 );
+		sys.trigger( $intro_cam_4 );
+
+ 		aiScriptedAnim( $intro_unit1_seq_2_m01_atkins, "weapon_check_1", 12, 0 );
+
+		// CHARACTER: TAK
+		aiSpeak( $intro_unit1_seq_2_m01_tak, "lipsync_tak_heycorptak" );				// %%%%%%%%%% VO %%%%%%%%%%
+		sys.wait( 0.5 );
+		$intro_unit1_seq_2_m01_tak.lookAt( $intro_unit1_seq_2_m01_navajas );
+		$intro_unit1_seq_2_m01_atkins.lookAt( $intro_unit1_seq_2_m01_tak );
+		$intro_unit1_seq_2_m01_navajas_sitting.lookAt( $intro_unit1_seq_2_m01_tak );
+
+		$intro_cam_1_mover.time( 4 );
+		$intro_cam_1_mover.accelTime( 2 );
+		$intro_cam_1_mover.decelTime( 2 );
+		$intro_cam_1_mover.rotateOnce( '0 -5 0' );
+		sys.waitFor( $intro_cam_1_mover );
+
+		sys.wait( 0.5 );
+
+		// CHARACTER: NAVAJAS
+		$intro_unit1_seq_2_m01_atkins.lookAt( $intro_unit1_seq_2_m01_navajas );
+		$intro_unit1_seq_2_m01_navajas_sitting.lookAt( $intro_unit1_seq_2_m01_darnell );
+		$intro_unit1_seq_2_m01_mitchell.lookAt( $intro_unit1_seq_2_m01_townsend );
+		aiScriptedFace( $intro_unit1_seq_2_m01_mitchell, $intro_unit1_seq_2_m01_townsend, 0 );
+		$intro_unit1_seq_2_m01_tak.lookAt( $intro_unit1_seq_2_m01_darnell );
+		aiSpeakWait( $intro_unit1_seq_2_m01_navajas_sitting, "lipsync_nava_sodrnspill" );				// %%%%%%%%%% VO %%%%%%%%%%
+
+		thread moveCam2Darnell();
+		sys.trigger( $intro_cam_2 );
+
+		$intro_unit1_seq_2_m01_darnell.lookAt( $intro_unit1_seq_2_m01_tak );
+		$intro_unit1_seq_2_m01_mitchell.lookAt( $intro_unit1_seq_2_m01_darnell );
+		aiScriptedFace( $intro_unit1_seq_2_m01_mitchell, $intro_unit1_seq_2_m01_darnell, 0 );
+
+ 		// CHARACTER: DARNELL
+		aiSpeakWait( $intro_unit1_seq_2_m01_darnell, "lipsync_darn_yeahknwdek" );				// %%%%%%%%%% VO %%%%%%%%%%
+
+		aiScriptedMove( $intro_unit1_seq_2_m01_townsend, $intro_unit1_seq_2_m01_townsend_marker_2, 8, 0 );
+
+		$intro_unit1_seq_2_m01_darnell.lookAt( $intro_unit1_seq_2_m01_markswell );
+		// CHARACTER: TOWNSEND
+ 		aiSpeakWait( $intro_unit1_seq_2_m01_townsend, "lipsync_towns_offdeck" );				// %%%%%%%%%% VO %%%%%%%%%%
+ 
+		sys.trigger( $intro_cam_3 );
+
+		sys.trigger( $intro_unit1_seq_2_m01_dekard );
+		sys.trigger( $intro_unit1_seq_2_m01_markswell );
+ 		aiScriptedMove( $intro_unit1_seq_2_m01_dekard, $intro_unit1_seq_2_m01_dekard_node_1, 8, 1);
+ 		aiScriptedMove( $intro_unit1_seq_2_m01_markswell, $intro_unit1_seq_2_m01_markswell_node_1, 8, 1);
+
+		sys.trigger( $intro_cam_marks );
+		moveMarkswellCam();
+		thread moveMarkswellCam2();
+
+		$intro_unit1_seq_2_m01_navajas.show();
+		$intro_unit1_seq_2_m01_navajas_sitting.hide();
+		sys.waitFrame();
+		aiScriptedFace( $intro_unit1_seq_2_m01_navajas, $intro_unit1_seq_2_m01_markswell, 0 );
+		aiScriptedFace( $intro_unit1_seq_2_m01_tak, $intro_unit1_seq_2_m01_markswell, 0 );
+		aiScriptedFace( $intro_unit1_seq_2_m01_atkins, $intro_unit1_seq_2_m01_markswell, 0 );
+		aiScriptedFace( $intro_unit1_seq_2_m01_townsend, $intro_unit1_seq_2_m01_markswell, 0 );
+		thread moveMorons();
+		$intro_unit1_seq_2_m01_tak.lookAt( $intro_unit1_seq_2_m01_markswell );
+		$intro_unit1_seq_2_m01_atkins.lookAt( $intro_unit1_seq_2_m01_markswell );
+		$intro_unit1_seq_2_m01_townsend.lookAt( $intro_unit1_seq_2_m01_markswell );
+		$intro_unit1_seq_2_m01_darnell.lookAt( $intro_unit1_seq_2_m01_markswell );
+		$intro_unit1_seq_2_m01_mitchell.lookAt( $intro_unit1_seq_2_m01_markswell );
+		$intro_unit1_seq_2_m01_navajas.lookAt( $intro_unit1_seq_2_m01_markswell );
+
+		$intro_unit1_seq_2_m01_markswell.lookAt( $intro_unit1_seq_2_m01_navajas );
+		aiScriptedFace( $intro_unit1_seq_2_m01_markswell, $intro_unit1_seq_2_m01_navajas, 0 );
+		aiScriptedFace( $intro_unit1_seq_2_m01_dekard, $intro_unit1_seq_2_m01_tak, 0 );
+
+		thread animDekard();
+
+		// CHARACTER: MARKSWELL
+		aiSpeak( $intro_unit1_seq_2_m01_markswell, "lipsync_marks_ateastman" );				// %%%%%%%%%% VO %%%%%%%%%%
+
+		sys.wait( 7 );
+		$intro_unit1_seq_2_m01_dekard.lookAt( $intro_unit1_seq_2_m01_markswell );
+		sys.wait( 6 );
+		$intro_unit1_seq_2_m01_dekard.lookAt( $intro_unit1_seq_2_m01_darnell );
+		aiScriptedFace( $intro_unit1_seq_2_m01_dekard, $intro_unit1_seq_2_m01_darnell, 0 );
+		sys.wait( 3.75 );
+		$intro_unit1_seq_2_m01_markswell.lookAt( $intro_unit1_seq_2_m01_tak );
+		aiScriptedFace( $intro_unit1_seq_2_m01_markswell, $intro_unit1_seq_2_m01_tak, 0 );
+
+		sys.trigger( $intro_cam_5 );
+
+		$intro_unit1_seq_2_m01_markswell.lookAt( $func_static_16989 );
+		
+		// CHARACTER: MCC ANNOUNCE
+		radioChatterPlayWait( $uni_radiochatter, "vo_mcc_attentcidcd" );		// %%%%%%%%%% VO %%%%%%%%%%
+
+		$intro_unit1_seq_2_m01_markswell.lookAt( $intro_unit1_seq_2_m01_navajas );
+
+ 		// CHARACTER: MARKSWELL
+		aiSpeakWait( $intro_unit1_seq_2_m01_markswell, "lipsync_marks_thatsusgent" );				// %%%%%%%%%% VO %%%%%%%%%%
+
+ 		// CHARACTER: MARKSWELL
+ 		aiSpeakWait( $intro_unit1_seq_2_m01_markswell, "lipsync_marks_falconsqsd" );				// %%%%%%%%%% VO %%%%%%%%%%
+
+		sys.trigger( $intro_cam_3 );
+		$musicintro.remove();
+		sys.trigger( $intro_sound_player2 );
+		
+ 		aiScriptedAnim( $intro_unit1_seq_2_m01_darnell, "weapon_check_2", 12, 0 );
+ 		aiScriptedAnim( $intro_unit1_seq_2_m01_tak, "weapon_check_3", 12, 0 );
+
+		$intro_unit1_seq_2_m01_dekard.setMoveSpeed( AIMOVESPEED_RUN );
+		$intro_unit1_seq_2_m01_markswell.setMoveSpeed( AIMOVESPEED_RUN );
+		$intro_unit1_seq_2_m01_townsend.setMoveSpeed( AIMOVESPEED_RUN );
+		$intro_unit1_seq_2_m01_navajas.setMoveSpeed( AIMOVESPEED_RUN );
+		$intro_unit1_seq_2_m01_darnell.setMoveSpeed( AIMOVESPEED_RUN );
+		$intro_unit1_seq_2_m01_tak.setMoveSpeed( AIMOVESPEED_RUN );
+		$intro_unit1_seq_2_m01_mitchell.setMoveSpeed( AIMOVESPEED_RUN );
+		$intro_unit1_seq_2_m01_atkins.setMoveSpeed( AIMOVESPEED_RUN );
+
+		aiScriptedMove( $intro_unit1_seq_2_m01_dekard, $intro_unit1_seq_2_m01_dekard_endrun, 4, 1);
+		sys.wait( 1 );
+ 		aiScriptedMove( $intro_unit1_seq_2_m01_markswell, $intro_unit1_seq_2_m01_markswell_endrun, 4, 1);
+		sys.wait( 1 );
+		sys.fadeOut( '0 0 0', 1 );
+ 		aiScriptedMove( $intro_unit1_seq_2_m01_townsend, $intro_unit1_seq_2_m01_townsend_endrun, 4, 1);
+		sys.wait( 1 );
+
+		sys.trigger( $intro_cam_3 );
+ 		sys.trigger( $intro_unit1_seq_2_trigger_seq_3 );
+	}
+//---------------------------------------------------------------------------------
+// intro_unit1 Sequence 2 start
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+// intro_unit1 Sequence 3 start
+// INT: DROPSHIP HANGAR
+//---------------------------------------------------------------------------------
+void setupEstablishCam()
+{
+	$intro_ds_cam_1_mover.time( 0.01 );
+	$intro_ds_cam_1_mover.rotateOnce( '0 45 0' );
+	sys.waitFor( $intro_ds_cam_1_mover );
+}
+
+void moveEstablishCam()
+{
+	$intro_ds_cam_1_mover.time( 8 );
+	$intro_ds_cam_1_mover.accelTime( 2 );
+	$intro_ds_cam_1_mover.decelTime( 3 );
+	$intro_ds_cam_1_mover.moveTo( $intro_ds_cam_target_1 );
+	$intro_ds_cam_1_mover.rotateOnce( '45 -135 0' );
+	sys.waitFor( $intro_ds_cam_1_mover );
+}
+
+void moveCam2()
+{
+	$intro_ds_cam_2_mover.time( 5 );
+	$intro_ds_cam_2_mover.accelTime( 2.5 );
+	$intro_ds_cam_2_mover.decelTime( 2.5 );
+	$intro_ds_cam_2_mover.moveTo( $intro_ds_cam_target_2 );
+	sys.waitFor( $intro_ds_cam_2_mover );
+}
+
+void moveMarkswell()
+{
+	aiScriptedMoveWait( $ds_markswell, $ds_markswell_marker_1, 8, 0 );
+	aiScriptedFaceWait( $ds_markswell, $func_door_256, 0 );
+	sys.wait( 2.5 );
+	aiScriptedMoveWait( $ds_markswell, $ds_markswell_marker_2, 16, 0 );
+	sys.wait( 4 );
+	aiScriptedMoveWait( $ds_markswell, $ds_onboard, 32, 0 );
+	$ds_markswell.remove();
+}
+
+void moveDekard()
+{
+//	sys.wait( 2.5 );
+	aiScriptedMoveWait( $ds_dekard, $ds_onboard, 32, 0 );
+	$ds_dekard.remove();
+}
+
+void moveNavajas()
+{
+//	sys.wait( 2.5 );
+	aiScriptedMoveWait( $ds_navajas, $ds_onboard, 32, 0 );
+	$ds_navajas.remove();
+}
+
+void moveTak()
+{
+//	sys.wait( 2.5 );
+	aiScriptedMoveWait( $ds_tak, $ds_onboard, 32, 0 );
+	$ds_tak.remove();
+}
+
+void moveDarnell()
+{
+	sys.wait( 2.5 );
+	aiScriptedMoveWait( $ds_darnell, $ds_onboard, 32, 0 );
+	$ds_darnell.remove();
+}
+
+void moveAtkins()
+{
+	sys.wait( 2.5 );
+	aiScriptedMoveWait( $ds_atkins, $ds_onboard, 32, 0 );
+	$ds_atkins.remove();
+}
+
+void moveMitchell()
+{
+	sys.wait( 2.5 );
+	aiScriptedMoveWait( $ds_mitchell, $ds_onboard, 32, 0 );
+	$ds_mitchell.remove();
+}
+
+void moveTownsend()
+{
+	sys.wait( 2.5 );
+	aiScriptedMoveWait( $ds_townsend, $ds_onboard, 32, 0 );
+	$ds_townsend.remove();
+}
+
+void showidCredit()
+{
+	sys.sendNamedEvent( GUI_CINEMATICHUD, "id1" );
+	sys.wait( 0.75 );
+	sys.sendNamedEvent( GUI_CINEMATICHUD, "id2" );
+	sys.wait( 0.75 );
+	sys.sendNamedEvent( GUI_CINEMATICHUD, "id3" );
+}
+
+void showRitualCredit()
+{
+	sys.sendNamedEvent( GUI_CINEMATICHUD, "rit1" );
+	sys.wait( 0.75 );
+	sys.sendNamedEvent( GUI_CINEMATICHUD, "rit2" );
+}
+
+void showActCredit()
+{
+	sys.sendNamedEvent( GUI_CINEMATICHUD, "pub" );
+	sys.wait( 0.5 );
+	sys.sendNamedEvent( GUI_CINEMATICHUD, "act" );
+}
+
+void showQ4XLogo()
+{
+	sys.sendNamedEvent( GUI_CINEMATICHUD, "quake" );
+	sys.wait( 0.5 );
+	sys.sendNamedEvent( GUI_CINEMATICHUD, "awakening" );
+}
+
+void intro_unit1_seq_3()
+	{
+		$env_q4x_dropship_1.hide();
+		setupEstablishCam();
+
+		sys.trigger( $OFFICER_9 );
+		sys.trigger( $OFFICER_10 );
+		sys.trigger( $ds_markswell );
+		sys.trigger( $ds_dekard );
+		sys.trigger( $ds_navajas );
+		sys.trigger( $ds_tak );
+		sys.trigger( $ds_darnell );
+		sys.trigger( $ds_atkins );
+		sys.trigger( $ds_mitchell );
+		sys.trigger( $ds_townsend );
+
+		thread moveMarkswell();
+		thread moveDekard();
+		thread moveNavajas();
+		thread moveTak();
+		thread moveDarnell();
+		thread moveAtkins();
+		thread moveMitchell();
+		thread moveTownsend();
+
+		sys.trigger( $intro_ds_cam_1 );
+		sys.fadeIn( '0 0 0', 1 );
+		sys.wait( 1 );
+		thread moveEstablishCam();
+		sys.wait( 0.5 );
+
+		thread showidCredit();
+
+		sys.wait( 8 );
+		sys.trigger( $intro_ds_cam_2 );
+		thread moveCam2();
+
+		thread showRitualCredit();
+
+		sys.wait( 7 );
+
+		sys.fadeOut( '0 0 0', 1 );
+		sys.wait( 1 );
+		sys.trigger( $intro_ds_cam_2 );
+
+		// END OF JOHN'S STUFF
+		// END OF JOHN'S STUFF
+		// END OF JOHN'S STUFF
+		// END OF JOHN'S STUFF
+		
+//		sys.trigger( $main_clouds );
+		$cin_dropship.hide();
+		$env_q4x_dropship_1.show();
+		$env_q4x_dropship_2.show();
+		$env_q4x_dropship_3.show();
+
+		sys.trigger( $ethan_cam_viewer );
+		$ethan_cam_viewer.bind( $ethan_cam );
+		sys.trigger( $ethan_cam );
+		sys.fadeIn( '0 0 0', 1 );
+		sys.wait( 1 );
+		$env_q4x_dropship_1.playAnim( ANIMCHANNEL_ALL, "st_dropship_intro_01" );
+		$env_q4x_dropship_2.playAnim( ANIMCHANNEL_ALL, "st_dropship_intro_02" );
+		$env_q4x_dropship_3.playAnim( ANIMCHANNEL_ALL, "st_dropship_intro_03" );
+
+		sys.trigger( $intro_unit1_seq_6_tak );
+		sys.trigger( $intro_unit1_seq_6_navajas );
+		sys.trigger( $intro_unit1_seq_6_mitchell );
+		sys.trigger( $intro_unit1_seq_6_darnell );
+		sys.trigger( $intro_unit1_seq_6_townsend );
+		sys.trigger( $intro_unit1_seq_6_atkins );
+		sys.trigger( $intro_unit1_seq_6_dekard );
+		
+		$intro_unit1_seq_6_tak.hideSurface("models/weapons/mp_guns/w_mg_lo");
+		$intro_unit1_seq_6_navajas.hideSurface("models/weapons/mp_guns/w_mg_lo");
+		$intro_unit1_seq_6_mitchell.hideSurface("models/weapons/mp_guns/w_mg_lo");
+		$intro_unit1_seq_6_darnell.hideSurface("models/weapons/mp_guns/w_mg_lo");
+		$intro_unit1_seq_6_townsend.hideSurface("models/weapons/mp_guns/w_mg_lo");
+		$intro_unit1_seq_6_atkins.hideSurface("models/weapons/mp_guns/w_mg_lo");
+		$intro_unit1_seq_6_markswell.hideSurface("models/weapons/mp_guns/w_mg_lo");
+		$intro_unit1_seq_6_markswell_sitting.hideSurface("models/weapons/mp_guns/w_mg_lo");
+		$intro_unit1_seq_6_dekard.hideSurface("models/weapons/mp_guns/w_mg_lo");
+		
+		aiScriptedAnimLoop 	( $intro_unit1_seq_6_tak, "st_dropship_chair", 8 );
+		sys.wait( .5 );
+		
+		aiScriptedAnimLoop 	( $intro_unit1_seq_6_navajas, "st_dropship_chair", 8 );
+		sys.wait( .3 );
+		
+		aiScriptedAnimLoop 	( $intro_unit1_seq_6_mitchell, "st_dropship_chair", 8 );
+		sys.wait( .6 );
+		
+		aiScriptedAnimLoop 	( $intro_unit1_seq_6_darnell, "st_dropship_chair", 8 );
+		sys.wait( .8 );
+		
+		aiScriptedAnimLoop 	( $intro_unit1_seq_6_townsend, "st_dropship_chair", 8 );
+		sys.wait( .2 );
+		
+		aiScriptedAnimLoop 	( $intro_unit1_seq_6_atkins, "st_dropship_chair", 8 );
+		sys.wait( .3 );
+		
+		aiScriptedAnimLoop 	( $intro_unit1_seq_6_dekard, "st_dropship_chair", 8 );
+		
+		sys.wait( 18 );
+		sys.fadeOut( '0 0 0', 1 );
+		sys.trigger( $intro_unit1_seq_5_trigger_seq_6 );
+	}
+
+//---------------------------------------------------------------------------------
+// intro_unit1 Sequence 3 start
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+// intro_unit1 Sequence 4 start
+// EXT: USS HANNIBAL
+//---------------------------------------------------------------------------------
+void intro_unit1_seq_4()
+	{
+		// JUMP CUT: Matching up-angle establishing shot of the Hannibal exterior.  
+		// The 2 dropships and 1 gunship slowly lift out of the Hannibal's roof, 
+		// and then one by one, each ship bolts off into the horizon.
+		
+		// SCREEN TEXT
+		// Published by Activision
+		
+		sys.trigger( $intro_unit1_seq_4_trigger_seq_5 );
+	}
+//---------------------------------------------------------------------------------
+// intro_unit1 Sequence 4 start
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+// intro_unit1 Sequence 5 start
+// EXT: ATMOSPHERE
+//---------------------------------------------------------------------------------
+void intro_unit1_seq_5()
+	{
+		// A dropship bearing the Hades logo and a gunship bearing the Atlas logo streak 
+		// across the sky left to right as the camera shakes to catch up, the ships fight to 
+		// stay in the rough air, the 3rd ship slides smoothly into the foreground as the 
+		// game logo appears
+		
+		// SCREEN LOGO
+		// Quake4
+
+		// [beat]
+		
+		// SCREEN LOGO
+		// The Awakening
+
+		// Finally the foreground ship's tail slides into frame, 
+		// the Falcon squad logo clear as day, slow push into logo 
+		// as we JUMP CUT to:
+		
+		sys.trigger( $intro_unit1_seq_5_trigger_seq_6 );
+	}
+//---------------------------------------------------------------------------------
+// intro_unit1 Sequence 5 start
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+// intro_unit1 Sequence 6 start
+// INT: FALCON SQUAD DROPSHIP INTERIOR
+//---------------------------------------------------------------------------------
+void intro_unit1_seq_6()
+	{
+		// All Marines strapped into their chairs, shaking and bouncing as the 
+		// ship hits heavy turbulence.
+		
+		sys.trigger( $intro_unit1_seq_6_cam_1 );
+		sys.waitFrame();
+		sys.fadeIn( '0 0 0', 1 );
+		
+		// CHARACTER: GOC
+ 		// CONTEXT:Calm
+ 		// DIALOG : Falcon, Atlas walker force is initiating operation CITADEL.  
+ 		// Report minimal resistance on your inbound vector - you are GO for ground assault.
+ 		// lipsync_goc_falconatlaswlk        vo_goc_falconatlaswlk
+ 		radioChatterPlayWait( $uni_radiochatter, "vo_goc_falconatlaswlk" );		// %%%%%%%%%% VO %%%%%%%%%%
+ 		sys.wait( 4 );
+ 		
+ 		// CHARACTER: VANSEN (PILOT)
+ 		// CONTEXT:Calm
+ 		// DIALOG : Roger that, package is prepped and ready for transfer – eta to drop in one-zero-niner.
+ 		// lipsync_vansen_rogerthtp        vo_vansen_rogerthtp
+		radioChatterPlayWait( $uni_radiochatter, "vo_vansen_rogerthtp" );		// %%%%%%%%%% VO %%%%%%%%%%
+ 		
+ 		// Lieutenant Markswell steps through the passenger door, the door closes behind him.
+ 		sys.trigger( $intro_unit1_seq_6_cam_2 );
+ 		sys.trigger( $intro_unit1_seq_6_markswell );
+ 		sys.trigger( $intro_unit1_seq_6_drop_ship_not_damaged );
+ 		aiScriptedAnimWait 	( $intro_unit1_seq_6_markswell, "st_markswell_enters", 8, 1 );
+ 		
+ 		// CHARACTER: MARKSWELL
+ 		// CONTEXT:Calm
+ 		// DIALOG : Ok, listen up!  We've been ordered in with Atlas walker squad and Hades 
+ 		// infantry unit to hit one of the Strogg's oldest raw materials processing facilities. 
+ 		// Our objective is to gather data from the facility, while Hades and Atlas prep to destroy it.  
+ 		// This facility is heavily guarded.
+ 		// lipsync_marks_oklisten        vo_marks_oklisten
+ 		aiSpeak( $intro_unit1_seq_6_markswell, "lipsync_marks_oklisten" );				// %%%%%%%%%% VO %%%%%%%%%%
+ 		aiScriptedAnimWait 	( $intro_unit1_seq_6_markswell, "st_markswell_talks", 8, 1 );
+ 		
+ 		
+ 		// AA fire Another barrage hits the drop ship, shaking it to its frame
+ 		
+ 		// Markswell nearly stumbles.  He finds his footing and straps himself in.
+ 		$intro_unit1_seq_6_drop_ship_not_damaged_markswell_sitting.show();
+ 		sys.trigger( $intro_unit1_seq_6_cam_3 );
+ 		$intro_unit1_seq_6_markswell.remove();
+ 		$intro_unit1_seq_6_drop_ship_not_damaged.remove();
+ 		sys.trigger( $intro_unit1_seq_6_markswell_sitting );
+ 		aiScriptedAnimLoop 	( $intro_unit1_seq_6_markswell_sitting, "st_dropship_chair", 8 );
+ 		
+ 		// CHARACTER: VANSEN (PILOT)
+ 		// CONTEXT:Tense
+ 		// DIALOG : Everybody get to their seats, we have incoming!
+ 		// lipsync_vansen_everseat        vo_vansen_everseat
+ 		radioChatterPlayWait( $uni_radiochatter, "vo_vansen_everseat" );		// %%%%%%%%%% VO %%%%%%%%%%
+ 		
+ 		// CHARACTER: ATKINS
+ 		// CONTEXT:Sarcastic
+ 		// DIALOG : This doesn't feel like minimal resistance to me!
+ 		// lipsync_atkins_minres        vo_atkins_minres
+ 		aiSpeakWait( $intro_unit1_seq_6_atkins, "lipsync_atkins_minres" );				// %%%%%%%%%% VO %%%%%%%%%%
+ 		
+ 		// AA fire is getting more pronounced - Another heavy tremor.  
+ 		// The lights shift to an angry red.  An alarm blares.
+ 		sys.trigger( $intro_unit1_seq_6_cam_4 );
+ 		sys.wait( 1 );
+ 		
+ 		sys.trigger( $intro_unit1_seq_6_drop_ship_lighting_nominal_1 );
+ 		sys.trigger( $intro_unit1_seq_6_drop_ship_lighting_nominal_2 );
+ 		sys.wait( 1 );
+ 		
+ 		sys.trigger( $intro_unit1_seq_6_drop_ship_lighting_emergency_lights_fade_in );
+ 		
+ 		// CHARACTER: VANSEN (PILOT)
+ 		// CONTEXT:Tense
+ 		// DIALOG : GOC, receiving heavy AA fire, re-routing approach to LZ.
+ 		// lipsync_vansen_gochvyaa        vo_vansen_gochvyaa
+ 		sys.trigger( $intro_unit1_seq_6_cam_5 );
+ 		radioChatterPlayWait( $uni_radiochatter, "vo_vansen_gochvyaa" );		// %%%%%%%%%% VO %%%%%%%%%%
+ 		
+ 		// CHARACTER: GOC
+ 		// CONTEXT:Calm
+ 		// DIALOG : Confirm Falcon.
+ 		// lipsync_goc_conffalc        vo_goc_conffalc
+ 		radioChatterPlayWait( $uni_radiochatter, "vo_goc_conffalc" );		// %%%%%%%%%% VO %%%%%%%%%%
+ 		
+ 		// Another tremor hits the craft.  The lights flicker.  Sparks erupt.  
+ 		// The engine sounds change, their pitch increasing.
+ 		
+ 		// CHARACTER: VANSEN (PILOT)
+ 		// CONTEXT:Tense
+ 		// DIALOG : We're hit!
+ 		// lipsync_vansen_wehit        vo_vansen_wehit
+ 		radioChatterPlayWait( $uni_radiochatter, "vo_vansen_wehit" );		// %%%%%%%%%% VO %%%%%%%%%%
+ 		
+ 		// Big hit to the ship.  The ship is hit.  The lights go out.  
+ 		// But the dropship is dark only a moment before.
+ 		$intro_unit1_seq_6_drop_ship_damaged.show();
+ 		//$intro_unit1_seq_6_townsend.bindToJoint( $intro_unit1_seq_6_drop_ship_damaged, "townsend", 0 );
+ 		//$intro_unit1_seq_6_atkins.bindToJoint( $intro_unit1_seq_6_drop_ship_damaged, "atkins", 0 );
+ 		$intro_unit1_seq_6_drop_ship_not_damaged_markswell_sitting.remove();
+ 		
+ 		// The AFT section is torn off, allowing the last bits of day light to flood 
+ 		// the passenger bay. The dropship is a nonstop tumbler, trembling and 
+ 		// shaking itself apart.
+ 		
+ 		// There's another sound of heavy plasma.  This one accompanied by an explosion.
+ 		
+ 		// A hole is ripped in the top of the passenger bay.  
+ 		// Two marines:  TOWNSEND is ripped from the ship as we see a large portion 
+ 		// of the aft section spin off into the atmosphere.
+ 		
+ 		sys.trigger( $intro_unit1_seq_6_drop_ship_damaged );
+ 		aiScriptedAnim 	( $intro_unit1_seq_6_atkins, "st_atkins_fall", 8, 0 );
+ 		aiScriptedAnim 	( $intro_unit1_seq_6_townsend, "st_townsend_fall", 8, 0 );
+ 		aiScriptedAnim 	( $intro_unit1_seq_6_mitchell, "st_mitchel_hold", 8, 0 );
+ 		
+ 		// CHARACTER: TOWNSEND
+ 		// CONTEXT:Death scream
+ 		// DIALOG : Arrrghhh!
+ 		// lipsync_towns_arrgg        vo_towns_arrgg
+ 		// sys.trigger( $intro_unit1_seq_6_cam_6 );
+		aiSpeakWait( $intro_unit1_seq_6_townsend, "lipsync_towns_arrgg" );				// %%%%%%%%%% VO %%%%%%%%%%
+ 		
+ 		// CHARACTER: DARNELL
+ 		// CONTEXT:Commanding
+		// DIALOG : Hold on man, grab on!
+ 		// lipsync_darn_holdonman        vo_darn_holdonman
+ 		// sys.trigger( $intro_unit1_seq_6_cam_7 );
+		aiSpeakWait( $intro_unit1_seq_6_darnell, "lipsync_darn_holdonman" );				// %%%%%%%%%% VO %%%%%%%%%%
+ 		
+ 		// Atkins seat begins to pull itself from the craft with him in it, 
+ 		// he reaches for Darnell, Darnell grabs on but the forces are too strong
+
+ 		// CHARACTER: MITCHELL
+ 		// CONTEXT:Commanding
+ 		// DIALOG : Grab my hand!
+ 		// lipsync_mitch_grabhand        vo_mitch_grabhand
+ 		// sys.trigger( $intro_unit1_seq_6_cam_8 );
+		aiSpeakWait( $intro_unit1_seq_6_mitchell, "lipsync_mitch_grabhand" );				// %%%%%%%%%% VO %%%%%%%%%%
+
+ 		// CHARACTER: DARNELL
+ 		// CONTEXT:Angry
+ 		// DIALOG : Shit!
+ 		// lipsync_darn_shit        vo_darn_shit
+ 		aiSpeakWait( $intro_unit1_seq_6_darnell, "lipsync_darn_shit" );				// %%%%%%%%%% VO %%%%%%%%%%
+ 		
+ 		// CHARACTER: ATKINS
+ 		// CONTEXT:Death imminent
+ 		// DIALOG : I can't hold on!
+ 		// lipsync_atkins_icanthold        vo_atkins_icanthold
+ 		aiSpeakWait( $intro_unit1_seq_6_atkins, "lipsync_atkins_icanthold" );				// %%%%%%%%%% VO %%%%%%%%%%
+ 		
+ 		// The chair breaks loose in a hail of sparks.
+ 		
+ 		// CHARACTER: ATKINS
+ 		// CONTEXT:Death scream
+ 		// DIALOG : Arrrghh!
+ 		// lipsync_atkins_die        vo_atkins_die
+ 		// sys.trigger( $intro_unit1_seq_6_cam_9 );
+ 		aiSpeakWait( $intro_unit1_seq_6_atkins, "lipsync_atkins_die" );				// %%%%%%%%%% VO %%%%%%%%%%
+ 		sys.wait( 2 );
+ 		
+ 		$intro_unit1_seq_6_atkins.remove();
+ 		$intro_unit1_seq_6_townsend.remove();
+ 		
+ 		// CHARACTER: VANSEN (PILOT)
+ 		// CONTEXT:Tense
+ 		// DIALOG : GOC, we've been hit hard, trying to stabilize..
+ 		// lipsync_vansen_gochithard        vo_vansen_gochithard
+ 		sys.trigger( $intro_unit1_seq_6_cam_10 );
+ 		
+ 		// The ship begins to stabilize slightly.  Markswell barks into his wrist communicator.
+ 		
+ 		// CHARACTER: MARKSWELL
+ 		// CONTEXT:Tense
+ 		// DIALOG : Everybody hold on!  Vansen, we lost two marines and the starboard hull is compromised.
+ 		// lipsync_marks_evholdvans        vo_marks_evholdvans
+ 		sys.trigger( $intro_unit1_seq_6_cam_11 );
+ 		aiScriptedAnimLoop 	( $intro_unit1_seq_6_mitchell, "st_dropship_chair", 8 );
+ 		aiSpeakWait( $intro_unit1_seq_6_markswell_sitting, "lipsync_marks_evholdvans" );				// %%%%%%%%%% VO %%%%%%%%%%
+ 		
+ 		// CHARACTER: VANSEN (PILOT)
+ 		// CONTEXT:Tense
+ 		// DIALOG : Roger lieutenant, starboard engine is at 20 percent, we've got no rear landing struts, and we are losing altitude fast.
+ 		// lipsync_vansen_rgrltst20        vo_vansen_rgrltst20
+		radioChatterPlayWait( $uni_radiochatter, "vo_vansen_rgrltst20" );		// %%%%%%%%%% VO %%%%%%%%%%
+
+		// CHARACTER: MARKSWELL
+ 		// CONTEXT:Commanding
+ 		// DIALOG : Understood.  Tak, prepare a step-out line, we're taking the hard way out.
+ 		// lipsync_marks_understdt        vo_marks_understdt
+ 		
+ 		aiSpeakWait( $intro_unit1_seq_6_markswell_sitting, "lipsync_marks_understdt" );				// %%%%%%%%%% VO %%%%%%%%%%
+		
+		//Big cut here for transition to landing sequence
+
+		sys.trigger( $m04_trench_unit1_main );
+	}
+//---------------------------------------------------------------------------------
+// intro_unit1 Sequence 6 start
+//---------------------------------------------------------------------------------
+
+//=================================================================================
+//---------------------------------------------------------------------------------
+//	m04_intro_unit1 end
+//---------------------------------------------------------------------------------
+//=================================================================================	
+
+//=================================================================================
+//---------------------------------------------------------------------------------
+//	m04_trench_unit1 begin
+//---------------------------------------------------------------------------------
+//=================================================================================
+void uni_send_dead_guy_flying( entity guy )
+{
+	sys.waitFrame();
+	guy.applyImpulse( guy, guy.getWorldOrigin(), '25000 12500 80000' );
+}
+
+//---------------------------------------------------------------------------------
+// m04_trench_unit1 Sequence 1 start
+//---------------------------------------------------------------------------------
+void m04_trench_unit1_seq_1_main()
+	{	
+		sys.trigger( $m04_trench_unit1_seq_1_tak );
+		sys.trigger( $m04_trench_unit1_seq_1_navajas );
+		sys.trigger( $m04_trench_unit1_seq_1_mitchell );
+		sys.trigger( $m04_trench_unit1_seq_1_darnell );
+		sys.trigger( $m04_trench_unit1_seq_1_markswell );
+		sys.trigger( $m04_trench_unit1_seq_1_dekard );
+		
+		$m04_trench_unit1_seq_1_tak.hideSurface("models/weapons/mp_guns/w_mg_lo");
+		$m04_trench_unit1_seq_1_navajas.hideSurface("models/weapons/mp_guns/w_mg_lo");
+		$m04_trench_unit1_seq_1_mitchell.hideSurface("models/weapons/mp_guns/w_mg_lo");
+		$m04_trench_unit1_seq_1_darnell.hideSurface("models/weapons/mp_guns/w_mg_lo");
+		$m04_trench_unit1_seq_1_markswell.hideSurface("models/weapons/mp_guns/w_mg_lo");
+		$m04_trench_unit1_seq_1_dekard.hideSurface("models/weapons/mp_guns/w_mg_lo");
+		
+		aiScriptedAnimLoop 	( $m04_trench_unit1_seq_1_tak, "st_dropship_chair", 8 );
+		sys.wait( .8 );
+		
+		aiScriptedAnimLoop 	( $m04_trench_unit1_seq_1_navajas, "st_dropship_chair", 8 );
+		sys.wait( .2 );
+		
+		aiScriptedAnimLoop 	( $m04_trench_unit1_seq_1_mitchell, "st_dropship_chair", 8 );
+		sys.wait( .4 );
+		
+		aiScriptedAnimLoop 	( $m04_trench_unit1_seq_1_darnell, "st_dropship_chair", 8 );
+		sys.wait( .6 );
+		
+		aiScriptedAnimLoop 	( $m04_trench_unit1_seq_1_markswell, "st_dropship_chair", 8 );
+		sys.wait( .3 );
+		
+		aiScriptedAnimLoop 	( $m04_trench_unit1_seq_1_dekard, "st_dropship_chair", 8 );
+		
+		sys.trigger( $m04_trench_unit1_seq_1_cam_1 );
+		sys.waitFrame();
+		
+ 		// CHARACTER: TAK
+ 		// CONTEXT:Military
+ 		// DIALOG : Yes sir!
+ 		// lipsync_tak_yessir1        vo_tak_yessir1
+ 		aiSpeakWait( $m04_trench_unit1_seq_1_tak, "lipsync_tak_yessir1" );				// %%%%%%%%%% VO %%%%%%%%%%
+ 		
+ 		// Tak springs into action, opening up the rolling cargo door, fishing around for parts.  
+ 		// He blocks our view of what exactly he is doing, but is definitely intent.
+ 		sys.trigger( $m04_trench_unit1_seq_1_zipline_model_1 );
+ 		aiScriptedAnimWait 	( $m04_trench_unit1_seq_1_tak, "st_tak_zipline_start", 8, 1 );
+ 		aiScriptedAnimLoop 	( $m04_trench_unit1_seq_1_tak, "st_tak_zipline", 8 );
+ 		
+ 		// CHARACTER: MARKSWELL
+ 		// CONTEXT:Commanding
+ 		// DIALOG : Everybody up!  Grab your gear!
+ 		// lipsync_marks_everbdyup        vo_marks_everbdyup
+ 		aiSpeakWait( $m04_trench_unit1_seq_1_markswell, "lipsync_marks_everbdyup" );				// %%%%%%%%%% VO %%%%%%%%%%
+ 		
+ 		// All the marines lift their shoulder harnesses and step into position, crowded and shaky, 
+ 		// they all grab ceiling struts for support while standing.  
+ 		// Mitchell and Dekard don't stand up, struggling with their shoulder harnesses
+ 		
+ 		// CHARACTER: VANSEN (PILOT)
+ 		// CONTEXT:Calm
+ 		// DIALOG : Falcon, we are imminent to new LZ, short 1.5 klicks of planned LZ.  
+ 		// You guys need to get out quick, we are still under fire and I can't hold this 
+ 		// position for long.
+ 		// lipsync_vansen_falconweimm        vo_vansen_falconweimm
+ 		radioChatterPlayWait( $uni_radiochatter, "vo_vansen_falconweimm" );		// %%%%%%%%%% VO %%%%%%%%%%
+ 		
+ 		// Tak turns around to reveal a rappelling line hanging out of the ship.
+ 		
+ 		// CHARACTER: TAK
+ 		// CONTEXT:Military
+ 		// DIALOG : Line secure!
+ 		// lipsync_tak_linesec        vo_tak_linesec
+ 		sys.trigger( $m04_trench_unit1_seq_1_cam_2 );
+ 		aiSpeakWait( $m04_trench_unit1_seq_1_tak, "lipsync_tak_linesec" );				// %%%%%%%%%% VO %%%%%%%%%%
+ 		
+ 		// Mitchell, struggling with his shoulder harness since the accident speaks up.
+ 		$m04_trench_unit1_seq_1_zipline_model_1.remove();
+ 		$m04_trench_unit1_seq_1_zipline_model_2.show();
+ 		sys.trigger( $m04_trench_unit1_seq_1_zipline_model_2 );
+ 		aiScriptedAnimWait 	( $m04_trench_unit1_seq_1_tak, "st_tak_zipline_end", 8, 0 );
+ 		
+ 		aiScriptedAnimWait 	( $m04_trench_unit1_seq_1_darnell, "st_chair_to_idle", 8, 1 );
+ 		aiScriptedFaceWait	( $m04_trench_unit1_seq_1_darnell, $m04_trench_unit1_seq_1_rap_node, 1 );
+ 		aiScriptedAnimLoop	( $m04_trench_unit1_seq_1_darnell, "st_dropship_stand", 8 );
+ 		
+ 		// CHARACTER: MITCHELL
+ 		// CONTEXT:Concerned
+ 		// DIALOG : Lieutenant!  The shoulder harnesses are jammed.
+ 		// lipsync_mitch_ltshldjam        vo_mitch_ltshldjam
+		aiSpeakWait( $m04_trench_unit1_seq_1_mitchell, "lipsync_mitch_ltshldjam" );				// %%%%%%%%%% VO %%%%%%%%%%
+		
+		aiScriptedAnimWait 	( $m04_trench_unit1_seq_1_darnell, "st_repelling", 8, 1 );
+ 		$m04_trench_unit1_seq_1_darnell.remove();
+		
+ 		// CHARACTER: MARKSWELL
+ 		// CONTEXT:Commanding
+ 		// DIALOG : Tak, cut them out of there!
+ 		// lipsync_marks_takcutem        vo_marks_takcutem
+ 		aiSpeakWait( $m04_trench_unit1_seq_1_markswell, "lipsync_marks_takcutem" );				// %%%%%%%%%% VO %%%%%%%%%%
+ 		
+ 		// Tak squeezes past everybody and starts to work on Mitchell's harness.
+ 		
+ 		// CHARACTER: VANSEN (PILOT)
+ 		// CONTEXT:Terse
+ 		// DIALOG : Falcon, we are stable at new LZ, everybody out!
+ 		// lipsync_vansen_stablelz        vo_vansen_stablelz
+ 		radioChatterPlayWait( $uni_radiochatter, "vo_vansen_stablelz" );		// %%%%%%%%%% VO %%%%%%%%%%
+
+		// CHARACTER: MARKSWELL
+ 		// CONTEXT:Commanding
+ 		// DIALOG : You heard the lady, move!  Go Go Go!  Hit the ground and get moving!
+ 		// lipsync_marks_hrdlady        vo_marks_hrdlady
+ 		aiSpeakWait( $m04_trench_unit1_seq_1_markswell, "lipsync_marks_hrdlady" );				// %%%%%%%%%% VO %%%%%%%%%%
+ 		
+ 		// All the able marines start rappelling down the step-out line, Navajas is the 
+ 		// last one, leaving Mitchell, Dekard and Tak.
+ 		
+ 		// CHARACTER: NAVAJAS
+ 		// CONTEXT:Sarcastic
+ 		// DIALOG : See you on the ground!
+ 		// lipsync_nava_seegrn        vo_nava_seegrn
+ 		aiSpeakWait( $m04_trench_unit1_seq_1_navajas, "lipsync_nava_seegrn" );				// %%%%%%%%%% VO %%%%%%%%%%
+ 		
+ 		aiScriptedAnimWait 	( $m04_trench_unit1_seq_1_navajas, "st_chair_to_idle", 8, 1 );
+ 		aiScriptedFaceWait	( $m04_trench_unit1_seq_1_navajas, $m04_trench_unit1_seq_1_rap_node, 1 );
+ 		aiScriptedAnimLoop	( $m04_trench_unit1_seq_1_navajas, "st_dropship_stand", 8 );
+ 		
+ 		aiScriptedAnimWait 	( $m04_trench_unit1_seq_1_navajas, "st_dropship_walk", 8, 1 );
+ 		aiScriptedAnimWait 	( $m04_trench_unit1_seq_1_navajas, "st_repelling", 8, 1 );
+ 		$m04_trench_unit1_seq_1_navajas.remove();
+ 		
+ 		$m04_trench_unit1_seq_1_dekard.remove();
+ 		sys.trigger( $m04_trench_unit1_seq_1_cam_3 );
+ 		
+ 		aiScriptedAnimWait 	( $m04_trench_unit1_seq_1_markswell, "st_chair_to_idle", 8, 1 );
+ 		aiScriptedFaceWait	( $m04_trench_unit1_seq_1_markswell, $m04_trench_unit1_seq_1_rap_node, 1 );
+ 		aiScriptedAnimLoop	( $m04_trench_unit1_seq_1_markswell, "st_dropship_stand", 8 );
+ 		
+ 		aiScriptedAnimWait 	( $m04_trench_unit1_seq_1_markswell, "st_dropship_walk", 8, 1 );
+ 		aiScriptedAnimWait 	( $m04_trench_unit1_seq_1_markswell, "st_dropship_walk", 8, 1 );
+ 		aiScriptedAnimWait 	( $m04_trench_unit1_seq_1_markswell, "st_dropship_walk", 8, 1 );
+ 		aiScriptedAnimWait 	( $m04_trench_unit1_seq_1_markswell, "st_repelling", 8, 1 );
+ 		$m04_trench_unit1_seq_1_markswell.remove();
+ 		
+ 		aiScriptedFaceWait	( $m04_trench_unit1_seq_1_tak, $m04_trench_unit1_seq_1_tak_weld_face_1, 1 );
+ 		aiScriptedAnimWait 	( $m04_trench_unit1_seq_1_tak, "st_tak_weld_walk", 8, 1 );
+ 		aiScriptedAnim 	( $m04_trench_unit1_seq_1_tak, "st_tak_weld", 8, 1 );
+ 		sys.wait( 4.5 );
+ 		
+ 		// CHARACTER: TAK
+ 		// CONTEXT:Commanding
+ 		// DIALOG : Ok Mitchell, you're out!  Go!
+ 		// lipsync_tak_okmitchout        vo_tak_okmitchout
+ 		aiSpeakWait( $m04_trench_unit1_seq_1_tak, "lipsync_tak_okmitchout" );				// %%%%%%%%%% VO %%%%%%%%%%
+ 		
+ 		// Mitchell steps up and slides down the step-out line.  
+ 		// At this point we step in to POV of Dekard while Tak tries to free him from the seat.
+ 		aiScriptedAnimWait 	( $m04_trench_unit1_seq_1_mitchell, "st_chair_to_idle", 8, 1 );
+ 		aiScriptedFaceWait	( $m04_trench_unit1_seq_1_mitchell, $m04_trench_unit1_seq_1_rap_node, 1 );
+ 		aiScriptedAnimLoop	( $m04_trench_unit1_seq_1_mitchell, "st_dropship_stand", 8 );
+ 		
+ 		aiScriptedAnimWait 	( $m04_trench_unit1_seq_1_mitchell, "st_dropship_walk", 8, 1 );
+ 		aiScriptedAnimWait 	( $m04_trench_unit1_seq_1_mitchell, "st_repelling", 8, 1 );
+ 		$m04_trench_unit1_seq_1_mitchell.remove();
+ 		
+ 		// CHARACTER: TAK
+ 		// CONTEXT:Dry
+ 		// DIALOG : I'll have you out in a second sarge.
+ 		// lipsync_tak_outsecsarge        vo_tak_outsecsarge
+ 		$m04_trench_unit1_seq_1_cam_2.bind( $player1 );
+ 		sys.trigger( $cin_stranarus_trench_intro_cam_1 );
+		aiSpeakWait( $m04_trench_unit1_seq_1_tak, "lipsync_tak_outsecsarge" );				// %%%%%%%%%% VO %%%%%%%%%%
+
+ 		// CHARACTER: VANSEN (PILOT)
+ 		// CONTEXT:Tense
+ 		// DIALOG : I can't hold this position much longer.
+ 		// lipsync_vansen_cntholdpos        vo_vansen_cntholdpos
+ 		radioChatterPlayWait( $uni_radiochatter, "vo_vansen_cntholdpos" );		// %%%%%%%%%% VO %%%%%%%%%%
+ 		
+ 		// The ship pitches and groans.  The sounds of ricochets pinging off the hull as the tension mounts
+ 		
+ 		// CHARACTER: TAK
+ 		// CONTEXT:Dry
+ 		// DIALOG : Almost there.
+ 		// lipsync_tak_almostth        vo_tak_almostth
+ 		aiSpeakWait( $m04_trench_unit1_seq_1_tak, "lipsync_tak_almostth" );				// %%%%%%%%%% VO %%%%%%%%%%
+ 		
+ 		// The engines change their sounds again, much worse, 
+ 		// sounding like a box of wrenches has been tossed into a fine tuned machine.
+ 		
+ 		
+ 		// CHARACTER: VANSEN (PILOT)
+ 		// CONTEXT:Tense
+ 		// DIALOG : Starboard engine at 10 percent
+ 		// lipsync_vansen_stbeng10        vo_vansen_stbeng10
+		radioChatterPlayWait( $uni_radiochatter, "vo_vansen_stbeng10" );		// %%%%%%%%%% VO %%%%%%%%%%
+
+ 		// CHARACTER: VANSEN (PILOT)
+ 		// CONTEXT:Angry
+		// DIALOG : We're out of time marines!
+ 		// lipsync_vansen_weouttime        vo_vansen_weouttime
+		radioChatterPlayWait( $uni_radiochatter, "vo_vansen_weouttime" );		// %%%%%%%%%% VO %%%%%%%%%%
+
+ 		// CHARACTER: TAK
+ 		// CONTEXT:Commanding
+ 		// DIALOG : Got it!  Dekard, let's go!
+ 		// lipsync_tak_gotitdek        vo_tak_gotitdek
+ 		aiSpeakWait( $m04_trench_unit1_seq_1_tak, "lipsync_tak_gotitdek" );				// %%%%%%%%%% VO %%%%%%%%%%
+ 		
+ 		// The seat harness lifts up automatically, we follow Tak in POV mode as he rappels 
+ 		// down the line, the camera pans around slightly to see the landscape of the Trench ahead 
+ 		// (whatever is possible), looking down Dekard slides down the line to the ground, we hit 
+ 		// the ground and take a second to get up while facing the shadows of walker squads 
+ 		// moving on the ground level above.
+ 		aiScriptedFaceWait	( $m04_trench_unit1_seq_1_tak, $m04_trench_unit1_seq_1_rap_node, 1 );
+ 		aiScriptedAnimLoop	( $m04_trench_unit1_seq_1_tak, "st_dropship_stand", 8 );
+ 		
+ 		aiScriptedAnimWait 	( $m04_trench_unit1_seq_1_tak, "st_dropship_walk", 8, 1 );
+ 		aiScriptedAnimWait 	( $m04_trench_unit1_seq_1_tak, "st_repelling", 8, 1 );
+ 		$m04_trench_unit1_seq_1_tak.remove();
+ 		
+ 		aiScriptedFaceWait	( $m04_trench_unit1_seq_1_tak, $m04_trench_unit1_seq_1_rap_node, 1 );
+ 		aiScriptedAnimLoop	( $m04_trench_unit1_seq_1_tak, "st_dropship_stand", 8 );
+ 		
+ 		aiScriptedAnimWait 	( $m04_trench_unit1_seq_1_tak, "st_dropship_walk", 8, 1 );
+ 		aiScriptedAnimWait 	( $m04_trench_unit1_seq_1_tak, "st_repelling", 8, 1 );
+ 		$m04_trench_unit1_seq_1_tak.remove();
+ 		
+ 		sys.trigger( $tak );
+		sys.trigger( $darnell );
+		sys.trigger( $m04_trench_unit1_seq_2_atlas_guy_1 );
+		sys.trigger( $m04_trench_unit1_seq_2_atlas_guy_2 );
+		sys.trigger( $m04_trench_unit1_seq_2_atlas_guy_3 );
+		sys.trigger( $m04_trench_unit1_seq_2_atlas_guy_4 );
+		sys.trigger( $m04_intro_unit1_seq_1_main_trigger_tely );
+		sys.trigger( $m04_trench_unit1_seq1_enable_weapons );
+		sys.trigger( $main_player_equip );
+		sys.trigger( $m04_trench_unit1_harvester_1 );
+		sys.trigger( $m04_trench_unit1_beach_turret_1 );
+		sys.trigger( $m04_trench_unit1_beach_turret_2 );
+		sys.trigger( $m04_trench_unit1_beach_turret_3 );
+		sys.trigger( $m04_trench_unit1_upper_level_team_spawner );
+		sys.trigger( $m04_trench_unit1_upper_level_team_walker_spawner );
+		sys.wait( 8 );
+		
+		$m04_trench_unit1_seq_1_human_jet_1_anc.startSpline( $m04_trench_unit1_seq_1_human_jet_1_anc_spline );
+		aiSpeakWait( $darnell, "lipsync_darn_dekoverhr" );				// %%%%%%%%%% VO %%%%%%%%%%
+		$m04_trench_unit1_seq_1_human_jet_2_anc.startSpline( $m04_trench_unit1_seq_1_human_jet_2_anc_spline );
+	}
+//---------------------------------------------------------------------------------
+// m04_trench_unit1 Sequence 1 end
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+// m04_trench_unit1 Sequence 2 start
+//---------------------------------------------------------------------------------
+void m04_trench_unit1_seq_2()
+	{
+		// CHARACTER: VANSEN (PILOT)
+ 		// CONTEXT:Tense
+ 		// DIALOG : Dropship Falcon clearing hot zone.
+ 		// lipsync_vansen_dropshphot        vo_vansen_dropshphot
+ 		radioChatterPlayWait( $uni_radiochatter, "vo_vansen_dropshphot" );		// %%%%%%%%%% VO %%%%%%%%%%
+ 		
+		aiSpeakWait( $darnell, "lipsync_darn_welandmss" );				// %%%%%%%%%% VO %%%%%%%%%%
+		sys.music( "m1_intro" );
+		aiSpeakWait( $darnell, "lipsync_darn_wenedgetmv" );				// %%%%%%%%%% VO %%%%%%%%%%
+		sys.trigger( $m04_trench_unit1_seq_1_init_breifing_player_blocker );
+		$tak.setLeader( $player1 );
+		$darnell.setLeader( $player1 );
+		
+		$darnell.setTalkState( TALK_OK ); 
+		$darnell.setKey( "lipsync_talk_primary", "lipsync_darn_theywait" ); 
+		$darnell.setKey( "lipsync_talk_secondary", "lipsync_darn_therest" ); 
+		$darnell.setKey( "lipsync_talk_loop1", "lipsync_darn_thisreminsthat" ); 
+
+		$tak.setTalkState( TALK_OK ); 
+		$tak.setKey( "lipsync_talk_primary", "lipsync_tak_quiteop" ); 
+		$tak.setKey( "lipsync_talk_secondary", "lipsync_tak_marksregrp" ); 
+		$tak.setKey( "lipsync_talk_loop1", "lipsync_tak_weneedmvsrg" );
+		
+		sys.trigger( $m04_trench_unit1_seq_2_strog_marine_1 );
+		sys.trigger( $m04_trench_unit1_seq_2_strog_marine_2 );
+		sys.trigger( $m04_trench_unit1_seq_2_gunner_1 );
+		sys.trigger( $m04_trench_unit1_seq_2_lower_area_strog_spawner_1 );
+		$tak.becomeAggressive();
+		$darnell.becomeAggressive();
+		aiSpeakWait( $m04_trench_unit1_seq_2_atlas_guy_1, "lipsync_atlas2_enemyfr" );				// %%%%%%%%%% VO %%%%%%%%%%
+		
+		$m04_trench_unit1_seq_2_atlas_guy_1.kill();
+		$m04_trench_unit1_seq_2_atlas_guy_2.kill();
+		sys.trigger( $m04_trench_unit1_seq_2_boom_3 );
+		sys.wait( .24 );
+		
+		$m04_trench_unit1_seq_2_atlas_guy_3.kill();
+		$m04_trench_unit1_seq_2_atlas_guy_4.kill();
+		sys.trigger( $m04_trench_unit1_seq_2_boom_4 );
+		sys.wait( .14 );
+		
+		sys.trigger( $m04_trench_unit1_seq_2_boom_4 );
+		radioChatterPlayWait( $uni_radiochatter, "vo_atlas2_getwalkpos" );		// %%%%%%%%%% VO %%%%%%%%%%
+		
+		sys.wait( 6 );
+		radioChatterPlayWait( $uni_radiochatter, "vo_atlas2_rogwlk2" );		// %%%%%%%%%% VO %%%%%%%%%%
+		radioChatterPlayWait( $uni_radiochatter, "vo_atlas2_getwalkpos" );		// %%%%%%%%%% VO %%%%%%%%%%
+	}
+//---------------------------------------------------------------------------------
+// m04_trench_unit1 Sequence 2 end
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+// m04_trench_unit1 Sequence 3 start
+//---------------------------------------------------------------------------------
+void m04_trench_unit1_seq_3()
+	{
+		sys.trigger( $m04_trench_unit1_seq_3_atlas_guy_3 );
+		sys.trigger( $m04_trench_unit1_seq_3_atlas_guy_4 );
+		sys.wait( 1 );
+		
+		$m04_trench_unit1_seq_3_atlas_guy_3.kill();
+		$m04_trench_unit1_seq_3_atlas_guy_4.kill();
+		sys.trigger( $m04_trench_unit1_seq_3_boom_2 );
+		sys.trigger( $m04_trench_unit1_seq_3_boom_1 );
+		sys.trigger( $m04_trench_unit1_uni_boom_flash_fade_efx_start );
+		$m04_trench_unit1_uni_boom_flash_anc.startSpline( $m04_trench_unit1_seq_3_boom_1_spline );
+		$m04_trench_unit1_harvester_1.remove();
+		$m04_trench_unit1_fallen_debris_harvester_1.show();
+		sys.trigger( $m04_trench_unit1_seq_2_lower_area_strog_spawner_3 );
+		
+		radioChatterPlayWait( $uni_radiochatter, "vo_atlas_harvester" );		// %%%%%%%%%% VO %%%%%%%%%%
+		sys.trigger( $m04_trench_unit1_seq_3_upper_level_strog_spawner );
+		radioChatterPlayWait( $uni_radiochatter, "vo_pilot_razor16" );		// %%%%%%%%%% VO %%%%%%%%%%
+		$m04_trench_unit1_seq_5_crashing_drop_ship_anc.startSpline( $m04_trench_unit1_seq_5_crashing_drop_ship_spline );
+		radioChatterPlayWait( $uni_radiochatter, "vo_atlas2_airsupp" );		// %%%%%%%%%% VO %%%%%%%%%%
+	}
+//---------------------------------------------------------------------------------
+// m04_trench_unit1 Sequence 3 end
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+// m04_trench_unit1 Sequence 4 end
+//---------------------------------------------------------------------------------
+void m04_trench_unit1_seq_4_walker_1_into_tunnel()
+	{
+		$m04_trench_unit1_seq_4_tunnel_walker_1.setUndying( 1 );
+		aiScriptedMoveWait 	( $m04_trench_unit1_seq_4_tunnel_walker_1, $m04_trench_unit1_seq_4_tunnel_walker_1_node_1, 64, 1);
+		sys.wait( 15 );
+		
+		$m04_trench_unit1_seq_4_tunnel_walker_1.remove();
+	}
+	
+void m04_trench_unit1_seq_4_walker_2_into_tunnel()
+	{
+		$m04_trench_unit1_seq_4_tunnel_walker_2.setUndying( 1 );
+		aiScriptedMoveWait 	( $m04_trench_unit1_seq_4_tunnel_walker_2, $m04_trench_unit1_seq_4_tunnel_walker_2_node_1, 64, 1);
+		sys.wait( 15 );
+		
+		$m04_trench_unit1_seq_4_tunnel_walker_2.remove();
+	}
+
+void m04_trench_unit1_seq_4()
+	{	
+		thread	m04_trench_unit1_seq_4_walker_1_into_tunnel();
+		thread	m04_trench_unit1_seq_4_walker_2_into_tunnel();
+		sys.trigger( $m04_trench_unit1_seq_7_hades_squad_guy_1 );
+		sys.trigger( $m04_trench_unit1_seq_4_boom_1 );
+		sys.wait( .25 );
+		
+		sys.trigger( $m04_trench_unit1_seq_4_boom_2 );
+		$m04_trench_unit1_seq_3_wave_atlas_guy_1.kill();
+		$m04_trench_unit1_seq_3_wave_atlas_guy_2.kill();
+		sys.wait( 4 );
+		
+		$tak.setUndying( 1 );
+		$darnell.setUndying( 1 );
+		$tak.disableTarget();
+		$darnell.disableTarget();
+		
+		aiSpeakWait( $tak, "lipsync_tak_ltsgo2" );				// %%%%%%%%%% VO %%%%%%%%%%
+		aiSpeakWait( $darnell, "lipsync_darn_gogogo" );				// %%%%%%%%%% VO %%%%%%%%%%
+	}
+	
+void m04_trench_unit1_seq_4_team_run_up()
+	{
+		aiScriptedMoveWait 	( $tak, $m04_trench_unit1_tak_node_seq_4, 16, 1);
+		aiScriptedFaceWait	( $tak, $m04_trench_unit1_tak_face_seq_4, 0);
+		aiScriptedAnimLoop 	( $tak, "cover_right_idle", 32 );
+		sys.wait( 1 );
+		
+		aiScriptedMoveWait 	( $darnell, $m04_trench_unit1_darnell_node_seq_4, 16, 1);
+		aiScriptedFaceWait	( $darnell, $m04_trench_unit1_darnell_face_seq_4, 0);
+		aiScriptedAnimLoop 	( $darnell, "cover_left_idle", 32 );
+		sys.wait( 1 );
+		
+		aiScriptedMoveWait 	( $tak, $m04_trench_unit1_tak_node_seq_4a, 16, 1);
+		aiScriptedFaceWait	( $tak, $m04_trench_unit1_tak_face_seq_4a, 0);
+		aiScriptedAnimLoop 	( $tak, "cover_left_idle", 32 );
+		sys.wait( 1 );
+		
+		aiScriptedMoveWait 	( $darnell, $m04_trench_unit1_darnell_node_seq_4a, 16, 1);
+		aiScriptedFaceWait	( $darnell, $m04_trench_unit1_darnell_face_seq_4a, 0);
+		aiScriptedAnimLoop 	( $darnell, "cover_left_idle", 32 );
+		sys.wait( 1 );
+		
+		aiScriptedMoveWait 	( $tak, $m04_trench_unit1_tak_node_seq_4b, 16, 1);
+		aiScriptedFaceWait	( $tak, $m04_trench_unit1_tak_face_seq_4b, 0);
+		aiScriptedAnimLoop 	( $tak, "cover_left_idle", 32 );
+		sys.wait( 1 );
+		
+		aiScriptedMoveWait 	( $darnell, $m04_trench_unit1_darnell_node_seq_4b, 16, 1);
+		aiScriptedFaceWait	( $darnell, $m04_trench_unit1_darnell_face_seq_4b, 0);
+		aiScriptedAnimLoop 	( $darnell, "cover_right_idle", 32 );
+	}
+
+//---------------------------------------------------------------------------------
+// m04_trench_unit1 Sequence 4 end
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+// m04_trench_unit1 Sequence 7 start
+//---------------------------------------------------------------------------------
+void tak_trench_unit1_seq_7()
+	{
+		aiScriptedMoveWait 	( $tak, $m04_trench_unit1_tak_node_seq_7, 32, 1);
+		aiScriptedFaceWait	( $tak, $m04_trench_unit1_tak_face_seq_7, 0);
+	}
+
+void darnell_trench_unit1_seq_7()
+	{
+		aiScriptedMoveWait 	( $darnell, $m04_trench_unit1_darnell_node_seq_7, 32, 1);
+		aiScriptedFaceWait	( $darnell, $m04_trench_unit1_darnell_face_seq_7, 0);
+	}
+
+void m04_trench_unit1_seq_7()
+	{
+		thread darnell_trench_unit1_seq_7();
+		thread tak_trench_unit1_seq_7();
+		
+		$m04_trench_unit1_seq_7_hades_squad_guy_1.resetTalkCount();
+		$m04_trench_unit1_seq_7_hades_squad_guy_1.setKey( "lipsync_talk_primary", "lipsync_hades2_weneedsupp2" ); 
+		$m04_trench_unit1_seq_7_hades_squad_guy_1.setKey( "lipsync_talk_secondary", "lipsync_hades2_cmdsenden" );
+		$m04_trench_unit1_seq_7_hades_squad_guy_1.setKey( "lipsync_talk_loop1", "lipsync_hades2_whyisthisant" );
+		
+		sys.trigger( $markswell );
+		sys.trigger( $navajas );
+		sys.trigger( $mitchell );
+		sys.trigger( $m04_trench_unit1_seq_1_wounded_marine_1 );
+		sys.trigger( $m04_trench_unit1_seq_7_mort_boom_1 );
+		sys.trigger( $m04_trench_unit1_uni_boom_flash_fade_efx_start );
+		sys.wait(3);
+		
+		$m04_trench_unit1_uni_boom_flash_anc.startSpline( $m04_trench_unit1_seq_7_mort_boom_1_spline );
+		sys.wait(3);
+		
+		sys.trigger( $m04_trench_unit1_seq_7_mort_boom_2 );
+		sys.trigger( $m04_trench_unit1_uni_boom_flash_fade_efx_start );
+		$m04_trench_unit1_uni_boom_flash_anc.startSpline( $m04_trench_unit1_seq_7_mort_boom_2_spline );
+	}
+	
+void m04_trench_unit1_seq_7_disable_turrets()
+	{
+		aiSpeak( $m04_trench_unit1_seq_7_hades_squad_guy_1, "lipsync_hades2_heyfalc" );		// %%%%%%%%%% VO %%%%%%%%%%
+		sys.trigger( $m04_trench_unit1_seq_3_upper_level_strog_spawner );
+	}
+//---------------------------------------------------------------------------------
+// m04_trench_unit1 Sequence 7 end
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+// m04_trench_unit1 Sequence 8 start
+//---------------------------------------------------------------------------------
+void m04_trench_unit1_seq_8()
+	{
+		
+		
+		
+	}
+//---------------------------------------------------------------------------------
+// m04_trench_unit1 Sequence 8 end
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+// m04_trench_unit1 Sequence 9 start
+//---------------------------------------------------------------------------------
+void markswell_trench_unit1_seq_9()
+	{
+		aiSpeakWait( $markswell, "lipsync_marks_dekoverhr" );		// %%%%%%%%%% VO %%%%%%%%%%
+		aiScriptedMoveWait 	( $markswell, $m04_trench_unit1_markswell_node_seq_9, 32, 1);
+		sys.trigger( $OBJ_one_complete );
+		aiScriptedFaceWait	( $markswell, $m04_trench_unit1_markswell_face_seq_9, 0);
+		aiScriptedAnim 	( $markswell, "point_forward", 16, 1 );
+		aiSpeakWait( $markswell, "lipsync_marks_twowalkfl" );		// %%%%%%%%%% VO %%%%%%%%%%
+		sys.trigger( $OBJ_two );
+		aiScriptedMove 	( $tak, $m04_trench_unit1_tak_node_seq_9, 32, 1);
+		$tak.setLeader( $player1 );
+		$navajas.setLeader( $player1 );
+		sys.trigger( $m04_trench_unit1_seq_10 );
+		
+		$darnell.resetTalkCount();
+		$darnell.setKey( "lipsync_talk_primary", "lipsync_darn_webefine" ); 
+		$darnell.setKey( "lipsync_talk_secondary", "lipsync_darn_getgoforev" );
+		
+		$tak.resetTalkCount();
+		$tak.setKey( "lipsync_talk_primary", "lipsync_tak_letsgetwlk" ); 
+		$tak.setKey( "lipsync_talk_secondary", "lipsync_tak_ihopethosewl" );
+		$tak.setKey( "lipsync_talk_loop1", "lipsync_tak_weneedmvsrg" );
+		
+		$markswell.setTalkState( TALK_OK ); 
+		$markswell.setKey( "lipsync_talk_primary", "lipsync_marks_forwent" ); 
+		$markswell.setKey( "lipsync_talk_secondary", "lipsync_marks_getmov" );
+		$markswell.setKey( "lipsync_talk_loop1", "lipsync_marks_deknottell" );
+		
+		$mitchell.setTalkState( TALK_OK ); 
+		$mitchell.setKey( "lipsync_talk_primary", "lipsync_mitch_mostmed" ); 
+		$mitchell.setKey( "lipsync_talk_secondary", "lipsync_mitch_ivedoneall" );
+		$mitchell.setKey( "lipsync_talk_loop1", "lipsync_mitch_keepeyeatlas" );
+		
+		$navajas.setTalkState( TALK_OK ); 
+		$navajas.setKey( "lipsync_talk_primary", "lipsync_nava_formintro" ); 
+		$navajas.setKey( "lipsync_talk_secondary", "lipsync_nava_letschatob" );
+		$navajas.setKey( "lipsync_talk_loop1", "lipsync_nava_timeisshort" );
+		$navajas.setKey( "lipsync_talk_loop2", "lipsync_nava_obvioyouhr" );
+	}
+
+void m04_trench_unit1_seq_9()
+	{
+		$darnell.setLeader( $null_ent );
+		thread markswell_trench_unit1_seq_9();
+	}
+//---------------------------------------------------------------------------------
+// m04_trench_unit1 Sequence 9 end
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+// m04_trench_unit1 Sequence 10 start
+//---------------------------------------------------------------------------------
+void m04_trench_unit1_cave_boom_start()
+	{
+		sys.wait( 2 );
+		sys.trigger( $m04_trench_unit1_cave_dust_boom );
+				
+		sys.trigger( $m04_trench_unit1_cave_dust_1 );
+		sys.wait( .25 );
+				
+		sys.trigger( $m04_trench_unit1_cave_dust_2 );
+		sys.wait( .48 );
+				
+		sys.trigger( $m04_trench_unit1_cave_dust_3 );
+		sys.wait( .32 );
+				
+		sys.trigger( $m04_trench_unit1_cave_dust_4 );
+		sys.wait( .78 );
+				
+		sys.trigger( $m04_trench_unit1_cave_dust_5 );
+		
+		sys.wait( 12 );
+		sys.trigger( $m04_trench_unit1_cave_dust_boom );
+				
+		sys.trigger( $m04_trench_unit1_cave_dust_1 );
+		sys.wait( .25 );
+				
+		sys.trigger( $m04_trench_unit1_cave_dust_2 );
+		sys.wait( .48 );
+				
+		sys.trigger( $m04_trench_unit1_cave_dust_3 );
+		sys.wait( .32 );
+				
+		sys.trigger( $m04_trench_unit1_cave_dust_4 );
+		sys.wait( .78 );
+				
+		sys.trigger( $m04_trench_unit1_cave_dust_5 );
+		
+		sys.wait( 17 );
+		sys.trigger( $m04_trench_unit1_cave_dust_boom );
+				
+		sys.trigger( $m04_trench_unit1_cave_dust_1 );
+		sys.wait( .25 );
+				
+		sys.trigger( $m04_trench_unit1_cave_dust_2 );
+		sys.wait( .48 );
+				
+		sys.trigger( $m04_trench_unit1_cave_dust_3 );
+		sys.wait( .32 );
+				
+		sys.trigger( $m04_trench_unit1_cave_dust_4 );
+		sys.wait( .78 );
+				
+		sys.trigger( $m04_trench_unit1_cave_dust_5 );
+		
+		sys.wait( 32 );
+		sys.trigger( $m04_trench_unit1_cave_dust_boom );
+				
+		sys.trigger( $m04_trench_unit1_cave_dust_1 );
+		sys.wait( .25 );
+				
+		sys.trigger( $m04_trench_unit1_cave_dust_2 );
+		sys.wait( .48 );
+				
+		sys.trigger( $m04_trench_unit1_cave_dust_3 );
+		sys.wait( .32 );
+				
+		sys.trigger( $m04_trench_unit1_cave_dust_4 );
+		sys.wait( .78 );
+				
+		sys.trigger( $m04_trench_unit1_cave_dust_5 );
+	}
+
+void tak_trench_unit1_seq_10()
+	{
+		aiSpeakWait( $navajas, "lipsync_nava_blsenoughchrg" );		// %%%%%%%%%% VO %%%%%%%%%%
+		aiSpeakWait( $tak, "lipsync_tak_alwaysblow" );		// %%%%%%%%%% VO %%%%%%%%%%
+		aiSpeakWait( $tak, "lipsync_tak_gimmeasec" );		// %%%%%%%%%% VO %%%%%%%%%%
+		
+		aiScriptedMoveWait 	( $tak, $m04_trench_unit1_tak_node_seq_10, 8, 1);
+		aiScriptedFaceWait	( $tak, $m04_trench_unit1_tak_face_seq_10, 0);
+		aiSpeak( $tak, "lipsync_tak_therewego" );		// %%%%%%%%%% VO %%%%%%%%%%
+		aiScriptedAnimWait 	( $tak, "plant_tnt_high", 16, 1 );
+		aiScriptedFaceWait	( $tak, $m04_trench_unit1_tak_face_seq_10a, 0);
+		aiSpeak( $navajas, "lipsync_tak_strg1" );		// %%%%%%%%%% VO %%%%%%%%%%
+		sys.trigger( $m04_trench_unit1_seq_10_door_shader_parm_1 );
+		sys.trigger( $m04_trench_unit1_seq_10_door_lock_1 );
+		sys.trigger( $m04_trench_unit1_seq_10_ai_blocker_main );
+		sys.trigger( $m04_trench_unit1_seq_10_ai_blocker_ridge );
+		sys.trigger( $m04_trench_unit1_seq_10_strog_marine_1 );
+		aiScriptedMoveWait 	( $m04_trench_unit1_seq_10_strog_marine_1, $m04_trench_unit1_seq_10_grunt_smack_tack_node, 8, 1);
+		aiScriptedAnim 		( $tak, "cine_ad_fights_grunt_1", 2, 1 );
+		aiScriptedAnimWait 	( $m04_trench_unit1_seq_10_strog_marine_1, "melee_attack2", 16, 1 );
+		
+		aiSpeakWait( $tak, "lipsync_tak_whoa" );		// %%%%%%%%%% VO %%%%%%%%%%
+		sys.trigger( $m04_trench_unit1_seq_10_strog_marine_2 );
+		aiScriptedAnim 		( $m04_trench_unit1_seq_10_strog_marine_1, "angry2", 2, 1 );
+		$tak.becomeAggressive();
+		$navajas.becomeAggressive();
+		sys.wait(1);
+		
+		sys.trigger( $m04_trench_unit1_seq_10_player_blocker_scripted_seq_1 );
+	}
+	
+void navajas_trench_unit1_seq_10()
+	{
+		aiScriptedMoveWait 	( $navajas, $m04_trench_unit1_navajas_node_seq_10, 32, 1);
+	}
+
+void m04_trench_unit1_seq_10()
+	{
+		sys.trigger( $m04_trench_unit1_seq_10_player_blocker_scripted_seq_1 );
+		$tak.setLeader( $null_ent );
+		$navajas.setLeader( $null_ent );
+		aiSpeakWait( $tak, "lipsync_tak_gimmeasec" );		// %%%%%%%%%% VO %%%%%%%%%%
+		thread tak_trench_unit1_seq_10();
+		thread navajas_trench_unit1_seq_10();
+	}
+	
+void m04_trench_unit1_seq_10_begin_run_inside()
+	{
+		thread m04_trench_unit1_cave_boom_start();
+		aiScriptedMove 	( $tak, $m04_trench_unit1_tak_node_seq_10a, 32, 1);
+		aiScriptedMoveWait 	( $navajas, $m04_trench_unit1_navajas_node_seq_10a, 32, 1);
+		
+		aiSpeakWait( $tak, "lipsync_tak_whewcls" );		// %%%%%%%%%% VO %%%%%%%%%%
+		$tak.setUndying( 0 );
+		$darnell.setUndying( 0 );
+	}
+//---------------------------------------------------------------------------------
+// m04_trench_unit1 Sequence 10 end
+//---------------------------------------------------------------------------------
+//=================================================================================
+//---------------------------------------------------------------------------------
+//	m04_trench_unit1 end
+//---------------------------------------------------------------------------------
+//=================================================================================	
+
+//=================================================================================
+//---------------------------------------------------------------------------------
+//	m04_building_unit1 begin
+//---------------------------------------------------------------------------------
+//=================================================================================
+
+//---------------------------------------------------------------------------------
+// m04_building_unit1 Sequence 1 start
+//---------------------------------------------------------------------------------
+void tak_seq_1()
+	{
+		aiScriptedMoveWait 	( $tak, $m04_building_unit1_tak_node_seq_1, 8, 1);
+		aiScriptedFaceWait	( $tak, $m04_building_unit1_tak_face_seq_1, 0);
+		aiScriptedAnim 		( $tak, "idle_scan_2", 4, 0 );
+	}
+	
+void navajas_seq_1()
+	{
+		aiScriptedMoveWait 	( $navajas, $m04_building_unit1_navajas_node_seq_1, 8, 1);
+		aiScriptedFaceWait	( $navajas, $m04_building_unit1_navajas_face_seq_1, 0);
+		aiScriptedAnim 		( $navajas, "idle_scan_3", 4, 0 );
+	}
+
+void m04_building_unit1_seq_1_main()
+	{
+		$tak.flashlight(1);
+		$navajas.flashlight(1);
+		$tak.disableHeal();
+		thread tak_seq_1();
+		thread navajas_seq_1();
+		sys.trigger( $uni_auto_save_trigger );
+		sys.trigger( $m04_building_unit1_seq_2_ai_blocker_1 );
+		sys.trigger( $m04_building_unit1_seq_1_dead_strog_1 );
+	}
+//---------------------------------------------------------------------------------
+// m04_building_unit1 Sequence 1 end
+//---------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------
+// m04_building_unit1 Sequence 2 start
+//---------------------------------------------------------------------------------
+void tak_seq_2()
+	{
+		$tak.becomePassive(1);
+		aiScriptedMoveWait 	( $tak, $m04_building_unit1_tak_node_seq_2, 4, 1);
+		aiScriptedFaceWait	( $tak, $m04_building_unit1_tak_face_seq_2, 0);
+		aiSpeakWait( $tak, "lipsync_tak_whattht" );		// %%%%%%%%%% VO %%%%%%%%%%
+		$tak.flashlight(0);
+		$tak.hideSurface	("models/weapons/mp_guns/w_mg_lo");
+		aiScriptedAnimLoop 	( $tak, "working_wall_panel", 16 );
+		aiSpeakWait( $tak, "lipsync_tak_strggweapnseen" );		// %%%%%%%%%% VO %%%%%%%%%%
+		sys.wait(4);
+		
+		sys.trigger 		( $m04_building_unit1_seq_2_freeze_gun_hide_show );
+		$dummyfreezeGun.bindToJoint($tak, "r_wrist", 1);
+		aiScriptedFaceWait	( $tak, $player1, 0);
+		aiScriptedAnimWait 	( $tak, "player_gift_start", 16, 1 );
+		aiScriptedAnimLoop 	( $tak, "player_gift_loop", 16 );
+		sys.trigger 		( $m04_building_unit1_seq_3 );
+	}
+	
+void navajas_seq_2()
+	{
+		aiScriptedMoveWait 	( $navajas, $m04_building_unit1_navajas_node_seq_2, 8, 1);
+		aiScriptedFaceWait	( $navajas, $m04_building_unit1_navajas_face_seq_2, 0);
+		aiScriptedAnim 		( $navajas, "idle_scan_3", 16, 1 );
+	}
+
+void m04_building_unit1_seq_2()
+	{	
+		thread tak_seq_2();
+		thread navajas_seq_2();
+	}
+//---------------------------------------------------------------------------------
+// m04_building_unit1 Sequence 2 end
+//---------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------
+// m04_building_unit1 Sequence 3 start
+//---------------------------------------------------------------------------------
+void bindToPiston()
+{
+	$wing_rt_south_1.bind($bridge_piston_rt_1);
+	$wing_rt_north_1.bind($bridge_piston_rt_1);
+
+	$wing_rt_south_2.bind($bridge_piston_rt_2);
+	$wing_rt_north_2.bind($bridge_piston_rt_2);
+
+	$wing_rt_south_3.bind($bridge_piston_rt_3);
+	$wing_rt_north_3.bind($bridge_piston_rt_3);
+
+	$wing_rt_south_4.bind($bridge_piston_rt_4);
+	$wing_rt_north_4.bind($bridge_piston_rt_4);
+
+	$wing_rt_south_5.bind($bridge_piston_rt_5);
+	$wing_rt_north_5.bind($bridge_piston_rt_5);
+
+	$wing_rt_south_6.bind($bridge_piston_rt_6);
+	$wing_rt_north_6.bind($bridge_piston_rt_6);
+
+	$wing_rt_south_7.bind($bridge_piston_rt_7);
+	$wing_rt_north_7.bind($bridge_piston_rt_7);
+
+	$wing_rt_south_8.bind($bridge_piston_rt_8);
+	$wing_rt_north_8.bind($bridge_piston_rt_8);
+}
+
+void bindToPivot()
+{
+	$wing_rt_south_1.bind($origin_south_1);
+	$wing_rt_north_1.bind($origin_north_1);
+
+	$wing_rt_south_2.bind($origin_south_2);
+	$wing_rt_north_2.bind($origin_north_2);
+
+	$wing_rt_south_3.bind($origin_south_3);
+	$wing_rt_north_3.bind($origin_north_3);
+
+	$wing_rt_south_4.bind($origin_south_4);
+	$wing_rt_north_4.bind($origin_north_4);
+
+	$wing_rt_south_5.bind($origin_south_1);
+	$wing_rt_north_5.bind($origin_north_1);
+
+	$wing_rt_south_6.bind($origin_south_2);
+	$wing_rt_north_6.bind($origin_north_2);
+
+	$wing_rt_south_7.bind($origin_south_3);
+	$wing_rt_north_7.bind($origin_north_3);
+
+	$wing_rt_south_8.bind($origin_south_4);
+	$wing_rt_north_8.bind($origin_north_4);
+}
+
+void pillarsDown()
+{
+	$pillar_1.time(.5);
+	$pillar_1.accelTime(.4);	
+	$pillar_2.time(.5);
+	$pillar_2.accelTime(.4);
+	$origin_pillar_1.time(.5);
+	$origin_pillar_2.time(.5);
+
+	$pillar_1.move( DOWN, 88 );
+	$pillar_2.move( DOWN, 88 );
+	$origin_pillar_1.rotateOnce( '0 450 0' );
+	$origin_pillar_2.rotateOnce( '0 450 0' );
+	sys.waitFor($pillar_1);
+	
+	$origin_pillar_1.time(1);
+	$origin_pillar_2.time(1);
+	$origin_pillar_1.rotateOnce( '0 90 0' );
+	$origin_pillar_2.rotateOnce( '0 90 0' );
+	sys.waitFor($origin_pillar_1);
+
+	$pillar_1.move( DOWN, 167 );
+	$pillar_2.move( DOWN, 167 );
+}
+
+void bridge1_dn()
+{
+	$origin_piston_rt_1.time(.5);
+	$origin_piston_rt_1.accelTime(.4);
+	$origin_piston_rt_5.time(.5);
+	$origin_piston_rt_5.accelTime(.4);
+
+	$origin_piston_rt_1.rotateOnce( '-90 0 0' );
+	$origin_piston_rt_5.rotateOnce( '90 0 0' );
+	sys.waitFor($origin_piston_rt_1);
+	$origin_piston_rt_1.move( NORTH, 22 );
+	$origin_piston_rt_5.move( NORTH, 22 );	
+	sys.waitFor($origin_piston_rt_1);
+
+	thread pillarsDown();
+	
+	$origin_piston_rt_1.move( DOWN, 88 );
+	$origin_piston_rt_5.move( DOWN, 88 );	
+	sys.waitFor($origin_piston_rt_1);
+	
+	$origin_piston_rt_1.rotateOnce( '0 0 -100' );
+	$origin_piston_rt_5.rotateOnce( '0 0 -100' );
+	sys.wait(1);
+
+	$origin_piston_rt_1.move( DOWN, 167 );
+	$origin_piston_rt_5.move( DOWN, 167 );	
+
+}
+void bridge2_dn()
+{
+	$origin_piston_rt_2.time(.5);
+	$origin_piston_rt_2.accelTime(.4);
+	$origin_piston_rt_6.time(.5);
+	$origin_piston_rt_6.accelTime(.4);
+
+	$origin_piston_rt_2.rotateOnce( '-90 0 0' );
+	$origin_piston_rt_6.rotateOnce( '90 0 0' );	
+	sys.waitFor($origin_piston_rt_2);
+	$origin_piston_rt_2.move( SOUTH, 22 );
+	$origin_piston_rt_6.move( SOUTH, 22 );	
+	sys.waitFor($origin_piston_rt_2);
+	
+	$origin_piston_rt_2.move( DOWN, 88 );
+	$origin_piston_rt_6.move( DOWN, 88 );	
+	sys.waitFor($origin_piston_rt_2);
+	
+	$origin_piston_rt_2.rotateOnce( '0 0 100' );
+	$origin_piston_rt_6.rotateOnce( '0 0 100' );
+	sys.wait(1);
+
+	$origin_piston_rt_2.move( DOWN, 167 );
+	$origin_piston_rt_6.move( DOWN, 167 );	
+
+}
+void bridge3_dn()
+{
+	$origin_piston_rt_3.time(.5);
+	$origin_piston_rt_3.accelTime(.4);
+	$origin_piston_rt_7.time(.5);
+	$origin_piston_rt_7.accelTime(.4);
+	
+	$origin_piston_rt_3.rotateOnce( '-90 0 0' );
+	$origin_piston_rt_7.rotateOnce( '90 0 0' );
+	sys.waitFor($origin_piston_rt_3);
+	$origin_piston_rt_3.move( NORTH, 22 );
+	$origin_piston_rt_7.move( NORTH, 22 );	
+	sys.waitFor($origin_piston_rt_3);	
+	
+	thread pillarsDown();
+
+	$origin_piston_rt_3.move( DOWN, 88 );
+	$origin_piston_rt_7.move( DOWN, 88 );	
+	sys.waitFor($origin_piston_rt_3);
+	
+	$origin_piston_rt_3.rotateOnce( '0 0 -100' );
+	$origin_piston_rt_7.rotateOnce( '0 0 -100' );
+	sys.wait(1);
+
+	$origin_piston_rt_3.move( DOWN, 167 );
+	$origin_piston_rt_7.move( DOWN, 167 );	
+
+}
+void bridge4_dn()
+{
+	$origin_piston_rt_4.time(.5);
+	$origin_piston_rt_4.accelTime(.4);
+	$origin_piston_rt_8.time(.5);
+	$origin_piston_rt_8.accelTime(.4);
+
+	$origin_piston_rt_4.rotateOnce( '-90 0 0' );
+	$origin_piston_rt_8.rotateOnce( '90 0 0' );	
+	sys.waitFor($origin_piston_rt_4);
+	$origin_piston_rt_4.move( SOUTH, 22 );
+	$origin_piston_rt_8.move( SOUTH, 22 );	
+	sys.waitFor($origin_piston_rt_4);
+
+	$origin_piston_rt_4.move( DOWN, 88 );
+	$origin_piston_rt_8.move( DOWN, 88 );	
+	sys.waitFor($origin_piston_rt_4);
+	
+	$origin_piston_rt_4.rotateOnce( '0 0 100' );
+	$origin_piston_rt_8.rotateOnce( '0 0 100' );
+	sys.wait(1);
+
+	$origin_piston_rt_4.move( DOWN, 167 );
+	$origin_piston_rt_8.move( DOWN, 167 );	
+
+}
+
+void foldWings()
+{
+	$origin_north_1.time(.5);
+	$origin_north_2.time(.5);	
+	$origin_north_3.time(.5);
+	$origin_north_4.time(.5);
+
+	$origin_south_1.time(.5);
+	$origin_south_2.time(.5);
+	$origin_south_3.time(.5);
+	$origin_south_4.time(.5);
+
+	$origin_north_1.decelTime(.4);
+	$origin_north_1.decelTime(.4);
+	$origin_north_1.decelTime(.4);
+	$origin_north_1.decelTime(.4);
+	
+	$origin_south_1.decelTime(.4);
+	$origin_south_2.decelTime(.4);
+	$origin_south_3.decelTime(.4);
+	$origin_south_4.decelTime(.4);
+
+	thread bindToPivot();
+
+	$origin_north_1.rotateOnce( '0 0 -80' );
+	$origin_north_2.rotateOnce( '0 0 -80' );
+	$origin_north_3.rotateOnce( '0 0 -80' );
+	$origin_north_4.rotateOnce( '0 0 -80' );
+
+	$origin_south_1.rotateOnce( '0 0 80' );
+	$origin_south_2.rotateOnce( '0 0 80' );
+	$origin_south_3.rotateOnce( '0 0 80' );
+	$origin_south_4.rotateOnce( '0 0 80' );
+	
+	sys.waitFor($origin_south_1);
+	
+	thread bindToPiston();
+		
+	thread bridge1_dn();
+	thread bridge2_dn();
+	thread bridge3_dn();
+	thread bridge4_dn();
+}
+
+void tak_seq_3()
+	{
+		aiScriptedMoveWait 	( $tak, $m04_building_unit1_tak_node_seq_3, 32, 1);
+		//aiScriptedAnim 		( $tak, "idle_scan_3", 32, 1 );
+	}
+	
+void navajas_seq_3()
+	{
+		aiScriptedMoveWait 	( $navajas, $m04_building_unit1_navajas_node_seq_3, 32, 1);
+		//aiScriptedAnim 		( $navajas, "idle_scan_3", 32, 1 );
+	}
+	
+void m04_building_unit1_seq_3_dialog_fgun_clue()
+	{
+		aiSpeak( $tak, "lipsync_tak_tre_stroggweapon2" );					// %%%%%%%%%% VO %%%%%%%%%%
+	}
+	
+void m04_building_unit1_seq_3()
+	{	
+		thread foldWings();
+		$dummyfreezeGun.remove();
+		sys.trigger			( $m04_building_unit1_seq_3_give_freeze_gun );
+		aiScriptedAnimWait 	( $tak, "player_gift_end", 16, 1 );
+		$tak.showSurface	("models/weapons/mp_guns/w_mg_lo");
+		$tak.flashlight(1);
+		
+		//sys.trigger( $m04_building_unit1_seq_3_door );
+		sys.music( "m1_objective" );
+		thread tak_seq_3();
+		thread navajas_seq_3();
+		sys.trigger( $m04_building_unit1_seq_3_set_door_shader );
+		sys.trigger( $m04_building_unit1_seq_3_door_lock );
+		
+		sys.trigger( $m04_building_unit1_seq_3_door );
+		sys.trigger( $m04_building_unit1_seq_3_strog_ambusher_1 );
+		$tak.becomeAggressive();
+		$navajas.becomeAggressive();
+	}
+//---------------------------------------------------------------------------------
+// m04_building_unit1 Sequence 3 end
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+// m04_building_unit1 Sequence 4 start
+//---------------------------------------------------------------------------------
+void tak_seq_4()
+	{
+		aiScriptedMoveWait 	( $tak, $m04_building_unit1_tak_node_seq_4, 8, 0);
+		
+		sys.wait(.1);
+		
+		aiScriptedMoveWait 	( $tak, $m04_building_unit1_tak_node_seq_4, 8, 1);
+		sys.trigger( $m04_building_unit1_seq_4_counter_1);
+	}
+	
+void navajas_seq_4()
+	{
+		aiScriptedMoveWait 	( $navajas, $m04_building_unit1_navajas_node_seq_4, 8, 0);
+		
+		sys.wait(.1);
+		
+		aiScriptedMoveWait 	( $navajas, $m04_building_unit1_navajas_node_seq_4, 8, 1);
+		sys.trigger( $m04_building_unit1_seq_4_counter_1 );
+	}
+		
+void m04_building_unit1_seq_4()
+	{
+		thread tak_seq_4();
+		thread navajas_seq_4();
+	}
+//---------------------------------------------------------------------------------
+// m04_building_unit1 Sequence 4 end
+//---------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------
+// m04_building_unit1 Sequence 5 start
+//---------------------------------------------------------------------------------
+void tak_seq_5()
+	{
+		$tak.becomePassive(1);
+		aiSpeak( $tak, "lipsync_tak_letmegetbr" );					// %%%%%%%%%% VO %%%%%%%%%%
+		aiScriptedMoveWait 	( $tak, $m04_building_unit1_tak_node_seq_5, 8, 1);
+		aiScriptedFaceWait	( $tak, $m04_building_unit1_tak_face_seq_5, 0);
+		aiScriptedAnimWait 	( $tak, "st_tak_hacks_start", 8, 1 );
+		aiScriptedAnimLoop 	( $tak, "st_tak_hacks_loop", 32 );
+	}
+	
+void m04_building_unit1_seq_5_grunt_1()
+	{
+		$m04_building_unit1_seq_5_grunt_1.disableGravity();
+		aiScriptedMoveWait 	( $m04_building_unit1_seq_5_grunt_1, $m04_building_unit1_seq_5_grunt_1_node_1, 8, 1);
+		aiScriptedFaceWait	( $m04_building_unit1_seq_5_grunt_1, $m04_building_unit1_seq_5_grunt_1_face_1, 0);
+		aiScriptedAnimWait 	( $m04_building_unit1_seq_5_grunt_1, "st_grunt_jump", 8, 1 );
+		$m04_building_unit1_seq_5_grunt_1.enableGravity();
+		$m04_building_unit1_seq_5_grunt_1.becomeAggressive();
+	}
+
+void m04_building_unit1_seq_5()
+	{
+		sys.trigger( $m04_building_unit1_seq_5_door_lock_1 );
+		sys.trigger( $m04_building_unit1_seq_5_door_shader_parm_1 );
+		thread tak_seq_5();
+		sys.wait( 10 );
+		
+		sys.trigger( $m04_building_unit1_seq_5_strog_marine_1 );
+		sys.trigger( $m04_building_unit1_seq_5_strog_marine_2 );
+		sys.trigger( $m04_building_unit1_seq_5_strog_gunner_1 );
+		$navajas.becomeAggressive();
+		aiSpeakWait( $navajas, "lipsync_nava_wegotcom" );					// %%%%%%%%%% VO %%%%%%%%%%
+		aiSpeak( $tak, "lipsync_tak_almskeepoff" );					// %%%%%%%%%% VO %%%%%%%%%%
+		sys.wait( 10 );
+		
+		thread m04_building_unit1_seq_5_grunt_1();
+	}
+//---------------------------------------------------------------------------------
+// m04_building_unit1 Sequence 5 end
+//---------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------
+// m04_building_unit1 Sequence 6 start
+//---------------------------------------------------------------------------------
+void pillarsUp()
+{
+	$pillar_1.time(1);
+	$pillar_1.decelTime(.25);
+	$pillar_2.time(1);
+	$pillar_2.decelTime(.25);
+
+	$origin_pillar_1.time(1);
+	$origin_pillar_1.decelTime(.25);
+	$origin_pillar_2.time(1);
+	$origin_pillar_2.decelTime(.25);
+
+	$pillar_1.startSoundShader( "tram_bridge_pillar1", SND_CHANNEL_ANY );
+	$pillar_2.startSoundShader( "tram_bridge_pillar1", SND_CHANNEL_ANY );
+	$pillar_1.move( UP, 167 );
+	$pillar_2.move( UP, 167 );
+	sys.waitFor($pillar_1);
+
+	$origin_pillar_1.startSoundShader( "tram_bridge_pillar2", SND_CHANNEL_ANY );
+	$origin_pillar_2.startSoundShader( "tram_bridge_pillar2", SND_CHANNEL_ANY );
+	$origin_pillar_1.rotateOnce( '0 90 0' );
+	$origin_pillar_2.rotateOnce( '0 90 0' );
+	sys.waitFor($origin_pillar_1);
+	
+	$pillar_1.startSoundShader( "tram_bridge_pillar3", SND_CHANNEL_ANY );
+	$pillar_2.startSoundShader( "tram_bridge_pillar3", SND_CHANNEL_ANY );
+	$pillar_1.move( UP, 88 );
+	$pillar_2.move( UP, 88 );
+
+	$origin_pillar_1.rotateOnce( '0 450 0' );
+	$origin_pillar_2.rotateOnce( '0 450 0' );
+}
+
+void bridgeUnfold1()
+{
+	$origin_piston_rt_1.startSoundShader( "tram_bridge_wings1", SND_CHANNEL_ANY );
+	$origin_piston_rt_5.startSoundShader( "tram_bridge_wings1", SND_CHANNEL_ANY );
+	$origin_piston_rt_1.rotateOnce( '90 0 0' );
+	$origin_piston_rt_5.rotateOnce( '-90 0 0' );	
+	sys.waitFor($origin_piston_rt_1);
+	
+	$wing_rt_north_1.bind($origin_north_1);
+	$wing_rt_north_5.bind($origin_north_1);	
+	$wing_rt_south_1.bind($origin_south_1);
+	$wing_rt_south_5.bind($origin_south_1);	
+
+	$origin_piston_rt_1.startSoundShader( "tram_bridge_wings2", SND_CHANNEL_ANY );
+	$origin_piston_rt_5.startSoundShader( "tram_bridge_wings2", SND_CHANNEL_ANY );
+	$origin_north_1.rotateOnce( '0 0 80' );
+	$origin_south_1.rotateOnce( '0 0 -80' );
+	sys.waitFor($origin_north_1);
+	$wing_rt_north_1.bind($origin_piston_rt_1);
+	$wing_rt_south_1.bind($origin_piston_rt_1);
+	$wing_rt_north_5.bind($origin_piston_rt_5);	
+	$wing_rt_south_5.bind($origin_piston_rt_5);	
+	
+	$bridge_clip.show();
+	$origin_piston_rt_1.startSoundShader( "tram_bridge_wings3", SND_CHANNEL_ANY );
+	$origin_piston_rt_5.startSoundShader( "tram_bridge_wings3", SND_CHANNEL_ANY );
+	$origin_piston_rt_1.rotateOnce( '0 0 -720' );
+	$origin_piston_rt_5.rotateOnce( '0 0 -720' );	
+}
+void bridgeUnfold2()
+{
+	$origin_piston_rt_2.startSoundShader( "tram_bridge_wings1", SND_CHANNEL_ANY );
+	$origin_piston_rt_6.startSoundShader( "tram_bridge_wings1", SND_CHANNEL_ANY );
+	$origin_piston_rt_2.rotateOnce( '90 0 0' );
+	$origin_piston_rt_6.rotateOnce( '-90 0 0' );	
+	sys.waitFor($origin_piston_rt_2);
+
+	$wing_rt_north_2.bind($origin_north_2);
+	$wing_rt_north_6.bind($origin_north_2);	
+	$wing_rt_south_2.bind($origin_south_2);
+	$wing_rt_south_6.bind($origin_south_2);	
+	$origin_piston_rt_2.startSoundShader( "tram_bridge_wings2", SND_CHANNEL_ANY );
+	$origin_piston_rt_6.startSoundShader( "tram_bridge_wings2", SND_CHANNEL_ANY );
+	$origin_north_2.rotateOnce( '0 0 80' );
+	$origin_south_2.rotateOnce( '0 0 -80' );
+	sys.waitFor($origin_north_2);
+	$wing_rt_north_2.bind($origin_piston_rt_2);
+	$wing_rt_south_2.bind($origin_piston_rt_2);
+	$wing_rt_north_6.bind($origin_piston_rt_6);	
+	$wing_rt_south_6.bind($origin_piston_rt_6);	
+
+	$origin_piston_rt_2.startSoundShader( "tram_bridge_wings3", SND_CHANNEL_ANY );
+	$origin_piston_rt_6.startSoundShader( "tram_bridge_wings3", SND_CHANNEL_ANY );
+	$origin_piston_rt_2.rotateOnce( '0 0 -720' );
+	$origin_piston_rt_6.rotateOnce( '0 0 -720' );	
+}
+void bridgeUnfold3()
+{
+	$origin_piston_rt_3.rotateOnce( '90 0 0' );
+	$origin_piston_rt_7.rotateOnce( '-90 0 0' );	
+	sys.waitFor($origin_piston_rt_3);
+
+	$wing_rt_north_3.bind($origin_north_3);
+	$wing_rt_north_7.bind($origin_north_3);	
+	$wing_rt_south_3.bind($origin_south_3);
+	$wing_rt_south_7.bind($origin_south_3);
+	$origin_north_3.rotateOnce( '0 0 80' );
+	$origin_south_3.rotateOnce( '0 0 -80' );
+	sys.waitFor($origin_north_3);
+	$wing_rt_north_3.bind($origin_piston_rt_3);
+	$wing_rt_south_3.bind($origin_piston_rt_3);
+	$wing_rt_north_7.bind($origin_piston_rt_7);	
+	$wing_rt_south_7.bind($origin_piston_rt_7);	
+
+	$origin_piston_rt_3.rotateOnce( '0 0 -720' );
+	$origin_piston_rt_7.rotateOnce( '0 0 -720' );	
+}
+
+void bridgeUnfold4()
+{
+	$origin_piston_rt_4.rotateOnce( '90 0 0' );
+	$origin_piston_rt_8.rotateOnce( '-90 0 0' );	
+	sys.waitFor($origin_piston_rt_4);
+
+	$wing_rt_north_4.bind($origin_north_4);
+	$wing_rt_north_8.bind($origin_north_4);	
+	$wing_rt_south_4.bind($origin_south_4);
+	$wing_rt_south_8.bind($origin_south_4);	
+
+	$origin_north_4.rotateOnce( '0 0 80' );
+	$origin_south_4.rotateOnce( '0 0 -80' );
+	sys.waitFor($origin_north_4);
+	$wing_rt_north_4.bind($origin_piston_rt_4);
+	$wing_rt_south_4.bind($origin_piston_rt_4);
+	$wing_rt_north_8.bind($origin_piston_rt_8);	
+	$wing_rt_south_8.bind($origin_piston_rt_8);
+	$origin_piston_rt_4.rotateOnce( '0 0 -720' );
+	$origin_piston_rt_8.rotateOnce( '0 0 -720' );	
+}
+
+void bridge1_up()
+{
+	$origin_piston_rt_1.time(1);
+	$origin_piston_rt_1.decelTime(.25);
+	$origin_piston_rt_5.time(1);
+	$origin_piston_rt_5.decelTime(.25);
+
+	$origin_piston_rt_1.move( UP, 167 );
+	$origin_piston_rt_5.move( UP, 167 );	
+	sys.waitFor($origin_piston_rt_1);
+	
+	$origin_piston_rt_1.rotateOnce( '0 0 100' );
+	$origin_piston_rt_5.rotateOnce( '0 0 100' );
+	sys.waitFor($origin_piston_rt_1);
+
+	$origin_piston_rt_1.move( UP, 88 );
+	$origin_piston_rt_5.move( UP, 88 );	
+	sys.waitFor($origin_piston_rt_1);
+
+	$origin_piston_rt_1.startSoundShader( "tram_bridge_pillar1", SND_CHANNEL_ANY );
+	$origin_piston_rt_5.startSoundShader( "tram_bridge_pillar1", SND_CHANNEL_ANY );
+	
+	$origin_piston_rt_1.move( SOUTH, 22 );
+	$origin_piston_rt_5.move( SOUTH, 22 );	
+
+}
+void bridge2_up()
+{
+	$origin_piston_rt_2.time(1);
+	$origin_piston_rt_2.decelTime(.25);
+	$origin_piston_rt_6.time(1);
+	$origin_piston_rt_6.decelTime(.25);
+	
+	$origin_piston_rt_2.move( UP, 167 );
+	$origin_piston_rt_6.move( UP, 167 );	
+	sys.waitFor($origin_piston_rt_2);
+	
+	$origin_piston_rt_2.rotateOnce( '0 0 -100' );
+	$origin_piston_rt_6.rotateOnce( '0 0 -100' );
+	sys.waitFor($origin_piston_rt_2);
+
+	$origin_piston_rt_2.move( UP, 88 );
+	$origin_piston_rt_6.move( UP, 88 );	
+	sys.waitFor($origin_piston_rt_2);
+
+	$origin_piston_rt_2.startSoundShader( "tram_bridge_pillar1", SND_CHANNEL_ANY );
+	$origin_piston_rt_6.startSoundShader( "tram_bridge_pillar1", SND_CHANNEL_ANY );
+
+	$origin_piston_rt_2.move( NORTH, 22 );
+	$origin_piston_rt_6.move( NORTH, 22 );	
+}
+
+void bridge3_up()
+{
+	$origin_piston_rt_3.time(1);
+	$origin_piston_rt_3.decelTime(.25);
+	$origin_piston_rt_7.time(1);
+	$origin_piston_rt_7.decelTime(.25);
+
+	$origin_piston_rt_3.move( UP, 167 );
+	$origin_piston_rt_7.move( UP, 167 );	
+	sys.waitFor($origin_piston_rt_3);
+	
+	$origin_piston_rt_3.rotateOnce( '0 0 100' );
+	$origin_piston_rt_7.rotateOnce( '0 0 100' );
+	sys.waitFor($origin_piston_rt_3);
+
+	$origin_piston_rt_3.move( UP, 88 );
+	$origin_piston_rt_7.move( UP, 88 );	
+	sys.waitFor($origin_piston_rt_3);
+	
+	$origin_piston_rt_3.move( SOUTH, 22 );
+	$origin_piston_rt_7.move( SOUTH, 22 );	
+
+}
+void bridge4_up()
+{
+	$origin_piston_rt_4.time(1);
+	$origin_piston_rt_4.decelTime(.25);
+	$origin_piston_rt_8.time(1);
+	$origin_piston_rt_8.decelTime(.25);
+
+	$origin_piston_rt_4.move( UP, 167 );
+	$origin_piston_rt_8.move( UP, 167 );	
+	sys.waitFor($origin_piston_rt_4);
+	
+	$origin_piston_rt_4.rotateOnce( '0 0 -100' );
+	$origin_piston_rt_8.rotateOnce( '0 0 -100' );
+	sys.waitFor($origin_piston_rt_4);
+
+	$origin_piston_rt_4.move( UP, 88 );
+	$origin_piston_rt_8.move( UP, 88 );	
+	sys.waitFor($origin_piston_rt_4);
+	
+	$origin_piston_rt_4.move( NORTH, 22 );
+	$origin_piston_rt_8.move( NORTH, 22 );	
+}
+
+void unfoldWings()
+{
+	$origin_north_1.time(1);
+	$origin_north_2.time(1);	
+	$origin_north_3.time(1);
+	$origin_north_4.time(1);
+	
+	$origin_south_1.time(1);
+	$origin_south_2.time(1);
+	$origin_south_3.time(1);
+	$origin_south_4.time(1);
+
+	$origin_north_1.decelTime(.25);
+	$origin_north_1.decelTime(.25);
+	$origin_north_1.decelTime(.25);
+	$origin_north_1.decelTime(.25);
+	
+	$origin_south_1.decelTime(.25);
+	$origin_south_2.decelTime(.25);
+	$origin_south_3.decelTime(.25);
+	$origin_south_4.decelTime(.25);
+}
+
+void bridgeUnfoldSteps()
+{
+	$bridge_steps_1_anc.startSoundShader( "tram_bridge_pillar1", SND_CHANNEL_ANY );
+	$bridge_steps_1_anc.moveTo ( $bridge_steps_1_anc_dest_1 );
+	sys.waitFor( $bridge_steps_1_anc );
+	
+	$bridge_steps_2_anc.startSoundShader( "tram_bridge_pillar1", SND_CHANNEL_ANY );
+	$bridge_steps_2_anc.moveTo ( $bridge_steps_2_anc_dest_1 );
+	sys.waitFor( $bridge_steps_2_anc );
+	
+	$bridge_steps_2_anc.startSoundShader( "tram_bridge_pillar1", SND_CHANNEL_ANY );
+	$bridge_steps_2_anc.moveTo ( $bridge_steps_2_anc_dest_2 );
+	sys.waitFor( $bridge_steps_2_anc );
+}
+
+void ActivateTramBridge() 
+{
+	sys.trigger( $m04_building_unit1_seq_6_bridge_light_active_1 );	
+	thread pillarsUp();
+	thread bridge1_up();
+	thread bridge2_up();
+	thread bridge3_up();
+	thread bridge4_up();
+	sys.wait(4);
+
+	thread unfoldWings();
+	thread bridgeUnfold1();
+	sys.wait(2);
+	thread bridgeUnfold2();
+	sys.wait(2);
+	thread bridgeUnfold3();
+	sys.wait(2);
+	thread bridgeUnfold4();
+	thread bridgeUnfoldSteps();
+	sys.wait(2);
+	
+	sys.trigger( $m04_building_unit1_seq_6_bridge_light_active_1 );
+	sys.trigger( $m04_building_unit1_seq_4_ai_blocker_1 ); // turn off the obstacle so ai can cross
+}
+
+void tak_seq_6()
+	{
+		aiScriptedAnimWait 	( $tak, "st_tak_hacks_end", 8, 1 );
+		sys.wait(2);
+		aiScriptedMoveWait 	( $tak, $m04_building_unit1_tak_node_seq_6, 16, 1);
+	}
+	
+void navajas_seq_6()
+	{
+		aiScriptedMoveWait 	( $navajas, $m04_building_unit1_navajas_node_seq_6, 16, 1);
+	}
+
+void m04_building_unit1_seq_6()
+	{
+		thread tak_seq_6();
+		thread navajas_seq_6();
+		sys.wait(4);
+		$tak.becomePassive(1);
+		$navajas.becomePassive(1);
+		thread ActivateTramBridge();
+	}
+//---------------------------------------------------------------------------------
+// m04_building_unit1 Sequence 6 end
+//---------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------
+// m04_building_unit1 Sequence 7 start
+//---------------------------------------------------------------------------------
+void tak_seq_7()
+	{
+		aiScriptedMoveWait 	( $tak, $m04_building_unit1_tak_node_seq_7, 16, 1);
+	}
+	
+void navajas_seq_7()
+	{
+		aiScriptedMoveWait 	( $navajas, $m04_building_unit1_navajas_node_seq_7, 16, 1);
+	}
+
+void m04_building_unit1_seq_7()
+	{
+		sys.trigger( $uni_auto_save_trigger );
+		$tak.becomePassive(1);
+		$navajas.becomePassive(1);
+		
+		thread tak_seq_7();
+		thread navajas_seq_7();
+		sys.wait(4);
+		
+		$tak.becomeAggressive();
+		$navajas.becomeAggressive();
+		sys.wait(2);
+		sys.trigger( $m04_building_unit1_seq_8_berserker_1 );
+		sys.trigger( $m04_building_unit1_seq_8_berserker_wall_broken_stage_1 );
+		sys.trigger( $m04_building_unit1_seq_8_berserker_wall_broken_stage_3 );
+		sys.trigger( $m04_building_unit1_seq_8_ceiling_dust_fall_2 );
+		sys.trigger( $m04_building_unit1_seq_8_berserker_wall_break_effects_1 );
+		sys.wait(.8);
+		sys.trigger( $m04_building_unit1_seq_8_ceiling_dust_fall_3 );
+		sys.trigger( $m04_building_unit1_seq_8_berserker_wall_break_effects_2 );
+		sys.wait(.4);
+		sys.trigger( $m04_building_unit1_seq_8_ceiling_dust_fall_4 );
+		sys.wait(.5);
+		sys.trigger( $m04_building_unit1_seq_8_ceiling_dust_fall_5 );
+		sys.trigger( $m04_building_unit1_seq_8_berserker_wall_break_effects_3 );
+		sys.wait(.3);
+		sys.trigger( $m04_building_unit1_seq_8_ceiling_dust_fall_6 );
+		sys.wait(1);
+		
+		sys.trigger( $m04_building_unit1_seq_8_ai_blocker_1 );
+		sys.trigger( $m04_building_unit1_seq_8_player_blocker_1 );
+	}
+//---------------------------------------------------------------------------------
+// m04_building_unit1 Sequence 7 end
+//---------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------
+// m04_building_unit1 Sequence 8 start
+//---------------------------------------------------------------------------------
+
+void m04_building_unit1_seq_8()
+	{
+		
+	}
+//---------------------------------------------------------------------------------
+// m04_building_unit1 Sequence 8 end
+//---------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------
+// m04_building_unit1 Sequence 9 start
+//---------------------------------------------------------------------------------
+void tak_seq_9()
+	{
+		aiScriptedMoveWait 	( $tak, $m04_building_unit1_tak_node_seq_9, 64, 1);
+		sys.wait( 5 );
+		$tak.setLeader( $player1 );
+	}
+	
+void navajas_seq_9()
+	{
+		aiScriptedMoveWait 	( $navajas, $m04_building_unit1_navajas_node_seq_9, 64, 1);
+		sys.wait( 5 );
+		$navajas.setLeader( $player1 );
+	}
+	
+void m04_building_unit1_seq_9_Freeze_gun_puzzle()
+	{
+		aiSpeakWait( $tak, "lipsync_tak_thatcoldfire" );				// %%%%%%%%%% VO %%%%%%%%%%
+	}
+	
+void m04_building_unit1_seq_9_Freeze_gun_puzzle_good_job()
+	{
+		aiSpeakWait( $tak, "lipsync_tak_goodjbdek" );				// %%%%%%%%%% VO %%%%%%%%%%
+	}
+
+void m04_building_unit1_seq_9()
+	{
+		thread tak_seq_9();
+		thread navajas_seq_9();
+		$tak.flashlight(0);
+		$navajas.flashlight(0);
+		sys.wait( 10 );
+		
+		sys.trigger( $m04_building_unit1_seq_9_wave_1_begin );
+		sys.trigger( $m04_building_unit1_seq_9_door_lock );
+		sys.trigger( $m04_building_unit1_seq_9_set_door_shader );
+		sys.wait( 4 );
+		
+		sys.music( "m4_trench_intro" );
+	}
+//---------------------------------------------------------------------------------
+// m04_building_unit1 Sequence 9 end
+//---------------------------------------------------------------------------------
+
+//=================================================================================
+//---------------------------------------------------------------------------------
+//	m04_building_unit1 end
+//---------------------------------------------------------------------------------
+//=================================================================================
+
+//=================================================================================
+//---------------------------------------------------------------------------------
+//	m04_building_unit2 begin
+//---------------------------------------------------------------------------------
+//=================================================================================
+//---------------------------------------------------------------------------------
+// m04_building_unit2 Sequence 1 start
+//---------------------------------------------------------------------------------
+void m04_building_unit2_seq_1()
+	{
+		sys.trigger( $OBJ_two );
+		sys.trigger( $tak );
+		sys.trigger( $navajas );
+		aiScriptedMoveWait 	( $tak, $m04_building_unit2_tak_node_seq_1, 16, 1);
+		aiSpeakWait( $navajas, "lipsync_nava_supplyahd" );					// %%%%%%%%%% VO %%%%%%%%%%
+		
+		
+		aiScriptedMoveWait 	( $navajas, $m04_building_unit2_navajas_node_seq_1, 16, 1);
+		aiSpeakWait( $tak, "lipsync_tak_getttherdiff" );					// %%%%%%%%%% VO %%%%%%%%%%
+		aiSpeakWait( $navajas, "lipsync_nava_sndslkstrogg" );					// %%%%%%%%%% VO %%%%%%%%%%
+		
+		$tak.setTalkState( TALK_OK ); 
+		$tak.setKey( "lipsync_talk_primary", "lipsync_tak_letsgetwlk" ); 
+		$tak.setKey( "lipsync_talk_secondary", "lipsync_tak_ihopethosewl" );
+		$tak.setKey( "lipsync_talk_loop1", "lipsync_tak_weneedmvsrg" );
+		
+		$navajas.setTalkState( TALK_OK ); 
+		$navajas.setKey( "lipsync_talk_primary", "lipsync_nava_formintro" ); 
+		$navajas.setKey( "lipsync_talk_secondary", "lipsync_nava_letschatob" );
+		$navajas.setKey( "lipsync_talk_loop1", "lipsync_nava_timeisshort" );
+		$navajas.setKey( "lipsync_talk_loop2", "lipsync_nava_obvioyouhr" );
+		
+		
+		
+		sys.wait( 1 );
+		$tak.flashlight(1);
+		$navajas.flashlight(1);
+		
+		sys.music( "m4_prison_breach" );
+		$tak.setLeader( $player1 );
+		$navajas.setLeader( $player1 );
+		
+		sys.trigger( $m04_building_unit2_seq_1_door_1 );
+		sys.trigger( $m04_building_unit2_seq_1_door_2 );
+		sys.trigger( $m04_building_unit2_seq_1_strog_marine_1 );
+		sys.trigger( $m04_building_unit2_seq_1_strog_marine_2 );
+		$tak.becomeAggressive();
+		$navajas.becomeAggressive();
+	}
+//---------------------------------------------------------------------------------
+// m04_building_unit2 Sequence 1 end
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+// m04_building_unit2 Sequence 2 start
+//---------------------------------------------------------------------------------
+
+void m04_building_unit2_seq_2()
+	{
+		sys.trigger( $m04_building_unit2_seq_2_ambient_snd_1 );
+		sys.wait( 6 );
+		
+		sys.trigger( $m04_building_unit2_seq_2_ambient_snd_2 );
+		sys.wait( 4 );
+		
+		sys.trigger( $m04_building_unit2_seq_2_ambient_snd_3 );
+	}
+//---------------------------------------------------------------------------------
+// m04_building_unit2 Sequence 2 end
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+// m04_building_unit2 Sequence 3 start
+//---------------------------------------------------------------------------------
+
+void m04_building_unit2_seq_3()
+	{
+		sys.trigger( $uni_auto_save_trigger );
+		sys.trigger( $m04_building_unit2_seq_3_stair_well_tactical_spawner_floor_1 );
+		sys.wait( 4 );
+		
+		sys.trigger( $m04_building_unit2_seq_3_stair_well_tactical_spawner_floor_2 );
+		sys.wait( 4 );
+		
+		sys.trigger( $m04_building_unit2_seq_3_stair_well_tactical_spawner_floor_3 );
+		sys.wait( 4 );
+		
+		sys.trigger( $m04_building_unit2_seq_3_stair_well_tactical_spawner_floor_4 );
+	}
+//---------------------------------------------------------------------------------
+// m04_building_unit2 Sequence 3 end
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+// m04_building_unit2 Sequence 4 start
+//---------------------------------------------------------------------------------
+void m04_building_unit2_tak_seq_4()
+	{
+		aiScriptedMoveWait 	( $tak, $m04_building_unit2_tak_node_seq_4, 16, 1);
+	}
+	
+void m04_building_unit2_navajas_seq_4()
+	{
+		aiScriptedMoveWait 	( $navajas, $m04_building_unit2_navajas_node_seq_4, 16, 1);
+	}
+
+void m04_building_unit2_seq_4()
+	{
+		sys.trigger( $uni_auto_save_trigger );
+		thread m04_building_unit2_tak_seq_4();
+		thread m04_building_unit2_navajas_seq_4();
+		sys.trigger( $m04_building_unit2_seq_4_retch_kill_marine );
+	}
+//---------------------------------------------------------------------------------
+// m04_building_unit2 Sequence 4 end
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+// m04_building_unit2 Sequence 5 start
+//---------------------------------------------------------------------------------
+
+void m04_building_unit2_seq_5()
+	{
+		sys.trigger( $m04_building_unit2_seq_5_cin_cam_main );
+		aiSpeakWait( $m04_building_unit2_seq_4_retch_kill_marine, "lipsync_atlas6_youfalcsq" );					// %%%%%%%%%% VO %%%%%%%%%%
+		aiScriptedAnim 	( $m04_building_unit2_seq_4_retch_kill_marine, "st_retch_intro", 8, 0 );
+		sys.trigger( $m04_building_unit2_seq_4_retch_1 );
+		sys.wait( 4 );
+		sys.trigger( $m04_building_unit2_seq_5_retch_kill_door_anc );
+		aiSpeakWait( $m04_building_unit2_seq_4_retch_kill_marine, "lipsync_atlas6_die" );					// %%%%%%%%%% VO %%%%%%%%%%
+		aiSpeakWait( $tak, "lipsync_tak_whthelltht" );					// %%%%%%%%%% VO %%%%%%%%%%
+		aiSpeak( $navajas, "lipsync_nava_killit" );					// %%%%%%%%%% VO %%%%%%%%%%
+		
+		sys.wait( 6 );
+		
+		sys.trigger( $m04_building_unit2_seq_5_retch_kill_door_anc );
+		sys.trigger( $m04_building_unit2_seq_5_cin_cam_main );
+		$m04_building_unit2_seq_4_retch_1.enableDamage();
+		$m04_building_unit2_seq_4_retch_1.becomeAggressive();
+		$m04_building_unit2_seq_4_retch_1.enableTarget();
+		//sys.trigger( $m04_building_unit2_seq_5_lock_doors );
+		//sys.trigger( $m04_building_unit2_seq_5_door_shader_parm_locked );
+		sys.trigger( $m04_building_unit2_seq_3_ai_blocker_top_level );
+		sys.trigger( $m04_building_unit2_seq_5_lt_tank );
+		$m04_building_unit2_seq_4_retch_kill_marine.kill();
+	}
+//---------------------------------------------------------------------------------
+// m04_building_unit2 Sequence 5 end
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+// m04_building_unit2 Sequence 6 start
+//---------------------------------------------------------------------------------
+
+void m04_building_unit2_seq_6()
+	{	
+		sys.trigger( $m04_building_unit2_seq_5_retch_kill_door_anc );
+		$tak.setLeader( $player1 );
+		$navajas.setLeader( $player1 );
+	}
+//---------------------------------------------------------------------------------
+// m04_building_unit2 Sequence 6 end
+//---------------------------------------------------------------------------------
+//=================================================================================
+//---------------------------------------------------------------------------------
+//	m04_building_unit2 end
+//---------------------------------------------------------------------------------
+//=================================================================================
+//=================================================================================
+//---------------------------------------------------------------------------------
+//	m04_maint_tunnel_unit1 begin
+//---------------------------------------------------------------------------------
+//=================================================================================
+//---------------------------------------------------------------------------------
+// m04_maint_tunnel_unit1 Sequence 1 start
+//---------------------------------------------------------------------------------
+void m04_maint_tunnel_unit1_tak_seq_1()
+	{
+		aiScriptedMoveWait 	( $tak, $m04_maint_tunnel_unit1_tak_node_seq_1, 16, 1);
+		sys.wait( 4 );
+		$tak.setLeader( $null_entity );
+	}
+	
+void m04_maint_tunnel_unit1_navajas_seq_1()
+	{
+		aiScriptedMoveWait 	( $navajas, $m04_maint_tunnel_unit1_navajas_node_seq_1, 16, 1);
+		sys.wait( 4 );
+		$navajas.setLeader( $null_entity );
+	}
+
+void m04_maint_tunnel_unit1_seq_1()
+	{	
+		sys.trigger( $uni_auto_save_trigger );
+		sys.trigger( $m04_maint_tunnel_unit1_uni_vehicle_walker_tak );
+		$m04_maint_tunnel_unit1_uni_vehicle_walker_player.lock(1);
+		aiScriptedAnimLoop 	( $m04_maint_tunnel_unit1_uni_vehicle_walker_tak, "idle_offline", 32 );
+		thread m04_maint_tunnel_unit1_tak_seq_1();
+		thread m04_maint_tunnel_unit1_navajas_seq_1();
+		sys.wait( 3 );
+		
+		aiSpeakWait( $tak, "lipsync_tak_thertheyr" );					// %%%%%%%%%% VO %%%%%%%%%%
+		sys.trigger( $tunnel1Hatch_26 );
+		sys.trigger( $m04_maint_tunnel_unit1_seq_1_strog_hatch_spawner );
+		sys.wait( 4 );
+		
+		sys.music( "m1_objective" );
+	}
+//---------------------------------------------------------------------------------
+// m04_maint_tunnel_unit1 Sequence 1 end
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+// m04_maint_tunnel_unit1 Sequence 2 start
+//---------------------------------------------------------------------------------
+void m04_maint_tunnel_unit1_tak_seq_2()
+	{
+		$tak.becomePassive(1);
+		$tak.setUndying(1);
+		aiScriptedMoveWait 	( $tak, $m04_maint_tunnel_unit1_tak_node_seq_2, 16, 1);
+		aiScriptedFaceWait	( $tak, $m04_maint_tunnel_unit1_uni_vehicle_walker_player, 1);
+		aiScriptedAnimLoop 	( $tak, "cine_weld_loop", 32 );
+		aiSpeakWait( $tak, "lipsync_tak_nahweapgonline" );					// %%%%%%%%%% VO %%%%%%%%%%
+		aiSpeakWait( $tak, "lipsync_tak_dekgetwlk" );					// %%%%%%%%%% VO %%%%%%%%%%
+		$m04_maint_tunnel_unit1_uni_vehicle_walker_player.lock(0);
+	}
+	
+void m04_maint_tunnel_unit1_navajas_seq_2()
+	{
+		aiScriptedMoveWait 	( $navajas, $m04_maint_tunnel_unit1_navajas_node_seq_2, 16, 1);
+	}
+
+void m04_maint_tunnel_unit1_seq_2()
+	{	
+		thread m04_maint_tunnel_unit1_tak_seq_2();
+		thread m04_maint_tunnel_unit1_navajas_seq_2();
+		aiSpeakWait( $navajas, "lipsync_tak_theybothdest" );					// %%%%%%%%%% VO %%%%%%%%%%
+		sys.wait( 1 );
+		
+		sys.trigger( $tunnel1Hatch_24 );
+		sys.wait( 1 );
+		
+		sys.trigger( $tunnel1Hatch_23 );
+		sys.wait( 1 );
+		
+		sys.trigger( $tunnel1Hatch_25 );
+	}
+//---------------------------------------------------------------------------------
+// m04_maint_tunnel_unit1 Sequence 2 end
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+// m04_maint_tunnel_unit1 Sequence 3 start
+//---------------------------------------------------------------------------------
+void m04_maint_tunnel_unit1_navajas_seq_3()
+	{
+		$navajas.becomePassive(1);
+		$navajas.setUndying(1);
+		aiScriptedMoveWait 	( $navajas, $m04_maint_tunnel_unit1_navajas_node_seq_3, 16, 1);
+		aiScriptedFaceWait	( $navajas, $m04_maint_tunnel_unit1_navajas_face_seq_3, 1);
+		aiScriptedAnimLoop 	( $navajas, "idle_scan_3", 32 );
+	}
+
+void m04_maint_tunnel_unit1_seq_3()
+	{	
+		sys.waitFrame();
+		$m04_maint_tunnel_unit1_uni_vehicle_walker_player.guiEvent( "event_anim_sysoffline" );
+		$m04_maint_tunnel_unit1_uni_vehicle_walker_player.lock(1);
+		//$m04_maint_tunnel_unit1_uni_vehicle_walker_player.disableMovement(); this needs to be fixed
+		sys.wait( 2 );
+		
+		
+		aiSpeakWait( $tak, "lipsync_tak_okactuator" );					// %%%%%%%%%% VO %%%%%%%%%%
+		thread m04_maint_tunnel_unit1_navajas_seq_3();
+		sys.wait( 2 );
+		
+		sys.trigger( $m04_maint_tunnel_unit1_seq_3_strog_hatch_spawner );
+		sys.wait( 4 );
+		
+		aiSpeakWait( $tak, "lipsync_tak_pwr25" );					// %%%%%%%%%% VO %%%%%%%%%%
+		sys.wait( 4 );
+		
+		aiSpeakWait( $tak, "lipsync_tak_pwr50" );					// %%%%%%%%%% VO %%%%%%%%%%
+	}
+//---------------------------------------------------------------------------------
+// m04_maint_tunnel_unit1 Sequence 3 end
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+// m04_maint_tunnel_unit1 Sequence 4 start
+//---------------------------------------------------------------------------------
+void m04_maint_tunnel_unit1_seq_4_area_clear_counter()
+	{
+		sys.trigger( $m04_maint_tunnel_unit1_navajas_node_seq_4_area_clear_counter );
+	}
+
+void m04_maint_tunnel_unit1_seq_4()
+	{	
+		aiSpeakWait( $tak, "lipsync_tak_pwr75" );					// %%%%%%%%%% VO %%%%%%%%%%
+		aiSpeakWait( $tak, "lipsync_tak_drivepist" );					// %%%%%%%%%% VO %%%%%%%%%%
+		radioChatterPlayWait( $uni_radiochatter, "vo_marks_underhvyfr" );		// %%%%%%%%%% VO %%%%%%%%%%
+		aiSpeakWait( $tak, "lipsync_tak_walknumonefun" );					// %%%%%%%%%% VO %%%%%%%%%%
+		radioChatterPlayWait( $uni_radiochatter, "vo_marks_geitfin" );		// %%%%%%%%%% VO %%%%%%%%%%
+		aiSpeakWait( $tak, "lipsync_tak_rogerthat" );
+		sys.wait( 3 );
+		
+		aiSpeakWait( $tak, "lipsync_tak_goodholdwlk" );					// %%%%%%%%%% VO %%%%%%%%%%
+		sys.wait( 3 );
+		
+		aiScriptedMoveWait 	( $tak, $m04_maint_tunnel_unit1_tak_node_seq_4, 16, 1);
+		$tak.remove();
+		aiScriptedAnimWait 	( $m04_maint_tunnel_unit1_uni_vehicle_walker_tak, "diagnostic_start", 64, 1 );
+		$m04_maint_tunnel_unit1_uni_vehicle_walker_player.unbind();
+		$m04_maint_tunnel_unit1_uni_vehicle_walker_player.guiEvent( "event_anim_sysonline" );
+		
+		sys.trigger( $OBJ_two_complete );
+		radioChatterPlayWait( $uni_radiochatter, "vo_tak_thiswlkbetter" );		// %%%%%%%%%% VO %%%%%%%%%%
+		sys.wait( 3 );
+		
+		radioChatterPlayWait( $uni_radiochatter, "vo_tak_babyalive" );		// %%%%%%%%%% VO %%%%%%%%%%
+		sys.trigger( $OBJ_three );
+		aiScriptedMoveWait 	( $m04_maint_tunnel_unit1_uni_vehicle_walker_tak, $m04_maint_tunnel_unit1_tak_node_seq_4a, 64, 1);
+		$m04_maint_tunnel_unit1_uni_vehicle_walker_tak.becomeAggressive();
+		sys.trigger( $m04_maint_tunnel_unit1_seq_4_strog_hatch_spawner );
+		sys.trigger( $m04_maint_tunnel_unit1_seq_4_ai_blocker );
+		sys.trigger( $m04_maint_tunnel_unit1_seq_4_strog_gladiator );
+		aiScriptedMoveWait 	( $navajas, $m04_maint_tunnel_unit1_navajas_node_seq_4, 16, 1);
+		aiScriptedFaceWait	( $navajas, $m04_maint_tunnel_unit1_navajas_face_seq_4, 1);
+		aiScriptedAnimLoop 	( $navajas, "cine_weld_loop", 32 );
+		sys.trigger( $m04_maint_tunnel_unit1_navajas_node_seq_4_show_charge );
+		sys.wait( 10 );
+		
+		radioChatterPlay( $uni_radiochatter, "vo_nava_firstchrg" );		// %%%%%%%%%% VO %%%%%%%%%%
+		//aiSpeakWait( $navajas, "lipsync_nava_firstchrg" );					// %%%%%%%%%% VO %%%%%%%%%%
+		aiScriptedMoveWait 	( $navajas, $m04_maint_tunnel_unit1_navajas_node_seq_4a, 16, 1);
+		aiScriptedFaceWait	( $navajas, $m04_maint_tunnel_unit1_navajas_face_seq_4a, 1);
+		aiScriptedAnimLoop 	( $navajas, "cine_weld_loop", 32 );
+		sys.trigger( $m04_maint_tunnel_unit1_navajas_node_seq_4a_show_charge );
+		sys.wait( 10 );
+		
+		radioChatterPlay( $uni_radiochatter, "vo_nava_secondchrg" );		// %%%%%%%%%% VO %%%%%%%%%%
+		//aiSpeakWait( $navajas, "lipsync_nava_secondchrg" );					// %%%%%%%%%% VO %%%%%%%%%%
+		aiScriptedMoveWait 	( $navajas, $m04_maint_tunnel_unit1_navajas_node_seq_4b, 16, 1);
+		aiScriptedFaceWait	( $navajas, $m04_maint_tunnel_unit1_navajas_face_seq_4b, 1 );
+		aiScriptedAnimLoop 	( $navajas, "crouch_cover_idle", 32 );
+		thread m04_maint_tunnel_unit1_seq_4_area_clear_counter();
+	}	
+
+void m04_maint_tunnel_unit1_seq_4_area_clear_and_charges_set()
+	{
+		sys.trigger( $m04_maint_tunnel_unit1_seq_4_ai_blocker );
+		aiScriptedMoveWait 	( $m04_maint_tunnel_unit1_uni_vehicle_walker_tak, $m04_maint_tunnel_unit1_tak_node_seq_4b, 64, 1);
+		aiScriptedFaceWait	( $m04_maint_tunnel_unit1_uni_vehicle_walker_tak, $m04_maint_tunnel_unit1_tak_face_seq_4b, 1 );
+		aiScriptedAnimWait 	( $m04_maint_tunnel_unit1_uni_vehicle_walker_tak, "diagnostic_sweep", 32, 1 );
+		
+		radioChatterPlay( $uni_radiochatter, "vo_nava_detonating" );		// %%%%%%%%%% VO %%%%%%%%%%
+		//aiSpeakWait( $navajas, "lipsync_nava_detonating" );					// %%%%%%%%%% VO %%%%%%%%%%
+		sys.wait( 2 );
+		
+		sys.trigger( $m04_maint_tunnel_unit1_navajas_node_seq_4_walker_blocker_1_boom_1 );
+		sys.trigger( $m04_maint_tunnel_unit1_navajas_node_seq_4_walker_blocker_1_boom_1_debriss );
+		sys.trigger( $m04_maint_tunnel_unit1_navajas_node_seq_4_walker_blocker_1_scorch );
+		sys.trigger( $m04_maint_tunnel_unit1_navajas_node_seq_4_show_charge );
+		sys.trigger( $m04_maint_tunnel_unit1_navajas_node_seq_4_walker_blocker_1 );
+		sys.wait( 1.5 );
+		
+		sys.trigger( $m04_maint_tunnel_unit1_navajas_node_seq_4_walker_blocker_2_boom_1 );
+		sys.trigger( $m04_maint_tunnel_unit1_navajas_node_seq_4_walker_blocker_2_scorch );
+		sys.trigger( $m04_maint_tunnel_unit1_navajas_node_seq_4a_show_charge );
+		sys.trigger( $m04_maint_tunnel_unit1_navajas_node_seq_4_walker_blocker_2 );
+		sys.wait( 4 );
+		
+		aiScriptedMoveWait 	( $m04_maint_tunnel_unit1_uni_vehicle_walker_tak, $m04_maint_tunnel_unit1_tak_node_seq_4c, 64, 1);
+		aiScriptedMoveWait 	( $navajas, $m04_maint_tunnel_unit1_navajas_node_seq_4c, 16, 1);
+	}
+//---------------------------------------------------------------------------------
+// m04_maint_tunnel_unit1 Sequence 4 end
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+// m04_maint_tunnel_unit1 Sequence 5 start
+//---------------------------------------------------------------------------------
+void m04_maint_tunnel_unit1_seq_5()
+	{
+		sys.trigger( $tunnel1Hatch_18 );
+		sys.wait( 1 );
+		
+		sys.trigger( $tunnel1Hatch_17 );
+		sys.wait( 1 );
+		
+		sys.trigger( $putra_floorhatch_28 );
+		sys.wait( 1 );
+		
+		sys.trigger( $putra_floorhatch_27 );
+		sys.wait( 2 );
+		
+		sys.trigger( $m04_maint_tunnel_unit1_seq_5_strog_marine_1 );
+		sys.trigger( $m04_maint_tunnel_unit1_seq_5_strog_marine_2 );
+		sys.trigger( $m04_maint_tunnel_unit1_seq_5_strog_marine_3 );
+		sys.trigger( $m04_maint_tunnel_unit1_seq_5_gladiator_1 );
+	}
+//---------------------------------------------------------------------------------
+// m04_maint_tunnel_unit1 Sequence 5 end
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+// m04_maint_tunnel_unit1 Sequence 6 start
+//---------------------------------------------------------------------------------
+void m04_maint_tunnel_unit1_seq_6_area_clear_counter()
+	{
+		sys.trigger( $m04_maint_tunnel_unit1_navajas_node_seq_6_area_clear_counter );
+	}
+
+void m04_maint_tunnel_unit1_seq_6()
+	{
+		aiScriptedMoveWait 	( $m04_maint_tunnel_unit1_uni_vehicle_walker_tak, $m04_maint_tunnel_unit1_tak_node_seq_6, 64, 1);
+		aiScriptedMoveWait 	( $navajas, $m04_maint_tunnel_unit1_navajas_node_seq_6a, 16, 1);
+		aiScriptedFaceWait	( $navajas, $m04_maint_tunnel_unit1_navajas_face_seq_6a, 1);
+		aiScriptedAnimLoop 	( $navajas, "cine_weld_loop", 32 );
+		sys.trigger( $m04_maint_tunnel_unit1_navajas_node_seq_6a_show_charge );
+		sys.trigger( $m04_maint_tunnel_unit1_seq_6_ai_blocker_1 );
+		sys.trigger( $m04_maint_tunnel_unit1_seq_6_strog_hatch_spawner_1 );
+		sys.trigger( $m04_maint_tunnel_unit1_seq_6_strog_berserker_1 );
+		sys.trigger( $m04_maint_tunnel_unit1_seq_6_strog_berserker_2 );
+		sys.trigger( $m04_maint_tunnel_unit1_seq_6_strog_berserker_3 );
+		sys.wait( 10 );
+		
+		radioChatterPlay( $uni_radiochatter, "vo_nava_firstchrg" );		// %%%%%%%%%% VO %%%%%%%%%%
+		//aiSpeakWait( $navajas, "lipsync_nava_firstchrg" );					// %%%%%%%%%% VO %%%%%%%%%%
+		aiScriptedMoveWait 	( $navajas, $m04_maint_tunnel_unit1_navajas_node_seq_6b, 16, 1);
+		aiScriptedFaceWait	( $navajas, $m04_maint_tunnel_unit1_navajas_face_seq_6b, 1);
+		aiScriptedAnimLoop 	( $navajas, "cine_weld_loop", 32 );
+		sys.trigger( $m04_maint_tunnel_unit1_navajas_node_seq_6b_show_charge );
+		sys.wait( 10 );
+		
+		radioChatterPlay( $uni_radiochatter, "vo_nava_secondchrg" );		// %%%%%%%%%% VO %%%%%%%%%%
+		//aiSpeakWait( $navajas, "lipsync_nava_secondchrg" );					// %%%%%%%%%% VO %%%%%%%%%%
+		aiScriptedMoveWait 	( $navajas, $m04_maint_tunnel_unit1_navajas_node_seq_6c, 16, 1);
+		aiScriptedFaceWait	( $navajas, $m04_maint_tunnel_unit1_navajas_face_seq_6c, 1 );
+		aiScriptedAnimLoop 	( $navajas, "crouch_cover_idle", 32 );
+		thread m04_maint_tunnel_unit1_seq_6_area_clear_counter();
+	}
+	
+void m04_maint_tunnel_unit1_seq_6_area_clear_and_charges_set()
+	{
+		sys.wait( 8 );
+		
+		radioChatterPlay( $uni_radiochatter, "vo_nava_detonating" );		// %%%%%%%%%% VO %%%%%%%%%%
+		//aiSpeakWait( $navajas, "lipsync_nava_detonating" );					// %%%%%%%%%% VO %%%%%%%%%%
+		sys.wait( 2 );
+		
+		sys.trigger( $m04_maint_tunnel_unit1_seq_6_ai_blocker_1 );
+		
+		sys.trigger( $m04_maint_tunnel_unit1_navajas_node_seq_6_walker_blocker_1_boom_1 );
+		sys.trigger( $m04_maint_tunnel_unit1_navajas_node_seq_6_walker_blocker_1_boom_1_debriss );
+		sys.trigger( $m04_maint_tunnel_unit1_navajas_node_seq_6_walker_blocker_1_scorch );
+		sys.trigger( $m04_maint_tunnel_unit1_navajas_node_seq_6a_show_charge );
+		sys.trigger( $m04_maint_tunnel_unit1_navajas_node_seq_6_walker_blocker_1 );
+		sys.wait( 1.5 );
+		
+		sys.trigger( $m04_maint_tunnel_unit1_navajas_node_seq_6_walker_blocker_2_boom_1 );
+		sys.trigger( $m04_maint_tunnel_unit1_navajas_node_seq_6_walker_blocker_2_scorch );
+		sys.trigger( $m04_maint_tunnel_unit1_navajas_node_seq_6b_show_charge );
+		sys.trigger( $m04_maint_tunnel_unit1_navajas_node_seq_6_walker_blocker_2 );
+		sys.wait( 4 );
+		
+		sys.trigger( $m04_maint_tunnel_unit1_seq_6_ai_blocker_1 );
+		sys.trigger( $m04_maint_tunnel_unit1_seq_6_ai_blocker_2 );
+		sys.trigger( $m04_maint_tunnel_unit1_seq_6_wall_breach_attack_wave_1 );
+		sys.music( "m1_intro" );
+		sys.wait( 1 );
+		
+		radioChatterPlayWait( $uni_radiochatter, "vo_tak_okdekpoint" );		// %%%%%%%%%% VO %%%%%%%%%%
+		radioChatterPlayWait( $uni_radiochatter, "vo_tak_ltsgo2" );		// %%%%%%%%%% VO %%%%%%%%%%
+		aiSpeak( $navajas, "lipsync_nava_ltdektak" );					// %%%%%%%%%% VO %%%%%%%%%%
+		radioChatterPlay( $uni_radiochatter, "vo_marks_rogthat2" );		// %%%%%%%%%% VO %%%%%%%%%%
+		aiScriptedMoveWait 	( $m04_maint_tunnel_unit1_uni_vehicle_walker_tak, $m04_maint_tunnel_unit1_tak_node_seq_6a, 64, 1);
+		aiScriptedMoveWait 	( $navajas, $m04_maint_tunnel_unit1_navajas_node_seq_6d, 16, 1);
+		$navajas.becomeAggressive();
+	}
+//---------------------------------------------------------------------------------
+// m04_maint_tunnel_unit1 Sequence 6 end
+//---------------------------------------------------------------------------------
+
+//=================================================================================
+//---------------------------------------------------------------------------------
+//	m04_maint_tunnel_unit1 end
+//---------------------------------------------------------------------------------
+//=================================================================================
+//=================================================================================
+//---------------------------------------------------------------------------------
+//	m04_trench_unit2 begin
+//---------------------------------------------------------------------------------
+//=================================================================================
+void m04_trench_unit2_uni_turret_activate()
+	{
+		sys.trigger( $m04_trench_unit1_bunker_turret_alarm_charge );
+		$player1.disableTarget();
+		$m04_maint_tunnel_unit1_uni_vehicle_walker_tak.disableTarget();
+		$navajas.disableTarget();
+		sys.wait(2);
+		
+		radioChatterPlay( $uni_radiochatter, "vo_marks_dektkoutturr" );		// %%%%%%%%%% VO %%%%%%%%%%
+		$m04_trench_unit2_beach_turret_1.becomeAggressive();
+		$m04_trench_unit2_beach_turret_2.becomeAggressive();
+		$m04_trench_unit2_beach_turret_3.becomeAggressive();
+	}
+	
+void m04_trench_unit2_uni_turret_activate_fire_at_player()
+	{
+			sys.wait(30);
+			sys.trigger( $m04_trench_unit1_bunker_turret_alarm_charge );
+			sys.wait(2);
+			
+			$player1.enableTarget();
+			$m04_maint_tunnel_unit1_uni_vehicle_walker_tak.enableTarget();
+			$navajas.enableTarget();
+	}
+
+//---------------------------------------------------------------------------------
+// m04_trench_unit2 Sequence 1 start
+//---------------------------------------------------------------------------------
+void m04_trench_unit2_tak_seq_1()
+	{
+		aiScriptedMoveWait 	( $m04_maint_tunnel_unit1_uni_vehicle_walker_tak, $m04_trench_unit2_tak_node_seq_1, 64, 1);
+	}
+	
+void m04_trench_unit2_navajas_seq_1()
+	{
+		aiScriptedMoveWait 	( $navajas, $m04_trench_unit2_navajas_node_seq_1, 16, 1);
+	}
+
+void m04_trench_unit2_seq_1()
+	{
+		sys.trigger( $uni_auto_save_trigger );
+		sys.wait( 2 );
+		$navajas.becomePassive(1);
+		sys.trigger( $m04_trench_unit2_seq_1_huge_door_1 );
+		sys.trigger( $m04_trench_unit2_seq_1_huge_door_2 );
+		thread m04_trench_unit2_tak_seq_1();
+		thread m04_trench_unit2_navajas_seq_1();
+		sys.wait( 8 );
+		
+		sys.trigger( $m04_trench_unit2_beach_turret_1 );
+		sys.trigger( $m04_trench_unit2_beach_turret_2 );
+		sys.trigger( $m04_trench_unit2_beach_turret_3 );
+		sys.trigger( $m04_trench_unit2_seq_1_huge_door_3 );
+		sys.trigger( $m04_trench_unit2_seq_1_huge_door_4 );
+		sys.trigger( $m04_trench_unit2_seq_1_activate_large_battle_relay );
+		sys.wait( 2 );
+		
+		thread m04_trench_unit2_uni_turret_activate();
+		thread m04_trench_unit2_uni_turret_activate_fire_at_player();
+	}
+//---------------------------------------------------------------------------------
+// m04_trench_unit2 Sequence 1 end
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+// m04_trench_unit2 Sequence 2 start
+//---------------------------------------------------------------------------------
+void m04_trench_unit2_tak_seq_2()
+	{
+		aiScriptedMoveWait 	( $m04_maint_tunnel_unit1_uni_vehicle_walker_tak, $m04_trench_unit2_tak_node_seq_2, 64, 1);
+		$m04_maint_tunnel_unit1_uni_vehicle_walker_tak.becomePassive(1);
+		aiScriptedAnim 		( $m04_maint_tunnel_unit1_uni_vehicle_walker_tak, "diagnostic_stop", 32, 0 );
+		aiScriptedMoveWait 	( $tak_2, $m04_trench_unit2_tak_node_seq_2a, 16, 1 );
+	}
+	
+void m04_trench_unit2_navajas_seq_2()
+	{
+		aiScriptedMoveWait 	( $navajas, $m04_trench_unit2_navajas_node_seq_2, 16, 1 );
+	}
+
+void m04_trench_unit2_seq_2()
+	{	
+		sys.trigger( $m04_trench_unit2_seq_1_huge_door_5 );
+		sys.trigger( $m04_trench_unit2_seq_1_huge_door_6 );
+		sys.wait( 4 );
+		
+		aiSpeakWait( $markswell, "lipsync_marks_goodjbtakdek" );					// %%%%%%%%%% VO %%%%%%%%%%
+		aiSpeakWait( $markswell, "lipsync_marks_allableatlas" );					// %%%%%%%%%% VO %%%%%%%%%%
+		aiSpeakWait( $markswell, "lipsync_marks_onmemove" );					// %%%%%%%%%% VO %%%%%%%%%%
+		
+		aiScriptedMove 	( $tak_2, $m04_trench_unit2_tak_node_seq_3, 16, 1 );
+		aiScriptedMove 	( $navajas, $m04_trench_unit2_navajas_node_seq_3, 16, 1 );
+		aiScriptedMove 	( $darnell, $m04_trench_unit2_darnell_node_seq_3, 16, 1 );
+		aiScriptedMove 	( $markswell, $m04_trench_unit2_markswell_node_seq_3, 16, 1 );
+		aiScriptedMove 	( $guy_3, $m04_trench_unit2_guy_3_node_seq_3, 16, 1 );
+		aiScriptedMove 	( $guy_4, $m04_trench_unit2_guy_4_node_seq_3, 16, 1 );
+	}
+	
+void m04_trench_unit2_seq_2_unlock_player()
+	{	
+		sys.trigger( $OBJ_three_complete );
+		
+		radioChatterPlayWait( $uni_radiochatter, "vo_tak_turrdown" );		// %%%%%%%%%% VO %%%%%%%%%%
+		sys.wait( 4 );
+		radioChatterPlayWait( $uni_radiochatter, "vo_marks_rogertht2" );		// %%%%%%%%%% VO %%%%%%%%%%
+		thread m04_trench_unit2_tak_seq_2();
+		thread m04_trench_unit2_navajas_seq_2();
+		radioChatterPlay( $uni_radiochatter, "vo_marks_okmarup" );		// %%%%%%%%%% VO %%%%%%%%%%
+		sys.trigger( $darnell );
+		sys.wait( 4 );
+		
+		sys.trigger( $guy_3 );
+		sys.wait( 4 );
+		
+		sys.trigger( $guy_4 );
+		sys.wait( 4 );
+		
+		sys.trigger( $markswell );
+		sys.wait( 4 );
+		
+		sys.trigger( $OBJ_four );
+		
+		radioChatterPlay( $uni_radiochatter, "vo_mark_tre_getout" );		// %%%%%%%%%% VO %%%%%%%%%%
+		$m04_maint_tunnel_unit1_uni_vehicle_walker_player.lock(0);
+	}
+	
+//---------------------------------------------------------------------------------
+// m04_trench_unit2 Sequence 2 end
+//---------------------------------------------------------------------------------
+//=================================================================================
+//---------------------------------------------------------------------------------
+//	m04_trench_unit2 end
+//---------------------------------------------------------------------------------
+//=================================================================================
+//=================================================================================
+//---------------------------------------------------------------------------------
+//	Global main scripts start below
+//---------------------------------------------------------------------------------
+//=================================================================================
+
+void boom_flash_move_to_origin()
+	{
+		$m04_trench_unit1_uni_boom_flash_anc.setWorldOrigin ( $m04_trench_unit1_uni_boom_flash_anc_origin.getWorldOrigin() );
+	}
+
+void uni_mission_critical_team_death()
+	{
+		sys.trigger( $uni_objectivefailed_team_death );
+	}
+
+
+//moves one flyer sprite across the sky over the trenches
+void maintainStroggFlyerSprite(entity entMover, entity fxNormal, entity fxDamage, entity entHangar, entity entTgrEnd, vector vDirection)
+{	
+	sys.wait( sys.random(10) );
+	
+	//will the planes be swervey?
+	float fSwerve = 0;
+	float fWaitTime = 0;
+	float fAmplitude = 0;
+
+	while(1)	{
+
+		//place the mover on the "hangar" line, equal in the X but displaced in the Y by +/- ___ units
+
+		// +/- Y displacement
+		float fDisplacementMax = 2000;
+		float fDelta = 0;
+
+		//start location for the flyer
+		vector vStart = entHangar.getWorldOrigin();
+		vector vSpeed = '0 0 0';
+		vector vAngs;
+
+		//flyer speed
+		float fSpeed = 900 + (sys.random(600));
+
+		//will the plane be swervey?
+		if ( 1 ) {//sys.random(10) < 4)	{
+			fSwerve = sys.random(200) + 100;
+			fAmplitude = sys.random(90) + 30;
+		}
+		else	{
+			fSwerve = 0;
+			fAmplitude = 0;
+		}
+
+		//stop the flyer-- move him into position after we figure out where he goes.
+		entMover.setLinearVelocity( '0 0 0');
+
+		//mathery mcmath
+		fDelta = (0 - fDisplacementMax + sys.random( fDisplacementMax * 2));
+		vStart_y += fDelta;
+
+		//faster planes sit lower in the sky
+		//vStart_z += (fSpeed / 10);
+
+		//move to position
+		entMover.setWorldOrigin( vStart );
+		//sys.print("starting at: ");
+		//printVector(vStart);
+		sys.waitFrame();
+		
+		//set the direction as speed
+		vSpeed = vDirection * fSpeed;	
+		vSpeed_z = 0;
+
+		// set initial angle in case this is a non-swerving dude..
+		vAngs = sys.VecToAngles(vSpeed);
+		entMover.setAngles(vAngs);
+	
+		//first loop flies up,
+		//fWaitTime = sys.getTime() + 4 + sys.random(3);
+		fWaitTime = sys.getTime() +  sys.random(2.5);
+	
+		//turn on the regular plane, turn off the alternate
+		fxNormal.start();
+		fxDamage.stop();	
+		
+		//sys.println("Start flight!");
+		while( sys.getTime() < fWaitTime)	{
+			//fly!
+			entMover.setLinearVelocity( vSpeed);
+
+			//swerve if need be
+			if( fSwerve != 0)	{
+				vSpeed_y = sys.sin( sys.getTime() * fAmplitude ) *  fSwerve;
+
+				// update facing so effects can draw properly
+				vAngs = sys.VecToAngles(vSpeed);
+				entMover.setAngles(vAngs);
+				//sys.println(" swerve = " + vSpeed_y);
+			}
+
+			//if somehow the ship has escaped the skybox, break
+			if( entMover.touches( entTgrEnd))	{
+				//sys.println("early end!");
+				break;
+			}
+			//decend on the way out
+			sys.waitFrame();
+		}
+
+		//second loop, descend.
+		//vSpeed_z *= -1;
+		vSpeed_z = 0;
+
+		if(sys.random(20) < 2)
+		{
+			//sys.println("Damaged!");
+
+			//slow down and fly off course, descend faster
+			vSpeed_x *= 0.25;
+			if (vSpeed_y < 10 && vSpeed_y > -10)	{
+				vSpeed_y += ( -800 + sys.random(1600));
+			} else	{
+				vSpeed_y *= 4;
+			}
+			vSpeed_z *= 1.25;
+
+			//no more swerving
+			fSwerve = 0;
+
+			//switch to damaged effect, and explode
+			fxNormal.stop();
+			fxDamage.start();
+			$fx_flyer_damage.setWorldOrigin( entMover.getWorldOrigin() );
+			sys.trigger( $fx_flyer_damage);
+		}
+		
+		fWaitTime = sys.getTime() +  5;
+
+		//after the possible damage time, remove once the ship has left the skybox
+		while( (sys.getTime() < fWaitTime) && ( !entMover.touches( entTgrEnd))  )	{
+			//fly!
+			entMover.setLinearVelocity( vSpeed);
+
+			//swerve if need be
+			if( fSwerve != 0)	{
+				vSpeed_y = sys.sin( sys.getTime() * fAmplitude ) *  fSwerve;
+				// update facing so effects can draw properly
+				vAngs = sys.VecToAngles(vSpeed);
+				entMover.setAngles(vAngs);
+				//sys.println(" swerve = " + vSpeed_y);
+			}
+
+			//decend on the way out
+			sys.waitFrame();
+		}
+		
+		//sys.println("End!");
+		//run it back!	
+	}
+
+	
+
+}
+
+void main()	
+{
+
+	//thread m04_intro_unit1_seq_1_main();
+	
+	//strogg vs marine airpower go!
+	entity entFlyer;
+	float t;
+	//originally, there were six planes per side. Now we're using 2, and that might change too. But the
+	//+6 for the 3rd parameter is because originally the damaged versions of the sprites started at 7.
+	for (t = 1; t <= 2; t++)	{
+		thread maintainStroggFlyerSprite( sys.getEntity("mvr_fx_strogg_flyer_" + t), sys.getEntity("fx_air_strogg_fighter_" + t), sys.getEntity("fx_air_strogg_fighter_" + (t + 6) ), $tgt_strogg_flyer_hangar, $tgr_strogg_flyer_end, '-1 0 .1' );
+		thread maintainStroggFlyerSprite( sys.getEntity("mvr_fx_marine_flyer_" + t), sys.getEntity("fx_air_marine_fighter_" + t), sys.getEntity("fx_air_marine_fighter_" + (t + 6) ), $tgt_marine_flyer_hangar, $tgr_marine_flyer_end, '1 0 .1' );
+	}
+}
+
+}	//end namespace

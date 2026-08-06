@@ -1,0 +1,36 @@
+//harvester leg
+
+export env_q4x_harvester_leg
+{
+	options -game /q4xbase  -prefix HARV_ -scale .3937  -keep origin -sourcedir cinematics/mcc/harvester_leg/animations -destdir models/mapobjects/mcc/harvester_leg
+
+	mesh	stabby_stabby.ma						-dest mesh
+	anim	stabby_stabby.ma				-range	1  58	-dest stabby_stabby
+	anim	stabby_stabby.ma				-range	1 2	-dest idle
+	anim	stabby_stabby.ma				-range	25 60	-dest short_stabby
+}
+
+model model_env_q4x_harvester_leg
+
+{
+	mesh					models/mapobjects/mcc/harvester_leg/mesh.md5mesh
+	anim idle				models/mapobjects/mcc/harvester_leg/idle.md5anim
+	anim stabby_stabby			models/mapobjects/mcc/harvester_leg/stabby_stabby.md5anim
+	anim short_stabby			models/mapobjects/mcc/harvester_leg/short_stabby.md5anim
+
+	
+}
+
+entityDef env_q4x_harvester_leg
+{
+	"editor_color"			"0 .5 .25"
+	"editor_mins"			"-32 -32 0"
+	"editor_maxs"			"32 32 16"
+
+	"spawnclass"			"idAnimated"
+
+	"model"				"model_env_q4x_harvester_leg"
+	"anim"				"idle"
+
+	
+}

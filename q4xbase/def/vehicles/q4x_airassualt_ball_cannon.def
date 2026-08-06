@@ -1,0 +1,75 @@
+//------------------------------------------------------------------------------
+// q4x_air_assault_ball_cannon.def
+//
+// Copyright 2002-2005 Ritual Software
+// Created by JSchuch for Air Assault
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+//							Vehicle Defintion
+//------------------------------------------------------------------------------
+
+entityDef vehicle_q4x_airassault_ball_cannon {
+	"inherit"					"vehicle_q4x_airassault_space_cannon"
+	"editor_usage"					"Air assault ball turret gun for dropship."
+	"def_position_driver"				"vehicle_q4x_airassault_ball_cannon_driver"
+
+//	"mins"						"-72 -32 0"
+//	"maxs"						"-24 32 208"
+	"mins"						"-48 -32 0"
+	"maxs"						"0 32 208"
+}
+
+
+//------------------------------------------------------------------------------
+//								Positions
+//------------------------------------------------------------------------------
+
+entityDef vehicle_q4x_airassault_ball_cannon_driver {
+	"inherit"					"vehicle_q4x_airassault_space_cannon_driver"
+	"def_part_turret_yaw"				"vehicle_q4x_airassault_ball_cannon_yaw"
+	"def_part_turret_pitch"				"vehicle_q4x_airassault_ball_cannon_pitch"
+	"def_part_weapon_pulse"				"vehicle_q4x_airassault_pulse_cannon"
+	"def_part_weapon_rocket"			"vehicle_q4x_airassault_ball_cannon_weapon"
+
+	"exitPosOffset"					"-96 0 200"	// E/W, N/S, U/D
+}
+
+//------------------------------------------------------------------------------
+//									Parts
+//------------------------------------------------------------------------------
+
+entityDef vehicle_q4x_airassault_ball_cannon_yaw {
+	"spawnclass"					"rvVehicleTurret"
+	"snd_move"					"space_cannon_move"
+	"moveMinVolume"					"-4"
+	"moveMaxVolume"					"8"
+	"turnrate"					"360"
+	"joint"						"base"
+	"yaw"						"1"
+}
+
+
+entityDef vehicle_q4x_airassault_ball_cannon_pitch {
+	"spawnclass"					"rvVehicleTurret"
+	"pitchinvert"					"0"
+	"minpitch"					"-10"
+	"maxpitch"					"80"
+	"snd_move"					"space_cannon_move"
+	"moveMinVolume"					"-4"
+	"moveMaxVolume"					"8"
+	"turnrate"					"360"
+	"joint"						"pivot"
+	"pitch"						"0"
+}
+
+//------------------------------------------------------------------------------
+//									Weapon
+//------------------------------------------------------------------------------
+entityDef vehicle_q4x_airassault_ball_cannon_weapon
+{
+	"inherit"					"vehicle_q4x_airassault_space_cannon_weapon"
+	"joint"						"muzzleflash05"	
+	"joint2"					"muzzleflash06"
+}

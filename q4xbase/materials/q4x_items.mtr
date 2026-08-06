@@ -1,0 +1,206 @@
+// Created 11/07/05 by MarkM
+
+
+models/pick_ups/mp_pickups/deadzone
+{
+	  noselfShadow
+	unSmoothedTangents
+	
+    
+	diffuseMap		models/pick_ups/mp_pickups/mp_q4x_deadzone_d.tga
+	//specularMap		models/pick_ups/mp_pickups/mp_q4x_deadzone_s.tga
+	
+	{
+	    blend add
+	    maskalpha
+       	cubeMap		gfx/env/marhelmet
+        texgen		reflect
+		red   Parm0
+		green Parm1
+		blue  Parm2
+	}								
+}
+
+models/items/ammo/flamegun_decal
+{
+	DECAL_MACRO
+	
+	{
+		blend blend
+		map gfx/guis/hud/icons/item_fire
+		red .9
+		green 0.7
+		blue .2
+	}
+}
+
+models/items/ammo/flamegun
+{
+	noselfShadow
+	unsmoothedtangents
+
+	bumpmap		addnormals (models/items/ammo/ammo_box_local.tga, heightmap(models/items/ammo/ammo_box_h.tga, 2))
+	specularmap	models/items/ammo/ammo_box_s.tga
+
+	{
+		blend	diffusemap
+		map		models/items/ammo/ammo_box_machinegun_d.tga
+	
+	}
+	
+	{
+		blend		add
+		map			models/items/ammo/ammo_box_glow.tga
+			colored
+		red		 0.7
+		green	 0.3
+		blue	 0.3
+		
+	}		
+}
+
+
+models/items/ammo/corecannon_decal
+{
+	DECAL_MACRO
+	
+	{
+		blend blend
+		map gfx/guis/hud/icons/item_corecannon
+		red 	0.6
+		green 	 0.6
+		blue  	0.95
+	}
+}
+
+models/items/ammo/corecannon
+{
+	noselfShadow
+	unsmoothedtangents
+
+	bumpmap		addnormals (models/items/ammo/ammo_box_local.tga, heightmap(models/items/ammo/ammo_box_h.tga, 2))
+	specularmap	models/items/ammo/ammo_box_s.tga
+
+	{
+		blend	diffusemap
+		map		models/items/ammo/ammo_box_nailgun_d.tga
+	
+	}
+	
+	{
+		blend		add
+		map			models/items/ammo/ammo_box_glow.tga
+			colored
+		red		 0.4
+		green	 0.4
+		blue	 0.8
+		
+	}		
+}
+
+models/items/ammo/freezegun_decal
+{
+	DECAL_MACRO
+	
+	{
+		blend blend
+		map gfx/guis/hud/icons/item_freeze
+		red 	0.95
+		green 	 0.95
+		blue  	1.0
+	}
+}
+
+models/items/ammo/freezegun
+{
+	noselfShadow
+	unsmoothedtangents
+
+	bumpmap		addnormals (models/items/ammo/ammo_box_local.tga, heightmap(models/items/ammo/ammo_box_h.tga, 2))
+	specularmap	models/items/ammo/ammo_box_s.tga
+
+	{
+		blend	diffusemap
+		map		models/items/ammo/ammo_box_nailgun_d.tga
+	
+	}
+	
+	{
+		blend		add
+		map			models/items/ammo/ammo_box_glow.tga
+			colored
+		red		 0.95
+		green	 0.95
+		blue	 1.0
+		
+	}		
+}
+
+models/items/ammo/flamegun_holo
+{
+	noSelfShadow
+	unSmoothedTangents
+	translucent
+	twosided
+	
+	{
+		maskColor
+		map		makealpha (models/items/ammo/ammo_bubble.tga)
+		scroll		time * 0.1 , time * 0.15
+	}
+	{
+		blend GL_DST_ALPHA, GL_ONE
+		maskAlpha
+		map		models/items/ammo/ammo_box_wire.tga
+		colored
+		red		 1 * (ember1 [time *.25])
+		green	 0.45 * (ember1 [time *.25])
+		blue	 0 * (ember1 [time *.25])
+	}		
+}
+
+models/items/ammo/corecannon_holo
+{
+	noSelfShadow
+	unSmoothedTangents
+	translucent
+	twosided
+	
+	{
+		maskColor
+		map		makealpha (models/items/ammo/ammo_bubble.tga)
+		scroll		time * 0.1 , time * 0.15
+	}
+	{
+		blend GL_DST_ALPHA, GL_ONE
+		maskAlpha
+		map		models/items/ammo/ammo_box_wire.tga
+		colored
+		red		 1 * (ember1 [time *.25])
+		green	 0.45 * (ember1 [time *.25])
+		blue	 0 * (ember1 [time *.25])
+	}		
+}
+
+models/items/ammo/freezegun_holo
+{
+	noSelfShadow
+	unSmoothedTangents
+	translucent
+	twosided
+	
+	{
+		maskColor
+		map		makealpha (models/items/ammo/ammo_bubble.tga)
+		scroll		time * 0.1 , time * 0.15
+	}
+	{
+		blend GL_DST_ALPHA, GL_ONE
+		maskAlpha
+		map		models/items/ammo/ammo_box_wire.tga
+		colored
+		red		 1 * (ember1 [time *.25])
+		green	 0.45 * (ember1 [time *.25])
+		blue	 0 * (ember1 [time *.25])
+	}		
+}

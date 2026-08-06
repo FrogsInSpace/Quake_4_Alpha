@@ -1,0 +1,32 @@
+MD5Version 10
+commandline "anim cinematics/mcc/harvester_leg/animations/stabby_stabby.ma -dest models/mapobjects/mcc/harvester_leg/idle.md5anim -game Quake4 -game /q4xbase -prefix HARV_ -scale .3937 -keep origin -range 1 2"
+
+numFrames 2
+numJoints 4
+frameRate 24
+numAnimatedComponents 0
+
+hierarchy {
+	"origin"	-1 0 0	//
+	"leg"	0 0 0	// origin
+	"r_loleg_front"	1 0 0	// leg
+	"r_ankle_front"	2 0 0	// r_loleg_front
+}
+
+bounds {
+	( -53.6895217896 -24.9091796875 372.2219238281 ) ( 326.4215087891 26.2208843231 828.7026367188 )
+	( -53.6895217896 -24.9091796875 372.2219238281 ) ( 326.4215087891 26.2208843231 828.7026367188 )
+}
+
+baseframe {
+	( 0 0 0 ) ( -0.7071067691 0 0 )
+	( 324.098815918 662.1655273438 0.0053859442 ) ( 0.2597180903 0.9594575763 -0.1058470234 )
+	( 235.9220733643 -0.0000199702 0.0000040533 ) ( -0.7968313098 0.5947393775 -0.0674544647 )
+	( 204.283706665 -0.0000249868 0.000000083 ) ( 0.0077973008 -0.0030781387 -0.4445207715 )
+}
+
+frame 0 {
+}
+
+frame 1 {
+}

@@ -1,0 +1,1091 @@
+#include "scripts/doom_defs.script"
+
+	float PLAYER_IN_PIPE = 0;		//is the player inside the pipe
+
+	//boolean CHATTER1;
+	//boolean CHATTER2;
+	//boolean CHATTER3;
+	//boolean CHATTER4;
+	//boolean CHATTER5;
+	//boolean CHATTER6;
+	//boolean CHATTER7;
+	//boolean CHATTER8;
+	//boolean CHATTER9;
+	//boolean CHATTER10;
+	//boolean CHATTER11;
+	//boolean CHATTER12;
+	//boolean CHATTER13;
+
+	float RACE1_AREA = 1;
+	float AREA1_TOTAL_TIME = 70;
+	float AREA2_TOTAL_TIME = 70;
+	float AREA1_TIME_STARTED;
+	float AREA1_TIME_EXPIRED;
+	float AREA2_TIME_STARTED;
+	float AREA2_TIME_EXPIRED;
+	float area1TimeLeft;
+
+	/*	
+	void miscRadioChatterThreadR1()
+	{
+		float t;
+		float x;
+		while(1)
+			{
+			t = randomRoundFloat( 1, 20 ) + 5;
+			sys.wait( t );
+			x = randomRoundFloat( 1, 15 );
+		
+			if( x == 1 && !CHATTER1 )
+				{
+				radioChatterPlay( $func_radiochatter_1, "vo_8_3_33" );
+				CHATTER1 = true;
+				}
+			if( x == 2 && !CHATTER2 )
+				{
+				radioChatterPlay( $func_radiochatter_1, "vo_8_3_6" );
+				CHATTER2 = true;
+				}
+			if( x == 3 && !CHATTER3 )
+				{
+				radioChatterPlay( $func_radiochatter_1, "vo_8_3_2" );
+				CHATTER3 = true;
+				}
+			if( x == 4 && !CHATTER4 )
+				{
+				radioChatterPlay( $func_radiochatter_1, "vo_8_3_30" );
+				CHATTER4 = true;
+				}
+			if( x == 5 && !CHATTER5 )
+				{
+				radioChatterPlay( $func_radiochatter_1, "vo_8_3_26" );
+				CHATTER5 = true;
+			if( x == 6 && !CHATTER6 )
+				{
+				radioChatterPlay( $func_radiochatter_1, "vo_8_3_24" );
+				CHATTER6 = true;
+				}
+			if( x == 7 && !CHATTER7 )
+				{
+				radioChatterPlay( $func_radiochatter_1, "vo_8_3_22" );
+				CHATTER7 = true;
+				}
+			if( x == 8 && !CHATTER8 )
+				{
+				radioChatterPlay( $func_radiochatter_1, "vo_8_3_17" );
+				CHATTER8 = true;
+				}
+			if( x == 9 && !CHATTER9 )
+				{
+				radioChatterPlay( $func_radiochatter_1, "vo_8_3_14" );
+				CHATTER9 = true;
+				}
+			if( x == 10 && !CHATTER10 )
+				{
+				radioChatterPlay( $func_radiochatter_1, "vo_8_3_11" );
+				CHATTER10 = true;
+				}
+			if( x == 11 && !CHATTER11 )
+				{
+				radioChatterPlay( $func_radiochatter_1, "vo_8_3_10" );
+				CHATTER11 = true;
+				}
+			if( x == 12 && !CHATTER12 )
+				{
+				radioChatterPlay( $func_radiochatter_1, "vo_8_3_23" );
+				CHATTER12 = true;
+				}
+			if( x == 13 && !CHATTER13 )
+				{
+				radioChatterPlay( $func_radiochatter_1, "vo_8_3_20" );
+				CHATTER13 = true;
+				}
+			}
+		}
+			
+	}
+	
+	*/
+	
+	//--------------------bomber scripts-------------------------
+	
+	void whoLetTheDogsOut( entity fighter , entity projectileOne , entity projectileTwo , float burst )	
+	{
+
+	entity tempTarget = $null_entity;
+	
+	// Master function for firing volleys of missiles at the player.
+	
+	// Declare counter
+	float burstCount = 0;
+	
+	// Check counter against total volleys and valid entity status
+	while( burstCount < burst && isValidEntity( fighter ) )	
+		{
+
+			vector guessLead = $player1.getLinearVelocity();
+			//guessLead_x = guessLead_x * 2;
+			//guessLead_y = guessLead_y * 2;
+			vector playerLeading = $player1.getWorldOrigin() + guessLead;
+		
+	
+			sys.setSpawnArg( "classname", "target_null" );
+			sys.setSpawnArg( "origin", playerLeading );
+			tempTarget = sys.spawn( "target_null" );
+	
+			projectileOne.appendTarget( tempTarget );
+			projectileTwo.appendTarget( tempTarget );
+				
+			// Fire away!
+			sys.trigger( projectileOne );
+			sys.wait( .1 );
+			sys.trigger( projectileTwo );
+			sys.wait( .3 );
+		
+			// Increment burst counter
+			burstCount++;
+		
+			tempTarget.remove();
+		
+			projectileOne.removeTarget( tempTarget );
+			projectileTwo.removeTarget( tempTarget );
+		}	
+	
+		if( !isValidEntity( fighter ) )	
+			{
+				// Quick check for correctly terminating the function
+				//sys.println( "Caught flyer death, ignoring weapons fire call" );
+				tempTarget.remove();	
+			}
+	}
+	
+		
+	void stroggFlyerExplosion( entity flyer , entity explosion )	
+	{
+
+		// Define variables for function
+		entity pilot;
+		vector old;
+		vector new;
+		vector flingPilot;
+	
+		// Calculate velocity vector
+		old = flyer.getWorldOrigin();
+		sys.waitFrame();
+		new = flyer.getWorldOrigin();
+
+		// Nuke flyer and trigger explosion
+		flyer.hide();
+		flingPilot = new - old;
+		sys.trigger( explosion );
+		sys.waitFrame();
+		
+		// Spawn ragdoll pilot and remove flyer
+		sys.setSpawnArg( "classname", "monster_strogg_marine" );
+		sys.setSpawnArg( "origin", explosion.getWorldOrigin() + '0 0 64');
+		pilot = sys.spawn( "monster_strogg_marine" );
+		pilot.kill();
+		flyer.remove();
+		sys.waitFrame();
+
+		// Establish velocity for flinging pilot
+		flingPilot_x = 300*flingPilot_x;
+		flingPilot_y = 300*flingPilot_y;
+		flingPilot_z = 3000;
+		//sys.println( flingPilot );
+	
+		// Make that ragdoll fly!
+		pilot.setLinearVelocity( flingPilot );			
+	}
+	
+	void removeFlyerBits(string flyerNumber)
+	{
+		entity flyerBit = $nullEntity; 
+	
+		flyerBit = sys.getEntity("strafingFlyer_" + flyerNumber);
+		if (flyerBit != $nullEntity)
+			flyerBit.remove();
+		flyerBit = sys.getEntity("strafeBase_" + flyerNumber);
+		if (flyerBit != $nullEntity)
+			flyerBit.remove();
+		flyerBit = sys.getEntity("flyerStrafeExplode_" + flyerNumber);
+		if (flyerBit != $nullEntity)
+			flyerBit.remove();
+		flyerBit = sys.getEntity("strafeRocketA_" + flyerNumber);
+		if (flyerBit != $nullEntity)
+			flyerBit.remove();
+		flyerBit = sys.getEntity("strafeRocketB_" + flyerNumber);
+		if (flyerBit != $nullEntity)
+			flyerBit.remove();
+		flyerBit = sys.getEntity("flyerStrafeBoom_" + flyerNumber);
+		if (flyerBit != $nullEntity)
+			flyerBit.remove();
+		flyerBit = sys.getEntity("flyerDamage_" + flyerNumber);
+		if (flyerBit != $nullEntity)
+			flyerBit.remove();
+		flyerBit = sys.getEntity("strafeLeader_" + flyerNumber);
+		if (flyerBit != $nullEntity)
+			flyerBit.remove();
+	} 
+
+	
+	//------------------------area check & timer stuff----------------------
+	
+	void raceProgress0()
+	{
+		$vehicle_speeder_1.guiEvent( "showprogress0" );
+	}
+	
+	void raceProgress10()
+	{
+		$vehicle_speeder_1.guiEvent( "showprogress10" );
+	}
+	
+	void raceProgress20()
+	{
+		$vehicle_speeder_1.guiEvent( "showprogress20" );
+	}
+	
+	void raceProgress30()
+	{
+		$vehicle_speeder_1.guiEvent( "showprogress30" );
+	}
+	
+	void raceProgress40()
+	{
+		$vehicle_speeder_1.guiEvent( "showprogress40" );
+	}
+	
+	void raceProgress50()
+	{
+		$vehicle_speeder_1.guiEvent( "showprogress50" );
+	}
+	
+	void raceProgress60()
+	{
+		$vehicle_speeder_1.guiEvent( "showprogress60" );
+	}
+	
+	void raceProgress70()
+	{
+		$vehicle_speeder_1.guiEvent( "showprogress70" );
+	}
+	
+	void raceProgress80()
+	{
+		$vehicle_speeder_1.guiEvent( "showprogress80" );
+	}
+	
+	void raceProgress90()
+	{
+		$vehicle_speeder_1.guiEvent( "showprogress90" );
+	}
+	
+	void raceProgress100()
+	{
+		$vehicle_speeder_1.guiEvent( "showprogress100" );
+	}
+	
+	void speederInArea1()
+	{
+		RACE1_AREA = 1;
+	}
+	
+	void speederInArea2()
+	{
+		RACE1_AREA = 2;
+	}
+	
+	void speederInArea3()
+	{
+		RACE1_AREA = 3;
+	}
+	
+	
+	void lockdownGate1Down()
+	{
+		$lockdown_gate_R1_1.time( 70 );
+		$lockdown_gate_R1_1.accelTime( 2 );
+		$lockdown_gate_R1_1.decelTime( 0 );
+		$lockdown_gate_R1_1.move( DOWN, 448 );
+		sys.waitFor( $lockdown_gate_R1_1 );
+
+		$lockdown_gate_R1_1.time( 5 );
+		$lockdown_gate_R1_1.accelTime( 0 );
+		$lockdown_gate_R1_1.decelTime( 2 );
+		$lockdown_gate_R1_1.move( DOWN, 128 );
+		sys.waitFor( $lockdown_gate_R1_1 );
+		if( RACE1_AREA <= 1 )
+			{
+				radioChatterPlay($func_radiochatter_1, "vo_darn_shitlock");
+				sys.trigger( $objectivefailed_area1 );
+			}
+	}
+	
+	void lockdownGate2Down()
+	{
+		$lockdown_gate_R1_2.time( 70 + area1TimeLeft );
+		$lockdown_gate_R1_2.accelTime( 0 );
+		$lockdown_gate_R1_2.decelTime( 0 );
+		$lockdown_gate_R1_2.move( DOWN, 344 );
+		sys.waitFor( $lockdown_gate_R1_2 );
+
+		$lockdown_gate_R1_2.time( 5 );
+		$lockdown_gate_R1_2.accelTime( 0 );
+		$lockdown_gate_R1_2.decelTime( 2 );
+		$lockdown_gate_R1_2.move( DOWN, 128 );
+		sys.waitFor( $lockdown_gate_R1_2 );
+		if( RACE1_AREA <= 2 )
+			{
+				radioChatterPlay($func_radiochatter_1, "vo_darn_shitlock");
+				sys.trigger( $objectivefailed_area2 );
+			}
+	}
+	
+	void startTimerArea1()
+	{
+		sys.trigger( $objective_area1 );
+		thread lockdownGate1Down();
+	
+		AREA1_TIME_STARTED = sys.getTime();
+		AREA1_TIME_EXPIRED = AREA1_TIME_STARTED + AREA1_TOTAL_TIME;
+	
+		$vehicle_speeder_1.guiEvent( "showspeedertimer" );
+		$vehicle_speeder_1.guiEvent( "showspeedertimer2" );
+	
+		do
+		{
+			float timeNow = sys.getTime();
+			if( RACE1_AREA == 1 )
+			{
+				float timeLeft = AREA1_TIME_EXPIRED - timeNow;
+				float seconds = sys.intVal( timeLeft );
+				float milsecs = sys.intVal( (timeLeft - seconds) * 100.0 );
+				$vehicle_speeder_1.setGuiParm( "currenttime", seconds );
+				$vehicle_speeder_1.guiEvent( "updatetimer" );
+				$vehicle_speeder_1.setGuiParm( "currenttime2", milsecs );
+				$vehicle_speeder_1.guiEvent( "updatetimer2" );
+			}
+	
+			sys.waitFrame();                    
+	
+		} while( timeNow <= AREA1_TIME_EXPIRED ); }
+	
+	void startTimerArea2()
+	{
+		// figure out how much time to carry over from area 1, but 
+		// don't let the area1 time left go negative and screw everything.
+		area1TimeLeft = AREA1_TIME_EXPIRED - sys.getTime();
+		if( area1TimeLeft < 0 )
+		{
+			area1TimeLeft = 0;
+		}
+	
+		AREA2_TIME_STARTED = sys.getTime();
+		AREA2_TIME_EXPIRED = AREA2_TIME_STARTED + AREA2_TOTAL_TIME + area1TimeLeft;
+	
+		$vehicle_speeder_1.guiEvent( "showspeedertimer" );
+		$vehicle_speeder_1.guiEvent( "showspeedertimer2" );
+	
+		do
+		{
+			float timeNow = sys.getTime();
+			if( RACE1_AREA == 2 )
+			{
+				float timeLeft = AREA2_TIME_EXPIRED - timeNow;
+				float seconds = sys.intVal( timeLeft );
+				float milsecs = sys.intVal( (timeLeft - seconds) * 100.0 );
+				$vehicle_speeder_1.setGuiParm( "currenttime", seconds );
+				$vehicle_speeder_1.guiEvent( "updatetimer" );
+				$vehicle_speeder_1.setGuiParm( "currenttime2", milsecs );
+				$vehicle_speeder_1.guiEvent( "updatetimer2" );
+			}
+	
+			sys.waitFrame();                    
+	
+		} while( timeNow <= AREA2_TIME_EXPIRED ); }
+	
+	void area1Cleared()
+	{
+		sys.trigger( $objectivecomplete_area1 );
+		thread startTimerArea2();
+		thread lockdownGate2Down();
+		sys.wait( 5 );
+		sys.trigger( $objective_area2 );
+		sys.wait( 5 );
+		radioChatterPlay( $func_radiochatter_1, "vo_darn_wealmost" );
+	}
+	
+	void area2Cleared()
+	{
+		sys.trigger( $objectivecomplete_area2 );
+		
+	}
+	
+	//------------------------area check & timer stuff end ----------------------
+	
+	
+	void spinPipeReamer1()
+	{		
+		while( 1 )
+		{
+			$pipeReamer_1.time( 1 );
+			$pipeReamer_1.accelTime( 0 );
+			$pipeReamer_1.decelTime( 0 );
+			$pipeReamer_1.rotate('0 0 360');
+			sys.wait( 1 );
+		}
+	}
+
+	void spinPipeReamer2()
+	{		
+		while( 1 )
+		{
+			$pipeReamer_2.time( 1 );
+			$pipeReamer_2.accelTime( 0 );
+			$pipeReamer_2.decelTime( 0 );
+			$pipeReamer_2.rotate('0 0 360');
+			sys.wait( 1 );
+		}
+	}
+	
+	void startYourEngines()
+	{
+		sys.fadeOut( '0 0 0', 0);
+		sys.wait( .2 );
+		$vehicle_speeder_1.guiEvent( "hidespeedertimer" );
+		$vehicle_speeder_1.guiEvent( "hidespeedertimer2" );
+		$player1.setFOV( 90 );
+		$player1.enterVehicle( $vehicle_speeder_1 );
+		$vehicle_speeder_1.setSpline( $vehicle_speeder_1 );
+		$vehicle_speeder_1.lock( 1 );				
+		sys.fadeIn( '0 0 0', .5);
+		//thread miscRadioChatterThreadR1();
+		sys.wait ( .5 );
+		sys.music( "m8_chase" );
+		sys.wait ( .5 );
+		thread startTimerArea1();	
+		sys.wait( 5 );
+		radioChatterPlay( $func_radiochatter_1, "vo_darn_gettocryo" );	
+	}
+
+	/*void playerStillInPipe()  //rebinds the speeder in pipe for reaming if player does not exit pipe
+	{
+		if( PLAYER_IN_PIPE == 1 )
+		{
+			$vehicle_speeder_1.bind( $pipe_section_1 );
+			sys.wait( 3 );
+			$vehicle_speeder_1.unbind();
+			sys.wait( 1 );
+		}
+	}
+	*/
+	
+	void playerLeavesPipe()
+	{
+		sys.wait( 3 );
+		sys.trigger( $func_savegame_1 );
+	}
+	
+	/*void pipeOnGround()
+	{
+		$vehicle_speeder_1.unbind();
+		
+	}
+	*/
+	void speederStopInPipe()
+	{
+		$roller_ball_spawner_2.remove();
+		sys.wait( 1.5 );
+		$rollerballer1.remove();
+		$rollerballer2.remove();
+		$rollerballer3.remove();
+		$rollerballer4.remove();
+		//$vehicle_speeder_1.bind( $craneArm_1 );
+		sys.wait( 3.0 );
+		sys.trigger ( $bridge_tank_spawner );
+		
+	}
+	
+	void pipeCycle()
+	{
+		sys.wait( 2 );
+		//thread playerStillInPipe();
+		sys.wait( 0.1 );
+		$pipeVehClipBox.unbind();
+		$pipe_section_1.time( 3 );
+		$pipe_section_1.accelTime( .7 );
+		$pipe_section_1.decelTime( .7 );
+		$pipeVehClipBox.time( 3 );
+		$pipeVehClipBox.accelTime( .7 );
+		$pipeVehClipBox.decelTime( .7 );
+		$pipeVehClipBox.moveTo( $pipesection_UpPos_1 );
+		$pipe_section_1.rotateOnce('0 0 -360');
+		$pipe_section_1.moveTo( $pipesection_UpPos_1 );
+		sys.waitFor( $pipe_section_1 );					// move crushers in
+		$pipeReamer_1.time( 1 );
+		$pipeReamer_1.accelTime( .3 );
+		$pipeReamer_2.time( 1 );
+		$pipeReamer_2.accelTime( .3 );
+		$pipeReamer_1.moveTo( $pipeReamer_1_pos_2 );
+		$pipeReamer_2.moveTo( $pipeReamer_2_pos_2 );
+		sys.waitFor( $pipeReamer_1 );
+		sys.waitFor( $pipeReamer_2 );
+		$pipeReamer_1.time( 1 );
+		$pipeReamer_1.accelTime( .3 );
+		$pipeReamer_1.decelTime( .3 );
+		$pipeReamer_2.time( 1 );
+		$pipeReamer_2.accelTime( .2 );
+		$pipeReamer_2.decelTime( .2 );
+		$pipeReamer_1.moveTo( $pipeReamer_1_pos_1 );
+		$pipeReamer_2.moveTo( $pipeReamer_2_pos_1 );
+		sys.waitFor( $pipeReamer_1 );
+		sys.waitFor( $pipeReamer_2 );
+														//start pipe moving again
+		$pipeVehClipBox.bind( $pipe_section_1 );
+		$pipe_section_1.time( 3 );
+		$pipe_section_1.accelTime( .7 );
+		$pipe_section_1.decelTime( .7 );
+		$pipe_section_1.rotateOnce('0 0 -360');
+		$pipe_section_1.moveTo( $pipesection_UpPos_2 );
+		sys.waitFor( $pipe_section_1 );
+		$pipe_section_1.hide();
+		$pipe_section_1.time( 1 );
+		$pipe_section_1.accelTime( 0 );
+		$pipe_section_1.decelTime( 0 );
+		$pipe_section_1.moveTo( $pipesection_DownPos_1 );
+		sys.waitFor( $pipe_section_1 );
+		$pipe_section_1.show();
+		$pipe_section_1.time( 1 );
+		$pipe_section_1.moveTo( $pipesection_DownPos_2 );
+		sys.waitFor( $pipe_section_1 );
+		$pipe_section_1.time( .375 );
+		$pipe_section_1.moveTo( $pipesection_DownPos_22 );
+		sys.waitFor( $pipe_section_1 );
+		$pipe_section_1.time( .375 );
+		$pipe_section_1.moveTo( $pipesection_DownPos_2 );
+		sys.waitFor( $pipe_section_1 );
+		$pipe_section_1.time( 3 );
+		$pipe_section_1.accelTime( .7 );
+		$pipe_section_1.decelTime( .7 );
+		$pipe_section_1.rotateOnce('0 0 -360');
+		$pipe_section_1.moveTo( $pipesection_DownPos_3 );
+		sys.wait( 0.5 );
+		sys.waitFor( $pipe_section_1 );
+						
+	}
+
+	void moveThosePipes()
+	{
+		
+		$craneClawN.bind( $craneArm_1 );
+		$craneClawS.bind( $craneArm_1 );
+		
+		while( 1 )
+		{
+			$pipe_section_1.bind( $craneArm_1 );  //move crane up with barrel
+			sys.wait( 0.5 );
+			$craneArm_3.time( 5 );
+			$craneArm_3.accelTime( 1 );
+			$craneArm_3.decelTime( 1 );
+			$craneArm_2.time( 5 );
+			$craneArm_2.accelTime( 1 );
+			$craneArm_2.decelTime( 1 );
+			$craneArm_1.time( 5 );
+			$craneArm_1.accelTime( 1 );
+			$craneArm_1.decelTime( 1 );
+			$craneArm_1.moveTo( $craneArm1_posUp_1 );
+			sys.wait( 0.1 );
+			$craneArm_2.moveTo( $craneArm2_posUp_1 );
+			sys.wait( 0.1 );
+			$craneArm_3.moveTo( $craneArm3_posUp_1 );
+			sys.waitFor( $craneArm_3 );
+			$craneArm_3.bind( $gantryHead );		//move gantry head north
+			$craneArm_2.bind( $gantryHead );
+			$craneArm_1.bind( $gantryHead );
+			sys.wait( .05 );
+			$gantryHead.time( 6 );
+			$gantryHead.accelTime( 1 );
+			$gantryHead.decelTime( 1 );
+			$gantryHead.moveTo( $gantryHead_pos_2 );
+			sys.waitFor( $gantryHead );
+			$gantryHead.bind( $gantryMainFrame );	//move gantry East
+			$gantryMainFrame.time( 6 );
+			$gantryMainFrame.accelTime( 1 );
+			$gantryMainFrame.decelTime( 1 );
+			$gantryMainFrame.moveTo( $gantryMainFrame_pos_2 );
+			sys.waitFor( $gantryMainFrame );
+			$gantryHead.unbind();					//drop crane down and release pipe
+			$craneArm_3.unbind();
+			$craneArm_2.unbind();
+			$craneArm_1.unbind();
+			$craneArm_3.time( 3 );
+			$craneArm_3.accelTime( 1 );
+			$craneArm_3.decelTime( 1 );
+			$craneArm_2.time( 3 );
+			$craneArm_2.accelTime( 1 );
+			$craneArm_2.decelTime( 1 );
+			$craneArm_1.time( 3 );
+			$craneArm_1.accelTime( 1 );
+			$craneArm_1.decelTime( 1 );
+			$craneArm_3.moveTo( $craneArm3_posDown_2 );
+			sys.wait( 0.1 );
+			$craneArm_2.moveTo( $craneArm2_posDown_2 );
+			sys.wait( 0.1 );
+			$craneArm_1.moveTo( $craneArm1_posDown_2 );
+			sys.waitFor( $craneArm_1 );
+			//thread pipeOnGround();
+			$craneClawN.time( 2 );
+			$craneClawN.accelTime( .5 );
+			$craneClawN.decelTime( .5 );
+			$craneClawS.time( 2 );
+			$craneClawS.accelTime( .5 );
+			$craneClawS.decelTime( .5 );
+			$craneClawN.rotateOnce( '0 0 30' );
+			$craneClawS.rotateOnce( '0 0 -30' );
+			sys.waitFor( $craneClawS );
+			$pipe_section_1.unbind();
+			$craneArm_3.time( 3 );
+			$craneArm_3.accelTime( 1 );				//move empty crane up
+			$craneArm_3.decelTime( 1 );
+			$craneArm_2.time( 3 );
+			$craneArm_2.accelTime( 1 );
+			$craneArm_2.decelTime( 1 );
+			$craneArm_1.time( 3 );
+			$craneArm_1.accelTime( 1 );
+			$craneArm_1.decelTime( 1 );
+			$craneArm_1.moveTo( $craneArm1_posUp_2 );
+			sys.wait( 0.1 );
+			$craneArm_2.moveTo( $craneArm2_posUp_2 );
+			sys.wait( 0.1 );
+			$craneArm_3.moveTo( $craneArm3_posUp_2 );
+			sys.waitFor( $craneArm_3 );
+			thread pipeCycle();		
+			$craneArm_3.bind( $gantryHead );		
+			$craneArm_2.bind( $gantryHead );
+			$craneArm_1.bind( $gantryHead );
+			
+			$gantryHead.bind( $gantryMainFrame );	//move gantry East
+			sys.wait( .05 );
+			$gantryMainFrame.time( 7 );
+			$gantryMainFrame.accelTime( 1 );
+			$gantryMainFrame.decelTime( 1 );
+			$gantryMainFrame.moveTo( $gantryMainFrame_pos_1 );
+			sys.waitFor( $gantryMainFrame );
+			$gantryHead.unbind();					//move gantry head south
+			$gantryHead.time( 7 );
+			$gantryHead.accelTime( 1 );
+			$gantryHead.decelTime( 1 );
+			$gantryHead.moveTo( $gantryHead_pos_1 );
+			sys.waitFor( $gantryHead );
+			sys.wait( 2 );
+			$craneArm_3.unbind();					//drop crane down and grab pipe
+			$craneArm_2.unbind();
+			$craneArm_1.unbind();
+			$craneArm_3.time( 3 );
+			$craneArm_3.accelTime( 1 );
+			$craneArm_3.decelTime( 1 );
+			$craneArm_2.time( 3 );
+			$craneArm_2.accelTime( 1 );
+			$craneArm_2.decelTime( 1 );
+			$craneArm_1.time( 3 );
+			$craneArm_1.accelTime( 1 );
+			$craneArm_1.decelTime( 1 );
+			$craneArm_3.moveTo( $craneArm3_posDown_1 );
+			sys.wait( 0.1 );
+			$craneArm_2.moveTo( $craneArm2_posDown_1 );
+			sys.wait( 0.1 );
+			$craneArm_1.moveTo( $craneArm1_posDown_1 );
+			sys.waitFor( $craneArm_1 );
+			$craneClawN.time( 2 );
+			$craneClawN.accelTime( .5 );
+			$craneClawN.decelTime( .5 );
+			$craneClawS.time( 2 );
+			$craneClawS.accelTime( .5 );
+			$craneClawS.decelTime( .5 );
+			$craneClawN.rotateOnce( '0 0 -30' );
+			$craneClawS.rotateOnce( '0 0 30' );
+			sys.waitFor( $craneClawS );
+			
+		}
+	}
+
+	void rollerBall1Out()
+	{
+		sys.trigger( $race1_rollerBall_1 );
+		sys.wait( 0.5 );
+		aiScriptedMove( $race1_rollerBall_1, $race1_rollerBall_1_pos1, 16, 1 );
+		//aiScriptedWait( $race1_rollerBall_1 );
+		//$race1_rollerBall_1.becomeAggressive( );
+				
+	}
+	
+	void lockStartDoors()
+	{
+		$race1_startdoor1.lock( 1 );
+		$race1_startdoor2.lock( 1 );
+	}
+	
+	void rollerBall2Out()
+	{
+		sys.trigger( $race1_rollerBall_2 );
+		sys.wait( 0.5 );
+		aiScriptedMove( $race1_rollerBall_2, $race1_rollerBall_2_pos1, 16, 1 );
+		//aiScriptedWait( $race1_rollerBall_2 );
+		//$race1_rollerBall_1.becomeAggressive( );
+				
+	}
+	
+	
+	void beginLowerRollerWave()
+	{
+		sys.trigger( $roller_ball_spawner_2 );
+
+	}
+	
+	void bridgeTankMoveUp()
+	{
+		sys.wait( .5 );
+		aiScriptedMove( $bridge_tank_1, $bridge_tank_pos1, 64, 1 );
+	}
+	
+	void rollerBall3Out()
+	{
+		sys.trigger( $race1_rollerBall_3 );
+		sys.wait( 0.5 );
+		aiScriptedMove( $race1_rollerBall_3, $race1_rollerBall_3_pos_1, 16, 1 );
+
+				
+	}
+	
+	void bomberExplode_1()
+	{
+		stroggFlyerExplosion( $strafingFlyer_1 , $flyerStrafeExplode_1 );
+	}
+	
+	void beginBomberRun_1()
+	{
+		//	sys.println("void beginBomberRun_1");
+
+		sys.wait( 1 );
+		setNewTimes($strafeBase_1, 12, 0, 0);
+   		$strafeBase_1.startSpline($bomber_spline_1);
+	
+		sys.wait(2);
+
+		if (!isValidEntity($strafingFlyer_1)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		whoLetTheDogsOut( $strafingFlyer_1, $strafingFlyer_1.getTarget(0), $strafingFlyer_1.getTarget(1), 3 );
+
+		sys.wait(1);
+
+		if (!isValidEntity($strafingFlyer_1)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		whoLetTheDogsOut( $strafingFlyer_1, $strafingFlyer_1.getTarget(0), $strafingFlyer_1.getTarget(1), 1 );
+	
+		sys.wait(1);
+		
+		if (!isValidEntity($strafingFlyer_1)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		whoLetTheDogsOut( $strafingFlyer_1, $strafingFlyer_1.getTarget(0), $strafingFlyer_1.getTarget(1), 1 );
+	
+		sys.wait(1);
+		
+
+		if (!isValidEntity($strafingFlyer_1)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		whoLetTheDogsOut( $strafingFlyer_1, $strafingFlyer_1.getTarget(0), $strafingFlyer_1.getTarget(1), 1 );
+
+		sys.wait(1.75);
+
+		if (!isValidEntity($strafingFlyer_1)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		sys.trigger($strafeSnd_1);
+
+		sys.waitFor( $strafeBase_1 );
+		removeFlyerBits("1");	
+	}
+	
+	void lockBayDoorTeam1()
+	{
+		$baydoor1.lock( 1 );
+		$baydoor2.lock( 1 );
+	}
+	
+	void lockBayDoorTeam2()
+	{
+		$baydoor3.lock( 1 );
+		$baydoor4.lock( 1 );
+		
+		radioChatterPlayWait($func_radiochatter_1, "vo_nava_useboost");
+		sys.wait( 1 );
+		radioChatterPlayWait($func_radiochatter_1, "vo_tak_boosting");
+	}
+	
+	void unlockBayDoorTeam3()
+	{
+		$baydoor5.lock( 0 );
+		$baydoor6.lock( 0 );
+		sys.wait( 1 );
+		sys.trigger( $func_savegame_1 );
+	}
+	
+	
+	void lockBayDoorou812()
+	{
+		$ou812_1.lock( 1 );
+		$ou812_2.lock( 1 );
+		radioChatterPlayWait($func_radiochatter_1, "vo_marine1_runnout");
+	}
+
+	void bomberExplode_2()
+	{
+		stroggFlyerExplosion( $strafingFlyer_2 , $flyerStrafeExplode_2 );
+	}
+	
+	void beginBomberRun_2()
+	{
+		//	sys.println("void beginBomberRun_2");
+
+		sys.wait( 1 );
+		setNewTimes($strafeBase_2, 12, 0, 0);
+   		$strafeBase_2.startSpline($bomber_spline_2);
+	
+		sys.wait(2);
+
+		if (!isValidEntity($strafingFlyer_2)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		whoLetTheDogsOut( $strafingFlyer_2, $strafingFlyer_2.getTarget(0), $strafingFlyer_2.getTarget(1), 3 );
+
+		sys.wait(1);
+
+		if (!isValidEntity($strafingFlyer_2)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		whoLetTheDogsOut( $strafingFlyer_2, $strafingFlyer_2.getTarget(0), $strafingFlyer_2.getTarget(1), 1 );
+	
+		sys.wait(1);
+		
+		if (!isValidEntity($strafingFlyer_2)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		whoLetTheDogsOut( $strafingFlyer_2, $strafingFlyer_2.getTarget(0), $strafingFlyer_2.getTarget(1), 1 );
+	
+		sys.wait(1);
+		
+
+		if (!isValidEntity($strafingFlyer_2)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		whoLetTheDogsOut( $strafingFlyer_2, $strafingFlyer_2.getTarget(0), $strafingFlyer_2.getTarget(1), 1 );
+
+		sys.wait(1.75);
+
+		if (!isValidEntity($strafingFlyer_2)) // make sure it hasn't been destroyed before manipulating it
+		return;
+		sys.trigger($strafeSnd_1);
+
+		sys.waitFor( $strafeBase_2 );
+		removeFlyerBits("1");	
+	}
+	
+	void lockBayDoorTeam3()
+	{
+		$baydoor5.lock( 1 );
+		$baydoor6.lock( 1 );
+		sys.wait( 3 );
+		radioChatterPlayWait($func_radiochatter_1, "vo_darn_haulassdeklk");
+	}
+	
+	void unlockExitDoors()
+	{
+		$race1_exitdoorE.lock( 0 );
+		$race1_exitdoorW.lock( 0 );
+
+	}
+	
+	//moves one flyer sprite across the sky over the trenches
+	void maintainStroggFlyerSprite(entity entMover, entity fxNormal, entity fxDamage, entity entHangar, entity entTgrEnd, vector vDirection)
+	{	
+		sys.wait( sys.random(10) );
+		
+		//will the planes be swervey?
+		float fSwerve = 0;
+		float fWaitTime = 0;
+		float fAmplitude = 0;
+	
+		while(1)	{
+	
+			//place the mover on the "hangar" line, equal in the X but displaced in the Y by +/- ___ units
+	
+			// +/- Y displacement
+			float fDisplacementMax = 2000;
+			float fDelta = 0;
+	
+			//start location for the flyer
+			vector vStart = entHangar.getWorldOrigin();
+			vector vSpeed = '0 0 0';
+			vector vAngs;
+	
+			//flyer speed
+			float fSpeed = 900 + (sys.random(600));
+	
+			//will the plane be swervey?
+			if ( 1 ) {//sys.random(10) < 4)	{
+				fSwerve = sys.random(200) + 100;
+				fAmplitude = sys.random(90) + 30;
+			}
+			else	{
+				fSwerve = 0;
+				fAmplitude = 0;
+			}
+	
+			//stop the flyer-- move him into position after we figure out where he goes.
+			entMover.setLinearVelocity( '0 0 0');
+	
+			//mathery mcmath
+			fDelta = (0 - fDisplacementMax + sys.random( fDisplacementMax * 2));
+			vStart_y += fDelta;
+	
+			//faster planes sit lower in the sky
+			//vStart_z += (fSpeed / 10);
+	
+			//move to position
+			entMover.setWorldOrigin( vStart );
+			//sys.print("starting at: ");
+			//printVector(vStart);
+			sys.waitFrame();
+			
+			//set the direction as speed
+			vSpeed = vDirection * fSpeed;	
+			vSpeed_z = 0;
+	
+			// set initial angle in case this is a non-swerving dude..
+			vAngs = sys.VecToAngles(vSpeed);
+			entMover.setAngles(vAngs);
+		
+			//first loop flies up,
+			//fWaitTime = sys.getTime() + 4 + sys.random(3);
+			fWaitTime = sys.getTime() +  sys.random(2.5);
+		
+			//turn on the regular plane, turn off the alternate
+			fxNormal.start();
+			fxDamage.stop();	
+			
+			//sys.println("Start flight!");
+			while( sys.getTime() < fWaitTime)	{
+				//fly!
+				entMover.setLinearVelocity( vSpeed);
+	
+				//swerve if need be
+				if( fSwerve != 0)	{
+					vSpeed_y = sys.sin( sys.getTime() * fAmplitude ) *  fSwerve;
+	
+					// update facing so effects can draw properly
+					vAngs = sys.VecToAngles(vSpeed);
+					entMover.setAngles(vAngs);
+					//sys.println(" swerve = " + vSpeed_y);
+				}
+	
+				//if somehow the ship has escaped the skybox, break
+				if( entMover.touches( entTgrEnd))	{
+					//sys.println("early end!");
+					break;
+				}
+				//decend on the way out
+				sys.waitFrame();
+			}
+	
+			//second loop, descend.
+			//vSpeed_z *= -1;
+			vSpeed_z = 0;
+	
+			if(sys.random(20) < 2)
+			{
+				//sys.println("Damaged!");
+	
+				//slow down and fly off course, descend faster
+				vSpeed_x *= 0.25;
+				if (vSpeed_y < 10 && vSpeed_y > -10)	{
+					vSpeed_y += ( -800 + sys.random(1600));
+				} else	{
+					vSpeed_y *= 4;
+				}
+				vSpeed_z *= 1.25;
+	
+				//no more swerving
+				fSwerve = 0;
+	
+				//switch to damaged effect, and explode
+				fxNormal.stop();
+				fxDamage.start();
+				$fx_flyer_damage.setWorldOrigin( entMover.getWorldOrigin() );
+				sys.trigger( $fx_flyer_damage);
+			}
+			
+			fWaitTime = sys.getTime() +  5;
+	
+			//after the possible damage time, remove once the ship has left the skybox
+			while( (sys.getTime() < fWaitTime) && ( !entMover.touches( entTgrEnd))  )	{
+				//fly!
+				entMover.setLinearVelocity( vSpeed);
+	
+				//swerve if need be
+				if( fSwerve != 0)	{
+					vSpeed_y = sys.sin( sys.getTime() * fAmplitude ) *  fSwerve;
+					// update facing so effects can draw properly
+					vAngs = sys.VecToAngles(vSpeed);
+					entMover.setAngles(vAngs);
+					//sys.println(" swerve = " + vSpeed_y);
+				}
+	
+				//decend on the way out
+				sys.waitFrame();
+			}
+			
+			//sys.println("End!");
+			//run it back!	
+		}
+	
+		
+	
+	}
+	
+	void main()
+	{
+		sys.wait( 0.1 );
+		thread startYourEngines();
+		
+		sys.wait( 0.1 );
+		thread moveThosePipes();
+		
+		sys.wait( 0.1 );
+		thread spinPipeReamer1();
+		
+		sys.wait( 0.1 );
+		thread spinPipeReamer2();
+		
+		//CHATTER1 = false;
+		//CHATTER2 = false;
+		//CHATTER3 = false;
+		//CHATTER4 = false;
+		//CHATTER5 = false;
+		//CHATTER6 = false;
+		//CHATTER7 = false;
+		//CHATTER8 = false;
+		//CHATTER9 = false;
+		//CHATTER10 = false;
+		//CHATTER11 = false;
+		//CHATTER12 = false;
+		//CHATTER13 = false;
+		
+			//strogg vs marine airpower go!
+	entity entFlyer;
+	float t;
+	
+	//originally, there were six planes per side. Now we're using 2, and that might change too. But the
+	//+6 for the 3rd parameter is because originally the damaged versions of the sprites started at 7.
+
+	for (t = 1; t <= 6; t++)	{
+		thread maintainStroggFlyerSprite( sys.getEntity("mvr_fx_strogg_flyer_" + t), sys.getEntity("fx_air_strogg_fighter_" + t), sys.getEntity("fx_air_strogg_fighter_" + (t + 6) ), $tgt_strogg_flyer_hangar, $tgr_strogg_flyer_end, '-1 0 .1' );
+		thread maintainStroggFlyerSprite( sys.getEntity("mvr_fx_marine_flyer_" + t), sys.getEntity("fx_air_marine_fighter_" + t), sys.getEntity("fx_air_marine_fighter_" + (t + 6) ), $tgt_marine_flyer_hangar, $tgr_marine_flyer_end, '1 0 .1' );
+	}
+	}
+

@@ -1,0 +1,203 @@
+windowDef Desktop
+{
+	rect	0,0,640,480
+	definevec4	"one"	1,1,1,1
+	definevec4	"zero"	0,0,0,0
+	definevec4	"t_on"	0.937,0.760,0.239,0.8
+	definevec4	"t_off"	0.937,0.760,0.239,0
+	windowDef bg
+	{
+		rect	0,0,640,480
+		visible	1
+		background	"gfx/guis/common/strogg/wsign_bg"
+		matcolor	1,1,1,1
+	}
+	windowDef d_map
+	{
+		rect	320,0,320,480
+		visible	0
+		background	"gfx/guis/common/strogg/wsign_map"
+		matcolor	1,1,1,1
+	}
+	windowDef map
+	{
+		rect	320,0,320,480
+		visible	1
+		background	"gfx/guis/common/strogg/wsign_map"
+		matcolor	1,1,1,1
+	}
+	windowDef decal
+	{
+		rect	29,-109,116,676
+		visible	1
+		background	"gfx/guis/common/strogg/decal"
+		matcolor	1,1,1,.52
+	}
+	windowDef d_red
+	{
+		rect	524,138,40,239
+		visible	0
+		background	"gfx/guis/common/strogg/wsign_red"
+		matcolor	1,1,1,1
+	}
+	windowDef red
+	{
+		rect	524,138,40,239
+		visible	1
+		background	"gfx/guis/common/strogg/wsign_red"
+		matcolor	1,1,1,1
+	}
+	windowDef d_sline2
+	{
+		rect	0,-799,640,800
+		visible	0
+		background	"gfx/guis/common/gradient"
+		matcolor	0.815,0.592,0.258,0.3
+	}
+	windowDef sline2
+	{
+		rect	0,444,640,800
+		visible	1
+		background	"gfx/guis/common/gradient"
+		matcolor	0.929,0.784,0.439,0.498
+	}
+	windowDef header
+	{
+		rect	0,0,640,480
+		visible	1
+		forecolor	0.921,0.643,0.0784,1*guitable_random1[time*0.0004]
+		text	"#str_200373"
+		textscale	0.2
+		font	"fonts/r_strogg"
+		forceaspectheight	80
+		textalign	1
+		textalignx	40
+		textaligny	-2
+	}
+	windowDef t1
+	{
+		rect	0,0,640,480
+		visible	1
+		forecolor	0.933,0.756,0.235,0.8
+		text	"#str_200374"
+		textscale	0.54
+		forceaspectheight	65
+		textalign	1
+		textalignx	-45
+		textaligny	8
+		font	"fonts/r_strogg"
+	}
+	windowDef t1a
+	{
+		rect	0,0,640,480
+		visible	1
+		forecolor	0.937,0.760,0.239,0.8
+		text	"#str_200370"
+		textscale	0.54
+		font	"fonts/r_strogg"
+		forceaspectheight	60
+		textalign	1
+		textalignx	-14
+		textaligny	27
+	}
+	windowDef t2
+	{
+		rect	0,0,640,480
+		visible	1
+		forecolor	0.937,0.760,0.239,0
+		text	"#str_200375"
+		textscale	0.7
+		forceaspectheight	65
+		textalign	1
+		textalignx	60
+		textaligny	14
+		font	"fonts/r_strogg"
+	}
+	windowDef t3
+	{
+		rect	0,0,640,480
+		visible	1
+		forecolor	0.937,0.760,0.239,0
+		text	"#str_200376"
+		textscale	0.7
+		forceaspectheight	65
+		textalign	1
+		textalignx	60
+		textaligny	14
+		font	"fonts/r_strogg"
+	}
+	windowDef topstuff
+	{
+		visible	1
+		rect	0,0,640,480
+		windowDef static
+		{
+			visible	1
+			rect	0,-393,640,1267
+			background	"gfx/guis/common/img_static3"
+			matcolor	1,1,1,0.1
+		}
+		windowDef sline
+		{
+			rect	-201,0,1010,680
+			visible	1
+			background	"gfx/guis/common/monitor_line5"
+			matcolor	1,1,1,1
+		}
+		windowDef blackfade
+		{
+			rect	0,0,640,480
+			visible	1
+			backcolor	0,0,0,.3*guitable_8_5[time*0.002]
+		}
+		windowDef monitor_darkedge2
+		{
+			visible	1
+			rect	0,0,640,480
+			background	"gfx/guis/common/monitor_darkedge2"
+			matcolor	0,0,0,1
+		}
+	}
+	windowDef anims
+	{
+		rect	0,0,1,1
+		visible	1
+		notime	0
+
+		onTime 4000 {
+			transition "t1::forecolor" "$desktop::t_on" "$desktop::t_off" "250" ;
+			transition "t1a::forecolor" "$desktop::t_on" "$desktop::t_off" "250" ;
+			transition "red::matcolor" "$desktop::one" "$desktop::zero" "250" ;
+			transition "map::matcolor" "$desktop::one" "$desktop::zero" "250" ;
+			transition "sline2::rect" "$sline2::rect" "$d_sline2::rect" "500" ;
+		}
+
+		onTime 4250 {
+			transition "t2::forecolor" "$desktop::t_off" "$desktop::t_on" "250" ;
+		}
+
+		onTime 8500 {
+			transition "t2::forecolor" "$desktop::t_on" "$desktop::t_off" "250" ;
+			transition "sline2::rect" "$sline2::rect" "$d_sline2::rect" "500" ;
+		}
+
+		onTime 8750 {
+			transition "t3::forecolor" "$desktop::t_off" "$desktop::t_on" "250" ;
+		}
+
+		onTime 13000 {
+			transition "t3::forecolor" "$desktop::t_on" "$desktop::t_off" "250" ;
+			transition "sline2::rect" "$sline2::rect" "$d_sline2::rect" "500" ;
+		}
+
+		onTime 13250 {
+			resettime "0" ;
+			
+			transition "t1::forecolor" "$desktop::t_off" "$desktop::t_on" "250" ;
+			transition "t1a::forecolor" "$desktop::t_off" "$desktop::t_on" "250" ;
+			transition "red::matcolor" "$desktop::zero" "$desktop::one" "250" ;
+			transition "map::matcolor" "$desktop::zero" "$desktop::one" "250" ;
+		}
+
+	}
+}

@@ -1,0 +1,1701 @@
+//---------------------------------------------------------------------------------------
+// map_m05.script
+//
+// (c) Ritual 2005
+//	-Tetrad
+//---------------------------------------------------------------------------------------
+#include "scripts/doom_defs.script"
+
+namespace map_m05 {
+
+	// debug I-don't-want-to-play-through-the-entire-level-to-test-something variables
+	// FOR THE LOVE OF GOD AND ALL THAT IS HOLY SET THESE TO ZERO FOR SHIP
+	float CUT_THE_CRAP = 0; 
+	float DISABLE_QUICKSAVES = 0;
+	// okay back to normal now
+	
+	float TAK_CAN_TALK = 1;
+	float TAK_HAS_TALKED = 0;
+	float REDSHIRT2_NEED_TELEPORT = 1;
+	float PLAYER_TOOK_OUT_GENERATOR = 0;
+
+	// function prototypes (not a complete list mind you)
+	void getOnFreightElevator();
+	void freightElevTop();
+	
+	void startFloorLightGroup1();
+	void startFloorLightGroup2();
+	void startFloorLightGroup3();
+	void startFloorLightGroup4();
+	
+	void radioBattle1();
+	void radioBattle2();
+	
+	//helper function prototypes
+	void moveFaceWait(entity mover, entity location, entity target);
+	
+	
+	//--------------------------------------------------------------------------
+	// FUNCTION DEFINITONS
+	// (here there be code)
+	//--------------------------------------------------------------------------
+
+	
+	//--------------------------------------------------------------------------
+	// Level spawns, player's going down the big elevator
+	//--------------------------------------------------------------------------
+	void extendInitialBridge()
+	{
+		sys.wait( 21 );
+		
+		$drawbridge_origin1_1.time(9);
+		$drawbridge_origin1_1.accelTime(4);
+		$drawbridge_origin1_1.decelTime(4);
+	
+		$drawbridge_origin2_1.time(9);
+		$drawbridge_origin2_1.accelTime(3);
+		$drawbridge_origin2_1.decelTime(6);
+	
+		$drawbridge_origin1_1.rotateOnce( '-80 0 0' );
+		$drawbridge_origin2_1.rotateOnce( '180 0 0' );
+	
+		sys.waitFor($drawbridge_origin2_1);
+	}
+	
+	void goingDown()
+	{		
+		sys.trigger( $introMusic );
+		
+		$redshirt1.lookAt( $redshirt2 );
+		
+		$redshirt1.setTalkState( TALK_WAIT );
+		$redshirt2.setTalkState( TALK_WAIT );
+		
+		$redshirt1.disableHeal();
+		$redshirt2.disableHeal();
+		
+		aiScriptedAnimLoop( $redshirt2, "Hub_elev_2", 4 );
+		
+		sys.println("map_m05::goingDown()");
+		$elevator1mover.accelTime(0);
+		$elevator1mover.decelTime(1);
+		$elevator1mover.time(30);
+		$elevator1mover.moveTo( $tar_el_move_here );
+		thread extendInitialBridge();
+		
+		sys.wait(10);
+		sys.trigger( $introscream );
+		aiScriptedAnim( $redshirt1, "idle_startled_1", 4, 1 );
+		
+		sys.wait( 3 );
+		
+		$redshirt1.lookAt( $redshirt2 );
+		aiSpeakWait( $redshirt2, "lipsync_mitch_whathelldo" );
+		$redshirt2.lookAt( $redshirt1 );
+		aiSpeakWait( $redshirt1, "lipsync_fox5_dntwntknw" );
+		sys.wait(1.5);
+		sys.trigger( $introscream2 ); // nooooooo
+		sys.wait( 4.5 );
+		$redshirt1.lookAt( $redshirt2 );
+		aiSpeakWait( $redshirt2, "lipsync_mitch_youheartht" );
+		$redshirt2.lookAt( $redshirt1 );
+		aiSpeakWait( $redshirt1, "lipsync_fox5_weallhrd" );
+		sys.wait(.5);
+		$redshirt1.lookAt( $redshirt2 );
+		aiSpeakWait( $redshirt2, "lipsync_mitch_thatsndmar" );
+		$redshirt2.lookAt( $redshirt1 );
+		aiSpeakWait( $redshirt1, "lipsync_fox5_shutup" );
+		$redshirt1.lookAt( $redshirt2 );
+		aiSpeakWait( $redshirt2, "lipsync_mitch_butthose" );
+		$redshirt2.lookAt( $redshirt1 );
+		aiSpeakWait( $redshirt1, "lipsync_fox5_saidshutp" );
+		
+		sys.waitFor( $elevator1mover );
+		aiScriptedStop( $redshirt1 );
+		aiScriptedStop( $redshirt2 );
+		
+		sys.trigger( $obj0 );
+		sys.trigger( $target_objectivebeacon_1 );
+		
+		$redshirt1.enableHeal();
+		$redshirt2.enableHeal();
+		$redshirt1.lookAt( $null_entity );
+		$redshirt2.lookAt( $null_entity );
+		$redshirt1.setTalkState( TALK_OK );
+		$redshirt2.setTalkState( TALK_OK );
+		
+		thread moveFaceWait( $redshirt2, $tar_move_tak_here, $tar_teammates_face_me_el1 );
+		sys.wait( 1.5 );
+		thread moveFaceWait( $redshirt1, $tar_move_darnell_here, $tar_teammates_face_me_el1 );
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// Stuff happens when they kill those little dudes
+	//--------------------------------------------------------------------------
+	void seeSlimies()
+	{
+		aiSpeakWait( $redshirt2, "lipsync_mitch_whathell" ); // what the hell
+		$redshirt2.flashlight( 1 );
+		$redshirt2.startSound( "snd_flashlight", SND_CHANNEL_ANY, 1);
+		sys.wait(.5);
+		aiSpeakWait( $redshirt1, "lipsync_fox5_whatmatt" ); // afraid of the dark?
+		aiSpeakWait( $redshirt2, "lipsync_mitch_nahafraid" ); 
+		
+		$redshirt1.flashlight( 1 );
+		$redshirt1.startSound( "snd_flashlight", SND_CHANNEL_ANY, 1);
+		sys.trigger( $trigger_relay_firstenemies );
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// When the room is cleared, somebody says we need to get up there
+	//--------------------------------------------------------------------------
+	void toalsonIsSmart()
+	{
+		aiScriptedMoveWait( $redshirt1, $tar_toalson_jumpdown, 4, 0 );
+		aiScriptedFaceWait( $redshirt1, $scanUnitConsole, 0 );
+		
+		aiScriptedAnimWait( $redshirt1, "idle_weapon_3_start", 4, 0 );
+		aiScriptedAnimLoop( $redshirt1, "idle_weapon_3_loop", 4 );
+		$redshirt1.lookAt( $func_door_68 );
+		sys.wait( 1.5 );
+		aiSpeakWait( $redshirt1, "lipsync_fox5_theoverr" );
+		$redshirt1.lookAt( $func_static_12052 );
+		sys.wait( 1.5 );
+		
+		aiSpeakWait( $redshirt1, "lipsync_fox5_heyover" );
+		aiScriptedAnimWait( $redshirt1, "idle_weapon_3_end", 4, 0 );
+		aiSpeak( $redshirt1, "lipsync_fox5_thresupp" );
+		aiScriptedAnimWait( $redshirt1, "point_down", 4, 1 );
+	}
+		
+	void getUpThere()
+	{
+		$redshirt1.setLeader( $null_entity );
+		$redshirt2.setLeader( $null_entity );
+		$redshirt1.becomePassive( 1 );
+		
+		aiScriptedMove( $redshirt2, $tar_darnell_a_4, 5, 1 );
+		thread toalsonIsSmart();
+		
+		sys.wait( 1.5 );
+		aiSpeakWait( $redshirt2, "lipsync_mitch_wegonna" );
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// Player uses a console to shut down the forcefield, but enables the 
+	// security system
+	//--------------------------------------------------------------------------
+	void nudgePlayer()
+	{
+		sys.wait( 2 );
+		if ( !PLAYER_TOOK_OUT_GENERATOR )
+		{
+			radioChatterPlayWait( $func_radiochatter_cin_1, "vo_mitch_thereexhaust" ); 
+		}
+		else
+		{
+			return;
+		}
+		sys.wait( 8 );
+		if ( !PLAYER_TOOK_OUT_GENERATOR )
+		{
+			radioChatterPlayWait( $func_radiochatter_cin_1, "vo_mitch_deklookex" ); 
+		}
+		else
+		{
+			return;
+		}
+		sys.wait( 8 );
+		if ( !PLAYER_TOOK_OUT_GENERATOR )
+		{
+			radioChatterPlayWait( $func_radiochatter_cin_1, "vo_mitch_dektryblow" ); 
+		}
+		else
+		{
+			return;
+		}
+	}
+	
+	void unlockInterrDoor()
+	{
+		
+		PLAYER_TOOK_OUT_GENERATOR = 1;
+		$func_static_53895.hide();
+		
+		float i = 0;
+		float t;
+		
+		// TODO: would be cooler to just have it fade out or do some cool shut-off
+		//	sequence.  For now, just adding a bit of flicker to the process
+		for ( i; i < 6; i++ )
+		{
+			t = sys.random(0.1) + 0.05;
+			
+			$scannerForceField.Toggle();
+			$scannerForceField.hide();
+			sys.wait(t);
+			$scannerForceField.Toggle();
+			$scannerForceField.show();
+			sys.wait(0.05);
+		}
+		$func_fx_658.remove();
+		$func_fx_659.remove();
+		
+		
+		$scannerForceField.hide();
+		$scannerForceField.Toggle();
+		
+		radioChatterPlayWait( $func_radiochatter_cin_1, "vo_mitch_fieldgen" ); // gj dekard
+	}
+
+	
+	//-------------------------------------------------------------------
+	// Guy doesn't know what the fuck
+	//-------------------------------------------------------------------
+	void throwGuy()
+	{
+		sys.trigger( $throwingGrunt );
+		//sys.trigger( $gruntintro_speaker ); // WHY DON'T YOU WORK
+		sys.setCamera( $gruntintro_camera );
+		
+		aiScriptedAnimWait( $throwingGrunt, "anger1", 4, 1 );
+		
+		$player1.setViewAngles ( '0 180 0' );
+		sys.firstPerson();
+		
+		aiSpeak( $redshirt1, "lipsync_fox5_incom" );
+		radioChatterPlay( $func_radiochatter_cin_1, "vo_fox5_incom" ); // "incoming strogg!"
+		
+		$breakawayGlass.hide(); // TEMP
+		$redshirt1.hide();
+		$glassMarine.show();
+		//$glassMarine.becomeNonSolid();
+	
+		aiSpeak( $glassMarine, "lipsync_fox5_arrg" );
+		aiScriptedAnimWait( $glassMarine, "prison_glass", 4, 0 );
+		$glassMarine.disableBlinking();
+		$glassMarine.setTalkState( TALK_NEVER );
+		$glassMarine.becomeNonSolid();
+		aiScriptedAnimLoop( $glassMarine, "prison_glass_idle", 4 );
+		
+		sys.trigger( $trigger_relay_throwingguy );
+	}
+	
+	void mitchellMourns()
+	{
+		aiSpeak( $redshirt2, "lipsync_mitch_damnmarst" );
+	}
+	
+	
+	//-------------------------------------------------------------------
+	// The forcefield is down, but the scanning unit remains active...
+	//-------------------------------------------------------------------
+	void scanMe()
+	{
+		$redshirt2.setLeader( $player1 );
+		
+		$scanningUnitLasers.time(.75);
+		$scanningUnitLasers.accelTime(.25);
+		$scanningUnitLasers.decelTime(0);
+		
+		$scanningUnitLaser_1.start();
+		$scanningUnitLaser_2.start();
+		$scanningUnitLaser_3.start();
+		$scanningUnitLaser_4.start();
+		$scanningUnitLaser_5.start();
+		$scanningUnitLaser_6.start();
+		
+		$scanningUnitLaser_1.startSound("snd_scan", SND_CHANNEL_ANY, 0);
+		
+		$scanningUnitLasers.moveTo( $scanningUnitLasersTarget );
+		sys.waitFor($scanningUnitLasers);
+
+		$scanUnitAlarm.activate($player1);
+		$scanUnitAlarmLight.On();
+		$scanUnitAlarmFx.activate($player1);
+		$alarmSound1.activate($player1);
+				
+		$scanningUnitLaser_1.startSound("snd_scan", SND_CHANNEL_ANY, 0);
+		
+		$scanningUnitLasers.moveTo( $scanningUnitLasersOrigin );
+		sys.waitFor($scanningUnitLasers);
+		
+		$scanningUnitLaser_1.stopSound(SND_CHANNEL_ANY, 0);
+		
+		$scanningUnitLaser_1.stop();
+		$scanningUnitLaser_2.stop();
+		$scanningUnitLaser_3.stop();
+		$scanningUnitLaser_4.stop();
+		$scanningUnitLaser_5.stop();
+		$scanningUnitLaser_6.stop();
+
+		$func_static_14064.setColor(1,0,0);
+		$func_static_14063.setColor(1,0,0);
+		$light_5015.setColor(.75,0,0);
+		
+		$railTurret1_Mover.time( 1 );
+		$light_5015.Off();
+		$railTurret1_Mover.moveTo( $target_railturret_position );
+		sys.waitFor( $railTurret1_Mover );
+		
+		$scanUnitTurret.becomeAggressive();
+		$scanUnitTurret.enableTarget();
+		
+		sys.wait(.5); // then the guy comes out
+		sys.trigger( $grunty_1 );
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// random YAY LET'S HOLD THE PLAYER IN PLACE stuff
+	//--------------------------------------------------------------------------
+	void slowDoor()
+	{
+		$door_gui.setGuiParm( "noninteractive", "1" );
+		$func_mover_19.time( 30 );
+		$func_mover_19.moveTo( $tar_slimey_door_top );
+		sys.wait( 25 );
+		sys.trigger( $func_aas_obstacle_9 );
+	}
+
+	
+	//-------------------------------------------------------------------
+	// Player hits the trigger on elevator 2, guys follow
+	//-------------------------------------------------------------------
+	void getGuysOnEl2()
+	{
+		$redshirt2.setMoveSpeed( AIMOVESPEED_DEFAULT );
+		aiScriptedMoveWait( $redshirt2, $tar_redshirt1_el2, 6, 0 );
+
+		$elevator2.setGuiParm( "noninteractive", "0" );
+	}
+
+	
+	//-------------------------------------------------------------------
+	// Player hits the trigger on elevator 2, guys get out of the way
+	//-------------------------------------------------------------------
+	void getGuysOffEl2()
+	{
+		aiScriptedAnimLoop( $spireretch, "bio_flesh_spire", 4 );
+		aiScriptedAnimLoop( $spirescientist, "work_on_human3_loop", 4 );
+		
+		$redshirt2.setLeader( $null_entity );
+		
+		if ( !DISABLE_QUICKSAVES )
+		{
+			sys.trigger( $func_savegame_1 );
+		}
+
+		aiScriptedMoveWait( $redshirt2, $temp_cin_el2_move_redshirt2_here, 5, 1 );
+		
+		if ( REDSHIRT2_NEED_TELEPORT == 0 ) 
+		{
+			aiSpeakWait( $redshirt2, "lipsync_mitch_whatdonestrg" );
+			$redshirt2.setLeader( $player1 );
+		}
+	}
+	
+		
+	//-------------------------------------------------------------------
+	// Check before elevator finishes descent as to whether the guys are on it
+	//-------------------------------------------------------------------
+	void rs2OnEl2()
+	{
+		sys.println("redshirt2 okay");
+		REDSHIRT2_NEED_TELEPORT = 0;
+	}
+	
+	
+	//----------------------------------------------------------------------------------
+	// meeting up with the bridge squad guys
+	//----------------------------------------------------------------------------------
+	void radioCall()
+	{
+		radioChatterPlayWait( $func_radiochatter_ancillary, "vo_viper1_johnvip" );
+	}
+
+	void dieStrogg()
+	{
+		aiSpeak( $squadx1, "lipsync_viper1_diestrgg" );	
+	}
+	
+	void setupTech()
+	{
+		aiScriptedAnimLoop( $squadx2, "and_stimpack2b_loop", 4 );
+		aiSpeak( $squadx1, "lipsync_viper1_philipmed" );
+		$squadx2.disableHeal();
+	}
+	
+	void theirGuyMoves()
+	{
+		aiScriptedMoveWait( $squadx1, $theirguy, 4, 0 );
+		aiScriptedFaceWait( $squadx1, $squadx2, 0 );
+		$squadx1.lookAt( $redshirt2 );
+		aiScriptedAnimWait( $squadx1, "idle_weapon_3_start", 4, 0 );
+		aiScriptedAnimLoop( $squadx1, "idle_weapon_3_loop", 4 );
+		
+		$squadx1.setTalkState( TALK_OK );
+	}
+		
+	void meetSquad()
+	{
+		aiScriptedMove( $redshirt2, $mitchell_spot_precatacombs, 4, 0 );
+		
+		sys.wait( .5 );
+		// see the dude outside after he kills that strogg
+		$squadx1.becomePassive( 1 );
+		$squadx1.lookAt( $player1 );
+		
+		aiSpeakWait( $squadx1, "lipsync_viper1_johngld" );
+		$redshirt2.lookAt( $squadx1 );
+		aiSpeakWait( $redshirt2, "lipsync_mitch_mitchhowget" );
+		$squadx1.lookAt( $redshirt2 );
+		aiSpeakWait( $squadx1, "lipsync_viper1_weweresq" );
+		$squadx1.lookAt( $player1 );
+		aiScriptedAnim( $squadx1, "point_back", 4, 0 );
+		aiSpeakWait( $squadx1, "lipsync_viper1_cometech" );
+		
+		sys.trigger( $trigger_once_22 );
+		$func_door_14.lock( 0 );
+		
+		// moving to the tech
+		thread theirGuyMoves();
+		aiScriptedMoveWait( $redshirt2, $yourguy, 4, 0 );
+		$redshirt2.setOrigin( $yourguy.getOrigin() );
+		$redshirt2.setAngles( $yourguy.getAngles() );
+
+		aiScriptedAnimWait( $redshirt2, "medic_treating_player_start", 4, 0 );
+		aiScriptedAnimLoop( $redshirt2, "medic_treating_player", 4 ); // BREAKS THINGS
+		
+		sys.wait(2.75);
+		// pulls out a syringe
+		aiSpeak( $redshirt2, "lipsync_mitch_somestim" );
+		$squadx1.lookAt( $redshirt2 );
+		sys.wait(3);
+		
+		// INSERT TRANSITIONAL ANIMS HERE
+		
+		// tech's healed, time to move out
+		$squadx1.lookAt( $squadx2 );
+		aiScriptedAnim( $squadx2, "idle_stretching_3", 4, 0 );
+		aiScriptedAnim( $redshirt2, "medic_treating_player_end", 4, 1 );
+		aiSpeakWait( $squadx2, "lipsync_viper2_goodtogo" );
+		aiSpeakWait( $squadx2, "lipsync_viper2_twodoorsld" );
+		$squadx2.enableHeal();
+		sys.wait(0.5);
+		aiScriptedAnim( $squadx1, "idle_weapon_3_end", 4, 0 );
+		aiSpeakWait( $squadx1, "lipsync_viper1_letsgo" );
+		
+		$squadx1.becomeAggressive();
+		aiScriptedMove( $squadx1, $squadx1_1, 4, 1 );
+		aiScriptedMove( $redshirt2, $mitchell_spot_precatacombs, 4, 1 );
+		sys.wait( 1.5 );
+		aiScriptedMoveWait( $squadx2, $squadx2_1, 4, 0 );
+		
+		// tech opening a locked door
+		$squadx2.disableHeal();
+		aiScriptedMoveWait( $squadx2, $squadx2lockedDoorLoc, 4, 0 );
+		aiScriptedAnim( $squadx2, "point_forward", 16, 1 );
+		sys.wait( 1.6 );
+		$func_door_26.lock( 0 );
+		$func_door_27.lock( 0 );
+		$cortez_door_locked.hide();		//gui locked
+		$cortez_door_unlocked.show();	//gui unlocked
+		sys.trigger( $storageRoomEnemies );
+		$squadx2.enableHeal();
+		//sys.println( "WAITING ON YOU SIR" );
+		$squadx2.setTalkState( TALK_OK );
+	}
+	
+	
+	//----------------------------------------------------------------------------------
+	// The firefight with the bridge squad guys
+	//----------------------------------------------------------------------------------
+	void moveTechIntoPositionDialog()
+	{
+		aiSpeakWait( $squadx2, "lipsync_viper2_accbrid" );
+		sys.wait( 2 );
+		aiSpeakWait( $squadx2, "lipsync_viper2_takelong" );
+	}
+	
+	void moveTechIntoPosition()
+	{
+		$squadx2.disableHeal();
+		aiScriptedMoveWait( $squadx2, $squadx2_2, 4, 0 );
+		aiScriptedFaceWait( $squadx2, $squadx2_2face, 0 );
+		thread moveTechIntoPositionDialog();
+		aiScriptedAnimWait( $squadx2, "cine_console_stand_start", 4, 0 );
+		aiScriptedAnimLoop( $squadx2, "cine_console_stand_loop", 4 );
+	}
+	
+	void goingIn()
+	{
+		sys.wait( 1.8 );
+		$redshirt2.setLeader( $null_entity );
+		sys.trigger( $tetherTargets );		
+	}
+	
+	void droppyDowny()
+	{
+		sys.trigger( $storageMetalPlate_1 );
+		sys.trigger( $storageMetalPlate_2 );
+		sys.trigger( $storageMetalPlate_3 );
+		sys.trigger( $storageMetalPlate_4 );
+		sys.trigger( $storageDropDown_1 );
+	}
+	
+	void startAlamoSequence()
+	{
+		sys.trigger( $relay_alamo_wave_1 );
+		
+		sys.wait( 3 );
+		aiSpeakWait( $squadx1, "lipsync_viper1_diesqb" );
+	}
+	
+	void areaSecure() // initial guys are dead...
+	{
+		float techThread;
+		techThread = thread moveTechIntoPosition();
+		sys.wait( 2 );
+		sys.waitForThread( techThread );
+		sys.wait( 2 );
+		thread startAlamoSequence();
+	}
+	
+	void gladiatorOut()
+	{
+		sys.wait( 2 );
+		aiSpeak( $squadx1, "lipsync_viper1_whthell" );
+	}
+	
+	
+	//----------------------------------------------------------------------------------
+	// Firefire over, debriefing and handing the player a weapon mod
+	//----------------------------------------------------------------------------------
+	void areaReallySecure()
+	{
+		aiScriptedAnimWait( $squadx2, "cine_console_stand_end", 4, 1 );
+		$squadx2.lookAt( $player1 );
+		aiScriptedFaceWait( $squadx2, $player1, 0 );
+		aiSpeakWait( $squadx2, "lipsync_viper2_bridgeext" );
+		aiSpeakWait( $squadx2, "lipsync_viper2_napalm" );
+		sys.trigger( $alamoDebriefingTrig );
+	}
+
+	void alamoDebriefing()
+	{
+		$squadx2.hideSurface("models/weapons/mp_guns/w_mg_lo");
+		$player1.selectWeapon( "weapon_goobgun" );
+		aiScriptedFaceWait( $squadx2, $player1, 0 );
+		aiScriptedAnimWait( $squadx2, "recomp_mod_hyper", 8, 1 );
+		$squadx2.showSurface("models/weapons/mp_guns/w_mg_lo");
+		sys.trigger( $flameModSnd );
+		sys.trigger( $giveFire );
+		aiSpeakWait( $squadx2, "lipsync_viper2_therezoom" );
+		aiSpeakWait( $squadx2, "lipsync_viper2_staybeh" );
+		$squadx2.enableHeal();
+		$bridge_gui_2_fake.hide();
+		$bridge_gui_2_real.show();
+ 		$redshirt2.setLeader( $player1 );
+		sys.trigger( $unteatherYourGuy );
+	}
+	 
+
+	//----------------------------------------------------------------------------------
+	// Seeing a random stream protector walking by
+	//----------------------------------------------------------------------------------
+	void moveStreamProtector()
+	{
+		$monster_stream_protector_1.setMoveSpeed( AIMOVESPEED_WALK );
+		aiScriptedMoveWait( $monster_stream_protector_1, $stream_protector_moveto, 64, 0 );
+		$monster_stream_protector_1.remove();
+	}
+	
+	
+	//----------------------------------------------------------------------------------
+	// extending out a gui that covers a bridge
+	//----------------------------------------------------------------------------------
+	void bridgeGuiOut()
+	{
+		$gui_arm.time( .25 );
+		$gui_arm.move( WEST, 160 );
+		sys.trigger( $gui_panel_out );
+		sys.waitFor( $gui_arm );
+	}
+	
+	
+	//----------------------------------------------------------------------------------
+	// ZOUNDS
+	//----------------------------------------------------------------------------------
+	void straussOnTubes()
+	{
+		$env_medlabs_registration_2.playCycle( ANIMCHANNEL_ALL, "registration_loop" );
+		aiScriptedAnimLoop( $introtubemarine_1, "floating_tube", 4 );
+		sys.trigger( $introtubemarine_1 );
+		sys.wait( 22 );
+		$introtubemarine_1.remove();
+	}
+	
+	void seeStrauss1()
+	{
+		thread straussOnTubes();
+		sys.trigger( $straussMusic );
+		aiScriptedMoveWait( $redshirt2, $target_null_10, 4, 0 );
+		aiScriptedFaceWait( $redshirt2, $func_static_54295, 0 );
+		aiSpeak( $redshirt2, "lipsync_mitch_needtogetdown" );
+		aiScriptedAnimWait( $redshirt2, "point_forward", 4, 1 );
+	}
+	
+	
+	//----------------------------------------------------------------------------------
+	// random radiochatter
+	//----------------------------------------------------------------------------------
+	void almostThere()
+	{
+		radioChatterPlay( $func_radiochatter_cin_1, "vo_tak_watchdek" );
+		
+		if ( !DISABLE_QUICKSAVES )
+		{
+			sys.trigger( $func_savegame_1 );
+		}
+		
+		aiScriptedMoveWait( $redshirt2, $target_null_11, 4, 0 );
+		aiScriptedFaceWait( $redshirt2, $func_static_53940, 0 );
+		aiScriptedAnimWait( $redshirt2, "console_stand_start", 4, 0 );
+		aiScriptedAnimLoop( $redshirt2, "console_stand_loop", 4 );
+		sys.wait( 1 );
+		aiSpeakWait( $redshirt2, "lipsync_mitch_stopmachine" );
+		aiSpeakWait( $redshirt2, "lipsync_mitch_letout" );
+		aiSpeakWait( $redshirt2, "lipsync_mitch_dooropen" );
+		sys.wait( 1 );
+		aiSpeakWait( $redshirt2, "lipsync_mitch_there" );
+		aiScriptedAnim( $redshirt2, "console_stand_end", 4, 1 );
+		sys.trigger( $trigger_relay_14 );
+	}
+	
+	
+	//----------------------------------------------------------------------------------
+	// tactical guys getting off a cat scan object thingie
+	//----------------------------------------------------------------------------------
+	void catscanGuy1()
+	{
+		aiScriptedAnimWait( $catscan_tactical_1, "bio_catscan_getup", 4, 1 );
+		$catscan_tactical_1.becomeAggressive();
+	}
+	
+	void catscanGuy2()
+	{
+		aiScriptedAnimWait( $catscan_tactical_2, "bio_catscan_getup", 4, 1 );
+		$catscan_tactical_2.becomeAggressive();
+	}
+	
+	void catscanGetup()
+	{
+		thread catscanGuy1();
+		sys.wait( 2 );
+		thread catscanGuy2();
+	}
+	
+	
+	//----------------------------------------------------------------------------------
+	// big guys post objective 1 floating up into player view
+	//----------------------------------------------------------------------------------
+	void moveHHtanks()
+	{
+		aiScriptedMove( $monster_hh_tank_1, $null_monster_hh_tank_1, 32, 1 );
+		aiScriptedMove( $monster_hh_tank_2, $null_monster_hh_tank_2, 32, 1 );
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// BOSS BAAAAAAAAAAAAAAAAAAATTLE
+	//--------------------------------------------------------------------------
+	void prebossSave()
+	{
+		radioChatterPlay( $func_radiochatter_cin_1, "vo_tak_dekstrss" );
+		
+		if ( !DISABLE_QUICKSAVES )
+		{
+			sys.trigger( $func_savegame_1 );
+		}
+		
+		sys.killthread( "map_m05::radioBattle1" );
+	}
+	
+	
+	void prebossCinematic()
+	{
+		sys.trigger( $obj0_complete );
+		sys.trigger( $target_objectivebeacon_1 );
+		
+		sys.trigger( $painlordMusic );
+		
+		$redshirt2.remove();
+		sys.trigger( $mitchell_to_die );
+		
+		thread painlord::setupProcessing();
+		
+		sys.setCamera( $painlord_intro_cam_1 );
+		$func_mover_painlord_introcam.time( 3 );
+		$func_mover_painlord_introcam.moveTo( $tar_mover_painlord_introcam );
+		aiScriptedMove( $mitchell_to_die, $painlordmitchellspot, 16, 0 );
+		sys.wait( 3 );
+		
+		sys.setCamera( $painlord_intro_cam_3 );
+		aiScriptedWait( $mitchell_to_die );
+		aiScriptedFaceWait( $mitchell_to_die, $tar_cin_end_dekard_1, 0 );
+		aiSpeakWait( $mitchell_to_die, "lipsync_mitch_wecangetst" );
+		aiScriptedFaceWait( $theboss, $mitchell_to_die, 1 );
+		sys.setCamera( $painlord_intro_cam_2 );
+		aiSpeakWait( $mitchell_to_die, "lipsync_mitch_whathll" );
+		aiScriptedAnim( $theboss, "melee_attack1", 4, 1 );
+		aiSpeakWait( $mitchell_to_die, "lipsync_mitch_arrrg" );
+		$mitchell_to_die.kill();
+		sys.wait( .5 );
+		
+		$player1.setOrigin( $tar_cin_end_dekard_1.getOrigin() );
+		
+		sys.firstPerson();
+		$player1.setViewAngles( '0 90 0' );
+		sys.trigger( $target_bossbattle_1 );
+		$theboss.becomeAggressive();
+		$func_door_1630.lock( 1 ); // don't leave plz
+		$func_door_1631.lock( 1 ); 
+		
+		thread radioBattle2();
+		
+		thread painlord::processingLine();
+		
+		//sys.trigger( $obj1 );
+	}
+
+	
+	//-------------------------------------------------------------------
+	// The Pain Lord(r) dies (omg)
+	//-------------------------------------------------------------------
+	void setupProcessingLineDeath()
+	{
+		$moverpod0.time( .1 );
+		$moverpod1.time( .1 );
+		$moverpod2.time( .1 );
+		$moverpod3.time( .1 );
+		$moverpod4.time( .1 );
+		$painlordMachinePushingDown.time( .1 );
+		
+		$painlordMachinePushingDown.moveTo( $processingloc_up );
+		$moverpod0.moveTo( $processingloc4a );
+		$moverpod1.moveTo( $processingloc3a );
+		$moverpod2.moveTo( $processingloc2a );
+		$moverpod3.moveTo( $processingloc1a );
+		
+		$moverpod4.moveTo( $pod_to_here );
+		
+		$theboss.setOrigin( $painlord_death_spot.getOrigin() );
+	}
+	
+	void postBossHack()
+	{
+		sys.killthread( "map_m05::radioBattle2" );
+		sys.fadeOut( '0 0 0', 2 );
+		sys.wait( 2 );
+		sys.trigger( $painlordDeadMusic );
+		thread setupProcessingLineDeath();
+		sys.wait( .1 );
+		$pl_tubemarine_4.remove();
+		
+		sys.trigger( $tak );
+		sys.trigger( $strauss );
+		sys.trigger( $darnell );
+		sys.trigger( $navajas );
+		sys.trigger( $dekard_boss_cinematic );
+		
+		$func_door_1633.lock( 0 );
+		
+		sys.setCamera( $painlord_outro_cam_2 );
+		sys.fadeIn( '0 0 0', 2 );
+		aiSpeakWait( $darnell, "lipsync_darn_dammitch" );
+		
+		sys.setCamera( $painlord_outro_cam_1 );
+		$navajas.lookAt( $darnell );
+		aiSpeakWait( $navajas, "lipsync_nava_exttakecare" );
+		$navajas.lookAt( $strauss );
+		radioChatterPlayWait( $func_radiochatter_cin_1, "vo_marks_dekstatrep" );
+		
+		$func_mover_painlord_outrocam_5.time( 9 );
+		sys.setCamera( $painlord_outro_cam_5 );
+		$func_mover_painlord_outrocam_5.moveTo( $tar_mover_painlord_outrocam_5 );
+		aiSpeakComlinkWait( $dekard_boss_cinematic, "lipsync_dek_wegotstrss" );
+		radioChatterPlayWait( $func_radiochatter_cin_1, "vo_marks_shitstrss" );
+		
+		sys.setCamera( $painlord_outro_cam_3 );
+		$navajas.lookAt( $strauss );
+		aiSpeakWait( $navajas, "lipsync_nava_battfine" );
+		$navajas.lookAt( $dekard_boss_cinematic );
+		aiSpeakWait( $navajas, "lipsync_nava_couplehrs" );
+		
+		sys.setCamera( $painlord_outro_cam_5 );
+		radioChatterPlayWait( $func_radiochatter_cin_1, "vo_marks_niceevac" );
+		aiSpeakComlinkWait( $dekard_boss_cinematic, "lipsync_dek_yessir5" );
+		
+		sys.setCamera( $painlord_outro_cam_6 );
+		$tak.lookAt( $dekard_boss_cinematic );
+		$strauss.lookAt( $dekard_boss_cinematic );
+		$navajas.lookAt( $dekard_boss_cinematic );
+		aiSpeakWait( $dekard_boss_cinematic, "lipsync_dek_taknavast" );
+		
+		sys.setCamera( $painlord_outro_cam_4 );
+		aiSpeakWait( $strauss, "lipsync_strauss_allthat2" );
+		
+		sys.setCamera( $painlord_outro_cam_5 );
+		$dekard_boss_cinematic.lookAt( $tak );
+		aiSpeakWait( $dekard_boss_cinematic, "lipsync_dek_youtwoete" );
+		
+		sys.setCamera( $painlord_outro_cam_4 );
+		$tak.lookAt( $strauss );
+		aiSpeakWait( $tak, "lipsync_tak_yessir6" );
+		aiSpeakWait( $strauss, "lipsync_strauss_gratitude" );
+		
+		sys.fadeOut( '0 0 0', 2 );
+		sys.wait( 2 );
+		$dekard_boss_cinematic.remove();
+		sys.trigger( $teleport_postboss );
+		sys.firstPerson();
+		$tak.lookAt( $null_entity );
+		
+		sys.fadeIn( '0 0 0', 2 );
+		
+		$darnell.setTalkState( TALK_OK );
+		$navajas.setTalkState( TALK_OK );
+		$tak.setTalkState( TALK_OK );
+		$strauss.setTalkState( TALK_OK );
+		
+//		$darnell.setLeader( $player1 );
+		
+		$navajas.setLeader( $tak );
+		$strauss.setLeader( $tak );
+		$strauss.disableHeal(); // only need Tak to heal
+		sys.trigger( $obj2 );
+	}
+	
+	void bossDies()
+	{
+		//sys.trigger( $obj1_complete );
+		thread postBossHack();
+	}
+	
+	
+	void killBossHack()
+	{
+		$theboss.kill();
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// dialog JERKOFF ROFFLECAUST
+	//--------------------------------------------------------------------------
+	void takTalks()
+	{
+		if ( !TAK_HAS_TALKED )
+		{
+			if ( TAK_CAN_TALK )
+			{
+				TAK_CAN_TALK = 0;
+				TAK_HAS_TALKED = 1;
+				$tak.lookAt( $player1 );
+				aiSpeakWait( $tak, "lipsync_tak_strssdecrypt" );
+				$strauss.lookAt( $tak );
+				aiSpeakWait( $strauss, "lipsync_strauss_whatdata" );
+				$tak.lookAt( $strauss );
+				aiSpeakWait( $tak, "lipsync_tak_wefndunprot" );
+				$tak.lookAt( $null_entity );
+				$strauss.lookAt( $null_entity );
+				aiSpeakWait( $strauss, "lipsync_strauss_nowisee" );
+				
+			}
+		}
+	}
+	
+	void darnellTest()
+	{
+		aiScriptedMoveWait( $darnell, $tar_DAMNYOU, 4, 1 );
+		$darnell.setLeader( $player1 );
+	}
+	
+	//--------------------------------------------------------------------------
+	// Darnell calls the guys to move up
+	//--------------------------------------------------------------------------
+	void moveUp()
+	{
+		aiSpeakWait( $darnell, "lipsync_darn_allclr" );
+		aiSpeakComlinkWait( $darnell, "lipsync_darn_takmoveup" );
+		radioChatterPlayWait( $func_radiochatter_cin_1, "vo_tak_moving5" );
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// lolz
+	//--------------------------------------------------------------------------
+	void darnellPos()
+	{
+		aiScriptedMoveWait( $darnell, $pw_darnell_spot, 4, 1 );
+		aiSpeakComlinkWait( $darnell, "lipsync_darn_taklift" );
+		radioChatterPlayWait( $func_radiochatter_cin_1, "vo_tak_rogmoveup" );
+	}
+	
+	void takPos()
+	{
+		aiScriptedMoveWait( $tak, $pw_tak_spot, 4, 1 );
+		aiScriptedFaceWait( $tak, $elevDoor_lock_1, 1 );
+		aiScriptedAnimWait( $tak, "use_gui_standing_start", 4, 1 ); // use_gui_standing_start
+		aiSpeak( $tak, "lipsync_tak_downmin" );
+		aiScriptedAnimLoop( $tak, "use_gui_standing_loop", 4 ); // use_gui_standing_loop
+	}
+	
+	void straussPos()
+	{
+		aiScriptedMoveWait( $strauss, $pw_strauss_spot, 4, 1 );
+		aiScriptedFace( $strauss, $elevDoor_lock_1, 0 );
+	}
+	
+	void penisWaving()
+	{
+		$tak.becomePassive( 1 );
+		$strauss.becomePassive( 1 );
+		
+		TAK_CAN_TALK = 0;
+		float thread1;
+		float thread2;
+		
+		$strauss.setLeader( $null_entity );
+		$darnell.setLeader( $null_entity );
+		$navajas.setLeader( $null_entity );
+		
+		darnellPos();
+		
+		aiScriptedMove( $navajas, $pw_navajas_spot, 4, 1 );
+		
+		thread1 = thread takPos();
+		thread2 = thread straussPos();
+		
+		sys.waitForThread( thread1 );
+		sys.waitForThread( thread2 );
+		
+		sys.wait( 2 );
+		aiScriptedAnimWait( $strauss, "weaponless_idle4_start", 4, 0 );
+		aiScriptedAnimLoop( $strauss, "weaponless_idle4_loop", 4 );
+		aiSpeakWait( $strauss, "lipsync_strauss_dobypass" );
+		aiSpeakWait( $tak, "lipsync_tak_really2" );
+		aiSpeakWait( $strauss, "lipsync_strauss_stepas" );
+		aiScriptedAnimWait( $tak, "use_gui_standing_end", 4, 1 ); // use_gui_standing_end
+		aiScriptedMoveWait( $tak, $pw_tak_spot_bak, 4, 1 );
+		aiScriptedFace( $tak, $elevDoor_lock_1, 0 );
+		
+		aiScriptedMoveWait( $strauss, $pw_tak_spot, 4, 1 );
+		aiScriptedFaceWait( $strauss, $elevDoor_lock_1, 1 );
+		aiScriptedAnimWait( $strauss, "use_gui_standing_start", 4, 1 ); // use_gui_standing_start
+		aiScriptedAnimLoop( $strauss, "use_gui_standing_loop", 4 ); // use_gui_standing_loop
+		aiSpeakWait( $strauss, "lipsync_strauss_infutur" );
+		aiSpeakWait( $strauss, "lipsync_strauss_execcmd" );
+		$elevDoor_lock_1.hide();
+		$elevDoor_open_1.show();
+		sys.trigger( $elevDoor_1 );
+		//$elevDoor_1.lock( 0 );
+		aiScriptedAnimWait( $strauss, "use_gui_standing_end", 4, 0 ); // use_gui_standing_end
+		
+		aiSpeak( $tak, "lipsync_tak_damnfast" );
+		thread getOnFreightElevator();
+	}
+
+	
+	//--------------------------------------------------------------------------
+	// Getting the guys on the Freight Elevator and having it go up
+	//--------------------------------------------------------------------------
+	void guysRunningOut()
+	{
+		sys.wait( 3 );
+		sys.trigger( $callRunningGuy_1 );
+		sys.trigger( $callRunningGuy_2 );
+	}
+	
+	void takElevPos()
+	{
+		aiScriptedMoveWait( $tak, $takElevSpot, 4, 0 );	
+	}
+	
+	void darnellElevPos()
+	{
+		aiScriptedMoveWait( $darnell, $darnellElevSpot, 4, 0 );	
+		aiScriptedAnimWait( $darnell, "stand_to_crouch_scripted", 4, 0 );
+		aiScriptedAnimLoop( $darnell, "crouch_idle", 4 );
+	}
+	
+	void navajasElevPos()
+	{
+		aiScriptedMoveWait( $navajas, $navajasElevSpot, 4, 0 );	
+		aiScriptedAnimWait( $navajas, "stand_to_crouch_scripted", 4, 0 );
+		aiScriptedAnimLoop( $navajas, "crouch_idle", 4 );
+	}
+	
+	void straussElevPos()
+	{
+		aiScriptedMoveWait( $strauss, $straussElevSpot, 4, 0 );	
+		aiScriptedFaceWait( $strauss, $elevAControls, 0 );
+		//$strauss.forcePosture( AIPOSTURE_CROUCH );
+	}
+	
+	void freightElevDialg()
+	{
+		sys.wait( 6 );		
+		$tak.lookAt( $strauss );
+		aiSpeakWait( $tak, "lipsync_tak_docreat" );
+		$strauss.lookAt( $tak );
+		aiSpeakWait( $strauss, "lipsync_strauss_obvcap" );
+		aiSpeakWait( $strauss, "lipsync_strauss_revealnex" );
+		$darnell.lookAt( $strauss );
+		aiSpeakWait( $darnell, "lipsync_darn_sndtort" );
+		$strauss.lookAt( $darnell );
+		aiSpeakWait( $strauss, "lipsync_strauss_iassure" );
+		$strauss.lookAt( $player1 );
+		aiSpeakWait( $strauss, "lipsync_strauss_trunklines" );
+		$strauss.lookAt( $null_entity );
+		
+		radioChatterPlayWait( $func_radiochatter_cin_1, "vo_marks_marinesget" );
+	}
+	
+	void getOnFreightElevator()
+	{
+		float thread1;
+		float thread2;
+		float thread3;
+		float thread4;	
+		
+		thread1 = thread takElevPos();
+		thread2 = thread darnellElevPos();
+		thread3 = thread navajasElevPos();
+		thread4 = thread straussElevPos();
+		
+		sys.waitForThread( thread1 );
+		sys.waitForThread( thread2 );
+		sys.waitForThread( thread3 );
+		sys.waitForThread( thread4 );
+		
+		sys.trigger( $trig_lastelevator );
+	}
+	
+	void playerOnFreightElev()
+	{
+		$assholePlayerClip.show();
+		thread guysRunningOut();
+		
+		aiScriptedAnimWait( $tak, "point_forward", 5, 0 );
+		
+		setNewTimes( $elevGateA_1 , 1, .5, .2 );
+		$elevGateA_1.rotateOnce( '0 0 90' );
+		sys.wait( 2 );
+		
+		setNewTimes( $elevA, 50, 3, 8 );
+		$elevAControls.guiEvent( "anim_up" );
+		$elevA.moveTo( $LONGESTELEVATOREVERTOP );
+				
+		aiScriptedFaceWait( $tak, $strauss, 0 );
+		aiScriptedAnimWait( $tak, "idle_weapon_3_start", 4, 0 );
+		aiScriptedAnimLoop( $tak, "idle_weapon_3_loop", 4 );
+
+		thread freightElevDialg();
+		
+		sys.waitFor( $elevA );
+		$elevAControls.guiEvent( "anim_up_reset" );
+		
+		setNewTimes( $elevGateA_2 , 1 , .5 , .2 );
+		$elevGateA_2.rotateOnce( '0 0 90' );
+		
+		thread map_m05::freightElevTop();
+	}
+
+	
+	//--------------------------------------------------------------------------
+	// reached the top
+	//--------------------------------------------------------------------------
+	void freightElevTop()
+	{
+		TAK_CAN_TALK = 1;
+		//$strauss.forcePosture( AIPOSTURE_DEFAULT );
+		aiScriptedAnim( $navajas, "crouch_to_stand_scripted", 4, 1 );
+		aiScriptedAnim( $darnell, "crouch_to_stand_scripted", 4, 1 );
+		
+		$strauss.setLeader( $tak );
+		$navajas.setLeader( $tak );
+		
+		aiScriptedMove( $darnell, $elev_top_darnell_spot, 16, 1 );
+		aiScriptedMove( $navajas, $elev_top_navajas_spot, 16, 1 );
+		aiScriptedMove( $strauss, $elev_top_strauss_spot, 16, 1 );
+		
+		aiScriptedAnimWait( $tak, "idle_weapon_3_end", 4, 0 );
+		aiScriptedMove( $tak, $elev_top_tak_spot, 16, 1 );
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// Walking outside
+	//--------------------------------------------------------------------------
+	void pressingTowardsEnd()
+	{
+		aiScriptedMove( $tak, $elev_top_tak_spot_1, 16, 1 );
+		aiScriptedMove( $darnell, $elev_top_darnell_spot_1, 16, 1 );
+		
+		aiScriptedAnimWait( $planeMarine, "com_link_start", 4, 0 );
+		aiScriptedAnimLoop( $planeMarine, "com_link_loop", 4 );
+	}
+	
+	
+	void reachedEnd()
+	{
+		sys.trigger( $obj2_complete );
+		radioChatterPlay( $func_radiochatter_cin_1, "vo_vansen_hannfalsq" );
+		sys.fadeOut( '0 0 0', 6 );
+		sys.wait( 6 );
+		
+		sys.trigger( $target_endlevel_1 );
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	//==========================================================================
+	// Random AI specialized and generalized helper functions
+	//==========================================================================
+	//--------------------------------------------------------------------------
+	void setLeader1()
+	{
+		$redshirt1.setLeader( $player1 );
+		$redshirt2.setLeader( $player1 );
+	}
+
+		
+	//--------------------------------------------------------------------------
+	// Redshirt flashlight scripts
+	//--------------------------------------------------------------------------
+	void rs1FlashlightOn()
+	{
+		$redshirt1.flashlight(1);
+	}
+	
+	void rs2FlashlightOn()
+	{
+		$redshirt2.startSound( "snd_flashlight", SND_CHANNEL_ANY, 1);
+		$redshirt2.flashlight(1);
+	}
+		
+	void rs1FlashlightOff()
+	{
+		$redshirt1.startSound( "snd_flashlight", SND_CHANNEL_ANY, 1);
+		$redshirt1.flashlight(0);
+	}
+	
+	void rs2FlashlightOff()
+	{
+		$redshirt2.startSound( "snd_flashlight", SND_CHANNEL_ANY, 1);
+		$redshirt2.flashlight(0);
+	}
+	
+	
+	void mitchCallout1()
+	{
+		aiSpeak( $redshirt2, "lipsync_mitch_thereheis" );
+	}
+	
+	void mitchCallout2()
+	{
+		aiSpeak( $redshirt2, "lipsync_mitch_iseehim" );
+	}
+	
+	//-------------------------------------------------------------------
+	// movement past elevator two cut scene  (name_1 and tar_name_b_#)
+	//-------------------------------------------------------------------
+	void gotob1()
+	{
+		if ( REDSHIRT2_NEED_TELEPORT ) 
+		{
+			$redshirt2.scriptedStop();
+			$redshirt2.setOrigin( $tar_redshirt2_el2_bottom.getOrigin() );
+		}
+		thread radioBattle1();
+	}
+
+	
+	//--------------------------------------------------------------------------
+	//==========================================================================
+	// ENVIRONMENTAL FUNCTIONS 
+	// moving bridges, special doors, anything that doesn't have to do with 
+	// ai-related activities or whatever
+	//==========================================================================
+	//--------------------------------------------------------------------------
+	
+	//--------------------------------------------------------------------------
+	// Low level bridge helper, rotate the platform parts into position.
+	//	flip option to handle segments on the right vs. left half of room
+	//--------------------------------------------------------------------------
+	void MoveBridgeSegment(entity plat, entity shaft, float flipped)
+	{
+		plat.bind(shaft); // plat becomes child of the shaft
+		
+		plat.time( 1.5 );
+		plat.decelTime( 0.5 );
+		plat.accelTime( 0.25 );
+		
+		if ( flipped )
+		{
+			plat.rotateTo('0 -90 0');
+		}
+		else
+		{
+			plat.rotateTo('0 90 0');
+		}
+		sys.wait( 0.5 );
+
+		shaft.time( 1 );
+		shaft.decelTime( 0.5 );
+		shaft.accelTime( 0.25 );
+		
+		shaft.rotateUpTo( 0, 0 );
+		sys.waitFor(shaft);
+		
+		plat.unbind();
+	}
+
+
+	//--------------------------------------------------------------------------
+	// Move the gui out of the way
+	//--------------------------------------------------------------------------
+	void bridgeGuiIn()
+	{
+		sys.wait( 1.5 );
+		
+		$gui_arm.time( .25 );
+		$gui_arm.move( EAST, 160 );
+		sys.trigger( $gui_panel_out );
+		sys.waitFor( $gui_arm );
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	// Move the bridge into place (long one)
+	//--------------------------------------------------------------------------
+	void InitBridgeThree()
+	{
+		$bridge_gui_2_real.setGuiParm("noninteractive", "1");
+		thread bridgeGuiIn();
+		sys.wait(0.25);
+
+		thread MoveBridgeSegment($bridgePlat2_14, $bridgePlatSupport2_14, 1);
+		sys.wait(0.25);
+		thread MoveBridgeSegment($bridgePlat2_13, $bridgePlatSupport2_13, 0);
+		sys.wait(0.25);
+		thread MoveBridgeSegment($bridgePlat2_12, $bridgePlatSupport2_12, 1);
+		sys.wait(0.25);
+		thread MoveBridgeSegment($bridgePlat2_11, $bridgePlatSupport2_11, 0);
+		sys.wait(0.25);
+		thread MoveBridgeSegment($bridgePlat2_10, $bridgePlatSupport2_10, 1);
+		sys.wait(0.25);
+		thread MoveBridgeSegment($bridgePlat2_9, $bridgePlatSupport2_9, 0);
+		sys.wait(0.25);
+		thread MoveBridgeSegment($bridgePlat2_8, $bridgePlatSupport2_8, 1);
+		sys.wait(0.25);
+		thread MoveBridgeSegment($bridgePlat2_7, $bridgePlatSupport2_7, 0);
+		sys.wait(0.25);
+		thread MoveBridgeSegment($bridgePlat2_6, $bridgePlatSupport2_6, 1);
+		sys.wait(0.25);
+		thread MoveBridgeSegment($bridgePlat2_5, $bridgePlatSupport2_5, 0);
+		sys.wait(0.25);
+		thread MoveBridgeSegment($bridgePlat2_4, $bridgePlatSupport2_4, 1);
+		sys.wait(0.25);
+		thread MoveBridgeSegment($bridgePlat2_3, $bridgePlatSupport2_3, 0);
+		sys.wait(0.25);	
+		thread MoveBridgeSegment($bridgePlat2_2, $bridgePlatSupport2_2, 1);
+		sys.wait(0.25);
+		thread MoveBridgeSegment($bridgePlat2_1, $bridgePlatSupport2_1, 0);
+	}
+	
+		
+	//----------------------------------------------------------------------------------
+	// A 'light group' consists of exactly 2 instances of 3 related	objects. 
+	//	These three related objects are as follows..
+	//	1) A floor panel that is the physical representation of a light emitter.
+	//		This must always be visible, but needs to change color.  Named: floorPanel_#
+	//	2) The actual light source...can just turn on/off.  Named: floorLight_#
+	//  3) The flare tied to the physical representation of the light emitter.
+	//		This is just shown/hid.  Named: floorFlare_#
+	//
+	//	The number trailing the name of each object designates a grouping of sorts.
+	//	Numbers 0 & 1 designate the first toggleable group, 2 & 3 the second group, etc.
+	//----------------------------------------------------------------------------------
+	void DoLightGroupLights(entity _ent, float showIt)
+	{
+		if ( _ent ) {
+			if ( showIt ) {
+				_ent.fadeInLight(0.05);//show();
+			}
+			else {
+				_ent.fadeOutLight(0.1);//hide();
+			}
+		}
+	}
+	
+	void DoLightGroupPanels(entity _ent, float showIt)
+	{
+		if ( _ent ) {
+			if ( showIt ) {
+				_ent.setColor(0.84, 0.47, 0.24);
+			}
+			else {
+				_ent.setColor(0,0,0);
+			}
+		}
+	}
+	
+	void DoLightGroupFlares(entity _ent, float showIt)
+	{
+		if ( _ent ) {
+			if ( showIt ) {
+				_ent.show();//setColor(0.84, 0.47, 0.24);
+			}
+			else {
+				_ent.hide();//setColor(0,0,0);
+			}
+		}
+	}
+	
+	void DoLightGroup(float grpID, float showIt)
+	{
+		entity	_ent;
+		
+		// ----Colored Light Panel --------------
+		_ent = sys.getEntity( "floorPanel_" + grpID);
+		thread DoLightGroupPanels(_ent, showIt);
+		
+		_ent = sys.getEntity( "floorPanel_" + (grpID+1));
+		thread DoLightGroupPanels(_ent, showIt);
+
+		// ----Toggle Colored Lights ---------------
+		_ent = sys.getEntity( "floorLight_" + grpID );
+		thread DoLightGroupLights(_ent, showIt);
+		
+		_ent = sys.getEntity( "floorLight_" + (grpID+1) );
+		thread DoLightGroupLights(_ent, showIt);
+
+		// ----Colored flare --------------------
+		_ent = sys.getEntity( "floorFlare_" + grpID );
+		thread DoLightGroupFlares(_ent, showIt);
+
+		_ent = sys.getEntity( "floorFlare_" + (grpID+1) );
+		thread DoLightGroupFlares(_ent, showIt);
+	}
+
+
+	//--------------------------------------------------------------------------
+	// Run through name lights and make them do their thing.
+	//--------------------------------------------------------------------------
+	void ToggleGroupLights(float startID, float endID)
+	{
+		float grpID;
+		
+		while(1)
+		{
+			for (grpID = startID; grpID <= endID; grpID += 2 )
+			{
+				DoLightGroup(grpID,1);
+				sys.wait(0.15);	
+				DoLightGroup(grpID,0);
+			}
+		}
+	}
+	
+
+	//--------------------------------------------------------------------------
+	// The floor lights cycle in such a way as to give the feeling of directing
+	//	or pushing the player along through the scanning unit.
+	//--------------------------------------------------------------------------
+	void startFloorLightGroup1()
+	{
+		//sys.println("startFloorLightGroup1()");
+		thread ToggleGroupLights(0,31);
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	//	After the holding cells
+	//--------------------------------------------------------------------------
+	void startFloorLightGroup2()
+	{
+		//sys.println("startFloorLightGroup2()");
+		thread ToggleGroupLights(100,115);
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	//	After the fancy bridges
+	//--------------------------------------------------------------------------
+	void startFloorLightGroup3()
+	{
+		//sys.println("startFloorLightGroup3()");
+		thread ToggleGroupLights(200,219);
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	//  Multiple threads going off for two reasons:
+	//		-- the period of an individual light stays reasonable
+	//		-- areas that diverge and converge and need to stay in sync
+	//--------------------------------------------------------------------------
+	void startFloorLightGroup4()
+	{
+		//sys.println("startFloorLightGroup4()");
+		thread ToggleGroupLights(300, 323);
+		thread ToggleGroupLights(400, 423);
+		thread ToggleGroupLights(500, 523);
+		thread ToggleGroupLights(600, 623);
+		thread ToggleGroupLights(700, 723);
+		thread ToggleGroupLights(800, 823);
+		thread ToggleGroupLights(900, 923);
+		
+		thread ToggleGroupLights(1000, 1021);
+	}
+	
+	
+	//--------------------------------------------------------------------------
+	//  Marines in tubes floating around
+	//--------------------------------------------------------------------------
+	void tubeTransportSystem()
+	{
+		sys.trigger( $tubemarine1 );
+		aiScriptedAnimLoop( $tubemarine1, "floating_tube", 0 );
+		sys.trigger( $tubemarine2 );
+		aiScriptedAnimLoop( $tubemarine2, "floating_tube", 0 );
+		sys.trigger( $tubemarine3 );
+		aiScriptedAnimLoop( $tubemarine3, "floating_tube", 0 );
+		
+		$transport_topclamp_1.time( 5.0 );
+		$transport_topclamp_2.time( 5.0 );
+		$transport_topclamp_3.time( 5.0 );
+
+		while( 1 )
+		{
+			$transport_topclamp_1.hide();
+			$transport_pod_1.hide();
+			$tubemarine1.hide();
+			$transport_topclamp_3.show();
+			$transport_pod_3.show();
+			$tubemarine3.show();
+			$transport_topclamp_1.moveTo( $transport_target_3 );
+			$transport_topclamp_2.moveTo( $transport_target_1 );
+			$transport_topclamp_3.moveTo( $transport_target_2 );
+			sys.wait( 1.35 );
+			sys.trigger( $func_door_1643 );
+			sys.wait( 1.0 );
+			sys.trigger( $func_door_1570 );
+			sys.waitFor( $transport_topclamp_3 );
+			
+			$transport_topclamp_2.hide();
+			$transport_pod_2.hide();
+			$tubemarine2.hide();
+			$transport_topclamp_1.show();
+			$transport_pod_1.show();
+			$tubemarine1.show();
+			$transport_topclamp_1.moveTo( $transport_target_2 );
+			$transport_topclamp_2.moveTo( $transport_target_3 );
+			$transport_topclamp_3.moveTo( $transport_target_1 );
+			sys.wait( 1.35 );
+			sys.trigger( $func_door_1643 );
+			sys.wait( 1.0 );
+			sys.trigger( $func_door_1570 );
+			sys.waitFor( $transport_topclamp_3 );
+
+			$transport_topclamp_2.show();
+			$transport_pod_2.show();
+			$tubemarine2.show();
+			$transport_topclamp_3.hide();
+			$transport_pod_3.hide();
+			$tubemarine3.hide();
+			$transport_topclamp_1.moveTo( $transport_target_1 );
+			$transport_topclamp_2.moveTo( $transport_target_2 );
+			$transport_topclamp_3.moveTo( $transport_target_3 );
+			sys.wait( 1.35 );
+			sys.trigger( $func_door_1643 );
+			sys.wait( 1.0 );
+			sys.trigger( $func_door_1570 );
+			sys.waitFor( $transport_topclamp_3 );
+		}
+	}
+	
+	void tubeTransportSystem2()
+	{
+		sys.trigger( $tubemarine4 );
+		aiScriptedAnimLoop( $tubemarine4, "floating_tube", 0 );
+		sys.trigger( $tubemarine5 );
+		aiScriptedAnimLoop( $tubemarine5, "floating_tube", 0 );
+		sys.trigger( $tubemarine6 );
+		aiScriptedAnimLoop( $tubemarine6, "floating_tube", 0 );
+		
+		$transport_topclamp_4.time( 7.0 );
+		$transport_topclamp_5.time( 7.0 );
+		$transport_topclamp_6.time( 7.0 );
+
+		while( 1 )
+		{
+			$transport_topclamp_6.hide();
+			$transport_pod_6.hide();
+			$tubemarine6.hide();
+			$transport_topclamp_4.show();
+			$transport_pod_4.show();
+			$tubemarine4.show();
+			$transport_topclamp_6.moveTo( $transport_target_4 );
+			$transport_topclamp_5.moveTo( $transport_target_6 );
+			$transport_topclamp_4.moveTo( $transport_target_5 );
+			sys.wait( 1.45 );
+			sys.trigger( $func_door_1644 );
+			sys.wait( 3.0 );
+			sys.trigger( $func_door_1646 );
+			sys.waitFor( $transport_topclamp_4 );
+			
+			$transport_topclamp_5.hide();
+			$transport_pod_5.hide();
+			$tubemarine5.hide();
+			$transport_topclamp_6.show();
+			$transport_pod_6.show();
+			$tubemarine6.show();
+			$transport_topclamp_6.moveTo( $transport_target_5 );
+			$transport_topclamp_5.moveTo( $transport_target_4 );
+			$transport_topclamp_4.moveTo( $transport_target_6 );
+			sys.wait( 1.45 );
+			sys.trigger( $func_door_1644 );
+			sys.wait( 3.0 );
+			sys.trigger( $func_door_1646 );
+			sys.waitFor( $transport_topclamp_4 );
+
+			$transport_topclamp_5.show();
+			$transport_pod_5.show();
+			$tubemarine5.show();
+			$transport_topclamp_4.hide();
+			$transport_pod_4.hide();
+			$tubemarine4.hide();
+			$transport_topclamp_6.moveTo( $transport_target_6 );
+			$transport_topclamp_5.moveTo( $transport_target_5 );
+			$transport_topclamp_4.moveTo( $transport_target_4 );
+			sys.wait( 1.45 );
+			sys.trigger( $func_door_1644 );
+			sys.wait( 3.0 );
+			sys.trigger( $func_door_1646 );
+			sys.waitFor( $transport_topclamp_4 );
+		}
+	}
+	
+		
+	void radioBattle1() // elevator -> strauss
+	{
+		/*
+		float t;
+		
+		t = randomRoundFloat( 1, 30 ) + 20;		
+		sys.wait(t);
+		radioChatterPlayWait( $func_radiochatter_ancillary, "vo_6_2_3" ); 
+		
+		t = randomRoundFloat( 1, 30 ) + 60;		
+		sys.wait(t);
+		radioChatterPlayWait( $func_radiochatter_ancillary, "vo_6_2_6" );
+		
+		t = randomRoundFloat( 1, 30 ) + 60;		
+		sys.wait(t);
+		radioChatterPlayWait( $func_radiochatter_ancillary, "vo_6_2_7" );
+		
+		t = randomRoundFloat( 1, 30 ) + 60;		
+		sys.wait(t);
+		radioChatterPlayWait( $func_radiochatter_ancillary, "vo_6_2_8" );
+		*/
+	}
+	
+	void radioBattle2() // strauss -> ending intro
+	{
+		float t;
+		radioChatterPlayWait( $func_radiochatter_ancillary, "vo_tak_holdtgt" ); 
+		
+		t = randomRoundFloat( 1, 20 ) + 15;
+		sys.wait(t);
+		radioChatterPlayWait( $func_radiochatter_ancillary, "vo_tak_wontmuch" ); 
+		
+		t = randomRoundFloat( 1, 20 ) + 15;		
+		sys.wait(t);
+		radioChatterPlayWait( $func_radiochatter_ancillary, "vo_tak_evacdek" ); 
+
+		t = randomRoundFloat( 1, 20 ) + 15;		
+		sys.wait(t);
+		radioChatterPlayWait( $func_radiochatter_ancillary, "vo_tak_wecntget" ); 
+		
+		t = randomRoundFloat( 1, 20 ) + 15;		
+		sys.wait(t);
+		radioChatterPlayWait( $func_radiochatter_ancillary, "vo_tak_almostshit" );
+	}
+	
+	//--------------------------------------------------------------------------
+	// RANDOM HELPER FUNCTIONS
+	//--------------------------------------------------------------------------
+	
+	//-------------------------------------------------------------------------------
+	// void moveFaceWait(entity mover, entity location, entity target)
+	//
+	// This moves the entity to a location and faces a target.
+	//
+	// mekberg | Jan 2004
+	//-------------------------------------------------------------------------------
+	void moveFaceWait(entity mover, entity location, entity target)
+	{
+		aiScriptedMoveWait(mover, location, 4, 1);
+		aiScriptedFaceWait(mover, target, 1);
+	} 
+
+	
+	//--------------------------------------------------------------------------
+	void main()
+	{
+		thread startFloorLightGroup1();
+		thread startFloorLightGroup2();
+		thread startFloorLightGroup3();
+		thread startFloorLightGroup4();
+		
+		thread tubeTransportSystem();
+		thread tubeTransportSystem2();
+	
+		thread goingDown();
+		
+		//temp
+		$redshirt1.setUndying( 1 );
+		
+		$gui_arm.time(.25);
+		$gui_arm.move( EAST, 160 );
+		
+		$elevator2.setGuiParm( "noninteractive", "1" );
+		
+		$light_5015.Off();
+		
+		$introPump1.playCycle( ANIMCHANNEL_ALL, "cycle");
+		$introPump2.playCycle( ANIMCHANNEL_ALL, "cycle");
+		$introPump3.playCycle( ANIMCHANNEL_ALL, "cycle");
+		$introPump4.playCycle( ANIMCHANNEL_ALL, "cycle");
+		$introPump5.playCycle( ANIMCHANNEL_ALL, "cycle");
+		$introPump6.playCycle( ANIMCHANNEL_ALL, "cycle");
+		
+		// setting up the initial bridge
+		$drawbridge_origin1_1.time(0.25);
+		$drawbridge_origin1_1.accelTime(0);
+		$drawbridge_origin1_1.decelTime(0);
+	
+		$drawbridge_origin2_1.time(0.25);
+		$drawbridge_origin2_1.accelTime(0);
+		$drawbridge_origin2_1.decelTime(0);
+	
+		$drawbridge_origin1_1.rotateOnce( '80 0 0' );
+		$drawbridge_origin2_1.rotateOnce( '-180 0 0' );
+	}
+} // end namespace
+

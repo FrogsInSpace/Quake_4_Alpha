@@ -1,0 +1,35 @@
+models/mapobjects/q4x/trianbarrel
+{
+     noselfShadow	
+     unSmoothedTangents
+     materialType hollowmetal
+
+	//renderbump  -size 256 256 -trace .05 -aa 2 -mergehigh models/mapobjects/strogg/barrels/stroyent_local.tga work/models/mapobjects/strogg/barrels/dispersal/stroyent_barrel_hi.lwo
+
+		diffusemap		models/mapobjects/q4x/trianbarrel/trian_d.tga
+		bumpmap addnormals ( models/mapobjects/strogg/barrels/stroyent_local.tga, heightmap ( models/mapobjects/strogg/barrels/stroyent_h.tga, 1 ) )
+		specularMap		models/mapobjects/strogg/barrels/stroyent_s.tga
+		{
+			blend add
+			map models/mapobjects/q4x/trianbarrel/trian_g.tga
+		}
+}
+
+
+models/mapobjects/q4x/trianbarrel_group
+{
+      	noselfShadow
+	unSmoothedTangents
+	materialImage models/mapobjects/strogg/barrels/stroyent_group_2_hit.tga
+	
+	//renderbump  -size 512 256 -aa 2 -MergeHigh -trace .07  models/mapobjects/strogg/barrels/stroyent_group_2_frame_local.tga work/models/mapobjects/strogg/barrels/dispersal/stroyent_group_2_frame_hi.lwo
+
+	bumpmap		addnormals (models/mapobjects/strogg/barrels/stroyent_group_2_local.tga, heightmap (models/mapobjects/strogg/barrels/stroyent_group_2_h.tga, 2))
+	diffusemap		models/mapobjects/q4x/trianbarrel/trian_group_2_d.tga
+	specularmap		models/mapobjects/strogg/barrels/stroyent_group_2_s.tga
+	{
+		blend add
+		map models/mapobjects/q4x/trianbarrel/trian_group_2_g.tga
+	}
+
+}

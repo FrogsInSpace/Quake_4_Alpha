@@ -1,0 +1,17 @@
+# File produced by AccuTrans 3D
+
+newmtl models_mapobjects_strogg_misc_equipment_machine11
+  Ns 1.0
+  d 1
+  illum 2
+  Kd 0.6353 0.5686 1.0
+  Ka 0 0 0
+  Ks 0 0 0
+
+newmtl textures_common_collision
+  Ns 1.0
+  d 1
+  illum 2
+  Kd 0.7961 0.8588 0.7098
+  Ka 0 0 0
+  Ks 0 0 0

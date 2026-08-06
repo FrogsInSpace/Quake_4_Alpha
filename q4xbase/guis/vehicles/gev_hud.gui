@@ -1,0 +1,351 @@
+windowDef Desktop
+{
+	rect	0,0,640,480
+	visible	1
+	backcolor	0.498,0.498,0.498,0
+	nocursor	1
+
+	onInit {
+		namedEvent "radioChatterDown";
+	}
+
+	onNamedEvent radioChatterUp {
+		set "p_radio::visible" "1" ;
+	}
+
+	onNamedEvent radioChatterDown {
+		set "p_radio::visible" "0" ;
+	}
+	
+//-----------------------		
+// radio messages
+//-----------------------		
+	
+	windowDef p_radio
+	{
+		rect	507,10,122,28
+		visible	0
+		windowDef radio_backbar
+		{
+			rect	7,0,113,28
+			visible	1
+			background	"gfx/guis/hud_rev3/radiobar"
+			matcolor	0,0,0,0.498
+			shear	0,-.22
+		}
+		windowDef t_radio1
+		{
+			rect	32,1,81,12
+			visible	1
+			forecolor	1,1,1,1
+			text	"incoming"
+			textscale	0.2
+			font	"fonts/marine"
+			textspacing	0
+		}
+		windowDef t_radio2
+		{
+			rect	32,8,81,12
+			visible	1
+			forecolor	1,1,1,1
+			text	"transmission"
+			textscale	0.2
+			font	"fonts/marine"
+			textspacing	0
+		}
+		windowDef waveform
+		{
+			rect	0,2,41,25
+			visible	1
+			background	"gfx/guis/hud/waveform"
+			matcolor	1,0.5,0,1
+		}
+	}
+	
+
+	windowDef godmode_damage_text
+	{
+		rect		10,10,100,100
+		visible		"gui::vehicle_god"
+		forecolor	0.690,0.784,0.568,1
+		text		"GOD:"
+		textscale	0.45
+		font		"fonts/marine"
+	}		
+
+	windowDef godmode_damage
+	{
+		rect		85,10,100,100
+		visible		"gui::vehicle_god"
+		forecolor	0.90,1,0.8,1
+		text		"gui::vehicle_god_damage"
+		textscale	0.45
+		font		"fonts/marine"
+	}		
+
+	windowDef veh_health_bg
+	{
+		rect	16,412,97,60
+		visible	1
+		background	"gfx/guis/hud/new/blackbar2"
+		matcolor	0,0,0,0.6
+		shear	0,-.32
+	}
+	windowDef veh_ammo_bg
+	{
+		rect	120,412,83,60
+		visible	1
+		background	"gfx/guis/hud/new/blackbar2"
+		matcolor	0,0,0,0.6
+		shear	0,-.32
+	}
+	windowDef temp
+	{
+		rect	40,413,58,58
+		background	"gfx/guis/vehicles/veh_healthtemp"
+		visible	0
+		matcolor	0.686,0.780,0.564,1
+	}
+	windowDef _status
+	{
+		rect	0,0,640,480
+		visible	1
+		windowDef veh_healthbar_bg
+		{
+			rect	21,416,23,52
+			visible	1
+			background	"gfx/guis/vehicles/bar_b"
+			matcolor	0.690,0.784,0.568,.3
+			shear	0,-.32
+		}
+		windowDef veh_healthbar_dark
+		{
+			rect	25,419,15,46
+			visible	1
+			background	"gfx/guis/vehicles/bar"
+			matcolor	0,0,0,.65
+			shear	0,-.32
+		}
+		windowDef p_veh_healthbar
+		{
+			rect	18,419+(1 - ("gui::vehicle_health" / 1000))*46,29,46 * ("gui::vehicle_health" / 1000)
+			visible	1
+			windowDef veh_healthbar
+			{
+				rect	7,0 - (46 * (1 -("gui::vehicle_health" / 1000))),15,46
+				visible	1
+				background	"gfx/guis/vehicles/bar"
+				matcolor	1,0.621,.1,1
+				shear	0,-.32
+			}
+		}
+		windowDef base
+		{
+			rect	48,415,58,58
+			background	"gfx/guis/vehicles/veh_base"
+			visible	1
+			matcolor	0.690,0.784,0.568,1
+			rotate	"gui::vehicle_rotate"
+		}
+		windowDef turret
+		{
+			rect	48,415,58,58
+			background	"gfx/guis/vehicles/veh_turret"
+			visible	1
+			matcolor	0.690,0.784,0.568,1
+		}
+		windowDef shields_l_1
+		{
+			rect	48,413,29,58
+			background	"gfx/guis/vehicles/veh_shields1"
+			visible	"gui::vehicle_shield" >= .8
+			matcolor	0.819,0.686,0.278,(("gui::vehicle_shield" - .8) / .2)
+		}
+		windowDef shields_l_2
+		{
+			rect	48,413,29,58
+			background	"gfx/guis/vehicles/veh_shields2"
+			visible	"gui::vehicle_shield" >= .4
+			matcolor	0.776,0.760,0.317,(("gui::vehicle_shield" - .4) / .4)
+		}
+		windowDef shields_l_3
+		{
+			rect	48,413,29,58
+			background	"gfx/guis/vehicles/veh_shields3"
+			visible	"gui::vehicle_shield" >= 0
+			matcolor	0.635,0.721,0.360,("gui::vehicle_shield" / .4)
+		}
+		windowDef shields_r_1
+		{
+			rect	78,413,29,58
+			background	"gfx/guis/vehicles/veh_shields1"
+			visible	"gui::vehicle_shield" >= .8
+			matcolor	0.819,0.686,0.278,(("gui::vehicle_shield" - .8) / .2)
+			matscalex	-1
+		}
+		windowDef shields_r_2
+		{
+			rect	78,413,29,58
+			background	"gfx/guis/vehicles/veh_shields2"
+			visible	"gui::vehicle_shield" >= .4
+			matcolor	0.776,0.760,0.317,(("gui::vehicle_shield" - .4) / .4)
+			matscalex	-1
+		}
+		windowDef shields_r_3
+		{
+			rect	78,413,29,58
+			background	"gfx/guis/vehicles/veh_shields3"
+			visible	"gui::vehicle_shield" >= 0
+			matcolor	0.635,0.721,0.360,("gui::vehicle_shield" / .4)
+			matscalex	-1
+		}
+		windowDef shields_l_out
+		{
+			rect	58,425,15,34
+			background	"gfx/guis/vehicles/veh_shields1"
+			visible	"gui::vehicle_shield" <= 0
+			matcolor	1*guitable_10_5[time*.002],0.35,0.1,1
+		}
+		windowDef shields_r_out
+		{
+			rect	82,425,15,34
+			background	"gfx/guis/vehicles/veh_shields1"
+			visible	"gui::vehicle_shield" <= 0
+			matcolor	1*guitable_10_5[time*.002],0.35,0.1,1
+			matscalex	-1
+		}
+	}
+	windowDef _rockets
+	{
+		rect	0,0,640,480
+		visible	"gui::vehicle_weapon" == 2
+		windowDef rocket
+		{
+			rect	160,405,22,54
+			background	"gfx/guis/vehicles/veh_rocket"
+			visible	1
+			matcolor	0.690,0.784,0.568,1
+			rotate	60
+		}
+		windowDef ammo_amount
+		{
+			rect	125,420,31,41
+			visible	1
+			forecolor	0.690,0.784,0.568,0.8
+			text	"gui::vehicle_weaponammo"
+			textscale	0.7
+			shear	0,-.32
+			font	"fonts/marine"
+		}
+	}
+	windowDef _mgun
+	{
+		rect	0,0,640,480
+		visible	"gui::vehicle_weapon" == 1
+		windowDef ammo_infinity_mgun
+		{
+			rect	128,435,29,24
+			visible	1
+			shear	0,-.32
+			background	"gfx/guis/vehicles/infinity"
+			matcolor	0.690,0.784,0.568,0.8
+		}
+		windowDef mgun2
+		{
+			rect	168,406,17,43
+			background	"gfx/guis/vehicles/veh_mgun"
+			visible	1
+			matcolor	0.690,0.784,0.568,1
+			rotate	60
+		}
+		windowDef mgun
+		{
+			rect	160,407,22,54
+			background	"gfx/guis/vehicles/veh_mgun"
+			visible	1
+			matcolor	0.690,0.784,0.568,1
+			rotate	60
+		}
+	}
+	windowDef _cannon
+	{
+		rect	0,0,640,480
+		visible	"gui::vehicle_weapon" == 0
+		windowDef ammo_infinity_cannon
+		{
+			rect	128,435,29,24
+			visible	1
+			shear	0,-.32
+			background	"gfx/guis/vehicles/infinity"
+			matcolor	0.690,0.784,0.568,0.8
+		}
+		windowDef cannon_reload_bg
+		{
+			rect	124,459,63,6
+			visible	1
+			background	"gfx/guis/vehicles/bar2"
+			matcolor	0.690,0.784,0.568,.3
+			shear	0,-.32
+		}
+		windowDef shell
+		{
+			rect	160,406,22,54
+			background	"gfx/guis/vehicles/veh_shell"
+			visible	1
+			matcolor	0.690,0.784,0.568,1
+			rotate	60
+		}
+	}
+	windowDef weapon_charge_bg
+	{
+		rect	124,459,63,6
+		visible	1
+		background	"gfx/guis/vehicles/bar2"
+		matcolor	0.690,0.784,0.568,.3
+		shear	0,-.32
+	}
+	windowDef p_weapon_charge
+	{
+		rect	129,461,53 * "gui::vehicle_weaponcharge",2
+		visible	1
+		windowDef weapon_charge
+		{
+			rect	0,0,53,2
+			visible	1
+			background	"gfx/guis/vehicles/bar2"
+			matcolor	1,0.621,.1,1
+			shear	0,-.32
+		}
+	}
+
+//////**********************************************************************
+//  RADIO MESSAGE
+//////**********************************************************************
+
+	windowDef RadioWin
+	{
+		rect	218,56,191,31
+		notime	0
+		visible	0
+		windowDef RadioText
+		{
+			rect	1,1,190,19
+			visible	1
+			shear	0,-.32
+			forecolor	0.782,0.976,0.660,1*guitable_10_5[time*0.002]
+			text	">> INCOMING RADIO MESSAGE <<"
+			textscale	0.2
+			font	"fonts/chain"
+
+		}
+		windowDef DDWaveForm
+		{
+			rect	5,16,180,14
+			background	"gfx/guis/wav"
+			matcolor	1,0.709,0.0352,1
+			visible	1
+			shear	0, -0.4
+			matscalex	2
+		}
+	}	
+}

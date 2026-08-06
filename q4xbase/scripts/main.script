@@ -1,0 +1,100 @@
+/***********************************************************************
+
+doom_main.script
+
+This is the main script that is loaded before any level scripts load.
+
+***********************************************************************/
+
+#include "scripts/doom_defs.script"
+#include "scripts/defs.script"
+#include "scripts/events.script"
+#include "scripts/doom_util.script"
+#include "scripts/util.script"
+
+//Common Objects
+#include "scripts/common/train_mover.script"
+#include "scripts/common/func_train.script"
+#include "scripts/common/tram_obj.script"
+#include "scripts/common/tramCar.script"
+#include "scripts/common/repair_bot.script"
+#include "scripts/common/strogg_dropship.script"
+
+// RAVEN MAP SCRIPTS FOR Q4
+
+#include "scripts/maps/airdefense_intro.script"
+#include "scripts/maps/airdefense.script"
+#include "scripts/maps/airdefense1.script"
+#include "scripts/maps/airdefense2.script"
+#include "scripts/maps/hangar1.script"
+#include "scripts/maps/hangar2.script"
+//#include "scripts/maps/mcc.script"
+#include "scripts/maps/mcc_landing.script"
+#include "scripts/maps/mcc_1.script"
+#include "scripts/maps/convoy1.script"
+#include "scripts/maps/building_b.script"
+#include "scripts/maps/convoy2.script"
+#include "scripts/maps/convoy2b.script"
+#include "scripts/maps/hub1.script"
+#include "scripts/maps/hub2.script"
+#include "scripts/maps/medlabs.script"
+#include "scripts/maps/walker.script"
+#include "scripts/maps/dispersal.script"
+//#include "scripts/maps/dispersal2.script"
+#include "scripts/maps/recomp.script"
+#include "scripts/maps/putra.script"
+#include "scripts/maps/waste.script"
+#include "scripts/maps/mcc_2.script"
+#include "scripts/maps/storage1.script"
+#include "scripts/maps/storage2.script"
+#include "scripts/maps/tram1.script"
+#include "scripts/maps/tram1b.script"
+//#include "scripts/maps/tram1c.script" // 4/9/05 gc
+#include "scripts/maps/process1.script"
+#include "scripts/maps/process2.script"
+#include "scripts/maps/tram2.script"
+#include "scripts/maps/network1.script"
+#include "scripts/maps/network2.script"
+#include "scripts/maps/core.script"
+#include "scripts/maps/core_boss.script"
+
+
+// RITUAL ENTERTAINMENT MAPS FOR Q4X
+// #include 01
+// #include 02
+#include "scripts/maps/M03_airassault.script"
+#include "scripts/maps/m04_stranarus_trench_intro.script"
+#include "scripts/maps/m04_stranarus_trench.script"
+#include "scripts/maps/m05_painlord.script" 
+#include "scripts/maps/m05_bio.script"
+#include "scripts/maps/m06_mcc.script"
+#include "scripts/maps/m06_mcc_invasion.script"
+// #include 07
+// #include 08
+#include "scripts/maps/m09_valkaryne.script"
+
+
+//Bits
+#include "scripts/bits/bit_nodeChain.script"
+
+// FIXME!  The following three scripts should likely disappear.
+// Common Scripts
+// these script is needed on multiple levels, they are NOT test scripts 
+#include "scripts/common/navCrossing.script"
+
+// remove these before alpha.
+#include "scripts/work/gruntFunctions.script"
+#include "scripts/work/marineFunctions.script"
+
+void doom_main() 
+{
+	sys.print( "Entering doom_main()\n");
+
+	//
+	// Do any script setup here
+	//
+
+	sys.print( "Exiting doom_main()\n" );
+}
+
+

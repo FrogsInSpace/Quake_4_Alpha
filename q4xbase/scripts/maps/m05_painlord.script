@@ -1,0 +1,330 @@
+namespace painlord
+{
+	float PAINLORD_PROCESSING_REQUESTED = 0;
+	float PAINLORD_WORKING_POSITION = 0;
+	float PAINLORD_BUSY_WORKING = 0;
+	float PAINLORD_ENRAGED = 0;
+	float PAINLORD_DEAD = 0;
+	float RED_LIGHT_ON = 0;
+	
+	void redLightOn()
+	{
+		if ( !RED_LIGHT_ON )
+		{
+			$spinnyLight.fadeInLight( 1 );
+			$mainPainlordLight.setCurrentLightLevel( 1 );
+			sys.wait( 1 );
+			sys.trigger( $slimy_spawner_w );
+			RED_LIGHT_ON = 1;
+			sys.println( "red_light_on = 1" );
+		}
+		else
+		{
+			if ( PAINLORD_ENRAGED ) 
+			{
+				sys.println( "redLightOn() ignored -- painlord is enraged" );	
+			}
+			else
+			{
+				sys.println( "redLightOn() ignored -- what" );
+			}
+		}
+	}
+	
+	void redLightOff()
+	{
+		if ( PAINLORD_ENRAGED && !PAINLORD_DEAD ) 
+		{
+			sys.println( "redLightOff() ignored -- painlord is enraged" );
+		}
+		else if ( PAINLORD_PROCESSING_REQUESTED )
+		{
+			sys.println( "redLightOff() ignored -- there's a guy on the line who needs processing" );
+		}
+		else
+		{
+			if ( RED_LIGHT_ON )
+			{
+				sys.trigger( $slimy_spawner_w );
+				$spinnyLight.fadeOutLight( 1 );
+				$mainPainlordLight.setCurrentLightLevel( 3 );
+				RED_LIGHT_ON = 0;
+				sys.println( "red_light_on = 0" );
+			}
+			else
+			{
+				sys.println( "RED LIGHT IS ALREADY OFF GOSH STOP BOTHERING ME" );
+			}
+		}
+	}
+	
+	void moveToProcessingStation()
+	{
+		PAINLORD_BUSY_WORKING = 1;
+		thread redLightOn();
+		sys.println("MOVING TO PROCESSING STATION, SPAWNING IN GUYS");
+		
+		aiScriptedMoveWait( $theboss, $painlord_working_spot, 32, 1 );
+		aiScriptedFaceWait( $theboss, $painlord_working_face, 1 );
+		sys.println("PAINLORD AT PROCESSING STATION" );
+		$theboss.atProcessingStation(); // do that thing you do good sir
+		PAINLORD_PROCESSING_REQUESTED = 0;
+		PAINLORD_WORKING_POSITION++;
+	}
+	
+	void processingBroken()
+	{
+		PAINLORD_BUSY_WORKING = 0;
+		sys.println("PROCESSING HAS BEEN BROKEN");
+	}
+	
+	void processingDone()
+	{
+		PAINLORD_BUSY_WORKING = 0;
+		sys.println("PROCESSING HAS BEEN FINISHED");
+	}
+	
+	void setupProcessing()
+	{
+		$moverpod0.time(2);
+		$moverpod1.time(2);
+		$moverpod2.time(2);
+		$moverpod3.time(2);
+		$moverpod4.time(2);
+		$painlordMachinePushingDown.time(2);
+		$painlordRotatingArm.time(2);
+		
+		sys.println( "INITIAL GUYS SETUP" );
+		$moverpod0.moveTo( $processingloc1a );
+		$painlordMachinePushingDown.moveTo( $processingloc_down );
+		$moverpod1.moveTo( $processingloc_down );
+		sys.wait(2);
+		aiSpeak( $pl_tubemarine_1, "lipsync_marine1_agony1" );
+	}
+		
+	void processGuy1()
+	{
+		sys.println( "TAKING GUY OUT OF MACHINE" );
+		$painlordMachinePushingDown.moveTo( $processingloc );
+		$moverpod1.moveTo( $processingloc );		
+		sys.wait( 2 );
+		
+		sys.println( "MOVING GUY BACK ON LINE" );
+		$painlordMachinePushingDown.moveTo( $processingloc_up );
+		$moverpod1.bind( $painlordRotatingArm );
+		$painlordRotatingArm.rotateOnce('0 -90 0'); // west
+		sys.wait( 2 );
+		$moverpod1.unbind();
+		
+		sys.println( "SHIFTING OVER ONE FINISHED GUYS" );
+		$moverpod0.moveTo( $processingloc2a );
+		$moverpod1.moveTo( $processingloc1a );
+		$painlordRotatingArm.rotateOnce('0 180 0'); // east
+		sys.wait(2);
+		
+		sys.println( "SHIFTING OVER ONE QUEUE GUYS" );
+		$moverpod2.bind( $painlordRotatingArm );
+		$painlordRotatingArm.rotateOnce('0 -90 0'); // south
+		$moverpod3.moveTo( $processingloc1b );
+		$moverpod4.moveTo( $processingloc2b );
+		sys.wait( 2 );
+		$moverpod2.unbind();
+		$painlordMachinePushingDown.moveTo( $processingloc );
+		sys.wait( 2 );
+	}
+	
+	void processGuy2()
+	{
+		sys.println( "TAKING GUY OUT OF MACHINE" );
+		$painlordMachinePushingDown.moveTo( $processingloc );
+		$moverpod2.moveTo( $processingloc );
+		sys.wait( 2 );
+
+		sys.println( "MOVING GUY BACK ON LINE" );
+		$moverpod2.bind( $painlordRotatingArm );
+		$painlordRotatingArm.rotateOnce('0 -90 0'); // west
+		$painlordMachinePushingDown.moveTo( $processingloc_up );
+		sys.wait( 2 );
+		$moverpod2.unbind();
+		sys.wait( 2 );
+		
+		sys.println( "SHIFTING OVER ONE FINISHED GUYS" );
+		$moverpod0.moveTo( $processingloc3a );
+		$moverpod1.moveTo( $processingloc2a );
+		$moverpod2.moveTo( $processingloc1a );
+		$painlordRotatingArm.rotateOnce('0 180 0'); // east
+		sys.wait( 2 );
+		
+		sys.println( "SHIFTING OVER ONE QUEUE GUYS" );
+		$moverpod3.bind( $painlordRotatingArm );
+		$painlordRotatingArm.rotateOnce( '0 -90 0' ); // south
+		$moverpod4.moveTo( $processingloc1b );
+		sys.wait( 2 );
+		$moverpod3.unbind();
+		$painlordMachinePushingDown.moveTo( $processingloc );
+		sys.wait( 2 );
+	}
+	
+	void processGuy3()
+	{
+		sys.println( "TAKING GUY OUT OF MACHINE" );
+		$painlordMachinePushingDown.moveTo( $processingloc );
+		$moverpod3.moveTo( $processingloc );
+		sys.wait( 2 );
+
+		sys.println( "MOVING GUY BACK ON LINE" );
+		$moverpod3.bind( $painlordRotatingArm );
+		$painlordRotatingArm.rotateOnce('0 -90 0'); // west
+		$painlordMachinePushingDown.moveTo( $processingloc_up );
+		sys.wait( 2 );
+		$moverpod3.unbind();
+		sys.wait( 2 );
+		
+		sys.println( "SHIFTING OVER ONE FINISHED GUYS" );
+		$moverpod0.moveTo( $processingloc4a );
+		$moverpod1.moveTo( $processingloc3a );
+		$moverpod2.moveTo( $processingloc2a );
+		$moverpod3.moveTo( $processingloc1a );
+		$painlordRotatingArm.rotateOnce('0 180 0'); // east
+		sys.wait( 2 );
+		
+		sys.println( "SHIFTING OVER ONE QUEUE GUYS" );
+		$moverpod4.bind( $painlordRotatingArm );
+		$painlordRotatingArm.rotateOnce('0 -90 0'); // south
+		sys.wait( 2 );
+		$moverpod4.unbind();
+		$painlordMachinePushingDown.moveTo( $processingloc );
+		sys.wait( 2 );
+	}
+	
+	void processingLine()
+	{
+		sys.println( "WAITING 40 SECONDS" );
+		sys.wait( 40 );
+				
+		processGuy1(); // taking guy out, moving guys over
+		
+		$theboss.requestProcessing();
+		PAINLORD_PROCESSING_REQUESTED = 1;
+		while ( PAINLORD_WORKING_POSITION < 1 )
+		{
+			sys.waitFrame();
+		}
+		
+		sys.println( "WAITING FOR THE BOSS TO BE DONE" );
+		while ( PAINLORD_BUSY_WORKING )
+		{
+			sys.waitFrame();
+		}
+
+		sys.println( "BOSS IS DONE, PUTTING GUY IN MACHINE" );
+		$painlordMachinePushingDown.moveTo( $processingloc_down );
+		$moverpod2.moveTo( $processingloc_down );
+		sys.wait( 2 );
+		aiSpeak( $pl_tubemarine_2, "lipsync_marine2_agony1" );
+		thread redLightOff();
+		
+		sys.println( "WAITING 40 SECONDS" );
+		sys.wait( 40 );
+		
+		processGuy2(); // taking guy out, moving guys over
+		
+		$theboss.requestProcessing();
+		PAINLORD_PROCESSING_REQUESTED = 1;
+		while ( PAINLORD_WORKING_POSITION < 2 )
+		{
+			sys.waitFrame();
+		}
+		
+		sys.println( "WAITING FOR THE BOSS TO BE DONE" );
+		while ( PAINLORD_BUSY_WORKING )
+		{
+			sys.waitFrame();
+		}
+		
+		sys.println( "BOSS IS DONE, PUTTING GUY IN MACHINE" );
+		$painlordMachinePushingDown.moveTo( $processingloc_down );
+		$moverpod3.moveTo( $processingloc_down );
+		sys.wait( 2 );
+		aiSpeak( $pl_tubemarine_3, "lipsync_marine3_agony1" );
+		thread redLightOff();
+		
+		sys.println( "WAITING 40 SECONDS" );
+		sys.wait( 40 );
+		
+		processGuy3(); // taking guy out, moving guys over
+		
+		$theboss.requestProcessing();
+		PAINLORD_PROCESSING_REQUESTED = 1;
+		while ( PAINLORD_WORKING_POSITION < 3 )
+		{
+			sys.waitFrame();
+		}
+		
+		sys.println( "BOSS IS DONE, PUTTING GUY IN MACHINE" );
+		$moverpod4.moveTo( $processingloc_down );
+		$painlordMachinePushingDown.moveTo( $processingloc_down );
+		sys.wait( 2 );
+		
+		sys.println("**********************");
+		sys.println("**** STRAUSS DIES ****");
+		sys.println("**********************");
+		
+		$strauss.kill();
+		
+		// kill strauss
+		// game over
+	}
+	
+	void painlordStunned()
+	{
+		sys.println( "PAINLORD IS STUNNED, SLIMYS SHOULD BE SPAWNING" );
+		thread redLightOn();
+	}
+	
+	void painlordUnstunned()
+	{
+		sys.println( "PAINLORD IS NOT STUNNED ANYMORE" );
+		thread redLightOff();
+	}
+	
+	void painlordEnraged()
+	{
+		sys.println( "PAINLORD IS ENRAAAAAAAAAAGED!!!!111111oneone" );
+		PAINLORD_ENRAGED = 1;
+		sys.waitFrame();
+		thread redLightOn();
+	}
+	
+	void slimySpawningIn()
+	{
+		sys.println("SLIMY TRANSFER INCOMING");
+	}
+	
+	void bossDies()
+	{
+		PAINLORD_DEAD = 1;
+		sys.killthread( "painlord::processingLine" );
+		sys.println( "JUBILATION ABOUNDS" );
+		sys.waitFrame();
+		thread redLightOff();
+		$slimy_spawner_w.remove();
+		
+		sys.trigger( $painlordFrontAAS );
+		sys.trigger( $painlordOuterRingAAS );
+		sys.trigger( $bossDiesHack );
+	}
+		
+	void tubeMarinesAnimLoop()
+	{
+		aiScriptedAnimLoop( $pl_tubemarine_0, "floating_tube", 4 );
+		aiScriptedAnimLoop( $pl_tubemarine_1, "floating_tube", 4 );
+		aiScriptedAnimLoop( $pl_tubemarine_2, "floating_tube", 4 );
+		aiScriptedAnimLoop( $pl_tubemarine_3, "floating_tube", 4 );
+		aiScriptedAnimLoop( $pl_tubemarine_4, "floating_tube", 4 );
+	}
+	
+	void main()
+	{
+	}
+}
