@@ -802,7 +802,13 @@ void RB_STD_T_RenderShaderPasses( const drawSurf_t *surf ) {
 					tri->primBatchMesh->SetupForDrawRender( NULL );
 				}
 			} else {
-				qglColorPointer( 4, GL_UNSIGNED_BYTE, sizeof( idDrawVert ), (void *)&ac->color );
+				if ( surf->mFlags & 1 ) {
+					const byte *decalColors = reinterpret_cast<const byte *>( ac ) +
+						tri->numVerts * sizeof( idDrawVert ) + stage * tri->numVerts * 4;
+					qglColorPointer( 4, GL_UNSIGNED_BYTE, 4, decalColors );
+				} else {
+					qglColorPointer( 4, GL_UNSIGNED_BYTE, sizeof( idDrawVert ), (void *)&ac->color );
+				}
 				qglVertexAttribPointerARB( 9, 3, GL_FLOAT, false, sizeof( idDrawVert ), ac->tangents[0].ToFloatPtr() );
 				qglVertexAttribPointerARB( 10, 3, GL_FLOAT, false, sizeof( idDrawVert ), ac->tangents[1].ToFloatPtr() );
 				qglNormalPointer( GL_FLOAT, sizeof( idDrawVert ), ac->normal.ToFloatPtr() );
@@ -869,10 +875,14 @@ void RB_STD_T_RenderShaderPasses( const drawSurf_t *surf ) {
 		//--------------------------
 
 		// set the color
-		color[0] = regs[ pStage->color.registers[0] ];
-		color[1] = regs[ pStage->color.registers[1] ];
-		color[2] = regs[ pStage->color.registers[2] ];
-		color[3] = regs[ pStage->color.registers[3] ];
+		if ( surf->mFlags & 1 ) {
+			color[0] = color[1] = color[2] = color[3] = 1.0f;
+		} else {
+			color[0] = regs[ pStage->color.registers[0] ];
+			color[1] = regs[ pStage->color.registers[1] ];
+			color[2] = regs[ pStage->color.registers[2] ];
+			color[3] = regs[ pStage->color.registers[3] ];
+		}
 
 		// skip the entire stage if an add would be black
 		if ( ( pStage->drawStateBits & (GLS_SRCBLEND_BITS|GLS_DSTBLEND_BITS) ) == ( GLS_SRCBLEND_ONE | GLS_DSTBLEND_ONE ) 
@@ -890,7 +900,13 @@ void RB_STD_T_RenderShaderPasses( const drawSurf_t *surf ) {
 		if ( pStage->vertexColor == SVC_IGNORE ) {
 			qglColor4fv( color );
 		} else if ( !tri->primBatchMesh ) {
-			qglColorPointer( 4, GL_UNSIGNED_BYTE, sizeof( idDrawVert ), (void *)&ac->color );
+			if ( surf->mFlags & 1 ) {
+				const byte *decalColors = reinterpret_cast<const byte *>( ac ) +
+					tri->numVerts * sizeof( idDrawVert ) + stage * tri->numVerts * 4;
+				qglColorPointer( 4, GL_UNSIGNED_BYTE, 4, decalColors );
+			} else {
+				qglColorPointer( 4, GL_UNSIGNED_BYTE, sizeof( idDrawVert ), (void *)&ac->color );
+			}
 			GL_EnableVertexAttribState( 4 );
 
 			if ( pStage->vertexColor == SVC_INVERSE_MODULATE ) {
@@ -905,7 +921,7 @@ void RB_STD_T_RenderShaderPasses( const drawSurf_t *surf ) {
 
 			// for vertex color and modulated color, we need to enable a second
 			// texture stage
-			if ( color[0] != 1 || color[1] != 1 || color[2] != 1 || color[3] != 1 ) {
+			if ( color[0] != 1 || color[1] != 1 || color[2] != 1 || color[3] != 1 || ( surf->mFlags & 1 ) ) {
 				GL_SelectTexture( 1 );
 
 				globalImages->whiteImage->Bind();

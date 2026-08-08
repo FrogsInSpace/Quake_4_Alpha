@@ -45,6 +45,333 @@ bool rvParticleTemplate::GetVector( idLexer *lexer, int count, idVec3 &result ) 
 	return true;
 }
 
+bool rvParticleTemplate::ParseMotionParms( idLexer *lexer, int count,
+		rvEnvParms &envelope ) {
+	idToken token;
+	if ( !lexer->ExpectTokenString( "{" ) || !lexer->ReadToken( &token ) ) {
+		return false;
+	}
+	while ( token.Cmp( "}" ) != 0 ) {
+		if ( token.Icmp( "envelope" ) == 0 ) {
+			if ( !lexer->ReadToken( &token ) ) {
+				return false;
+			}
+			envelope.SetType( token.c_str() );
+		} else if ( token.Icmp( "rate" ) == 0 ) {
+			if ( !GetVector( lexer, count, envelope.GetRateRef() ) ) {
+				return false;
+			}
+			envelope.SetIsCount( false );
+		} else if ( token.Icmp( "count" ) == 0 ) {
+			if ( !GetVector( lexer, count, envelope.GetRateRef() ) ) {
+				return false;
+			}
+			envelope.SetIsCount( true );
+		} else if ( token.Icmp( "offset" ) == 0 ) {
+			if ( !GetVector( lexer, count, envelope.GetOffsetRef() ) ) {
+				return false;
+			}
+		} else {
+			common->Warning( "^4BSE:^1 Invalid motion parameter '%s' (file: %s, line: %d)",
+				token.c_str(), lexer->GetFileName(), lexer->GetLineNum() );
+		}
+		if ( !lexer->ReadToken( &token ) ) {
+			return false;
+		}
+	}
+	return true;
+}
+
+bool rvParticleTemplate::ParseMotionDomains( rvDeclEffect *effect,
+		idLexer *lexer ) {
+	idToken token;
+	if ( !lexer->ExpectTokenString( "{" ) || !lexer->ReadToken( &token ) ) {
+		return false;
+	}
+	while ( token.Cmp( "}" ) != 0 ) {
+		bool parsed = true;
+		if ( token.Icmp( "tint" ) == 0 ) {
+			parsed = ParseMotionParms( lexer, 3, mTintEnvelope );
+		} else if ( token.Icmp( "fade" ) == 0 ) {
+			parsed = ParseMotionParms( lexer, 1, mFadeEnvelope );
+		} else if ( token.Icmp( "size" ) == 0 ) {
+			parsed = ParseMotionParms( lexer, mNumSizeParms, mSizeEnvelope );
+		} else if ( token.Icmp( "rotate" ) == 0 ) {
+			parsed = ParseMotionParms( lexer, mNumRotateParms, mRotateEnvelope );
+		} else if ( token.Icmp( "angle" ) == 0 ) {
+			parsed = ParseMotionParms( lexer, 3, mAngleEnvelope );
+		} else if ( token.Icmp( "offset" ) == 0 ) {
+			parsed = ParseMotionParms( lexer, 3, mOffsetEnvelope );
+		} else if ( token.Icmp( "length" ) == 0 ) {
+			parsed = ParseMotionParms( lexer, 3, mLengthEnvelope );
+		} else {
+			common->Warning( "^4BSE:^1 Invalid motion domain '%s' in '%s' (file: %s, line: %d)",
+				token.c_str(), effect ? effect->GetName() : "<unknown>",
+				lexer->GetFileName(), lexer->GetLineNum() );
+			lexer->SkipBracedSection( true );
+		}
+		if ( !parsed || !lexer->ReadToken( &token ) ) {
+			return false;
+		}
+	}
+	return true;
+}
+
+bool rvParticleTemplate::CheckCommonParms( idLexer *lexer,
+		rvParticleParms &parms ) {
+	idToken token;
+	if ( !lexer->ReadToken( &token ) ) {
+		return false;
+	}
+	while ( token.Cmp( "}" ) != 0 ) {
+		if ( token.Icmp( "surface" ) == 0 ) {
+			parms.mFlags |= PPFLAG_SURFACE;
+		} else if ( token.Icmp( "useEndOrigin" ) == 0 ) {
+			parms.mFlags |= PPFLAG_USEENDORIGIN;
+		} else if ( token.Icmp( "cone" ) == 0 ) {
+			parms.mFlags |= PPFLAG_CONE;
+		} else if ( token.Icmp( "relative" ) == 0 ) {
+			parms.mFlags |= PPFLAG_RELATIVE;
+		} else if ( token.Icmp( "linearSpacing" ) == 0 ) {
+			parms.mFlags |= PPFLAG_LINEARSPACING;
+		} else if ( token.Icmp( "attenuate" ) == 0 ) {
+			parms.mFlags |= PPFLAG_ATTENUATE;
+		} else if ( token.Icmp( "inverseAttenuate" ) == 0 ) {
+			parms.mFlags |= PPFLAG_INV_ATTENUATE;
+		}
+		if ( !lexer->ReadToken( &token ) ) {
+			return false;
+		}
+	}
+	return true;
+}
+
+bool rvParticleTemplate::ParseSpawnParms( rvDeclEffect *effect,
+		idLexer *lexer, rvParticleParms &parms, int count ) {
+	idToken token;
+	if ( !lexer->ExpectTokenString( "{" ) || !lexer->ReadToken( &token ) ) {
+		return false;
+	}
+	if ( token.Cmp( "}" ) == 0 ) {
+		return true;
+	}
+
+	bool fixup = true;
+	if ( token.Icmp( "point" ) == 0 ) {
+		parms.mSpawnType = SPF_POINT_0 + count;
+		if ( !GetVector( lexer, count, parms.mMins ) ) { return false; }
+	} else if ( token.Icmp( "line" ) == 0 ) {
+		parms.mSpawnType = SPF_LINEAR_0 + count;
+		if ( !GetVector( lexer, count, parms.mMins ) ||
+				!lexer->ExpectTokenString( "," ) ||
+				!GetVector( lexer, count, parms.mMaxs ) ) { return false; }
+	} else if ( token.Icmp( "box" ) == 0 || token.Icmp( "sphere" ) == 0 ||
+			token.Icmp( "cylinder" ) == 0 ) {
+		const int base = token.Icmp( "box" ) == 0 ? SPF_BOX_0 :
+			( token.Icmp( "sphere" ) == 0 ? SPF_SPHERE_0 : SPF_CYLINDER_0 );
+		parms.mSpawnType = base + count;
+		if ( !GetVector( lexer, count, parms.mMins ) ||
+				!lexer->ExpectTokenString( "," ) ||
+				!GetVector( lexer, count, parms.mMaxs ) ) { return false; }
+	} else if ( token.Icmp( "spiral" ) == 0 ) {
+		parms.mSpawnType = SPF_SPIRAL_0 + count;
+		if ( !GetVector( lexer, count, parms.mMins ) ||
+				!lexer->ExpectTokenString( "," ) ||
+				!GetVector( lexer, count, parms.mMaxs ) ||
+				!lexer->ExpectTokenString( "," ) ) { return false; }
+		parms.mRange = lexer->ParseFloat();
+	} else if ( token.Icmp( "model" ) == 0 ) {
+		parms.mSpawnType = SPF_MODEL_0 + count;
+		if ( !lexer->ReadToken( &token ) ) { return false; }
+		idRenderModel *model = renderModelManager->FindModel( token.c_str() );
+		if ( model == NULL || model->NumSurfaces() == 0 ) {
+			common->Warning( "^4BSE:^1 No surfaces defined in model '%s' in '%s' (file: %s, line: %d)",
+				token.c_str(), effect ? effect->GetName() : "<unknown>",
+				lexer->GetFileName(), lexer->GetLineNum() );
+			model = renderModelManager->FindModel( "_default" );
+		}
+		parms.mMisc = model;
+		if ( !lexer->ExpectTokenString( "," ) ||
+				!GetVector( lexer, count, parms.mMins ) ||
+				!lexer->ExpectTokenString( "," ) ||
+				!GetVector( lexer, count, parms.mMaxs ) ) { return false; }
+		fixup = false;
+	} else {
+		common->Warning( "^4BSE:^1 Invalid spawn domain '%s' in '%s' (file: %s, line: %d)",
+			token.c_str(), effect ? effect->GetName() : "<unknown>",
+			lexer->GetFileName(), lexer->GetLineNum() );
+		return CheckCommonParms( lexer, parms );
+	}
+
+	if ( !CheckCommonParms( lexer, parms ) ) {
+		return false;
+	}
+	if ( parms.mFlags & PPFLAG_SURFACE ) {
+		if ( parms.mSpawnType >= SPF_BOX_0 && parms.mSpawnType <= SPF_BOX_3 ) {
+			parms.mSpawnType += SPF_SURFACE_BOX_0 - SPF_BOX_0;
+		} else if ( parms.mSpawnType >= SPF_SPHERE_0 && parms.mSpawnType <= SPF_SPHERE_3 ) {
+			parms.mSpawnType += SPF_SURFACE_SPHERE_0 - SPF_SPHERE_0;
+		} else if ( parms.mSpawnType >= SPF_CYLINDER_0 && parms.mSpawnType <= SPF_CYLINDER_3 ) {
+			parms.mSpawnType += SPF_SURFACE_CYLINDER_0 - SPF_CYLINDER_0;
+		}
+	}
+	if ( fixup ) {
+		FixupParms( parms );
+	}
+	return true;
+}
+
+bool rvParticleTemplate::ParseSpawnDomains( rvDeclEffect *effect,
+		idLexer *lexer ) {
+	idToken token;
+	if ( !lexer->ExpectTokenString( "{" ) || !lexer->ReadToken( &token ) ) {
+		return false;
+	}
+	while ( token.Cmp( "}" ) != 0 ) {
+		bool parsed = true;
+		if ( token.Icmp( "position" ) == 0 ) {
+			parsed = ParseSpawnParms( effect, lexer, mSpawnPosition, 3 );
+		} else if ( token.Icmp( "direction" ) == 0 ) {
+			parsed = ParseSpawnParms( effect, lexer, mSpawnDirection, 3 );
+			SetCalculatedNormal( true );
+		} else if ( token.Icmp( "velocity" ) == 0 ) {
+			parsed = ParseSpawnParms( effect, lexer, mSpawnVelocity, 3 );
+		} else if ( token.Icmp( "acceleration" ) == 0 ) {
+			parsed = ParseSpawnParms( effect, lexer, mSpawnAcceleration, 3 );
+		} else if ( token.Icmp( "friction" ) == 0 ) {
+			parsed = ParseSpawnParms( effect, lexer, mSpawnFriction, 3 );
+		} else if ( token.Icmp( "tint" ) == 0 ) {
+			parsed = ParseSpawnParms( effect, lexer, mSpawnTint, 3 );
+		} else if ( token.Icmp( "fade" ) == 0 ) {
+			parsed = ParseSpawnParms( effect, lexer, mSpawnFade, 1 );
+		} else if ( token.Icmp( "size" ) == 0 ) {
+			parsed = ParseSpawnParms( effect, lexer, mSpawnSize, mNumSizeParms );
+		} else if ( token.Icmp( "rotate" ) == 0 ) {
+			parsed = ParseSpawnParms( effect, lexer, mSpawnRotate, mNumRotateParms );
+		} else if ( token.Icmp( "angle" ) == 0 ) {
+			parsed = ParseSpawnParms( effect, lexer, mSpawnAngle, 3 );
+		} else if ( token.Icmp( "offset" ) == 0 ) {
+			parsed = ParseSpawnParms( effect, lexer, mSpawnOffset, 3 );
+		} else if ( token.Icmp( "length" ) == 0 ) {
+			parsed = ParseSpawnParms( effect, lexer, mSpawnLength, 3 );
+		} else {
+			common->Warning( "^4BSE:^1 Invalid spawn type '%s' in '%s' (file: %s, line: %d)",
+				token.c_str(), effect ? effect->GetName() : "<unknown>",
+				lexer->GetFileName(), lexer->GetLineNum() );
+			lexer->SkipBracedSection( true );
+		}
+		if ( !parsed || !lexer->ReadToken( &token ) ) {
+			return false;
+		}
+	}
+	return true;
+}
+
+bool rvParticleTemplate::ParseDeathDomains( rvDeclEffect *effect,
+		idLexer *lexer ) {
+	idToken token;
+	if ( !lexer->ExpectTokenString( "{" ) || !lexer->ReadToken( &token ) ) {
+		return false;
+	}
+	while ( token.Cmp( "}" ) != 0 ) {
+		bool parsed = true;
+		rvEnvParms *envelope = NULL;
+		if ( token.Icmp( "tint" ) == 0 ) {
+			parsed = ParseSpawnParms( effect, lexer, mDeathTint, 3 ); envelope = &mTintEnvelope;
+		} else if ( token.Icmp( "fade" ) == 0 ) {
+			parsed = ParseSpawnParms( effect, lexer, mDeathFade, 1 ); envelope = &mFadeEnvelope;
+		} else if ( token.Icmp( "size" ) == 0 ) {
+			parsed = ParseSpawnParms( effect, lexer, mDeathSize, mNumSizeParms ); envelope = &mSizeEnvelope;
+		} else if ( token.Icmp( "rotate" ) == 0 ) {
+			parsed = ParseSpawnParms( effect, lexer, mDeathRotate, mNumRotateParms ); envelope = &mRotateEnvelope;
+		} else if ( token.Icmp( "angle" ) == 0 ) {
+			parsed = ParseSpawnParms( effect, lexer, mDeathAngle, 3 ); envelope = &mAngleEnvelope;
+		} else if ( token.Icmp( "offset" ) == 0 ) {
+			parsed = ParseSpawnParms( effect, lexer, mDeathOffset, 3 ); envelope = &mOffsetEnvelope;
+		} else if ( token.Icmp( "length" ) == 0 ) {
+			parsed = ParseSpawnParms( effect, lexer, mDeathLength, 3 ); envelope = &mLengthEnvelope;
+		} else {
+			common->Warning( "^4BSE:^1 Invalid end type '%s' in '%s' (file: %s, line: %d)",
+				token.c_str(), effect ? effect->GetName() : "<unknown>",
+				lexer->GetFileName(), lexer->GetLineNum() );
+			lexer->SkipBracedSection( true );
+		}
+		if ( envelope != NULL ) {
+			envelope->SetDefaultType();
+		}
+		if ( !parsed || !lexer->ReadToken( &token ) ) {
+			return false;
+		}
+	}
+	return true;
+}
+
+bool rvParticleTemplate::ParseImpact( rvDeclEffect *effect, idLexer *lexer ) {
+	idToken token;
+	if ( !lexer->ExpectTokenString( "{" ) || !lexer->ReadToken( &token ) ) {
+		return false;
+	}
+	SetHasPhysics( true );
+	while ( token.Cmp( "}" ) != 0 ) {
+		if ( token.Icmp( "effect" ) == 0 ) {
+			if ( !lexer->ReadToken( &token ) ) { return false; }
+			if ( mNumImpactEffects < BSE_NUM_SPAWNABLE ) {
+				mImpactEffects[mNumImpactEffects++] = declManager->FindEffect( token.c_str() );
+			} else {
+				common->Warning( "^4BSE:^1 Too many impact effects '%s' in '%s'",
+					token.c_str(), effect ? effect->GetName() : "<unknown>" );
+			}
+		} else if ( token.Icmp( "remove" ) == 0 ) {
+			SetDeleteOnImpact( lexer->ParseInt() != 0 );
+		} else if ( token.Icmp( "bounce" ) == 0 ) {
+			mBounce = lexer->ParseFloat();
+		} else {
+			common->Warning( "^4BSE:^1 Invalid impact parameter '%s' in '%s'",
+				token.c_str(), effect ? effect->GetName() : "<unknown>" );
+		}
+		if ( !lexer->ReadToken( &token ) ) { return false; }
+	}
+	return true;
+}
+
+bool rvParticleTemplate::ParseTimeout( rvDeclEffect *effect, idLexer *lexer ) {
+	idToken token;
+	if ( !lexer->ExpectTokenString( "{" ) || !lexer->ReadToken( &token ) ) {
+		return false;
+	}
+	while ( token.Cmp( "}" ) != 0 ) {
+		if ( token.Icmp( "effect" ) == 0 ) {
+			if ( !lexer->ReadToken( &token ) ) { return false; }
+			if ( mNumTimeoutEffects < BSE_NUM_SPAWNABLE ) {
+				mTimeoutEffects[mNumTimeoutEffects++] = declManager->FindEffect( token.c_str() );
+			} else {
+				common->Warning( "^4BSE:^1 Too many timeout effects '%s' in '%s'",
+					token.c_str(), effect ? effect->GetName() : "<unknown>" );
+			}
+		} else {
+			common->Warning( "^4BSE:^1 Invalid timeout parameter '%s' in '%s'",
+				token.c_str(), effect ? effect->GetName() : "<unknown>" );
+		}
+		if ( !lexer->ReadToken( &token ) ) { return false; }
+	}
+	return true;
+}
+
+bool rvParticleTemplate::ParseBlendParms( rvDeclEffect *effect, idLexer *lexer ) {
+	idToken token;
+	if ( !lexer->ReadToken( &token ) ) {
+		return false;
+	}
+	if ( token.Icmp( "add" ) == 0 ) {
+		SetAdditive( true );
+	} else {
+		common->Warning( "^4BSE:^1 Invalid blend type '%s' in '%s' (file: %s, line: %d)",
+			token.c_str(), effect ? effect->GetName() : "<unknown>",
+			lexer->GetFileName(), lexer->GetLineNum() );
+	}
+	return true;
+}
+
 void rvParticleTemplate::SetParameterCounts() {
 	int sizeParms;
 	int rotateParms;
@@ -63,7 +390,7 @@ void rvParticleTemplate::SetParameterCounts() {
 			sizeParms = 3; rotateParms = 3; sizeSpawnType = SPF_ONE_3; break;
 		case PTYPE_LIGHT:
 			sizeParms = 3; rotateParms = 0; sizeSpawnType = SPF_ONE_3; break;
-		case PTYPE_ORIENTEDLINKED:
+		case PTYPE_DEBRIS:
 			sizeParms = 0; rotateParms = 3; sizeSpawnType = SPF_ONE_3; break;
 		default:
 			return;
@@ -284,7 +611,7 @@ void rvParticleTemplate::Finish() {
 			mVertexCount = 4 * ( 5 * mNumForks + 5 );
 			mIndexCount = 60 * ( mNumForks + 1 );
 			break;
-		case PTYPE_ORIENTEDLINKED:
+		case PTYPE_DEBRIS:
 			mVertexCount = mIndexCount = 0;
 			break;
 		default:
@@ -318,11 +645,11 @@ bool rvParticleTemplate::Parse( rvDeclEffect *effect, idLexer *lexer ) {
 	}
 	while ( token.Cmp( "}" ) != 0 ) {
 		if ( token.Icmp( "start" ) == 0 ) {
-			lexer->SkipBracedSection();
+			if ( !ParseSpawnDomains( effect, lexer ) ) { return false; }
 		} else if ( token.Icmp( "end" ) == 0 ) {
-			lexer->SkipBracedSection();
+			if ( !ParseDeathDomains( effect, lexer ) ) { return false; }
 		} else if ( token.Icmp( "motion" ) == 0 ) {
-			lexer->SkipBracedSection();
+			if ( !ParseMotionDomains( effect, lexer ) ) { return false; }
 		} else if ( token.Icmp( "generatedNormal" ) == 0 ) {
 			SetGeneratedNormal( true );
 		} else if ( token.Icmp( "generatedOriginNormal" ) == 0 ) {
@@ -374,8 +701,7 @@ bool rvParticleTemplate::Parse( rvDeclEffect *effect, idLexer *lexer ) {
 			lexer->ReadToken( &token );
 			mJitterTable = declManager->FindTable( token );
 		} else if ( token.Icmp( "blend" ) == 0 ) {
-			lexer->ReadToken( &token );
-			SetAdditive( token.Icmp( "add" ) == 0 );
+			if ( !ParseBlendParms( effect, lexer ) ) { return false; }
 		} else if ( token.Icmp( "shadows" ) == 0 ) {
 			SetShadows( true );
 		} else if ( token.Icmp( "specular" ) == 0 ) {
@@ -384,19 +710,10 @@ bool rvParticleTemplate::Parse( rvDeclEffect *effect, idLexer *lexer ) {
 			lexer->ReadToken( &token );
 			mModelName = token;
 			renderModelManager->FindModel( token );
-		} else if ( token.Icmp( "impact" ) == 0 || token.Icmp( "timeout" ) == 0 ) {
-			const bool impact = token.Icmp( "impact" ) == 0;
-			if ( !lexer->ExpectTokenString( "{" ) ) { return false; }
-			while ( lexer->ReadToken( &token ) && token.Cmp( "}" ) != 0 ) {
-				if ( token.Icmp( "effect" ) == 0 && lexer->ReadToken( &token ) ) {
-					if ( impact && mNumImpactEffects < BSE_NUM_SPAWNABLE ) { mImpactEffects[mNumImpactEffects++] = declManager->FindEffect( token ); }
-					else if ( !impact && mNumTimeoutEffects < BSE_NUM_SPAWNABLE ) { mTimeoutEffects[mNumTimeoutEffects++] = declManager->FindEffect( token ); }
-				} else if ( impact && token.Icmp( "remove" ) == 0 ) {
-					SetDeleteOnImpact( lexer->ParseInt() != 0 );
-				} else if ( impact && token.Icmp( "bounce" ) == 0 ) {
-					mBounce = lexer->ParseFloat();
-				}
-			}
+		} else if ( token.Icmp( "impact" ) == 0 ) {
+			if ( !ParseImpact( effect, lexer ) ) { return false; }
+		} else if ( token.Icmp( "timeout" ) == 0 ) {
+			if ( !ParseTimeout( effect, lexer ) ) { return false; }
 		} else {
 			common->Warning( "^4BSE:^1 Invalid particle keyword '%s' in '%s' (file: %s, line: %d)",
 				token.c_str(), effect ? effect->GetName() : "<unknown>", lexer->GetFileName(), lexer->GetLineNum() );

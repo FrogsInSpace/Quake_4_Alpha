@@ -205,7 +205,7 @@ rvParticle *rvSegment::GetFreeParticle( rvBSE *effect ) {
 void rvSegment::InsertParticle( rvParticle *particle, rvSegmentTemplate *st ) {
 	if ( st->GetTemporary() ) { return; }
 	++mActiveCount;
-	if ( st->GetUseMaterialColor() ) {
+	if ( st->GetComplexParticle() ) {
 		particle->SetNext( mUsedHead );
 		mUsedHead = particle;
 		return;
@@ -225,7 +225,10 @@ rvParticle *rvSegment::SpawnParticle( rvBSE *effect, rvSegmentTemplate *st, floa
 	if ( !GetSegmentTemplate() ) { return NULL; }
 	rvParticle *particle = st->GetTemporary() ? mParticles : GetFreeParticle( effect );
 	if ( !particle ) { return NULL; }
-	particle->FinishSpawn( effect, this, birthTime, 0.0f, initPos, initAxis );
+	// Quake 4 feeds the single-particle birth time through as the spawn
+	// fraction as well.  Several locked/constant weapon effects use that
+	// value to seed their linear spacing and envelope evaluation.
+	particle->FinishSpawn( effect, this, birthTime, birthTime, initPos, initAxis );
 	InsertParticle( particle, st );
 	return particle;
 }
@@ -294,29 +297,66 @@ void rvSegment::CalcTrailCounts( rvBSE *effect, rvSegmentTemplate *st, rvParticl
 void rvSegment::CalcCounts( rvBSE *effect, float time ) {
 	rvSegmentTemplate *st = GetSegmentTemplate();
 	if ( !st || st->GetType() == SEG_TRAIL || st->GetParticleTemplate()->GetType() == PTYPE_NONE ) { return; }
-	const float particleDuration = st->GetParticleTemplate()->GetMaxDuration() + BSE_FUTURE;
+
+	rvParticleTemplate *pt = st->GetParticleTemplate();
+	const float particleMaxDuration = pt->GetMaxDuration() + BSE_FUTURE;
+	const float effectMinDuration = mEffectDecl->GetMinDuration();
+	int particleCount = 0;
+	int loopParticleCount = 0;
 	float duration = 0.0f;
+
 	switch ( st->GetType() ) {
 		case SEG_EMITTER:
-			duration = Min( particleDuration, st->mLocalDuration.y ) + BSE_FUTURE;
-			mParticleCount = mLoopParticleCount = (int)ceilf( duration / mSecondsPerParticle.y ) + 1;
+			if ( pt->GetType() == PTYPE_DEBRIS ) {
+				particleCount = loopParticleCount = 1;
+				break;
+			}
+			duration = Min( particleMaxDuration, st->mLocalDuration.y ) + BSE_FUTURE;
+			particleCount = loopParticleCount = (int)ceilf( duration / mSecondsPerParticle.y ) + 1;
+			if ( effectMinDuration < particleMaxDuration ) {
+				loopParticleCount = (int)ceilf( ( (float)particleCount / effectMinDuration ) * particleMaxDuration ) + 1;
+			}
 			break;
+
 		case SEG_SPAWNER:
-			mParticleCount = mLoopParticleCount = (int)ceilf( mCount.y );
+			if ( pt->GetType() == PTYPE_DEBRIS ) {
+				particleCount = loopParticleCount = 1;
+				break;
+			}
+			particleCount = loopParticleCount = (int)ceilf( mCount.y );
+			if ( effectMinDuration != 0.0f && !st->GetInfiniteDuration() && effectMinDuration < particleMaxDuration ) {
+				loopParticleCount = particleCount * ( (int)ceilf( particleMaxDuration / effectMinDuration ) + 1 ) + 1;
+			}
 			break;
+
 		case SEG_DECAL:
 		case SEG_LIGHT:
-			mParticleCount = mLoopParticleCount = 1;
+			particleCount = loopParticleCount = 1;
 			break;
+
 		default:
-			mParticleCount = mLoopParticleCount = 0;
 			break;
 	}
-	if ( st->GetHasParticles() && ( st->GetType() == SEG_EMITTER || st->GetType() == SEG_SPAWNER ) ) {
-		CalcTrailCounts( effect, st, st->GetParticleTemplate(), duration );
+
+	mParticleCount = particleCount;
+	mLoopParticleCount = loopParticleCount;
+
+	if ( st->GetHasParticles() ) {
+		if ( particleCount == 0 || loopParticleCount == 0 ) {
+			common->Warning( "^4BSE:^1 '%s'\nSegment with no particles for effect", mEffectDecl->GetName() );
+		}
+		if ( st->GetType() == SEG_EMITTER || st->GetType() == SEG_SPAWNER ) {
+			CalcTrailCounts( effect, st, pt, duration );
+		}
 	}
+
 	if ( !effect->GetLooping() ) {
-		effect->SetDuration( mSegEndTime - time + st->GetParticleTemplate()->GetMaxDuration() );
+		effect->SetDuration( mSegEndTime - time + pt->GetMaxDuration() );
+	}
+
+	if ( bse_debug.GetInteger() == 2 ) {
+		common->Printf( "BSE: Segment %s: Count: %d Looping: %d\n",
+			rvBSEManagerLocal::mSegmentNames[st->GetType()], particleCount, loopParticleCount );
 	}
 }
 
@@ -360,20 +400,34 @@ void rvSegment::Handle( rvBSE *effect, float time ) {
 }
 
 void rvSegment::UpdateGenericParticles( rvBSE *effect, rvSegmentTemplate *st, float time ) {
+	const bool infinite = st->GetInfiniteDuration();
+	const bool smoker = st->GetSmoker();
 	rvParticle *previous = NULL;
 	rvParticle *particle = mUsedHead;
 	while ( particle ) {
 		rvParticle *next = particle->GetNext();
-		bool remove = particle->Expired( time );
-		if ( st->GetHasPhysics() ) { remove = particle->RunPhysics( effect, st, time ); }
-		if ( effect->GetStopped() && !particle->GetPersist() ) { remove = true; }
-		if ( remove ) {
+		bool remove = false;
+		if ( infinite ) {
+			particle->RunPhysics( effect, st, time );
+			remove = effect->GetStopped();
+		} else if ( particle->Expired( time ) ) {
 			particle->CheckTimeoutEffect( effect, st, time );
-			particle->Destroy();
+			remove = true;
+		} else {
+			remove = particle->RunPhysics( effect, st, time );
+		}
+		if ( effect->GetStopped() && !particle->GetPersist() ) { remove = true; }
+		if ( smoker && st->mTrailSegmentIndex >= 0 &&
+				st->mTrailSegmentIndex < effect->mSegments.Num() ) {
+			particle->EmitSmokeParticles( effect,
+				&effect->mSegments[st->mTrailSegmentIndex], time );
+		}
+		if ( remove ) {
 			if ( previous ) { previous->SetNext( next ); } else { mUsedHead = next; }
-			particle->SetNext( mFreeHead );
-			mFreeHead = particle;
 			--mActiveCount;
+			particle->SetNext( mFreeHead );
+			particle->Destroy();
+			mFreeHead = particle;
 		} else {
 			previous = particle;
 		}
@@ -385,7 +439,7 @@ bool rvSegment::UpdateParticles( rvBSE *effect, float time ) {
 	rvSegmentTemplate *st = GetSegmentTemplate();
 	if ( !st ) { return false; }
 	Handle( effect, time );
-	if ( effect->GetStopped() || st->GetHasPhysics() ) { UpdateGenericParticles( effect, st, time ); }
+	if ( effect->GetStopped() || st->GetComplexParticle() ) { UpdateGenericParticles( effect, st, time ); }
 	else { UpdateSimpleParticles( time ); }
 	if ( st->GetParticleTemplate()->GetType() == PTYPE_ELECTRICITY ) { UpdateElectricityParticles( time ); }
 	if ( com_debugHudActive ) {
@@ -403,10 +457,70 @@ void rvSegment::PlayEffect( rvBSE *effect, rvSegmentTemplate *st ) {
 }
 
 void rvSegment::CreateDecal( rvBSE *effect, float time ) {
-	// Decal geometry is projected by the render world; spawning the temporary
-	// particle preserves the retail timing and randomized particle parameters.
+	static const idVec3 decalWinding[4] = {
+		idVec3(  1.0f,  1.0f, 0.0f ),
+		idVec3( -1.0f,  1.0f, 0.0f ),
+		idVec3( -1.0f, -1.0f, 0.0f ),
+		idVec3(  1.0f, -1.0f, 0.0f )
+	};
+
+	if ( !bse_render.GetBool() || effect == NULL || session == NULL ||
+			session->rw == NULL ) {
+		return;
+	}
+
 	rvSegmentTemplate *st = GetSegmentTemplate();
-	if ( bse_render.GetBool() && st ) { SpawnParticle( effect, st, time ); }
+	if ( st == NULL ) {
+		return;
+	}
+
+	if ( bse_debug.GetBool() ) {
+		static int decalCount;
+		const idMaterial *material = st->GetParticleTemplate()->GetMaterial();
+		common->Printf( "BSE: Decal %d: %s\n", ++decalCount,
+			material != NULL ? material->GetName() : "<null>" );
+	}
+
+	rvParticle *particle = SpawnParticle( effect, st, time,
+		vec3_origin, mat3_identity );
+	if ( particle == NULL ) {
+		return;
+	}
+
+	idVec4 tint;
+	idVec3 size;
+	idVec3 rotation;
+	particle->GetSpawnInfo( tint, size, rotation );
+
+	float sine;
+	float cosine;
+	idMath::SinCos( rotation.x, sine, cosine );
+
+	// BSE decals project opposite the effect's forward axis.  The retail code
+	// uses a fixed eight-unit projection depth and rotates the winding around
+	// that direction by the particle's randomized rotation parameter.
+	idMat3 axis;
+	axis[2] = -effect->GetCurrentAxis()[0];
+	axis[2].Normalize();
+	idVec3 tangent0;
+	idVec3 tangent1;
+	axis[2].NormalVectors( tangent0, tangent1 );
+	axis[0] = tangent0 * cosine + tangent1 * -sine;
+	axis[1] = tangent0 * -sine + tangent1 * -cosine;
+
+	const idVec3 &origin = effect->GetCurrentOrigin();
+	const idVec3 windingOrigin = origin + axis[2] * 8.0f;
+	const idVec3 projectionOrigin = origin - axis[2] * 8.0f;
+
+	idFixedWinding winding;
+	for ( int point = 0; point < 4; ++point ) {
+		winding += idVec5( windingOrigin + ( axis * decalWinding[point] ) * size.x,
+			idVec2( point == 0 || point == 3 ? 1.0f : 0.0f,
+				point < 2 ? 1.0f : 0.0f ) );
+	}
+
+	session->rw->ProjectDecalOntoWorld( winding, projectionOrigin, true, 8.0f,
+		st->GetParticleTemplate()->GetMaterial(), idMath::Ftoi( time * 1000.0f ) );
 }
 
 bool rvSegment::Check( rvBSE *effect, float time ) {

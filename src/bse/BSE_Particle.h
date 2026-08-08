@@ -61,7 +61,6 @@ enum
 	PTYPE_LIGHT,									// Dynamic light - very expensive
 	PTYPE_ELECTRICITY,								// A bolt of electricity
 	PTYPE_LINKED,									// A series of linked lines
-	PTYPE_ORIENTEDLINKED,
 	PTYPE_DEBRIS,									// A client side moveable entity spawned in the game
 	PTYPE_COUNT
 };

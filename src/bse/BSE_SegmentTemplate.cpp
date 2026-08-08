@@ -204,8 +204,7 @@ bool rvSegmentTemplate::Finish( rvDeclEffect *effect ) {
 			mParticleTemplate.GetHasPhysics() ||
 			mParticleTemplate.GetNumTimeoutEffects() != 0 ||
 			particleType == PTYPE_ELECTRICITY || particleType == PTYPE_LIGHT ) {
-		// In the retail executable the complex-update flag occupies bit 9.
-		mFlags |= BIT( 9 );
+		mFlags |= STFLAG_COMPLEX;
 	}
 	return true;
 }

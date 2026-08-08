@@ -85,7 +85,7 @@ bool rvLightParticle::InitLight( rvBSE *effect, rvSegmentTemplate *st, float tim
 	EvaluateSize( evalTime, size.ToFloatPtr() );
 
 	idVec3 position;
-	EvaluatePosition( effect, position, evalTime - mMotionStartTime );
+	EvaluatePosition( effect, position, time - mMotionStartTime );
 	mLight.origin = effect->GetCurrentOrigin() + position * effect->GetCurrentAxis();
 	mLight.lightRadius.Set(
 		size[0] < 1.0f ? 1.0f : size[0],
@@ -118,7 +118,7 @@ bool rvLightParticle::PresentLight( rvBSE *effect, float time, bool infinite ) {
 	EvaluateSize( evalTime, size.ToFloatPtr() );
 
 	idVec3 position;
-	EvaluatePosition( effect, position, evalTime - mMotionStartTime );
+	EvaluatePosition( effect, position, time - mMotionStartTime );
 	mLight.origin = effect->GetCurrentOrigin() + position * effect->GetCurrentAxis();
 	mLight.lightRadius.Set(
 		size[0] < 1.0f ? 1.0f : size[0],

@@ -218,11 +218,12 @@ enum {	STFLAG_ENABLED				= BIT( 0 ),
 		STFLAG_ATTENUATE_EMITTER	= BIT( 6 ),
 		STFLAG_INVERSE_ATTENUATE	= BIT( 7 ),
 		STFLAG_TEMPORARY			= BIT( 8 ),
-		STFLAG_USEMATCOLOR			= BIT( 9 ),
+		// Quake 4 uses bit 9 to select the generic particle service path.
+		// This covers physics, trails, timeout effects, electricity and lights.
+		STFLAG_COMPLEX				= BIT( 9 ),
 		STFLAG_DEPTH_SORT			= BIT( 10 ),
 		STFLAG_INVERSE_DRAWORDER	= BIT( 11 ),
 		STFLAG_ORIENTATE_IDENTITY	= BIT( 12 ),
-		STFLAG_COMPLEX				= BIT( 13 ),
 		STFLAG_CALCULATE_DURATION	= BIT( 14 ),
 };
 
@@ -254,7 +255,6 @@ public:
 				bool					GetInfiniteDuration( void ) const { return( !!( mFlags & STFLAG_INFINITE_DURATION ) ); }
 				bool					GetAttenuateEmitter( void ) const { return( !!( mFlags & STFLAG_ATTENUATE_EMITTER ) ); }
 				bool					GetInverseAttenuate( void ) const { return( !!( mFlags & STFLAG_INVERSE_ATTENUATE ) ); }
-				bool					GetUseMaterialColor( void ) const { return( !!( mFlags & STFLAG_USEMATCOLOR ) ); }
 				bool					GetTemporary( void ) const { return( !!( mFlags & STFLAG_TEMPORARY ) ); }
 				bool					GetDepthSort( void ) const { return( !!( mFlags & STFLAG_DEPTH_SORT ) ); }
 				bool					GetInverseDrawOrder( void ) const { return( !!( mFlags & STFLAG_INVERSE_DRAWORDER ) ); }
@@ -270,7 +270,6 @@ public:
 				void					SetInfiniteDuration( bool infiniteDuration ) { SetFlag( infiniteDuration, STFLAG_INFINITE_DURATION ); }
 				void					SetAttenuateEmitter( bool attenuate ) { SetFlag( attenuate, STFLAG_ATTENUATE_EMITTER ); }
 				void					SetInverseAttenuate( bool attenuate ) { SetFlag( attenuate, STFLAG_INVERSE_ATTENUATE ); }
-				void					SetUseMaterialColor( bool attenuate ) { SetFlag( attenuate, STFLAG_USEMATCOLOR ); }
 				void					SetTemporary( bool persistent ) { SetFlag( persistent, STFLAG_TEMPORARY ); }
 				void					SetDepthSort( bool locked ) { SetFlag( locked, STFLAG_DEPTH_SORT ); }
 				void					SetInverseDrawOrder( bool inverseDrawOrder ) { SetFlag( inverseDrawOrder, STFLAG_INVERSE_DRAWORDER ); }
