@@ -1080,6 +1080,10 @@ idWindow::Time
 */
 void idWindow::Time() {
 	
+	if ( !idStr::Icmp( name, "anim_newIn" ) && !noTime ) {
+		common->DPrintf( "Q4 menu trace: anim_newIn unexpectedly active at guiTime=%d epoch=%d\n", gui->GetTime(), timeLine );
+	}
+
 	if ( noTime ) {
 		return;
 	}
@@ -2642,6 +2646,9 @@ bool idWindow::Parse( idParser *src, bool rebuild) {
 
 	SetupFromState();
 	PostParse();
+	if ( !idStr::Icmp( name, "anim_newIn" ) ) {
+		common->DPrintf( "Q4 menu trace: parsed anim_newIn notime=%d events=%d\n", noTime ? 1 : 0, timeLineEvents.Num() );
+	}
 
 	// hook into the main window parsing for the gui editor
 	// If we are in the gui editor then add the internal var to the 
@@ -2765,7 +2772,7 @@ idWindow::ResetTime
 ================
 */
 void idWindow::ResetTime(int t) {
-	if ( !idStr::Icmp( name, "anim_in" ) || !idStr::Icmp( name, "video_bethsoft" ) ) {
+	if ( !idStr::Icmp( name, "anim_in" ) || !idStr::Icmp( name, "anim_newIn" ) || !idStr::Icmp( name, "video_bethsoft" ) ) {
 		common->DPrintf( "Q4 menu trace: ResetTime '%s' t=%d guiTime=%d\n", name.c_str(), t, gui->GetTime() );
 	}
 

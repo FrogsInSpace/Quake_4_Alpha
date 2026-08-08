@@ -222,6 +222,10 @@ void Script_ResetTime(idWindow *window, idList<idGSWinVar> *src) {
 	drawWin_t *win = NULL;
 	if (parm && src->Num() > 1) {
 		win = window->GetGui()->GetDesktop()->FindChildByName(*parm);
+		if ( !idStr::Icmp( parm->c_str(), "anim_in" ) || !idStr::Icmp( parm->c_str(), "anim_newIn" ) ) {
+			common->DPrintf( "Q4 menu trace: resetTime requested '%s', resolved '%s'\n",
+				parm->c_str(), ( win && win->win ) ? win->win->GetName() : "<not found>" );
+		}
 		parm = dynamic_cast<idWinStr*>((*src)[1].var);
 	}
 	if (win && win->win) {
