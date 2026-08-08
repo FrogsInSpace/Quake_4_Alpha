@@ -1,5 +1,9 @@
 # Quake 4 The Awakening Release
 
+Src folder - The alpha release contained the PDB file and helped us recreate the Quake 4 The Awakening Engine. 
+The game code however didn't come with a PDB file so the game code included is only for the retail game.
+YOU CAN RUN THE GAME WITHOUT THE SOURCE CODE RECREATION TO RUN THE EXPANSION PACK.
+
 You will need a copy of the retail game(you can buy it on steam).
 
 Come join us on discord!
