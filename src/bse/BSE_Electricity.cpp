@@ -213,7 +213,7 @@ bool rvElectricityParticle::Render( const rvBSE *effect, const idMat3 &view,
 	idVec3 position;
 	EvaluatePosition( effect, position, time - mMotionStartTime );
 	if ( !GetLocked() ) {
-		work.length *= mInitAxis * effect->GetCurrentAxis();
+		work.length *= mInitAxis * effect->GetCurrentAxis().Transpose();
 	}
 	if ( GetGeneratedLine() ) {
 		idVec3 velocity;

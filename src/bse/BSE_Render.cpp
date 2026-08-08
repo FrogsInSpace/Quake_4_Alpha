@@ -206,7 +206,7 @@ bool rvLineParticle::Render( const rvBSE *effect, const idMat3 &view,
 	EvaluatePosition( effect, position, time - mMotionStartTime );
 
 	if ( !( mFlags & PTFLAG_LOCKED ) ) {
-		length *= mInitAxis * effect->GetCurrentAxis();
+		length *= mInitAxis * effect->GetCurrentAxis().Transpose();
 	}
 	if ( mFlags & PTFLAG_GENERATED_LINE ) {
 		idVec3 velocity;
@@ -323,7 +323,7 @@ bool rvModelParticle::Render( const rvBSE *effect, const idMat3 &view,
 	idMat3 transform;
 	rvAngles( rotation ).ToMat3( transform );
 	if ( !( mFlags & PTFLAG_LOCKED ) ) {
-		transform *= mInitAxis * effect->GetCurrentAxis();
+		transform *= mInitAxis * effect->GetCurrentAxis().Transpose();
 	}
 
 	const modelSurface_t *surface = mModel->Surface( 0 );
