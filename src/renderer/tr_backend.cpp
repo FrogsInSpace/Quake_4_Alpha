@@ -396,6 +396,12 @@ void GL_State( int stateBits ) {
 		case GLS_DSTBLEND_ONE_MINUS_DST_ALPHA:
 			dstFactor = GL_ONE_MINUS_DST_ALPHA;
 			break;
+		case GLS_DSTBLEND_DST_COLOR:
+			dstFactor = GL_DST_COLOR;
+			break;
+		case GLS_DSTBLEND_ONE_MINUS_DST_COLOR:
+			dstFactor = GL_ONE_MINUS_DST_COLOR;
+			break;
 		default:
 			dstFactor = GL_ONE;		// to get warning to shut up
 			common->Error( "GL_State: invalid dst blend state bits\n" );

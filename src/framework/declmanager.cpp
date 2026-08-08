@@ -25,6 +25,8 @@ along with Quake 4 Reconstructed Source Code.  If not, see <http://www.gnu.org/l
 #include "../idlib/precompiled.h"
 #pragma hdrstop
 
+#include "../bse/BSE.h"
+
 /*
 
 GUIs and script remain separately parsed
@@ -894,15 +896,20 @@ void idDeclManagerLocal::Init( void ) {
 	RegisterDeclType( "materialType",		DECL_MATERIALTYPE,	idDeclAllocator<rvDeclMatType> );
 	RegisterDeclType( "lipSync",			DECL_LIPSYNC,		idDeclAllocator<rvDeclLipSync> );
 	RegisterDeclType( "playback",			DECL_PLAYBACK,		idDeclAllocator<rvDeclPlayback> );
+	RegisterDeclType( "effect",				DECL_EFFECT,		idDeclAllocator<rvDeclEffect> );
 	RegisterDeclType( "articulatedFigure",	DECL_AF,			idDeclAllocator<idDeclAF> );
 	RegisterDeclType( "pda",				DECL_PDA,			idDeclAllocator<idDeclPDA> );
 	RegisterDeclType( "email",				DECL_EMAIL,			idDeclAllocator<idDeclEmail> );
 	RegisterDeclType( "video",				DECL_VIDEO,			idDeclAllocator<idDeclVideo> );
 	RegisterDeclType( "audio",				DECL_AUDIO,			idDeclAllocator<idDeclAudio> );
 
-	RegisterDeclFolder( "materials",		".mtr",				DECL_MATERIAL );
-	RegisterDeclFolder( "skins",			".skin",			DECL_SKIN );
-	RegisterDeclFolder( "sound",			".sndshd",			DECL_SOUND );
+	RegisterDeclFolderWrapper( "materials",		".mtr",			DECL_MATERIAL );
+	RegisterDeclFolderWrapper( "skins",			".skin",		DECL_SKIN );
+	RegisterDeclFolderWrapper( "sound",			".sndshd",		DECL_SOUND, false, true );
+	RegisterDeclFolderWrapper( "materials/types",	".mtt",			DECL_MATERIALTYPE );
+	RegisterDeclFolderWrapper( "lipsync",			".lipsync",		DECL_LIPSYNC );
+	RegisterDeclFolderWrapper( "playbacks",			".playback",	DECL_PLAYBACK, true );
+	RegisterDeclFolderWrapper( "effects",				".fx",			DECL_EFFECT, true );
 
 	// add console commands
 	cmdSystem->AddCommand( "listDecls", ListDecls_f, CMD_FL_SYSTEM, "lists all decls" );

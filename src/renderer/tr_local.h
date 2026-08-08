@@ -405,6 +405,21 @@ typedef struct viewEntity_s {
 } viewEntity_t;
 
 
+// A BSE effect uses the same matrix prefix as a viewEntity so its generated
+// surfaces can travel through the existing draw-surface back end.  The retail
+// PDB records this structure as 164 bytes in the 32-bit build.
+typedef struct viewEffect_s {
+	struct viewEffect_s *	next;
+	rvRenderEffectLocal *	effectDef;
+	idScreenRect			scissorRect;
+	int					weaponDepthHackInViewID;
+	float				modelDepthHack;
+	float				modelMatrix[16];
+	float				modelViewMatrix[16];
+	float				distanceToCamera;
+} viewEffect_t;
+
+
 const int	MAX_CLIP_PLANES	= 1;				// we may expand this to six for some subview issues
 
 // viewDefs are allocated on the frame temporary stack memory
@@ -456,6 +471,7 @@ typedef struct viewDef_s {
 
 	struct viewLight_s	*viewLights;			// chain of all viewLights effecting view
 	struct viewEntity_s	*viewEntitys;			// chain of all viewEntities effecting view, including off screen ones casting shadows
+	struct viewEffect_s	*viewEffects;			// chain of visible Quake 4 BSE effects
 	// we use viewEntities as a check to see if a given view consists solely
 	// of 2D rendering, which we can optimize in certain ways.  A 2D view will
 	// not have any viewEntities
@@ -1138,6 +1154,8 @@ const int GLS_DSTBLEND_SRC_ALPHA				= 0x00000050;
 const int GLS_DSTBLEND_ONE_MINUS_SRC_ALPHA		= 0x00000060;
 const int GLS_DSTBLEND_DST_ALPHA				= 0x00000070;
 const int GLS_DSTBLEND_ONE_MINUS_DST_ALPHA		= 0x00000080;
+const int GLS_DSTBLEND_DST_COLOR				= 0x00000090;
+const int GLS_DSTBLEND_ONE_MINUS_DST_COLOR		= 0x000000a0;
 const int GLS_DSTBLEND_BITS						= 0x000000f0;
 
 
@@ -1293,9 +1311,12 @@ bool R_IssueEntityDefCallback( idRenderEntityLocal *def );
 idRenderModel *R_EntityDefDynamicModel( idRenderEntityLocal *def );
 
 viewEntity_t *R_SetEntityDefViewEntity( idRenderEntityLocal *def );
+viewEffect_t *R_SetEffectDefViewEntity( rvRenderEffectLocal *def );
 viewLight_t *R_SetLightDefViewLight( idRenderLightLocal *def );
 
 void R_AddDrawSurf( const srfTriangles_t *tri, const viewEntity_t *space, const renderEntity_t *renderEntity,
+					const idMaterial *shader, const idScreenRect &scissor, unsigned int flags = 0 );
+void R_AddDrawSurf( const srfTriangles_t *tri, const viewEffect_t *space, const renderEffect_t *renderEffect,
 					const idMaterial *shader, const idScreenRect &scissor, unsigned int flags = 0 );
 
 void R_LinkLightSurf( const drawSurf_t **link, const srfTriangles_t *tri, const viewEntity_t *space, 
@@ -1323,6 +1344,7 @@ void R_SetLightProject( idPlane lightProject[4], const idVec3 origin, const idVe
 
 void R_AddLightSurfaces( void );
 void R_AddModelSurfaces( void );
+void R_AddEffectSurfaces( void );
 void R_RemoveUnecessaryViewLights( void );
 
 void R_FreeDerivedData( void );

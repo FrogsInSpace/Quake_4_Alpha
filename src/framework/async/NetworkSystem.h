@@ -89,32 +89,6 @@ class idNetworkSystem {
 public:
 	virtual					~idNetworkSystem( void ) {}
 
-#ifdef Q4_RECON_ENGINE_PRIVATE
-	// Interface and ordering recovered from quake4.exe's 24-slot vtable.
-	virtual void			ServerSendReliableMessage( int clientNum, const idBitMsg &msg );
-	virtual void			ServerSendReliableMessageExcluding( int clientNum, const idBitMsg &msg );
-	virtual int				ServerGetClientPing( int clientNum );
-	virtual int				ServerGetClientPrediction( int clientNum );
-	virtual int				ServerGetClientTimeSinceLastPacket( int clientNum );
-	virtual int				ServerGetClientTimeSinceLastInput( int clientNum );
-	virtual int				ServerGetClientOutgoingRate( int clientNum );
-	virtual int				ServerGetClientIncomingRate( int clientNum );
-	virtual float			ServerGetClientIncomingPacketLoss( int clientNum );
-	virtual void			ClientSendReliableMessage( const idBitMsg &msg );
-	virtual int				ClientGetPrediction( void );
-	virtual int				ClientGetTimeSinceLastPacket( void );
-	virtual int				ClientGetOutgoingRate( void );
-	virtual int				ClientGetIncomingRate( void );
-	virtual float			ClientGetIncomingPacketLoss( void );
-	virtual const char *	GetServerAddress( void );
-	virtual const char *	GetClientAddress( int clientNum );
-	virtual void			AddFriend( int clientNum );
-	virtual void			RemoveFriend( int clientNum );
-	virtual void			SetLoadingText( const char *loadingText );
-	virtual void			AddLoadingIcon( const char *icon );
-	virtual const char *	GetClientGUID( int clientNum );
-	virtual void			GetTrafficStats( int &bytesSent, int &packetsSent, int &bytesReceived, int &packetsReceived ) const;
-#else
 	virtual void			Shutdown( void );
 
 	virtual void			ServerSendReliableMessage( int clientNum, const idBitMsg &msg, bool inhibitRepeater = false );
@@ -176,7 +150,6 @@ public:
 private:
 	scannedServer_t			scannedServer;
 	scannedClient_t			scannedClient;
-#endif
 };
 
 extern idNetworkSystem *	networkSystem;

@@ -192,9 +192,11 @@ void	RB_ARB2_DrawInteraction( const drawInteraction_t *din ) {
 		qglProgramEnvParameter4fvARB( GL_FRAGMENT_PROGRAM_ARB, 3, din->localViewOrigin.ToFloatPtr() );
 	}
 
-	static const float zeroOne[4] = { 0, 0, 0, 1 };
-	static const float oneZero[4] = { 1, 1, 1, 0 };
-	static const float negOneOne[4] = { -1, -1, -1, 1 };
+	// Quake 4 packs the vertex-color multiplier and addend into x/y.
+	// interaction.vfp evaluates: color * env[16].x + env[16].y.
+	static const float zeroOne[4] = { 0, 1, 0, 0 };
+	static const float oneZero[4] = { 1, 0, 0, 0 };
+	static const float negOneOne[4] = { -1, 1, 0, 0 };
 
 	switch ( din->vertexColor ) {
 	case SVC_IGNORE:

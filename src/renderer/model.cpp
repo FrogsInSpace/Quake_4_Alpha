@@ -1193,7 +1193,7 @@ bool idRenderModelStatic::ConvertLWOToModelSurfaces( const struct st_lwObject *l
 	}
 
 	if ( numTVertexes ) {
-		tvList = (idVec2 *)Mem_Alloc( numTVertexes * sizeof( tvList[0] ) );
+		tvList = (idVec2 *)R_StaticAlloc( numTVertexes * sizeof( tvList[0] ) );
 		int offset = 0;
 		for( lwVMap *vm = layer->vmap; vm; vm = vm->next ) {
 			if ( vm->type == LWID_('T','X','U','V') ) {
@@ -1208,7 +1208,7 @@ bool idRenderModelStatic::ConvertLWOToModelSurfaces( const struct st_lwObject *l
 	} else {
 		common->Warning( "ConvertLWOToModelSurfaces: model \'%s\' has bad or missing uv data", name.c_str() );
 	  	numTVertexes = 1;
-		tvList = (idVec2 *)Mem_ClearedAlloc( numTVertexes * sizeof( tvList[0] ) );
+		tvList = (idVec2 *)R_ClearedStaticAlloc( numTVertexes * sizeof( tvList[0] ) );
 	}
 
 	// It seems like the tools our artists are using often generate

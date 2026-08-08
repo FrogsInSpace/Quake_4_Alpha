@@ -26,6 +26,23 @@ along with Quake 4 Reconstructed Source Code.  If not, see <http://www.gnu.org/l
 #pragma hdrstop
 
 #include "tr_local.h"
+#include "Shaders.h"
+
+// Negative expression indexes identify renderer-provided GLSL constants to
+// rvNewShaderStage::ParseShaderParm.  Keep this order synchronized with the
+// binding table in Shaders.cpp and with the retail Quake 4 material parser.
+static const char *materialShaderConstantNames[] = {
+	"lightOrigin", "viewOrigin", "lightProject_s", "lightProject_t",
+	"lightProject_q", "lightFalloff_s", "bumpMatrix_s", "bumpMatrix_t",
+	"diffuseMatrix_s", "diffuseMatrix_t", "specularMatrix_s", "specularMatrix_t",
+	"colorModulate", "colorAdd", "diffuseColor", "specularColor",
+	"colorMatrix0", "colorMatrix1", "colorMatrix2", "projectionMatrix0",
+	"projectionMatrix1", "projectionMatrix2", "projectionMatrix3", "modelMatrix0",
+	"modelMatrix1", "modelMatrix2", "globalEyePos", "mvpMatrix0",
+	"mvpMatrix1", "mvpMatrix2", "mvpMatrix3", "gaussianSampleOffsets",
+	"gaussianSampleWeights", "gaussianSampleOffsetsHorizontal",
+	"gaussianSampleOffsetsVertical", "gaussianSampleWeights2"
+};
 
 /*
 
@@ -73,7 +90,15 @@ idMaterial::CommonInit
 void idMaterial::CommonInit() {
 	desc = "<none>";
 	renderBump = "";
+	portalDistanceNear = 262144.0f;
+	portalDistanceFar = 262144.0f;
 	contentFlags = CONTENTS_SOLID;
+	allowOverlays = true;
+	materialType = NULL;
+	materialTypeArray = NULL;
+	MTAWidth = 0;
+	MTAHeight = 0;
+	portalImage = NULL;
 	surfaceFlags = SURFTYPE_NONE;
 	materialFlags = 0;
 	sort = SS_BAD;
@@ -97,7 +122,6 @@ void idMaterial::CommonInit() {
 	ambientLight = false;
 	noFog = false;
 	hasSubview = false;
-	allowOverlays = true;
 	unsmoothedTangents = false;
 	gui = NULL;
 	memset( deformRegisters, 0, sizeof( deformRegisters ) );
@@ -124,6 +148,7 @@ idMaterial::idMaterial() {
 	// we put this here instead of in CommonInit, because
 	// we don't want it cleared when a material is purged
 	surfaceArea = 0;
+	globalUseCount = 0;
 }
 
 /*
@@ -153,6 +178,10 @@ void idMaterial::FreeData() {
 				Mem_Free( stages[i].newStage );
 				stages[i].newStage = NULL;
 			}
+			if ( stages[i].newShaderStage != NULL ) {
+				delete stages[i].newShaderStage;
+				stages[i].newShaderStage = NULL;
+			}
 		}
 		R_StaticFree( stages );
 		stages = NULL;
@@ -168,6 +197,11 @@ void idMaterial::FreeData() {
 	if ( ops != NULL ) {
 		R_StaticFree( ops );
 		ops = NULL;
+	}
+	if ( materialTypeArray != NULL ) {
+		Mem_Free( materialTypeArray );
+		materialTypeArray = NULL;
+		materialTypeArrayName.Clear();
 	}
 }
 
@@ -230,6 +264,14 @@ static infoParm_t	infoParms[] = {
 	{"aassolid",	0,	0,	CONTENTS_AAS_SOLID },	// solid for AAS
 	{"aasobstacle",	0,	0,	CONTENTS_AAS_OBSTACLE },// used to compile an obstacle into AAS that can be enabled/disabled
 	{"flashlight_trigger",	0,	0,	CONTENTS_FLASHLIGHT_TRIGGER }, // used for triggers that are activated by the flashlight
+	{"sightClip",	0,	0,	CONTENTS_SIGHTCLIP },
+	{"largeShotClip", 0,	0,	CONTENTS_LARGESHOTCLIP },
+	{"shotClip",	1,	0,	CONTENTS_PROJECTILE },
+	{"vehicleclip", 0,	0,	CONTENTS_VEHICLECLIP },
+	{"flyclip",	0,	0,	CONTENTS_FLYCLIP },
+	{"notacticalfeatures", 0, 0, CONTENTS_NOTACTICALFEATURES },
+	{"bounce",		0,	SURF_BOUNCE,	0 },
+	{"itemclip",	0,	0,	CONTENTS_ITEMCLIP },
 	{"nonsolid",	1,	0,	0 },					// clears the solid flag
 	{"nullNormal",	0,	SURF_NULLNORMAL,0 },		// renderbump will draw as 0x80 0x80 0x80
 
@@ -242,6 +284,7 @@ static infoParm_t	infoParms[] = {
 													// because they represent discrete objects like gui shaders
 													// mirrors, or autosprites
 	{"noFragment",	0,	SURF_NOFRAGMENT,	0 },
+	{"noTFix",		1,	SURF_NO_T_FIX,	0 },
 
 	{"slick",		0,	SURF_SLICK,		0 },
 	{"collision",	0,	SURF_COLLISION,	0 },
@@ -589,13 +632,44 @@ int idMaterial::ParseTerm( idLexer &src ) {
 		pd->registersAreConstant = false;
 		return EXP_REG_GLOBAL7;
 	}
+	if ( !token.Icmp( "IsMultiplayer" ) ) {
+		return GetExpressionConstant( session->IsMultiplayer() ? 1.0f : 0.0f );
+	}
 	if ( !token.Icmp( "fragmentPrograms" ) ) {
 		return GetExpressionConstant( (float) glConfig.ARBFragmentProgramAvailable );
+	}
+	if ( !token.Icmp( "POTCorrectionX" ) ) {
+		return GetExpressionConstant( (float)glConfig.vidWidth / (float)MakePowerOfTwo( glConfig.vidWidth ) );
+	}
+	if ( !token.Icmp( "POTCorrectionY" ) ) {
+		return GetExpressionConstant( (float)glConfig.vidHeight / (float)MakePowerOfTwo( glConfig.vidHeight ) );
+	}
+	if ( !token.Icmp( "VideoWidth" ) ) {
+		return GetExpressionConstant( (float)glConfig.vidWidth );
+	}
+	if ( !token.Icmp( "VideoHeight" ) ) {
+		return GetExpressionConstant( (float)glConfig.vidHeight );
 	}
 
 	if ( !token.Icmp( "sound" ) ) {
 		pd->registersAreConstant = false;
 		return EmitOp( 0, 0, OP_TYPE_SOUND );
+	}
+	if ( !token.Icmp( "glslPrograms" ) ) {
+		pd->registersAreConstant = false;
+		return EmitOp( 0, 0, OP_TYPE_GLSL_ENABLED );
+	}
+	if ( !token.Icmp( "DecalLife" ) ) {
+		pd->registersAreConstant = false;
+		return EXP_REG_DECAL_LIFE;
+	}
+	if ( !token.Icmp( "DecalSpawn" ) ) {
+		pd->registersAreConstant = false;
+		return EXP_REG_DECAL_SPAWN;
+	}
+	if ( !token.Icmp( "VertexRandomizer" ) ) {
+		pd->registersAreConstant = false;
+		return EXP_REG_VERTEX_RANDOMIZER;
 	}
 
 	// parse negative numbers
@@ -611,6 +685,12 @@ int idMaterial::ParseTerm( idLexer &src ) {
 
 	if ( token.type == TT_NUMBER || token == "." || token == "-" ) {
 		return GetExpressionConstant( (float) token.GetFloatValue() );
+	}
+
+	for ( int i = 0; i < (int)( sizeof( materialShaderConstantNames ) / sizeof( materialShaderConstantNames[0] ) ); ++i ) {
+		if ( !token.Icmp( materialShaderConstantNames[i] ) ) {
+			return -1 - i;
+		}
 	}
 
 	// see if it is a table name
@@ -726,6 +806,10 @@ idMaterial::ClearStage
 */
 void idMaterial::ClearStage( shaderStage_t *ss ) {
 	ss->drawStateBits = 0;
+	ss->mStageRegisterStart = numRegisters;
+	ss->mNumStageRegisters = 0;
+	ss->mStageOpsStart = numOps;
+	ss->mNumStageOps = 0;
 	ss->conditionRegister = GetExpressionConstant( 1 );
 	ss->color.registers[0] =
 	ss->color.registers[1] =
@@ -757,6 +841,10 @@ int idMaterial::NameToSrcBlendMode( const idStr &name ) {
 		return GLS_SRCBLEND_ONE_MINUS_DST_ALPHA;
 	} else if ( !name.Icmp( "GL_SRC_ALPHA_SATURATE" ) ) {
 		return GLS_SRCBLEND_ALPHA_SATURATE;
+	} else if ( !name.Icmp( "GL_SRC_COLOR" ) ) {
+		return GLS_SRCBLEND_SRC_COLOR;
+	} else if ( !name.Icmp( "GL_ONE_MINUS_SRC_COLOR" ) ) {
+		return GLS_SRCBLEND_ONE_MINUS_SRC_COLOR;
 	}
 
 	common->Warning( "unknown blend mode '%s' in material '%s'", name.c_str(), GetName() );
@@ -787,6 +875,10 @@ int idMaterial::NameToDstBlendMode( const idStr &name ) {
 		return GLS_DSTBLEND_SRC_COLOR;
 	} else if ( !name.Icmp( "GL_ONE_MINUS_SRC_COLOR" ) ) {
 		return GLS_DSTBLEND_ONE_MINUS_SRC_COLOR;
+	} else if ( !name.Icmp( "GL_DST_COLOR" ) ) {
+		return GLS_DSTBLEND_DST_COLOR;
+	} else if ( !name.Icmp( "GL_ONE_MINUS_DST_COLOR" ) ) {
+		return GLS_DSTBLEND_ONE_MINUS_DST_COLOR;
 	}
 
 	common->Warning( "unknown blend mode '%s' in material '%s'", name.c_str(), GetName() );
@@ -901,6 +993,56 @@ void idMaterial::ParseVertexParm( idLexer &src, newShaderStage_t *newStage ) {
 	}
 
 	newStage->vertexParms[parm][3] = ParseExpression( src );
+}
+
+/*
+================
+idMaterial::ParseFragmentParm
+
+Quake 4 exposes eight fragment-program parameter vectors in addition to the
+vertex parameters inherited from Doom 3.
+================
+*/
+void idMaterial::ParseFragmentParm( idLexer &src, newShaderStage_t *newStage ) {
+	idToken token;
+
+	src.ReadTokenOnLine( &token );
+	const int parm = token.GetIntValue();
+	if ( !token.IsNumeric() || parm < 0 || parm >= MAX_FRAGMENT_PARMS ) {
+		common->Warning( "bad fragmentParm number\n" );
+		SetMaterialFlag( MF_DEFAULTED );
+		return;
+	}
+	if ( parm >= newStage->numFragmentParms ) {
+		newStage->numFragmentParms = parm + 1;
+	}
+
+	newStage->fragmentParms[parm][0] = ParseExpression( src );
+
+	src.ReadTokenOnLine( &token );
+	if ( !token[0] || token.Icmp( "," ) ) {
+		newStage->fragmentParms[parm][1] =
+		newStage->fragmentParms[parm][2] =
+		newStage->fragmentParms[parm][3] = newStage->fragmentParms[parm][0];
+		return;
+	}
+
+	newStage->fragmentParms[parm][1] = ParseExpression( src );
+	src.ReadTokenOnLine( &token );
+	if ( !token[0] || token.Icmp( "," ) ) {
+		newStage->fragmentParms[parm][2] = GetExpressionConstant( 0 );
+		newStage->fragmentParms[parm][3] = GetExpressionConstant( 1 );
+		return;
+	}
+
+	newStage->fragmentParms[parm][2] = ParseExpression( src );
+	src.ReadTokenOnLine( &token );
+	if ( !token[0] || token.Icmp( "," ) ) {
+		newStage->fragmentParms[parm][3] = GetExpressionConstant( 1 );
+		return;
+	}
+
+	newStage->fragmentParms[parm][3] = ParseExpression( src );
 }
 
 
@@ -1078,6 +1220,8 @@ bool idMaterial::ParseStage( idLexer &src, const textureRepeat_t trpDefault ) {
 	int					a, b;
 	int					matrix[2][3];
 	newShaderStage_t	newStage;
+	rvNewShaderStage	*newShaderStage = NULL;
+	bool				skipWarning = false;
 
 	if ( numStages >= MAX_SHADER_STAGES ) {
 		SetMaterialFlag( MF_DEFAULTED );
@@ -1146,8 +1290,48 @@ bool idMaterial::ParseStage( idLexer &src, const textureRepeat_t trpDefault ) {
 			continue;
 		}
 
+		if ( !token.Icmp( "reflectionRenderMap" ) ) {
+			ts->dynamic = DI_REFLECTION_RENDER;
+			ts->width = src.ParseInt();
+			ts->height = src.ParseInt();
+			continue;
+		}
+
+		if ( !token.Icmp( "refractionRenderMap" ) ) {
+			ts->dynamic = DI_REFRACTION_RENDER;
+			ts->width = src.ParseInt();
+			ts->height = src.ParseInt();
+			ts->texgen = TG_SCREEN;
+			continue;
+		}
+
+		if ( !token.Icmp( "cubeRenderMap" ) ) {
+			ts->dynamic = DI_CUBE_RENDER;
+			ts->width = ts->height = src.ParseInt();
+			ts->texgen = TG_REFLECT_CUBE;
+			emptyCubeSize = ts->width;
+			ts->image = globalImages->ImageFromFunction( "_emptyCubeMap", makeEmptyCubeMap );
+			continue;
+		}
+
 		if (  !token.Icmp( "screen" ) ) {
 			ts->texgen = TG_SCREEN;
+			continue;
+		}
+
+		if ( !token.Icmp( "screen2" ) ) {
+			ts->texgen = TG_SCREEN2;
+			continue;
+		}
+
+		if ( !token.Icmp( "glassWarp" ) ) {
+			ts->texgen = TG_GLASSWARP;
+			continue;
+		}
+
+		// The retail loader only uses this as a build-time image flag.  It is
+		// still a valid runtime stage option and must not default the material.
+		if ( !token.Icmp( "nomips" ) ) {
 			continue;
 		}
 
@@ -1223,6 +1407,10 @@ bool idMaterial::ParseStage( idLexer &src, const textureRepeat_t trpDefault ) {
 			trp = TR_CLAMP_TO_ZERO_ALPHA;
 			continue;
 		}
+		if ( !token.Icmp( "mirroredrepeat" ) ) {
+			trp = TR_MIRRORED_REPEAT;
+			continue;
+		}
 		if ( !token.Icmp( "uncompressed" ) || !token.Icmp( "highquality" ) ) {
 			if ( !globalImages->image_ignoreHighQuality.GetInteger() ) {
 				td = TD_HIGH_QUALITY;
@@ -1272,6 +1460,8 @@ bool idMaterial::ParseStage( idLexer &src, const textureRepeat_t trpDefault ) {
 				texGenRegisters[0] = ParseExpression( src );
 				texGenRegisters[1] = ParseExpression( src );
 				texGenRegisters[2] = ParseExpression( src );
+			} else if ( !token.Icmp( "potCorrection" ) ) {
+				ts->texgen = TG_POT_CORRECTION;
 			} else {
 				common->Warning( "bad texGen '%s' in material %s", token.c_str(), GetName() );
 				SetMaterialFlag( MF_DEFAULTED );
@@ -1406,8 +1596,28 @@ bool idMaterial::ParseStage( idLexer &src, const textureRepeat_t trpDefault ) {
 			ss->hasAlphaTest = true;
 			ss->alphaTestRegister = ParseExpression( src );
 			coverage = MC_PERFORATED;
+			if ( !ss->hasAlphaFunc ) {
+				ss->alphaTestMode = GL_GREATER;
+			}
 			continue;
-		}		
+		}
+		if ( !token.Icmp( "alphaFunc" ) ) {
+			ss->hasAlphaFunc = true;
+			ss->hasAlphaTest = true;
+			ss->alphaTestMode = GL_GREATER;
+			if ( src.ReadToken( &token ) ) {
+				if ( !token.Icmp( "less" ) ) {
+					ss->alphaTestMode = GL_LESS;
+				} else if ( !token.Icmp( "equal" ) ) {
+					ss->alphaTestMode = GL_EQUAL;
+				} else if ( !token.Icmp( "greater" ) ) {
+					ss->alphaTestMode = GL_GREATER;
+				} else {
+					common->Warning( "unknown alpha func '%s' in material '%s'", token.c_str(), GetName() );
+				}
+			}
+			continue;
+		}
 
 		// shorthand for 2D modulated
 		if ( !token.Icmp( "colored" ) ) {
@@ -1464,7 +1674,47 @@ bool idMaterial::ParseStage( idLexer &src, const textureRepeat_t trpDefault ) {
 			if ( src.ReadTokenOnLine( &token ) ) {
 				newStage.vertexProgram = R_FindARBProgram( GL_VERTEX_PROGRAM_ARB, token.c_str() );
 				newStage.fragmentProgram = R_FindARBProgram( GL_FRAGMENT_PROGRAM_ARB, token.c_str() );
+				if ( !newStage.fragmentProgram ) {
+					newStage.vertexProgram = 0;
+					skipWarning = true;
+				}
+#if defined( _MD5R_SUPPORT ) || defined( Q4SDK_MD5R )
+				idStr md5rProgram = "md5r";
+				md5rProgram += token.c_str();
+				newStage.md5rVertexProgram = R_FindARBProgram( GL_VERTEX_PROGRAM_ARB, md5rProgram.c_str() );
+#endif
 			}
+			continue;
+		}
+		if ( !token.Icmp( "glslProgram" ) ) {
+			if ( newShaderStage != NULL ) {
+				common->Warning( "ParseStage - glslProgram: Shader program already set!" );
+				SetMaterialFlag( MF_DEFAULTED );
+				delete newShaderStage;
+				return false;
+			}
+			newShaderStage = new rvGLSLShaderStage();
+			if ( !newShaderStage->ParseProgram( src, this ) ) {
+				skipWarning = true;
+			}
+			continue;
+		}
+		if ( !token.Icmp( "shaderParm" ) ) {
+			if ( newShaderStage == NULL ) {
+				common->Warning( "ParseStage: shaderParm set before shader type declared." );
+				SetMaterialFlag( MF_DEFAULTED );
+				return false;
+			}
+			newShaderStage->ParseShaderParm( src, this );
+			continue;
+		}
+		if ( !token.Icmp( "shaderTexture" ) ) {
+			if ( newShaderStage == NULL ) {
+				common->Warning( "ParseStage: shaderTexture set before shader type declared." );
+				SetMaterialFlag( MF_DEFAULTED );
+				return false;
+			}
+			newShaderStage->ParseTextureParm( src, this, trpDefault );
 			continue;
 		}
 		if ( !token.Icmp( "fragmentProgram" ) ) {
@@ -1476,6 +1726,11 @@ bool idMaterial::ParseStage( idLexer &src, const textureRepeat_t trpDefault ) {
 		if ( !token.Icmp( "vertexProgram" ) ) {
 			if ( src.ReadTokenOnLine( &token ) ) {
 				newStage.vertexProgram = R_FindARBProgram( GL_VERTEX_PROGRAM_ARB, token.c_str() );
+#if defined( _MD5R_SUPPORT ) || defined( Q4SDK_MD5R )
+				idStr md5rProgram = "md5r";
+				md5rProgram += token.c_str();
+				newStage.md5rVertexProgram = R_FindARBProgram( GL_VERTEX_PROGRAM_ARB, md5rProgram.c_str() );
+#endif
 			}
 			continue;
 		}
@@ -1498,6 +1753,10 @@ bool idMaterial::ParseStage( idLexer &src, const textureRepeat_t trpDefault ) {
 			ParseVertexParm( src, &newStage );
 			continue;
 		}
+		if ( !token.Icmp( "fragmentParm" ) ) {
+			ParseFragmentParm( src, &newStage );
+			continue;
+		}
 
 		if (  !token.Icmp( "fragmentMap" ) ) {	
 			ParseFragmentMap( src, &newStage );
@@ -1507,15 +1766,19 @@ bool idMaterial::ParseStage( idLexer &src, const textureRepeat_t trpDefault ) {
 
 		common->Warning( "unknown token '%s' in material '%s'", token.c_str(), GetName() );
 		SetMaterialFlag( MF_DEFAULTED );
+		delete newShaderStage;
 		return false;
 	}
 
 
 	// if we are using newStage, allocate a copy of it
+	ss->mNumStageRegisters = numRegisters - ss->mStageRegisterStart;
+	ss->mNumStageOps = numOps - ss->mStageOpsStart;
 	if ( newStage.fragmentProgram || newStage.vertexProgram ) {
 		ss->newStage = (newShaderStage_t *)Mem_Alloc( sizeof( newStage ) );
 		*(ss->newStage) = newStage;
 	}
+	ss->newShaderStage = newShaderStage;
 
 	// successfully parsed a stage
 	numStages++;
@@ -1543,7 +1806,7 @@ bool idMaterial::ParseStage( idLexer &src, const textureRepeat_t trpDefault ) {
 		if ( !ts->image ) {
 			ts->image = globalImages->defaultImage;
 		}
-	} else if ( !ts->cinematic && !ts->dynamic && !ss->newStage ) {
+	} else if ( !skipWarning && !ts->cinematic && !ts->dynamic && !ss->newStage && !ss->newShaderStage ) {
 		common->Warning( "material '%s' had stage with no image", GetName() );
 		ts->image = globalImages->defaultImage;
 	}
@@ -1783,6 +2046,39 @@ bool idMaterial::ParseMaterial( idLexer &src ) {
 			desc = token.c_str();
 			continue;
 		}
+		// default material type used by collision traces and impact effects
+		else if ( !token.Icmp( "materialType" ) ) {
+			src.ReadTokenOnLine( &token );
+			materialType = static_cast<const rvDeclMatType *>(
+				declManager->FindType( DECL_MATERIALTYPE, token.c_str(), true ) );
+			continue;
+		}
+		// per-texel material type lookup image
+		else if ( !token.Icmp( "materialImage" ) ) {
+			src.ReadTokenOnLine( &token );
+			materialTypeArray = MT_GetMaterialTypeArray( token.c_str(), MTAWidth, MTAHeight );
+			materialTypeArrayName = token.c_str();
+			continue;
+		}
+		else if ( !token.Icmp( "sky" ) ) {
+			SetMaterialFlag( MF_SKY );
+			continue;
+		}
+		else if ( !token.Icmp( "portalDistanceNear" ) ) {
+			portalDistanceNear = src.ParseFloat();
+			continue;
+		}
+		else if ( !token.Icmp( "portalDistanceFar" ) ) {
+			portalDistanceFar = src.ParseFloat();
+			continue;
+		}
+		else if ( !token.Icmp( "portalImage" ) ) {
+			src.ReadTokenOnLine( &token );
+			portalImage = globalImages->ImageFromFile( token.c_str(), TF_DEFAULT, true,
+				TR_CLAMP, TD_DEFAULT, CF_2D );
+			src.SkipRestOfLine();
+			continue;
+		}
 		// check for the surface / content bit flags
 		else if ( CheckSurfaceParm( &token ) ) {
 			continue;
@@ -1803,6 +2099,10 @@ bool idMaterial::ParseMaterial( idLexer &src ) {
 		// noshadow
 		else if ( !token.Icmp( "noShadows" ) ) {
 			SetMaterialFlag( MF_NOSHADOWS );
+			continue;
+		}
+		else if ( !token.Icmp( "needCurrentRender" ) ) {
+			SetMaterialFlag( MF_NEED_CURRENT_RENDER );
 			continue;
 		}
 		else if ( !token.Icmp( "suppressInSubview" ) ) {
@@ -2235,6 +2535,10 @@ bool idMaterial::Parse( const char *text, const int textLength, bool noCaching )
 		}
 	}
 
+	if ( ( portalDistanceNear < 262144.0f || portalDistanceFar < 262144.0f ) && !portalImage ) {
+		portalImage = globalImages->blackImage;
+	}
+
 	// add a tiny offset to the sort orders, so that different materials
 	// that have the same sort value will at least sort consistantly, instead
 	// of flickering back and forth
@@ -2455,6 +2759,9 @@ void idMaterial::EvaluateRegisters( float *registers, const float shaderParms[MA
 					registers[op->c] = emitter->CurrentAmplitude();
 				}
 			}
+			break;
+		case OP_TYPE_GLSL_ENABLED:
+			registers[op->c] = glConfig.GLSLProgramAvailable ? 1.0f : 0.0f;
 			break;
 		case OP_TYPE_GT:
 			registers[op->c] = registers[ op->a ] > registers[op->b];

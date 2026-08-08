@@ -1239,7 +1239,6 @@ void idClip::GetClipSectorsStaticContents( void ) {
 		for( y = 0; y < CLIPSECTOR_WIDTH; y++ ) {
 			org.x = ( x / nodeScale.x ) + nodeOffset.x;
 			org.y = ( y / nodeScale.y ) + nodeOffset.y;
-
 			int contents = collisionModelManager->Contents( org, trm, mat3_identity, -1, world, vec3_origin, mat3_default );
 			clipSectors[ x + ( y << CLIPSECTOR_DEPTH ) ].contents = contents;
 		}

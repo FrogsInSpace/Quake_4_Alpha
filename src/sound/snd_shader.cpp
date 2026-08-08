@@ -49,7 +49,7 @@ void idSoundShader::Init() {
 	errorDuringParse = false;
 	noShakes = false;
 	frequentlyUsed = false;
-	leadinVolume = 0.0f;
+	leadinVolume = 1.0f;
 	memset( leadins, 0, sizeof( leadins ) );
 	numLeadins = 0;
 	memset( entries, 0, sizeof( entries ) );
@@ -70,7 +70,7 @@ void idSoundShader::FreeData() {
 	shakes.Clear();
 }
 
-const char *idSoundShader::DefaultDefinition() const { return "{\n\t_default.wav\n}"; }
+const char *idSoundShader::DefaultDefinition() const { return "{\n\tsound/_default.wav\n}"; }
 
 bool idSoundShader::SetDefaultText() {
 	idStr wavName = GetName();
@@ -106,27 +106,77 @@ bool idSoundShader::Parse( const char *text, int textLength, bool noCaching ) {
 
 bool idSoundShader::ParseShader( idLexer &src ) {
 	idToken token;
-	int maxSamples = idSoundSystemLocal::s_maxSoundsPerShader.GetInteger();
-	if ( maxSamples <= 0 || maxSamples > SOUND_MAX_LIST_WAVS ) maxSamples = SOUND_MAX_LIST_WAVS;
 
-	while ( src.ReadToken( &token ) ) {
-		if ( token == "}" ) return true;
+	memset( &parms, 0, sizeof( parms ) );
+	parms.minDistance = 40.0f;
+	parms.maxDistance = 400.0f;
+	parms.volume = 1.0f;
+	parms.frequencyShift = 1.0f;
+	minFrequencyShift = 1.0f;
+	maxFrequencyShift = 1.0f;
+	altSound = NULL;
+	memset( leadins, 0, sizeof( leadins ) );
+	memset( entries, 0, sizeof( entries ) );
+	numLeadins = 0;
+	numEntries = 0;
+
+	int maxSamples = idSoundSystemLocal::s_maxSoundsPerShader.GetInteger();
+	if ( com_makingBuild.GetBool() || maxSamples <= 0 || maxSamples > SOUND_MAX_LIST_WAVS ) {
+		maxSamples = SOUND_MAX_LIST_WAVS;
+	}
+
+	while ( src.ExpectAnyToken( &token ) ) {
+		if ( token == "}" ) {
+			if ( !soundSystem->GetInsideLevelLoad() ) {
+				soundSystem->ValidateSoundShader( this );
+			}
+			return true;
+		}
+		if ( !token.Icmp( "minSamples" ) ) {
+			maxSamples = idMath::ClampInt( src.ParseInt(), SOUND_MAX_LIST_WAVS, maxSamples );
+			continue;
+		}
+		if ( !token.Icmp( "frequencyshift" ) ) {
+			minFrequencyShift = src.ParseFloat();
+			if ( !src.ExpectTokenString( "," ) ) {
+				src.FreeSource();
+				return false;
+			}
+			maxFrequencyShift = src.ParseFloat();
+			continue;
+		}
 		if ( !token.Icmp( "description" ) ) { if ( src.ReadTokenOnLine( &token ) ) desc = token; continue; }
 		if ( !token.Icmp( "mindistance" ) ) { parms.minDistance = src.ParseFloat(); continue; }
 		if ( !token.Icmp( "maxdistance" ) ) { parms.maxDistance = src.ParseFloat(); continue; }
-		if ( !token.Icmp( "volume" ) ) { parms.volume = src.ParseFloat(); continue; }
-		if ( !token.Icmp( "attenuatedVolume" ) ) { parms.attenuatedVolume = src.ParseFloat(); continue; }
+		if ( !token.Icmp( "volumeDb" ) ) {
+			float volumeDb = src.ParseFloat();
+			if ( volumeDb > 10.0f ) {
+				common->Warning( "Clamping volume of '%s' to +10dB (3 times louder)", GetName() );
+				volumeDb = 10.0f;
+			}
+			parms.volume = idMath::dBToScale( volumeDb );
+			continue;
+		}
 		if ( !token.Icmp( "leadinVolume" ) ) { leadinVolume = src.ParseFloat(); continue; }
-		if ( !token.Icmp( "soundClass" ) ) { parms.soundClass = idMath::ClampInt( 0, SOUND_MAX_CLASSES - 1, src.ParseInt() ); continue; }
-		if ( !token.Icmp( "frequencyShift" ) ) { parms.frequencyShift = src.ParseFloat(); continue; }
-		if ( !token.Icmp( "minFrequencyShift" ) ) { minFrequencyShift = src.ParseFloat(); continue; }
-		if ( !token.Icmp( "maxFrequencyShift" ) ) { maxFrequencyShift = src.ParseFloat(); continue; }
-		if ( !token.Icmp( "wetLevel" ) ) { parms.wetLevel = src.ParseFloat(); continue; }
-		if ( !token.Icmp( "dryLevel" ) ) { parms.dryLevel = src.ParseFloat(); continue; }
+		if ( !token.Icmp( "soundClass" ) ) {
+			parms.soundClass = src.ParseInt();
+			if ( parms.soundClass < 0 || parms.soundClass >= SOUND_MAX_CLASSES ) {
+				src.Warning( "SoundClass out of range" );
+				return false;
+			}
+			continue;
+		}
 		if ( !token.Icmp( "shakes" ) ) {
-			if ( src.ReadToken( &token ) ) {
+			if ( src.ExpectAnyToken( &token ) ) {
 				if ( token.type == TT_NUMBER ) parms.shakes = token.GetFloatValue(); else { parms.shakes = 1.0f; src.UnreadToken( &token ); }
 			}
+			continue;
+		}
+		if ( !token.Icmp( "shakeData" ) ) {
+			if ( !src.ExpectAnyToken( &token ) ) return false;
+			const int shakeIndex = atoi( token.c_str() );
+			if ( !src.ExpectAnyToken( &token ) ) return false;
+			SetShakeData( shakeIndex, token.c_str() );
 			continue;
 		}
 		if ( !token.Icmp( "altSound" ) ) { if ( src.ReadToken( &token ) ) altSound = declManager->FindSound( token ); continue; }
@@ -142,24 +192,27 @@ bool idSoundShader::ParseShader( idLexer &src ) {
 		if ( !token.Icmp( "global" ) ) { parms.soundShaderFlags |= SSF_GLOBAL; continue; }
 		if ( !token.Icmp( "unclamped" ) ) { parms.soundShaderFlags |= SSF_UNCLAMPED; continue; }
 		if ( !token.Icmp( "omnidirectional" ) ) { parms.soundShaderFlags |= SSF_OMNIDIRECTIONAL; continue; }
-		if ( !token.Icmp( "doppler" ) ) { parms.soundShaderFlags |= SSF_USEDOPPLER; continue; }
-		if ( !token.Icmp( "no_randomstart" ) ) { parms.soundShaderFlags |= SSF_NO_RANDOMSTART; continue; }
-		if ( !token.Icmp( "vo" ) ) { parms.soundShaderFlags |= SSF_IS_VO; continue; }
-		if ( !token.Icmp( "center" ) ) { parms.soundShaderFlags |= SSF_CENTER; continue; }
-		if ( !token.Icmp( "ordered" ) || !token.Icmp( "plain" ) || !token.Icmp( "onDemand" ) ) continue;
-		if ( !token.Icmp( "reverb" ) ) { src.ReadTokenOnLine( &token ); continue; }
+		if ( !token.Icmp( "useDoppler" ) ) { parms.soundShaderFlags |= SSF_USEDOPPLER; continue; }
+		if ( !token.Icmp( "noRandomStart" ) ) { parms.soundShaderFlags |= SSF_NO_RANDOMSTART; continue; }
+		if ( !token.Icmp( "voForPlayer" ) ) { parms.soundShaderFlags |= SSF_VO_FOR_PLAYER; continue; }
+		if ( !token.Icmp( "onDemand" ) ) continue;
 
 		if ( !token.Icmp( "leadin" ) ) {
 			if ( !src.ReadToken( &token ) ) return false;
-			if ( numLeadins < maxSamples ) leadins[numLeadins++] = soundSystemLocal.FindSample( token );
+			if ( soundSystem->HasCache() && numLeadins < maxSamples ) {
+				leadins[numLeadins++] = soundSystem->FindSample( token );
+			}
 			continue;
 		}
-		if ( token.Find( ".wav", false ) >= 0 || token.Find( ".ogg", false ) >= 0 ) {
-			token.BackSlashesToSlashes();
-			if ( numEntries < maxSamples ) entries[numEntries++] = soundSystemLocal.FindSample( token );
-			continue;
+
+		// In Quake 4 every otherwise-unrecognized token is a sample name.  The
+		// retail assets intentionally omit .wav/.ogg on many VO and shake rows.
+		if ( soundSystem->HasCache() && numEntries < maxSamples ) {
+			rvCommonSample *sample = soundSystem->FindSample( token );
+			if ( sample != NULL ) {
+				entries[numEntries++] = sample;
+			}
 		}
-		src.Warning( "unknown token '%s' in sound shader '%s'", token.c_str(), GetName() );
 	}
 	return false;
 }

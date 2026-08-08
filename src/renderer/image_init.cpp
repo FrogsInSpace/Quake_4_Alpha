@@ -677,6 +677,33 @@ static void makeNormalizeVectorCubeMap( idImage *image ) {
 	Mem_Free(pixels[0]);
 }
 
+int emptyCubeSize = 128;
+
+void makeEmptyCubeMap( idImage *image ) {
+	byte *pixels[6];
+	const int size = emptyCubeSize;
+	pixels[0] = static_cast<byte *>( Mem_Alloc( size * size * 4 * 6 ) );
+
+	for ( int face = 0; face < 6; ++face ) {
+		pixels[face] = pixels[0] + face * size * size * 4;
+		for ( int y = 0; y < size; ++y ) {
+			for ( int x = 0; x < size; ++x ) {
+				float vector[3];
+				getCubeVector( face, size, x, y, vector );
+				byte *pixel = pixels[face] + 4 * ( y * size + x );
+				pixel[0] = static_cast<byte>( vector[0] * 127.0f + 128.0f );
+				pixel[1] = static_cast<byte>( vector[1] * 127.0f + 128.0f );
+				pixel[2] = static_cast<byte>( vector[2] * 127.0f + 128.0f );
+				pixel[3] = 255;
+			}
+		}
+	}
+
+	image->GenerateCubeImage( (const byte **)pixels, size,
+		TF_LINEAR, false, TD_HIGH_QUALITY );
+	Mem_Free( pixels[0] );
+}
+
 
 
 

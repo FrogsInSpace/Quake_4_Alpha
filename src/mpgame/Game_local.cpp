@@ -520,6 +520,7 @@ void idGameLocal::Init( void ) {
 // RAVEN BEGIN
 // rjohnson: camera is now contained in a def for frame commands
 	declManager->RegisterDeclType( "camera",			DECL_CAMERADEF,		idDeclAllocator<idDeclCameraDef> );
+	declManager->RegisterDeclType( "playerModel",		DECL_PLAYER_MODEL,	idDeclAllocator<rvDeclPlayerModel> );
 // RAVEN END
 	// register game specific decl folders
 // RAVEN BEGIN

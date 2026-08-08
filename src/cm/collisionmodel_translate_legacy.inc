@@ -30,10 +30,22 @@ along with Quake 4 Reconstructed Source Code.  If not, see <http://www.gnu.org/l
 ===============================================================================
 */
 
+#if !defined( Q4_CM_OBJECT_TRANSLATION )
 #include "../idlib/precompiled.h"
 #pragma hdrstop
 
 #include "CollisionModel_local.h"
+#endif
+
+#if defined( Q4_CM_OBJECT_TRANSLATION )
+#define CM_MANAGER_CHECKCOUNT checkCount
+#define CM_TRACE_BOUNDS( tw ) ( (tw)->traceBounds )
+#define CM_TRM_BOUNDS( tw ) ( (tw)->trmBounds )
+#else
+#define CM_MANAGER_CHECKCOUNT idCollisionModelManagerLocal::checkCount
+#define CM_TRACE_BOUNDS( tw ) ( (tw)->bounds )
+#define CM_TRM_BOUNDS( tw ) ( (tw)->size )
+#endif
 
 /*
 ===============================================================================
@@ -239,7 +251,7 @@ void idCollisionModelManagerLocal::TranslateTrmEdgeThroughPolygon( cm_traceWork_
 		edgeNum = poly->edges[i];
 		edge = tw->model->edges + abs(edgeNum);
 		// if this edge is already checked
-		if ( edge->checkcount == idCollisionModelManagerLocal::checkCount ) {
+		if ( edge->checkcount == CM_MANAGER_CHECKCOUNT ) {
 			continue;
 		}
 		// can never collide with internal edges
@@ -293,12 +305,14 @@ void idCollisionModelManagerLocal::TranslateTrmEdgeThroughPolygon( cm_traceWork_
 			// create plane with normal vector orthogonal to both the polygon edge and the trm edge
 			start = tw->model->vertices[edge->vertexNum[0]].p;
 			end = tw->model->vertices[edge->vertexNum[1]].p;
-			tw->trace.c.normal = ( end - start ).Cross( trmEdge->end - trmEdge->start );
+			const idVec3 &trmStart = tw->vertices[trmEdge->vertexNum[0]].p;
+			const idVec3 &trmEnd = tw->vertices[trmEdge->vertexNum[1]].p;
+			tw->trace.c.normal = ( end - start ).Cross( trmEnd - trmStart );
 			// FIXME: do this normalize when we know the first collision
 			tw->trace.c.normal.Normalize();
 			tw->trace.c.dist = tw->trace.c.normal * start;
 			// make sure the collision plane faces the trace model
-			if ( tw->trace.c.normal * trmEdge->start - tw->trace.c.dist < 0.0f ) {
+			if ( tw->trace.c.normal * trmStart - tw->trace.c.dist < 0.0f ) {
 				tw->trace.c.normal = -tw->trace.c.normal;
 				tw->trace.c.dist = -tw->trace.c.dist;
 			}
@@ -311,7 +325,7 @@ void idCollisionModelManagerLocal::TranslateTrmEdgeThroughPolygon( cm_traceWork_
 			normal[0] = trmEdge->cross[2];
 			normal[1] = -trmEdge->cross[1];
 			normal[2] = trmEdge->cross[0];
-			dist = normal * trmEdge->start;
+			dist = normal * trmStart;
 			d1 = normal * start - dist;
 			d2 = normal * end - dist;
 			f1 = d1 / ( d1 - d2 );
@@ -445,9 +459,9 @@ void idCollisionModelManagerLocal::TranslatePointThroughPolygon( cm_traceWork_t 
 			edgeNum = poly->edges[i];
 			edge = tw->model->edges + abs(edgeNum);
 			// if we didn't yet calculate the sidedness for this edge
-			if ( edge->checkcount != idCollisionModelManagerLocal::checkCount ) {
+			if ( edge->checkcount != CM_MANAGER_CHECKCOUNT ) {
 				float fl;
-				edge->checkcount = idCollisionModelManagerLocal::checkCount;
+				edge->checkcount = CM_MANAGER_CHECKCOUNT;
 				pl.FromLine(tw->model->vertices[edge->vertexNum[0]].p, tw->model->vertices[edge->vertexNum[1]].p);
 				fl = v->pl.PermutedInnerProduct( pl );
 				edge->side = FLOATSIGNBITSET(fl);
@@ -541,10 +555,10 @@ bool idCollisionModelManagerLocal::TranslateTrmThroughPolygon( cm_traceWork_t *t
 	cm_edge_t *e;
 
 	// if already checked this polygon
-	if ( p->checkcount == idCollisionModelManagerLocal::checkCount ) {
+	if ( p->checkcount == CM_MANAGER_CHECKCOUNT ) {
 		return false;
 	}
-	p->checkcount = idCollisionModelManagerLocal::checkCount;
+	p->checkcount = CM_MANAGER_CHECKCOUNT;
 
 	// if this polygon does not have the right contents behind it
 	if ( !(p->contents & tw->contents) ) {
@@ -552,7 +566,7 @@ bool idCollisionModelManagerLocal::TranslateTrmThroughPolygon( cm_traceWork_t *t
 	}
 
 	// if the the trace bounds do not intersect the polygon bounds
-	if ( !tw->bounds.IntersectsBounds( p->bounds ) ) {
+	if ( !CM_TRACE_BOUNDS( tw ).IntersectsBounds( p->bounds ) ) {
 		return false;
 	}
 
@@ -581,7 +595,7 @@ bool idCollisionModelManagerLocal::TranslateTrmThroughPolygon( cm_traceWork_t *t
 	else {
 
 		// trace bounds should cross polygon plane
-		switch ( tw->bounds.PlaneSide( p->plane ) ) {
+		switch ( CM_TRACE_BOUNDS( tw ).PlaneSide( p->plane ) ) {
 			case PLANESIDE_CROSS:
 				break;
 			case PLANESIDE_FRONT:
@@ -598,7 +612,7 @@ bool idCollisionModelManagerLocal::TranslateTrmThroughPolygon( cm_traceWork_t *t
 			edgeNum = p->edges[i];
 			e = tw->model->edges + abs(edgeNum);
 			// reset sidedness cache if this is the first time we encounter this edge during this trace
-			if ( e->checkcount != idCollisionModelManagerLocal::checkCount ) {
+			if ( e->checkcount != CM_MANAGER_CHECKCOUNT ) {
 				e->sideSet = 0;
 			}
 			// pluecker coordinate for edge
@@ -607,7 +621,7 @@ bool idCollisionModelManagerLocal::TranslateTrmThroughPolygon( cm_traceWork_t *t
 
 			v = &tw->model->vertices[e->vertexNum[INTSIGNBITSET(edgeNum)]];
 			// reset sidedness cache if this is the first time we encounter this vertex during this trace
-			if ( v->checkcount != idCollisionModelManagerLocal::checkCount ) {
+			if ( v->checkcount != CM_MANAGER_CHECKCOUNT ) {
 				v->sideSet = 0;
 			}
 			// pluecker coordinate for vertex movement vector
@@ -637,11 +651,11 @@ bool idCollisionModelManagerLocal::TranslateTrmThroughPolygon( cm_traceWork_t *t
 			edgeNum = p->edges[i];
 			e = tw->model->edges + abs(edgeNum);
 
-			if ( e->checkcount == idCollisionModelManagerLocal::checkCount ) {
+			if ( e->checkcount == CM_MANAGER_CHECKCOUNT ) {
 				continue;
 			}
 			// set edge check count
-			e->checkcount = idCollisionModelManagerLocal::checkCount;
+			e->checkcount = CM_MANAGER_CHECKCOUNT;
 			// can never collide with internal edges
 			if ( e->internal ) {
 				continue;
@@ -651,14 +665,14 @@ bool idCollisionModelManagerLocal::TranslateTrmThroughPolygon( cm_traceWork_t *t
 
 				v = tw->model->vertices + e->vertexNum[k ^ INTSIGNBITSET(edgeNum)];
 				// if this vertex is already checked
-				if ( v->checkcount == idCollisionModelManagerLocal::checkCount ) {
+				if ( v->checkcount == CM_MANAGER_CHECKCOUNT ) {
 					continue;
 				}
 				// set vertex check count
-				v->checkcount = idCollisionModelManagerLocal::checkCount;
+				v->checkcount = CM_MANAGER_CHECKCOUNT;
 
 				// if the vertex is outside the trace bounds
-				if ( !tw->bounds.ContainsPoint( v->p ) ) {
+				if ( !CM_TRACE_BOUNDS( tw ).ContainsPoint( v->p ) ) {
 					continue;
 				}
 
@@ -684,12 +698,12 @@ bool idCollisionModelManagerLocal::TranslateTrmThroughPolygon( cm_traceWork_t *t
 		// decrease bounds
 		for ( i = 0; i < 3; i++ ) {
 			if ( tw->start[i] < endp[i] ) {
-				tw->bounds[0][i] = tw->start[i] + tw->size[0][i] - CM_BOX_EPSILON;
-				tw->bounds[1][i] = endp[i] + tw->size[1][i] + CM_BOX_EPSILON;
+				CM_TRACE_BOUNDS( tw )[0][i] = tw->start[i] + CM_TRM_BOUNDS( tw )[0][i] - CM_BOX_EPSILON;
+				CM_TRACE_BOUNDS( tw )[1][i] = endp[i] + CM_TRM_BOUNDS( tw )[1][i] + CM_BOX_EPSILON;
 			}
 			else {
-				tw->bounds[0][i] = endp[i] + tw->size[0][i] - CM_BOX_EPSILON;
-				tw->bounds[1][i] = tw->start[i] + tw->size[1][i] + CM_BOX_EPSILON;
+				CM_TRACE_BOUNDS( tw )[0][i] = endp[i] + CM_TRM_BOUNDS( tw )[0][i] - CM_BOX_EPSILON;
+				CM_TRACE_BOUNDS( tw )[1][i] = tw->start[i] + CM_TRM_BOUNDS( tw )[1][i] + CM_BOX_EPSILON;
 			}
 		}
 	}
@@ -755,6 +769,8 @@ void idCollisionModelManagerLocal::SetupTranslationHeartPlanes( cm_traceWork_t *
 idCollisionModelManagerLocal::Translation
 ================
 */
+#if !defined( Q4_CM_TRANSLATE_HELPERS_ONLY )
+
 #ifdef _DEBUG
 static int entered = 0;
 #endif
@@ -1114,3 +1130,9 @@ void idCollisionModelManagerLocal::Translation( trace_t *results, const idVec3 &
 	}
 #endif
 }
+
+#endif // !Q4_CM_TRANSLATE_HELPERS_ONLY
+
+#undef CM_MANAGER_CHECKCOUNT
+#undef CM_TRACE_BOUNDS
+#undef CM_TRM_BOUNDS

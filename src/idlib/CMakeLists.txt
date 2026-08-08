@@ -76,3 +76,42 @@ set_target_properties(q4_idlib PROPERTIES
     OUTPUT_NAME idlib
     FOLDER "Engine"
 )
+
+# The Quake 4 SDK builds idlib a second time with Q4SDK for gamex86.dll.
+# Several public classes (notably the SIMD hierarchy) are macro-sensitive, so
+# linking the engine-private idlib into the game DLL gives the DLL a different
+# vtable layout than the one seen by its game translation units.
+set(Q4_GAME_IDLIB_SOURCES
+    ${Q4_IDLIB_SOURCES}
+    geometry/Winding2D.cpp
+    math/Lcp.cpp
+    math/Ode.cpp
+)
+
+add_library(q4_game_idlib STATIC ${Q4_GAME_IDLIB_SOURCES})
+
+target_include_directories(q4_game_idlib
+    PUBLIC
+        ${PROJECT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}
+    PRIVATE
+        "C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include"
+)
+
+target_compile_definitions(q4_game_idlib
+    PRIVATE
+        WIN32
+        _WINDOWS
+        _USE_32BIT_TIME_T
+        Q4SDK
+        Q4_NO_PUNKBUSTER
+        $<$<CONFIG:Debug>:_DEBUG>
+        $<$<CONFIG:Release>:NDEBUG;_FINAL>
+)
+
+target_precompile_headers(q4_game_idlib PRIVATE precompiled.h)
+
+set_target_properties(q4_game_idlib PROPERTIES
+    OUTPUT_NAME game_idlib
+    FOLDER "Game"
+)

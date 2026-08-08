@@ -504,6 +504,7 @@ void idGameLocal::Init( void ) {
 // RAVEN BEGIN
 // rjohnson: camera is now contained in a def for frame commands
 	declManager->RegisterDeclType( "camera",			DECL_CAMERADEF,		idDeclAllocator<idDeclCameraDef> );
+	declManager->RegisterDeclType( "playerModel",		DECL_PLAYER_MODEL,	idDeclAllocator<rvDeclPlayerModel> );
 // RAVEN END
 	// register game specific decl folders
 // RAVEN BEGIN
@@ -1351,6 +1352,7 @@ void idGameLocal::LoadMap( const char *mapName, int randseed ) {
 // RAVEN END
 	}
 	mapFileName = mapFile->GetName();
+	Printf( "Q4 game trace: map resolved as %s\n", mapFileName.c_str() );
 	
 	assert(!idStr::Cmp(mapFileName, mapFile->GetName()));
 	
@@ -1370,8 +1372,13 @@ void idGameLocal::LoadMap( const char *mapName, int randseed ) {
 // RAVEN END
 
 	// load the collision map
-	networkSystem->SetLoadingText( common->GetLocalizedString( "#str_107668" ) );
+	Printf( "Q4 game trace: resolving collision loading text\n" );
+	const char *collisionLoadingText = common->GetLocalizedString( "#str_107668" );
+	Printf( "Q4 game trace: setting collision loading text\n" );
+	networkSystem->SetLoadingText( collisionLoadingText );
+	Printf( "Q4 game trace: loading collision map\n" );
 	collisionModelManager->LoadMap( mapFile, false );
+	Printf( "Q4 game trace: collision map loaded\n" );
 
 	numClients = 0;
 
@@ -1445,10 +1452,12 @@ void idGameLocal::LoadMap( const char *mapName, int randseed ) {
 	gravityInfo.Clear();
 	scriptObjectProxies.Clear();
 // RAVEN END
+	Printf( "Q4 game trace: base map state cleared\n" );
 
 	if ( !editEntities ) {
 		editEntities = new idEditEntities;
 	}
+	Printf( "Q4 game trace: edit entities ready\n" );
 
 	if ( gameLocal.isMultiplayer ) {
 		gravity.Set( 0, 0, -g_mp_gravity.GetFloat() );
@@ -1464,6 +1473,7 @@ void idGameLocal::LoadMap( const char *mapName, int randseed ) {
 	aiManager.UnMarkAllReachBlocked();
 	aiManager.Clear();
 // RAVEN END
+	Printf( "Q4 game trace: AI manager cleared\n" );
 
 	skipCinematic = false;
 	inCinematic = false;
@@ -1473,11 +1483,15 @@ void idGameLocal::LoadMap( const char *mapName, int randseed ) {
 
 // RAVEN BEGIN
 // ddynerman: main world instance
+	Printf( "Q4 game trace: adding world instance\n" );
 	PACIFIER_UPDATE;
 	AddInstance( 0, true );
+	Printf( "Q4 game trace: world instance added\n" );
 	assert( instances.Num() == 1 && instances[ 0 ]->GetInstanceID() == 0 );
 // RAVEN END
+	Printf( "Q4 game trace: initializing PVS\n" );
 	pvs.Init();
+	Printf( "Q4 game trace: PVS initialized\n" );
 // RAVEN BEGIN
 // mwhitlock: Xenon texture streaming
 #if defined(_XENON)
@@ -1498,10 +1512,14 @@ void idGameLocal::LoadMap( const char *mapName, int randseed ) {
 
 // RAVEN BEGIN
 // cdr: Obstacle Avoidance
+	Printf( "Q4 game trace: initializing AI movement\n" );
 	AI_MoveInitialize();
+	Printf( "Q4 game trace: AI movement initialized\n" );
 // RAVEN END
 
+	Printf( "Q4 game trace: precaching extras\n" );
 	FindEntityDef( "preCacheExtras", false );
+	Printf( "Q4 game trace: extras precached\n" );
 
 	if ( !sameMap ) {
 		mapFile->RemovePrimitiveData();
@@ -1511,6 +1529,7 @@ void idGameLocal::LoadMap( const char *mapName, int randseed ) {
 // ddynerman: ambient light list
 	ambientLights.Clear();
 // RAVEN END
+	Printf( "Q4 game trace: LoadMap complete\n" );
 }
 
 /*
@@ -8214,6 +8233,7 @@ idGameLocal::AddClipWorld
 ===================
 */
 int idGameLocal::AddClipWorld( int id ) {
+	Printf( "Q4 game trace: AddClipWorld %d begin (num=%d)\n", id, clip.Num() );
 	if( id >= clip.Num() ) {
 		// if we want an index higher in the list, fill the intermediate indices with empties
 		for( int i = clip.Num(); i <= id; i++ ) {
@@ -8227,12 +8247,15 @@ int idGameLocal::AddClipWorld( int id ) {
 		RV_PUSH_SYS_HEAP_ID(RV_HEAP_ID_LEVEL);
 // RAVEN END
 		clip[ id ] = new idClip();
+		Printf( "Q4 game trace: AddClipWorld %d allocated\n", id );
 // RAVEN BEGIN
 // mwhitlock: Dynamic memory consolidation
 		RV_POP_HEAP();
 // RAVEN END
 		clip[ id ]->Init();
+		Printf( "Q4 game trace: AddClipWorld %d initialized\n", id );
 	}
+	Printf( "Q4 game trace: AddClipWorld %d complete\n", id );
 	return id;
 }
 
@@ -8271,6 +8294,7 @@ idGameLocal::AddInstance
 ===================
 */
 int idGameLocal::AddInstance( int id, bool deferPopulate ) {
+	Printf( "Q4 game trace: AddInstance %d begin (num=%d)\n", id, instances.Num() );
 	if ( id == -1 ) {
 		id = instances.Num();
 	}
@@ -8287,6 +8311,7 @@ int idGameLocal::AddInstance( int id, bool deferPopulate ) {
 // mwhitlock: Dynamic memory consolidation
 		RV_PUSH_SYS_HEAP_ID(RV_HEAP_ID_LEVEL);
 		instances[ id ] = new rvInstance( id, deferPopulate );
+		Printf( "Q4 game trace: AddInstance %d allocated\n", id );
 		RV_POP_HEAP();
 // RAVEN END
 
@@ -8302,6 +8327,7 @@ int idGameLocal::AddInstance( int id, bool deferPopulate ) {
 	
 	// keep the min spawn index correctly set
 	ServerSetMinSpawnIndex();
+	Printf( "Q4 game trace: AddInstance %d complete\n", id );
 	
 	return instances[ id ]->GetInstanceID();
 }

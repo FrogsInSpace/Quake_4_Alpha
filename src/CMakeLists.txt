@@ -16,6 +16,7 @@ set(CMAKE_CXX_EXTENSIONS ON)
 
 option(Q4_BUILD_IDLIB "Build the Quake 4 SDK idlib seed" ON)
 option(Q4_BUILD_ENGINE_SEED "Compile the PDB-proven Doom engine seed" ON)
+option(Q4_BUILD_GAME_DLL "Build the Quake 4 single-player game DLL" ON)
 option(Q4_BUILD_RECON_TOOLS "Build reconstruction inventory tools" ON)
 
 if(MSVC)
@@ -32,6 +33,10 @@ endif()
 
 if(Q4_BUILD_ENGINE_SEED)
     add_subdirectory(engine)
+endif()
+
+if(Q4_BUILD_GAME_DLL)
+    add_subdirectory(game)
 endif()
 
 if(Q4_BUILD_RECON_TOOLS)

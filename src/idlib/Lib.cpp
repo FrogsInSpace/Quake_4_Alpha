@@ -581,7 +581,7 @@ void AssertFailed( const char *file, int line, const char *expression ) {
 #ifdef _WIN32
 // RAVEN BEGIN
 // jnewquist: Visual Studio platform independent breakpoint
-	__debugbreak();
+//	__debugbreak();
 // RAVEN END
 #elif defined( __linux__ )
 	__asm__ __volatile__ ("int $0x03");

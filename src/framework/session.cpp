@@ -1440,26 +1440,49 @@ void idSessionLocal::UnloadMap() {
 idSessionLocal::LoadLoadingGui
 ===============
 */
-void idSessionLocal::LoadLoadingGui( const char *mapName ) {
-	// load / program a gui to stay up on the screen while loading
-	idStr stripped = mapName;
-	stripped.StripFileExtension();
-	stripped.StripPath();
-
-	char guiMap[ MAX_STRING_CHARS ];
-	strncpy( guiMap, va( "guis/map/%s.gui", stripped.c_str() ), MAX_STRING_CHARS );
-	// give the gamecode a chance to override
-	const char *gameLoadingGui = game->GetLoadingGui( mapName );
-	if ( gameLoadingGui != NULL && gameLoadingGui[0] != '\0' ) {
-		idStr::Copynz( guiMap, gameLoadingGui, sizeof( guiMap ) );
+void idSessionLocal::LoadLoadingGui( const char *mapName, const char *entityFilter ) {
+	idStr mapDeclName = mapName;
+	if ( entityFilter && entityFilter[0] && !idAsyncNetwork::IsActive() ) {
+		mapDeclName += "_";
+		mapDeclName += entityFilter;
 	}
 
-	if ( uiManager->CheckGui( guiMap ) ) {
-		guiLoading = uiManager->FindGui( guiMap, true, false, true );
+	const idDecl *decl = declManager->FindType( DECL_MAPDEF, mapDeclName.c_str(), false );
+	const idDeclEntityDef *mapDef = static_cast<const idDeclEntityDef *>( decl );
+
+	const char *levelName = mapDeclName.c_str();
+	const char *objectives = "";
+	const char *loadImage = "gfx/guis/loadscreens/generic";
+
+	if ( mapDef ) {
+		levelName = mapDef->dict.GetString( "name", mapDeclName.c_str() );
+		objectives = mapDef->dict.GetString( "objectives", "" );
+		loadImage = mapDef->dict.GetString( "loadimage", "gfx/guis/loadscreens/generic" );
+
+		const char *loadGui = mapDef->dict.GetString( "loadgui", "" );
+		if ( loadGui[0] ) {
+			guiLoading = uiManager->FindGui( loadGui, true, false, true );
+		} else if ( objectives[0] ) {
+			guiLoading = uiManager->FindGui( "guis/loading/splevel.gui", true, false, true );
+		} else if ( idAsyncNetwork::IsActive() ) {
+			guiLoading = uiManager->FindGui( "guis/loading/mplevel.gui", true, false, true );
+		} else {
+			guiLoading = uiManager->FindGui( "guis/loading/generic.gui", true, false, true );
+		}
+	} else if ( idAsyncNetwork::IsActive() ) {
+		guiLoading = uiManager->FindGui( "guis/loading/mplevel.gui", true, false, true );
 	} else {
-		guiLoading = uiManager->FindGui( "guis/map/loading.gui", true, false, true );
+		guiLoading = uiManager->FindGui( "guis/loading/generic.gui", true, false, true );
 	}
-	guiLoading->SetStateFloat( "map_loading", 0.0f );
+
+	if ( guiLoading ) {
+		guiLoading->SetStateFloat( "map_loading", 0.0f );
+		guiLoading->SetStateString( "loading_bkgnd", loadImage );
+		guiLoading->SetStateString( "loading_levelname", common->GetLocalizedString( levelName ) );
+		guiLoading->SetStateString( "loading_objectives", common->GetLocalizedString( objectives ) );
+		declManager->FindMaterial( loadImage )->SetSort( SS_GUI );
+		guiLoading->StateChanged( com_frameTime, false );
+	}
 }
 
 /*
@@ -1467,8 +1490,13 @@ void idSessionLocal::LoadLoadingGui( const char *mapName ) {
 idSessionLocal::GetBytesNeededForMapLoad
 ===============
 */
-int idSessionLocal::GetBytesNeededForMapLoad( const char *mapName ) {
-	const idDecl *mapDecl = declManager->FindType( DECL_MAPDEF, mapName, false );
+int idSessionLocal::GetBytesNeededForMapLoad( const char *mapName, const char *entityFilter ) {
+	idStr mapDeclName = mapName;
+	if ( entityFilter && entityFilter[0] ) {
+		mapDeclName += "_";
+		mapDeclName += entityFilter;
+	}
+	const idDecl *mapDecl = declManager->FindType( DECL_MAPDEF, mapDeclName.c_str(), false );
 	const idDeclEntityDef *mapDef = static_cast<const idDeclEntityDef *>( mapDecl );
 	if ( mapDef ) {
 		return mapDef->dict.GetInt( va("size%d", Max( 0, com_machineSpec.GetInteger() ) ) );
@@ -1486,8 +1514,13 @@ int idSessionLocal::GetBytesNeededForMapLoad( const char *mapName ) {
 idSessionLocal::SetBytesNeededForMapLoad
 ===============
 */
-void idSessionLocal::SetBytesNeededForMapLoad( const char *mapName, int bytesNeeded ) {
-	idDecl *mapDecl = const_cast<idDecl *>(declManager->FindType( DECL_MAPDEF, mapName, false ));
+void idSessionLocal::SetBytesNeededForMapLoad( const char *mapName, const char *entityFilter, int bytesNeeded ) {
+	idStr mapDeclName = mapName;
+	if ( entityFilter && entityFilter[0] ) {
+		mapDeclName += "_";
+		mapDeclName += entityFilter;
+	}
+	idDecl *mapDecl = const_cast<idDecl *>(declManager->FindType( DECL_MAPDEF, mapDeclName.c_str(), false ));
 	idDeclEntityDef *mapDef = static_cast<idDeclEntityDef *>( mapDecl );
 
 	if ( com_updateLoadSize.GetBool() && mapDef ) {
@@ -1554,6 +1587,7 @@ void idSessionLocal::ExecuteMapChange( bool noFadeWipe ) {
 
 	// extract the map name from serverinfo
 	idStr mapString = mapSpawnData.serverInfo.GetString( "si_map" );
+	idStr filterString = mapSpawnData.serverInfo.GetString( "si_entityFilter" );
 
 	idStr fullMapName = "maps/";
 	fullMapName += mapString;
@@ -1581,7 +1615,7 @@ void idSessionLocal::ExecuteMapChange( bool noFadeWipe ) {
 	uiManager->Reload( true );
 
 	// set the loading gui that we will wipe to
-	LoadLoadingGui( mapString );
+	LoadLoadingGui( mapString.c_str(), filterString.c_str() );
 
 	// cause prints to force screen updates as a pacifier,
 	// and draw the loading gui instead of game draws
@@ -1591,7 +1625,7 @@ void idSessionLocal::ExecuteMapChange( bool noFadeWipe ) {
 	// work for new maps etc. after the first load. we can also drop the sizes into the default.cfg
 	fileSystem->ResetReadCount();
 	if ( !reloadingSameMap  ) {
-		bytesNeededForMapLoad = GetBytesNeededForMapLoad( mapString.c_str() );
+		bytesNeededForMapLoad = GetBytesNeededForMapLoad( mapString.c_str(), filterString.c_str() );
 	} else {
 		bytesNeededForMapLoad = 30 * 1024 * 1024;
 	}
@@ -1662,7 +1696,7 @@ void idSessionLocal::ExecuteMapChange( bool noFadeWipe ) {
 		renderSystem->EndLevelLoad();
 		soundSystem->EndLevelLoad( mapString.c_str() );
 		declManager->EndLevelLoad();
-		SetBytesNeededForMapLoad( mapString.c_str(), fileSystem->GetReadCount() );
+		SetBytesNeededForMapLoad( mapString.c_str(), filterString.c_str(), fileSystem->GetReadCount() );
 	}
 	uiManager->EndLevelLoad();
 

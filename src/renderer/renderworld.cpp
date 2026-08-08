@@ -123,6 +123,9 @@ idRenderWorldLocal::idRenderWorldLocal
 idRenderWorldLocal::idRenderWorldLocal() {
 	mapName.Clear();
 	mapTimeStamp = FILE_NOT_FOUND_TIMESTAMP;
+	m_filename.Clear();
+	m_CRC = 0;
+	procFileVersion = 0;
 
 	generateAllInteractionsCalled = false;
 
@@ -541,7 +544,9 @@ void idRenderWorldLocal::FreeEffectDefDerivedData( rvRenderEffectLocal *def ) {
 	}
 	def->effectRefs = NULL;
 	def->viewEffect = NULL;
+	delete def->dynamicModel;
 	def->dynamicModel = NULL;
+	def->dynamicModelFrameCount = 0;
 }
 
 /*
@@ -569,24 +574,109 @@ void idRenderWorldLocal::AddEffectRefToArea( rvRenderEffectLocal *def, portalAre
 
 /*
 ==================
-PushEffectDef
+PushPolytopeIntoTree_r
 
-Place the effect in every portal area touched by its transformed current
-bounds.  Retail performs the same placement through the proc BSP.
+Places an oriented polytope in each portal area it touches.  Quake 4 uses
+this path for effects because their accumulated bounds may be much larger
+than the axis-aligned bounds accepted by BoundsInAreas.
 ==================
 */
-void idRenderWorldLocal::PushEffectDef( rvRenderEffectLocal *def ) {
-	if ( def == NULL || def->referenceBounds.IsCleared() || areaNodes == NULL ) {
+void idRenderWorldLocal::PushPolytopeIntoTree_r( idRenderEntityLocal *def,
+		idRenderLightLocal *light, rvRenderEffectLocal *effect,
+		const idBox &box, const idVec3 *points, int numPoints, int nodeNum ) {
+	if ( nodeNum < 0 ) {
+		portalArea_t *area = &portalAreas[-1 - nodeNum];
+		if ( area->viewCount == tr.viewCount ) {
+			return;
+		}
+		area->viewCount = tr.viewCount;
+		if ( def != NULL ) {
+			AddEntityRefToArea( def, area );
+		}
+		if ( light != NULL ) {
+			AddLightRefToArea( light, area );
+		}
+		if ( effect != NULL ) {
+			AddEffectRefToArea( effect, area );
+		}
 		return;
 	}
 
-	idBounds worldBounds;
-	worldBounds.FromTransformedBounds( def->referenceBounds, def->parms.origin, def->parms.axis );
-	int areas[128];
-	const int numAreas = BoundsInAreas( worldBounds, areas, sizeof( areas ) / sizeof( areas[0] ) );
-	for ( int i = 0; i < numAreas; ++i ) {
-		AddEffectRefToArea( def, &portalAreas[areas[i]] );
+	areaNode_t *node = &areaNodes[nodeNum];
+	if ( r_useNodeCommonChildren.GetBool() &&
+			node->commonChildrenArea != CHILDREN_HAVE_MULTIPLE_AREAS &&
+			portalAreas[node->commonChildrenArea].viewCount == tr.viewCount ) {
+		return;
 	}
+
+	int side = box.PlaneSide( node->plane, 0.0f );
+	bool front = side != PLANESIDE_BACK;
+	bool back = side != PLANESIDE_FRONT;
+
+	// The oriented box is deliberately conservative.  When actual points
+	// are supplied, retail tightens a crossing result with exact tests.
+	if ( side == PLANESIDE_CROSS && points != NULL && numPoints > 0 ) {
+		front = false;
+		back = false;
+		for ( int i = 0; i < numPoints; ++i ) {
+			const float distance = node->plane.Distance( points[i] );
+			if ( distance > 0.0f ) {
+				front = true;
+			} else if ( distance < 0.0f ) {
+				back = true;
+			}
+			if ( front && back ) {
+				break;
+			}
+		}
+	}
+
+	if ( front && node->children[0] != 0 ) {
+		PushPolytopeIntoTree_r( def, light, effect, box, points, numPoints, node->children[0] );
+	}
+	if ( back && node->children[1] != 0 ) {
+		PushPolytopeIntoTree_r( def, light, effect, box, points, numPoints, node->children[1] );
+	}
+}
+
+/*
+==================
+PushPolytopeIntoTree
+==================
+*/
+void idRenderWorldLocal::PushPolytopeIntoTree( idRenderEntityLocal *def,
+		idRenderLightLocal *light, rvRenderEffectLocal *effect,
+		const idBox &box, const idVec3 *points, int numPoints ) {
+	if ( areaNodes != NULL ) {
+		PushPolytopeIntoTree_r( def, light, effect, box, points, numPoints, 0 );
+	}
+}
+
+/*
+==================
+PushEffectDef
+==================
+*/
+void idRenderWorldLocal::PushEffectDef( int effectHandle ) {
+	if ( effectHandle < 0 || effectHandle >= effectDefs.Num() ) {
+		common->Printf( "idRenderWorld::PushEffectDef: invalid handle %i >= %i\n",
+			effectHandle, effectDefs.Num() );
+		return;
+	}
+
+	rvRenderEffectLocal *def = effectDefs[effectHandle];
+	if ( def == NULL ) {
+		common->Printf( "idRenderWorld::PushEffectDef: handle %i [0, %i] is NULL\n",
+			effectHandle, effectDefs.Num() );
+		return;
+	}
+
+	R_AxisToModelMatrix( def->parms.axis, def->parms.origin, def->modelMatrix );
+	def->lastModifiedFrameNum = tr.frameCount;
+	++tr.viewCount;
+
+	const idBox box( def->referenceBounds, def->parms.origin, def->parms.axis );
+	PushPolytopeIntoTree( NULL, NULL, def, box, NULL, 0 );
 }
 
 /*
@@ -637,7 +727,7 @@ bool idRenderWorldLocal::UpdateEffectDef( qhandle_t effectHandle, const renderEf
 		return true;
 	}
 	if ( push ) {
-		PushEffectDef( def );
+		PushEffectDef( effectHandle );
 	}
 	return false;
 }
@@ -681,7 +771,7 @@ void idRenderWorldLocal::PushMarkedDefs() {
 	for ( int i = 0; i < markedEffectDefs.Num(); ++i ) {
 		const int handle = markedEffectDefs[i];
 		if ( handle >= 0 && handle < effectDefs.Num() && effectDefs[handle] != NULL ) {
-			PushEffectDef( effectDefs[handle] );
+			PushEffectDef( handle );
 		}
 	}
 	ClearMarkedDefs();

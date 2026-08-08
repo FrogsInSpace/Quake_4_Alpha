@@ -510,6 +510,8 @@ private:
 	void				RemapEdges( cm_node_t *node, int *edgeRemap );
 	void				RemapPolygonReferences_r( cm_node_t *node, cm_polygon_t *polygon, cm_polygon_t *newPolygon );
 	void				RemapBrushReferences_r( cm_node_t *node, cm_brush_t *brush, cm_brush_t *newBrush );
+	void				R_FilterPolygonIntoTree( idCollisionModelLocal *model, cm_node_t *node, cm_polygonRef_t *pref, cm_polygon_t *polygon );
+	void				R_FilterBrushIntoTree( idCollisionModelLocal *model, cm_node_t *node, cm_brushRef_t *pref, cm_brush_t *brush );
 	void				RemovePolygonReferences_r( cm_node_t *node, cm_polygon_t *polygon );
 	void				RemoveBrushReferences_r( cm_node_t *node, cm_brush_t *brush );
 	void				FreeTree_r( idCollisionModelLocal *model, cm_node_t *headNode, cm_node_t *node );
@@ -540,6 +542,13 @@ private:
 	bool				TestTrmInPolygon( cm_traceWork_t *traceWork, cm_polygon_t *polygon );
 	bool				RotateTrmThroughPolygon( cm_traceWork_t *traceWork, cm_polygon_t *polygon );
 	bool				TranslateTrmThroughPolygon( cm_traceWork_t *traceWork, cm_polygon_t *polygon );
+	int				TranslateEdgeThroughEdge( idVec3 &cross, idPluecker &l1, idPluecker &l2, float *fraction );
+	void				TranslateTrmEdgeThroughPolygon( cm_traceWork_t *tw, cm_polygon_t *poly, cm_trmEdge_t *trmEdge );
+	void				TranslateTrmVertexThroughPolygon( cm_traceWork_t *tw, cm_polygon_t *poly, cm_trmVertex_t *v, int bitNum );
+	void				TranslatePointThroughPolygon( cm_traceWork_t *tw, cm_polygon_t *poly, cm_trmVertex_t *v );
+	void				TranslateVertexThroughTrmPolygon( cm_traceWork_t *tw, cm_trmPolygon_t *trmpoly,
+							cm_polygon_t *poly, cm_vertex_t *v, idVec3 &endp, idPluecker &pl );
+	void				SetupTranslationHeartPlanes( cm_traceWork_t *tw );
 	void				CM_GetCollisionPointTexCoords( idVec2 &texCoord, cm_traceWork_t *traceWork, cm_polygon_t *polygon );
 	void				CM_GetMaterialType( cm_traceWork_t *traceWork, cm_polygon_t *polygon );
 	bool				IsRenderModelName( const char *name );

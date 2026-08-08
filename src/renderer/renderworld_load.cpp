@@ -130,8 +130,15 @@ idRenderModel *idRenderWorldLocal::ParseModel( idLexer *src ) {
 	model->InitEmpty( token );
 
 	int numSurfaces = src->ParseInt();
+	common->Printf( "Q4 proc trace: model %s surfaces=%d version=%u\n", token.c_str(), numSurfaces, procFileVersion );
 	if ( numSurfaces < 0 ) {
 		src->Error( "R_ParseModel: bad numSurfaces" );
+	}
+
+	// PROC v2+ stores a per-area portal-sky flag after the surface count.
+	// Only static world models (_areaN) carry this field.
+	if ( procFileVersion > 1 && model->IsStaticWorldModel() ) {
+		model->SetHasSky( src->ParseBool() );
 	}
 
 	for ( i = 0 ; i < numSurfaces ; i++ ) {
@@ -151,9 +158,12 @@ idRenderModel *idRenderWorldLocal::ParseModel( idLexer *src ) {
 
 		R_AllocStaticTriSurfVerts( tri, tri->numVerts );
 		for ( j = 0 ; j < tri->numVerts ; j++ ) {
-			float	vec[8];
+			float	vec[12];
 
-			src->Parse1DMatrix( 8, vec );
+			const int valuesRead = src->Parse1DMatrixOpenEnded( 12, vec );
+			if ( valuesRead != 8 && valuesRead != 12 ) {
+				src->Error( "R_ParseModel: bad vertex read" );
+			}
 
 			tri->verts[j].xyz[0] = vec[0];
 			tri->verts[j].xyz[1] = vec[1];
@@ -163,6 +173,14 @@ idRenderModel *idRenderWorldLocal::ParseModel( idLexer *src ) {
 			tri->verts[j].normal[0] = vec[5];
 			tri->verts[j].normal[1] = vec[6];
 			tri->verts[j].normal[2] = vec[7];
+			if ( valuesRead == 12 ) {
+				tri->verts[j].color[0] = static_cast<byte>( vec[8] );
+				tri->verts[j].color[1] = static_cast<byte>( vec[9] );
+				tri->verts[j].color[2] = static_cast<byte>( vec[10] );
+				tri->verts[j].color[3] = static_cast<byte>( vec[11] );
+			} else {
+				*reinterpret_cast<unsigned int *>( tri->verts[j].color ) = 0xFF000000u;
+			}
 		}
 
 		R_AllocStaticTriSurfIndexes( tri, tri->numIndexes );
@@ -178,6 +196,7 @@ idRenderModel *idRenderWorldLocal::ParseModel( idLexer *src ) {
 	src->ExpectTokenString( "}" );
 
 	model->FinishSurfaces();
+	common->Printf( "Q4 proc trace: finished model %s\n", model->Name() );
 
 	return model;
 }
@@ -201,6 +220,7 @@ idRenderModel *idRenderWorldLocal::ParseShadowModel( idLexer *src ) {
 
 	model = renderModelManager->AllocModel();
 	model->InitEmpty( token );
+	common->Printf( "Q4 proc trace: shadow model %s\n", token.c_str() );
 
 	surf.shader = tr.defaultMaterial;
 
@@ -239,6 +259,7 @@ idRenderModel *idRenderWorldLocal::ParseShadowModel( idLexer *src ) {
 
 	// we do NOT do a model->FinishSurfaceces, because we don't need sil edges, planes, tangents, etc.
 //	model->FinishSurfaces();
+	common->Printf( "Q4 proc trace: finished shadow model %s\n", model->Name() );
 
 	return model;
 }
@@ -537,6 +558,7 @@ bool idRenderWorldLocal::InitFromMap( const char *name ) {
 
 	mapName = name;
 	mapTimeStamp = currentTimeStamp;
+	m_filename = filename;
 
 	// if we are writing a demo, archive the load command
 	if ( session->writeDemo ) {
@@ -548,6 +570,21 @@ bool idRenderWorldLocal::InitFromMap( const char *name ) {
 		delete src;
 		return false;
 	}
+
+	// Quake 4 PROC files carry a quoted format version followed by the source
+	// map CRC before any of the Doom 3-style top-level blocks.
+	if ( !src->ReadToken( &token ) ) {
+		common->Warning( "%s is missing version", filename.c_str() );
+		delete src;
+		return false;
+	}
+	procFileVersion = static_cast<unsigned int>( atol( token.c_str() ) );
+	if ( !src->ExpectTokenType( TT_NUMBER, TT_INTEGER, &token ) ) {
+		common->Warning( "%s has no map file CRC", filename.c_str() );
+		delete src;
+		return false;
+	}
+	m_CRC = static_cast<unsigned int>( token.GetIntValue() );
 
 	// parse the file
 	while ( 1 ) {
@@ -662,17 +699,6 @@ void idRenderWorldLocal::AddWorldModelEntities() {
 			common->Error( "idRenderWorldLocal::InitFromMap: bad area model lookup" );
 		}
 
-		idRenderModel *hModel = def->parms.hModel;
-
-		for ( int j = 0; j < hModel->NumSurfaces(); j++ ) {
-			const modelSurface_t *surf = hModel->Surface( j );
-
-			if ( surf->shader->GetName() == idStr( "textures/smf/portal_sky" ) ) {
-				def->needsPortalSky = true;
-				portalAreas[i].hasSkybox = true;
-			}
-		}
-
 		def->referenceBounds = def->parms.hModel->Bounds();
 
 		def->parms.axis[0][0] = 1;
@@ -687,6 +713,8 @@ void idRenderWorldLocal::AddWorldModelEntities() {
 		def->parms.shaderParms[1] =
 		def->parms.shaderParms[2] =
 		def->parms.shaderParms[3] = 1;
+
+		portalAreas[i].hasSkybox = def->parms.hModel->GetHasSky();
 
 		AddEntityRefToArea( def, &portalAreas[i] );
 	}

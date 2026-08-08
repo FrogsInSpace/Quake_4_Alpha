@@ -37,14 +37,17 @@ along with Quake 4 Reconstructed Source Code.  If not, see <http://www.gnu.org/l
 
 #if !defined( Q4_CM_LEGACY_SEED )
 
+#define CM_FILE_EXT			"cm"
+#define CM_FILEID			"CM"
+#define CM_FILEVERSION		"3"
+
+void CM_GetNodeBounds( idBounds *bounds, cm_node_t *node );
+int CM_GetNodeContents( cm_node_t *node );
+int CM_GetModelMemory( idCollisionModelLocal *model );
+
 void idCollisionModelManagerLocal::WriteNodes( idFile *file, cm_node_t *node ) {}
-cm_node_t *idCollisionModelManagerLocal::ParseNodes( Lexer *lexer, idCollisionModelLocal *model, cm_node_t *parent ) { return NULL; }
 void idCollisionModelManagerLocal::WritePolygons( idFile *file, cm_node_t *node ) {}
 void idCollisionModelManagerLocal::WriteBrushes( idFile *file, cm_node_t *node ) {}
-void idCollisionModelManagerLocal::ParseVertices( Lexer *lexer, idCollisionModelLocal *model ) {}
-void idCollisionModelManagerLocal::ParseEdges( Lexer *lexer, idCollisionModelLocal *model ) {}
-void idCollisionModelManagerLocal::ParsePolygons( Lexer *lexer, idCollisionModelLocal *model ) {}
-void idCollisionModelManagerLocal::ParseBrushes( Lexer *lexer, idCollisionModelLocal *model ) {}
 void idCollisionModelManagerLocal::WriteCollisionModel( idFile *file, idCollisionModelLocal *model ) {}
 
 void idCollisionModelManagerLocal::WriteCollisionModelsToFile( const char *filename, unsigned int mapFileCRC ) {
@@ -57,12 +60,243 @@ bool idCollisionModelManagerLocal::WriteCollisionModelForMapEntity( const idMapE
 	return false;
 }
 
+cm_node_t *idCollisionModelManagerLocal::ParseNodes( Lexer *lexer,
+		idCollisionModelLocal *model, cm_node_t *parent ) {
+	++model->numNodes;
+	cm_node_t *node = AllocNode( model,
+		model->numNodes < NODE_BLOCK_SIZE_SMALL ? NODE_BLOCK_SIZE_SMALL : NODE_BLOCK_SIZE_LARGE );
+	node->brushes = NULL;
+	node->polygons = NULL;
+	node->parent = parent;
+	lexer->ExpectTokenString( "(" );
+	node->planeType = lexer->ParseInt();
+	node->planeDist = lexer->ParseFloat();
+	lexer->ExpectTokenString( ")" );
+	if ( node->planeType != -1 ) {
+		node->children[0] = ParseNodes( lexer, model, node );
+		node->children[1] = ParseNodes( lexer, model, node );
+	}
+	return node;
+}
+
+void idCollisionModelManagerLocal::ParseVertices( Lexer *lexer, idCollisionModelLocal *model ) {
+	lexer->ExpectTokenString( "{" );
+	model->maxVertices = model->numVertices = lexer->ParseInt();
+	model->vertices = static_cast<cm_vertex_t *>( Mem_Alloc( model->maxVertices * sizeof( cm_vertex_t ), MA_CM ) );
+	memset( model->vertices, 0, model->maxVertices * sizeof( cm_vertex_t ) );
+	for ( int i = 0; i < model->numVertices; ++i ) {
+		lexer->Parse1DMatrix( 3, model->vertices[i].p.ToFloatPtr() );
+	}
+	lexer->ExpectTokenString( "}" );
+}
+
+void idCollisionModelManagerLocal::ParseEdges( Lexer *lexer, idCollisionModelLocal *model ) {
+	lexer->ExpectTokenString( "{" );
+	model->maxEdges = model->numEdges = lexer->ParseInt();
+	model->edges = static_cast<cm_edge_t *>( Mem_Alloc( model->maxEdges * sizeof( cm_edge_t ), MA_CM ) );
+	memset( model->edges, 0, model->maxEdges * sizeof( cm_edge_t ) );
+	for ( int i = 0; i < model->numEdges; ++i ) {
+		lexer->ExpectTokenString( "(" );
+		model->edges[i].vertexNum[0] = lexer->ParseInt();
+		model->edges[i].vertexNum[1] = lexer->ParseInt();
+		lexer->ExpectTokenString( ")" );
+		model->edges[i].internal = lexer->ParseInt();
+		model->edges[i].numUsers = lexer->ParseInt();
+		model->edges[i].normal.Zero();
+		model->numInternalEdges += model->edges[i].internal;
+	}
+	lexer->ExpectTokenString( "}" );
+}
+
+void idCollisionModelManagerLocal::ParsePolygons( Lexer *lexer, idCollisionModelLocal *model ) {
+	idToken token;
+	idVec3 normal;
+
+	model->maxPolygons = lexer->ParseInt();
+	model->numPolygons = 0;
+	model->polygons = static_cast<cm_polygon_t *>( Mem_Alloc16(
+		model->maxPolygons * sizeof( cm_polygon_t ), MA_CM ) );
+	memset( model->polygons, 0, model->maxPolygons * sizeof( cm_polygon_t ) );
+	model->maxPolygonEdges = lexer->ParseInt();
+	model->numPolygonEdges = 0;
+	model->polygonEdges = static_cast<int *>( Mem_Alloc16(
+		model->maxPolygonEdges * sizeof( int ), MA_CM ) );
+
+	lexer->ExpectTokenString( "{" );
+	while ( !lexer->CheckTokenString( "}" ) ) {
+		const int numEdges = lexer->ParseInt();
+		cm_polygon_t *polygon = AllocPolygon( model, numEdges );
+		memset( polygon, 0, sizeof( *polygon ) );
+		polygon->numEdges = numEdges;
+		polygon->edges = model->polygonEdges + model->numPolygonEdges - numEdges;
+
+		lexer->ExpectTokenString( "(" );
+		for ( int i = 0; i < numEdges; ++i ) {
+			polygon->edges[i] = lexer->ParseInt();
+		}
+		lexer->ExpectTokenString( ")" );
+		lexer->Parse1DMatrix( 3, normal.ToFloatPtr() );
+		polygon->plane.SetNormal( normal );
+		polygon->plane.SetDist( lexer->ParseFloat() );
+		lexer->Parse1DMatrix( 3, polygon->bounds[0].ToFloatPtr() );
+		lexer->Parse1DMatrix( 3, polygon->bounds[1].ToFloatPtr() );
+		lexer->ExpectTokenType( TT_STRING, 0, &token );
+		polygon->material = declManager->FindMaterial( token.c_str() );
+		polygon->contents = polygon->material->GetContentFlags();
+		polygon->texBounds[0].Zero();
+		polygon->texBounds[1].Zero();
+		polygon->texBounds[2].Zero();
+		polygon->primitiveNum = 0;
+
+		if ( lexer->ReadToken( &token ) ) {
+			lexer->UnreadToken( &token );
+			if ( token == "(" ) {
+				lexer->Parse1DMatrix( 2, polygon->texBounds[0].ToFloatPtr() );
+				lexer->Parse1DMatrix( 2, polygon->texBounds[1].ToFloatPtr() );
+				lexer->Parse1DMatrix( 2, polygon->texBounds[2].ToFloatPtr() );
+				polygon->primitiveNum = lexer->ParseInt();
+			}
+		}
+		polygon->checkcount = 0;
+		R_FilterPolygonIntoTree( model, model->node, NULL, polygon );
+	}
+}
+
+void idCollisionModelManagerLocal::ParseBrushes( Lexer *lexer, idCollisionModelLocal *model ) {
+	idToken token;
+	idVec3 normal;
+
+	model->maxBrushes = lexer->ParseInt();
+	model->numBrushes = 0;
+	model->brushes = static_cast<cm_brush_t *>( Mem_Alloc16(
+		model->maxBrushes * sizeof( cm_brush_t ), MA_CM ) );
+	memset( model->brushes, 0, model->maxBrushes * sizeof( cm_brush_t ) );
+	model->maxBrushPlanes = lexer->ParseInt();
+	model->numBrushPlanes = 0;
+	model->brushPlanes = static_cast<idPlane *>( Mem_Alloc16(
+		model->maxBrushPlanes * sizeof( idPlane ), MA_CM ) );
+
+	lexer->ExpectTokenString( "{" );
+	while ( !lexer->CheckTokenString( "}" ) ) {
+		const int numPlanes = lexer->ParseInt();
+		cm_brush_t *brush = AllocBrush( model, numPlanes );
+		memset( brush, 0, sizeof( *brush ) );
+		brush->numPlanes = numPlanes;
+		brush->planes = model->brushPlanes + model->numBrushPlanes - numPlanes;
+
+		lexer->ExpectTokenString( "{" );
+		for ( int i = 0; i < numPlanes; ++i ) {
+			lexer->Parse1DMatrix( 3, normal.ToFloatPtr() );
+			brush->planes[i].SetNormal( normal );
+			brush->planes[i].SetDist( lexer->ParseFloat() );
+		}
+		lexer->ExpectTokenString( "}" );
+		lexer->Parse1DMatrix( 3, brush->bounds[0].ToFloatPtr() );
+		lexer->Parse1DMatrix( 3, brush->bounds[1].ToFloatPtr() );
+		lexer->ReadToken( &token );
+		if ( token.type == TT_NUMBER ) {
+			brush->contents = token.GetIntValue();
+			brush->primitiveNum = 0;
+		} else {
+			brush->contents = ContentsFromString( token.c_str() );
+			brush->primitiveNum = lexer->ParseInt();
+		}
+		brush->material = NULL;
+		brush->checkcount = 0;
+		R_FilterBrushIntoTree( model, model->node, NULL, brush );
+	}
+}
+
 bool idCollisionModelManagerLocal::ParseCollisionModel( Lexer *lexer, const char *filename, unsigned int mapFileCRC ) {
-	return false;
+	idToken token;
+	lexer->ExpectTokenType( TT_STRING, 0, &token );
+
+	idStr fullName = token.c_str();
+	if ( filename != NULL && idStr::IcmpnPath( filename, "maps/", 5 ) == 0 ) {
+		idStr mapBase = filename;
+		mapBase.StripFileExtension();
+		fullName = mapBase + "/" + token.c_str();
+	}
+
+	idCollisionModelLocal *model = FindModel( fullName.c_str() );
+	if ( model != NULL ) {
+		FreeModelMemory( model );
+	} else {
+		model = AllocModel();
+		models.Append( model );
+	}
+	model->name = fullName;
+	model->fileTime = mapFileCRC;
+	model->refCount = 0;
+	lexer->ExpectTokenType( TT_NUMBER, 0, &token );
+	model->numPrimitives = token.GetIntValue();
+
+	lexer->ExpectTokenString( "{" );
+	while ( !lexer->CheckTokenString( "}" ) ) {
+		lexer->ReadToken( &token );
+		if ( token == "vertices" ) {
+			ParseVertices( lexer, model );
+		} else if ( token == "edges" ) {
+			ParseEdges( lexer, model );
+		} else if ( token == "nodes" ) {
+			lexer->ExpectTokenString( "{" );
+			model->node = ParseNodes( lexer, model, NULL );
+			lexer->ExpectTokenString( "}" );
+		} else if ( token == "polygons" ) {
+			ParsePolygons( lexer, model );
+		} else if ( token == "brushes" ) {
+			ParseBrushes( lexer, model );
+		} else {
+			lexer->Error( "ParseCollisionModel: bad token \"%s\"", token.c_str() );
+		}
+	}
+
+	++checkCount;
+	CalculateEdgeNormals( model, model->node );
+	CM_GetNodeBounds( &model->bounds, model->node );
+	model->contents = CM_GetNodeContents( model->node );
+	model->usedMemory = CM_GetModelMemory( model );
+	return true;
 }
 
 bool idCollisionModelManagerLocal::LoadCollisionModelFile( const char *filename, unsigned int mapFileCRC ) {
-	return false;
+	idStr fileName = filename;
+	fileName.SetFileExtension( CM_FILE_EXT );
+	idAutoPtr<Lexer> lexer( LexerFactory::MakeLexer( fileName.c_str(),
+		LEXFL_NOSTRINGCONCAT | LEXFL_NODOLLARPRECOMPILE, false ) );
+	if ( !lexer->IsLoaded() ) {
+		return false;
+	}
+
+	idToken token;
+	if ( !lexer->ExpectTokenString( CM_FILEID ) ) {
+		common->Warning( "%s is not a CM file", fileName.c_str() );
+		return false;
+	}
+	if ( !lexer->ReadToken( &token ) || token != CM_FILEVERSION ) {
+		common->Warning( "%s has version %s instead of %s", fileName.c_str(), token.c_str(), CM_FILEVERSION );
+		return false;
+	}
+	if ( !lexer->ExpectTokenType( TT_NUMBER, TT_INTEGER, &token ) ) {
+		common->Warning( "%s has no map file CRC", fileName.c_str() );
+		return false;
+	}
+	const unsigned int crc = token.GetUnsignedLongValue();
+	if ( mapFileCRC != 0 && crc != mapFileCRC ) {
+		common->Printf( "%s is out of date\n", fileName.c_str() );
+		return false;
+	}
+
+	while ( lexer->ReadToken( &token ) ) {
+		if ( token != "collisionModel" ) {
+			lexer->Error( "idCollisionModelManagerLocal::LoadCollisionModelFile: bad token \"%s\"", token.c_str() );
+			return false;
+		}
+		if ( !ParseCollisionModel( lexer, filename, mapFileCRC ) ) {
+			return false;
+		}
+	}
+	return true;
 }
 
 #else

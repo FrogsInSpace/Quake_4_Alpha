@@ -206,7 +206,7 @@ public:
 								// Returns NULL if gui by that name does not exist.
 	virtual idUserInterface *	FindGui( const char *qpath, bool autoLoad = false, bool needUnique = false, bool forceUnique = false ) = 0;
 
-#ifdef Q4_RECON_ENGINE_PRIVATE
+#if defined( Q4_RECON_ENGINE_PRIVATE ) || defined( Q4_RECON_RETAIL_UI_MANAGER_ABI )
 	// Retail engine slot; the three index helpers below are later SDK additions.
 	virtual idUserInterface *	FindDemoGui( const char *qpath ) = 0;
 #else

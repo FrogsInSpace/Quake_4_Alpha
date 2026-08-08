@@ -756,6 +756,46 @@ void idRenderWorldLocal::AddAreaLightRefs( int areaNum, const portalStack_t *ps 
 
 /*
 ===================
+AddAreaEffectRefs
+
+This is the point where BSE effect definitions visible through a portal chain
+are added to the current view.
+===================
+*/
+void idRenderWorldLocal::AddAreaEffectRefs( int areaNum, const portalStack_t *ps ) {
+	portalArea_t *area = &portalAreas[areaNum];
+
+	for ( areaReference_t *ref = area->effectRefs.areaNext;
+		  ref != &area->effectRefs; ref = ref->areaNext ) {
+		rvRenderEffectLocal *effect = ref->effect;
+		if ( effect == NULL ) {
+			continue;
+		}
+
+		if ( !r_skipSuppress.GetBool() ) {
+			if ( effect->parms.suppressSurfaceInViewID != 0 &&
+				 effect->parms.suppressSurfaceInViewID == tr.viewDef->renderView.viewID ) {
+				continue;
+			}
+			if ( effect->parms.allowSurfaceInViewID != 0 &&
+				 effect->parms.allowSurfaceInViewID != tr.viewDef->renderView.viewID ) {
+				continue;
+			}
+		}
+
+		if ( r_useEntityCulling.GetBool() &&
+			 R_CullLocalBox( effect->referenceBounds, effect->modelMatrix,
+				 ps->numPortalPlanes, ps->portalPlanes ) ) {
+			continue;
+		}
+
+		viewEffect_t *viewEffect = R_SetEffectDefViewEntity( effect );
+		viewEffect->scissorRect.Union( ps->rect );
+	}
+}
+
+/*
+===================
 AddAreaRefs
 
 This may be entered multiple times with different planes
@@ -770,6 +810,7 @@ void idRenderWorldLocal::AddAreaRefs( int areaNum, const portalStack_t *ps ) {
 	// add the models and lights, using more precise culling to the planes
 	AddAreaEntityRefs( areaNum, ps );
 	AddAreaLightRefs( areaNum, ps );
+	AddAreaEffectRefs( areaNum, ps );
 }
 
 /*
@@ -837,6 +878,7 @@ void idRenderWorldLocal::FindViewLightsAndEntities( void ) {
 	// clear the visible lightDef and entityDef lists
 	tr.viewDef->viewLights = NULL;
 	tr.viewDef->viewEntitys = NULL;
+	tr.viewDef->viewEffects = NULL;
 
 	// find the area to start the portal flooding in
 	if ( !r_usePortals.GetBool() ) {

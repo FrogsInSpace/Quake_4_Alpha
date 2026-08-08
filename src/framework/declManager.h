@@ -63,36 +63,39 @@ along with Quake 4 Reconstructed Source Code.  If not, see <http://www.gnu.org/l
 
 typedef enum {
 	DECL_TABLE				= 0,
-	DECL_MATERIAL,
-	DECL_SKIN,
-	DECL_SOUND,
-	DECL_ENTITYDEF,
-	DECL_MODELDEF,
+	DECL_MATERIAL			= 1,
+	DECL_SKIN				= 2,
+	DECL_SOUND				= 3,
+	DECL_ENTITYDEF			= 4,
+	DECL_MODELDEF			= 5,
 // RAVEN BEGIN
 // jscott: added new decls
-	DECL_MATERIALTYPE,
-	DECL_LIPSYNC,
-	DECL_PLAYBACK,
-	DECL_EFFECT,
+	DECL_MATERIALTYPE		= 6,
+	DECL_LIPSYNC			= 7,
+	DECL_PLAYBACK			= 8,
+	DECL_EFFECT				= 9,
 // rjohnson: camera is now contained in a def for frame commands
-	DECL_CAMERADEF,
+	DECL_CAMERADEF			= 10,
 // jscott: don't use these
 //	DECL_FX,
 //	DECL_PARTICLE,
 // RAVEN END
-	DECL_AF,
-	DECL_PDA,
-	DECL_VIDEO,
-	DECL_AUDIO,
-	DECL_EMAIL,
-	DECL_MODELEXPORT,
-	DECL_MAPDEF,
+	DECL_AF					= 11,
+	DECL_PDA				= 12,
+	DECL_VIDEO				= 13,
+	DECL_AUDIO				= 14,
+	DECL_EMAIL				= 15,
+	DECL_MODELEXPORT		= 16,
+	DECL_MAPDEF				= 17,
 
 	// new decl types can be added here
-	DECL_PLAYER_MODEL,
+	DECL_PLAYER_MODEL		= 18,
 
 	DECL_MAX_TYPES			= 32
 } declType_t;
+
+static_assert( DECL_EFFECT == 9 && DECL_PLAYER_MODEL == 18 && DECL_MAX_TYPES == 32,
+	"Quake 4 declType_t ABI drift" );
 
 typedef enum {
 	DS_UNPARSED,

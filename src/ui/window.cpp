@@ -612,6 +612,10 @@ idWindow::RunTimeEvents
 */
 bool idWindow::RunTimeEvents(int time) {
 
+	if ( lastTimeRun > time ) {
+		lastTimeRun = time;
+	}
+
 	if ( time - lastTimeRun < common->GetUserCmdMSec() ) {
 		//common->Printf("Skipping gui time events at %i\n", time);
 		return false;
@@ -659,10 +663,6 @@ void idWindow::RunNamedEvent ( const char* eventName )
 			continue;
 		}
 		UpdateWinVars();
-		const bool traceIngameCheck = !idStr::Icmp( eventName, "ingameCheck" );
-		if ( traceIngameCheck ) {
-			common->DPrintf( "Q4 menu trace: ingameCheck begin gui::inGame='%s'\n", gui->State().GetString( "inGame" ) );
-		}
 
 		// Make sure we got all the current values for stuff
 		if (expressionRegisters.Num() && ops.Num()) {
@@ -670,11 +670,6 @@ void idWindow::RunNamedEvent ( const char* eventName )
 		}
 		
 		RunScriptList( namedEvents[i]->mEvent );
-		if ( traceIngameCheck ) {
-			drawWin_t *newGame = gui->GetDesktop()->FindChildByName( "main_b_newgame" );
-			idWinVar *shown = newGame ? ( newGame->win ? newGame->win->GetWinVarByName( "visible" ) : newGame->simp->GetWinVarByName( "visible" ) ) : NULL;
-			common->DPrintf( "Q4 menu trace: ingameCheck end main_b_newgame visible=%s\n", shown ? shown->c_str() : "<not found>" );
-		}
 		
 		break;
 	}
@@ -1079,10 +1074,6 @@ idWindow::Time
 ================
 */
 void idWindow::Time() {
-	
-	if ( !idStr::Icmp( name, "anim_newIn" ) && !noTime ) {
-		common->DPrintf( "Q4 menu trace: anim_newIn unexpectedly active at guiTime=%d epoch=%d\n", gui->GetTime(), timeLine );
-	}
 
 	if ( noTime ) {
 		return;
@@ -1098,10 +1089,6 @@ void idWindow::Time() {
 	if ( c > 0 ) {
 		for (int i = 0; i < c; i++) {
 			if ( timeLineEvents[i]->pending && gui->GetTime() - timeLine >= timeLineEvents[i]->time ) {
-				if ( !idStr::Icmp( name, "anim_in" ) || !idStr::Icmp( name, "video_bethsoft" ) ) {
-					common->DPrintf( "Q4 menu trace: timeline '%s' firing %d at guiTime=%d epoch=%d\n",
-						name.c_str(), timeLineEvents[i]->time, gui->GetTime(), timeLine );
-				}
 				timeLineEvents[i]->pending = false;
 				RunScriptList( timeLineEvents[i]->event );
 			}
@@ -2646,9 +2633,6 @@ bool idWindow::Parse( idParser *src, bool rebuild) {
 
 	SetupFromState();
 	PostParse();
-	if ( !idStr::Icmp( name, "anim_newIn" ) ) {
-		common->DPrintf( "Q4 menu trace: parsed anim_newIn notime=%d events=%d\n", noTime ? 1 : 0, timeLineEvents.Num() );
-	}
 
 	// hook into the main window parsing for the gui editor
 	// If we are in the gui editor then add the internal var to the 
@@ -2772,10 +2756,6 @@ idWindow::ResetTime
 ================
 */
 void idWindow::ResetTime(int t) {
-	if ( !idStr::Icmp( name, "anim_in" ) || !idStr::Icmp( name, "anim_newIn" ) || !idStr::Icmp( name, "video_bethsoft" ) ) {
-		common->DPrintf( "Q4 menu trace: ResetTime '%s' t=%d guiTime=%d\n", name.c_str(), t, gui->GetTime() );
-	}
-
 	timeLine = gui->GetTime() - t;
 
 	int i, c = timeLineEvents.Num();
@@ -3239,9 +3219,10 @@ void idWindow::EvaluateRegisters(float *registers) {
 				break;
 			}
 			if ( op->b >= 0 && registers[op->b] >= 0 && registers[op->b] < 4 ) {
-				// grabs vector components
-				idWinVec4 *var = (idWinVec4 *)( op->a );
-				registers[op->c] = ((idVec4&)var)[registers[op->b]];
+				// The operand is an idWinVar pointer.  Casting the local pointer
+				// itself to idVec4 reads unrelated stack data and makes GUI color
+				// expressions depend on the current stack layout.
+				registers[op->c] = ((idWinVar *)(op->a))->GetMember( (int)registers[op->b] );
 			} else {
 				registers[op->c] = ((idWinVar*)(op->a))->x();
 			}

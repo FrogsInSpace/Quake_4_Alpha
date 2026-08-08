@@ -222,10 +222,6 @@ void Script_ResetTime(idWindow *window, idList<idGSWinVar> *src) {
 	drawWin_t *win = NULL;
 	if (parm && src->Num() > 1) {
 		win = window->GetGui()->GetDesktop()->FindChildByName(*parm);
-		if ( !idStr::Icmp( parm->c_str(), "anim_in" ) || !idStr::Icmp( parm->c_str(), "anim_newIn" ) ) {
-			common->DPrintf( "Q4 menu trace: resetTime requested '%s', resolved '%s'\n",
-				parm->c_str(), ( win && win->win ) ? win->win->GetName() : "<not found>" );
-		}
 		parm = dynamic_cast<idWinStr*>((*src)[1].var);
 	}
 	if (win && win->win) {
@@ -252,66 +248,48 @@ Script_Transition
 =========================
 */
 void Script_Transition(idWindow *window, idList<idGSWinVar> *src) {
-	// transitions always affect rect or vec4 vars
-	if (src->Num() >= 4) {
-		idWinRectangle *rect = NULL;
-		idWinVec4 *vec4 = dynamic_cast<idWinVec4*>((*src)[0].var);
-		// 
-		//  added float variable
-		idWinFloat* val = NULL;
-		idWinFloatMember *member = NULL;
-		// 
-		if (vec4 == NULL) {
-			rect = dynamic_cast<idWinRectangle*>((*src)[0].var);
-			// 
-			//  added float variable					
-			if ( NULL == rect ) {
-				val = dynamic_cast<idWinFloat*>((*src)[0].var);
-				if ( NULL == val ) {
-					member = dynamic_cast<idWinFloatMember*>((*src)[0].var);
-				}
-			}
-			// 
-		}
-		idWinVec4 *from = dynamic_cast<idWinVec4*>((*src)[1].var);
-		idWinVec4 *to = dynamic_cast<idWinVec4*>((*src)[2].var);
-		idWinStr *timeStr = dynamic_cast<idWinStr*>((*src)[3].var);
-		// 
-		//  added float variable					
-		if (!((vec4 || rect || val || member) && from && to && timeStr)) {
-			// 
-			common->Warning("Bad transition in gui %s in window %s\n", window->GetGui()->GetSourceFile(), window->GetName());
-			return;
-		}
-		int time = atoi(*timeStr);
-		float ac = 0.0f;
-		float dc = 0.0f;
-		if (src->Num() > 4) {
-			idWinStr *acv = dynamic_cast<idWinStr*>((*src)[4].var);
-			idWinStr *dcv = dynamic_cast<idWinStr*>((*src)[5].var);
-			assert(acv && dcv);
-			ac = atof(*acv);
-			dc = atof(*dcv);
-		}
-				
-		if (vec4) {
-			vec4->SetEval(false);
-			window->AddTransition(vec4, *from, *to, time, ac, dc);
-			// 
-			//  added float variable					
-		} else if ( val ) {
-			val->SetEval ( false );
-			window->AddTransition(val, *from, *to, time, ac, dc);
-		} else if ( member ) {
-			member->SetEval( false );
-			window->AddTransition( member, *from, *to, time, ac, dc );
-			// 
-		} else {
-			rect->SetEval(false);
-			window->AddTransition(rect, *from, *to, time, ac, dc);
-		}
-		window->StartTransition();
+	if ( src->Num() < 4 ) {
+		return;
 	}
+
+	idWinVar *destination = (*src)[0].var;
+	idWinInt *timeVar = dynamic_cast<idWinInt *>( (*src)[3].var );
+	if ( !destination || !timeVar ) {
+		common->Warning( "Bad transition in gui %s in window %s\n", window->GetGui()->GetSourceFile(), window->GetName() );
+		return;
+	}
+
+	idVec4 from;
+	idVec4 to;
+	idWinVec4 *fromVec = dynamic_cast<idWinVec4 *>( (*src)[1].var );
+	idWinVec4 *toVec = dynamic_cast<idWinVec4 *>( (*src)[2].var );
+	if ( fromVec ) {
+		from = static_cast<const idVec4 &>( *fromVec );
+	} else {
+		const float value = (*src)[1].var->x();
+		from.Set( value, value, value, value );
+	}
+	if ( toVec ) {
+		to = static_cast<const idVec4 &>( *toVec );
+	} else {
+		const float value = (*src)[2].var->x();
+		to.Set( value, value, value, value );
+	}
+
+	float accel = 0.0f;
+	float decel = 0.0f;
+	if ( src->Num() > 5 ) {
+		idWinFloat *accelVar = dynamic_cast<idWinFloat *>( (*src)[4].var );
+		idWinFloat *decelVar = dynamic_cast<idWinFloat *>( (*src)[5].var );
+		if ( accelVar && decelVar ) {
+			accel = *accelVar;
+			decel = *decelVar;
+		}
+	}
+
+	destination->SetEval( false );
+	window->AddTransition( destination, from, to, *timeVar, accel, decel );
+	window->StartTransition();
 }
 
 typedef struct {
@@ -591,73 +569,110 @@ void idGuiScript::FixupParms(idWindow *win) {
 		}
 	} else if (handler == &Script_Transition) {
 		if (parms.Num() < 4) {
-			common->Warning("Window %s in gui %s has a bad transition definition", win->GetName(), win->GetGui()->GetSourceFile()); 
+			common->Warning("Window %s in gui %s has a bad transition definition", win->GetName(), win->GetGui()->GetSourceFile());
+			handler = NULL;
+			return;
 		}
 		idWinStr *str = dynamic_cast<idWinStr*>(parms[0].var);
 		assert(str);
 
-		// 
-		drawWin_t *destowner;
-		idWinVar *dest = win->GetWinVarByName(*str, true, &destowner );
-		// 
-
-		if (dest) {
-			delete parms[0].var;
-			parms[0].var = dest;
-			parms[0].own = false;
-		} else {
+		drawWin_t *destOwner = NULL;
+		idWinVar *dest = win->GetWinVarByName(*str, true, &destOwner );
+		idWinVec4 *destVec = dynamic_cast<idWinVec4 *>( dest );
+		idWinFloat *destFloat = dynamic_cast<idWinFloat *>( dest );
+		idWinRectangle *destRect = dynamic_cast<idWinRectangle *>( dest );
+		idWinFloatMember *destMember = dynamic_cast<idWinFloatMember *>( dest );
+		if ( !destVec && !destFloat && !destRect && !destMember ) {
 			common->Warning("Window %s in gui %s: a transition does not have a valid destination var %s", win->GetName(), win->GetGui()->GetSourceFile(),str->c_str());
 			handler = NULL;
 			return;
 		}
+		delete parms[0].var;
+		parms[0].var = dest;
+		parms[0].own = false;
 
-		// 
-		//  support variables as parameters		
-		int c;
-		for ( c = 1; c < 3; c ++ ) {
+		// Quake 4 retains scalar transition parameters as floats and vector /
+		// rectangle parameters as vec4s.  Script_Transition then expands a
+		// scalar into all four interpolation lanes.
+		for ( int c = 1; c < 3; c++ ) {
 			str = dynamic_cast<idWinStr*>(parms[c].var);
+			assert( str );
 
-			idWinVec4 *v4 = new idWinVec4;
-			parms[c].var = v4;
-			parms[c].own = true;
+			if ( str->c_str()[0] == '$' ) {
+				drawWin_t *sourceOwner = NULL;
+				idWinVar *source = win->GetWinVarByName( str->c_str() + 1, true, &sourceOwner );
+				idWinVec4 *sourceVec = dynamic_cast<idWinVec4 *>( source );
+				idWinFloat *sourceFloat = dynamic_cast<idWinFloat *>( source );
+				idWinRectangle *sourceRect = dynamic_cast<idWinRectangle *>( source );
+				idWinFloatMember *sourceMember = dynamic_cast<idWinFloatMember *>( source );
 
-			drawWin_t* owner;
+				const bool compatible =
+					( destVec && sourceVec ) ||
+					( destFloat && sourceFloat ) ||
+					( destRect && ( sourceVec || sourceRect ) ) ||
+					( destMember && ( sourceFloat || sourceMember ) );
+				if ( !compatible ) {
+					common->Warning( "Window %s in gui %s: transition has an invalid parameter %d (%s)",
+						win->GetName(), win->GetGui()->GetSourceFile(), c, str->c_str() );
+					handler = NULL;
+					return;
+				}
 
-			if ( (*str[0]) == '$' ) {
-				dest = win->GetWinVarByName ( (const char*)(*str) + 1, true, &owner );
-			} else {
-				dest = NULL;
-			}
-
-			if ( dest ) {	
-				idWindow* ownerparent;
-				idWindow* destparent;
-				if ( owner ) {
-					ownerparent = owner->simp?owner->simp->GetParent():owner->win->GetParent();
-					destparent  = destowner->simp?destowner->simp->GetParent():destowner->win->GetParent();
-
-					// If its the rectangle they are referencing then adjust it 
-					if ( ownerparent && destparent && 
-						(dest == (owner->simp?owner->simp->GetWinVarByName ( "rect" ):owner->win->GetWinVarByName ( "rect" ) ) ) )
-					{
-						idRectangle rect;
-						rect = *(dynamic_cast<idWinRectangle*>(dest));
-						ownerparent->ClientToScreen ( &rect );
-						destparent->ScreenToClient ( &rect );
-						*v4 = rect.ToVec4 ( );
+				if ( destRect && sourceRect ) {
+					idWinVec4 *value = new idWinVec4;
+					*value = idVec4( 0.0f, 0.0f, 0.0f, 0.0f );
+					idWindow *sourceParent = sourceOwner ?
+						( sourceOwner->simp ? sourceOwner->simp->GetParent() : sourceOwner->win->GetParent() ) : NULL;
+					idWindow *destinationParent = destOwner ?
+						( destOwner->simp ? destOwner->simp->GetParent() : destOwner->win->GetParent() ) : NULL;
+					if ( sourceParent && destinationParent ) {
+						idRectangle rect = *sourceRect;
+						sourceParent->ClientToScreen( &rect );
+						destinationParent->ScreenToClient( &rect );
+						*value = rect.ToVec4();
 					} else {
-						v4->Set ( dest->c_str ( ) );
+						value->Set( sourceRect->c_str() );
 					}
+					parms[c].var = value;
+					parms[c].own = true;
 				} else {
-					v4->Set ( dest->c_str ( ) );
+					parms[c].var = source;
+					parms[c].own = false;
 				}
 			} else {
-				v4->Set(*str);
-			}			
-			
+				idWinVar *value;
+				if ( destVec || destRect ) {
+					idWinVec4 *vecValue = new idWinVec4;
+					*vecValue = idVec4( 0.0f, 0.0f, 0.0f, 0.0f );
+					value = vecValue;
+				} else {
+					value = new idWinFloat;
+				}
+				value->Set( str->c_str() );
+				parms[c].var = value;
+				parms[c].own = true;
+			}
+
 			delete str;
-		}		
-		// 
+		}
+
+		str = dynamic_cast<idWinStr *>( parms[3].var );
+		assert( str );
+		idWinInt *time = new idWinInt;
+		time->Set( str->c_str() );
+		delete str;
+		parms[3].var = time;
+		parms[3].own = true;
+
+		for ( int i = 4; i < parms.Num() && i < 6; i++ ) {
+			str = dynamic_cast<idWinStr *>( parms[i].var );
+			assert( str );
+			idWinFloat *value = new idWinFloat;
+			value->Set( str->c_str() );
+			delete str;
+			parms[i].var = value;
+			parms[i].own = true;
+		}
 
 	} else {
 		int c = parms.Num();

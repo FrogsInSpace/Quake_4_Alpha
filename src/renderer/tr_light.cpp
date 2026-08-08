@@ -26,6 +26,7 @@ along with Quake 4 Reconstructed Source Code.  If not, see <http://www.gnu.org/l
 #pragma hdrstop
 
 #include "tr_local.h"
+#include "../bse/BSE.h"
 
 static const float CHECK_BOUNDS_EPSILON = 1.0f;
 
@@ -406,6 +407,70 @@ viewEntity_t *R_SetEntityDefViewEntity( idRenderEntityLocal *def ) {
 	def->viewEntity = vModel;
 
 	return vModel;
+}
+
+/*
+=============
+R_SetEffectDefViewEntity
+
+Create the frame-local view record for a BSE effect.  The scissor is expanded
+later by each visible portal chain that references the effect.
+=============
+*/
+viewEffect_t *R_SetEffectDefViewEntity( rvRenderEffectLocal *def ) {
+	if ( def->viewCount == tr.viewCount ) {
+		return def->viewEffect;
+	}
+	def->viewCount = tr.viewCount;
+
+	viewEffect_t *viewEffect = static_cast<viewEffect_t *>( R_ClearedFrameAlloc( sizeof( *viewEffect ) ) );
+	viewEffect->effectDef = def;
+	viewEffect->scissorRect.Clear();
+	viewEffect->modelDepthHack = def->parms.modelDepthHack;
+	viewEffect->weaponDepthHackInViewID = def->parms.weaponDepthHackInViewID;
+
+	R_AxisToModelMatrix( def->parms.axis, def->parms.origin, viewEffect->modelMatrix );
+	if ( tr.viewDef != NULL ) {
+		myGlMultMatrix( viewEffect->modelMatrix, tr.viewDef->worldSpace.modelViewMatrix,
+			viewEffect->modelViewMatrix );
+		viewEffect->distanceToCamera = ( def->parms.origin - tr.viewDef->renderView.vieworg ).LengthSqr();
+		viewEffect->next = tr.viewDef->viewEffects;
+		tr.viewDef->viewEffects = viewEffect;
+	}
+
+	def->viewEffect = viewEffect;
+	return viewEffect;
+}
+
+static int R_CompareViewEffects( const void *left, const void *right ) {
+	const viewEffect_t *a = *static_cast<viewEffect_t * const *>( left );
+	const viewEffect_t *b = *static_cast<viewEffect_t * const *>( right );
+	if ( a->distanceToCamera < b->distanceToCamera ) {
+		return 1;
+	}
+	if ( a->distanceToCamera > b->distanceToCamera ) {
+		return -1;
+	}
+	return 0;
+}
+
+static int R_SortViewEffects( viewEffect_t ***array ) {
+	int count = 0;
+	for ( viewEffect_t *effect = tr.viewDef->viewEffects; effect != NULL; effect = effect->next ) {
+		++count;
+	}
+	if ( count == 0 ) {
+		*array = NULL;
+		return 0;
+	}
+
+	*array = static_cast<viewEffect_t **>( R_FrameAlloc( count * sizeof( (*array)[0] ) ) );
+	int index = 0;
+	for ( viewEffect_t *effect = tr.viewDef->viewEffects; effect != NULL; effect = effect->next ) {
+		(*array)[index++] = effect;
+	}
+	qsort( *array, count, sizeof( (*array)[0] ), R_CompareViewEffects );
+	return count;
 }
 
 /*
@@ -1175,6 +1240,46 @@ idRenderModel *R_EntityDefDynamicModel( idRenderEntityLocal *def ) {
 }
 
 /*
+===================
+R_EffectDefDynamicModel
+
+Build the transient render model emitted by a serviced BSE effect.  Retail
+rebuilds continuous effect geometry once per render frame.
+===================
+*/
+static idRenderModel *R_EffectDefDynamicModel( rvRenderEffectLocal *def ) {
+	if ( tr.viewDef == NULL || def == NULL || def->effect == NULL || bse == NULL ) {
+		return NULL;
+	}
+
+	const char *effectName = def->parms.declEffect ? def->parms.declEffect->GetName() : "";
+	if ( bse->Filtered( effectName, EC_IGNORE ) ) {
+		return NULL;
+	}
+
+	if ( def->dynamicModelFrameCount != tr.frameCount ) {
+		delete def->dynamicModel;
+		def->dynamicModel = def->effect->Render( &def->parms, tr.viewDef );
+		def->dynamicModelFrameCount = tr.frameCount;
+	}
+
+	if ( def->dynamicModel != NULL ) {
+		const float depthHack = def->dynamicModel->DepthHack();
+		if ( depthHack != 0.0f ) {
+			idPlane eye;
+			idPlane clip;
+			idVec3 ndc;
+			R_TransformModelToClip( def->parms.origin, tr.viewDef->worldSpace.modelViewMatrix,
+				tr.viewDef->projectionMatrix, eye, clip );
+			R_TransformClipToDevice( clip, tr.viewDef, ndc );
+			def->parms.modelDepthHack = depthHack * ( 1.0f - ndc.z );
+		}
+	}
+
+	return def->dynamicModel;
+}
+
+/*
 =================
 R_AddDrawSurf
 =================
@@ -1297,6 +1402,57 @@ void R_AddDrawSurf( const srfTriangles_t *tri, const viewEntity_t *space, const 
 }
 
 /*
+=================
+R_AddDrawSurf
+
+BSE overload.  Effect geometry uses renderEffect shader parameters and the
+viewEffect matrix prefix while sharing the normal draw-surface back end.
+=================
+*/
+void R_AddDrawSurf( const srfTriangles_t *tri, const viewEffect_t *space, const renderEffect_t *renderEffect,
+					const idMaterial *shader, const idScreenRect &scissor, unsigned int flags ) {
+	drawSurf_t *drawSurf = static_cast<drawSurf_t *>( R_ClearedFrameAlloc( sizeof( *drawSurf ) ) );
+	drawSurf->geo = tri;
+	drawSurf->space = reinterpret_cast<const viewEntity_t *>( space );
+	drawSurf->material = shader;
+	drawSurf->scissorRect = scissor;
+	drawSurf->sort = shader->GetSort() + tr.sortOffset;
+	drawSurf->mFlags = flags;
+
+	tr.sortOffset += 0.000001f;
+
+	if ( tr.viewDef->numDrawSurfs == tr.viewDef->maxDrawSurfs ) {
+		drawSurf_t **old = tr.viewDef->drawSurfs;
+		int copyBytes;
+		if ( tr.viewDef->maxDrawSurfs == 0 ) {
+			tr.viewDef->maxDrawSurfs = INITIAL_DRAWSURFS;
+			copyBytes = 0;
+		} else {
+			copyBytes = tr.viewDef->maxDrawSurfs * sizeof( tr.viewDef->drawSurfs[0] );
+			tr.viewDef->maxDrawSurfs *= 2;
+		}
+		tr.viewDef->drawSurfs = static_cast<drawSurf_t **>(
+			R_FrameAlloc( tr.viewDef->maxDrawSurfs * sizeof( tr.viewDef->drawSurfs[0] ) ) );
+		if ( copyBytes > 0 ) {
+			memcpy( tr.viewDef->drawSurfs, old, copyBytes );
+		}
+	}
+	tr.viewDef->drawSurfs[tr.viewDef->numDrawSurfs++] = drawSurf;
+
+	const float *constantRegisters = shader->ConstantRegisters();
+	if ( constantRegisters != NULL ) {
+		drawSurf->shaderRegisters = constantRegisters;
+	} else {
+		float *registers = static_cast<float *>(
+			R_FrameAlloc( shader->GetNumRegisters() * sizeof( registers[0] ) ) );
+		drawSurf->shaderRegisters = registers;
+		shader->EvaluateRegisters( registers, renderEffect->shaderParms, tr.viewDef, 0 );
+	}
+
+	R_DeformDrawSurf( drawSurf );
+}
+
+/*
 ===============
 R_AddAmbientDrawsurfs
 
@@ -1406,6 +1562,57 @@ static void R_AddAmbientDrawsurfs( viewEntity_t *vEntity ) {
 }
 
 /*
+===============
+R_AddAmbientEffectDrawsurfs
+
+Submit every visible surface generated by a BSE effect model.
+===============
+*/
+static void R_AddAmbientEffectDrawsurfs( viewEffect_t *viewEffect ) {
+	rvRenderEffectLocal *def = viewEffect->effectDef;
+	idRenderModel *model = def->dynamicModel;
+	if ( model == NULL ) {
+		return;
+	}
+
+	const int total = model->NumSurfaces();
+	for ( int i = 0; i < total; ++i ) {
+		const modelSurface_t *surface = model->Surface( i );
+		if ( surface == NULL || surface->geometry == NULL || surface->geometry->numIndexes == 0 ) {
+			continue;
+		}
+
+		srfTriangles_t *triangles = surface->geometry;
+		const idMaterial *shader = surface->shader;
+		if ( shader == NULL || !shader->IsDrawn() ) {
+			continue;
+		}
+		if ( R_CullLocalBox( triangles->bounds, viewEffect->modelMatrix, 5, tr.viewDef->frustum ) ) {
+			continue;
+		}
+
+		def->visibleCount = tr.viewCount;
+		if ( triangles->primBatchMesh == NULL ) {
+			if ( !R_CreateAmbientCache( triangles, false ) ) {
+				return;
+			}
+			vertexCache.Touch( triangles->ambientCache );
+
+			if ( r_useIndexBuffers.GetBool() && triangles->indexCache == NULL ) {
+				vertexCache.Alloc( triangles->indexes,
+					triangles->numIndexes * sizeof( triangles->indexes[0] ), &triangles->indexCache, true );
+			}
+			if ( triangles->indexCache != NULL ) {
+				vertexCache.Touch( triangles->indexCache );
+			}
+		}
+
+		R_AddDrawSurf( triangles, viewEffect, &def->parms, shader, viewEffect->scissorRect );
+		triangles->ambientViewCount = tr.viewCount;
+	}
+}
+
+/*
 ==================
 R_CalcEntityScissorRectangle
 ==================
@@ -1480,6 +1687,30 @@ void R_AddModelSurfaces( void ) {
 			inter->AddActiveInteraction();
 		}
 
+	}
+}
+
+/*
+===================
+R_AddEffectSurfaces
+
+Effects are rendered back-to-front, matching the retail view-effect sort.
+===================
+*/
+void R_AddEffectSurfaces( void ) {
+	viewEffect_t **effects = NULL;
+	const int count = R_SortViewEffects( &effects );
+	for ( int i = 0; i < count; ++i ) {
+		viewEffect_t *viewEffect = effects[i];
+		if ( viewEffect->scissorRect.IsEmpty() ) {
+			continue;
+		}
+
+		idRenderModel *model = R_EffectDefDynamicModel( viewEffect->effectDef );
+		if ( model == NULL || model->NumSurfaces() <= 0 ) {
+			continue;
+		}
+		R_AddAmbientEffectDrawsurfs( viewEffect );
 	}
 }
 

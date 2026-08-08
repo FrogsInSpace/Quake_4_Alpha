@@ -190,11 +190,7 @@ public:
 	static idCVar		gui_configServerRate;
 
 	int					timeHitch;
-	idRenderWorld *		rw;
 	int					sw;
-	idDemoFile *			readDemo;
-	idDemoFile *			writeDemo;
-	int					renderdemoVersion;
 
 	bool				menuActive;
 	int					menuSoundWorld;			// SOUNDWORLD_MENU in Quake 4's id-based sound API
@@ -310,14 +306,14 @@ public:
 	void				RunGameTic();
 	
 	void				FinishCmdLoad();
-	void				LoadLoadingGui(const char *mapName);
+	void				LoadLoadingGui( const char *mapName, const char *entityFilter );
 
 	void				DemoShot( const char *name );
 
 	void				TestGUI( const char *name );
 
-	int					GetBytesNeededForMapLoad( const char *mapName );
-	void				SetBytesNeededForMapLoad( const char *mapName, int bytesNeeded );
+	int					GetBytesNeededForMapLoad( const char *mapName, const char *entityFilter );
+	void				SetBytesNeededForMapLoad( const char *mapName, const char *entityFilter, int bytesNeeded );
 
 	void				ExecuteMapChange( bool noFadeWipe = false );
 	void				UnloadMap();

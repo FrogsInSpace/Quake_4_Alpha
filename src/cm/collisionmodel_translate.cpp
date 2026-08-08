@@ -40,32 +40,6 @@ CollisionModel_translate.obj source owner identified by quake4.pdb.
 
 #include "CollisionModel_local.h"
 
-void idCollisionModelManagerLocal::SetupTrm( cm_traceWork_t *traceWork, const idTraceModel *trm ) {
-	traceWork->numVerts = trm->numVerts;
-	for ( int i = 0; i < trm->numVerts; i++ ) {
-		traceWork->vertices[i].p = trm->verts[i];
-		traceWork->vertices[i].used = false;
-	}
-
-	traceWork->numEdges = trm->numEdges;
-	for ( int i = 1; i <= trm->numEdges; i++ ) {
-		traceWork->edges[i].vertexNum[0] = trm->edges[i].v[0];
-		traceWork->edges[i].vertexNum[1] = trm->edges[i].v[1];
-		traceWork->edges[i].used = false;
-	}
-
-	traceWork->numPolys = trm->numPolys;
-	for ( int i = 0; i < trm->numPolys; i++ ) {
-		traceWork->polys[i].numEdges = trm->polys[i].numEdges;
-		for ( int j = 0; j < trm->polys[i].numEdges; j++ ) {
-			traceWork->polys[i].edges[j] = trm->polys[i].edges[j];
-		}
-		traceWork->polys[i].plane.SetNormal( trm->polys[i].normal );
-		traceWork->polys[i].used = false;
-	}
-	traceWork->isConvex = trm->isConvex;
-}
-
 void idCollisionModelManagerLocal::CM_GetCollisionPointTexCoords( idVec2 &texCoord,
 		cm_traceWork_t *traceWork, cm_polygon_t *polygon ) {
 	texCoord.Set( 0.5f, 0.5f );
@@ -103,51 +77,11 @@ void idCollisionModelManagerLocal::CM_GetMaterialType( cm_traceWork_t *traceWork
 	}
 }
 
-bool idCollisionModelManagerLocal::TranslateTrmThroughPolygon( cm_traceWork_t *tw, cm_polygon_t *polygon ) {
-	if ( polygon == NULL || polygon->checkcount == checkCount ) {
-		return false;
-	}
-	polygon->checkcount = checkCount;
-	if ( !( polygon->contents & tw->contents ) ||
-			!tw->traceBounds.IntersectsBounds( polygon->bounds ) ||
-			polygon->plane.Normal() * tw->dir >= 0.0f ) {
-		return false;
-	}
-
-	// Find the trace-model support point closest to the polygon plane.
-	idVec3 support;
-	for ( int axis = 0; axis < 3; ++axis ) {
-		support[axis] = polygon->plane[axis] >= 0.0f ? tw->trmBounds[0][axis] : tw->trmBounds[1][axis];
-	}
-	const float supportDistance = support * polygon->plane.Normal();
-	const float startDistance = polygon->plane.Distance( tw->start ) + supportDistance;
-	const float endDistance = polygon->plane.Distance( tw->end ) + supportDistance;
-	if ( startDistance <= CM_CLIP_EPSILON || endDistance >= startDistance ) {
-		return false;
-	}
-	float fraction = ( startDistance - CM_CLIP_EPSILON ) / ( startDistance - endDistance );
-	fraction = idMath::ClampFloat( 0.0f, tw->trace.fraction, fraction );
-	const idVec3 contactPoint = tw->start + fraction * tw->dir + support;
-	const idBounds expanded = polygon->bounds.Expand( CM_BOX_EPSILON );
-	if ( !expanded.ContainsPoint( contactPoint ) ) {
-		return false;
-	}
-
-	tw->trace.fraction = fraction;
-	tw->trace.c.normal = polygon->plane.Normal();
-	tw->trace.c.dist = polygon->plane.Dist();
-	tw->trace.c.contents = polygon->contents;
-	tw->trace.c.material = polygon->material;
-	tw->trace.c.type = tw->pointTrace ? CONTACT_TRMVERTEX : CONTACT_EDGE;
-	tw->trace.c.point = contactPoint;
-	tw->trace.c.modelFeature = polygon->primitiveNum;
-	tw->trace.c.trmFeature = 0;
-	CM_GetMaterialType( tw, polygon );
-	if ( tw->getContacts && tw->contacts != NULL && tw->numContacts < tw->maxContacts ) {
-		tw->contacts[tw->numContacts++] = tw->trace.c;
-	}
-	return fraction == 0.0f;
-}
+#define Q4_CM_OBJECT_TRANSLATION
+#define Q4_CM_TRANSLATE_HELPERS_ONLY
+#include "collisionmodel_translate_legacy.inc"
+#undef Q4_CM_TRANSLATE_HELPERS_ONLY
+#undef Q4_CM_OBJECT_TRANSLATION
 
 void idCollisionModelManagerLocal::Translation( trace_t *results, const idVec3 &start,
 		const idVec3 &end, const idTraceModel *trm, const idMat3 &trmAxis,
@@ -157,6 +91,7 @@ void idCollisionModelManagerLocal::Translation( trace_t *results, const idVec3 &
 	results->fraction = 1.0f;
 	results->endpos = end;
 	results->endAxis = trmAxis;
+
 	if ( collisionModel == NULL ) {
 		return;
 	}
@@ -165,10 +100,17 @@ void idCollisionModelManagerLocal::Translation( trace_t *results, const idVec3 &
 			collisionModel, modelOrigin, modelAxis );
 		return;
 	}
-	const bool pointTrace = trm == NULL || trm->bounds.GetVolume() <= 0.0f;
+
+	const bool pointTrace = trm == NULL ||
+		( trm->bounds[1].x - trm->bounds[0].x <= 0.0f &&
+		  trm->bounds[1].y - trm->bounds[0].y <= 0.0f &&
+		  trm->bounds[1].z - trm->bounds[0].z <= 0.0f );
 	if ( !pointTrace && ( end - start ).LengthSqr() > Square( CM_MAX_TRACE_DIST ) ) {
 		results->fraction = 0.0f;
 		results->endpos = start;
+		results->endAxis = trmAxis;
+		results->c.normal.Zero();
+		results->c.material = NULL;
 		results->c.point = start;
 		common->Printf( "idCollisionModelManagerLocal::Translation: huge translation\n" );
 		return;
@@ -178,18 +120,20 @@ void idCollisionModelManagerLocal::Translation( trace_t *results, const idVec3 &
 	ALIGN16( cm_traceWork_t tw );
 	memset( &tw, 0, sizeof( tw ) );
 	tw.trace.fraction = 1.0f;
+	tw.trace.c.contents = 0;
 	tw.trace.c.type = CONTACT_NONE;
 	tw.contents = contentMask;
 	tw.model = static_cast<idCollisionModelLocal *>( collisionModel );
 	tw.rotation = false;
 	tw.positionTest = false;
-	tw.pointTrace = pointTrace;
-	tw.isConvex = trm == NULL || trm->isConvex;
+	tw.quickExit = false;
 	tw.getContacts = getContacts;
 	tw.contacts = contacts;
 	tw.maxContacts = maxContacts;
+	tw.numContacts = 0;
 	tw.start = start - modelOrigin;
 	tw.end = end - modelOrigin;
+	tw.dir = tw.end - tw.start;
 
 	idMat3 inverseModelAxis = mat3_identity;
 	const bool modelRotated = modelAxis.IsRotated();
@@ -197,33 +141,143 @@ void idCollisionModelManagerLocal::Translation( trace_t *results, const idVec3 &
 		inverseModelAxis = modelAxis.Transpose();
 		tw.start *= inverseModelAxis;
 		tw.end *= inverseModelAxis;
+		tw.dir *= inverseModelAxis;
 	}
-	tw.dir = tw.end - tw.start;
+
 	if ( pointTrace ) {
+		tw.pointTrace = true;
+		tw.isConvex = true;
 		tw.trmBounds.Zero();
+		for ( int i = 0; i < 3; ++i ) {
+			tw.traceBounds[0][i] = Min( tw.start[i], tw.end[i] ) - CM_BOX_EPSILON;
+			tw.traceBounds[1][i] = Max( tw.start[i], tw.end[i] ) + CM_BOX_EPSILON;
+			tw.trmExtents[i] = CM_BOX_EPSILON;
+		}
+		SetupTranslationHeartPlanes( &tw );
+		tw.maxDistFromHeartPlane1 = CM_BOX_EPSILON;
+		tw.maxDistFromHeartPlane2 = CM_BOX_EPSILON;
+		tw.numVerts = 1;
+		tw.vertices[0].p = tw.start;
+		tw.vertices[0].endp = tw.end;
+		tw.vertices[0].pl.FromRay( tw.start, tw.dir );
+		tw.vertices[0].used = true;
+		tw.numEdges = 0;
+		tw.numPolys = 0;
+		TraceThroughModel( &tw );
 	} else {
-		idMat3 localTraceAxis = trmAxis;
+		tw.pointTrace = false;
+		SetupTrm( &tw, trm );
+
+		idMat3 trmTransform = trmAxis;
 		if ( modelRotated ) {
-			localTraceAxis *= inverseModelAxis;
+			trmTransform *= inverseModelAxis;
 		}
-		tw.trmBounds.FromTransformedBounds( trm->bounds, vec3_origin, localTraceAxis );
-	}
-	for ( int i = 0; i < 3; ++i ) {
-		if ( tw.start[i] < tw.end[i] ) {
-			tw.traceBounds[0][i] = tw.start[i] + tw.trmBounds[0][i] - CM_BOX_EPSILON;
-			tw.traceBounds[1][i] = tw.end[i] + tw.trmBounds[1][i] + CM_BOX_EPSILON;
-		} else {
-			tw.traceBounds[0][i] = tw.end[i] + tw.trmBounds[0][i] - CM_BOX_EPSILON;
-			tw.traceBounds[1][i] = tw.start[i] + tw.trmBounds[1][i] + CM_BOX_EPSILON;
+
+		// The trace origin follows the transformed trace-model center, while
+		// vertices remain positioned relative to the caller's physics origin.
+		const idVec3 traceOrigin = tw.start;
+		const idVec3 traceEnd = tw.end;
+		const idVec3 transformedOffset = trm->offset * trmTransform;
+		tw.start = traceOrigin + transformedOffset;
+		tw.end = traceEnd + transformedOffset;
+
+		for ( int i = 0; i < tw.numPolys; ++i ) {
+			tw.polys[i].plane.SetNormal( trm->polys[i].normal * trmTransform );
+			const float facing = tw.polys[i].plane.Normal() * tw.dir;
+			if ( facing > 0.0f || ( !trm->isConvex && facing == 0.0f ) ) {
+				tw.polys[i].used = true;
+				for ( int j = 0; j < tw.polys[i].numEdges; ++j ) {
+					cm_trmEdge_t &edge = tw.edges[abs( tw.polys[i].edges[j] )];
+					edge.used = true;
+					tw.vertices[edge.vertexNum[0]].used = true;
+					tw.vertices[edge.vertexNum[1]].used = true;
+				}
+			}
 		}
-		tw.trmExtents[i] = Max( idMath::Fabs( tw.trmBounds[0][i] ),
-			idMath::Fabs( tw.trmBounds[1][i] ) ) + CM_BOX_EPSILON;
+
+		tw.trmBounds.Clear();
+		for ( int i = 0; i < tw.numVerts; ++i ) {
+			cm_trmVertex_t &vertex = tw.vertices[i];
+			if ( !vertex.used ) {
+				continue;
+			}
+			vertex.p = trm->verts[i] * trmTransform + traceOrigin;
+			vertex.endp = vertex.p + tw.dir;
+			vertex.pl.FromRay( vertex.p, tw.dir );
+			tw.trmBounds.AddPoint( vertex.p - tw.start );
+		}
+
+		for ( int i = 1; i <= tw.numEdges; ++i ) {
+			cm_trmEdge_t &edge = tw.edges[i];
+			if ( !edge.used ) {
+				continue;
+			}
+			const idVec3 &edgeStart = tw.vertices[edge.vertexNum[0]].p;
+			const idVec3 &edgeEnd = tw.vertices[edge.vertexNum[1]].p;
+			edge.pl.FromLine( edgeStart, edgeEnd );
+			const idVec3 edgeDir = edgeStart - edgeEnd;
+			edge.cross[0] = edgeDir[0] * tw.dir[1] - edgeDir[1] * tw.dir[0];
+			edge.cross[1] = edgeDir[0] * tw.dir[2] - edgeDir[2] * tw.dir[0];
+			edge.cross[2] = edgeDir[1] * tw.dir[2] - edgeDir[2] * tw.dir[1];
+			edge.bitNum = static_cast<short>( i );
+		}
+
+		for ( int i = 0; i < tw.numPolys; ++i ) {
+			cm_trmPolygon_t &polygon = tw.polys[i];
+			if ( polygon.used ) {
+				const cm_trmEdge_t &edge = tw.edges[abs( polygon.edges[0] )];
+				polygon.plane.FitThroughPoint( tw.vertices[edge.vertexNum[0]].p );
+			}
+		}
+
+		for ( int i = 0; i < 3; ++i ) {
+			tw.traceBounds[0][i] = Min( tw.start[i], tw.end[i] ) + tw.trmBounds[0][i] - CM_BOX_EPSILON;
+			tw.traceBounds[1][i] = Max( tw.start[i], tw.end[i] ) + tw.trmBounds[1][i] + CM_BOX_EPSILON;
+			tw.trmExtents[i] = Max( idMath::Fabs( tw.trmBounds[0][i] ),
+				idMath::Fabs( tw.trmBounds[1][i] ) ) + CM_BOX_EPSILON;
+		}
+
+		SetupTranslationHeartPlanes( &tw );
+		tw.maxDistFromHeartPlane1 = 0.0f;
+		tw.maxDistFromHeartPlane2 = 0.0f;
+		for ( int i = 0; i < tw.numVerts; ++i ) {
+			if ( !tw.vertices[i].used ) {
+				continue;
+			}
+			tw.maxDistFromHeartPlane1 = Max( tw.maxDistFromHeartPlane1,
+				idMath::Fabs( tw.heartPlane1.Distance( tw.vertices[i].p ) ) );
+			tw.maxDistFromHeartPlane2 = Max( tw.maxDistFromHeartPlane2,
+				idMath::Fabs( tw.heartPlane2.Distance( tw.vertices[i].p ) ) );
+		}
+		tw.maxDistFromHeartPlane1 += CM_BOX_EPSILON;
+		tw.maxDistFromHeartPlane2 += CM_BOX_EPSILON;
+		TraceThroughModel( &tw );
 	}
-	TraceThroughModel( &tw );
+
+	if ( tw.getContacts ) {
+		if ( modelRotated ) {
+			for ( int i = 0; i < tw.numContacts; ++i ) {
+				tw.contacts[i].normal *= modelAxis;
+				tw.contacts[i].point *= modelAxis;
+			}
+		}
+		if ( modelOrigin != vec3_origin ) {
+			for ( int i = 0; i < tw.numContacts; ++i ) {
+				tw.contacts[i].point += modelOrigin;
+				tw.contacts[i].dist += modelOrigin * tw.contacts[i].normal;
+			}
+		}
+		numContacts = tw.numContacts;
+		return;
+	}
+
 	*results = tw.trace;
 	results->endpos = start + results->fraction * ( end - start );
-	results->endAxis = trmAxis;
+	results->endAxis = pointTrace ? mat3_identity : trmAxis;
 	if ( results->fraction < 1.0f ) {
+		if ( results->fraction > 0.0f && results->endpos.Compare( start ) ) {
+			results->fraction = 0.0f;
+		}
 		if ( modelRotated ) {
 			results->c.normal *= modelAxis;
 			results->c.point *= modelAxis;
@@ -231,7 +285,6 @@ void idCollisionModelManagerLocal::Translation( trace_t *results, const idVec3 &
 		results->c.point += modelOrigin;
 		results->c.dist += modelOrigin * results->c.normal;
 	}
-	numContacts = tw.numContacts;
 }
 
 #endif

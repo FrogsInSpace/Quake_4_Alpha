@@ -56,6 +56,9 @@ Manager
 ID_TIME_T ProgramImagesTimestamp;
 bool gWriteProgramFlag;
 
+idCVar r_skipDownsize( "r_skipDownsize", "0", CVAR_RENDERER | CVAR_BOOL,
+	"skip downsize command in materials", idCmdSystem::ArgCompletion_Boolean );
+
 /*
 
 Anywhere that an image name is used (diffusemaps, bumpmaps, specularmaps, lights, etc),
@@ -214,7 +217,6 @@ static void R_AddNormalMaps( byte *data1, int width1, int height1, byte *data2, 
 		for ( j = 0 ; j < width1 ; j++ ) {
 			byte	*d1, *d2;
 			idVec3	n;
-			float   len;
 
 			d1 = data1 + ( i * width1 + j ) * 4;
 			d2 = data2 + ( i * width1 + j ) * 4;
@@ -225,8 +227,10 @@ static void R_AddNormalMaps( byte *data1, int width1, int height1, byte *data2, 
 
 			// There are some normal maps that blend to 0,0,0 at the edges
 			// this screws up compression, so we try to correct that here by instead fading it to 0,0,1
-			len = n.LengthFast();
-			if ( len < 1.0f ) {
+			// Quake 4 tests the exact squared length against 0.96.  The Doom 3
+			// LengthFast()/1.0 test can accept an encoded normal whose X/Y sum is
+			// already greater than one, producing a negative square-root input.
+			if ( n.LengthSqr() < 0.96f ) {
 				n[2] = idMath::Sqrt(1.0 - (n[0]*n[0]) - (n[1]*n[1]));
 			}
 
@@ -234,9 +238,9 @@ static void R_AddNormalMaps( byte *data1, int width1, int height1, byte *data2, 
 			n[1] += ( d2[1] - 128 ) / 127.0;
 			n.Normalize();
 
-			d1[0] = (byte)(n[0] * 127 + 128);
-			d1[1] = (byte)(n[1] * 127 + 128);
-			d1[2] = (byte)(n[2] * 127 + 128);
+			d1[0] = (byte)idMath::ClampInt( 0, 255, (int)( n[0] * 127.0f + 128.0f ) );
+			d1[1] = (byte)idMath::ClampInt( 0, 255, (int)( n[1] * 127.0f + 128.0f ) );
+			d1[2] = (byte)idMath::ClampInt( 0, 255, (int)( n[2] * 127.0f + 128.0f ) );
 			d1[3] = 255;
 		}
 	}
@@ -579,6 +583,36 @@ static bool R_ParseImageProgram_r( idLexer &src, byte **pic, int *width, int *he
 				(*pic)[i+1] = 
 				(*pic)[i+2] = 255;
 			}
+		}
+
+		MatchAndAppendToken( src, ")" );
+		return true;
+	}
+
+	// Raven image programs can explicitly reduce an image before it is uploaded.
+	// This must be parsed recursively: treating "downsize" as an image name leaves
+	// the opening parenthesis in the material stream and defaults the whole material.
+	if ( !token.Icmp( "downsize" ) ) {
+		MatchAndAppendToken( src, "(" );
+		gWriteProgramFlag = true;
+
+		if ( !R_ParseImageProgram_r( src, pic, width, height, timestamps, depth ) ) {
+			return false;
+		}
+
+		MatchAndAppendToken( src, "," );
+		src.ReadToken( &token );
+		AppendToken( token );
+		const int shift = token.GetIntValue();
+
+		if ( pic && !r_skipDownsize.GetBool() ) {
+			const int newWidth = *width >> shift;
+			const int newHeight = *height >> shift;
+			byte *newPic = R_ResampleTexture( *pic, *width, *height, newWidth, newHeight );
+			R_StaticFree( *pic );
+			*pic = newPic;
+			*width = newWidth;
+			*height = newHeight;
 		}
 
 		MatchAndAppendToken( src, ")" );

@@ -303,6 +303,89 @@ void idCollisionModelManagerLocal::RemapBrushReferences_r( cm_node_t *node, cm_b
 	}
 }
 
+static bool CM_R_InsideAllChildren( cm_node_t *node, const idBounds &bounds ) {
+	if ( node->planeType == -1 ) {
+		return true;
+	}
+	const int axis = node->planeType;
+	return bounds[0][axis] < node->planeDist &&
+		bounds[1][axis] > node->planeDist &&
+		CM_R_InsideAllChildren( node->children[0], bounds ) &&
+		CM_R_InsideAllChildren( node->children[1], bounds );
+}
+
+void idCollisionModelManagerLocal::R_FilterPolygonIntoTree( idCollisionModelLocal *model,
+		cm_node_t *node, cm_polygonRef_t *pref, cm_polygon_t *polygon ) {
+	while ( node->planeType != -1 ) {
+		const int axis = node->planeType;
+		if ( polygon->bounds[0][axis] < node->planeDist &&
+			 polygon->bounds[1][axis] > node->planeDist &&
+			 CM_R_InsideAllChildren( node->children[0], polygon->bounds ) &&
+			 CM_R_InsideAllChildren( node->children[1], polygon->bounds ) ) {
+			break;
+		}
+		if ( polygon->bounds[0][axis] >= node->planeDist ) {
+			node = node->children[0];
+			continue;
+		}
+		if ( polygon->bounds[1][axis] <= node->planeDist ) {
+			node = node->children[1];
+			continue;
+		}
+		R_FilterPolygonIntoTree( model, node->children[1], NULL, polygon );
+		node = node->children[0];
+	}
+
+	if ( pref != NULL ) {
+		pref->next = node->polygons;
+		node->polygons = pref;
+		return;
+	}
+
+	cm_polygonRef_t *ref = AllocPolygonReference( model,
+		model->numPolygonRefs < REFERENCE_BLOCK_SIZE_SMALL ? REFERENCE_BLOCK_SIZE_SMALL : REFERENCE_BLOCK_SIZE_LARGE );
+	ref->p = polygon;
+	ref->next = node->polygons;
+	node->polygons = ref;
+	++model->numPolygonRefs;
+}
+
+void idCollisionModelManagerLocal::R_FilterBrushIntoTree( idCollisionModelLocal *model,
+		cm_node_t *node, cm_brushRef_t *pref, cm_brush_t *brush ) {
+	while ( node->planeType != -1 ) {
+		const int axis = node->planeType;
+		if ( brush->bounds[0][axis] < node->planeDist &&
+			 brush->bounds[1][axis] > node->planeDist &&
+			 CM_R_InsideAllChildren( node->children[0], brush->bounds ) &&
+			 CM_R_InsideAllChildren( node->children[1], brush->bounds ) ) {
+			break;
+		}
+		if ( brush->bounds[0][axis] >= node->planeDist ) {
+			node = node->children[0];
+			continue;
+		}
+		if ( brush->bounds[1][axis] <= node->planeDist ) {
+			node = node->children[1];
+			continue;
+		}
+		R_FilterBrushIntoTree( model, node->children[1], NULL, brush );
+		node = node->children[0];
+	}
+
+	if ( pref != NULL ) {
+		pref->next = node->brushes;
+		node->brushes = pref;
+		return;
+	}
+
+	cm_brushRef_t *ref = AllocBrushReference( model,
+		model->numBrushRefs < REFERENCE_BLOCK_SIZE_SMALL ? REFERENCE_BLOCK_SIZE_SMALL : REFERENCE_BLOCK_SIZE_LARGE );
+	ref->b = brush;
+	ref->next = node->brushes;
+	node->brushes = ref;
+	++model->numBrushRefs;
+}
+
 void CM_R_GetNodeBounds( idBounds *bounds, cm_node_t *node ) {
 	while ( true ) {
 		for ( cm_polygonRef_t *ref = node->polygons; ref != NULL; ref = ref->next ) {

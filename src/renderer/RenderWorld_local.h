@@ -162,6 +162,9 @@ public:
 
 	idStr					mapName;				// ie: maps/tim_dm2.proc, written to demoFile
 	ID_TIME_T					mapTimeStamp;			// for fast reloads of the same level
+	idStr					m_filename;				// proc/MD5RProc source selected for this world
+	unsigned int			m_CRC;					// map file CRC stored in the proc header
+	unsigned int			procFileVersion;		// PROC/MD5RProc format version
 
 	areaNode_t *			areaNodes;
 	int						numAreaNodes;
@@ -232,6 +235,7 @@ public:
 	void					AddAreaEntityRefs( int areaNum, const struct portalStack_s *ps );
 	bool					CullLightByPortals( const idRenderLightLocal *light, const struct portalStack_s *ps );
 	void					AddAreaLightRefs( int areaNum, const struct portalStack_s *ps );
+	void					AddAreaEffectRefs( int areaNum, const struct portalStack_s *ps );
 	void					AddAreaRefs( int areaNum, const struct portalStack_s *ps );
 	void					BuildConnectedAreas_r( int areaNum );
 	void					BuildConnectedAreas( void );
@@ -274,7 +278,13 @@ public:
 	void					AddLightRefToArea( idRenderLightLocal *light, portalArea_t *area );
 	void					AddEffectRefToArea( rvRenderEffectLocal *effect, portalArea_t *area );
 	void					FreeEffectDefDerivedData( rvRenderEffectLocal *effect );
-	void					PushEffectDef( rvRenderEffectLocal *effect );
+	void					PushEffectDef( int effectHandle );
+	void					PushPolytopeIntoTree_r( idRenderEntityLocal *def, idRenderLightLocal *light,
+								rvRenderEffectLocal *effect, const idBox &box,
+								const idVec3 *points, int numPoints, int nodeNum );
+	void					PushPolytopeIntoTree( idRenderEntityLocal *def, idRenderLightLocal *light,
+								rvRenderEffectLocal *effect, const idBox &box,
+								const idVec3 *points, int numPoints );
 
 	void					RecurseProcBSP_r( modelTrace_t *results, int parentNodeNum, int nodeNum, float p1f, float p2f, const idVec3 &p1, const idVec3 &p2 ) const;
 
