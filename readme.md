@@ -6,6 +6,17 @@ YOU CAN RUN THE GAME WITHOUT THE SOURCE CODE RECREATION TO RUN THE EXPANSION PAC
 
 You will need a copy of the retail game(you can buy it on steam).
 
+## Building the reconstructed engine and game DLL
+
+The build is centralized in `src/CMakeLists.txt`; it does not consume external
+CSV source lists. From the repository root, run:
+
+```powershell
+Set-Location src
+cmake --preset windows-x86-debug
+cmake --build --preset windows-x86-debug --target q4_runtime
+```
+
 Come join us on discord!
 https://discord.gg/y2hp2S8c9Y
 
