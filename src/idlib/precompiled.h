@@ -410,7 +410,7 @@ const float MAX_BOUND_SIZE = 65536.0f;
 #include "../framework/async/AsyncNetwork.h"
 
 // RAVEN BEGIN
-#if !defined( Q4_RECON_SEED )
+#if !defined( Q4_RECON_SEED ) || defined( Q4_RECON_ENGINE_PRIVATE )
 #include "../tools/Tools.h"
 #endif
 // RAVEN END

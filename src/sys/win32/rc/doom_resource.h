@@ -22,8 +22,8 @@ along with Quake 4 Reconstructed Source Code.  If not, see <http://www.gnu.org/l
 ===========================================================================
 */
 
-#define IDB_BITMAP_LOGO                          4000
-#define IDI_ICON1                                4001
+#define IDB_BITMAP_LOGO                          4001
+#define IDI_ICON1                                1024
 
 
 

@@ -43,6 +43,9 @@ along with Quake 4 Reconstructed Source Code.  If not, see <http://www.gnu.org/l
 #define SOUNDWORLD_EDITOR	3
 #define SOUNDWORLD_MAX		4
 
+const float DOOM_TO_METERS = 0.0254f;
+const float METERS_TO_DOOM = ( 1.0f / DOOM_TO_METERS );
+
 /*
 ===============================================================================
 

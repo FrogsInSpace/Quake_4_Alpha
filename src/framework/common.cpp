@@ -27,6 +27,12 @@ along with Quake 4 Reconstructed Source Code.  If not, see <http://www.gnu.org/l
 
 #include "../renderer/Image.h"
 
+#if defined( _WIN32 )
+#include "../sys/win32/win_local.h"
+#endif
+
+#include "../tools/ToolsStub.inl"
+
 #define	MAX_PRINT_MSG_SIZE	4096
 #define MAX_WARNING_LIST	256
 
@@ -104,6 +110,9 @@ unsigned int	com_msgID = -1;
 idGame *		game = NULL;
 idGameEdit *	gameEdit = NULL;
 #endif
+
+rvToolsStub		toolsStub;
+rvTools *		tools = &toolsStub;
 
 // writes si_version to the config file - in a kinda obfuscated way
 //#define ID_WRITE_VERSION
@@ -217,6 +226,7 @@ private:
 	idStrList					errorList;
 
 	int							gameDLL;
+	int							toolsDLL;
 	int							desiredMachineSpec;
 	bool						com_renderableGameFrame;
 
@@ -269,6 +279,7 @@ idCommonLocal::idCommonLocal( void ) {
 	rd_rcon = false;
 
 	gameDLL = 0;
+	toolsDLL = 0;
 	desiredMachineSpec = -1;
 	com_renderableGameFrame = true;
 
@@ -306,29 +317,111 @@ bool idCommonLocal::IsToolActive( void ) const {
 }
 
 rvISourceControl *idCommonLocal::GetSourceControl( void ) {
-	return NULL;
+	return tools->GetSourceControl();
 }
 
 void idCommonLocal::ModViewThink( void ) {
+	tools->ModViewRun();
 }
 
 void idCommonLocal::RunAlwaysThinkGUIs( int time ) {
+	uiManager->RunAlwaysThinkGUIs( time );
 }
 
 void idCommonLocal::DebuggerCheckBreakpoint( idInterpreter *interpreter, idProgram *program, int instructionPointer ) {
+	tools->DebuggerCheckBreakpoint( interpreter, program, instructionPointer );
 }
 
 bool idCommonLocal::DoingDeclValidation( void ) {
-	return false;
+	return tools->IsToolActive( EDITOR_DECL_VALIDATING ) == EDITOR_DECL_VALIDATING;
 }
 
 void idCommonLocal::SetCrashReportAutoSendString( const char *string ) {
 }
 
 void idCommonLocal::LoadToolsDLL( void ) {
+	if ( toolsDLL != 0 ) {
+		return;
+	}
+
+	char dllPath[ MAX_OSPATH ];
+	fileSystem->FindDLL( "ToolsReconstructed", dllPath, true );
+	if ( dllPath[ 0 ] == '\0' ) {
+		Warning( "couldn't find tools dynamic library" );
+		return;
+	}
+
+	DPrintf( "Loading tools DLL: '%s'\n", dllPath );
+	toolsDLL = sys->DLL_Load( dllPath );
+	if ( toolsDLL == 0 ) {
+		Warning( "couldn't load tools dynamic library" );
+		return;
+	}
+
+	GetToolsAPI_t GetToolsAPI = reinterpret_cast<GetToolsAPI_t>(
+		sys->DLL_GetProcAddress( toolsDLL, "GetToolsAPI" ) );
+	if ( GetToolsAPI == NULL ) {
+		sys->DLL_Unload( toolsDLL );
+		toolsDLL = 0;
+		Warning( "couldn't find tools DLL API" );
+		return;
+	}
+
+	toolsImport_t imports;
+	memset( &imports, 0, sizeof( imports ) );
+	imports.version = TOOLS_API_VERSION;
+	imports.instance = toolsDLL;
+#if defined( _WIN32 )
+	imports.ownerWnd = win32.hWnd;
+	imports.ownerDC = win32.hDC;
+	imports.hGLRC = win32.hGLRC;
+	imports.pfd = &win32.pfd;
+#endif
+	imports.sys = ::sys;
+	imports.common = ::common;
+	imports.cmdSystem = ::cmdSystem;
+	imports.cvarSystem = ::cvarSystem;
+	imports.fileSystem = ::fileSystem;
+	imports.renderSystem = ::renderSystem;
+	imports.soundSystem = ::soundSystem;
+	imports.renderModelManager = ::renderModelManager;
+	imports.uiManager = ::uiManager;
+	imports.declManager = ::declManager;
+	imports.AASFile = ::AASFile;
+	imports.collisionModelManager = ::collisionModelManager;
+	imports.gameEdit = ::gameEdit;
+	imports.materialEdit = ::materialEdit;
+	imports.soundShaderEdit = ::soundShaderEdit;
+	imports.declAFEdit = NULL;
+	imports.declPlaybackEdit = ::declPlaybackEdit;
+	imports.declEffectEdit = ::declEffectEdit;
+	imports.declLipSyncEdit = ::declLipSyncEdit;
+	imports.windowEdit = NULL;
+	imports.varEdit = NULL;
+	imports.session = ::session;
+	imports.globalImages = ::globalImages;
+	imports.console = ::console;
+
+	toolsExport_t *exports = GetToolsAPI(
+		&imports, Memory::Allocate, Memory::Free, Memory::MSize );
+	if ( exports == NULL || exports->version != TOOLS_API_VERSION || exports->tools == NULL ) {
+		sys->DLL_Unload( toolsDLL );
+		toolsDLL = 0;
+		tools = &toolsStub;
+		Warning( "wrong tools DLL API version" );
+		return;
+	}
+
+	tools = exports->tools;
 }
 
 void idCommonLocal::UnloadToolsDLL( void ) {
+	tools->Shutdown();
+	if ( toolsDLL != 0 ) {
+		sys->DLL_Unload( toolsDLL );
+		toolsDLL = 0;
+	}
+	tools = &toolsStub;
 	com_editors = 0;
 	com_editorActive = false;
 }
@@ -895,12 +988,10 @@ idCommonLocal::Quit
 */
 void idCommonLocal::Quit( void ) {
 
-#ifdef ID_ALLOW_TOOLS
-	if ( com_editors & EDITOR_RADIANT ) {
-		RadiantInit();
+	if ( tools->IsToolActive( EDITOR_RADIANT ) ) {
+		tools->InitTool( EDITOR_RADIANT, NULL );
 		return;
 	}
-#endif
 
 	// don't try to shutdown if we are in a recursive error
 	if ( !com_errorEntered ) {
@@ -1105,17 +1196,17 @@ idCommonLocal::InitTool
 =================
 */
 void idCommonLocal::InitTool( const int tool, const idDict *dict ) {
-#ifdef ID_ALLOW_TOOLS
-	if ( tool & EDITOR_SOUND ) {
-		SoundEditorInit( dict );
-	} else if ( tool & EDITOR_LIGHT ) {
-		LightEditorInit( dict );
-	} else if ( tool & EDITOR_PARTICLE ) {
-		ParticleEditorInit( dict );
-	} else if ( tool & EDITOR_AF ) {
-		AFEditorInit( dict );
+	if ( cvarSystem->GetCVarBool( "r_fullscreen" ) ) {
+		cvarSystem->SetCVarBool( "r_fullscreen", false );
+		cmdSystem->BufferCommandText( CMD_EXEC_NOW, "vid_restart\n" );
 	}
-#endif
+
+	LoadToolsDLL();
+	if ( toolsDLL != 0 ) {
+		idKeyInput::ClearStates();
+		com_editors |= tool;
+		tools->InitTool( tool, dict );
+	}
 }
 
 /*
@@ -1257,7 +1348,6 @@ int	idCommonLocal::KeyState( int key ) {
 
 //============================================================================
 
-#ifdef ID_ALLOW_TOOLS
 /*
 ==================
 Com_Editor_f
@@ -1266,7 +1356,7 @@ Com_Editor_f
 ==================
 */
 static void Com_Editor_f( const idCmdArgs &args ) {
-	RadiantInit();
+	common->InitTool( EDITOR_RADIANT, NULL );
 }
 
 /*
@@ -1275,11 +1365,7 @@ Com_ScriptDebugger_f
 =============
 */
 static void Com_ScriptDebugger_f( const idCmdArgs &args ) {
-	// Make sure it wasnt on the command line
-	if ( !( com_editors & EDITOR_DEBUGGER ) ) {
-		common->Printf( "Script debugger is currently disabled\n" );
-		// DebuggerClientLaunch();
-	}
+	common->InitTool( EDITOR_DEBUGGER, NULL );
 }
 
 /*
@@ -1288,7 +1374,7 @@ Com_EditGUIs_f
 =============
 */
 static void Com_EditGUIs_f( const idCmdArgs &args ) {
-	GUIEditorInit();
+	common->InitTool( EDITOR_GUI, NULL );
 }
 
 /*
@@ -1299,9 +1385,48 @@ Com_MaterialEditor_f
 static void Com_MaterialEditor_f( const idCmdArgs &args ) {
 	// Turn off sounds
 	soundSystem->SetMute( true );
-	MaterialEditorInit();
+	common->InitTool( EDITOR_MATERIAL, NULL );
 }
-#endif // ID_ALLOW_TOOLS
+
+static void Com_Dmap_f( const idCmdArgs &args ) {
+	common->LoadToolsDLL();
+	tools->Dmap( args );
+}
+
+static void Com_RenderBump_f( const idCmdArgs &args ) {
+	common->LoadToolsDLL();
+	tools->Renderbump( args );
+}
+
+static void Com_RenderBumpFlat_f( const idCmdArgs &args ) {
+	common->LoadToolsDLL();
+	tools->RenderbumpFlat( args );
+}
+
+static void Com_RunAAS_f( const idCmdArgs &args ) {
+	common->LoadToolsDLL();
+	tools->RunAAS( args );
+}
+
+static void Com_RunAASDir_f( const idCmdArgs &args ) {
+	common->LoadToolsDLL();
+	tools->RunAASDir( args );
+}
+
+static void Com_RunReach_f( const idCmdArgs &args ) {
+	common->LoadToolsDLL();
+	tools->RunReach( args );
+}
+
+static void Com_RunAASTactical_f( const idCmdArgs &args ) {
+	common->LoadToolsDLL();
+	tools->RunAASTactical( args );
+}
+
+static void Com_RoQ_f( const idCmdArgs &args ) {
+	common->LoadToolsDLL();
+	tools->RoQFileEncode( args );
+}
 
 /*
 ============
@@ -1342,14 +1467,13 @@ static void PrintMemInfo_f( const idCmdArgs &args ) {
 	fileSystem->CloseFile( f );
 }
 
-#ifdef ID_ALLOW_TOOLS
 /*
 ==================
 Com_EditLights_f
 ==================
 */
 static void Com_EditLights_f( const idCmdArgs &args ) {
-	LightEditorInit( NULL );
+	common->InitTool( EDITOR_LIGHT, NULL );
 	cvarSystem->SetCVarInteger( "g_editEntityMode", 1 );
 }
 
@@ -1359,7 +1483,7 @@ Com_EditSounds_f
 ==================
 */
 static void Com_EditSounds_f( const idCmdArgs &args ) {
-	SoundEditorInit( NULL );
+	common->InitTool( EDITOR_SOUND, NULL );
 	cvarSystem->SetCVarInteger( "g_editEntityMode", 2 );
 }
 
@@ -1369,7 +1493,7 @@ Com_EditDecls_f
 ==================
 */
 static void Com_EditDecls_f( const idCmdArgs &args ) {
-	DeclBrowserInit( NULL );
+	common->InitTool( EDITOR_DECL, NULL );
 }
 
 /*
@@ -1378,16 +1502,7 @@ Com_EditAFs_f
 ==================
 */
 static void Com_EditAFs_f( const idCmdArgs &args ) {
-	AFEditorInit( NULL );
-}
-
-/*
-==================
-Com_EditParticles_f
-==================
-*/
-static void Com_EditParticles_f( const idCmdArgs &args ) {
-	ParticleEditorInit( NULL );
+	common->InitTool( EDITOR_AF, NULL );
 }
 
 /*
@@ -1396,7 +1511,7 @@ Com_EditScripts_f
 ==================
 */
 static void Com_EditScripts_f( const idCmdArgs &args ) {
-	ScriptEditorInit( NULL );
+	common->InitTool( EDITOR_SCRIPT, NULL );
 }
 
 /*
@@ -1405,9 +1520,8 @@ Com_EditPDAs_f
 ==================
 */
 static void Com_EditPDAs_f( const idCmdArgs &args ) {
-	PDAEditorInit( NULL );
+	common->InitTool( EDITOR_PDA, NULL );
 }
-#endif // ID_ALLOW_TOOLS
 
 /*
 ==================
@@ -2480,25 +2594,23 @@ void idCommonLocal::InitCommands( void ) {
 	cmdSystem->AddCommand( "setMachineSpec", Com_SetMachineSpec_f, CMD_FL_SYSTEM, "detects system capabilities and sets com_machineSpec to appropriate value" );
 	cmdSystem->AddCommand( "execMachineSpec", Com_ExecMachineSpec_f, CMD_FL_SYSTEM, "execs the appropriate config files and sets cvars based on com_machineSpec" );
 
-#if	!defined( ID_DEMO_BUILD ) && !defined( ID_DEDICATED ) && !defined( Q4_DISABLE_TOOLS )
+#if	!defined( ID_DEMO_BUILD ) && !defined( ID_DEDICATED )
 	// compilers
-	cmdSystem->AddCommand( "dmap", Dmap_f, CMD_FL_TOOL, "compiles a map", idCmdSystem::ArgCompletion_MapName );
-	cmdSystem->AddCommand( "renderbump", RenderBump_f, CMD_FL_TOOL, "renders a bump map", idCmdSystem::ArgCompletion_ModelName );
-	cmdSystem->AddCommand( "renderbumpFlat", RenderBumpFlat_f, CMD_FL_TOOL, "renders a flat bump map", idCmdSystem::ArgCompletion_ModelName );
-	cmdSystem->AddCommand( "runAAS", RunAAS_f, CMD_FL_TOOL, "compiles an AAS file for a map", idCmdSystem::ArgCompletion_MapName );
-	cmdSystem->AddCommand( "runAASDir", RunAASDir_f, CMD_FL_TOOL, "compiles AAS files for all maps in a folder", idCmdSystem::ArgCompletion_MapName );
-	cmdSystem->AddCommand( "runReach", RunReach_f, CMD_FL_TOOL, "calculates reachability for an AAS file", idCmdSystem::ArgCompletion_MapName );
-	cmdSystem->AddCommand( "roq", RoQFileEncode_f, CMD_FL_TOOL, "encodes a roq file" );
-#endif
+	cmdSystem->AddCommand( "dmap", Com_Dmap_f, CMD_FL_TOOL, "compiles a map", idCmdSystem::ArgCompletion_MapName );
+	cmdSystem->AddCommand( "renderbump", Com_RenderBump_f, CMD_FL_TOOL, "renders a bump map", idCmdSystem::ArgCompletion_ModelName );
+	cmdSystem->AddCommand( "renderbumpFlat", Com_RenderBumpFlat_f, CMD_FL_TOOL, "renders a flat bump map", idCmdSystem::ArgCompletion_ModelName );
+	cmdSystem->AddCommand( "runAAS", Com_RunAAS_f, CMD_FL_TOOL, "compiles an AAS file for a map", idCmdSystem::ArgCompletion_MapName );
+	cmdSystem->AddCommand( "runAASDir", Com_RunAASDir_f, CMD_FL_TOOL, "compiles AAS files for all maps in a folder", idCmdSystem::ArgCompletion_MapName );
+	cmdSystem->AddCommand( "runReach", Com_RunReach_f, CMD_FL_TOOL, "calculates reachability for an AAS file", idCmdSystem::ArgCompletion_MapName );
+	cmdSystem->AddCommand( "runAASTactical", Com_RunAASTactical_f, CMD_FL_TOOL, "generates Quake 4 tactical AAS features", idCmdSystem::ArgCompletion_MapName );
+	cmdSystem->AddCommand( "roq", Com_RoQ_f, CMD_FL_TOOL, "encodes a roq file" );
 
-#ifdef ID_ALLOW_TOOLS
 	// editors
 	cmdSystem->AddCommand( "editor", Com_Editor_f, CMD_FL_TOOL, "launches the level editor Radiant" );
 	cmdSystem->AddCommand( "editLights", Com_EditLights_f, CMD_FL_TOOL, "launches the in-game Light Editor" );
 	cmdSystem->AddCommand( "editSounds", Com_EditSounds_f, CMD_FL_TOOL, "launches the in-game Sound Editor" );
 	cmdSystem->AddCommand( "editDecls", Com_EditDecls_f, CMD_FL_TOOL, "launches the in-game Declaration Editor" );
 	cmdSystem->AddCommand( "editAFs", Com_EditAFs_f, CMD_FL_TOOL, "launches the in-game Articulated Figure Editor" );
-	cmdSystem->AddCommand( "editParticles", Com_EditParticles_f, CMD_FL_TOOL, "launches the in-game Particle Editor" );
 	cmdSystem->AddCommand( "editScripts", Com_EditScripts_f, CMD_FL_TOOL, "launches the in-game Script Editor" );
 	cmdSystem->AddCommand( "editGUIs", Com_EditGUIs_f, CMD_FL_TOOL, "launches the GUI Editor" );
 	cmdSystem->AddCommand( "editPDAs", Com_EditPDAs_f, CMD_FL_TOOL, "launches the in-game PDA Editor" );

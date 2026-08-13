@@ -26,6 +26,16 @@ along with Quake 4 Reconstructed Source Code.  If not, see <http://www.gnu.org/l
 #pragma hdrstop
 
 #include "tr_local.h"
+
+class rvMaterialEditLocal : public rvMaterialEdit {
+public:
+	virtual void SetGui( idMaterial *edit, const char *name ) { edit->SetGui( name ); }
+	virtual int GetImageWidth( const idMaterial *edit ) const { return edit->GetImageWidth(); }
+	virtual int GetImageHeight( const idMaterial *edit ) const { return edit->GetImageHeight(); }
+};
+
+static rvMaterialEditLocal materialEditLocal;
+rvMaterialEdit *materialEdit = &materialEditLocal;
 #include "Shaders.h"
 
 // Negative expression indexes identify renderer-provided GLSL constants to

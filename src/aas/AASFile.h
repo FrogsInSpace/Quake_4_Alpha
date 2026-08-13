@@ -281,8 +281,6 @@ public:
 	bool						allowSwimReachabilities;
 	bool						allowFlyReachabilities;
 // RAVEN BEGIN
-// bkreimeier
-	bool						generateAllFaces;
 // cdr: AASTactical
 	bool						generateTacticalFeatures;
 // scork: AASOnly numbers

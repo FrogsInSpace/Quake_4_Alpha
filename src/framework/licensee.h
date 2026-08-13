@@ -124,6 +124,8 @@ along with Quake 4 Reconstructed Source Code.  If not, see <http://www.gnu.org/l
 
 // editor info
 #define EDITOR_WINDOWTEXT				"QuakeEdit"
+#define EDITOR_REGISTRY_KEY				"Raven Software\\Quake4\\Tools\\Radiant"
+#define EDITOR_DEFAULT_PROJECT			"quake4.qe4"
 
 // win32 info
 #define WIN32_CONSOLE_CLASS				"Quake 4 WinConsole"

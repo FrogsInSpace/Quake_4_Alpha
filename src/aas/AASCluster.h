@@ -25,6 +25,8 @@ along with Quake 4 Reconstructed Source Code.  If not, see <http://www.gnu.org/l
 #ifndef __AASCLUSTER_H__
 #define __AASCLUSTER_H__
 
+#include "AASCompilerFile.h"
+
 /*
 ===============================================================================
 
@@ -36,11 +38,11 @@ along with Quake 4 Reconstructed Source Code.  If not, see <http://www.gnu.org/l
 class idAASCluster {
 
 public:
-	bool					Build( idAASFileLocal *file );
-	bool					BuildSingleCluster( idAASFileLocal *file );
+	bool					Build( idAASCompilerFile *file );
+	bool					BuildSingleCluster( idAASCompilerFile *file );
 
 private:
-	idAASFileLocal *		file;
+	idAASCompilerFile *		file;
 	bool					noFaceFlood;
 
 private:

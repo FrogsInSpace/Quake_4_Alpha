@@ -1,2 +1,2 @@
 @echo off
-start quake4 +set fs_game q4xbase
+start q4xp +set fs_game q4xbase

@@ -359,6 +359,13 @@ along with Quake 4 Reconstructed Source Code.  If not, see <http://www.gnu.org/l
 #define qglVertexPointer glVertexPointer
 #define qglViewport glViewport
 
+#if defined( _WINDOWS )
+#define qwglMakeCurrent wglMakeCurrent
+#define qwglSwapBuffers SwapBuffers
+#define qwglUseFontBitmaps wglUseFontBitmapsA
+#define qwglUseFontOutlines wglUseFontOutlinesA
+#endif
+
 #ifdef GLX_VERSION_1_1 // catch all for any GLX-aware situation
 #define qglXChooseVisual glXChooseVisual
 #define qglXCreateContext glXCreateContext

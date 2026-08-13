@@ -25,6 +25,8 @@ along with Quake 4 Reconstructed Source Code.  If not, see <http://www.gnu.org/l
 #ifndef __AASREACH_H__
 #define __AASREACH_H__
 
+#include "AASCompilerFile.h"
+
 /*
 ===============================================================================
 
@@ -36,17 +38,17 @@ along with Quake 4 Reconstructed Source Code.  If not, see <http://www.gnu.org/l
 class idAASReach {
 
 public:
-	bool					Build( const idMapFile *mapFile, idAASFileLocal *file );
+	bool					Build( const idMapFile *mapFile, idAASCompilerFile *file );
 
 private:
 	const idMapFile *		mapFile;
-	idAASFileLocal *		file;
+	idAASCompilerFile *		file;
 	int						numReachabilities;
 	bool					allowSwimReachabilities;
 	bool					allowFlyReachabilities;
 
 private:	// reachability
-	void					FlagReachableAreas( idAASFileLocal *file );
+	void					FlagReachableAreas( idAASCompilerFile *file );
 	bool					ReachabilityExists( int fromAreaNum, int toAreaNum );
 	bool					CanSwimInArea( int areaNum );
 	bool					AreaHasFloor( int areaNum );

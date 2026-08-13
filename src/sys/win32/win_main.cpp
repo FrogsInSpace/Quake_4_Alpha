@@ -772,7 +772,7 @@ void Sys_PumpEvents( void ) {
 		}
 
 #ifdef ID_ALLOW_TOOLS
-		if ( GUIEditorHandleMessage ( &msg ) ) {	
+		if ( tools->HandleMessage( &msg ) ) {
 			continue;
 		}
 #endif
@@ -1455,51 +1455,9 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 		// set exceptions, even if some crappy syscall changes them!
 		Sys_FPU_EnableExceptions( TEST_FPU_EXCEPTIONS );
 
-#ifdef ID_ALLOW_TOOLS
 		if ( com_editors ) {
-			if ( com_editors & EDITOR_GUI ) {
-				// GUI editor
-				GUIEditorRun();
-			} else if ( com_editors & EDITOR_RADIANT ) {
-				// Level Editor
-				RadiantRun();
-			}
-			else if (com_editors & EDITOR_MATERIAL ) {
-				//BSM Nerve: Add support for the material editor
-				MaterialEditorRun();
-			}
-			else {
-				if ( com_editors & EDITOR_LIGHT ) {
-					// in-game Light Editor
-					LightEditorRun();
-				}
-				if ( com_editors & EDITOR_SOUND ) {
-					// in-game Sound Editor
-					SoundEditorRun();
-				}
-				if ( com_editors & EDITOR_DECL ) {
-					// in-game Declaration Browser
-					DeclBrowserRun();
-				}
-				if ( com_editors & EDITOR_AF ) {
-					// in-game Articulated Figure Editor
-					AFEditorRun();
-				}
-				if ( com_editors & EDITOR_PARTICLE ) {
-					// in-game Particle Editor
-					ParticleEditorRun();
-				}
-				if ( com_editors & EDITOR_SCRIPT ) {
-					// in-game Script Editor
-					ScriptEditorRun();
-				}
-				if ( com_editors & EDITOR_PDA ) {
-					// in-game PDA Editor
-					PDAEditorRun();
-				}
-			}
+			tools->Frame();
 		}
-#endif
 		// run the game
 		common->Frame();
 	}

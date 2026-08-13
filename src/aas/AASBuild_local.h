@@ -26,7 +26,7 @@ along with Quake 4 Reconstructed Source Code.  If not, see <http://www.gnu.org/l
 #define __AASBUILD_LOCAL_H__
 
 #include "AASFile.h"
-#include "AASFile_local.h"
+#include "AASCompilerFile.h"
 
 #include "Brush.h"
 #include "BrushBSP.h"
@@ -79,7 +79,7 @@ public:
 
 private:
 	const idAASSettings *	aasSettings;
-	idAASFileLocal *		file;
+	idAASCompilerFile *		file;
 	aasProcNode_t *			procNodes;
 	int						numProcNodes;
 	int						numGravitationalSubdivisions;
@@ -137,7 +137,7 @@ private:	// storing file
 	bool					GetAreaForLeafNode( idBrushBSPNode *node, int *areaNum );
 	int						StoreTree_r( idBrushBSPNode *node );
 	void					GetSizeEstimate_r( idBrushBSPNode *parent, idBrushBSPNode *node, struct sizeEstimate_s &size );
-	void					SetSizeEstimate( const idBrushBSP &bsp, idAASFileLocal *file );
+	void					SetSizeEstimate( const idBrushBSP &bsp, idAASCompilerFile *file );
 	bool					StoreFile( const idBrushBSP &bsp );
 
 };

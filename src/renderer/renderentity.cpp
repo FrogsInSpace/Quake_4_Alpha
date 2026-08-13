@@ -147,12 +147,33 @@ idRenderLightLocal::idRenderLightLocal() {
 }
 
 void idRenderLightLocal::FreeRenderLight() {
+	if ( world ) {
+		world->FreeLightDef( index );
+	} else {
+		R_FreeLightDefDerivedData( this );
+	}
 }
 void idRenderLightLocal::UpdateRenderLight( const renderLight_t *re, bool forceUpdate ) {
+	if ( world ) {
+		world->UpdateLightDef( index, re );
+		return;
+	}
+	if ( forceUpdate || memcmp( &parms, re, sizeof( parms ) ) ) {
+		R_FreeLightDefDerivedData( this );
+		parms = *re;
+		R_DeriveLightData( this );
+	}
 }
 void idRenderLightLocal::GetRenderLight( renderLight_t *re ) {
+	*re = parms;
 }
 void idRenderLightLocal::ForceUpdate() {
+	if ( world ) {
+		world->UpdateLightDef( index, &parms );
+	} else {
+		R_FreeLightDefDerivedData( this );
+		R_DeriveLightData( this );
+	}
 }
 int idRenderLightLocal::GetIndex() {
 	return index;

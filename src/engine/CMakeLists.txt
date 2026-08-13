@@ -29,6 +29,20 @@ file(GLOB_RECURSE Q4_AAS_SOURCES CONFIGURE_DEPENDS
     ${PROJECT_SOURCE_DIR}/aas/*.cpp
 )
 set(Q4_AAS_FILE_SOURCE ${PROJECT_SOURCE_DIR}/aas/AASFile.cpp)
+set(Q4_AAS_COMPILER_SOURCES
+    ${PROJECT_SOURCE_DIR}/aas/AASSettingsTools.cpp
+    ${PROJECT_SOURCE_DIR}/aas/AASTactical.cpp
+    ${PROJECT_SOURCE_DIR}/aas/AASBuild.cpp
+    ${PROJECT_SOURCE_DIR}/aas/AASBuild_file.cpp
+    ${PROJECT_SOURCE_DIR}/aas/AASBuild_gravity.cpp
+    ${PROJECT_SOURCE_DIR}/aas/AASBuild_ledge.cpp
+    ${PROJECT_SOURCE_DIR}/aas/AASBuild_merge.cpp
+    ${PROJECT_SOURCE_DIR}/aas/AASCluster.cpp
+    ${PROJECT_SOURCE_DIR}/aas/AASReach.cpp
+    ${PROJECT_SOURCE_DIR}/aas/Brush.cpp
+    ${PROJECT_SOURCE_DIR}/aas/BrushBSP.cpp
+)
+list(REMOVE_ITEM Q4_AAS_SOURCES ${Q4_AAS_COMPILER_SOURCES})
 
 file(GLOB_RECURSE Q4_CM_SOURCES CONFIGURE_DEPENDS
     ${PROJECT_SOURCE_DIR}/cm/*.cpp
@@ -356,13 +370,15 @@ set_target_properties(q4_reconstruction_foundation PROPERTIES FOLDER "Reconstruc
 # Full reconstructed Win32 engine integration target.  The per-compiland
 # object targets above remain the source-ownership/ABI audit surface; this
 # target compiles the same recovered sources into a runnable executable.
-# Editor/dmap tool exports and CURL are intentionally disabled until their
-# engine-facing interfaces have been reconstructed from the retail PDB.
+# The editor and compilers live in the external q4_tools target and cross the
+# reconstructed retail Tools API rather than being compiled into the engine.
+# CURL remains disabled at this reconstruction frontier.
 set(Q4_OPENAL_LOADER_SOURCES
     ${PROJECT_SOURCE_DIR}/openal/idal.cpp
 )
 
 add_executable(q4xp WIN32
+    ${PROJECT_SOURCE_DIR}/sys/win32/rc/Quake4.rc
     ${Q4_AAS_SOURCES}
     ${Q4_CM_MODEL_SOURCE}
     ${Q4_CM_SOURCES}

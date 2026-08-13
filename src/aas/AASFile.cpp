@@ -44,6 +44,9 @@ signatures; the retail Hex-Rays listing supplies the non-trivial behavior.
 #include "AASFile.h"
 #include "AASFile_local.h"
 
+idAASFileLocal AASFileLocal;
+idAASFile *AASFile = &AASFileLocal;
+
 static bool Reachability_Write( idFile *file, const idReachability *reach ) {
 	file->WriteFloatString( "\t\t%d %d (%f %f %f) (%f %f %f) %d %d",
 		reach->travelType, reach->toAreaNum,
@@ -107,7 +110,7 @@ idAASSettings::idAASSettings() {
 	boundingBoxes[0] = idBounds( idVec3( -16, -16, 0 ), idVec3( 16, 16, 72 ) );
 	usePatches = writeBrushMap = playerFlood = noOptimize = false;
 	allowSwimReachabilities = allowFlyReachabilities = false;
-	generateAllFaces = generateTacticalFeatures = false;
+	generateTacticalFeatures = false;
 	iAASOnly = 0;
 	fileExtension = "aas48";
 	gravity.Set( 0, 0, -1066 );
@@ -208,7 +211,6 @@ bool idAASSettings::FromParser( Lexer &src ) {
 		else if ( token == "noOptimize" ) { if ( !ParseBool( src, noOptimize ) ) return false; }
 		else if ( token == "allowSwimReachabilities" ) { if ( !ParseBool( src, allowSwimReachabilities ) ) return false; }
 		else if ( token == "allowFlyReachabilities" ) { if ( !ParseBool( src, allowFlyReachabilities ) ) return false; }
-		else if ( token == "generateAllFaces" ) { if ( !ParseBool( src, generateAllFaces ) ) return false; }
 		else if ( token == "generateTacticalFeatures" ) { if ( !ParseBool( src, generateTacticalFeatures ) ) return false; }
 		else if ( token == "iAASOnly" ) { if ( !ParseInt( src, iAASOnly ) ) return false; }
 		else if ( token == "fileExtension" ) { if ( !src.ExpectTokenString( "=" ) || !src.ReadToken( &token ) ) return false; fileExtension = token; }
@@ -837,9 +839,47 @@ void idAASFileLocal::LinkReversedReachability() {
 }
 
 void idAASFileLocal::FinishAreas() {
+	// Quake 4 stores the usable ceiling height in every AAS area.  The Doom 3
+	// baseline only calculated center and bounds, which leaves the Raven field
+	// uninitialized and breaks tactical cover queries in the game DLL.
+	if ( areas.Num() < 2 ) {
+		for ( int i = 0; i < areas.Num(); i++ ) {
+			areas[i].center.Zero();
+			areas[i].bounds.Clear();
+			areas[i].ceiling = 0.0f;
+		}
+		return;
+	}
+
 	for ( int i = 0; i < areas.Num(); i++ ) {
 		areas[i].center = AreaReachableGoal( i );
 		areas[i].bounds = AreaBounds( i );
+	}
+
+	for ( int i = 0; i < areas.Num(); i++ ) {
+		if ( areas[i].flags & AREA_FLOOR ) {
+			int traceAreas[10];
+			idVec3 tracePoints[10];
+			aasTrace_t trace;
+			trace.maxAreas = 10;
+			trace.areas = traceAreas;
+			trace.points = tracePoints;
+
+			idVec3 end = areas[i].center;
+			end.z += 500.0f;
+			Trace( trace, areas[i].center, end );
+
+			areas[i].ceiling = trace.endpos.z;
+			for ( int j = 0; j < trace.numAreas; j++ ) {
+				if ( traceAreas[j] != i ) {
+					areas[i].ceiling = tracePoints[j].z;
+				}
+			}
+		} else {
+			idVec3 point( 0.0f, 0.0f, 131072.0f );
+			PushPointIntoAreaNum( i, point );
+			areas[i].ceiling = point.z;
+		}
 	}
 }
 
